@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Master 1000 English Collocations</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+              950: '#2e1065',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 text-white shadow-md">
+            <i class="fa-solid fa-graduation-cap text-lg"></i>
+          </div>
+          <span class="font-heading text-xl font-bold gradient-text">CollocaStudy</span>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <button onclick="toggleDarkMode()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-moon text-sm" id="theme-icon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Content -->
+        <div class="space-y-8">
+          <div>
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-4">
+              Master <span class="gradient-text">1000 Collocations</span>
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              Learn natural English expressions that native speakers use every day. Interactive lessons, flashcards, quizzes, and AI-powered practice.
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap gap-4 items-center">
+            <div class="flex items-center gap-2">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400">
+                <i class="fa-solid fa-check text-sm"></i>
+              </div>
+              <span class="text-sm font-semibold">50 Lessons</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400">
+                <i class="fa-solid fa-check text-sm"></i>
+              </div>
+              <span class="text-sm font-semibold">Interactive Practice</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400">
+                <i class="fa-solid fa-check text-sm"></i>
+              </div>
+              <span class="text-sm font-semibold">AI Powered</span>
+            </div>
+          </div>
+          
+          <button onclick="document.getElementById('lessons').scrollIntoView({ behavior: 'smooth' })" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-brand-600/30 transition">
+            <span>Start Learning</span>
+            <i class="fa-solid fa-arrow-right text-sm"></i>
+          </button>
+        </div>
+        
+        <!-- Right Visual -->
+        <div class="hidden lg:flex items-center justify-center">
+          <div class="relative w-full h-96">
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-600/20 to-indigo-500/20 rounded-3xl blur-3xl"></div>
+            <div class="relative flex items-center justify-center h-full">
+              <div class="space-y-4 w-full px-8">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 shadow-lg float-animation" style="animation-delay: 0s">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-sm font-bold text-brand-600">1</div>
+                    <div>
+                      <p class="text-xs text-slate-400 font-semibold uppercase">Lesson</p>
+                      <p class="font-semibold text-slate-900 dark:text-white">Family Relationships</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 shadow-lg float-animation" style="animation-delay: 0.2s">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-sm font-bold text-indigo-600">2</div>
+                    <div>
+                      <p class="text-xs text-slate-400 font-semibold uppercase">Lesson</p>
+                      <p class="font-semibold text-slate-900 dark:text-white">Human Relationships</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 shadow-lg float-animation" style="animation-delay: 0.4s">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-sm font-bold text-purple-600">3</div>
+                    <div>
+                      <p class="text-xs text-slate-400 font-semibold uppercase">Lesson</p>
+                      <p class="font-semibold text-slate-900 dark:text-white">Physical Descriptions</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lessons Grid Section -->
+  <section id="lessons" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="mb-16 text-center">
+        <h2 class="font-heading text-4xl font-black mb-4">All 50 Lessons</h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          Explore all available lessons. Each lesson includes interactive stories, flashcards, quizzes, and AI-powered practice tools.
+        </p>
+      </div>
+      
+      <!-- Lessons Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Lesson 1 -->
+        <a href="Lesson 1.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 1</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Family</h3>
+            </div>
+            <i class="fa-solid fa-users text-2xl text-slate-400 group-hover:text-brand-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Master collocations about family relationships, marriage, and childbirth.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 2 -->
+        <a href="Lesson 2.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 2</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Relationships</h3>
+            </div>
+            <i class="fa-solid fa-heart text-2xl text-rose-500 group-hover:text-rose-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn expressions about romance, dating, and human connections.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 3 -->
+        <a href="Lesson 3.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 3</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Appearance</h3>
+            </div>
+            <i class="fa-solid fa-eye text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Explore collocations for describing physical appearance and style.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 4 -->
+        <a href="Lesson 4.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 4</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Character & Behavior</h3>
+            </div>
+            <i class="fa-solid fa-brain text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Study personality traits and behavioral expressions.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 5 -->
+        <a href="Lesson 5.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 5</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Feelings</h3>
+            </div>
+            <i class="fa-solid fa-face-smile text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Master expressions for emotions and emotional states.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 6 -->
+        <a href="Lesson 6.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 6</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Houses & Apartments</h3>
+            </div>
+            <i class="fa-solid fa-house-chimney text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn collocations related to homes and living spaces.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 7 -->
+        <a href="Lesson 7.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 7</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Eating</h3>
+            </div>
+            <i class="fa-solid fa-utensils text-2xl text-emerald-500 group-hover:text-emerald-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Explore food-related collocations and dining expressions.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 8 -->
+        <a href="Lesson 8.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 8</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Movies & Books</h3>
+            </div>
+            <i class="fa-solid fa-clapperboard text-2xl text-amber-500 group-hover:text-amber-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Study collocations about entertainment and literature.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Lesson 9 -->
+        <a href="Lesson 9.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 9</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Music</h3>
+            </div>
+            <i class="fa-solid fa-compact-disc text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Master music-related collocations and terminology.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>Learn More</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Placeholder Lessons 10-50 -->
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 10</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Coming Soon</h3>
+            </div>
+            <i class="fa-solid fa-lock text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">More lessons under development.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Placeholder</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 11</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Sports & Health</h3>
+            </div>
+            <i class="fa-solid fa-dumbbell text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Lesson content coming soon.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Placeholder</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 12</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Travel & Adventure</h3>
+            </div>
+            <i class="fa-solid fa-map text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Lesson content coming soon.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Placeholder</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 13</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Business & Work</h3>
+            </div>
+            <i class="fa-solid fa-briefcase text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Lesson content coming soon.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Placeholder</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 14</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Education & Learning</h3>
+            </div>
+            <i class="fa-solid fa-book text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Lesson content coming soon.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Placeholder</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 15</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Finance & Money</h3>
+            </div>
+            <i class="fa-solid fa-coins text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Lesson content coming soon.</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Placeholder</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+
+        <!-- Continue pattern for lessons 16-50 -->
+        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 16-50</span>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Future Lessons</h3>
+            </div>
+            <i class="fa-solid fa-star text-2xl text-slate-400"></i>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">35 more lessons under development. Check back soon!</p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <span>Coming Soon</span>
+            <i class="fa-solid fa-hourglass-end"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-4xl font-black mb-4">Powerful Learning Tools</h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400">Each lesson includes everything you need to master English collocations.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-brand-50 to-indigo-50 dark:from-brand-950/20 dark:to-indigo-950/20 rounded-2xl p-8 border border-brand-200/50 dark:border-brand-800/30">
+          <div class="w-14 h-14 bg-brand-600 rounded-xl flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-book-open text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">Interactive Stories</h3>
+          <p class="text-slate-600 dark:text-slate-400">Learn collocations through engaging narratives with clickable examples.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20 rounded-2xl p-8 border border-emerald-200/50 dark:border-emerald-800/30">
+          <div class="w-14 h-14 bg-emerald-600 rounded-xl flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-clone text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">Flashcards</h3>
+          <p class="text-slate-600 dark:text-slate-400">Master collocations with interactive 3D flip cards and keyboard shortcuts.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/20 dark:to-cyan-950/20 rounded-2xl p-8 border border-blue-200/50 dark:border-blue-800/30">
+          <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-square-poll-vertical text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">Graded Quizzes</h3>
+          <p class="text-slate-600 dark:text-slate-400">Test your knowledge with comprehensive quizzes and detailed explanations.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-2xl p-8 border border-purple-200/50 dark:border-purple-800/30">
+          <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">AI Sandbox</h3>
+          <p class="text-slate-600 dark:text-slate-400">Practice writing sentences with AI-powered grammar and collocation feedback.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-rose-50 to-orange-50 dark:from-rose-950/20 dark:to-orange-950/20 rounded-2xl p-8 border border-rose-200/50 dark:border-rose-800/30">
+          <div class="w-14 h-14 bg-rose-600 rounded-xl flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-radio text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">Podcast Station</h3>
+          <p class="text-slate-600 dark:text-slate-400">Listen to engaging dialogues featuring collocations in natural contexts.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/20 dark:to-yellow-950/20 rounded-2xl p-8 border border-amber-200/50 dark:border-amber-800/30">
+          <div class="w-14 h-14 bg-amber-600 rounded-xl flex items-center justify-center text-white mb-4">
+            <i class="fa-solid fa-spell-check text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-bold mb-2">Dictionary</h3>
+          <p class="text-slate-600 dark:text-slate-400">Browse searchable vocabulary with definitions, categories, and examples.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-600 to-indigo-600 dark:from-brand-950 dark:to-indigo-950">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
+      <div>
+        <h2 class="font-heading text-4xl font-black text-white mb-4">Ready to Master Collocations?</h2>
+        <p class="text-lg text-brand-100 max-w-2xl mx-auto">
+          Choose any lesson to start your journey toward fluent, natural English. No signup required.
+        </p>
+      </div>
+      
+      <a href="Lesson 1.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-600 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-900/20 transition">
+        <span>Start with Lesson 1</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-brand-600 to-indigo-500 text-white">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <span class="font-heading font-bold gradient-text">CollocaStudy</span>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Master 1000 English collocations with interactive learning tools.</p>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4 text-slate-900 dark:text-white">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="#lessons" class="hover:text-brand-600 transition">All Lessons</a></li>
+            <li><a href="#" class="hover:text-brand-600 transition">About</a></li>
+            <li><a href="#" class="hover:text-brand-600 transition">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4 text-slate-900 dark:text-white">Features</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="#" class="hover:text-brand-600 transition">Flashcards</a></li>
+            <li><a href="#" class="hover:text-brand-600 transition">Quizzes</a></li>
+            <li><a href="#" class="hover:text-brand-600 transition">Dictionary</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4 text-slate-900 dark:text-white">Resources</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="#" class="hover:text-brand-600 transition">Blog</a></li>
+            <li><a href="#" class="hover:text-brand-600 transition">Privacy</a></li>
+            <li><a href="#" class="hover:text-brand-600 transition">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+        <p>&copy; 2024 CollocaStudy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('colloc-theme', isDark ? 'dark' : 'light');
+      updateThemeIcon(isDark);
+    }
+
+    function updateThemeIcon(isDark) {
+      const icon = document.getElementById('theme-icon');
+      icon.className = isDark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+    }
+
+    // Initialize theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('colloc-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        updateThemeIcon(true);
+      } else {
+        updateThemeIcon(false);
+      }
+    });
+  </script>
+</body>
+</html>
