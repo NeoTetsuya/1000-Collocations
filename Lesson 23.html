@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 23: Law & Justice Courtroom Lab</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f7fa',
+              100: '#e4e8f0',
+              200: '#cbd5e1',
+              300: '#94a3b8',
+              400: '#64748b',
+              500: '#1e3a8a', /* Classic Courtroom Navy Blue */
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1e3a8a',
+              900: '#172554',
+              950: '#0c0a09',
+              accent: '#d97706', /* Stately Brass/Gold */
+              accentHover: '#b45309'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    
+    /* Smooth interactive transitions */
+    .view-container {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip styling */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Animated Equalizer Waveform */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200 font-medium">
+
+  <div class="flex h-full flex-col overflow-hidden">
+    
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 to-amber-600 text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-scale-balanced text-lg animate-pulse"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-700 to-amber-600 bg-clip-text text-transparent dark:from-brand-400">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">Courtroom Lab</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-gavel text-brand-600 dark:text-amber-500"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 23: Law & Justice</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Dark Mode Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-500 dark:bg-amber-500 animate-pulse"></div>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/30 Mastered</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden">
+      
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Magistrate Modules</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300">
+            <i class="fa-solid fa-file-contract text-base"></i>
+            <span>Dossier & Glossary</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-box-archive text-base"></i>
+            <span>Exhibits & Cards</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-gavel text-base"></i>
+            <span>Graded Law Exam</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Legal Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-microphone-lines text-base"></i>
+            <span>Courtroom Podcast</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-gavel text-base"></i>
+            <span>Judicial Dictionary</span>
+          </button>
+        </div>
+        
+        <!-- User Astrological Confidence Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 p-4 border border-slate-300/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-user-shield text-brand-700 dark:text-amber-500"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Juris Clearance</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-700 dark:text-amber-500" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Analyze trial precedents and legal briefs to advance your courtroom clearance from Legal Clerk to Attorney General!</p>
+        </div>
+      </nav>
+
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-850">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-900 dark:text-white">Lesson 23 Court Precedents</h2>
+                  <p class="text-xs text-slate-400 mt-1">Review modern legal and justice structures. Click on highlighted collocations to pull up official legal files.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Read Trial Brief</span>
+                </button>
+              </div>
+              
+              <!-- Story Text -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
+                <p>
+                  The government is responsible for <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="passing_laws">passing laws</span>, and the courts and legal system are in charge of upholding and <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="enforcing_law">enforcing the law</span>.
+                </p>
+                <p>
+                  When a person is <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="charged_crime">charged with a crime</span>, he or she must appear in court to <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="stand_trial">stand trial</span>. Both the prosecution and the defense will <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="present_cases">present their cases</span> before the judge and jury. After careful consideration, the judge or jury will <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="reach_verdict">reach a verdict</span>.
+                </p>
+                <p>
+                  If there is irrefutable, overwhelming, or <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="concrete_evidence">concrete evidence</span>, this means that it is very obvious that the suspect committed the crime, and it is highly possible that the jury's verdict will be a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="unanimous_decision">unanimous decision</span>. However, if the evidence is circumstantial or <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="inconclusive_evidence">inconclusive evidence</span>, then the decision will be more difficult — it is even possible to have a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="hung_jury">hung jury</span>, which cannot agree on the verdict.
+                </p>
+                <p>
+                  Less serious crimes will receive a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="light_sentence">light sentence</span> — for example, the offender may have to <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="pay_fine">pay a fine</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="do_community_service">do community service</span>. For more serious crimes, the person will probably <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="go_prison">go to prison</span>. Especially heinous crimes can result in a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="harsh_sentence">harsh sentence</span> such as <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="life_prison">life in prison</span> or, in some places, the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="death_penalty">death penalty</span>.
+                </p>
+                <p>
+                  After the decision is made, the lawyers can choose to <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="appeal_verdict">appeal the verdict</span>, and the case may turn into a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="prolonged_legal_battle">prolonged legal battle</span> as the courts decide whether to <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="uphold_verdict">uphold the verdict</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="overturn_verdict">overturn the verdict</span>.
+                </p>
+                <p>
+                  As a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="convicted_criminal">convicted criminal</span> is <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="serving_time">serving time</span>, they should maintain good behavior for the possibility of being released early, as long as they are not <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="threat_society">deemed a threat to society</span>. A criminal released early is said to be <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-amber-500 border-b-2 border-dashed border-brand-500 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="on_parole">on parole</span>, meaning they must strictly comply with certain conditions.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-indigo-950 text-white rounded-3xl p-6 border border-brand-800 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-500" id="glossary-category">Active Court Case Card</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">reach a verdict</h3>
+                
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To arrive at a formal judicial decision concerning the guilt or innocence of a defendant in a court of law.</p>
+                
+                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Trial Court Precedent</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"After careful consideration, the judge or jury will reach a verdict."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-amber-500"></i>
+                  <span>Jurisprudential Links</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-450 leading-relaxed">
+                  Navigating court filings requires absolute lexical precision. Master legal couplings like **"upholding the law"**, **"unanimous decision"**, and **"overturn the verdict"** to formulate professional briefs flawlessly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Trial Exhibits & Cards</h2>
+                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-400">/</span>
+                <span>30</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-700 dark:bg-amber-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/50 text-brand-800 dark:text-amber-400 px-2.5 py-1 rounded-full" id="card-front-category">Trial Procedure</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-450 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-400 tracking-widest font-bold">Judicial Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">reach a verdict</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-450 dark:text-slate-500">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-indigo-950 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-amber-400 px-2.5 py-1 rounded-full" id="card-back-category">Exhibits Panel</span>
+                    <span class="text-xs text-amber-400 font-semibold">Judicial Decree</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black">Official Definition</span>
+                      <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black">Case Reference Example</span>
+                      <p class="text-xs sm:text-sm italic text-slate-250 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-650 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-300">Mark as Mastered</span>
+                    </label>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-700 hover:bg-brand-850 dark:bg-amber-600 dark:hover:bg-amber-700 text-white font-semibold text-sm shadow-lg transition">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Active Quiz Screen -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black text-slate-900 dark:text-white">Lesson 23 Graded Exam</h2>
+                  <p class="text-xs text-slate-400 mt-1">Select the correct legal collocation to complete the courtroom dossier.</p>
+                </div>
+                <div class="bg-brand-100 dark:bg-brand-950/50 text-brand-850 dark:text-amber-400 px-3 py-1.5 rounded-xl text-xs font-bold">
+                  Dossier <span id="quiz-question-current">1</span> of 20
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-100 dark:bg-slate-850 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-600 to-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Question Text -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450">Active Courtroom Dossier</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading dossier..."</p>
+              </div>
+              
+              <!-- Question Options Grid -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
+                <!-- Options rendered dynamically -->
+              </div>
+              
+              <!-- Explanations Box -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Magistrate's Judicial Blueprint</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold">Explanation details...</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-855 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Trial Exam
+                </button>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-655 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Case</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Final Score Review Screen -->
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-8 text-center">
+              <div class="space-y-3">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-50 dark:bg-brand-950/30 text-brand-600 dark:text-amber-500">
+                  <i class="fa-solid fa-trophy text-3xl animate-bounce"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-black text-slate-900 dark:text-white">Assessment Complete!</h2>
+                <p class="text-sm text-slate-450">Analysis complete. Review your jurisprudential score.</p>
+              </div>
+              
+              <!-- Metrics Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 font-bold">Solved Cases</span>
+                  <span class="text-2xl font-black text-emerald-500" id="quiz-score-correct">18/20</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 font-bold">Lexical Score</span>
+                  <span class="text-2xl font-black text-brand-700 dark:text-amber-550" id="quiz-score-percent">90%</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 font-bold">Court Standing</span>
+                  <span class="text-xs sm:text-sm font-bold text-brand-700 dark:text-amber-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Advanced</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Re-argue Case</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Dossier</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-855 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">AI Legal Sandbox</h2>
+                  <p class="text-xs text-slate-400">Compose custom judicial briefs. The model validates syntactical accuracy regarding Lesson 23 law and justice terms.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-750 text-slate-655 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-lightbulb mr-1 text-amber-500"></i> Case Precedent
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-100 text-brand-850 dark:bg-brand-950/40 dark:text-amber-400 hover:bg-brand-200 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Exhibit
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-455 block font-bold">Judicial Argument Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: The state legislature was tasked with passing laws, while the local court focused on upholding the law..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+                <!-- Chips rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-855 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-450 hover:text-slate-900 dark:hover:text-slate-200 transition">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Ledger
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-lg shadow-brand-500/15 transition">
+                  <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                  <span>Scan Brief Syntax</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-4">
+                <h3 class="font-heading text-lg font-extrabold text-slate-900 dark:text-white">AI Brief Diagnostic</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Constitutional Flow</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-brand-50 dark:border-brand-950/30">
+                    <span class="text-3xl font-black font-heading tracking-tight text-slate-900 dark:text-white" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-bold">Accuracy</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 block mb-0.5 font-bold">Semantic Validity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-650 dark:text-slate-300 leading-relaxed font-semibold">Scanning text structure...</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-100 dark:border-slate-855 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 block mb-0.5 font-bold">Judicial Phrasing Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-650 dark:text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-1">Recommended Brief Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-semibold italic text-slate-800 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-750 rounded-lg text-xs font-bold text-slate-655 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-brand-500 dark:bg-amber-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Courtroom 23</h2>
+                    <p class="text-[10px] text-slate-400 font-bold">Turn-Based Debate Simulation: Law & Justice</p>
+                  </div>
+                </div>
+                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Live Stream
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-950/40 rounded-2xl p-4 border border-slate-800">
+                <div class="wave-bar bg-brand-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-amber-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-brand-650 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-amber-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-brand-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-amber-450 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3">
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-400" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Judicial Precedents: Enforcing Law & Verdicts</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to hear turn-based litigation co-hosts debate constitutional terminology from Lesson 23.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
+                <div class="flex gap-2.5 items-start">
+                  <div class="h-6 w-6 rounded bg-brand-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+                  <div class="space-y-0.5">
+                    <span class="text-[10px] font-bold text-brand-400">Host Sarah (Lead Counsel)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast Courtroom 23. Today we analyze legislative powers and legal defenses!"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Previous case collocation">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-600 to-amber-600 text-white hover:from-brand-700 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/10 transition" title="Play dialogue loop">
+                    <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                  </button>
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Next case collocation">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+                
+                <!-- Podcast Progress bar -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-400">
+                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-percent">0% Reviewed</span>
+                  </div>
+                  <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                    <div id="podcast-loading-meter" class="bg-brand-500 dark:bg-amber-500 h-full transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 dark:border-slate-850 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Constitutional Dictionary Ledger</h2>
+                <p class="text-xs text-slate-400">Search and filter active collocations in the Lesson 23 law and justice files.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search court files...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
+                  <option value="all">All Jurisdictions</option>
+                  <option value="Legislative">Legislative Powers</option>
+                  <option value="Courtroom">Courtroom Litigations</option>
+                  <option value="Sentences">Sentencing Outcomes</option>
+                  <option value="Post-Trial">Post-Trial Process</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Mastered Only</option>
+                  <option value="unmastered">Active Cases</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-150 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Courtroom Collocation</th>
+                    <th class="py-3 px-4 w-32">Trial Context</th>
+                    <th class="py-3 px-4">Judicial Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Court Precedent Example</th>
+                    <th class="py-3 px-4 w-16 text-center">vocal</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-855 text-slate-700 dark:text-slate-300 font-semibold font-sans">
+                  <!-- Javascript will render rows -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-amber-500">
+        <i class="fa-solid fa-file-contract text-base" id="mob-story-icon"></i>
+        <span class="text-[9px] font-bold">Dossier</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-amber-500">
+        <i class="fa-solid fa-box-archive text-base" id="mob-flashcards-icon"></i>
+        <span class="text-[9px] font-bold">Exhibits</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-amber-500">
+        <i class="fa-solid fa-gavel text-base" id="mob-quiz-icon"></i>
+        <span class="text-[9px] font-bold">Exam</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-amber-500">
+        <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
+        <span class="text-[9px] font-bold">Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-amber-500">
+        <i class="fa-solid fa-microphone-lines text-base" id="mob-podcast-icon"></i>
+        <span class="text-[9px] font-bold">Podcast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-amber-500">
+        <i class="fa-solid fa-spell-check text-base" id="mob-dictionary-icon"></i>
+        <span class="text-[9px] font-bold">Lexicon</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-3">
+        <h3 class="font-heading font-black text-lg text-slate-900 dark:text-white">Constitutional Audio Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-455 animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-750 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-850 text-xs font-semibold outline-none text-slate-950 dark:text-slate-50">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-bold">
+            <span>Speech Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-bold">
+            <span>Acoustic Tone Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-650 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+        Apply Parameters
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 dark:bg-slate-900/10 text-brand-400 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-350 dark:text-slate-655 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      theme: 'light',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'passing_laws', phrase: 'passing laws', definition: 'The formal legislative approval and codification of new governmental regulations.', example: 'The legislature is responsible for passing laws that regulate safety.', category: 'Legislative', mastered: false },
+        { id: 'enforcing_law', phrase: 'enforcing the law', definition: 'The executive implementation and physical policing of codified statutes.', example: 'Courts and police systems are in charge of upholding and enforcing the law.', category: 'Legislative', mastered: false },
+        { id: 'charged_crime', phrase: 'charged with a crime', definition: 'Formally accused of a specific illegal offense under a criminal code.', example: 'When a suspect is charged with a crime, they must stand trial.', category: 'Courtroom', mastered: false },
+        { id: 'stand_trial', phrase: 'stand trial', definition: 'To undergo formal adjudication and questioning in court to judge guilt or innocence.', example: 'He hired a legal counsel to defend him as he stood trial.', category: 'Courtroom', mastered: false },
+        { id: 'present_cases', phrase: 'present their cases', definition: 'The systematic legal arguments and display of exhibits made by both litigation sides.', example: 'Both the prosecution and defense will present their cases in front of the jury.', category: 'Courtroom', mastered: false },
+        { id: 'reach_verdict', phrase: 'reach a verdict', definition: 'To successfully conclude litigation by declaring the target guilty or not guilty.', example: 'After evaluating all testimonies, the jury managed to reach a verdict.', category: 'Courtroom', mastered: false },
+        { id: 'concrete_evidence', phrase: 'concrete evidence', definition: 'Undeniable physical proof that demonstrates a fact beyond doubt.', example: 'There was concrete evidence connecting the suspect to the bank vaults.', category: 'Courtroom', mastered: false },
+        { id: 'unanimous_decision', phrase: 'unanimous decision', definition: 'A verdict reached by all courtroom jurors agreeing 100% on the outcome.', example: 'The jury delivered a unanimous decision of not guilty.', category: 'Courtroom', mastered: false },
+        { id: 'inconclusive_evidence', phrase: 'inconclusive evidence', definition: 'Legal findings that do not definitively prove the suspect\'s guilt.', example: 'Due to inconclusive evidence, the litigation was dismissed.', category: 'Courtroom', mastered: false },
+        { id: 'hung_jury', phrase: 'hung jury', definition: 'A jury that is deadlocked and unable to reach a unanimous verdict.', example: 'The judge declared a mistrial following a deadlocked hung jury.', category: 'Courtroom', mastered: false },
+        { id: 'light_sentence', phrase: 'light sentence', definition: 'A minor judicial punishment, often involving minimal penalties or small terms.', example: 'She received a light sentence of twenty hours of service.', category: 'Sentences', mastered: false },
+        { id: 'pay_fine', phrase: 'pay a fine', definition: 'To deliver a structured monetary penalty as restitution for a minor offense.', example: 'Speeding inside school zones requires offenders to pay a fine.', category: 'Sentences', mastered: false },
+        { id: 'do_community_service', phrase: 'do community service', definition: 'Performing unpaid physical labor benefiting local spaces as restitution.', example: 'The teenager was sentenced to do community service instead of jail.', category: 'Sentences', mastered: false },
+        { id: 'go_to_prison', phrase: 'go to prison', definition: 'To be legally incarcerated within a state correctional institution.', example: 'He had to go to prison for his structural fraud schemes.', category: 'Sentences', mastered: false },
+        { id: 'harsh_sentence', phrase: 'harsh sentence', definition: 'An extreme or severe term of punishment, such as prolonged incarceration or the death penalty.', example: 'A repeat offender usually receives a harsh sentence.', category: 'Sentences', mastered: false },
+        { id: 'life_in_prison', phrase: 'life in prison', definition: 'A sentence of permanent imprisonment for the remainder of one\'s lifetime.', example: 'He was sentenced to life in prison without parole.', category: 'Sentences', mastered: false },
+        { id: 'death_penalty', phrase: 'death penalty', definition: 'Capital punishment resulting in the state-sanctioned execution of the convict.', example: 'Heinous war offenses can trigger the death penalty in this state.', category: 'Sentences', mastered: false },
+        { id: 'appeal_verdict', phrase: 'appeal the verdict', definition: 'To formally challenge the legal validity of a court\'s decision in an appellate court.', example: 'His legal defense immediately decided to appeal the verdict.', category: 'Post-Trial', mastered: false },
+        { id: 'prolonged_legal_battle', phrase: 'prolonged legal battle', definition: 'A long, exhausting, and costly litigation war that spans many months or years.', example: 'The corporate split escalated into a prolonged legal battle.', category: 'Post-Trial', mastered: false },
+        { id: 'uphold_verdict', phrase: 'uphold the verdict', definition: 'When an appellate court officially maintains the original courtroom decision.', example: 'The high court chose to uphold the verdict after review.', category: 'Post-Trial', mastered: false },
+        { id: 'overturn_verdict', phrase: 'overturn the verdict', definition: 'When a superior court officially reverses the original trial decision.', example: 'The supreme court managed to overturn the verdict due to a constitutional error.', category: 'Post-Trial', mastered: false },
+        { id: 'convicted_criminal', phrase: 'convicted criminal', definition: 'A person formally declared guilty of an offense by a court.', example: 'The convicted criminal was escorted directly to a secure cell.', category: 'Post-Trial', mastered: false },
+        { id: 'serving_time', phrase: 'serving time', definition: 'Spending an active sentence period incarcerated behind bars.', example: 'While serving time, he studied ancient history and calculus.', category: 'Post-Trial', mastered: false },
+        { id: 'good_behavior', phrase: 'good behavior', definition: 'Obedient and peaceful conduct while serving a prison term.', example: 'He was released early due to his consistent good behavior.', category: 'Post-Trial', mastered: false },
+        { id: 'threat_society', phrase: 'threat to society', definition: 'A person deemed dangerous and likely to harm members of the public.', example: 'The violent cult leader was deemed a massive threat to society.', category: 'Post-Trial', mastered: false },
+        { id: 'on_parole', phrase: 'on parole', definition: 'Conditional, supervised early release from prison before the sentence ends.', example: 'While on parole, he was required to report to his supervisor weekly.', category: 'Post-Trial', mastered: false },
+        { id: 'upholding_law', phrase: 'upholding the law', definition: 'Maintaining and defending legal rules and constitutional structures.', example: 'Every judge takes an oath dedicated to upholding the law.', category: 'Legislative', mastered: false },
+        { id: 'circumstantial_evidence', phrase: 'circumstantial evidence', definition: 'Indirect evidence that suggests guilt but does not prove it definitively.', example: 'Without fingerprints, the state had only circumstantial evidence.', category: 'Courtroom', mastered: false },
+        { id: 'irrefutable_evidence', phrase: 'irrefutable evidence', definition: 'Indisputable and watertight evidence that is impossible to deny.', example: 'The security camera provided irrefutable evidence of his location.', category: 'Courtroom', mastered: false },
+        { id: 'overwhelming_evidence', phrase: 'overwhelming evidence', definition: 'An immense quantity of proof pointing clearly to a single conclusion.', example: 'The state had overwhelming evidence, making conviction highly likely.', category: 'Courtroom', mastered: false }
+      ],
+      // Graded quiz containing exactly 20 context-rich questions based on Lesson 23
+      quiz: [
+        { id: 1, question: "The high court chose to ________ the original decision after finding no constitutional errors.", options: ["uphold the verdict", "overturn the verdict", "appeal the verdict"], answer: "uphold_verdict", explanation: "To maintain the original decision is to 'uphold the verdict/decision'." },
+        { id: 2, question: "Because the jury could not reach a unanimous decision, the judge was forced to declare a ________.", options: ["hung jury", "light sentence", "prolonged legal battle"], answer: "hung_jury", explanation: "A deadlocked jury that cannot agree is called a 'hung jury'." },
+        { id: 3, question: "He didn't have to go to prison because the judge gave him a ________ of community service.", options: ["light sentence", "harsh sentence", "unanimous decision"], answer: "light_sentence", explanation: "A minor punishment, like service, is a 'light sentence'." },
+        { id: 4, question: "The corporate executive was formally ________ and had to hire a prominent trial attorney.", options: ["charged with a crime", "released on parole", "overturned the verdict"], answer: "charged_crime", explanation: "Formally accusing a suspect under a criminal code is to 'charge them with a crime'." },
+        { id: 5, question: "To satisfy the judicial sentence, the repeat offender was ordered to ________ to the city treasurer.", options: ["pay a fine", "do community service", "go to prison"], answer: "pay_fine", explanation: "Paying a monetary penalty for an offense is to 'pay a fine'." },
+        { id: 6, question: "The state senate holds the exclusive constitutional power of drafted and ________.", options: ["passing laws", "enforcing the law", "upholding the law"], answer: "passing_laws", explanation: "Approving new codes to be put into practice is 'passing laws'." },
+        { id: 7, question: "The defense argued that the state only has ________, which doesn't directly link him to the scene.", options: ["circumstantial evidence", "concrete evidence", "irrefutable evidence"], answer: "circumstantial_evidence", explanation: "Indirect evidence that suggests guilt but does not prove it is 'circumstantial evidence'." },
+        { id: 8, question: "His attorneys filed a request to ________, citing bias in the original selection of jurors.", options: ["appeal the verdict", "uphold the verdict", "reach a verdict"], answer: "appeal_verdict", explanation: "To challenge a decision in a superior court is to 'appeal the verdict'." },
+        { id: 9, question: "Because he was caught on camera holding the stolen cash, the state possessed ________.", options: ["concrete evidence", "circumstantial evidence", "inconclusive evidence"], answer: "concrete_evidence", explanation: "Undeniable, solid physical proof is referred to as 'concrete evidence'." },
+        { id: 10, question: "The convict is currently ________ at the state penitentiary, reflecting on his actions.", options: ["serving time", "on parole", "standing trial"], answer: "serving_time", explanation: "Spending a scheduled sentence period behind bars is 'serving time'." },
+        { id: 11, question: "Due to his violent nature and history of assaults, he was deemed a major ________.", options: ["threat to society", "convicted criminal", "hung jury"], answer: "threat_society", explanation: "Someone who is considered potentially dangerous to the public is a 'threat to society'." },
+        { id: 12, question: "In some countries, heinous crimes like treason or murder can trigger the ________.", options: ["death penalty", "harsh sentence", "life in prison"], answer: "death_penalty", explanation: "Capital punishment resulting in state-sanctioned execution is the 'death penalty'." },
+        { id: 13, question: "Because he complied with all rules and displayed excellent conduct, he was released early ________.", options: ["on parole", "life in prison", "hung jury"], answer: "on_parole", explanation: "A conditional, supervised early release from prison is 'on parole'." },
+        { id: 14, question: "Both legal teams worked for weeks before the trial to prepare and ________ before the judge.", options: ["present their cases", "reach a verdict", "stand trial"], answer: "present_cases", explanation: "Formulating and laying out legal arguments in court is to 'present their cases'." },
+        { id: 15, question: "The police force is dedicated to keeping order and ________ across all city districts.", options: ["enforcing the law", "passing laws", "appealing the verdict"], answer: "enforcing_law", explanation: "Applying and policing the law is 'enforcing the law'." },
+        { id: 16, question: "Since all twelve jurors agreed that the evidence was sound, they made a ________ of guilty.", options: ["unanimous decision", "hung jury", "light sentence"], answer: "unanimous_decision", explanation: "A decision where 100% of the jurors agree is a 'unanimous decision'." },
+        { id: 17, question: "The family dispute over the grandfather\'s inheritance turned into a ________.", options: ["prolonged legal battle", "light sentence", "hung jury"], answer: "prolonged_legal_battle", explanation: "A long, draining, and expensive legal conflict is a 'prolonged legal battle'." },
+        { id: 18, question: "The judge warned the suspect that he must ________ next Monday morning or face arrest.", options: ["appear in court", "appeal the verdict", "pay a fine"], answer: "appear_in_court", explanation: "Showing up in court before a magistrate is to 'appear in court'." },
+        { id: 19, question: "The supreme court decided to ________ because of illegal wiretapping conducted by the police.", options: ["overturn the verdict", "uphold the verdict", "appeal the verdict"], answer: "overturn_verdict", explanation: "To reverse a lower court\'s decision is to 'overturn the verdict'." },
+        { id: 20, question: "A ________ must stand trial to find out if they will be sentenced or acquitted.", options: ["convicted criminal", "hung jury", "threat to society"], answer: "convicted_criminal", explanation: "An individual found guilty of a crime is a 'convicted criminal'." }
+      ],
+      activeCardId: 'passing_laws',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        if (type === 'click') {
+          osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          osc.frequency.setValueAtTime(600, audioCtx.currentTime); 
+          osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.1); 
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.22);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'incorrect') {
+          osc.frequency.setValueAtTime(180, audioCtx.currentTime); 
+          osc.frequency.setValueAtTime(120, audioCtx.currentTime + 0.1); 
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.28);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.28);
+        } else if (type === 'flip') {
+          osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('AudioContext syntax error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
+    });
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l23', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l23')) {
+        state.theme = localStorage.getItem('colloc_theme_l23');
+      }
+      if (localStorage.getItem('colloc_mastery_list_l23')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l23'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Mastery index parse error', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l23')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l23'));
+        } catch(e) {}
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l23', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          if (state.quizAnswers[q.id] === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l23', JSON.stringify(state.voiceSettings));
+      showToast('Configurations Saved', 'Speech voice parameters synchronized.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Synthesizer is not supported on this node.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.currentTarget.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('passing_laws');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Trial Context: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+        showToast('Term Mastered', `Saved "${term.phrase}" to your resolved database!`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Case Re-opened', `Moved "${term.phrase}" back to active files.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const narrativeText = "The government is responsible for passing laws, and the courts and legal system are in charge of upholding and enforcing the law. When a person is charged with a crime, he or she must appear in court to stand trial. Both the prosecution and the defense will present their cases before the judge and jury. After consideration, the judge or jury will reach a verdict. If there is irrefutable, overwhelming, or concrete evidence, this means that it is very obvious that the person committed the crime, and it's possible that the jury will be unanimous in their decision. However, if the evidence is circumstantial or inconclusive, then the decision will be more difficult - it's possible to have a hung jury, which cannot agree on the verdict. Less serious crimes will receive a light sentence - for example, the offender may have to pay a fine or do community service. For more serious crimes, the person will probably go to prison - and especially heinous crimes can result in a harsh sentence such as life in prison or, in some places, the death penalty. After the decision is made, the lawyers can choose to appeal the verdict, and the case may turn into a prolonged legal battle as the courts decide whether to uphold or overturn the original verdict. As a convicted criminal is serving time, they should remember the possibility of being released from prison early for good behavior, as long as they are not deemed a threat to society. A criminal who is released early is said to be on parole, meaning that he or she must comply with certain conditions after getting out of jail - such as getting a job and refraining from drug/alcohol use.";
+      triggerTTS(narrativeText);
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'This is the first exhibit card.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Looping', 'Cycling back to the first legal exhibit card.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Exhibit Mastered', `"${card.phrase}" marked as mastered.`);
+      }
+    }
+
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        
+        // Find matching collocation based on option string/id
+        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
+        const collocId = matchingColloc ? matchingColloc.id : opt;
+        
+        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full ";
+        
+        if (!answered) {
+          btn.className += "bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-50/20 dark:hover:bg-brand-950/20";
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          if (collocId === quest.answer) {
+            btn.className += "bg-emerald-50 border-emerald-450 text-emerald-850 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (collocId === userAns) {
+            btn.className += "bg-rose-50 border-rose-300 text-rose-850 dark:bg-rose-955/20 dark:border-rose-900/40 dark:text-rose-450";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-655";
+          }
+        }
+        
+        if (!answered) {
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-white rounded-xl text-xs sm:text-sm font-bold transition";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Legal Accord!', 'Accurate collocation applied to brief.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Objection Overruled!', 'Inconclusive alignment with case law.', 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Legal Clerk";
+      if (percentage === 100) rank = "Attorney General";
+      else if (percentage >= 90) rank = "Senior Counsel";
+      else if (percentage >= 70) rank = "Trial Attorney";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['passing laws', 'reach a verdict', 'appeal the verdict', 'hung jury', 'pay a fine', 'serving time'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-brand-950/30 text-slate-700 dark:text-slate-350 rounded-lg text-xs font-semibold transition border border-slate-200/50 dark:border-slate-800";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `During the trial, the prosecution focused on upholding the law while the defense attempted to ${word}...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Evaluate the legal implication: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Exhibit Appended', `Written "${randomColloc}" to workspace.`, 'fa-plus-circle');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Outline why legislative chambers focus on passing laws while judiciaries prioritize upholding the law.",
+        "Draft a trial summary indicating how concrete evidence helped the jury reach a verdict.",
+        "Write a brief detail on a prolonged legal battle to appeal the verdict and overturn the decision.",
+        "Examine the parole board guidelines on when a convicted criminal is not deemed a threat to society."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Judicial Precedent Challenge: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Workspace', 'Please write a brief before scanning.', 'fa-triangle-exclamation');
+        return;
+      }
+      
+      showToast('AI Assessing', 'Streaming composition to the Gemini Juris Oracle...', 'fa-wand-magic-sparkles');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical alignment... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with constitutional parameters...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemPrompt = "You are a world-class Constitutional Lawyer and English Language Professor. Check if the user's sentence uses Lesson 23 law, justice, or sentencing collocations (e.g., passing laws, charged with a crime, reach a verdict, concrete evidence, on parole, overturn the verdict) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Analyze: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`API returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "Constitutional scanner offline. Verify network connection and retry.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Your structure is remarkably solid!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+            badge.innerText = "Constitutional Match";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 dark:bg-rose-955/40 dark:text-rose-300";
+            badge.innerText = "Imperfect / Unnatural";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("JSON parse error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Scan returned an unexpected schema. Re-verify the composition text.";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Copied', 'Polished brief written to clipboard.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Podcast Suspended";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "Live Broadcast - Legal Debates";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Court Dismissed!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Studio 23. All judicial precedents reviewed!";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., "${currentWord.example}"`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Let's scrutinize our next key legal term. It is: ${currentWord.phrase}. Tom, how do litigators apply this in court?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-brand-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-400">Sarah (Lead Counsel)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.0, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For example, we noted: "${currentWord.example}"`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-300">Tom (Defense Expert)</span>
+            <p class="text-xs text-slate-350">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.9, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No matching legal records resolved.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/60 dark:hover:bg-slate-850/40 transition border-b border-slate-100 dark:border-slate-855";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-950 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-600 dark:hover:text-amber-500" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to the browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

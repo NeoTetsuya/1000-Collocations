@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 13: Study Interactive Lab</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Premium Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+              950: '#2e1065',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    
+    /* Smooth interactive transitions */
+    .view-container {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip styling */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Animated Waveform */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Main Wrapper -->
+  <div class="flex h-full flex-col overflow-hidden">
+    
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-graduation-cap text-lg"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-indigo-500 bg-clip-text text-transparent dark:from-brand-400">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700 dark:bg-brand-950/60 dark:text-brand-300">Scholar Lab</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-book-bookmark text-brand-500 animate-pulse"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 13: Study</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Dark Mode Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
+          <div class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/25 Mastered</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Learning Modules</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Story & Glossary</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Interactive Cards</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-square-poll-vertical text-base"></i>
+            <span>Graded Exam</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Sentence Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-radio text-base"></i>
+            <span>Podcast Station</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-spell-check text-base"></i>
+            <span>Colloca-Dictionary</span>
+          </button>
+        </div>
+        
+        <!-- User Astrological / Achievement Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-50 to-slate-100 p-4 border border-slate-200/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-graduation-cap text-brand-600 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Academic Standing</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Maximize your educational potential. Complete the lesson elements to unlock professional academic fluency!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl">Lesson 13 Narrative</h2>
+                  <p class="text-xs text-slate-400 mt-1">Explore education collocations. Click any highlighted expression below to study its context.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Read Aloud</span>
+                </button>
+              </div>
+              
+              <!-- Story Text (Cleansed of definitions in brackets) -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
+                <p>
+                  Most children <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="begin_studies">begin their studies</span> at 5 or 6 years old in pre-school, followed by kindergarten. After that comes primary / elementary school, which consists of first grade through fifth grade. Then there's middle school and high school.
+                </p>
+                <p>
+                  After high school, you apply to colleges / universities to see which ones will accept you. You send in / <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="submit_application">submit your application</span> and then wait for the results. If you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="get_good_grades">got good grades</span> in high school, you might get / be <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="awarded_scholarship">awarded a scholarship</span> to help <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="pay_tuition">pay the tuition</span>.
+                </p>
+                <p>
+                  In college, you'll <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="take_classes">take classes</span> / courses on various subjects. You should always <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="take_notes">take notes</span> as the teacher is <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="giving_the_lecture">giving the lecture</span>. Some teachers may ask the students to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="give_presentations">give / make presentations</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="do_research">do research</span> and <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="write_an_essay">write an essay</span>, an assignment, a report, or a paper. After you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="hand_in_work">hand in your work</span>, the teacher will <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="grade_assignment">grade the assignment</span> and <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="give_feedback">give you feedback</span>.
+                </p>
+                <p>
+                  To evaluate your progress, you'll <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="take_tests">take tests</span> / exams. If you get the minimum number of points required, you've <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="passed_test">passed the test</span>; if you don't get the minimum number of points, you've <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="failed_test">failed the test</span>. It's also possible to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="pass_course">pass / fail a course</span>.
+                </p>
+                <p>
+                  If the course proves to be too difficult, or if you don't like it, you can <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="withdraw_from_course">withdraw from</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="drop_course">drop the course</span>.
+                </p>
+                <p>
+                  Most college students <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="choose_major">choose a major</span> / concentration. To talk about a concentration of studies, you can use major as a verb or a noun – for example, "I <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="majored_in">majored in</span> biology" or "I was a biology major." When you graduate from college, you'll <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="get_diploma">get a diploma</span>. Afterwards, you can say you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="have_a_degree">have a degree</span> in the area of your concentration, such as a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="bachelors_degree">bachelor's degree</span>, master's degree, or doctorate.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-slate-800 text-white rounded-3xl p-6 border border-slate-700 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-300" id="glossary-category">Active Study Card</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">begin their studies</h3>
+                
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To start formal education at an institution.</p>
+                
+                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Interactive Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Most children begin their studies at 5 or 6 years old..."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-brand-500"></i>
+                  <span>Academic Wisdom</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  Linguistic precision in academic scenarios depends heavily on choosing accurate verb-noun pairings. Mastering standard collocations like **"take notes"**, **"hand in your work"**, and **"submit your application"** will elevate your writing and speech.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Flashcards Studio</h2>
+                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Space to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-400">/</span>
+                <span>25</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-500 h-full w-[4%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/50 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">Phrase</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-400">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-brand-950 to-indigo-950 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-brand-300 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-brand-300 font-semibold">Answer Breakdown</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black">Definition</span>
+                      <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black">Context Sentence</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-300">Mark as Mastered</span>
+                    </label>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm shadow-lg shadow-brand-500/10 transition">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <!-- -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Active Quiz Screen -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black">Lesson 13 Graded Quiz</h2>
+                  <p class="text-xs text-slate-400 mt-1">Select the correct collocation to complete the sentence.</p>
+                </div>
+                <div class="bg-brand-100 dark:bg-brand-950/50 text-brand-800 dark:text-brand-300 px-3 py-1.5 rounded-xl text-xs font-bold">
+                  Question <span id="quiz-question-current">1</span> of 20
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-indigo-500 h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Question Text -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400">Contextual Prompt</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading question..."</p>
+              </div>
+              
+              <!-- Question Options Grid -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
+                <!-- Rendered Dynamically -->
+              </div>
+              
+              <!-- Explanations Box -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Explanation Details</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed">Explanation comes here.</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Quiz
+                </button>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Question</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Final Score Review Screen -->
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-8 text-center">
+              <div class="space-y-3">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-50 dark:bg-brand-950/30 text-brand-500 dark:text-brand-400">
+                  <i class="fa-solid fa-trophy text-3xl"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-black">Quiz Completed!</h2>
+                <p class="text-sm text-slate-400">Here's a breakdown of your current vocabulary diagnostics.</p>
+              </div>
+              
+              <!-- Metrics Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Correct Answers</span>
+                  <span class="text-2xl font-black text-emerald-500" id="quiz-score-correct">18/20</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-brand-500 dark:text-brand-400" id="quiz-score-percent">90%</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Proficiency Rank</span>
+                  <span class="text-sm font-bold text-teal-500 mt-2 block truncate" id="quiz-score-rank">Advanced</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Try Again</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Study Guide</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI SANDBOX ==================== -->
+        <!-- -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Collocation Practice</h2>
+                  <p class="text-xs text-slate-400">Write custom sentences using Lesson 13 collocations. Our AI assesses your grammar and accuracy.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-lightbulb mr-1 text-amber-500"></i> Get Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-100 text-brand-800 dark:bg-brand-950/40 dark:text-brand-300 hover:bg-brand-200 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400">Your Sentence Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-850 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: Once she chose a major in college, she was awarded a scholarship to pay the tuition..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Clear Workspace
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-brand-500/15 transition">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span>Diagnose Sentence</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold">Diagnostic Report</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Natural Match</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge/Radial -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-brand-50 dark:border-brand-950/30">
+                    <span class="text-3xl font-black font-heading tracking-tight" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400">Score</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Grammatical & Style Evaluation</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Your sentence correctly connects the collocations together, ensuring a natural pacing standard.</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-100 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Collocation Verification</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">The phrasing was perfectly linked inside the scenario context.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">Polished Alternative Suggestion</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-semibold italic text-slate-800 dark:text-slate-200 mt-1">"Loading alternatives..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <!-- -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-brand-400 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Studio 13</h2>
+                    <p class="text-[10px] text-slate-400">Automated Dialogue Episode: Study Habits & University Life</p>
+                  </div>
+                </div>
+                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Podcast Mode
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-950/40 rounded-2xl p-4 border border-slate-800">
+                <div class="wave-bar bg-brand-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-indigo-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-indigo-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-brand-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-indigo-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3">
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-400" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Episode 13: Higher Education</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to let our dialogue hosts walk you through Lesson 13 collocations with contextual conversations.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
+                <div class="flex gap-2.5 items-start">
+                  <div class="h-6 w-6 rounded bg-brand-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+                  <div class="space-y-0.5">
+                    <span class="text-[10px] font-bold text-brand-400">Host Sarah (Lead)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast! Today, we are exploring Study. Let's start the breakdown!"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-indigo-600 text-white hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/10 transition" title="Play dialog loop">
+                    <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                  </button>
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+                
+                <!-- Podcast Progress bar -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-400">
+                    <span id="podcast-time-passed">Card 0/25</span>
+                    <span id="podcast-time-percent">0% Completed</span>
+                  </div>
+                  <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                    <div id="podcast-loading-meter" class="bg-brand-500 h-full transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Vocabulary Ledger</h2>
+                <p class="text-xs text-slate-400">Search and filter the core collocations of Lesson 13.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search phrase...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none">
+                  <option value="all">All Sub-categories</option>
+                  <option value="Schooling">Early & High School</option>
+                  <option value="Admission">Admissions & Tuition</option>
+                  <option value="Evaluation">Lectures, Exams & Grades</option>
+                  <option value="Degrees">Majors & Graduation</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Mastered Only</option>
+                  <option value="unmastered">In Progress</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-150 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
+                    <th class="py-3 px-4 w-32">Sub-category</th>
+                    <th class="py-3 px-4">Core Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Context Example</th>
+                    <th class="py-3 px-4 w-16 text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-850 text-slate-700 dark:text-slate-300">
+                  <!-- Javascript will render rows -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-book-open text-base" id="mob-story-icon"></i>
+        <span class="text-[9px] font-bold">Narrative</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-clone text-base" id="mob-flashcards-icon"></i>
+        <span class="text-[9px] font-bold">Cards</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-square-poll-vertical text-base" id="mob-quiz-icon"></i>
+        <span class="text-[9px] font-bold">Exam</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
+        <span class="text-[9px] font-bold">AI Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-radio text-base" id="mob-podcast-icon"></i>
+        <span class="text-[9px] font-bold">Podcast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-spell-check text-base" id="mob-dictionary-icon"></i>
+        <span class="text-[9px] font-bold">Lexicon</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <h3 class="font-heading font-black text-lg">TTS Voice Settings</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400">Voice Synthesis Model</label>
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-850 text-xs font-medium outline-none">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400">
+            <span>Speech Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400">
+            <span>Tone Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+        Apply Settings
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 dark:bg-slate-900/10 text-brand-500 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-300 dark:text-slate-600 mt-0.5" id="toast-body">Settings have been successfully saved.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript logic block -->
+  <!-- -->
+  <script>
+    const state = {
+      theme: 'light',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'begin_studies', phrase: 'begin their studies', definition: 'To start formal education at an school or institution.', example: 'Most children begin their studies at five or six years old.', category: 'Schooling', mastered: false },
+        { id: 'submit_application', phrase: 'submit your application', definition: 'To deliver a completed form requesting admission to an educational institution.', example: 'You send in or submit your application and wait for the results.', category: 'Admission', mastered: false },
+        { id: 'get_good_grades', phrase: 'got good grades', definition: 'To earn high marks or exceptional scores in academic evaluations.', example: 'If you got good grades in high school, you might get a scholarship.', category: 'Schooling', mastered: false },
+        { id: 'awarded_scholarship', phrase: 'awarded a scholarship', definition: 'To receive financial aid based on academic excellence or need.', example: 'He was awarded a scholarship that covered his entire college expenses.', category: 'Admission', mastered: false },
+        { id: 'pay_tuition', phrase: 'pay the tuition', definition: 'To pay the instructional fees required by a school or college.', example: 'I needed a student loan to help pay the tuition.', category: 'Admission', mastered: false },
+        { id: 'take_classes', phrase: 'take classes', definition: 'To register for, attend, and participate in specific educational courses.', example: 'In college, you will take classes on various subjects.', category: 'Evaluation', mastered: false },
+        { id: 'take_notes', phrase: 'take notes', definition: 'Writing down key facts during lectures to study them later.', example: 'You should always take notes as the teacher is speaking.', category: 'Evaluation', mastered: false },
+        { id: 'giving_the_lecture', phrase: 'giving the lecture', definition: 'A teacher or academic presenting an educational speech to a class.', example: 'He listened intently while the professor was giving the lecture.', category: 'Evaluation', mastered: false },
+        { id: 'give_presentations', phrase: 'give presentations', definition: 'To deliver oral slides or visual displays of research to classmates.', example: 'We have to prepare well to give presentations next Tuesday.', category: 'Evaluation', mastered: false },
+        { id: 'do_research', phrase: 'do research', definition: 'To conduct systematic investigation to build factual proofs.', example: 'They had to do research in the archives for their history assignment.', category: 'Evaluation', mastered: false },
+        { id: 'write_an_essay', phrase: 'write an essay', definition: 'To write a structured prose composition analyzing a particular topic.', example: 'She spent the entire evening trying to write an essay on philosophy.', category: 'Evaluation', mastered: false },
+        { id: 'hand_in_work', phrase: 'hand in your work', definition: 'To submit a completed assignment to the instructor for evaluation.', example: 'You must hand in your work before the deadline on Friday afternoon.', category: 'Evaluation', mastered: false },
+        { id: 'grade_assignment', phrase: 'grade the assignment', definition: 'An instructor assessing a paper and awarding a numerical score.', example: 'The teacher promised to grade the assignment by tomorrow.', category: 'Evaluation', mastered: false },
+        { id: 'give_feedback', phrase: 'give you feedback', definition: 'Providing critical evaluation and comments to help a student improve.', example: 'The counselor will grade the work and give you feedback.', category: 'Evaluation', mastered: false },
+        { id: 'take_tests', phrase: 'take tests', definition: 'To sit for formal examinations to verify skill levels.', example: 'To evaluate your progress, you will take tests and exams.', category: 'Evaluation', mastered: false },
+        { id: 'passed_test', phrase: 'passed the test', definition: 'Achieving the minimum score required to pass an examination.', example: 'She was absolutely thrilled when she realized she passed the test.', category: 'Evaluation', mastered: false },
+        { id: 'failed_test', phrase: 'failed the test', definition: 'To earn below the minimum marks required on an examination.', example: 'If you do not get enough points, you have failed the test.', category: 'Evaluation', mastered: false },
+        { id: 'pass_course', phrase: 'pass a course', definition: 'Successfully fulfilling all criteria to complete an academic class.', example: 'You need to work hard to pass a course this intense.', category: 'Evaluation', mastered: false },
+        { id: 'withdraw_from_course', phrase: 'withdraw from the course', definition: 'Formally canceling your enrollment in a class (formal).', example: 'She decided to withdraw from the course before the drop deadline.', category: 'Admission', mastered: false },
+        { id: 'drop_course', phrase: 'drop the course', definition: 'Informally canceling your enrollment in a class (informal).', example: 'I had to drop the course because it competed with my work shifts.', category: 'Admission', mastered: false },
+        { id: 'choose_major', phrase: 'choose a major', definition: 'To pick your primary field of concentration in college.', example: 'It is highly important to choose a major that matches your skills.', category: 'Degrees', mastered: false },
+        { id: 'majored_in', phrase: 'majored in', definition: 'Concentrated primarily in a specific academic field of study.', example: 'She majored in biology and now works as an ecologist.', category: 'Degrees', mastered: false },
+        { id: 'get_diploma', phrase: 'get a diploma', definition: 'Receiving the document certifying that you have completed graduation.', example: 'When you graduate from college, you will get a diploma.', category: 'Degrees', mastered: false },
+        { id: 'have_a_degree', phrase: 'have a degree', definition: 'To hold an officially recognized qualification from a university.', example: 'You will have a degree in chemistry if you pass this final year.', category: 'Degrees', mastered: false },
+        { id: 'bachelors_degree', phrase: 'bachelor\'s degree', definition: 'An undergraduate qualification indicating four years of study.', example: 'I hope to get my bachelor\'s degree in mechanical engineering next spring.', category: 'Degrees', mastered: false }
+      ],
+      // Graded quiz containing the 12 core PDF questions + 8 supplemental Lesson 13 items
+      quiz: [
+        { id: 1, question: "Christine has been a ________ school teacher for many years.", options: ["middle", "elementary", "secondary"], answer: "middle", explanation: "The PDF specifies 'middle school teacher' as the primary collocation here." },
+        { id: 2, question: "Could you give me some ________ on my presentation? I'd like to know how to improve it.", options: ["degree", "concentration", "feedback"], answer: "feedback", explanation: "Evaluations and advice on performance are termed 'feedback'." },
+        { id: 3, question: "He's ________ to all the best universities in the country.", options: ["applying", "submitting", "trying"], answer: "applying", explanation: "To formally request admission is to 'apply' (or 'applying to colleges')." },
+        { id: 4, question: "I think I got every question on the exam wrong - I have no doubt that I ________.", options: ["dropped", "failed", "lost"], answer: "failed", explanation: "Performing poorly and earning below the passing score is to 'fail' an exam." },
+        { id: 5, question: "I'm ________ a course on Latin American politics.", options: ["having", "taking", "going"], answer: "taking", explanation: "The standard English verb used for enrolling in a class is 'taking a course' (or class)." },
+        { id: 6, question: "My daughter's 12 - she's in sixth ________.", options: ["class", "grade", "level"], answer: "grade", explanation: "Academic years in primary/secondary school are referred to as 'grades'." },
+        { id: 7, question: "My father promised he'd buy me a car if I ________ good grades in my final year of high school.", options: ["got", "made", "took"], answer: "got", explanation: "To achieve high marks is to 'get good grades' (past tense 'got good grades')." },
+        { id: 8, question: "No, my son hasn't chosen a ________ yet. He's debating between sociology and anthropology.", options: ["degree", "major", "series"], answer: "major", explanation: "An undergraduate specialization field is called a 'major'." },
+        { id: 9, question: "She ________ from the University of California in 1999.", options: ["awarded", "formed", "graduated"], answer: "graduated", explanation: "To complete university study is to 'graduate from' an institution." },
+        { id: 10, question: "The professor took ten points off my test because I ________ it in a few minutes late.", options: ["handed", "gave", "passed"], answer: "handed", explanation: "To submitcompleted homework or test sheets to an instructor is to 'hand in' work." },
+        { id: 11, question: "The top five students in the class were ________ a scholarship to a local college.", options: ["awarded", "submitted", "withdrawn"], answer: "awarded", explanation: "Scholarships are officially 'awarded' to high-performing students." },
+        { id: 12, question: "This topic will be on the test - make sure to take detailed ________.", options: ["lectures", "notes", "writings"], answer: "notes", explanation: "Writing down crucial details during a class is to 'take notes'." },
+        { id: 13, question: "To officially enroll in university, you must ________ your application before the spring deadline.", options: ["hand", "submit", "deliver"], answer: "submit", explanation: "The professional collocation is to 'submit an application'." },
+        { id: 14, question: "Receiving financial aid helped her ________ the tuition and buy textbooks.", options: ["pay", "spend", "charge"], answer: "pay", explanation: "The standard verb phrase is to 'pay the tuition'." },
+        { id: 15, question: "The audience remained completely silent while the professor was ________ the lecture.", options: ["giving", "talking", "performing"], answer: "giving", explanation: "Instructors are described as 'giving the lecture'." },
+        { id: 16, question: "Before writing your thesis, you must ________ extensive research in the library.", options: ["make", "do", "write"], answer: "do", explanation: "The correct verb pairing is to 'do research'." },
+        { id: 17, question: "He found the subject too difficult, so he decided to ________ the course entirely.", options: ["drop", "leave", "dismiss"], answer: "drop", explanation: "An informal way to cancel class enrollment is to 'drop the course'." },
+        { id: 18, question: "Upon completing all requirements, you will ________ a diploma at the graduation ceremony.", options: ["get", "take", "award"], answer: "get", explanation: "The student is said to 'get a diploma'." },
+        { id: 19, question: "After four years of chemistry study, he finally held his bachelor's ________.", options: ["degree", "diploma", "major"], answer: "degree", explanation: "The level of academic qualification is a 'degree' (such as 'bachelor's degree')." },
+        { id: 20, question: "Children in our country typically ________ their studies around the age of five or six.", options: ["begin", "take", "do"], answer: "begin", explanation: "To begin formal schooling is to 'begin their studies'." }
+      ],
+      activeCardId: 'begin_studies',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        if (type === 'click') {
+          osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+          osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.22);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'incorrect') {
+          osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+          osc.frequency.setValueAtTime(147, audioCtx.currentTime + 0.1); // D3
+          gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.28);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.28);
+        } else if (type === 'flip') {
+          osc.frequency.setValueAtTime(380, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(750, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('AudioContext synth block error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
+    });
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-100 text-brand-850 dark:bg-brand-950/40 dark:text-brand-300";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme')) {
+        state.theme = localStorage.getItem('colloc_theme');
+      }
+      if (localStorage.getItem('colloc_mastery_list_l13')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l13'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Mastery array parse error', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings'));
+        } catch(e) {}
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l13', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          if (state.quizAnswers[q.id] === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings', JSON.stringify(state.voiceSettings));
+      showToast('Config Saved', 'Speech voice parameters updated.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Speech synthesis is not supported on this device.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // VIEW 1: STORY LOGIC
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.target.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('begin_studies');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Lesson Segment: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+        showToast('Collocation Mastered', `Added "${term.phrase}" to your mastered bank!`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Study Mode', `Moved "${term.phrase}" back to study ledger.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const narrativeText = "Most children begin their studies at five or six years old in pre-school, followed by kindergarten. After that comes primary / elementary school, which consists of first grade through fifth grade. Then there's middle school and high school. After high school, you apply to colleges / universities to see which ones will accept you. You send in or submit your application and then wait for the results. If you got good grades in high school, you might get or be awarded a scholarship to help pay the tuition. In college, you'll take classes / courses on various subjects. You should always take notes as the teacher is giving the lecture. Some teachers may ask the students to give or make presentations or do research and write an essay, an assignment, a report, or a paper. After you hand in your work, the teacher will grade the assignment and give you feedback. To evaluate your progress, you'll take tests / exams. If you get the minimum number of points required, you've passed the test; if you don't get the minimum number of points, you've failed the test. It's also possible to pass or fail a course. If the course proves to be too difficult, or if you don't like it, you can withdraw from or drop the course. Most college students choose a major / concentration. To talk about a concentration of studies, you can use major as a verb or a noun – for example, 'I majored in biology' or 'I was a biology major.' When you graduate from college, you'll get a diploma. Afterwards, you can say you have a degree in the area of your concentration, such as a bachelor's degree, master's degree, or doctorate.";
+      triggerTTS(narrativeText);
+    }
+
+    // VIEW 2: FLASHCARDS LOGIC
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'This is the first flashcard.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'Looping back to the first flashcard.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Well Done', `"${card.phrase}" is marked as Mastered!`);
+      }
+    }
+
+    // VIEW 3: GRADED QUIZ LOGIC
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full ";
+        
+        if (!answered) {
+          btn.className += "bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-50/20 dark:hover:bg-brand-950/20";
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          if (opt === quest.answer) {
+            btn.className += "bg-emerald-50 border-emerald-400 text-emerald-800 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (opt === userAns) {
+            btn.className += "bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-950/20 dark:border-rose-900/40 dark:text-rose-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-600";
+          }
+        }
+        
+        if (!answered) {
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-xs sm:text-sm font-bold transition";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Correct!', 'Nice job on selecting the appropriate collocation.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Incorrect', `Review the collocation structure.`, 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Academic Novice";
+      if (percentage === 100) rank = "University Dean";
+      else if (percentage >= 90) rank = "Master Professor";
+      else if (percentage >= 70) rank = "Research Fellow";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    // VIEW 4: AI SANDBOX LOGIC
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['begin their studies', 'awarded a scholarship', 'pay the tuition', 'take classes', 'hand in your work', 'choose a major'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-brand-950/30 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-200/50 dark:border-slate-800";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `To fulfill my dreams, I decided to ${word} and study hard...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Write an academic scenario containing: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Quick Word added', `Added "${randomColloc}" to workspace.`, 'fa-plus-circle');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Explain how a dedicated student can be awarded a scholarship to help pay the tuition.",
+        "Describe a high school graduate preparing to submit their application and choose a major.",
+        "Write a review explaining why students should take notes when a teacher is giving the lecture.",
+        "Provide a scenario where a university student decides to drop the course because of its difficulty."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Prompt Scenario: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Prompt', 'Please write a sentence before submitting.', 'fa-triangle-exclamation');
+        return;
+      }
+      
+      showToast('AI Analyzing', 'Sending sentence to the Gemini Collocation Oracle...', 'fa-wand-magic-sparkles');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical and lexical accuracy. Please wait...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Running verification metrics...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemInstruction = "You are an expert English Language Professor specializing in teaching collocations. Analyze the user's sentence and check if they used educational, class, study, or grading collocations correctly and naturally. Provide the output in a clean, professional, structured JSON format with the following keys: \"score\" (number from 0 to 100), \"analysis\" (short explanation of the grammar and naturalness of the sentence), \"isCollocationCorrect\" (boolean indicating if the collocation was used naturally), \"collocationFeedback\" (specific feedback about the collocations used), and \"alternatives\" (array of 1-2 improved versions of the sentence). Only return the raw JSON block without markdown wrappers.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Evaluate this text: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`API returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('API Failure', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "API Diagnostic timed out. Please check your network connection.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Your sentence is excellent as is!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+            badge.innerText = "Natural Collocation";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300";
+            badge.innerText = "Imperfect / Unnatural";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("JSON extraction error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Failed to parse diagnostic result, but your response went through. Ensure you wrote a valid English sentence!";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Copied', 'Alternative sentence written to clipboard.', 'fa-copy');
+      }
+    }
+
+    // VIEW 5: PODCAST SIMULATION STATION
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Podcast Paused";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "On Air - Live Broadcasting";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Show Wrap-up!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for listening to CollocaPodcast Lesson 13!";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., ${currentWord.example}`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/25`;
+      document.getElementById('podcast-time-percent').innerText = `${Math.round(ratio)}% Completed`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Let's discuss our next academic collocation. It is: ${currentWord.phrase}. Tom, how do we use this?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-brand-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-400">Host Sarah (Lead)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.0, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. A great example is: ${currentWord.example}`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-indigo-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-indigo-500">Host Tom (Co-host)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.9, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    // VIEW 6: DICTIONARY LOGIC
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No collocations matching the chosen filters found.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/60 dark:hover:bg-slate-850/40 transition border-b border-slate-100 dark:border-slate-800";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-950 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-600 dark:hover:text-brand-400" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-medium">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-medium font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to the browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

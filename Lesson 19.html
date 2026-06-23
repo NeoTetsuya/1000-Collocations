@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 19: Weather Interactive Lab</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Premium Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+              950: '#451a03',
+              accent: '#0ea5e9',
+              accentHover: '#0284c7'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    
+    /* Smooth interactive transitions */
+    .view-container {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip styling */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Animated Equalizer Waveform */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200 font-medium">
+
+  <!-- Main Wrapper -->
+  <div class="flex h-full flex-col overflow-hidden">
+    
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-sky-400 text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-cloud-sun text-lg animate-pulse"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-sky-500 bg-clip-text text-transparent dark:from-brand-400">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-850 dark:text-slate-350">Meteorology Lab</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-wind text-brand-600 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 19: Weather</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Dark Mode Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></div>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/30 Mastered</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Learning Modules</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Story & Glossary</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Interactive Cards</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-square-poll-vertical text-base"></i>
+            <span>Graded Exam</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Sentence Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-radio text-base"></i>
+            <span>Podcast Station</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-spell-check text-base"></i>
+            <span>Colloca-Dictionary</span>
+          </button>
+        </div>
+        
+        <!-- User Astrological Confidence Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-50 to-slate-100 p-4 border border-slate-200/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-cloud-showers-water text-brand-600 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Atmospheric Rank</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Establish your weather planning and forecasting credentials. Complete lessons to lock down correct meteorological formulations!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl">Lesson 19 Narrative</h2>
+                  <p class="text-xs text-slate-400 mt-1">Explore meteorological and weather forecasting collocations. Click highlighted structures to study their context.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Read Aloud</span>
+                </button>
+              </div>
+              
+              <!-- Story Text -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
+                <p>
+                  Do you want to know if it'll be sunny or rainy next weekend? Then you should check the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="weather_forecast">weather forecast</span> – that's the prediction of the weather in the near future.
+                </p>
+                <p>
+                  If the forecast says the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="shining_brightly">sun will be shining brightly</span>, with <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="clear_skies">clear skies</span> and high temperatures, then it's a good day to go to the beach and <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="bask_sunshine">bask in the sunshine</span> (or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="soak_up_sunshine">soak up the sunshine</span>) – these expressions mean to enjoy the sun's heat and light.
+                </p>
+                <p>
+                  However, if the forecast says it'll be <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="oppressively_hot">oppressively hot</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="scorching_hot">scorching hot</span>, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="swelteringly_hot">swelteringly hot</span>, then you might want to stay inside and turn up the air conditioning! Another common phrase is <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="hot_humid">hot and humid</span> – that means hot with a lot of water in the air.
+                </p>
+                <p>
+                  The weather forecast might say it will be <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="partly_cloudy">partly cloudy</span>. Another way to say this is that there are <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="scattered_clouds">scattered clouds</span>. If there are <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="heavy_clouds">heavy clouds</span>, then you won't be able to see the sun at all – and if there are <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="storm_clouds">storm clouds</span>, then it will probably rain very soon. One way to express this is to say <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="looks_like_rain">"It looks like rain."</span>
+                </p>
+                <p>
+                  We can have <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="light_rain">light rain</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="heavy_rain">heavy rain</span> – and if the rain gets REALLY intense, we can describe it as <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="torrential_rain">torrential rain</span>. If the rain continues without stopping, then we call it <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="continuous_rain">continuous rain</span> or constant rain – but if it's the type of rain that starts and stops various times throughout the day, it's called <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="intermittent_rain">intermittent rain</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="scattered_showers">scattered showers</span>. When it stops raining, you can say the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="let_up">rain let up</span>.
+                </p>
+                <p>
+                  Rain is usually accompanied by wind, which can be light/slight winds or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="strong_winds">high/strong winds</span>. If the wind is especially strong and violent, you can say <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="fierce_winds">fierce winds</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="gale_force_winds">gale-force winds</span> – this last expression is usually used for winds at the level of a hurricane. When the wind is increasing in intensity, we say the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="picking_up">wind is picking up</span>, and when it is decreasing in intensity, we say the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="dying_down">wind is dying down</span>. Sometimes we describe the wind with an adjective that emphasizes the cold – such as a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="biting_wind">biting wind</span> or an <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="icy_wind">icy wind</span>. Finally, a sudden instance of wind can be called a blast of wind or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="gust_of_wind">gust of wind</span>.
+                </p>
+                <p>
+                  Snow, like rain, can be light or heavy. Light snow can also be called <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="snow_flurries">snow flurries</span>. When the snow is being blown around in the wind, we can describe it as <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="driving_snow">driving snow</span> or swirling snow. It can be wonderful to walk through fresh, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="powdery_snow">powdery, newly-fallen snow</span> – but not so nice to drive on it. So we clear the snow or plough the snow with vehicles to remove it from the roads. You can also do this manually – that's called <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="shoveling_snow">shoveling the snow</span>. At the end of winter, when temperatures rise, the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="snow_melts">snow melts</span> – it turns into water and disappears.
+                </p>
+                <p>
+                  Sometimes the weather is unusual for a particular time of year. For example, in the winter, you might have a day that is <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="unseasonably_warm">unseasonably warm</span>, and in the summer, you might have a day that is <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="unseasonably_cool">unseasonably cool</span>. When the temperature reaches an extreme, we call that a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="record_high">record high</span> or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="record_low">record low</span>.
+                </p>
+                <p>
+                  Other ways to describe the weather: <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="gloomy_weather">gloomy/dismal weather</span> (dark, rather rainy, and depressing), <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="muggy_weather">muggy/sultry weather</span> (very hot and humid), <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="mild_weather">mild/calm weather</span> (nice and not extreme), or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="harsh_weather">harsh/severe/wild weather</span> (extreme and violent).
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-slate-800 text-white rounded-3xl p-6 border border-slate-700 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-400" id="glossary-category">Active Meteorology Card</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">weather forecast</h3>
+                
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">A scientific prediction of atmospheric conditions for a specific location and time interval.</p>
+                
+                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Interactive Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Do you want to know if it'll be sunny or rainy? Then check the weather forecast."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-amber-500"></i>
+                  <span>Meteorological Phrasing</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  Describing climate events with native precision avoids translation errors. Learn correct pairings like **"gale-force winds"**, **"snow flurries"**, and **"torrential rain"** to talk about weather naturally.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Flashcards Studio</h2>
+                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Space to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-400">/</span>
+                <span>30</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-amber-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 px-2.5 py-1 rounded-full" id="card-front-category">Atmosphere Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Atmospheric Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">Phrase</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-400">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-amber-950 border border-amber-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-amber-300 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-amber-300 font-semibold">Scientific Breakdown</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-amber-300 uppercase tracking-widest font-black">Definition</span>
+                      <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-amber-300 uppercase tracking-widest font-black">Context Sentence</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-amber-500 focus:ring-amber-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-300">Mark as Mastered</span>
+                    </label>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm shadow-lg shadow-brand-500/10 transition">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Active Quiz Screen -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black">Lesson 19 Graded Exam</h2>
+                  <p class="text-xs text-slate-400 mt-1">Select the correct collocation to complete the sentence.</p>
+                </div>
+                <div class="bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold">
+                  Question <span id="quiz-question-current">1</span> of 20
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-amber-500 to-slate-500 h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Question Text -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400">Contextual Prompt</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading question..."</p>
+              </div>
+              
+              <!-- Question Options Grid -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
+                <!-- Rendered Dynamically -->
+              </div>
+              
+              <!-- Explanations Box -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Explanation Details</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Quiz
+                </button>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Question</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Final Score Review Screen -->
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-8 text-center">
+              <div class="space-y-3">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-amber-50 dark:bg-amber-950/30 text-amber-500 dark:text-amber-400">
+                  <i class="fa-solid fa-trophy text-3xl"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-black">Quiz Completed!</h2>
+                <p class="text-sm text-slate-400">Here's a breakdown of your current vocabulary diagnostics.</p>
+              </div>
+              
+              <!-- Metrics Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Correct Answers</span>
+                  <span class="text-2xl font-black text-emerald-500" id="quiz-score-correct">18/20</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-amber-500 dark:text-amber-400" id="quiz-score-percent">90%</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Proficiency Rank</span>
+                  <span class="text-sm font-bold text-amber-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Advanced</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm transition">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Try Again</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Study Guide</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Collocation Practice</h2>
+                  <p class="text-xs text-slate-400">Write custom sentences using Lesson 19 collocations. Our AI assesses your grammar and accuracy.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-lightbulb mr-1 text-amber-500"></i> Get Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300 hover:bg-amber-200 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400">Your Sentence Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-amber-500 focus:bg-white focus:ring-amber-500 dark:border-slate-700 dark:bg-slate-850 dark:focus:border-amber-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: According to the weather forecast, we are expecting torrential rain followed by gale-force winds..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Clear Workspace
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-sm font-bold shadow-lg shadow-amber-500/15 transition">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span>Diagnose Sentence</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold">Diagnostic Report</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Natural Match</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge/Radial -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-amber-50 dark:border-amber-950/30">
+                    <span class="text-3xl font-black font-heading tracking-tight" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400">Score</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Grammatical & Style Evaluation</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Your sentence correctly connects the collocations together, ensuring a natural pacing standard.</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-100 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Collocation Verification</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">The phrasing was perfectly linked inside the scenario context.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">Polished Alternative Suggestion</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-semibold italic text-slate-800 dark:text-slate-200 mt-1">"Loading alternatives..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-amber-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Studio 19</h2>
+                    <p class="text-[10px] text-slate-400 font-semibold">Automated Dialogue Episode: Atmospheric Phrasing</p>
+                  </div>
+                </div>
+                <div class="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Podcast Mode
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-950/40 rounded-2xl p-4 border border-slate-800">
+                <div class="wave-bar bg-amber-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-sky-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-amber-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-sky-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-amber-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-sky-450 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3">
+                <span class="text-[10px] font-black uppercase tracking-wider text-amber-400" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Episode 19: Weather Forecasting & Phenomena</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to let our dialogue hosts walk you through Lesson 19 collocations with contextual conversations.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
+                <div class="flex gap-2.5 items-start">
+                  <div class="h-6 w-6 rounded bg-amber-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+                  <div class="space-y-0.5">
+                    <span class="text-[10px] font-bold text-amber-400">Host Sarah (Lead)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast! Today, we are exploring Weather collocations. Let's start the breakdown!"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-amber-500 to-slate-600 text-white hover:from-amber-600 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/10 transition" title="Play dialog loop">
+                    <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                  </button>
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+                
+                <!-- Podcast Progress bar -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-400">
+                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-percent">0% Completed</span>
+                  </div>
+                  <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                    <div id="podcast-loading-meter" class="bg-amber-500 h-full transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Meteorology Ledger</h2>
+                <p class="text-xs text-slate-400">Search and filter the core collocations of Lesson 19.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none focus:border-amber-500 transition w-full md:w-48" placeholder="Search phrase...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none">
+                  <option value="all">All Phenomena</option>
+                  <option value="Forecasting">Forecasting & Sunshine</option>
+                  <option value="Clouds">Clouds & Rain</option>
+                  <option value="Wind">Wind & Airflow</option>
+                  <option value="Cold">Winter & Extremes</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Mastered Only</option>
+                  <option value="unmastered">In Progress</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-150 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
+                    <th class="py-3 px-4 w-32">Sub-category</th>
+                    <th class="py-3 px-4">Core Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Context Example</th>
+                    <th class="py-3 px-4 w-16 text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-850 text-slate-700 dark:text-slate-300 font-semibold font-sans">
+                  <!-- Javascript will render rows -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-amber-600 dark:hover:text-amber-400">
+        <i class="fa-solid fa-book-open text-base" id="mob-story-icon"></i>
+        <span class="text-[9px] font-bold">Narrative</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-amber-600 dark:hover:text-amber-400">
+        <i class="fa-solid fa-clone text-base" id="mob-flashcards-icon"></i>
+        <span class="text-[9px] font-bold">Cards</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-amber-600 dark:hover:text-amber-400">
+        <i class="fa-solid fa-square-poll-vertical text-base" id="mob-quiz-icon"></i>
+        <span class="text-[9px] font-bold">Exam</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-amber-600 dark:hover:text-amber-400">
+        <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
+        <span class="text-[9px] font-bold">AI Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-amber-600 dark:hover:text-amber-400">
+        <i class="fa-solid fa-radio text-base" id="mob-podcast-icon"></i>
+        <span class="text-[9px] font-bold">Podcast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-amber-600 dark:hover:text-amber-400">
+        <i class="fa-solid fa-spell-check text-base" id="mob-dictionary-icon"></i>
+        <span class="text-[9px] font-bold">Lexicon</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <h3 class="font-heading font-black text-lg">TTS Voice Settings</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400">Voice Synthesis Model</label>
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-850 text-xs font-semibold outline-none">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400">
+            <span>Speech Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-amber-500">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400">
+            <span>Tone Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-amber-500">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+        Apply Settings
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 dark:bg-slate-900/10 text-brand-400 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-300 dark:text-slate-600 mt-0.5" id="toast-body">Settings have been successfully saved.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript logic block -->
+  <script>
+    const state = {
+      theme: 'light',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'weather_forecast', phrase: 'weather forecast', definition: 'The scientific prediction of future atmospheric conditions.', example: 'You should check the weather forecast before going out.', category: 'Forecasting', mastered: false },
+        { id: 'shining_brightly', phrase: 'sun is shining brightly', definition: 'Intense and direct solar emissions in cloudless conditions.', example: 'The sun is shining brightly, so don\'t forget your sunglasses!', category: 'Forecasting', mastered: false },
+        { id: 'clear_skies', phrase: 'clear skies', definition: 'Atmospheric conditions where the vault is free of cloud formations.', example: 'We enjoyed perfectly clear skies during our hike.', category: 'Forecasting', mastered: false },
+        { id: 'high_temperatures', phrase: 'high temperatures', definition: 'Elevated thermal states relative to seasonal baselines.', example: 'The region is experiencing unseasonably high temperatures.', category: 'Forecasting', mastered: false },
+        { id: 'bask_sunshine', phrase: 'bask in the sunshine', definition: 'To sit or lie in light to enjoy its ambient heat.', example: 'They lay on the beach to bask in the sunshine.', category: 'Forecasting', mastered: false },
+        { id: 'soak_up_sunshine', phrase: 'soak up the sunshine', definition: 'Enjoying solar warmth and exposure directly.', example: 'Let\'s head to the park and soak up the sunshine.', category: 'Forecasting', mastered: false },
+        { id: 'oppressively_hot', phrase: 'oppressively hot', definition: 'Extreme, suffocating heat that creates acute discomfort.', example: 'It was oppressively hot and humid in the valley.', category: 'Forecasting', mastered: false },
+        { id: 'scorching_hot', phrase: 'scorching hot', definition: 'Excessive thermal intensity capable of drying up soils.', example: 'The desert sand was scorching hot in the afternoon.', category: 'Forecasting', mastered: false },
+        { id: 'swelteringly_hot', phrase: 'swelteringly hot', definition: 'Extremely hot and wet weather that makes one sweat heavily.', example: 'We stayed indoors on that swelteringly hot summer day.', category: 'Forecasting', mastered: false },
+        { id: 'hot_humid', phrase: 'hot and humid', definition: 'A combination of elevated thermal state and high atmospheric moisture.', example: 'The tropical jungle was hot and humid.', category: 'Forecasting', mastered: false },
+        { id: 'partly_cloudy', phrase: 'partly cloudy', definition: 'Sky partially obscured by cloud formations (generally 30-70%).', example: 'The forecast for Saturday is partly cloudy.', category: 'Clouds', mastered: false },
+        { id: 'scattered_clouds', phrase: 'scattered clouds', definition: 'Clouds separated by large spans of open, clear skies.', example: 'There were only scattered clouds across the bright sky.', category: 'Clouds', mastered: false },
+        { id: 'heavy_clouds', phrase: 'heavy clouds', definition: 'Thick, dark formations that block out direct sunlight.', example: 'Heavy clouds rolled in from the east, bringing shade.', category: 'Clouds', mastered: false },
+        { id: 'storm_clouds', phrase: 'storm clouds', definition: 'Unstable, dense clouds indicating imminent precipitation or lightning.', example: 'Dark storm clouds gathered on the horizon.', category: 'Clouds', mastered: false },
+        { id: 'looks_like_rain', phrase: 'looks like rain', definition: 'An idiom indicating atmospheric signs suggest imminent rainfall.', example: 'Grab an umbrella, it definitely looks like rain.', category: 'Clouds', mastered: false },
+        { id: 'light_rain', phrase: 'light rain', definition: 'Precipitation with small droplets falling slowly and gently.', example: 'A light rain began to fall as we stepped off the bus.', category: 'Clouds', mastered: false },
+        { id: 'heavy_rain', phrase: 'heavy rain', definition: 'Dense, rapid precipitation with high water volume.', example: 'The match was canceled due to heavy rain.', category: 'Clouds', mastered: false },
+        { id: 'torrential_rain', phrase: 'torrential rain', definition: 'Extremely intense, violent, and rapid downpours capable of flash floods.', example: 'The streets flooded during the torrential rain.', category: 'Clouds', mastered: false },
+        { id: 'continuous_rain', phrase: 'continuous rain', definition: 'Precipitation that falls steadily without pause over hours.', example: 'We suffered through three days of continuous rain.', category: 'Clouds', mastered: false },
+        { id: 'scattered_showers', phrase: 'scattered showers', definition: 'Brief intervals of rainfall occurring in disconnected areas.', example: 'The morning will bring scattered showers, clearing by noon.', category: 'Clouds', mastered: false },
+        { id: 'let_up', phrase: 'rain let up', definition: 'The gradual reduction or cessation of rainfall.', example: 'We ran inside as soon as the rain let up.', category: 'Clouds', mastered: false },
+        { id: 'strong_winds', phrase: 'high/strong winds', definition: 'Airstreams moving at rapid velocity, threatening small structures.', example: 'The storm brought high winds and scattered debris.', category: 'Wind', mastered: false },
+        { id: 'fierce_winds', phrase: 'fierce winds', definition: 'Violent air currents causing potential damage and disruption.', example: 'Fierce winds battered the coastal lighthouse.', category: 'Wind', mastered: false },
+        { id: 'gale_force_winds', phrase: 'gale-force winds', definition: 'Extremely powerful winds moving at speeds of 39-54 mph.', example: 'Gale-force winds knocked down telephone poles.', category: 'Wind', mastered: false },
+        { id: 'picking_up', phrase: 'wind is picking up', definition: 'The process of wind velocity gaining speed and intensity.', example: 'Tie down the tents; the wind is picking up!', category: 'Wind', mastered: false },
+        { id: 'dying_down', phrase: 'wind is dying down', definition: 'The gradual reduction of wind velocity and strength.', example: 'The fire became safer as the wind was dying down.', category: 'Wind', mastered: false },
+        { id: 'biting_wind', phrase: 'biting wind', definition: 'A cold wind that causes physical pain on exposed skin.', example: 'I wrapped my scarf tightly against the biting wind.', category: 'Wind', mastered: false },
+        { id: 'icy_wind', phrase: 'icy wind', definition: 'A freezing, arctic airflow of extreme discomfort.', example: 'An icy wind blew off the glaciers.', category: 'Wind', mastered: false },
+        { id: 'gust_of_wind', phrase: 'gust of wind', definition: 'A sudden, isolated surge of rapid air movement.', example: 'A sudden gust of wind blew my hat right off.', category: 'Wind', mastered: false },
+        { id: 'snow_flurries', phrase: 'snow flurries', definition: 'Brief, light snowfall events of minimal accumulation.', example: 'We saw a few snow flurries, but no real accumulation.', category: 'Cold', mastered: false },
+        { id: 'driving_snow', phrase: 'driving snow', definition: 'Snow blown horizontally with force by high winds.', example: 'Driving snow made visibility on the highway near zero.', category: 'Cold', mastered: false },
+        { id: 'powdery_snow', phrase: 'powdery, newly-fallen snow', definition: 'Fresh, dry, light crystalline snow ideal for winter sports.', example: 'The skiers loved the fresh, powdery, newly-fallen snow.', category: 'Cold', mastered: false },
+        { id: 'shoveling_snow', phrase: 'shoveling the snow', definition: 'The physical chore of clearing snow with a shovel.', example: 'My back was sore after hours of shoveling the snow.', category: 'Cold', mastered: false },
+        { id: 'snow_melts', phrase: 'snow melts', definition: 'The transformation of snow into water as temperature increases.', example: 'As spring approached, the snow melts and rivers rose.', category: 'Cold', mastered: false },
+        { id: 'unseasonably_warm', phrase: 'unseasonably warm', definition: 'Temperatures significantly higher than normal for the calendar month.', example: 'It was unseasonably warm for a winter afternoon.', category: 'Cold', mastered: false },
+        { id: 'unseasonably_cool', phrase: 'unseasonably cool', definition: 'Temperatures lower than expected for the active season.', example: 'We had an unseasonably cool July here.', category: 'Cold', mastered: false },
+        { id: 'record_high', phrase: 'record high', definition: 'The absolute maximum temperature recorded for a date in history.', example: 'The thermometer reached a record high of 105 degrees.', category: 'Cold', mastered: false },
+        { id: 'record_low', phrase: 'record low', definition: 'The absolute minimum temperature recorded for a date in history.', example: 'The city hit a record low of minus twenty last night.', category: 'Cold', mastered: false },
+        { id: 'gloomy_weather', phrase: 'gloomy/dismal weather', definition: 'Dark, overcast, wet weather that lowers mood and cheer.', example: 'Gloomy weather always makes me want to sleep.', category: 'Forecasting', mastered: false },
+        { id: 'muggy_weather', phrase: 'muggy/sultry weather', definition: 'Oppressive, sticky weather saturated with humidity.', example: 'Sultry weather is common in coastal regions.', category: 'Forecasting', mastered: false }
+      ],
+      // Graded quiz containing exactly 20 distinct questions matching the Lesson 19 text
+      quiz: [
+        { id: 1, question: "Before planning our weekend camping trip, we checked the weather ________ to see if it would rain.", options: ["report", "forecast", "schedule"], answer: "forecast", explanation: "The prediction of future atmospheric conditions is called a 'weather forecast'." },
+        { id: 2, question: "We decided to spend the afternoon at the beach to soak up the ________.", options: ["daylight", "sunshine", "warmth"], answer: "sunshine", explanation: "To enjoy the sun's direct heat is to 'soak up the sunshine' or 'bask in the sunshine'." },
+        { id: 3, question: "During the heatwave, it was ________ hot, making it hard to even breathe outside.", options: ["oppressively", "harshly", "heavily"], answer: "oppressively", explanation: "Extreme, suffocating heat is collocated as 'oppressively hot'." },
+        { id: 4, question: "We hurried back to our cabin when we noticed dark ________ clouds blocking the sun.", options: ["precipitation", "storm", "wild"], answer: "storm", explanation: "Unstable, dense formations indicating immediate rain are 'storm clouds'." },
+        { id: 5, question: "Look at those dark, heavy clouds rolling in! It ________ like rain.", options: ["seems", "looks", "appears"], answer: "looks", explanation: "The standard colloquial expression is 'It looks like rain'." },
+        { id: 6, question: "The sewer system overflowed because of the ________ rain that fell during the hurricane.", options: ["heavy", "torrential", "continuous"], answer: "torrential", explanation: "Extremely intense, violent, and rapid downpours are called 'torrential rain'." },
+        { id: 7, question: "It wasn't a constant downpour, just some ________ showers throughout the afternoon.", options: ["scattered", "intermittent", "light"], answer: "scattered", explanation: "Brief, disconnected intervals of rainfall are referred to as 'scattered showers'." },
+        { id: 8, question: "We can go for our walk as soon as the rain ________ up a bit.", options: ["lets", "gives", "slows"], answer: "lets", explanation: "The reduction or cessation of rainfall is collocated as 'rain lets up'." },
+        { id: 9, question: "The weather station warned that the hurricane would bring ________ winds of over 50 miles per hour.", options: ["fierce", "gale-force", "biting"], answer: "gale-force", explanation: "Winds matching hurricane levels are termed 'gale-force winds'." },
+        { id: 10, question: "We should head back to harbor; the wind is ________ up and the waves are growing.", options: ["picking", "gathering", "rising"], answer: "picking", explanation: "When wind speed increases, we say the 'wind is picking up'." },
+        { id: 11, question: "Fortunately, by midnight the storm had passed and the wind was ________ down.", options: ["dying", "fading", "dropping"], answer: "dying", explanation: "The reduction of wind intensity is collocated as the 'wind is dying down'." },
+        { id: 12, question: "She pulled her woolen coat tightly around her to block the ________ icy wind.", options: ["biting", "burning", "nasty"], answer: "biting", explanation: "A painfully cold, sharp wind is described as a 'biting wind'." },
+        { id: 13, question: "We don't need to salt the driveway yet; it's just a few light snow ________.", options: ["flakes", "flurries", "showers"], answer: "flurries", explanation: "Very light, brief snowfall events of minimal accumulation are 'snow flurries'." },
+        { id: 14, question: "It was dangerous to drive because the ________ snow blocked our headlights.", options: ["swirling", "driving", "powdery"], answer: "driving", explanation: "Snow blown horizontally with high velocity and force is termed 'driving snow'." },
+        { id: 15, question: "The children were thrilled to wake up to fresh, ________, newly-fallen snow.", options: ["powdery", "fluffy", "creamy"], answer: "powdery", explanation: "The ideal dry, light winter snow is referred to as 'powdery, newly-fallen snow'." },
+        { id: 16, question: "My neighbors spent the morning ________ the snow off their front steps.", options: ["ploughing", "shoveling", "sweeping"], answer: "shoveling", explanation: "The physical task of manually clearing snow is 'shoveling the snow'." },
+        { id: 17, question: "The ski resort had to close early in April because the snow ________ so quickly.", options: ["thawed", "melted", "dissolved"], answer: "melted", explanation: "Snow turning into liquid water is collocated as 'snow melts'." },
+        { id: 18, question: "It was ________ warm for January; people were walking around in t-shirts!", options: ["seasonably", "unseasonably", "extraordinarily"], answer: "unseasonably", explanation: "Unusual weather for a specific time of year is 'unseasonably warm/cool'." },
+        { id: 19, question: "Last night the temperature hit a ________ low, dropping to minus twenty degrees.", options: ["historic", "record", "extreme"], answer: "record", explanation: "The absolute minimum temperature logged on a date is a 'record low'." },
+        { id: 20, question: "I stay indoors when it\'s overcast; I can\'t stand this ________ weather.", options: ["gloomy", "harsh", "dreadful"], answer: "gloomy", explanation: "Dark, rainy, and depressing conditions are referred to as 'gloomy/dismal weather'." }
+      ],
+      activeCardId: 'weather_forecast',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    // Synthesize subtle user click/feedback beeps to increase UX immersion
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        if (type === 'click') {
+          osc.frequency.setValueAtTime(650, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+          osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.22);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'incorrect') {
+          osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+          osc.frequency.setValueAtTime(147, audioCtx.currentTime + 0.1); // D3
+          gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.28);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.28);
+        } else if (type === 'flip') {
+          osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('AudioContext synth block error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
+    });
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l19', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-amber-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l19')) {
+        state.theme = localStorage.getItem('colloc_theme_l19');
+      }
+      if (localStorage.getItem('colloc_mastery_list_l19')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l19'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Mastery array parse error', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l19')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l19'));
+        } catch(e) {}
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l19', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          if (state.quizAnswers[q.id] === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l19', JSON.stringify(state.voiceSettings));
+      showToast('Config Saved', 'Speech voice parameters updated.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Speech synthesis is not supported on this device.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.target.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('weather_forecast');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Phenomenon Segment: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+        showToast('Collocation Mastered', `Added "${term.phrase}" to your mastered bank!`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Study Mode', `Moved "${term.phrase}" back to study ledger.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const narrativeText = "Do you want to know if it'll be sunny or rainy next weekend? Then you should check the weather forecast. If the forecast says the sun will be shining brightly, with clear skies and high temperatures, then it\'s a good day to go to the beach and bask in the sunshine or soak up the sunshine. However, if the forecast says it\'ll be oppressively hot, scorching hot, or swelteringly hot, then you might want to stay inside and turn up the air conditioning! Another common phrase is hot and humid. The weather forecast might say it will be partly cloudy. Another way to say this is that there are scattered clouds. If there are heavy clouds, then you won\'t be able to see the sun at all, and if there are storm clouds, then it will probably rain very soon. One way to express this is to say \"It looks like rain.\" We can have light rain or heavy rain, and if the rain gets really intense, we can describe it as torrential rain. If the rain continues without stopping, then we call it continuous rain or constant rain, but if it\'s the type of rain that starts and stops various times throughout the day, it\'s called intermittent rain or scattered showers. When it stops raining, you can say the rain let up. Rain is usually accompanied by wind, which can be light/slight winds or high/strong winds. If the wind is especially strong and violent, you can say fierce winds or gale-force winds. When the wind is increasing in intensity, we say the wind is picking up, and when it is decreasing in intensity, we say the wind is dying down. Sometimes we describe the wind with an adjective that emphasizes the cold, such as a biting wind or an icy wind. Finally, a sudden instance of wind can be called a blast of wind or a gust of wind. Snow, like rain, can be light or heavy. Light snow can also be called snow flurries. When the snow is being blown around in the wind, we can describe it as driving snow or swirling snow. It can be wonderful to walk through fresh, powdery, newly-fallen snow, but not so nice to drive on it. So we clear the snow or plough the snow with vehicles to remove it from the roads. You can also do this manually, that\'s called shoveling the snow. At the end of winter, when temperatures rise, the snow melts, it turns into water and disappears. Sometimes the weather is unusual for a particular time of year. For example, in the winter, you might have a day that is unseasonably warm, and in the summer, you might have a day that is unseasonably cool. When the temperature reaches an extreme, we call that a record high or a record low. Other ways to describe the weather: gloomy or dismal weather, muggy or sultry weather, mild or calm weather, or harsh, severe, or wild weather.";
+      triggerTTS(narrativeText);
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'This is the first flashcard.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'Looping back to the first flashcard.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Well Done', `"${card.phrase}" is marked as Mastered!`);
+      }
+    }
+
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full ";
+        
+        if (!answered) {
+          btn.className += "bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-amber-500 hover:bg-amber-50/20 dark:hover:bg-amber-950/20";
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          if (opt === quest.answer) {
+            btn.className += "bg-emerald-50 border-emerald-400 text-emerald-800 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (opt === userAns) {
+            btn.className += "bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-950/20 dark:border-rose-900/40 dark:text-rose-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-600";
+          }
+        }
+        
+        if (!answered) {
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs sm:text-sm font-bold transition";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Correct!', 'Nice job on selecting the appropriate collocation.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Incorrect', `Review the collocation structure.`, 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Atmospheric Associate";
+      if (percentage === 100) rank = "Chief Meteorologist";
+      else if (percentage >= 90) rank = "Climatic Scientist";
+      else if (percentage >= 70) rank = "Weather Analyst";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['weather forecast', 'torrential rain', 'gale-force winds', 'unseasonably warm', 'snow flurries', 'biting wind'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/30 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-200/50 dark:border-slate-800";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `According to the latest ${word}, we are advising residents to stay indoors...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Discuss a winter situation using: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Quick Word added', `Added "${randomColloc}" to workspace.`, 'fa-plus-circle');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Explain how someone can prepare for a storm bringing torrential rain and gale-force winds.",
+        "Describe a winter scenario where a biting wind and driving snow blocked the mountain roads.",
+        "Write a letter warning a tourist about unseasonably cold temperatures and record lows.",
+        "Detail the process of shoveling the snow after a fresh, powdery snowfall."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Prompt Scenario: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Prompt', 'Please write a sentence before submitting.', 'fa-triangle-exclamation');
+        return;
+      }
+      
+      showToast('AI Analyzing', 'Sending sentence to the Gemini Collocation Oracle...', 'fa-wand-magic-sparkles');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical and lexical accuracy. Please wait...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Running verification metrics...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemInstruction = "You are an expert English Language Professor specializing in teaching collocations. Analyze the user's sentence and check if they used weather, wind, rain, or winter collocations correctly and naturally. Provide the output in a clean, professional, structured JSON format with the following keys: \"score\" (number from 0 to 100), \"analysis\" (short explanation of the grammar and naturalness of the sentence), \"isCollocationCorrect\" (boolean indicating if the collocation was used naturally), \"collocationFeedback\" (specific feedback about the collocations used), and \"alternatives\" (array of 1-2 improved versions of the sentence). Only return the raw JSON block without markdown wrappers.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Evaluate this text: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`API returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('API Failure', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "API Diagnostic timed out. Please check your network connection.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Your sentence is excellent as is!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+            badge.innerText = "Natural Collocation";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300";
+            badge.innerText = "Imperfect / Unnatural";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("JSON extraction error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Failed to parse diagnostic result, but your response went through. Ensure you wrote a valid English sentence!";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Copied', 'Alternative sentence written to clipboard.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Podcast Paused";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "On Air - Live Broadcasting";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Show Wrap-up!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for listening to CollocaPodcast Lesson 19!";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., ${currentWord.example}`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-percent').innerText = `${Math.round(ratio)}% Completed`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Let's discuss our next atmospheric collocation. It is: ${currentWord.phrase}. Tom, how do we use this?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-amber-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-amber-400">Host Sarah (Lead)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.0, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. A great example is: ${currentWord.example}`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-amber-300">Host Tom (Co-host)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.9, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No collocations matching the chosen filters found.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/60 dark:hover:bg-slate-850/40 transition border-b border-slate-100 dark:border-slate-800";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-950 dark:text-white capitalize cursor-pointer hover:underline hover:text-amber-600 dark:hover:text-amber-400" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to the browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

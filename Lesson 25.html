@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 25: Global Problems Summit Room</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Tactical Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Configuring Tailwind theme options for Global Problems theme -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#059669', /* Diplomatic Emerald */
+              600: '#059669',
+              700: '#047857', /* Deep Forest Green */
+              800: '#065f46',
+              900: '#022c22',
+              950: '#011c15',
+              accentPoverty: '#f43f5e', /* Warning Crimson */
+              accentEco: '#10b981' /* Green Technology Emerald */
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #047857;
+    }
+    
+    /* Smooth transition for modular cards */
+    .view-container {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip styling */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Animated Equalizer Waveform for Audio Mode */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+    
+    /* Custom radar pulse animation */
+    @keyframes radar-pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 0.4; }
+      100% { transform: scale(1.3); opacity: 0; }
+    }
+    .radar-pulse-ring {
+      animation: radar-pulse 2s infinite ease-out;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200 font-medium">
+
+  <!-- Main Grid Layout -->
+  <div class="flex h-full flex-col overflow-hidden">
+    
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 to-emerald-600 text-white shadow-md shadow-brand-500/20">
+          <span class="absolute inset-0 rounded-xl bg-brand-500/20 radar-pulse-ring"></span>
+          <i class="fa-solid fa-earth-americas text-lg z-10"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-700 to-emerald-500 bg-clip-text text-transparent dark:from-brand-300 dark:to-emerald-400">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">Summit Room</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-hand-holding-heart text-brand-600 dark:text-emerald-400 animate-pulse"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 25: Global Problems</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Dark Mode Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></div>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/30 Mastered</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Diplomatic Modules</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Dossier & Glossary</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Crisis Intelligence Cards</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-square-poll-vertical text-base"></i>
+            <span>Graded Summit Exam</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Practice Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-radio text-base"></i>
+            <span>Podcast Station</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-spell-check text-base"></i>
+            <span>Humanitarian Lexicon</span>
+          </button>
+        </div>
+        
+        <!-- User Security Clearance Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 p-4 border border-slate-300/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-user-shield text-brand-700 dark:text-emerald-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Summit Credentials</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-700 dark:text-emerald-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Establish your policy research and climate mitigation credentials. Complete tasks to advance to the Chief Negotiator rank!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl">Lesson 25 Brief: Global Problems</h2>
+                  <p class="text-xs text-slate-400 mt-1">Grounded in the official curriculum files. Click highlighted collocations to pull up policy intelligence files.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Broadcast Address</span>
+                </button>
+              </div>
+              
+              <!-- Story Text -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
+                <p>
+                  Today, humanity faces unprecedented challenges. More than one billion people are still trapped in <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="extreme_poverty">extreme poverty</span>, unable to secure basic necessities. In many developing regions, chronic <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="food_shortages">food shortages</span> lead to severe malnutrition, while millions lack access to <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="safe_drinking_water">safe drinking water</span>. International organizations are desperately trying to <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-450 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 px-1 rounded transition" data-id="eradicate_poverty">eradicate poverty</span>, but systemic barriers slow down their progress.
+                </p>
+                <p>
+                  At the same time, we witness horrific <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="human_rights_violations">human rights violations</span> under dictatorial regimes. Children are forced into <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="child_labor">child labor</span> in factories, and vulnerable demographics suffer from systemic <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="sexual_exploitation">sexual exploitation</span>. Severe <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="political_instability">political instability</span> has created millions of <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="asylum_seekers">asylum seekers</span> fleeing violence. In the worst scenarios, extreme regimes have resorted to <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="ethnic_cleansing">ethnic cleansing</span>, sparking devastating <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="regional_conflicts">regional conflicts</span>. To address these crisis zones, wealthier nations must step in and provide <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-450 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 px-1 rounded transition" data-id="international_aid">international aid</span>, moving capital from <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-450 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 px-1 rounded transition" data-id="donor_countries">donor countries</span> to <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-450 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 px-1 rounded transition" data-id="recipient_countries">recipient countries</span>.
+                </p>
+                <p>
+                  Meanwhile, the ecological survival of our planet is in jeopardy due to rapid <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="climate_change">climate change</span>. The burning of <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="fossil_fuels">fossil fuels</span> releases immense volumes of <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="greenhouse_gases">greenhouse gases</span>, accelerating <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="global_warming">global warming</span> and inducing rapid <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="environmental_degradation">environmental degradation</span>. We are continuously <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="depleting_natural_resources">depleting natural resources</span>, destroying the protective <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="ozone_layer">ozone layer</span>, and polluting ecosystems with <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="toxic_waste">toxic waste</span>. Accidental disasters like a major <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="oil_spill">oil spill</span> can wipe out coastal habitats instantly.
+                </p>
+                <p>
+                  As severe <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="natural_disasters">natural disasters</span> threaten the survival of <span class="colloc-ref cursor-pointer font-bold text-rose-600 dark:text-rose-450 border-b-2 border-dashed border-rose-450 hover:bg-rose-50 dark:hover:bg-rose-950/20 px-1 rounded transition" data-id="endangered_species">endangered species</span>, we must transition towards <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-450 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 px-1 rounded transition" data-id="renewable_energy">renewable energy</span> and prioritize <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-450 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 px-1 rounded transition" data-id="sustainable_development">sustainable development</span> to preserve our biosphere.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-brand-950 text-white rounded-3xl p-6 border border-brand-800 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-500" id="glossary-category">Active Policy Dossier</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">extreme poverty</h3>
+                
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">A severe state of deprivation where individuals live on less than $1.25 a day, lacking basic food, clean water, and shelter.</p>
+                
+                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Policy Precedent Context</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"More than one billion people are still trapped in extreme poverty."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-emerald-500"></i>
+                  <span>Lexical Diplomacy</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  Precision in humanitarian affairs is critical. Avoid literal translations. Master standardized global pairings like **"environmental degradation"**, **"asylum seekers"**, and **"sustainable development"** to author pristine diplomatic briefs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Crisis Intelligence Cards</h2>
+                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-850 rounded-xl px-3 py-1 text-xs font-semibold">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-450">/</span>
+                <span>30</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-600 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/50 text-brand-700 dark:text-brand-350 px-2.5 py-1 rounded-full" id="card-front-category">Conflict Profile</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-450 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-heading">Global Concerns</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">extreme poverty</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-450">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-brand-950 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-emerald-300 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-emerald-300 font-semibold">Strategic Breakdown</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-emerald-300 uppercase tracking-widest font-black">Intel Definition</span>
+                      <p class="text-base font-semibold leading-relaxed text-slate-100" id="card-back-definition">Definition goes here...</p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-emerald-300 uppercase tracking-widest font-black">Strategic Precedent</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-350">Mark as Decoded</span>
+                    </label>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg transition">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Active Quiz Screen -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-805 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black">Lesson 25 Graded Summit Exam</h2>
+                  <p class="text-xs text-slate-400 mt-1">Select the correct diplomatic collocation to complete the global policy brief.</p>
+                </div>
+                <div class="bg-brand-100 dark:bg-brand-950/50 text-brand-850 dark:text-brand-300 px-3 py-1.5 rounded-xl text-xs font-bold">
+                  Scenario <span id="quiz-question-current">1</span> of 20
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-150 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-500 h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Question Text -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450">Active Humanitarian Dossier</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading briefing..."</p>
+              </div>
+              
+              <!-- Question Options Grid -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Explanations Box -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-450 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Ambassador's Blueprints</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold">Explanation coming here...</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
+                </button>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Briefing</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Final Score Review Screen -->
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-8 text-center">
+              <div class="space-y-3">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-50 dark:bg-brand-950/30 text-brand-500 dark:text-brand-400">
+                  <i class="fa-solid fa-trophy text-3xl animate-bounce"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-black">Summiteer Clearance Granted!</h2>
+                <p class="text-sm text-slate-400">Analysis completed. Review your diplomatic standings.</p>
+              </div>
+              
+              <!-- Metrics Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-455">Negotiations Solved</span>
+                  <span class="text-2xl font-black text-emerald-500" id="quiz-score-correct">18/20</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-455">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-brand-650 dark:text-brand-400" id="quiz-score-percent">90%</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-455">Diplomatic Rank</span>
+                  <span class="text-xs sm:text-sm font-bold text-emerald-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Advanced Analyst</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Renegotiate</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Dossier</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Humanitarian Sandbox</h2>
+                  <p class="text-xs text-slate-400">Compose custom environmental proposals or diplomatic briefs. The model validates syntactical accuracy regarding Lesson 25 terms.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-lightbulb mr-1 text-emerald-500"></i> Summit Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-100 text-brand-850 dark:bg-brand-950/40 dark:text-brand-300 hover:bg-brand-200 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Intel
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400">Proposal Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: To eradicate poverty, donor countries must increase international aid to poor recipient countries..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Slate
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-lg transition">
+                  <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                  <span>Scan Proposal Syntax</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold">Intel Brief Analysis</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Natural Match</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge/Radial -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-brand-50 dark:border-brand-950/30">
+                    <span class="text-3xl font-black font-heading tracking-tight" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-450">Score</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-650 dark:text-slate-300 leading-relaxed font-semibold">Scanning text structure...</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-100 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Tactical Soundness Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-650 dark:text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">Recommended Brief Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-semibold italic text-slate-800 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Summit 25</h2>
+                    <p class="text-[10px] text-slate-400 font-semibold">Turn-Based Policy Dialogue Simulation: Global Problems</p>
+                  </div>
+                </div>
+                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Live Dispatch
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-950/40 rounded-2xl p-4 border border-slate-800">
+                <div class="wave-bar bg-brand-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-emerald-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-emerald-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-brand-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-emerald-450 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3">
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-400" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Humanitarian Crises: Poverty Alleviation & Clean Energy</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts debating development and ecological collocations from Lesson 25.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
+                <div class="flex gap-2.5 items-start">
+                  <div class="h-6 w-6 rounded bg-brand-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+                  <div class="space-y-0.5">
+                    <span class="text-[10px] font-bold text-brand-400">Host Sarah (Humanitarian Lead)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast Summit 25. Today we address poverty alleviation and our ongoing environmental degradation."</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-emerald-600 text-white hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                    <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                  </button>
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+                
+                <!-- Podcast Progress bar -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-400">
+                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-percent">0% Reviewed</span>
+                  </div>
+                  <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                    <div id="podcast-loading-meter" class="bg-brand-500 h-full transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: HUMANITARIAN LEXICON ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 dark:border-slate-850 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Humanitarian Lexicon</h2>
+                <p class="text-xs text-slate-400">Search and filter active collocations in the Lesson 25 crisis files.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-855 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search files...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
+                  <option value="all">All Jurisdictions</option>
+                  <option value="Socio-Economic">Socio-Economic Crises</option>
+                  <option value="Human-Rights">Human Rights & Conflict</option>
+                  <option value="Climate">Climate & Ecology</option>
+                  <option value="Remediation">Policy & Remediation</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Decoded Only</option>
+                  <option value="unmastered">Active Concerns</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-150 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
+                    <th class="py-3 px-4 w-32">Module Segment</th>
+                    <th class="py-3 px-4">Tactical Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Summit Precedent Example</th>
+                    <th class="py-3 px-4 w-16 text-center">vocal</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-855 text-slate-700 dark:text-slate-300 font-semibold font-sans">
+                  <!-- Javascript will render rows dynamically -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-500">
+        <i class="fa-solid fa-file-contract text-base" id="mob-story-icon"></i>
+        <span class="text-[9px] font-bold">Dossier</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-500">
+        <i class="fa-solid fa-box-archive text-base" id="mob-flashcards-icon"></i>
+        <span class="text-[9px] font-bold">Intel</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-500">
+        <i class="fa-solid fa-gavel text-base" id="mob-quiz-icon"></i>
+        <span class="text-[9px] font-bold">Exam</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-500">
+        <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
+        <span class="text-[9px] font-bold">Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-500">
+        <i class="fa-solid fa-microphone-lines text-base" id="mob-podcast-icon"></i>
+        <span class="text-[9px] font-bold">Radio</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-500">
+        <i class="fa-solid fa-spell-check text-base" id="mob-dictionary-icon"></i>
+        <span class="text-[9px] font-bold">Lexicon</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-3">
+        <h3 class="font-heading font-black text-lg text-slate-900 dark:text-white">Summit Room Speech Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-455 animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-750 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-855 text-xs font-semibold outline-none text-slate-950 dark:text-slate-50">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-bold">
+            <span>Speech Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-bold">
+            <span>Acoustic Tone Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-650 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md transition">
+        Apply Dispatch Rules
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 dark:bg-slate-900/10 text-emerald-450 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-350 dark:text-slate-655 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic Block -->
+  <script>
+    const state = {
+      theme: 'light',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'extreme_poverty', phrase: 'extreme poverty', definition: 'The condition of living on less than $1 or $1.25 a day, lacking absolute basic necessities.', example: 'More than one billion people are still trapped in extreme poverty.', category: 'Socio-Economic', mastered: false },
+        { id: 'food_shortages', phrase: 'food shortages', definition: 'An insufficient supply of basic nutritional foodstuffs, often triggering famine.', example: 'Chronic food shortages lead to severe malnutrition in developing nations.', category: 'Socio-Economic', mastered: false },
+        { id: 'safe_drinking_water', phrase: 'safe drinking water', definition: 'Water that is physiologically safe for human ingestion without disease risk.', example: 'Millions of remote citizens still lack access to safe drinking water.', category: 'Socio-Economic', mastered: false },
+        { id: 'eradicate_poverty', phrase: 'eradicate poverty', definition: 'Completely eliminate poverty through systematic development programs.', example: 'One of the primary goals of the United Nations is to eradicate poverty.', category: 'Remediation', mastered: false },
+        { id: 'child_labor', phrase: 'child labor', definition: 'The exploitative employment of children in industrial or hard manual labor.', example: 'Strict embargoes are enforced to stop child labor in textile factories.', category: 'Human-Rights', mastered: false },
+        { id: 'human_rights_violations', phrase: 'human rights violations', definition: 'Abuses and infractions against fundamental liberties guaranteed by international law.', example: 'The security council condemned the military regime\'s human rights violations.', category: 'Human-Rights', mastered: false },
+        { id: 'sexual_exploitation', phrase: 'sexual exploitation', definition: 'The abusive or commercial sexual usage of an individual, often through force or trafficking.', example: 'Task forces were created to shield child refugees from sexual exploitation.', category: 'Human-Rights', mastered: false },
+        { id: 'political_instability', phrase: 'political instability', definition: 'An unstable, fragile government ecosystem prone to coups and chaotic transitions.', example: 'Prolonged political instability halted long-term infrastructure investment.', category: 'Human-Rights', mastered: false },
+        { id: 'asylum_seekers', phrase: 'asylum seekers', definition: 'Refugees who have crossed international borders seeking formal legal sanctuary.', example: 'The neighboring country provided processing stations for asylum seekers.', category: 'Human-Rights', mastered: false },
+        { id: 'ethnic_cleansing', phrase: 'ethnic cleansing', definition: 'The systemic forced removal or elimination of an ethnic group from a territory.', example: 'Humanitarian watchdogs reported acts of ethnic cleansing in the war-torn valley.', category: 'Human-Rights', mastered: false },
+        { id: 'regional_conflicts', phrase: 'regional conflicts', definition: 'Localized military wars or clashes within a specific geographical sector.', example: 'Unresolved border disputes frequently escalate into regional conflicts.', category: 'Human-Rights', mastered: false },
+        { id: 'international_aid', phrase: 'international aid', definition: 'Financial, medical, or material assistance provided across national borders.', example: 'Donor countries must coordinate to deliver efficient international aid.', category: 'Remediation', mastered: false },
+        { id: 'donor_countries', phrase: 'donor countries', definition: 'Sovereign nations that provide economic resources or aid packages to developing areas.', example: 'High-income donor countries met to debate structural investment strategies.', category: 'Remediation', mastered: false },
+        { id: 'recipient_countries', phrase: 'recipient countries', definition: 'Nations that receive capital, aid, or resource transfers from foreign programs.', example: 'Efforts were made to ensure recipient countries allocate aid transparently.', category: 'Remediation', mastered: false },
+        { id: 'climate_change', phrase: 'climate change', definition: 'Long-term global weather shifts and temperature trends driven by human activity.', example: 'Urgent green reforms are required to mitigate the damage of climate change.', category: 'Climate', mastered: false },
+        { id: 'fossil_fuels', phrase: 'fossil fuels', definition: 'Hydrocarbon-based fuel sources, such as coal, petroleum, or gas.', example: 'The summit called for countries to phase out their reliance on fossil fuels.', category: 'Climate', mastered: false },
+        { id: 'greenhouse_gases', phrase: 'greenhouse gases', definition: 'Heat-trapping atmospheric compounds like carbon dioxide and methane.', example: 'Industrial factories emit large volumes of greenhouse gases into the air.', category: 'Climate', mastered: false },
+        { id: 'global_warming', phrase: 'global_warming', definition: 'The progressive warming of Earth\'s average atmospheric temperatures.', example: 'The melting of polar ice caps is a direct consequence of global warming.', category: 'Climate', mastered: false },
+        { id: 'environmental_degradation', phrase: 'environmental degradation', definition: 'The systematic destruction of ecological biospheres through pollution or resource depletion.', example: 'Unregulated logging has led to severe environmental degradation in the rainforest.', category: 'Climate', mastered: false },
+        { id: 'depleting_natural_resources', phrase: 'depleting natural resources', definition: 'The unsustainable exhaustion of raw ecological compounds like fresh water and wood.', example: 'We are depleting natural resources faster than the Earth can regenerate them.', category: 'Climate', mastered: false },
+        { id: 'ozone_layer', phrase: 'ozone layer', definition: 'The atmospheric shield protecting Earth from ultraviolet solar radiation.', example: 'CFCs were banned globally to prevent destroying the ozone layer.', category: 'Climate', mastered: false },
+        { id: 'toxic_waste', phrase: 'toxic waste', definition: 'Poisonous chemical byproducts discarded by heavy industrial manufacturing.', example: 'The company was prosecuted for dumping toxic waste into local reservoirs.', category: 'Climate', mastered: false },
+        { id: 'oil_spill', phrase: 'oil spill', definition: 'The catastrophic, accidental discharge of liquid petroleum into marine habitats.', example: 'The deep-sea oil spill contaminated hundreds of miles of fragile coastline.', category: 'Climate', mastered: false },
+        { id: 'natural_disasters', phrase: 'natural disasters', definition: 'Extreme geological or meteorological events, such as hurricanes or earthquakes.', example: 'The frequency of catastrophic natural disasters has risen sharply over the decade.', category: 'Climate', mastered: false },
+        { id: 'endangered_species', phrase: 'endangered species', definition: 'Taxonomic biologies facing an immediate risk of absolute extinction.', example: 'The Siberian tiger remains on the list of critical endangered species.', category: 'Climate', mastered: false },
+        { id: 'renewable_energy', phrase: 'renewable energy', definition: 'Sustainable energy derived from inexhaustible ecological sources, such as solar or wind.', example: 'Transitioning to renewable energy is the cornerstone of the green agreement.', category: 'Remediation', mastered: false },
+        { id: 'sustainable_development', phrase: 'sustainable development', definition: 'Economic growth designed to preserve resources for future generations.', example: 'Urban planners designed the new eco-city based on sustainable development.', category: 'Remediation', mastered: false },
+        { id: 'provide_aid', phrase: 'provide aid', definition: 'To deliver operational or material assistance to populations in distress.', example: 'Emergency medical associations worked to provide aid to the earthquake victims.', category: 'Remediation', mastered: false },
+        { id: 'preserve_environment', phrase: 'preserve the environment', definition: 'Active stewardship to protect natural biospheres from destruction.', example: 'We must enforce stricter emission penalties to preserve the environment.', category: 'Remediation', mastered: false },
+        { id: 'flee_violence', phrase: 'flee the violence', definition: 'To escape war or hostile situations by migrating out of the area.', example: 'Refugees had to pack their papers and flee the violence across the borders.', category: 'Human-Rights', mastered: false }
+      ],
+      // Custom 20-question scenario-based quiz grounded in Lesson 25 Global Problems
+      quiz: [
+        { id: 1, question: "The economic summit declared that our generation has the technological capability to completely ________ and lift billions out of poverty.", options: ["eradicate poverty", "deplete natural resources", "provide aid"], answer: "eradicate_poverty", explanation: "Completely eliminating poverty is to 'eradicate poverty'." },
+        { id: 2, question: "Due to consecutive seasons of extreme drought, the regional agricultural yields failed, leading to severe ________.", options: ["food shortages", "toxic waste", "renewable energy"], answer: "food_shortages", explanation: "Severe deficits in available foodstuffs are termed 'food shortages'." },
+        { id: 3, question: "Humanitarian organizations drilled deep artesian wells in the desert to ensure the community had access to ________.", options: ["safe drinking water", "greenhouse gases", "fossil fuels"], answer: "safe_drinking_water", explanation: "Water fit and clean for human consumption is 'safe drinking water'." },
+        { id: 4, question: "The UN human rights commission criticized the manufacturing sector for using underaged workers, calling it illegal ________.", options: ["child labor", "sustainable development", "ethnic cleansing"], answer: "child_labor", explanation: "The employment of minors in manual labor is 'child labor'." },
+        { id: 5, question: "The dictator\'s sudden execution of political dissidents without trial was condemned as a horrific ________.", options: ["human rights violation", "political instability", "international aid"], answer: "human_rights_violations", explanation: "Violations against basic human liberties are 'human rights violations'." },
+        { id: 6, question: "With the government collapsing and armed factions vying for control, the state is suffering from extreme ________.", options: ["political instability", "sustainable development", "renewable energy"], answer: "political_instability", explanation: "An unstable, volatile state government system constitutes 'political instability'." },
+        { id: 7, question: "Thousands of ________ waited at the border crossing, hoping the host government would grant them legal sanctuary.", options: ["asylum seekers", "donor countries", "endangered species"], answer: "asylum_seekers", explanation: "Refugees seeking formal legal asylum are 'asylum seekers'." },
+        { id: 8, question: "The international criminal court launched an investigation into reports of military-enforced ________ in the western province.", options: ["ethnic cleansing", "renewable energy", "fossil fuels"], answer: "ethnic_cleansing", explanation: "The forced elimination of an ethnic group from a territory is 'ethnic cleansing'." },
+        { id: 9, question: "Wealthy nations met in Geneva to pledge three billion dollars in ________ to the crisis-hit zone.", options: ["international aid", "greenhouse gases", "toxic waste"], answer: "international_aid", explanation: "Help or material resource transfers sent across borders is 'international aid'." },
+        { id: 10, question: "During the negotiation, high-income ________ agreed to ease the borrowing criteria for developing nations.", options: ["donor countries", "recipient countries", "asylum seekers"], answer: "donor_countries", explanation: "Nations that give resources or aid are 'donor countries'." },
+        { id: 11, question: "It is crucial to verify that capital transferred to ________ is directed to actual municipal health programs.", options: ["recipient countries", "donor countries", "endangered species"], answer: "recipient_countries", explanation: "Nations that receive capital resources are 'recipient countries'." },
+        { id: 12, question: "The scientists presented undeniable proof that the release of ________ is trapping solar heat in our atmosphere.", options: ["greenhouse gases", "renewable energy", "safe drinking water"], answer: "greenhouse_gases", explanation: "Heat-trapping atmospheric compounds are 'greenhouse gases'." },
+        { id: 13, question: "The environmental treaty urged countries to transition rapidly away from ________ like coal and oil.", options: ["fossil fuels", "renewable energy", "natural disasters"], answer: "fossil_fuels", explanation: "Hydrocarbon-based fuel compounds are 'fossil fuels'." },
+        { id: 14, question: "We must invest heavily in wind, solar, and hydro systems to expand our access to ________.", options: ["renewable energy", "fossil fuels", "greenhouse gases"], answer: "renewable_energy", explanation: "Inexhaustible green energy sources constitute 'renewable energy'." },
+        { id: 15, question: "Over-consumption of materials and extreme deforestation are rapidly ________ of our planet.", options: ["depleting natural resources", "eradicating poverty", "providing aid"], answer: "depleting_natural_resources", explanation: "Exhausting the Earth's natural assets is 'depleting natural resources'." },
+        { id: 16, question: "In the late 1980s, global protocols banned chemical propellants to prevent destroying the ________.", options: ["ozone layer", "fossil fuels", "donor countries"], answer: "ozone_layer", explanation: "The protective ultraviolet-deflecting atmospheric shield is the 'ozone layer'." },
+        { id: 17, question: "The factory was heavily fined for illegally dumping ________ into the adjacent river basin.", options: ["toxic waste", "renewable energy", "asylum seekers"], answer: "toxic_waste", explanation: "Poisonous chemical byproducts are 'toxic waste'." },
+        { id: 18, question: "A massive ________ occurred off the coast, threatening the marine populations and local fisheries.", options: ["oil spill", "greenhouse gas", "natural disaster"], answer: "oil_spill", explanation: "The accidental discharge of petroleum into bodies of water is an 'oil spill'." },
+        { id: 19, question: "Due to climate volatility, the frequency of catastrophic ________ such as hurricanes and floods has doubled.", options: ["natural disasters", "greenhouse gases", "fossil fuels"], answer: "natural_disasters", explanation: "Severe meteorological or geological disasters are 'natural disasters'." },
+        { id: 20, question: "We must protect the critical habitats of ________ before they disappear from the wild entirely.", options: ["endangered species", "asylum seekers", "recipient countries"], answer: "endangered_species", explanation: "Species facing an immediate threat of extinction are 'endangered species'." }
+      ],
+      activeCardId: 'extreme_poverty',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        if (type === 'click') {
+          osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          osc.frequency.setValueAtTime(600, audioCtx.currentTime); 
+          osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.1); 
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.22);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'incorrect') {
+          osc.frequency.setValueAtTime(180, audioCtx.currentTime); 
+          osc.frequency.setValueAtTime(120, audioCtx.currentTime + 0.1); 
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.28);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.28);
+        } else if (type === 'flip') {
+          osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('AudioContext syntax error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
+    });
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l25', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l25')) {
+        state.theme = localStorage.getItem('colloc_theme_l25');
+      }
+      if (localStorage.getItem('colloc_mastery_list_l25')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l25'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Mastery index parse error', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l25')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l25'));
+        } catch(e) {}
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l25', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          if (state.quizAnswers[q.id] === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l25', JSON.stringify(state.voiceSettings));
+      showToast('Configurations Saved', 'Speech voice parameters synchronized.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Synthesizer is not supported on this node.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.currentTarget.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('extreme_poverty');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Strategic Context: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+        showToast('Term Mastered', `Saved "${term.phrase}" to your resolved intelligence database!`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Concern Re-opened', `Moved "${term.phrase}" back to active monitoring.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const narrativeText = "Today, humanity faces unprecedented challenges. More than one billion people are still trapped in extreme poverty, unable to secure basic necessities. In many developing regions, chronic food shortages lead to severe malnutrition, while millions lack access to safe drinking water. International organizations are desperately trying to eradicate poverty, but systemic barriers slow down their progress. At the same time, we witness horrific human rights violations under dictatorial regimes. Children are forced into child labor in factories, and vulnerable demographics suffer from systemic sexual exploitation. Severe political instability has created millions of asylum seekers fleeing violence. In the worst scenarios, extreme regimes have resorted to ethnic cleansing, sparking devastating regional conflicts. To address these crisis zones, wealthier nations must step in and provide international aid, moving capital from donor countries to recipient countries. Meanwhile, the ecological survival of our planet is in jeopardy due to rapid climate change. The burning of fossil fuels releases immense volumes of greenhouse gases, accelerating global warming and inducing rapid environmental degradation. We are continuously depleting natural resources, destroying the protective ozone layer, and polluting ecosystems with toxic waste. Accidental disasters like a major oil spill can wipe out coastal habitats instantly. As severe natural disasters threaten the survival of endangered species, we must transition towards renewable energy and prioritize sustainable development to preserve our biosphere.";
+      triggerTTS(narrativeText);
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'This is the first intelligence card.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Looping', 'Cycling back to the first strategic record.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Intel Logged', `"${card.phrase}" logged as decoded.`);
+      }
+    }
+
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        
+        // Find matching collocation based on option string/id
+        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
+        const collocId = matchingColloc ? matchingColloc.id : opt;
+        
+        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full ";
+        
+        if (!answered) {
+          btn.className += "bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-50/20 dark:hover:bg-brand-950/20";
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          if (collocId === quest.answer) {
+            btn.className += "bg-emerald-50 border-emerald-450 text-emerald-850 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (collocId === userAns) {
+            btn.className += "bg-rose-50 border-rose-300 text-rose-850 dark:bg-rose-955/20 dark:border-rose-900/40 dark:text-rose-450";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-655";
+          }
+        }
+        
+        if (!answered) {
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-white rounded-xl text-xs sm:text-sm font-bold transition";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-855 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Strategic Accord!', 'Accurate collocation applied to treaty draft.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Intelligence Error!', 'Inconclusive alignment with standard statecraft.', 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Diplomatic Attache";
+      if (percentage === 100) rank = "Secretary General";
+      else if (percentage >= 90) rank = "Peace Ambassador";
+      else if (percentage >= 70) rank = "Strategic Analyst";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['extreme poverty', 'eradicate poverty', 'climate change', 'greenhouse gases', 'renewable energy', 'sustainable development'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-brand-950/30 text-slate-700 dark:text-slate-350 rounded-lg text-xs font-semibold transition border border-slate-200/50 dark:border-slate-800";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `To prevent severe environmental degradation and mitigate ${word}, our state plans to transition towards green technology...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Evaluate the global implication: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Intel Appended', `Written "${randomColloc}" to strategic brief.`, 'fa-plus-circle');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Detail how increased international aid from donor countries can help eradicate poverty.",
+        "Draft a summary showing why heavy reliance on fossil fuels accelerates global warming and climate change.",
+        "Describe a humanitarian crisis showing how asylum seekers flee violence and seek political stability.",
+        "Examine why depleting natural resources threatens the survival of endangered species."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Geopolitical Challenge: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Workspace', 'Please write a brief before scanning.', 'fa-triangle-exclamation');
+        return;
+      }
+      
+      showToast('AI Scanning', 'Streaming brief to the Gemini Geopolitical Oracle...', 'fa-wand-magic-sparkles');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical alignment... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard crisis parameters...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemPrompt = "You are a world-class Environmental Economist, Foreign Service Officer, and English Language Professor. Check if the user's sentence uses Lesson 25 global problems or environmental collocations (e.g., extreme poverty, eradicate poverty, climate change, greenhouse gases, fossil fuels, renewable energy, sustainable development, endangered species) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Analyze: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`API returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "Geopolitical scanner offline. Verify network connection and retry.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Your structure is remarkably solid!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+            badge.innerText = "Strategic Alignment";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 dark:bg-rose-955/40 dark:text-rose-300";
+            badge.innerText = "Imperfect / Unnatural";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("JSON parse error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Scan returned an unexpected schema. Re-verify the composition text.";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Copied', 'Polished brief written to clipboard.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Podcast Suspended";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Global Problems";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Summit Closed!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Summit 25. All conditions resolved!";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., "${currentWord.example}"`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Let's scrutinize our next key strategic term. It is: ${currentWord.phrase}. Tom, how do policy specialists apply this?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-rose-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-rose-400">Sarah (Humanitarian Lead)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.0, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For example, we noted: "${currentWord.example}"`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-300">Tom (Climate Scientist)</span>
+            <p class="text-xs text-slate-350">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.9, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No matching strategic records resolved.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/60 dark:hover:bg-slate-850/40 transition border-b border-slate-100 dark:border-slate-855";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-950 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-600 dark:hover:text-emerald-500" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to the browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

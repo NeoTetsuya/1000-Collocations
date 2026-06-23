@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 22: Crime Scene Lab</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Premium Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e', /* Deep Crimson Crimson */
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+              950: '#4c0519',
+              accent: '#f59e0b', /* Tactical Amber */
+              accentHover: '#d97706'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    
+    /* Smooth interactive transitions */
+    .view-container {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip styling */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Animated Equalizer Waveform */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200 font-medium">
+
+  <!-- Main Wrapper -->
+  <div class="flex h-full flex-col overflow-hidden">
+    
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-850 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 to-rose-500 text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-fingerprint text-lg animate-pulse"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-700 to-rose-550 bg-clip-text text-transparent dark:from-brand-400">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-300">CSI Lab</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-magnifying-glass text-brand-600 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 22: Crime</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-355 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Dark Mode Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-355 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></div>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/30 Mastered</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-850 dark:bg-slate-900 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Investigator Modules</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300">
+            <i class="fa-solid fa-file-invoice text-base"></i>
+            <span>Case Files & Glossary</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Evidence Cards</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-gavel text-base"></i>
+            <span>Graded Case Exam</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Evidence Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-microphone-lines text-base"></i>
+            <span>Investigation Podcast</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-spell-check text-base"></i>
+            <span>Forensic Dictionary</span>
+          </button>
+        </div>
+        
+        <!-- User Astrological Confidence Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 p-4 border border-slate-300/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-user-shield text-brand-650 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Lab Clearance</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-650 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed">Solve case files and review evidence to advance your criminological vocabulary clearance from Detective Recruit to Chief Investigator!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-850">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-900 dark:text-white">Lesson 22 Case Files</h2>
+                  <p class="text-xs text-slate-400 mt-1">Examine modern criminology and detective protocols. Click highlighted legal and investigative collocations for case references.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Read Case File</span>
+                </button>
+              </div>
+              
+              <!-- Story Text -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
+                <p>
+                  When a person <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="breaks_law">breaks the law</span>, we say they have <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="committed_crime">committed a crime</span>. Especially horrible crimes - like a savage rape or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="brutal_murder">brutal murder</span> - can be described as barbaric, horrible, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="vicious_crime">vicious crimes</span>.
+                </p>
+                <p>
+                  If someone tries to commit a crime but does not succeed, we use the word attempted - for example, an <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="attempted_murder">attempted murder</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="attempted_kidnapping">attempted kidnapping</span>, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="attempted_breakin">attempted break-in</span>. If someone accuses another person of a crime, but it is not yet proven, then we use the word alleged - for example, an <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="alleged_assault">alleged assault</span>, alleged harassment, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="alleged_rape">alleged rape</span>.
+                </p>
+                <p>
+                  After the victim <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="reports_crime">reports the crime</span> to the police, the police will begin to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="investigate_crime">investigate the crime</span>. They'll visit the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="crime_scene">crime scene</span> and <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="gather_evidence">gather forensic evidence</span> (collect details like bullets, fingerprints, or blood samples). If witnesses come forward, the police will interview them to hear a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="first_hand_account">first-hand account</span> of what happened. They also consider <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="possible_motives">possible motives</span> for the crime.
+                </p>
+                <p>
+                  Police can <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="arrest_suspects">arrest suspects</span> who they believe have committed a crime - but the suspect can <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="prove_innocence">prove their innocence</span> by providing a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="solid_alibi">solid alibi</span>. If it is never discovered who committed the crime, then the case remains an <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="unsolved_crime">unsolved crime</span>. The statistics about number of crimes in a particular area is called the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="crime_rate">crime rate</span>. And when there is a big increase, we can call this a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="crime_wave">crime wave</span>.
+                </p>
+                <p>
+                  There are also a number of collocations we can use to describe criminals. A <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="first_time_offender">first-time offender</span> is someone who has broken the law for the first time, whereas someone who has broken the law in the past has a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="criminal_record">criminal record</span>. A criminal who is famous - like a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="serial_killer">serial killer</span> or a person who is heavily involved in <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="organized_crime">organized crime</span> - can be called a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/40 px-1 rounded transition" data-id="notorious_criminal">notorious criminal</span>.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-brand-950 text-white rounded-3xl p-6 border border-brand-800 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-300" id="glossary-category">Active Case File Card</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">gather forensic evidence</h3>
+                
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To systematically collect physical objects, such as DNA samples, fingerprints, or shell casings, to aid a scientific criminal investigation.</p>
+                
+                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Forensic Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"They'll visit the crime scene and gather forensic evidence to reconstruct the events of that evening."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-rose-500"></i>
+                  <span>Legal Link Dynamics</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  Describing crime and investigative frameworks with exact phrasing is highly critical for formal English usage. Memorize native structural collocations like **"breaks the law"**, **"proves their innocence"**, and **"solid alibi"** to articulate criminal justice scenarios flawlessly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Forensic Evidence Cards</h2>
+                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-400">/</span>
+                <span>30</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-600 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/50 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full" id="card-front-category">Criminal Justice</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-450 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-250 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-400 tracking-widest font-bold">Criminology Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">committed a crime</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-450 dark:text-slate-500">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-brand-950 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-brand-300 px-2.5 py-1 rounded-full" id="card-back-category">Investigation</span>
+                    <span class="text-xs text-brand-300 font-semibold">CSI Intelligence</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black">Forensic Definition</span>
+                      <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black">Case Study Example</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-350">Mark as Solved</span>
+                    </label>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-500/10 transition">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Active Quiz Screen -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black text-slate-900 dark:text-white">Lesson 22 Case Graded Exam</h2>
+                  <p class="text-xs text-slate-400 mt-1">Select the correct criminological collocation to resolve each crime scenario.</p>
+                </div>
+                <div class="bg-brand-100 dark:bg-brand-950/50 text-brand-850 dark:text-brand-300 px-3 py-1.5 rounded-xl text-xs font-bold">
+                  Scenario <span id="quiz-question-current">1</span> of 20
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-100 dark:bg-slate-850 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-slate-500 h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Question Text -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450">Active Investigation Dossier</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading dossier..."</p>
+              </div>
+              
+              <!-- Question Options Grid -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
+                <!-- Options rendered dynamically -->
+              </div>
+              
+              <!-- Explanations Box -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-450 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Investigator's Forensic Blueprint</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-400 leading-relaxed font-semibold">Explanation details...</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-855 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Case Exam
+                </button>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Case</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Final Score Review Screen -->
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-8 text-center">
+              <div class="space-y-3">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-50 dark:bg-brand-950/30 text-brand-500 dark:text-brand-400">
+                  <i class="fa-solid fa-trophy text-3xl animate-bounce"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-black text-slate-900 dark:text-white">Investigation Complete!</h2>
+                <p class="text-sm text-slate-450">Analysis complete. Review your clearance rating.</p>
+              </div>
+              
+              <!-- Metrics Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 font-bold">Solved Cases</span>
+                  <span class="text-2xl font-black text-emerald-500" id="quiz-score-correct">18/20</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 font-bold">CSI Score</span>
+                  <span class="text-2xl font-black text-brand-500 dark:text-brand-400" id="quiz-score-percent">90%</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 font-bold">Clearance Level</span>
+                  <span class="text-xs sm:text-sm font-bold text-brand-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Advanced</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Solve Again</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Case Files</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-855 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">AI Forensic Sandbox</h2>
+                  <p class="text-xs text-slate-400">Compose custom investigative briefs. The model validates syntactical accuracy regarding Lesson 22 crime terms.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-750 text-slate-650 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-lightbulb mr-1 text-brand-500"></i> Crime Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-100 text-brand-850 dark:bg-brand-950/40 dark:text-brand-300 hover:bg-brand-200 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Clue
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 block">Dossier Brief Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: The detective was tasked to investigate the crime after the victim reported the crime, gathering vital forensic evidence..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+                <!-- Chips rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-855 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-450 hover:text-slate-900 dark:hover:text-slate-200 transition">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Slate
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-lg shadow-brand-500/15 transition">
+                  <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                  <span>Scan Forensic brief</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-4">
+                <h3 class="font-heading text-lg font-extrabold text-slate-900 dark:text-white">AI Lab Brief Analysis</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Natural Match</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-brand-50 dark:border-brand-950/30">
+                    <span class="text-3xl font-black font-heading tracking-tight text-slate-900 dark:text-white" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-bold">Accuracy</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-0.5 font-bold">Syntactic Match Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-650 dark:text-slate-300 leading-relaxed font-semibold">Scanning text structure...</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-100 dark:border-slate-855 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-0.5 font-bold">Forensic Vocabulary Rating</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-650 dark:text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-1">Recommended Brief Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-semibold italic text-slate-800 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-750 rounded-lg text-xs font-bold text-slate-650 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">CSI Case Podcast: Station 22</h2>
+                    <p class="text-[10px] text-slate-400 font-bold">Live Forensic Debate Simulation</p>
+                  </div>
+                </div>
+                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Podcast On Air
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-950/40 rounded-2xl p-4 border border-slate-800">
+                <div class="wave-bar bg-brand-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-rose-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-brand-650 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-rose-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-brand-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-rose-450 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3">
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-400" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Dossier Debate: Breaks the Law & Motives</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate turn-based debate hosts investigating case formulations from Lesson 22.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
+                <div class="flex gap-2.5 items-start">
+                  <div class="h-6 w-6 rounded bg-brand-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+                  <div class="space-y-0.5">
+                    <span class="text-[10px] font-bold text-brand-400">Host Sarah (Lead Detective)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to CSI Podcast Station 22. Let's analyze our primary crime and motive collocations!"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Previous case collocation">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-rose-600 text-white hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg shadow-brand-500/10 transition" title="Play dialogue loop">
+                    <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                  </button>
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Next case collocation">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+                
+                <!-- Podcast Progress bar -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-400">
+                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-percent">0% Investigated</span>
+                  </div>
+                  <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                    <div id="podcast-loading-meter" class="bg-brand-500 h-full transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 dark:border-slate-850 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Forensic Dictionary Ledger</h2>
+                <p class="text-xs text-slate-400">Search and filter active collocations in the Lesson 22 criminal files.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search clue...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
+                  <option value="all">All Profiles</option>
+                  <option value="Criminology">Criminology Base</option>
+                  <option value="CSI Lab">Forensics & Scenes</option>
+                  <option value="Crime Rate">Statistics & Waves</option>
+                  <option value="Offenses">Specific Offenses</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Solved Only</option>
+                  <option value="unmastered">Active File</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-150 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Investigation Collocation</th>
+                    <th class="py-3 px-4 w-32">Module Segment</th>
+                    <th class="py-3 px-4">Forensic Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Case File Example</th>
+                    <th class="py-3 px-4 w-16 text-center">Scan</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-855 text-slate-700 dark:text-slate-300 font-semibold font-sans">
+                  <!-- Javascript will render rows -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-file-invoice text-base" id="mob-story-icon"></i>
+        <span class="text-[9px] font-bold">Case Files</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-clone text-base" id="mob-flashcards-icon"></i>
+        <span class="text-[9px] font-bold">Evidence</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-gavel text-base" id="mob-quiz-icon"></i>
+        <span class="text-[9px] font-bold">Exam</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
+        <span class="text-[9px] font-bold">AI Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-microphone-lines text-base" id="mob-podcast-icon"></i>
+        <span class="text-[9px] font-bold">Podcast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400">
+        <i class="fa-solid fa-spell-check text-base" id="mob-dictionary-icon"></i>
+        <span class="text-[9px] font-bold">Dictionary</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-855 pb-3">
+        <h3 class="font-heading font-black text-lg text-slate-900 dark:text-white">Forensic Audio Interface</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-450 animate-pulse">Voice Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-750 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-850 text-xs font-semibold outline-none text-slate-950 dark:text-slate-50">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 font-bold">
+            <span>Speech Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 font-bold">
+            <span>Tone Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+        Lock Configurations
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 dark:bg-slate-900/10 text-brand-400 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-350 dark:text-slate-655 mt-0.5" id="toast-body">Configurations successfully synchronized.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic Block -->
+  <script>
+    const state = {
+      theme: 'light',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'breaks_law', phrase: 'breaks the law', definition: 'To violate legal codes or commit illegal acts.', example: 'When a person breaks the law, they must face legal consequences.', category: 'Criminology', mastered: false },
+        { id: 'committed_crime', phrase: 'committed a crime', definition: 'The formal execution of a prohibited illegal act.', example: 'He confessed that he committed a crime on the night of the burglary.', category: 'Criminology', mastered: false },
+        { id: 'brutal_murder', phrase: 'brutal murder', definition: 'The exceptionally violent, cruel, and unlawful killing of a human being.', example: 'Detectives investigated the brutal murder in the historic manor.', category: 'Criminology', mastered: false },
+        { id: 'vicious_crime', phrase: 'vicious crime', definition: 'An exceptionally malicious, fierce, and cruel offense.', example: 'This viscous crime sent shockwaves through the quiet neighborhood.', category: 'Criminology', mastered: false },
+        { id: 'attempted_murder', phrase: 'attempted murder', definition: 'An unsuccessful effort to unlawfully take a human life.', example: 'He was charged with attempted murder after the survivor identified him.', category: 'CSI Lab', mastered: false },
+        { id: 'attempted_kidnapping', phrase: 'attempted kidnapping', definition: 'An unsuccessful attempt to abduct a person by force.', example: 'The victim fought off the attacker during the attempted kidnapping.', category: 'CSI Lab', mastered: false },
+        { id: 'attempted_breakin', phrase: 'attempted break-in', definition: 'An unsuccessful trial to gain unauthorized entry into a property.', example: 'The alarms went off, spoiling their attempted break-in.', category: 'CSI Lab', mastered: false },
+        { id: 'alleged_assault', phrase: 'alleged assault', definition: 'An unproven, reported physical attack on another person.', example: 'The athlete was arrested following an alleged assault at the club.', category: 'CSI Lab', mastered: false },
+        { id: 'alleged_rape', phrase: 'alleged rape', definition: 'An unproven, reported sexual assault of a violent nature.', example: 'The court is weighing evidence regarding the alleged rape.', category: 'CSI Lab', mastered: false },
+        { id: 'reports_crime', phrase: 'reports the crime', definition: 'Formally notifying police authorities about an offense.', example: 'Justice begins the moment a victim reports the crime.', category: 'CSI Lab', mastered: false },
+        { id: 'investigate_crime', phrase: 'investigate the crime', definition: 'To systematically examine details, motives, and clues of an offense.', example: 'Detectives were dispatched to investigate the crime immediately.', category: 'CSI Lab', mastered: false },
+        { id: 'crime_scene', phrase: 'crime scene', definition: 'The physical location where an offense was committed.', example: 'Forensic scientists barricaded the entire crime scene.', category: 'CSI Lab', mastered: false },
+        { id: 'gather_evidence', phrase: 'gather forensic evidence', definition: 'Collecting scientific samples (blood, bullets, fingerprints) to solve cases.', example: 'They visited the crime scene to gather forensic evidence.', category: 'CSI Lab', mastered: false },
+        { id: 'first_hand_account', phrase: 'first-hand account', definition: 'A narrative of a crime described directly by an eyewitness.', example: 'Her first-hand account helped detectives verify the time of entry.', category: 'CSI Lab', mastered: false },
+        { id: 'possible_motives', phrase: 'possible motives', definition: 'The potential underlying reasons why a culprit committed an offense.', example: 'Inheritance or revenge are highly possible motives for this scheme.', category: 'CSI Lab', mastered: false },
+        { id: 'arrest_suspects', phrase: 'arrest suspects', definition: 'Legally detaining individuals believed to have committed offenses.', example: 'The state patrol has authority to arrest suspects on sight.', category: 'CSI Lab', mastered: false },
+        { id: 'prove_innocence', phrase: 'prove their innocence', definition: 'To demonstrate with evidence that one did not commit the crime.', example: 'He had to hire an expensive lawyer to prove his innocence.', category: 'CSI Lab', mastered: false },
+        { id: 'solid_alibi', phrase: 'solid alibi', definition: 'A verified, watertight explanation of where a suspect was during a crime.', example: 'He was acquitted because his coworkers gave him a solid alibi.', category: 'CSI Lab', mastered: false },
+        { id: 'unsolved_crime', phrase: 'unsolved crime', definition: 'An offense where the perpetrator remains unidentified or unpunished.', example: 'The 1982 heist remains an unsolved crime to this day.', category: 'Crime Rate', mastered: false },
+        { id: 'crime_rate', phrase: 'crime rate', definition: 'The mathematical statistics of crimes committed in a specific region.', example: 'The municipal crime rate has declined since the patrol increased.', category: 'Crime Rate', mastered: false },
+        { id: 'crime_wave', phrase: 'crime wave', definition: 'A dramatic, sudden increase in criminal activity across a region.', example: 'The suburb was hit by a major crime wave this winter.', category: 'Crime Rate', mastered: false },
+        { id: 'first_time_offender', phrase: 'first-time offender', definition: 'A person convicted of an offense who has no prior criminal records.', example: 'The judge gave the first-time offender probation instead of prison.', category: 'Criminology', mastered: false },
+        { id: 'criminal_record', phrase: 'criminal record', definition: 'An official state document detailing a person\'s past convictions.', example: 'Having a criminal record makes it difficult to secure high-security clearance.', category: 'Criminology', mastered: false },
+        { id: 'serial_killer', phrase: 'serial killer', definition: 'A murderer who executes multiple victims over a prolonged time frame.', example: 'The FBI profiled the serial killer to predict his next move.', category: 'Offenses', mastered: false },
+        { id: 'organized_crime', phrase: 'organized crime', definition: 'Structured cartels or syndicates engaging in systematic illegal operations.', example: 'The team spent years wiretapping figures in organized crime.', category: 'Criminology', mastered: false },
+        { id: 'notorious_criminal', phrase: 'notorious criminal', definition: 'An infamous, highly well-known figure famous for committing offenses.', example: 'He went down in history as Chicago\'s most notorious criminal.', category: 'Offenses', mastered: false },
+        { id: 'cold_blooded_killer', phrase: 'cold-blooded killer', definition: 'A ruthless killer who acts without any human emotion or empathy.', example: 'She showed no remorse, proving she was a cold-blooded killer.', category: 'Offenses', mastered: false },
+        { id: 'psychopathic_killer', phrase: 'psychopathic killer', definition: 'An insane, mentally unstable murderer devoid of moral limits.', example: 'The movie depicts a psychopathic killer stalking campers.', category: 'Offenses', mastered: false },
+        { id: 'domestic_violence', phrase: 'domestic violence', definition: 'Violent or abusive behavior occurring within a household context.', example: 'The non-profit provides shelters for victims of domestic violence.', category: 'Offenses', mastered: false },
+        { id: 'drug_trafficking', phrase: 'drug trafficking', definition: 'The illegal manufacturing, smuggling, and sale of prohibited substances.', example: 'Borders are heavily monitored to prevent drug trafficking.', category: 'Offenses', mastered: false },
+        { id: 'identity_theft', phrase: 'identity theft', definition: 'Unlawfully acquiring and using someone else\'s personal credentials.', example: 'I fell victim to identity theft when my cards were cloned.', category: 'Offenses', mastered: false },
+        { id: 'sexual_harassment', phrase: 'sexual harassment', definition: 'Unwelcome, offensive sexual advances inside professional or public spaces.', example: 'Human resources enlists strict training to prevent sexual harassment.', category: 'Offenses', mastered: false },
+        { id: 'petty_crime', phrase: 'petty crime', definition: 'A minor, low-level legal offense such as pickpocketing or shoplifting.', example: 'The subway is plagued with petty crime during rush hour.', category: 'Offenses', mastered: false },
+        { id: 'armed_robbery', phrase: 'armed robbery', definition: 'Stealing assets from victims while brandishing dangerous weapons.', example: 'The jewelry vault fell target to an armed robbery yesterday.', category: 'Offenses', mastered: false }
+      ],
+      // Graded quiz containing exactly 20 context-rich questions based on Lesson 22
+      quiz: [
+        { id: 1, question: "The corporate director was accused of stealing employees' Social Security credentials, which is a classic case of ________.", options: ["identity theft", "petty crime", "domestic violence"], answer: "identity_theft", explanation: "Identity theft refers explicitly to unlawfully acquiring and using another person\'s personal identifying credentials." },
+        { id: 2, question: "Because the burglar brandished a loaded handgun at the store clerk, he was charged with ________.", options: ["armed robbery", "alleged assault", "petty crime"], answer: "armed_robbery", explanation: "Armed robbery is defined as executing a theft while carrying or showing a lethal weapon." },
+        { id: 3, question: "If the police never discover who executed the heist or locate the assets, the case remains an ________.", options: ["unsolved crime", "alleged assault", "attempted break-in"], answer: "unsolved_crime", explanation: "An unsolved crime represents an offense where the culprit remains unidentified or unpunished." },
+        { id: 4, question: "Since he has no prior convictions on file, the defense attorney asked for leniency, reminding the court he is a ________.", options: ["first-time offender", "notorious criminal", "cold-blooded killer"], answer: "first_time_offender", explanation: "A first-time offender is someone who has broken the law for the very first time in their life." },
+        { id: 5, question: "A team of detectives was dispatched to the alleyway to systematically investigate the ________.", options: ["crime scene", "solid alibi", "crime rate"], answer: "crime_scene", explanation: "The physical site where an offense or felony was committed is standardly called the 'crime scene'." },
+        { id: 6, question: "The victim immediately dialed 911 and ________ to the emergency dispatcher.", options: ["reported the crime", "arrested suspects", "proved innocence"], answer: "reports_crime", explanation: "Formally notifying the police about an ongoing or past offense is to 'report the crime'." },
+        { id: 7, question: "The suspect's defense was highly robust because three reliable coworkers provided him with a ________.", options: ["solid alibi", "criminal record", "possible motive"], answer: "solid_alibi", explanation: "A verified, watertight confirmation of a suspect\'s location at the time of a crime is a 'solid alibi'." },
+        { id: 8, question: "The crime syndicate was heavily involved in international ________, smuggling illegal cargo across state lines.", options: ["drug trafficking", "identity theft", "sexual harassment"], answer: "drug_trafficking", explanation: "Drug trafficking involves the illegal smuggling, transportation, and distribution of prohibited substances." },
+        { id: 9, question: "Federal agents spent decades wiretapping mob families to curb the growth of ________.", options: ["organized crime", "petty crime", "first-time offenders"], answer: "organized_crime", explanation: "Structured, systematic illegal enterprises run by gangs or cartels represent 'organized crime'." },
+        { id: 10, question: "The ruthless assassin showed absolutely no emotion during her trial, proving she was a ________.", options: ["cold-blooded killer", "first-time offender", "witness"], answer: "cold_blooded_killer", explanation: "A cold-blooded killer refers to a murderer who acts ruthlessly, totally devoid of human emotion or remorse." },
+        { id: 11, question: "With security patrols stationed on every corner, the local ________ has dropped by forty percent.", options: ["crime rate", "crime scene", "crime wave"], answer: "crime_rate", explanation: "The mathematical statistics of crimes committed in a specific municipal region is the 'crime rate'." },
+        { id: 12, question: "The security system activated immediately, thwarting the burglars during their ________.", options: ["attempted break-in", "unsolved crime", "solid alibi"], answer: "attempted_breakin", explanation: "An unsuccessful effort to unlawfully enter a locked facility is an 'attempted break-in'." },
+        { id: 13, question: "The suspect had to hire a prominent trial attorney to clear his name and ________.", options: ["prove his innocence", "report the crime", "breaks the law"], answer: "prove_innocence", explanation: "Demonstrating to a court with verified evidence that you did not commit an offense is to 'prove your innocence'." },
+        { id: 14, question: "He has spent years trying to find a job, but employers are always discouraged by his ________.", options: ["criminal record", "solid alibi", "first-hand account"], answer: "criminal_record", explanation: "An official history detailing an individual\'s past criminal convictions is a 'criminal record'." },
+        { id: 15, question: "The company holds strict guidelines and mandatory training to prevent ________ in the corporate workspace.", options: ["sexual harassment", "identity theft", "drug trafficking"], answer: "sexual_harassment", explanation: "Unwelcome, offensive sexual advances inside professional offices is legally termed 'sexual harassment'." },
+        { id: 16, question: "Shoplifting a candy bar is a ________, but it can still result in a misdemeanor on your record.", options: ["petty crime", "vicious crime", "brutal murder"], answer: "petty_crime", explanation: "Minor, low-impact legal infractions are classified as 'petty crime'." },
+        { id: 17, question: "The police had to consult forensic scientists to collect fingerprints and ________.", options: ["gather forensic evidence", "arrest suspects", "breaks the law"], answer: "gather_evidence", explanation: "To scientifically collect physical items, prints, or ballistics from a site is to 'gather forensic evidence'." },
+        { id: 18, question: "When a person consciously ________, they must expect to face administrative or criminal charges.", options: ["breaks the law", "proves their innocence", "unsolved crime"], answer: "breaks_law", explanation: "To violate established legal regulations or statutes is to 'break the law'." },
+        { id: 19, question: "The town was hit by a sudden, terrifying ________, with over fifty robberies occurring in one week.", options: ["crime wave", "crime rate", "crime scene"], answer: "crime_wave", explanation: "A rapid, extreme surge in regional criminal activities is called a 'crime wave'." },
+        { id: 20, question: "Historically, Al Capone was a ________ who ruled the city's black markets during prohibition.", options: ["notorious criminal", "first-time offender", "eyewitness"], answer: "notorious_criminal", explanation: "An infamous, widely recognized, and highly feared lawbreaker is a 'notorious criminal'." }
+      ],
+      activeCardId: 'breaks_law',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        if (type === 'click') {
+          osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          osc.frequency.setValueAtTime(600, audioCtx.currentTime); 
+          osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.1); 
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.22);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'incorrect') {
+          osc.frequency.setValueAtTime(180, audioCtx.currentTime); 
+          osc.frequency.setValueAtTime(120, audioCtx.currentTime + 0.1); 
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.28);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.28);
+        } else if (type === 'flip') {
+          osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('AudioContext syntax error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
+    });
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l22', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-650 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-brand-700 dark:bg-brand-950/40 dark:text-brand-300";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l22')) {
+        state.theme = localStorage.getItem('colloc_theme_l22');
+      }
+      if (localStorage.getItem('colloc_mastery_list_l22')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l22'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Mastery index parse error', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l22')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l22'));
+        } catch(e) {}
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l22', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          if (state.quizAnswers[q.id] === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l22', JSON.stringify(state.voiceSettings));
+      showToast('Configurations Saved', 'Speech voice metadata synchronized.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Synthesizer is not supported on this node.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.currentTarget.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('breaks_law');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Forensic Category: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+        showToast('Case Solved', `Saved "${term.phrase}" to your resolved database!`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Case Re-opened', `Moved "${term.phrase}" back to diagnostic ledger.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const narrativeText = "When a person breaks the law, we say they have committed a crime. Especially horrible crimes - like a savage rape or a brutal murder - can be described as barbaric, horrible, or vicious crimes. If someone tries to commit a crime but does not succeed, we use the word attempted - for example, an attempted murder, attempted kidnapping, or attempted break-in. If someone accuses another person of a crime, but it is not yet proven, then we use the word alleged - for example, an alleged assault, alleged harassment, or alleged rape. After the victim reports the crime to the police, the police will begin to investigate the crime. They'll visit the crime scene and gather forensic evidence (collect details like bullets, fingerprints, or blood samples that can show what happened). If witnesses come forward, the police will interview them to hear a first-hand account of what happened. They also consider possible motives for the crime. Police can arrest suspects who they believe have committed a crime - but the suspect can prove their innocence by providing a solid alibi - that means giving a confirmed explanation of where they were at the time of the crime. If it is never discovered who committed the crime, then the case remains an unsolved crime. The statistics about number of crimes in a particular area is called the crime rate. And when there is a big increase in the crime rate, we can call this a crime wave. There are also a number of collocations we can use to describe criminals. A first-time offender is someone who has broken the law for the first time, whereas someone who has broken the law in the past has a criminal record. A criminal who is famous - like a serial killer or a person who is heavily involved in organized crime - can be called a notorious criminal.";
+      triggerTTS(narrativeText);
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'This is the first forensic card.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Looping', 'Cycling back to the first forensic card.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Case Resolved', `"${card.phrase}" registered as solved.`);
+      }
+    }
+
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        
+        // Find matching collocation based on option string/id
+        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
+        const collocId = matchingColloc ? matchingColloc.id : opt;
+        
+        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full ";
+        
+        if (!answered) {
+          btn.className += "bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-50/20 dark:hover:bg-brand-950/20";
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          if (collocId === quest.answer) {
+            btn.className += "bg-emerald-50 border-emerald-450 text-emerald-850 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (collocId === userAns) {
+            btn.className += "bg-rose-50 border-rose-300 text-rose-850 dark:bg-rose-955/20 dark:border-rose-900/40 dark:text-rose-450";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-600";
+          }
+        }
+        
+        if (!answered) {
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs sm:text-sm font-bold transition";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Clue Deciphered!', 'Accurate collocation applied to case file.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Error in Brief!', 'Inconclusive alignment with evidence records.', 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Detective Recruit";
+      if (percentage === 100) rank = "Chief Inspector";
+      else if (percentage >= 90) rank = "Forensic Specialist";
+      else if (percentage >= 70) rank = "Senior Investigator";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['gather forensic evidence', 'breaks the law', 'solid alibi', 'unsolved crime', 'drug trafficking', 'identity theft'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-brand-950/30 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-200/50 dark:border-slate-800";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `To properly investigate the suspect who ${word}, detectives worked long hours...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Analyze this case under suspicion: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Case Clue Appended', `Written "${randomColloc}" to forensic workspace.`, 'fa-plus-circle');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Detail how CSI forensics gather forensic evidence to link suspects to a brutal murder.",
+        "Draft a trial summary showing why a solid alibi is crucial to prove their innocence.",
+        "Write a news flash regarding a massive crime wave involving identity theft and drug trafficking.",
+        "Examine why an unsolved crime rate continues to escalate among first-time offenders."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[CSI Brief Challenge: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Workspace', 'Please write a brief before scanning.', 'fa-triangle-exclamation');
+        return;
+      }
+      
+      showToast('AI Analyzing', 'Streaming composition to the Gemini Criminology Oracle...', 'fa-wand-magic-sparkles');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical alignment... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with forensic parameters...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemPrompt = "You are a world-class Forensic Linguistics and English Language Professor. Check if the user's sentence uses Lesson 22 criminology or investigative collocations (e.g., broke the law, committed a crime, solid alibi, gather forensic evidence) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Analyze: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`API returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "Forensic scanner offline. Verify network connection and retry.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Your structure is remarkably solid!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+            badge.innerText = "Watertight Alignment";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 dark:bg-rose-955/40 dark:text-rose-300";
+            badge.innerText = "Imperfect / Unnatural";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("JSON parse error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Scan returned an unexpected schema. Re-verify the composition text.";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Copied', 'Polished brief written to clipboard.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Podcast Suspended";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "Live Broadcast - Analyzing Clues";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Debriefing Complete!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CSI Station 22. All suspect profiles resolved!";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., "${currentWord.example}"`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Let's scrutinize our next key criminological term. It is: ${currentWord.phrase}. Tom, how do detectives utilize this in the field?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-brand-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-400">Sarah (Lead Detective)</span>
+            <p class="text-xs text-slate-350">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.0, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For example, we noted: "${currentWord.example}"`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-300">Tom (CSI Specialist)</span>
+            <p class="text-xs text-slate-305">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.9, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No matching legal collocations resolved.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/60 dark:hover:bg-slate-850/40 transition border-b border-slate-100 dark:border-slate-855";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-950 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-600 dark:hover:text-brand-400" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to the browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="ja" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 18: Travel Interactive Lab</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+              950: '#2e1065',
+              accent: '#3b82f6',
+              accentHover: '#2563eb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+    
+    /* Smooth interactive transitions */
+    .view-container {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip styling */
+    .card-perspective {
+      perspective: 1200px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Animated Equalizer Waveform */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200 font-medium">
+
+  <!-- Main Wrapper -->
+  <div class="flex h-full flex-col overflow-hidden">
+    
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-700 to-sky-500 text-white shadow-md shadow-indigo-500/20">
+          <i class="fa-solid fa-plane text-lg animate-pulse"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-indigo-700 to-sky-500 bg-clip-text text-transparent dark:from-indigo-400">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-700 dark:bg-slate-850 dark:text-slate-300">Travel Lab</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-map-location-dot text-indigo-600 dark:text-indigo-400"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 18: Travel</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Dark Mode Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle">
+          <i class="fa-solid fa-moon text-sm"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
+          <div class="h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></div>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/30 Mastered</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Learning Modules</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-indigo-700 dark:bg-brand-950/40 dark:text-indigo-300">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Story & Glossary</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Interactive Cards</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-square-poll-vertical text-base"></i>
+            <span>Graded Exam</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Sentence Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-radio text-base"></i>
+            <span>Podcast Station</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+            <i class="fa-solid fa-spell-check text-base"></i>
+            <span>Colloca-Dictionary</span>
+          </button>
+        </div>
+        
+        <!-- User Astrological Confidence Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-50 to-slate-100 p-4 border border-slate-200/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-plane-departure text-indigo-600 dark:text-indigo-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Transit Authority</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-indigo-600 dark:text-indigo-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Establish your airline and accommodation planning credentials. Complete modules to acquire flawless hospitality logic formulations!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl">Lesson 18 Narrative</h2>
+                  <p class="text-xs text-slate-400 mt-1">Explore aeronautical and accommodation collocations. Click highlighted structures to study their context.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-md shadow-indigo-500/10 transition">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Read Aloud</span>
+                </button>
+              </div>
+              
+              <!-- Story Text -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
+                <p>
+                  Last week I had the worst <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="business_trip">business trip</span> I've ever taken. Normally a <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="travel_agency">travel agency</span> takes care of <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="book_flight">booking my flight</span> and making my <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="hotel_reservation">hotel reservation</span>, but this time I decided to make the <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="travel_arrangements">travel arrangements</span> myself. Big mistake!
+                </p>
+                <p>
+                  First of all, the plane was <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="overbooked">overbooked</span> so I was <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="bumped_flight">bumped to a later flight</span>. When they gave me my new <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="boarding_pass">boarding pass</span>, they didn't ask me if I'd prefer a <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="window_seat">window seat</span> or an <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="aisle_seat">aisle seat</span>, and I was stuck in the middle. To top it off, it was a very <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="bumpy_flight">bumpy flight</span>.
+                </p>
+                <p>
+                  I then missed my <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="connecting_flight">connecting flight</span> and had a ten-hour <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="layover">layover</span> in Chicago. Unfortunately, my <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="checked_luggage">checked luggage</span> had already gone through to my final destination, so all I had was my <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="carry_on">carry-on bag</span>. I <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="check_into_hotel">checked into a hotel</span> near the airport just so I could <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="take_a_nap">take a nap</span>.
+                </p>
+                <p>
+                  When I finally arrived in Los Angeles, it turns out that I had made a mistake with my hotel reservation, and instead of booking a room at a <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="five_star_hotel">five-star hotel</span>, I had booked three nights at a <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="seedy_hotel">seedy hotel</span> in the <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="red_light_district">red-light district</span>! So I was stuck sleeping on an <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="uncomfortable_mattress">uncomfortable mattress</span> in a <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="dingy_room">dingy room</span> while my colleagues enjoyed the <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="luxury_hotel">luxury hotel</span>.
+                </p>
+                <p>
+                  The trip home was <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="uneventful_trip">uneventful</span>, but when I arrived I discovered that the airline had <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="lost_luggage">lost my luggage</span>. All in all, it was a <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-indigo-400 border-b-2 border-dashed border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-1 rounded transition" data-id="miserable_experience">miserable experience</span>.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-slate-800 text-white rounded-3xl p-6 border border-slate-700 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-sky-400" id="glossary-category">Active Logic Card</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">business trip</h3>
+                
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">A journey taken for business purposes, such as meeting clients or attending work conferences.</p>
+                
+                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Interactive Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Last week I had the worst business trip I've ever taken."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-sky-500"></i>
+                  <span>Linguistic Navigation</span>
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  Navigating transits depends extensively on appropriate pairings. Learning couplings like **"connecting flight"**, **"seedy hotel"**, and **"boarding pass"** avoids literal translation bugs in airports and hotels.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Flashcards Studio</h2>
+                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Space to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-400">/</span>
+                <span>30</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-indigo-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-400 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">Phrase</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-400">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-indigo-950 border border-indigo-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-indigo-300 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-indigo-300 font-semibold">Answer Breakdown</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-indigo-300 uppercase tracking-widest font-black">Definition</span>
+                      <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-indigo-300 uppercase tracking-widest font-black">Context Sentence</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-indigo-500 focus:ring-indigo-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-300">Mark as Mastered</span>
+                    </label>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-indigo-650 hover:bg-indigo-700 text-white font-semibold text-sm shadow-lg shadow-brand-500/10 transition">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Active Quiz Screen -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black">Lesson 18 Graded Quiz</h2>
+                  <p class="text-xs text-slate-400 mt-1">Select the correct collocation to complete the sentence.</p>
+                </div>
+                <div class="bg-indigo-100 dark:bg-indigo-950/50 text-indigo-800 dark:text-indigo-300 px-3 py-1.5 rounded-xl text-xs font-bold">
+                  Question <span id="quiz-question-current">1</span> of 20
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-indigo-500 to-slate-500 h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Question Text -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400">Contextual Prompt</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading question..."</p>
+              </div>
+              
+              <!-- Question Options Grid -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
+                <!-- Rendered Dynamically -->
+              </div>
+              
+              <!-- Explanations Box -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Explanation Details</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Quiz
+                </button>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Question</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Final Score Review Screen -->
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-8 text-center">
+              <div class="space-y-3">
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-950/30 text-indigo-500 dark:text-indigo-400">
+                  <i class="fa-solid fa-trophy text-3xl"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-black">Quiz Completed!</h2>
+                <p class="text-sm text-slate-400">Here's a breakdown of your vocabulary diagnostics.</p>
+              </div>
+              
+              <!-- Metrics Grid -->
+              <div class="grid grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Correct Answers</span>
+                  <span class="text-2xl font-black text-emerald-500" id="quiz-score-correct">18/20</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-indigo-500 dark:text-indigo-400" id="quiz-score-percent">90%</span>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400">Proficiency Rank</span>
+                  <span class="text-sm font-bold text-indigo-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Advanced</span>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Try Again</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Study Guide</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Collocation Practice</h2>
+                  <p class="text-xs text-slate-400">Write custom sentences using Lesson 18 collocations. Our AI assesses your grammar and accuracy.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition" title="Get Scenario Prompt">
+                    <i class="fa-solid fa-lightbulb mr-1 text-amber-500"></i> Get Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-indigo-100 text-indigo-800 dark:bg-indigo-950/40 dark:text-indigo-300 hover:bg-indigo-200 text-xs font-bold rounded-xl transition" title="Inject Random Word">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400">Your Sentence Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-indigo-500 focus:bg-white focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-850 dark:focus:border-indigo-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: I made my hotel reservation and booked my flight, hoping to avoid a bumpy flight..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Clear Workspace
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-500/15 transition">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span>Diagnose Sentence</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold">Diagnostic Report</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Natural Match</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge/Radial -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-indigo-50 dark:border-indigo-950/30">
+                    <span class="text-3xl font-black font-heading tracking-tight" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400">Score</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Grammatical & Style Evaluation</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Your sentence correctly connects the collocations together, ensuring a natural pacing standard.</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-100 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-0.5">Collocation Verification</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">The phrasing was perfectly linked inside the scenario context.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-slate-800/40 rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">Polished Alternative Suggestion</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-semibold italic text-slate-800 dark:text-slate-200 mt-1">"Loading alternatives..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-indigo-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Studio 18</h2>
+                    <p class="text-[10px] text-slate-400 font-semibold">Automated Dialogue Episode: Travel & Accommodations</p>
+                  </div>
+                </div>
+                <div class="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  Podcast Mode
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-950/40 rounded-2xl p-4 border border-slate-800">
+                <div class="wave-bar bg-indigo-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-sky-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-indigo-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-sky-300 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-indigo-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-sky-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3">
+                <span class="text-[10px] font-black uppercase tracking-wider text-indigo-400" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Episode 18: Booking Flights & Lodgings</h3>
+                <p class="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to let our dialogue hosts walk you through Lesson 18 collocations with contextual conversations.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
+                <div class="flex gap-2.5 items-start">
+                  <div class="h-6 w-6 rounded bg-indigo-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+                  <div class="space-y-0.5">
+                    <span class="text-[10px] font-bold text-indigo-400">Host Sarah (Lead)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast! Today, we are exploring Travel collocations. Let's start the breakdown!"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between gap-4">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                    <i class="fa-solid fa-backward-step"></i>
+                  </button>
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-indigo-500 to-indigo-600 text-white hover:from-indigo-600 rounded-full flex items-center justify-center shadow-lg shadow-indigo-500/10 transition" title="Play dialog loop">
+                    <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                  </button>
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 text-slate-200 hover:bg-slate-700 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                    <i class="fa-solid fa-forward-step"></i>
+                  </button>
+                </div>
+                
+                <!-- Podcast Progress bar -->
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between text-[10px] text-slate-400">
+                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-percent">0% Completed</span>
+                  </div>
+                  <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
+                    <div id="podcast-loading-meter" class="bg-indigo-500 h-full transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Vocabulary Ledger</h2>
+                <p class="text-xs text-slate-400">Search and filter the core collocations of Lesson 18.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none focus:border-indigo-500 transition w-full md:w-48" placeholder="Search phrase...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none">
+                  <option value="all">All Sub-categories</option>
+                  <option value="Booking">Booking & Planning</option>
+                  <option value="Flight">Flight & Air Travel</option>
+                  <option value="Hotel">Hotels & Lodgings</option>
+                  <option value="Luggage">Baggage & Experience</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 outline-none">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Mastered Only</option>
+                  <option value="unmastered">In Progress</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-150 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
+                    <th class="py-3 px-4 w-32">Sub-category</th>
+                    <th class="py-3 px-4">Core Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Context Example</th>
+                    <th class="py-3 px-4 w-16 text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-850 text-slate-700 dark:text-slate-300 font-semibold">
+                  <!-- Javascript will render rows -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+        <i class="fa-solid fa-book-open text-base" id="mob-story-icon"></i>
+        <span class="text-[9px] font-bold">Narrative</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+        <i class="fa-solid fa-clone text-base" id="mob-flashcards-icon"></i>
+        <span class="text-[9px] font-bold">Cards</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+        <i class="fa-solid fa-square-poll-vertical text-base" id="mob-quiz-icon"></i>
+        <span class="text-[9px] font-bold">Exam</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+        <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
+        <span class="text-[9px] font-bold">AI Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+        <i class="fa-solid fa-radio text-base" id="mob-podcast-icon"></i>
+        <span class="text-[9px] font-bold">Podcast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+        <i class="fa-solid fa-spell-check text-base" id="mob-dictionary-icon"></i>
+        <span class="text-[9px] font-bold">Lexicon</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <h3 class="font-heading font-black text-lg">TTS Voice Settings</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400">Voice Synthesis Model</label>
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-850 text-xs font-semibold outline-none">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400">
+            <span>Speech Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-indigo-500">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400">
+            <span>Tone Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-indigo-500">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+        Apply Settings
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 dark:bg-slate-900/10 text-brand-400 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-300 dark:text-slate-600 mt-0.5" id="toast-body">Settings have been successfully saved.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript logic block -->
+  <!-- Script section defining core behaviors -->
+  <script>
+    const state = {
+      theme: 'light',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'business_trip', phrase: 'business trip', definition: 'A journey taken strictly for business purposes.', example: 'Last week I had the worst business trip I\'ve ever taken.', category: 'Booking', mastered: false },
+        { id: 'travel_agency', phrase: 'travel agency', definition: 'A service business that makes travel arrangements for clients.', example: 'Normally a travel agency takes care of booking my flight.', category: 'Booking', mastered: false },
+        { id: 'book_flight', phrase: 'book flight', definition: 'The action of purchasing or reserving plane tickets.', example: 'Normally a travel agency takes care of booking my flight.', category: 'Booking', mastered: false },
+        { id: 'hotel_reservation', phrase: 'hotel reservation', definition: 'A booking arrangement for lodging or accommodation.', example: 'A travel agency normally handles making my hotel reservation.', category: 'Booking', mastered: false },
+        { id: 'travel_arrangements', phrase: 'travel arrangements', definition: 'The set of plans and bookings needed for a journey.', example: 'I decided to make the travel arrangements myself.', category: 'Booking', mastered: false },
+        { id: 'overbooked', phrase: 'overbooked', definition: 'A situation where a flight has sold more tickets than available seats.', example: 'First of all, the plane was overbooked so I was delayed.', category: 'Flight', mastered: false },
+        { id: 'bumped_flight', phrase: 'bumped to a later flight', definition: 'Having your seat reassigned to a future aircraft due to overbooking.', example: 'Because of overbooking, I was bumped to a later flight.', category: 'Flight', mastered: false },
+        { id: 'boarding_pass', phrase: 'boarding pass', definition: 'The legal document issued by an airline allowing you to board a plane.', example: 'They handed me a new boarding pass for the night flight.', category: 'Flight', mastered: false },
+        { id: 'window_seat', phrase: 'window seat', definition: 'An aircraft seat positioned directly adjacent to a cabin window.', example: 'I prefer a window seat so I can see the clouds.', category: 'Flight', mastered: false },
+        { id: 'aisle_seat', phrase: 'aisle seat', definition: 'An aircraft seat adjacent to the central corridor or walkway.', example: 'They didn\'t ask me if I\'d prefer a window seat or an aisle seat.', category: 'Flight', mastered: false },
+        { id: 'bumpy_flight', phrase: 'bumpy flight', definition: 'A flight characterized by turbulence or atmospheric instability.', example: 'To top it off, it was a very bumpy flight.', category: 'Flight', mastered: false },
+        { id: 'connecting_flight', phrase: 'connecting flight', definition: 'A subsequent flight that requires travelers to change aircraft.', example: 'I missed my connecting flight because of the delay.', category: 'Flight', mastered: false },
+        { id: 'layover', phrase: 'layover', definition: 'A scheduled pause or waiting period between flights at an airport hub.', example: 'I missed my flight and had a ten-hour layover in Chicago.', category: 'Flight', mastered: false },
+        { id: 'checked_luggage', phrase: 'checked luggage', definition: 'Large suitcases transported within the airplane\'s cargo compartment.', example: 'My checked luggage had already gone through to my final destination.', category: 'Luggage', mastered: false },
+        { id: 'carry_on', phrase: 'carry-on bag', definition: 'A compact hand luggage piece that you bring inside the aircraft cabin.', example: 'All I had with me was my carry-on bag.', category: 'Luggage', mastered: false },
+        { id: 'check_into_hotel', phrase: 'check into a hotel', definition: 'The administrative process of registering as a guest at lodgings.', example: 'I checked into a hotel near the airport to get some rest.', category: 'Hotel', mastered: false },
+        { id: 'take_a_nap', phrase: 'take a nap', definition: 'A brief, revitalizing sleep taken during daylight hours.', example: 'I checked into a room near the terminal just so I could take a nap.', category: 'Hotel', mastered: false },
+        { id: 'five_star_hotel', phrase: 'five-star hotel', definition: 'An accommodation offering the highest tier of luxury services.', example: 'Instead of booking a room at a five-star hotel, I ended up at a motel.', category: 'Hotel', mastered: false },
+        { id: 'seedy_hotel', phrase: 'seedy hotel', definition: 'An unkempt, potentially unsafe, or low-quality lodging facility.', example: 'I mistakenly booked three nights at a seedy hotel.', category: 'Hotel', mastered: false },
+        { id: 'red_light_district', phrase: 'red-light district', definition: 'An urban area known for adult clubs, sex shops, and risky activities.', example: 'My seedy hotel was in the red-light district.', category: 'Hotel', mastered: false },
+        { id: 'uncomfortable_mattress', phrase: 'uncomfortable mattress', definition: 'A low-quality or hard bed cushion that causes sleep difficulty.', example: 'I was stuck sleeping on an uncomfortable mattress.', category: 'Hotel', mastered: false },
+        { id: 'dingy_room', phrase: 'dingy room', definition: 'A dark, dirty, or claustrophobic accommodation space.', example: 'I had to sleep in a dingy room while my colleagues had luxury.', category: 'Hotel', mastered: false },
+        { id: 'luxury_hotel', phrase: 'luxury hotel', definition: 'A premium, comfortable lodging offering premium amenities.', example: 'My colleagues enjoyed the luxury hotel down the street.', category: 'Hotel', mastered: false },
+        { id: 'uneventful_trip', phrase: 'uneventful trip', definition: 'A journey lacking unexpected delays, conflicts, or incidents.', example: 'The trip home was uneventful, but my luggage was lost.', category: 'Luggage', mastered: false },
+        { id: 'lost_luggage', phrase: 'lost luggage', definition: 'Luggage misplaced or permanently lost by airline operations.', example: 'When I arrived, I discovered the airline had lost my luggage.', category: 'Luggage', mastered: false },
+        { id: 'miserable_experience', phrase: 'miserable experience', definition: 'An exceptionally negative, stressful, and unpleasant scenario.', example: 'All in all, it was a miserable experience.', category: 'Luggage', mastered: false },
+        { id: 'ten_hour_layover', phrase: 'ten-hour layover', definition: 'A prolonged waiting session of ten hours inside a transit terminal.', example: 'I missed my connecting flight and suffered a ten-hour layover.', category: 'Flight', mastered: false },
+        { id: 'pack_bags', phrase: 'pack bags', definition: 'To prepare suitcases and personal luggage for travel.', example: 'I had to pack my bags quickly before leaving.', category: 'Booking', mastered: false },
+        { id: 'catch_flight', phrase: 'catch my flight', definition: 'To board your scheduled aircraft successfully before departure.', example: 'I ran through the airport to catch my connecting flight.', category: 'Flight', mastered: false },
+        { id: 'flight_delayed', phrase: 'flight delayed', definition: 'When the aircraft schedule is pushed back to a later time.', example: 'The airline staff informed us our flight was delayed.', category: 'Flight', mastered: false }
+      ],
+      // Graded quiz containing all core multiple choice items + scenarios to form exactly 20 questions
+      quiz: [
+        { id: 1, question: "Are you adding / bumping / checking any bags today?", options: ["adding", "bumping", "checking"], answer: "checking", explanation: "To hand over large suitcases to airline cargo before boarding is to 'check your bags'." },
+        { id: 2, question: "Hello, I need to change the dates of my hotel district / layover / reservation.", options: ["district", "layover", "reservation"], answer: "reservation", explanation: "Changing your booking dates refers specifically to modifying your 'hotel reservation'." },
+        { id: 3, question: "I always try to get a window chair / seat / spot on long flights.", options: ["chair", "seat", "spot"], answer: "seat", explanation: "The standard term for space allocated adjacent to the viewport on an aircraft is a 'window seat'." },
+        { id: 4, question: "I won't be in the office next week - I'll be on a business flight / travel / trip.", options: ["flight", "travel", "trip"], answer: "trip", explanation: "A professional travel scenario is called a 'business trip'." },
+        { id: 5, question: "On their honeymoon, Will and Cassie spent a week at a five-star / ten-point / gold-star hotel.", options: ["five-star", "ten-point", "gold-star"], answer: "five-star", explanation: "High-end luxury accommodations are globally certified as 'five-star hotels'." },
+        { id: 6, question: "Sorry, sir, but your bring-in / carry-on / take-up bag is too heavy.", options: ["bring-in", "carry-on", "take-up"], answer: "carry-on", explanation: "Hand luggage brought onto an airplane cabin is a 'carry-on bag'." },
+        { id: 7, question: "The gate number is printed on your boarding / checking / entering pass.", options: ["boarding", "checking", "entering"], answer: "boarding", explanation: "The ticket verifying departure clearance and seat access is a 'boarding pass'." },
+        { id: 8, question: "The ________ was only 30 minutes - I had to run to catch my connecting flight!", options: ["checkout", "layover", "stop-off"], answer: "layover", explanation: "The waiting time between two flights is called a 'layover'." },
+        { id: 9, question: "The rooms of the hotel were nice, but the fitness center was rather dingy / red-light / one-star.", options: ["dingy", "red-light", "one-star"], answer: "dingy", explanation: "A space characterized by darkness or lack of cleaning is described as 'dingy'." },
+        { id: 10, question: "The travel agency / organization / department is offering a great deal on a 5-day package in Miami.", options: ["agency", "organization", "department"], answer: "agency", explanation: "The business managing custom travel arrangements is a 'travel agency'." },
+        { id: 11, question: "We felt sick on the plane because the flight was really bumpy / seedy / messy.", options: ["bumpy", "seedy", "messy"], answer: "bumpy", explanation: "Turbulent operations are termed a 'bumpy flight'." },
+        { id: 12, question: "You should book / make / set your flight now, before prices go up.", options: ["book", "make", "set"], answer: "book", explanation: "To reserve and purchase airline tickets is to 'book your flight'." },
+        { id: 13, question: "Our vacation was a ________ experience from start to finish due to the bad weather and terrible service.", options: ["miserable", "sad", "uncomfortable"], answer: "miserable", explanation: "An extremely unpleasant trip represents a 'miserable experience'." },
+        { id: 14, question: "We accidentally booked a room at a ________ hotel in a shady neighborhood, and we felt unsafe.", options: ["seedy", "dirty", "low-star"], answer: "seedy", explanation: "An unsafe, untidy hotel in a questionable neighborhood is termed a 'seedy hotel'." },
+        { id: 15, question: "I couldn't sleep well last night because the bed had a highly ________ mattress.", options: ["uncomfortable", "rough", "hard"], answer: "uncomfortable", explanation: "A bed cushion that is difficult to sleep on is termed an 'uncomfortable mattress'." },
+        { id: 16, question: "While my colleagues stayed in a ________ hotel with a spa and pool, I was stuck in a tiny motel.", options: ["luxury", "rich", "five-point"], answer: "luxury", explanation: "The opposite of seedy, budget lodging is a 'luxury hotel'." },
+        { id: 17, question: "The flight home was fortunately ________, with no delays, turbulence, or issues with our bags.", options: ["uneventful", "normal", "boring"], answer: "uneventful", explanation: "A safe journey devoid of stress and complications is an 'uneventful trip'." },
+        { id: 18, question: "The airline ________ my luggage on the way to Paris, leaving me with no clothes for three days!", options: ["lost", "dropped", "wasted"], answer: "lost", explanation: "Misplaced baggage is categorized as 'lost luggage'." },
+        { id: 19, question: "After the long flight, I checked in early just to ________ a nap before the evening meetings.", options: ["take", "do", "make"], answer: "take", explanation: "The correct verb to pair with nap is 'take a nap'." },
+        { id: 20, question: "If you want to save money, it is better to make your own travel ________ instead of hiring a planner.", options: ["arrangements", "preparations", "decisions"], answer: "arrangements", explanation: "The standard plural phrasing for planning out itineraries is 'travel arrangements'." }
+      ],
+      activeCardId: 'business_trip',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    // Synthesize subtle user click/feedback beeps to increase UX immersion
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        if (type === 'click') {
+          osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+          osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.22);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'incorrect') {
+          osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+          osc.frequency.setValueAtTime(147, audioCtx.currentTime + 0.1); // D3
+          gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.28);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.28);
+        } else if (type === 'flip') {
+          osc.frequency.setValueAtTime(380, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(750, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('AudioContext synth block error:', e);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
+    });
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l18', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm"></i>';
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm"></i>';
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-50 text-indigo-700 dark:bg-brand-950/40 dark:text-indigo-300";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l18')) {
+        state.theme = localStorage.getItem('colloc_theme_l18');
+      }
+      if (localStorage.getItem('colloc_mastery_list_l18')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l18'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Mastery array parse error', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l18')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l18'));
+        } catch(e) {}
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l18', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          if (state.quizAnswers[q.id] === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l18', JSON.stringify(state.voiceSettings));
+      showToast('Config Saved', 'Speech voice parameters updated.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Speech synthesis is not supported on this device.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.target.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('business_trip');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Lesson Segment: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
+        showToast('Collocation Mastered', `Added "${term.phrase}" to your mastered bank!`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Study Mode', `Moved "${term.phrase}" back to study ledger.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const narrativeText = "Last week I had the worst business trip I've ever taken. Normally a travel agency takes care of booking my flight and making my hotel reservation, but this time I decided to make the travel arrangements myself. Big mistake! First of all, the plane was overbooked so I was bumped to a later flight. When they gave me my new boarding pass, they didn't ask me if I'd prefer a window seat or an aisle seat, and I was stuck in the middle. To top it off, it was a very bumpy flight. I then missed my connecting flight and had a ten-hour layover in Chicago. Unfortunately, my checked luggage had already gone through to my final destination, so all I had was my carry-on bag. I checked into a hotel near the airport just so I could take a nap. When I finally arrived in Los Angeles, it turns out that I had made a mistake with my hotel reservation, and instead of booking a room at a five-star hotel, I had booked three nights at a seedy hotel in the red-light district! So I was stuck sleeping on an uncomfortable mattress in a dingy room while my colleagues enjoyed the luxury hotel. The trip home was uneventful, but when I arrived I discovered that the airline had lost my luggage. All in all, it was a miserable experience.";
+      triggerTTS(narrativeText);
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'This is the first flashcard.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Limit Reached', 'Looping back to the first flashcard.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Well Done', `"${card.phrase}" is marked as Mastered!`);
+      }
+    }
+
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full ";
+        
+        if (!answered) {
+          btn.className += "bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-indigo-500 hover:bg-indigo-50/20 dark:hover:bg-indigo-950/20";
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          if (opt === quest.answer) {
+            btn.className += "bg-emerald-50 border-emerald-400 text-emerald-800 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (opt === userAns) {
+            btn.className += "bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-950/20 dark:border-rose-900/40 dark:text-rose-400";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+          } else {
+            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-600";
+          }
+        }
+        
+        if (!answered) {
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300"></i>`;
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs sm:text-sm font-bold transition";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Correct!', 'Nice job on selecting the appropriate collocation.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Incorrect', `Review the collocation structure.`, 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Travel Associate";
+      if (percentage === 100) rank = "Hotel Mogul";
+      else if (percentage >= 90) rank = "Airline Director";
+      else if (percentage >= 70) rank = "Travel Consultant";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['connecting flight', 'seedy hotel', 'boarding pass', 'travel arrangements', 'bumpy flight', 'checked luggage'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-200/50 dark:border-slate-800";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `To make sure I make the best travel arrangements, I always print my ${word} ahead of time...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Describe a travel strategy using: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Quick Word added', `Added "${randomColloc}" to workspace.`, 'fa-plus-circle');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Explain how someone can make efficient travel arrangements for a luxury trip.",
+        "Describe a situation where a person got bumped from an overbooked flight and missed their connection.",
+        "Write a review warning travelers about a seedy hotel in the red-light district.",
+        "Detail the process of checked luggage going missing after a bumpy flight."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Prompt Scenario: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; // Left blank as a generic fallback/user-input key standard
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Prompt', 'Please write a sentence before submitting.', 'fa-triangle-exclamation');
+        return;
+      }
+      
+      showToast('AI Analyzing', 'Sending sentence to the Gemini Collocation Oracle...', 'fa-wand-magic-sparkles');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical and lexical accuracy. Please wait...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Running verification metrics...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemInstruction = "You are an expert English Language Professor specializing in teaching collocations. Analyze the user's sentence and check if they used travel, airline, or hotel collocations correctly and naturally. Provide the output in a clean, professional, structured JSON format with the following keys: \"score\" (number from 0 to 100), \"analysis\" (short explanation of the grammar and naturalness of the sentence), \"isCollocationCorrect\" (boolean indicating if the collocation was used naturally), \"collocationFeedback\" (specific feedback about the collocations used), and \"alternatives\" (array of 1-2 improved versions of the sentence). Only return the raw JSON block without markdown wrappers.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Evaluate this text: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemInstruction }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 3 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`API returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 3) {
+            // Local parsing fallback engine in case of zero network key availability
+            console.warn('API Diagnostic simulated locally due to key restrictions.');
+            simulateLocalAnalysis(textValue);
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Your sentence is excellent as is!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+            badge.innerText = "Natural Collocation";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300";
+            badge.innerText = "Imperfect / Unnatural";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("JSON extraction error: ", jsonErr);
+          simulateLocalAnalysis(textValue);
+        }
+      }
+    }
+
+    function simulateLocalAnalysis(text) {
+      const lower = text.toLowerCase();
+      let matchedList = [];
+      state.collocations.forEach(c => {
+        if (lower.includes(c.phrase)) {
+          matchedList.push(c.phrase);
+        }
+      });
+
+      const score = matchedList.length > 0 ? 80 + (matchedList.length * 5) : 50;
+      const isCorrect = matchedList.length > 0;
+      
+      document.getElementById('diagnostic-score').innerText = Math.min(100, score);
+      document.getElementById('diagnostic-analysis').innerText = "Simulation Diagnostics: Analyzed sentence parameters locally. Good grammatical alignment.";
+      
+      if (isCorrect) {
+        document.getElementById('diagnostic-collocation-feedback').innerText = `Detected valid collocations: ${matchedList.join(', ')}. Natural integration standard.`;
+        document.getElementById('diagnostic-alternative-text').innerText = `To optimize transit, make sure your ${matchedList[0] || 'travel arrangements'} are confirmed at least 24 hours prior to departure.`;
+        const badge = document.getElementById('diagnostic-badge');
+        badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
+        badge.innerText = "Natural Collocation";
+        playSynthSound('correct');
+      } else {
+        document.getElementById('diagnostic-collocation-feedback').innerText = "Did not identify key Travel, Airline, or Lodging collocations. Try integrating 'business trip' or 'boarding pass' to align with Lesson 18.";
+        document.getElementById('diagnostic-alternative-text').innerText = "I made standard travel arrangements for my upcoming business trip.";
+        const badge = document.getElementById('diagnostic-badge');
+        badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300";
+        badge.innerText = "No Target Collocations Found";
+        playSynthSound('incorrect');
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Copied', 'Alternative sentence written to clipboard.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Podcast Paused";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "On Air - Live Broadcasting";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Show Wrap-up!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for listening to CollocaPodcast Lesson 18!";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., ${currentWord.example}`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-percent').innerText = `${Math.round(ratio)}% Completed`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Let's discuss our next travel collocation. It is: ${currentWord.phrase}. Tom, how do we use this?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-indigo-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-indigo-400">Host Sarah (Lead)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.0, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. A great example is: ${currentWord.example}`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-indigo-300">Host Tom (Co-host)</span>
+            <p class="text-xs text-slate-300">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.9, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No collocations matching the chosen filters found.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/60 dark:hover:bg-slate-850/40 transition border-b border-slate-100 dark:border-slate-800";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-950 dark:text-white capitalize cursor-pointer hover:underline hover:text-indigo-600 dark:hover:text-indigo-400" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-slate-950 text-white dark:bg-white dark:text-slate-950 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800/80 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to the browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>
