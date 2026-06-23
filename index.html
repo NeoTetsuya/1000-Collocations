@@ -81,6 +81,22 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-none {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    .card-fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
@@ -197,6 +213,80 @@
         <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
           Explore all available lessons. Each lesson includes interactive stories, flashcards, quizzes, and AI-powered practice tools.
         </p>
+      </div>
+      
+      <!-- Search, Filters and Progress Dashboard -->
+      <div class="mb-12 space-y-6">
+        <!-- Progress dashboard -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm">
+          <div class="flex items-center gap-4">
+            <div class="p-3 bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 rounded-xl">
+              <i class="fa-solid fa-fire text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Mastered</p>
+              <p class="text-2xl font-black text-slate-800 dark:text-white" id="stat-total-mastered">0</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 border-t sm:border-t-0 sm:border-x border-slate-100 dark:border-slate-700 sm:px-6 py-4 sm:py-0">
+            <div class="p-3 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-xl">
+              <i class="fa-solid fa-circle-check text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Lessons Started</p>
+              <p class="text-2xl font-black text-slate-800 dark:text-white" id="stat-lessons-started">0/43</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 border-t sm:border-t-0 border-slate-100 dark:border-slate-700 pt-4 sm:pt-0">
+            <div class="p-3 bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-xl">
+              <i class="fa-solid fa-trophy text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Mastered Lessons</p>
+              <p class="text-2xl font-black text-slate-800 dark:text-white" id="stat-lessons-completed">0/43</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search & Filters controls -->
+        <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+          <!-- Category Pills -->
+          <div class="flex flex-wrap gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-none snap-x">
+            <button onclick="filterCategory('all')" class="category-pill active flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-brand-600 text-white shadow-sm shadow-brand-500/20" data-cat="all">
+              <i class="fa-solid fa-list"></i>
+              <span>All</span>
+            </button>
+            <button onclick="filterCategory('life')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="life">
+              <i class="fa-solid fa-heart text-rose-500"></i>
+              <span>Life & Relationships</span>
+            </button>
+            <button onclick="filterCategory('society')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="society">
+              <i class="fa-solid fa-globe text-sky-500"></i>
+              <span>Society & World</span>
+            </button>
+            <button onclick="filterCategory('daily')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="daily">
+              <i class="fa-solid fa-utensils text-emerald-500"></i>
+              <span>Daily Life & Leisure</span>
+            </button>
+            <button onclick="filterCategory('work')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="work">
+              <i class="fa-solid fa-briefcase text-indigo-500"></i>
+              <span>Work & Education</span>
+            </button>
+            <button onclick="filterCategory('concepts')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="concepts">
+              <i class="fa-solid fa-brain text-purple-500"></i>
+              <span>Mind & Concepts</span>
+            </button>
+          </div>
+
+          <!-- Search Box -->
+          <div class="relative w-full md:w-80">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <input type="text" id="search-input" oninput="handleSearch()" placeholder="Search lessons..." class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+            <button id="search-clear-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+        </div>
       </div>
       
       <!-- Lessons Grid -->
@@ -1043,10 +1133,231 @@
 
     function updateThemeIcon(isDark) {
       const icon = document.getElementById('theme-icon');
-      icon.className = isDark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+      if (icon) {
+        icon.className = isDark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+      }
     }
 
-    // Initialize theme
+    // Category mapping configurations
+    const categoryMap = {
+      // Life & Relationships
+      1: 'life', 2: 'life', 3: 'life', 4: 'life', 5: 'life', 11: 'life',
+      // Daily Life & Leisure
+      6: 'daily', 7: 'daily', 8: 'daily', 9: 'daily', 10: 'daily', 18: 'daily', 19: 'daily', 29: 'daily', 30: 'daily',
+      // Work & Education
+      12: 'work', 13: 'work', 14: 'work', 15: 'work', 16: 'work', 17: 'work',
+      // Society & World
+      20: 'society', 21: 'society', 22: 'society', 23: 'society', 24: 'society', 25: 'society',
+      // Mind & Concepts
+      26: 'concepts', 27: 'concepts', 28: 'concepts', 31: 'concepts', 32: 'concepts', 33: 'concepts', 34: 'concepts', 35: 'concepts',
+      36: 'concepts', 37: 'concepts', 38: 'concepts', 39: 'concepts', 40: 'concepts', 41: 'concepts', 42: 'concepts', 43: 'concepts'
+    };
+
+    const categoriesConfig = {
+      life: {
+        name: 'Life & Relationships',
+        colorClass: 'bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-200/50 dark:border-rose-800/30 shadow-sm'
+      },
+      daily: {
+        name: 'Daily Life & Leisure',
+        colorClass: 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-800/30 shadow-sm'
+      },
+      work: {
+        name: 'Work & Education',
+        colorClass: 'bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/30 shadow-sm'
+      },
+      society: {
+        name: 'Society & World',
+        colorClass: 'bg-sky-50 dark:bg-sky-950/30 text-sky-600 dark:text-sky-400 border border-sky-200/50 dark:border-sky-800/30 shadow-sm'
+      },
+      concepts: {
+        name: 'Mind & Concepts',
+        colorClass: 'bg-purple-50 dark:bg-purple-950/30 text-purple-600 dark:text-purple-400 border border-purple-200/50 dark:border-purple-800/30 shadow-sm'
+      }
+    };
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function initLessonsNavigation() {
+      const cards = document.querySelectorAll('#lessons .grid a[href^="Lesson "]');
+      const cardsContainer = document.querySelector('#lessons .grid');
+
+      // Create "No results" message if it doesn't exist
+      let noResults = document.getElementById('no-results-msg');
+      if (!noResults && cardsContainer) {
+        noResults = document.createElement('div');
+        noResults.id = 'no-results-msg';
+        noResults.className = 'hidden col-span-full py-16 text-center text-slate-500 dark:text-slate-400';
+        noResults.innerHTML = `
+          <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-200 dark:border-slate-700 shadow-inner">
+            <i class="fa-solid fa-magnifying-glass text-2xl text-slate-400"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-1">No lessons found</h3>
+          <p class="text-sm">We couldn't find any lessons matching your criteria. Try adjusting your filters or search term.</p>
+        `;
+        cardsContainer.appendChild(noResults);
+      }
+
+      let totalMastered = 0;
+      let lessonsStarted = 0;
+      let lessonsCompleted = 0;
+
+      cards.forEach(card => {
+        const href = card.getAttribute('href');
+        const match = href.match(/Lesson\s+(\d+)\.html/);
+        if (!match) return;
+        
+        const num = parseInt(match[1]);
+        const cat = categoryMap[num] || 'concepts';
+        card.setAttribute('data-category', cat);
+        card.setAttribute('data-lesson-num', num);
+        
+        // Extract search keywords from card title and description
+        const titleEl = card.querySelector('h3');
+        const title = titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+        const descEl = card.querySelector('p');
+        const desc = descEl ? descEl.textContent.trim().toLowerCase() : '';
+        card.setAttribute('data-search-text', `lesson ${num} ${title} ${desc}`);
+
+        // Update card styles & layout dynamically
+        const badge = card.querySelector('span');
+        if (badge) {
+          const config = categoriesConfig[cat];
+          badge.className = `inline-flex px-2.5 py-0.5 rounded-full text-xs font-semibold ${config.colorClass} mb-2`;
+          badge.textContent = `L${num} • ${config.name}`;
+        }
+
+        // Get mastery list from localStorage
+        const key = num === 1 ? 'colloc_mastery_list' : `colloc_mastery_list_l${num}`;
+        const masteryStr = localStorage.getItem(key);
+        if (masteryStr) {
+          try {
+            const mastery = JSON.parse(masteryStr);
+            if (mastery && mastery.length > 0) {
+              totalMastered += mastery.length;
+              lessonsStarted++;
+              if (mastery.length >= 15) {
+                lessonsCompleted++;
+              }
+              
+              // Append a mastery progress badge next to the category tag
+              const headerDiv = badge ? badge.parentElement : null;
+              if (headerDiv) {
+                const progressBadge = document.createElement('span');
+                progressBadge.className = 'inline-flex items-center gap-1 ml-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-800/30 shadow-sm';
+                progressBadge.innerHTML = `<i class="fa-solid fa-circle-check text-[10px]"></i> ${mastery.length} Mastered`;
+                headerDiv.appendChild(progressBadge);
+              }
+            }
+          } catch(e) {
+            console.error('Error parsing progress for lesson ' + num, e);
+          }
+        }
+      });
+
+      // Update progress stats panel
+      const totalMasteredEl = document.getElementById('stat-total-mastered');
+      const lessonsStartedEl = document.getElementById('stat-lessons-started');
+      const lessonsCompletedEl = document.getElementById('stat-lessons-completed');
+
+      if (totalMasteredEl) totalMasteredEl.textContent = totalMastered;
+      if (lessonsStartedEl) lessonsStartedEl.textContent = `${lessonsStarted}/43`;
+      if (lessonsCompletedEl) lessonsCompletedEl.textContent = `${lessonsCompleted}/43`;
+    }
+
+    function filterCategory(cat) {
+      activeCategory = cat;
+      
+      // Update UI active states for category buttons
+      const buttons = document.querySelectorAll('.category-pill');
+      buttons.forEach(btn => {
+        const btnCat = btn.getAttribute('data-cat');
+        if (btnCat === cat) {
+          btn.className = 'category-pill active flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-brand-600 text-white shadow-sm shadow-brand-500/20';
+        } else {
+          btn.className = 'category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700';
+        }
+      });
+
+      applyFilters();
+    }
+
+    function handleSearch() {
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchQuery = searchInput.value.toLowerCase().trim();
+      }
+      
+      const clearBtn = document.getElementById('search-clear-btn');
+      if (clearBtn) {
+        if (searchQuery.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+
+      applyFilters();
+    }
+
+    function clearSearch() {
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      searchQuery = '';
+      const clearBtn = document.getElementById('search-clear-btn');
+      if (clearBtn) {
+        clearBtn.classList.add('hidden');
+      }
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll('#lessons .grid a[href^="Lesson "]');
+      const placeholderCard = document.querySelector('#lessons .grid .opacity-60');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const searchText = card.getAttribute('data-search-text') || '';
+        
+        const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
+        const matchesSearch = (searchQuery === '' || searchText.includes(searchQuery));
+
+        if (matchesCategory && matchesSearch) {
+          card.classList.remove('hidden');
+          card.classList.add('card-fade-in');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('card-fade-in');
+        }
+      });
+
+      // Handle placeholder card display
+      if (placeholderCard) {
+        if (activeCategory === 'all' && searchQuery === '') {
+          placeholderCard.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          placeholderCard.classList.add('hidden');
+        }
+      }
+
+      // Show/hide no results message
+      const noResults = document.getElementById('no-results-msg');
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    // Initialize theme and navigation
     window.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('colloc-theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1057,6 +1368,9 @@
       } else {
         updateThemeIcon(false);
       }
+
+      // Load card metadata and progress tracking
+      initLessonsNavigation();
     });
   </script>
 </body>
