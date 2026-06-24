@@ -97,6 +97,178 @@
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Grid vs List View toggle rules */
+    #lessons-grid.list-mode {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    #lessons-grid.list-mode > a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1.5rem;
+      border-radius: 1rem;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    
+    #lessons-grid.list-mode > a:hover {
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08) !important;
+      border-color: rgba(124, 58, 237, 0.3);
+    }
+    
+    #lessons-grid.list-mode > a > div:first-of-type {
+      margin-bottom: 0 !important;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 0 0 35%;
+      min-width: 0;
+    }
+    
+    #lessons-grid.list-mode > a > div:first-of-type > i {
+      order: -1;
+      margin-bottom: 0;
+      font-size: 1.25rem !important;
+      flex-shrink: 0;
+    }
+    
+    #lessons-grid.list-mode > a > div:first-of-type > div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      min-width: 0;
+      width: 100%;
+    }
+    
+    #lessons-grid.list-mode > a > div:first-of-type > div > span {
+      margin-bottom: 0 !important;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    
+    #lessons-grid.list-mode > a > div:first-of-type > div > h3 {
+      font-size: 1.05rem !important;
+      margin-top: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 700;
+    }
+    
+    #lessons-grid.list-mode > a > p {
+      margin-bottom: 0 !important;
+      font-size: 0.85rem;
+      flex: 1 1 50%;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    #lessons-grid.list-mode > a > div:last-of-type {
+      flex: 0 0 auto;
+      margin-top: 0;
+    }
+    
+    #lessons-grid.list-mode #placeholder-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1.5rem;
+      border-radius: 1rem;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > div:first-of-type {
+      margin-bottom: 0 !important;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 0 0 35%;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > div:first-of-type > i {
+      order: -1;
+      font-size: 1.25rem !important;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > div:first-of-type > div {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > div:first-of-type > div > span {
+      margin-bottom: 0 !important;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > div:first-of-type > div > h3 {
+      font-size: 1.05rem !important;
+      font-weight: 700;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > p {
+      margin-bottom: 0 !important;
+      font-size: 0.85rem;
+      flex: 1 1 50%;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    #lessons-grid.list-mode #placeholder-card > div:last-of-type {
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      #lessons-grid.list-mode > a, 
+      #lessons-grid.list-mode #placeholder-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem !important;
+      }
+      
+      #lessons-grid.list-mode > a > div:first-of-type,
+      #lessons-grid.list-mode #placeholder-card > div:first-of-type {
+        width: 100%;
+        justify-content: space-between;
+        flex: 1 1 auto;
+      }
+      
+      #lessons-grid.list-mode > a > div:first-of-type > div,
+      #lessons-grid.list-mode #placeholder-card > div:first-of-type > div {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      #lessons-grid.list-mode > a > p,
+      #lessons-grid.list-mode #placeholder-card > p {
+        padding-left: 0;
+        padding-right: 0;
+        white-space: normal;
+        flex: 1 1 auto;
+      }
+      
+      #lessons-grid.list-mode > a > div:last-of-type,
+      #lessons-grid.list-mode #placeholder-card > div:last-of-type {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
   </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
@@ -215,82 +387,138 @@
         </p>
       </div>
       
-      <!-- Search, Filters and Progress Dashboard -->
-      <div class="mb-12 space-y-6">
-        <!-- Progress dashboard -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm">
+      <!-- Progress & Overall Completion Dashboard -->
+      <div class="mb-8 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-6 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Left: Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full md:w-3/5">
+          <!-- Total Mastered Card -->
           <div class="flex items-center gap-4">
-            <div class="p-3 bg-brand-100 dark:bg-brand-950 text-brand-600 dark:text-brand-400 rounded-xl">
+            <div class="p-3.5 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl border border-brand-500/20">
               <i class="fa-solid fa-fire text-xl"></i>
             </div>
             <div>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Mastered</p>
-              <p class="text-2xl font-black text-slate-800 dark:text-white" id="stat-total-mastered">0</p>
+              <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total Mastered</p>
+              <p class="text-2xl font-black text-slate-900 dark:text-white mt-0.5" id="stat-total-mastered">0</p>
             </div>
           </div>
-          <div class="flex items-center gap-4 border-t sm:border-t-0 sm:border-x border-slate-100 dark:border-slate-700 sm:px-6 py-4 sm:py-0">
-            <div class="p-3 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 rounded-xl">
-              <i class="fa-solid fa-circle-check text-xl"></i>
+          <!-- Lessons Started Card -->
+          <div class="flex items-center gap-4 border-t sm:border-t-0 sm:border-x border-slate-200/50 dark:border-slate-800/50 sm:px-6 py-4 sm:py-0">
+            <div class="p-3.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl border border-emerald-500/20">
+              <i class="fa-solid fa-book-open text-xl"></i>
             </div>
             <div>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Lessons Started</p>
-              <p class="text-2xl font-black text-slate-800 dark:text-white" id="stat-lessons-started">0/43</p>
+              <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Lessons Started</p>
+              <p class="text-2xl font-black text-slate-900 dark:text-white mt-0.5" id="stat-lessons-started">0/43</p>
             </div>
           </div>
-          <div class="flex items-center gap-4 border-t sm:border-t-0 border-slate-100 dark:border-slate-700 pt-4 sm:pt-0">
-            <div class="p-3 bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 rounded-xl">
+          <!-- Mastered Lessons Card -->
+          <div class="flex items-center gap-4 border-t sm:border-t-0 border-slate-200/50 dark:border-slate-800/50 pt-4 sm:pt-0">
+            <div class="p-3.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl border border-amber-500/20">
               <i class="fa-solid fa-trophy text-xl"></i>
             </div>
             <div>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Mastered Lessons</p>
-              <p class="text-2xl font-black text-slate-800 dark:text-white" id="stat-lessons-completed">0/43</p>
+              <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Mastered Lessons</p>
+              <p class="text-2xl font-black text-slate-900 dark:text-white mt-0.5" id="stat-lessons-completed">0/43</p>
             </div>
           </div>
         </div>
+        
+        <!-- Right: Linear progress widget -->
+        <div class="w-full md:w-2/5 flex flex-col justify-center p-5 bg-gradient-to-br from-brand-50/50 to-indigo-50/50 dark:from-brand-950/20 dark:to-indigo-950/20 rounded-2xl border border-brand-500/10 dark:border-brand-500/5">
+          <div class="flex justify-between items-center text-xs font-bold uppercase tracking-wide mb-2">
+            <span class="text-slate-500 dark:text-slate-400">Curriculum Completion</span>
+            <span id="overall-percentage" class="text-brand-600 dark:text-brand-400 font-mono text-sm">0%</span>
+          </div>
+          <div class="w-full bg-slate-200 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden shadow-inner">
+            <div id="overall-progress-bar" class="bg-gradient-to-r from-brand-500 via-indigo-500 to-cyan-500 h-full rounded-full transition-all duration-700 shadow-md" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
 
-        <!-- Search & Filters controls -->
-        <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <!-- Sleek Control Panel -->
+      <div class="mb-8 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl p-4 sm:p-5 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-sm space-y-4">
+        <!-- Row 1: Category Filter Pills + View Switcher -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <!-- Category Pills -->
-          <div class="flex flex-wrap gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-none snap-x">
-            <button onclick="filterCategory('all')" class="category-pill active flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-brand-600 text-white shadow-sm shadow-brand-500/20" data-cat="all">
+          <div class="flex flex-wrap gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none snap-x w-full lg:max-w-4xl">
+            <button onclick="filterCategory('all')" class="category-pill active flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-brand-600 text-white shadow-sm shadow-brand-500/20 shrink-0" data-cat="all">
               <i class="fa-solid fa-list"></i>
-              <span>All</span>
+              <span>All Lessons</span>
             </button>
-            <button onclick="filterCategory('life')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="life">
+            <button onclick="filterCategory('life')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60 shrink-0" data-cat="life">
               <i class="fa-solid fa-heart text-rose-500"></i>
               <span>Life & Relationships</span>
             </button>
-            <button onclick="filterCategory('society')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="society">
+            <button onclick="filterCategory('society')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60 shrink-0" data-cat="society">
               <i class="fa-solid fa-globe text-sky-500"></i>
               <span>Society & World</span>
             </button>
-            <button onclick="filterCategory('daily')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="daily">
+            <button onclick="filterCategory('daily')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60 shrink-0" data-cat="daily">
               <i class="fa-solid fa-utensils text-emerald-500"></i>
               <span>Daily Life & Leisure</span>
             </button>
-            <button onclick="filterCategory('work')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="work">
+            <button onclick="filterCategory('work')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60 shrink-0" data-cat="work">
               <i class="fa-solid fa-briefcase text-indigo-500"></i>
               <span>Work & Education</span>
             </button>
-            <button onclick="filterCategory('concepts')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-cat="concepts">
+            <button onclick="filterCategory('concepts')" class="category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60 shrink-0" data-cat="concepts">
               <i class="fa-solid fa-brain text-purple-500"></i>
               <span>Mind & Concepts</span>
             </button>
           </div>
 
+          <!-- View Mode Switcher -->
+          <div class="flex items-center gap-1.5 p-1 bg-slate-150 dark:bg-slate-900 rounded-xl border border-slate-200/50 dark:border-slate-800/50 shrink-0 self-end lg:self-center">
+            <button id="btn-view-grid" onclick="switchViewMode('grid')" class="flex h-9 w-9 items-center justify-center rounded-lg text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-800 shadow-sm border border-slate-200/40 dark:border-slate-700/40 transition" title="Grid View">
+              <i class="fa-solid fa-th-large text-sm"></i>
+            </button>
+            <button id="btn-view-list" onclick="switchViewMode('list')" class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition" title="List View">
+              <i class="fa-solid fa-list text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 2: Search, Status Filter & Sorting -->
+        <div class="flex flex-col sm:flex-row items-center gap-3">
           <!-- Search Box -->
-          <div class="relative w-full md:w-80">
+          <div class="relative w-full sm:flex-1">
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-            <input type="text" id="search-input" oninput="handleSearch()" placeholder="Search lessons..." class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+            <input type="text" id="search-input" oninput="handleSearch()" placeholder="Search title, description or keyword..." class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:focus:ring-brand-500/20 transition">
             <button id="search-clear-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
               <i class="fa-solid fa-circle-xmark"></i>
             </button>
+          </div>
+
+          <!-- Status Filter Dropdown -->
+          <div class="relative w-full sm:w-48 shrink-0">
+            <select id="status-select" onchange="filterStatus(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-700 dark:text-slate-350 outline-none focus:ring-2 focus:ring-brand-500/25 transition cursor-pointer appearance-none">
+              <option value="all">All Progress Statuses</option>
+              <option value="unstarted">Not Started Only</option>
+              <option value="started">In Progress Only</option>
+              <option value="mastered">Mastered Lessons Only</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <i class="fa-solid fa-chevron-down text-xs"></i>
+            </div>
+          </div>
+
+          <!-- Sorting Dropdown -->
+          <div class="relative w-full sm:w-48 shrink-0">
+            <select id="sort-select" onchange="sortLessons(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-700 dark:text-slate-350 outline-none focus:ring-2 focus:ring-brand-500/25 transition cursor-pointer appearance-none">
+              <option value="num-asc">Lesson Number: 1 to 50</option>
+              <option value="num-desc">Lesson Number: 50 to 1</option>
+              <option value="title-asc">Lesson Title: A to Z</option>
+              <option value="title-desc">Lesson Title: Z to A</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+              <i class="fa-solid fa-chevron-down text-xs"></i>
+            </div>
           </div>
         </div>
       </div>
       
       <!-- Lessons Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="lessons-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Lesson 1 -->
         <a href="Lesson 1.html" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-shadow">
@@ -697,11 +925,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 26</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Time Horology</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Time Management</h3>
             </div>
-            <i class="fa-solid fa-hourglass-half text-2xl text-teal-500 group-hover:text-teal-600 transition"></i>
+            <i class="fa-solid fa-clock text-2xl text-amber-500 group-hover:text-amber-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "free time", "spare time", "spend time".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "in a rush", "take your time", "waste time".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -713,11 +941,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 27</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Clichés & Expressions</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Sound & Silence</h3>
             </div>
-            <i class="fa-solid fa-feather text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
+            <i class="fa-solid fa-volume-high text-2xl text-sky-500 group-hover:text-sky-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "truth be told", "uphill battle", "play it safe".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "lovely sound", "soft sound", "horrible screeching sounds".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -731,7 +959,7 @@
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 28</span>
               <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Metaphors</h3>
             </div>
-            <i class="fa-solid fa-lightbulb text-2xl text-slate-400 group-hover:text-brand-600 transition"></i>
+            <i class="fa-solid fa-lightbulb text-2xl text-amber-500 group-hover:text-amber-600 transition"></i>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "sunny smile", "warm welcome", "cold stare".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
@@ -749,7 +977,7 @@
             </div>
             <i class="fa-solid fa-cloud-sun text-2xl text-amber-500 group-hover:text-amber-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "bright light", "strong light", "faint light".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "the sun is shining", "blinding sunlight", "weak sunlight".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -761,11 +989,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 30</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Darkness</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Color</h3>
             </div>
-            <i class="fa-solid fa-ghost text-2xl text-slate-700 group-hover:text-slate-800 transition"></i>
+            <i class="fa-solid fa-palette text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "pitch dark", "pitch black", "complete darkness".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "light brown", "dark brown", "bright red".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -777,11 +1005,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 31</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Agree & Disagree</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Texture</h3>
             </div>
-            <i class="fa-solid fa-scale-balanced text-2xl text-brand-600 group-hover:text-brand-700 transition"></i>
+            <i class="fa-solid fa-fingerprint text-2xl text-teal-500 group-hover:text-teal-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "share an opinion", "share a view", "agree completely".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "dry hair", "oily hair", "greasy hair".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -793,11 +1021,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 32</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Belief & Doubt</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Olfactory</h3>
             </div>
-            <i class="fa-solid fa-circle-nodes text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
+            <i class="fa-solid fa-wind text-2xl text-emerald-500 group-hover:text-emerald-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "strongly believe", "firmly believe", "deeply-held belief".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "aroma", "scent", "fragrance".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -809,11 +1037,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 33</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Deciding & Choosing</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Taste & Sensation</h3>
             </div>
-            <i class="fa-solid fa-circle-nodes text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
+            <i class="fa-solid fa-cookie-bite text-2xl text-rose-500 group-hover:text-rose-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make a decision", "make a choice", "choose between".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "tastes good", "tastes bad", "sweet taste".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -825,11 +1053,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 34</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Claiming & Denying</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Statistics</h3>
             </div>
-            <i class="fa-solid fa-camera-retro text-2xl text-slate-400 group-hover:text-brand-600 transition"></i>
+            <i class="fa-solid fa-chart-line text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make a claim", "substantiate your claim", "baseless claims".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "large number of people", "significant number of countries", "tiny number of computers".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -841,11 +1069,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 35</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Talking & Speaking</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Movement & Speed</h3>
             </div>
-            <i class="fa-solid fa-sliders text-2xl text-slate-400 group-hover:text-brand-600 transition"></i>
+            <i class="fa-solid fa-gauge-high text-2xl text-rose-500 group-hover:text-rose-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make small talk", "brief chat", "deep conversation".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "fast car", "fast train", "fast runner".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -857,11 +1085,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 36</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Starting & Ending</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Changes</h3>
             </div>
-            <i class="fa-solid fa-flag-checkered text-2xl text-slate-400 group-hover:text-brand-600 transition"></i>
+            <i class="fa-solid fa-arrows-rotate text-2xl text-emerald-500 group-hover:text-emerald-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "promising start", "initial stages", "abrupt end".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make adjustments", "make alterations", "revolutionize".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -877,7 +1105,7 @@
             </div>
             <i class="fa-solid fa-comments text-2xl text-sky-500 group-hover:text-sky-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make small talk", "strike up a conversation", "make comments".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make small talk", "strike up a conversation", "apologize profusely".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -891,9 +1119,9 @@
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 38</span>
               <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Truth & Lies</h3>
             </div>
-            <i class="fa-solid fa-circle-nodes text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
+            <i class="fa-solid fa-scale-balanced text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "perfectly honest", "honest mistake", "tell the truth".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "perfectly honest", "honest mistake", "fabricate a story".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -905,11 +1133,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 39</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Agreeing & Disagreeing</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Success & Failure</h3>
             </div>
-            <i class="fa-solid fa-circle-nodes text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
+            <i class="fa-solid fa-trophy text-2xl text-amber-500 group-hover:text-amber-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "agree wholeheartedly", "share an opinion", "share a view".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "phenomenal success", "crowning achievement", "fail miserably".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -921,11 +1149,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 40</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Beliefs & Doubts</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Cause & Effect</h3>
             </div>
-            <i class="fa-solid fa-circle-nodes text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
+            <i class="fa-solid fa-bolt text-2xl text-rose-500 group-hover:text-rose-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "strongly believe", "firm belief", "deep-seated belief".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "cause damage", "significant impact", "inevitable result".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -937,11 +1165,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 41</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Decisions & Conclusions</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Memories</h3>
             </div>
-            <i class="fa-solid fa-code-merge text-2xl text-indigo-500 group-hover:text-indigo-600 transition"></i>
+            <i class="fa-solid fa-camera text-2xl text-sky-500 group-hover:text-sky-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make a decision", "make up your mind", "keep an open mind".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "earliest memory", "bring back fond memories", "mind went blank".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -953,11 +1181,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 42</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Problems & Solutions</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Agreeing & Disagreeing</h3>
             </div>
-            <i class="fa-solid fa-triangle-exclamation text-2xl text-amber-500 group-hover:text-amber-600 transition"></i>
+            <i class="fa-solid fa-handshake text-2xl text-teal-500 group-hover:text-teal-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "encounter problems", "face problems", "run into difficulties".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "agree wholeheartedly", "difference of opinion", "reach a compromise".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -969,11 +1197,11 @@
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSON 43</span>
-              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Claiming & Denying</h3>
+              <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Beliefs & Doubts</h3>
             </div>
-            <i class="fa-solid fa-scale-balanced text-2xl text-brand-600 group-hover:text-brand-700 transition"></i>
+            <i class="fa-solid fa-brain text-2xl text-purple-500 group-hover:text-purple-600 transition"></i>
           </div>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "make claims", "claim responsibility", "dispute the claim".</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Learn key collocations like "strongly believe", "beyond a shadow of a doubt", "sneaking suspicion".</p>
           <div class="flex items-center gap-2 text-xs font-semibold text-brand-600 dark:text-brand-400">
             <span>Learn More</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -981,7 +1209,7 @@
         </a>
 
         <!-- Placeholder Lessons 44-50 -->
-        <div class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
+        <div id="placeholder-card" class="card-hover group bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm opacity-60">
           <div class="flex items-start justify-between mb-4">
             <div class="flex-1">
               <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 mb-2">LESSONS 44-50</span>
@@ -1178,10 +1406,12 @@
 
     let activeCategory = 'all';
     let searchQuery = '';
+    let activeStatus = 'all';
+    let currentSort = 'num-asc';
 
     function initLessonsNavigation() {
-      const cards = document.querySelectorAll('#lessons .grid a[href^="Lesson "]');
-      const cardsContainer = document.querySelector('#lessons .grid');
+      const cards = document.querySelectorAll('#lessons a[href^="Lesson "]');
+      const cardsContainer = document.getElementById('lessons-grid');
 
       // Create "No results" message if it doesn't exist
       let noResults = document.getElementById('no-results-msg');
@@ -1231,14 +1461,17 @@
         // Get mastery list from localStorage
         const key = num === 1 ? 'colloc_mastery_list' : `colloc_mastery_list_l${num}`;
         const masteryStr = localStorage.getItem(key);
+        let cardStatus = 'unstarted';
         if (masteryStr) {
           try {
             const mastery = JSON.parse(masteryStr);
             if (mastery && mastery.length > 0) {
               totalMastered += mastery.length;
               lessonsStarted++;
+              cardStatus = 'started';
               if (mastery.length >= 15) {
                 lessonsCompleted++;
+                cardStatus = 'mastered';
               }
               
               // Append a mastery progress badge next to the category tag
@@ -1254,6 +1487,7 @@
             console.error('Error parsing progress for lesson ' + num, e);
           }
         }
+        card.setAttribute('data-mastery-status', cardStatus);
       });
 
       // Update progress stats panel
@@ -1264,6 +1498,50 @@
       if (totalMasteredEl) totalMasteredEl.textContent = totalMastered;
       if (lessonsStartedEl) lessonsStartedEl.textContent = `${lessonsStarted}/43`;
       if (lessonsCompletedEl) lessonsCompletedEl.textContent = `${lessonsCompleted}/43`;
+
+      // Update overall progress bar
+      const overallPercent = Math.round((lessonsCompleted / 43) * 100);
+      const overallPercentageEl = document.getElementById('overall-percentage');
+      const overallProgressBarEl = document.getElementById('overall-progress-bar');
+      
+      if (overallPercentageEl) overallPercentageEl.textContent = `${overallPercent}%`;
+      if (overallProgressBarEl) overallProgressBarEl.style.width = `${overallPercent}%`;
+
+      // Apply initial view mode
+      const savedViewMode = localStorage.getItem('colloc-view-mode') || 'grid';
+      switchViewMode(savedViewMode);
+    }
+
+    function switchViewMode(mode) {
+      const container = document.getElementById('lessons-grid');
+      const btnGrid = document.getElementById('btn-view-grid');
+      const btnList = document.getElementById('btn-view-list');
+      
+      if (!container) return;
+      
+      localStorage.setItem('colloc-view-mode', mode);
+      
+      if (mode === 'list') {
+        container.classList.remove('grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'gap-6');
+        container.classList.add('list-mode');
+        
+        if (btnList) {
+          btnList.className = 'flex h-9 w-9 items-center justify-center rounded-lg text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-800 shadow-sm border border-slate-200/40 dark:border-slate-700/40 transition';
+        }
+        if (btnGrid) {
+          btnGrid.className = 'flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition';
+        }
+      } else {
+        container.classList.add('grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'gap-6');
+        container.classList.remove('list-mode');
+        
+        if (btnGrid) {
+          btnGrid.className = 'flex h-9 w-9 items-center justify-center rounded-lg text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-800 shadow-sm border border-slate-200/40 dark:border-slate-700/40 transition';
+        }
+        if (btnList) {
+          btnList.className = 'flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition';
+        }
+      }
     }
 
     function filterCategory(cat) {
@@ -1274,13 +1552,59 @@
       buttons.forEach(btn => {
         const btnCat = btn.getAttribute('data-cat');
         if (btnCat === cat) {
-          btn.className = 'category-pill active flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-brand-600 text-white shadow-sm shadow-brand-500/20';
+          btn.className = 'category-pill active flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-brand-600 text-white shadow-sm shadow-brand-500/20 shrink-0';
         } else {
-          btn.className = 'category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700';
+          btn.className = 'category-pill flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700/60 shrink-0';
         }
       });
 
       applyFilters();
+    }
+
+    function filterStatus(status) {
+      activeStatus = status;
+      
+      // Update UI active sort select
+      const select = document.getElementById('status-select');
+      if (select && select.value !== status) {
+        select.value = status;
+      }
+      
+      applyFilters();
+    }
+
+    function sortLessons(criteria) {
+      currentSort = criteria;
+      const container = document.getElementById('lessons-grid');
+      if (!container) return;
+
+      const cards = Array.from(container.querySelectorAll('a[href^="Lesson "]'));
+      
+      cards.sort((a, b) => {
+        if (criteria === 'num-asc' || criteria === 'num-desc') {
+          const numA = parseInt(a.getAttribute('data-lesson-num') || 0);
+          const numB = parseInt(b.getAttribute('data-lesson-num') || 0);
+          return criteria === 'num-asc' ? numA - numB : numB - numA;
+        } else if (criteria === 'title-asc' || criteria === 'title-desc') {
+          const titleA = (a.querySelector('h3')?.textContent || '').trim().toLowerCase();
+          const titleB = (b.querySelector('h3')?.textContent || '').trim().toLowerCase();
+          return criteria === 'title-asc' ? titleA.localeCompare(titleB) : titleB.localeCompare(titleA);
+        }
+        return 0;
+      });
+
+      cards.forEach(card => container.appendChild(card));
+      
+      const placeholder = document.getElementById('placeholder-card');
+      if (placeholder) {
+        container.appendChild(placeholder);
+      }
+      
+      // Update UI active sort select
+      const select = document.getElementById('sort-select');
+      if (select && select.value !== criteria) {
+        select.value = criteria;
+      }
     }
 
     function handleSearch() {
@@ -1315,18 +1639,20 @@
     }
 
     function applyFilters() {
-      const cards = document.querySelectorAll('#lessons .grid a[href^="Lesson "]');
-      const placeholderCard = document.querySelector('#lessons .grid .opacity-60');
+      const cards = document.querySelectorAll('#lessons a[href^="Lesson "]');
+      const placeholderCard = document.getElementById('placeholder-card');
       let visibleCount = 0;
 
       cards.forEach(card => {
         const cat = card.getAttribute('data-category');
         const searchText = card.getAttribute('data-search-text') || '';
+        const status = card.getAttribute('data-mastery-status') || 'unstarted';
         
         const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
         const matchesSearch = (searchQuery === '' || searchText.includes(searchQuery));
+        const matchesStatus = (activeStatus === 'all' || status === activeStatus);
 
-        if (matchesCategory && matchesSearch) {
+        if (matchesCategory && matchesSearch && matchesStatus) {
           card.classList.remove('hidden');
           card.classList.add('card-fade-in');
           visibleCount++;
@@ -1338,7 +1664,7 @@
 
       // Handle placeholder card display
       if (placeholderCard) {
-        if (activeCategory === 'all' && searchQuery === '') {
+        if (activeCategory === 'all' && searchQuery === '' && activeStatus === 'all') {
           placeholderCard.classList.remove('hidden');
           visibleCount++;
         } else {

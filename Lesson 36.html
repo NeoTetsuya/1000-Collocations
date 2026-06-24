@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 36: Starting & Ending Lab</title>
+  <title>CollocaStudy - Lesson 36: Changes Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Space, Launch, and Clockwork Icons -->
+  <!-- FontAwesome for Metamorphosis, Change, and Transition Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Starlight Launch Control theme -->
+  <!-- Configuring Tailwind theme options for the Metamorphosis/Changes theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -27,17 +27,17 @@
           },
           colors: {
             brand: {
-              50: '#fffbeb', 
-              100: '#fef3c7',
-              200: '#fde68a',
-              300: '#fcd34d',
-              400: '#fbbf24',
-              500: '#f97316', /* Ignition Solar Orange */
-              600: '#ea580c',
-              700: '#c2410c', 
-              800: '#9a3412',
-              900: '#030712', /* Deep Midnight Void */
-              950: '#010208'
+              50: '#f5f3ff', 
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c084fc',
+              400: '#a855f7',
+              500: '#8b5cf6', /* Metamorphosis Violet */
+              600: '#7c3aed',
+              700: '#6d28d9', 
+              800: '#5b21b6',
+              900: '#0c0721', /* Deep Midnight Indigo */
+              950: '#03020c'
             }
           }
         }
@@ -46,7 +46,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching cosmic styling */
+    /* Premium Metamorphosis Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -55,11 +55,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #f97316;
+      background: #8b5cf6;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #ea580c;
+      background: #7c3aed;
     }
     
     /* Smooth interactive transitions */
@@ -67,7 +67,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* 3D Card Flip styling */
+    /* 3D Card Flip styling for Flashcards */
     .card-perspective {
       perspective: 1000px;
     }
@@ -95,57 +95,57 @@
       animation: wave-bounce 1s ease-in-out infinite;
     }
     
-    /* Cosmic particle/star twinkle animations */
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.15; transform: scale(0.95); }
-      50% { opacity: 0.45; transform: scale(1.05); }
+    /* State transition ambient pulse */
+    @keyframes shift-pulse {
+      0%, 100% { opacity: 0.15; transform: scale(0.98); }
+      50% { opacity: 0.3; transform: scale(1.02); }
     }
-    .cosmic-drift-glow {
-      animation: twinkle 14s infinite ease-in-out;
+    .shift-drift-glow {
+      animation: shift-pulse 10s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-brand-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Interactive HTML5 Starfield & Trajectory Canvas Background -->
-    <canvas id="observatory-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-20"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/30 via-slate-950/20 to-slate-950 pointer-events-none z-0 cosmic-drift-glow"></div>
+    <!-- Interactive Liquid Metamorphosis Background Canvas -->
+    <canvas id="liquid-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-20 dark:opacity-30"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/30 via-slate-950/10 to-slate-950 pointer-events-none z-0 shift-drift-glow"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-brand-200 dark:border-slate-800 bg-white/80 dark:bg-brand-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-950 text-white shadow-md shadow-brand-500/20">
-          <i class="fa-solid fa-hourglass-start text-lg animate-spin-slow"></i>
+          <i class="fa-solid fa-arrows-spin text-lg animate-spin-slow"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-400 to-amber-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20 font-mono">Launch Control</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-violet-500 dark:from-brand-300 dark:to-violet-400 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-700 dark:text-brand-300 border border-brand-500/20 font-mono">Changes Lab</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-flag-checkered text-brand-400"></i>
-        <h1 class="font-heading font-bold text-slate-100">Lesson 36: Starting & Ending</h1>
+        <i class="fa-solid fa-rotate text-brand-500 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-700 dark:text-slate-200">Lesson 36: Changes</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-350 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-brand-100/50 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates timeline recalibration) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-355 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Recalibrate Timelines">
-          <i class="fa-solid fa-arrows-spin text-sm text-brand-400"></i>
+        <!-- Light / Dark Mode Toggle Button -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-brand-100/50 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Switch Theme">
+          <i class="fa-solid fa-moon text-sm text-brand-500"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
+        <div class="flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 py-1.5 border border-brand-200 dark:border-slate-800">
           <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Mastered</span>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-300" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -154,98 +154,104 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-brand-200 dark:border-slate-800 bg-white/70 dark:bg-brand-900/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Temporal Phases</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Transitions</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
-            <i class="fa-solid fa-timeline text-base"></i>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
             <span>Dossier & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-brand-100/50 dark:hover:bg-slate-800 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-clone text-base"></i>
-            <span>Transmitter Deck</span>
+            <span>Transmuter Deck</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-brand-100/50 dark:hover:bg-slate-800 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-circle-nodes text-base"></i>
-            <span>Launch Exam</span>
+            <span>Evolution Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-brand-100/50 dark:hover:bg-slate-800 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-brand-100/50 dark:hover:bg-slate-800 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-brand-100/50 dark:hover:bg-slate-800 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Genesis Ledger</span>
+            <span>Modifications Ledger</span>
           </button>
         </div>
         
-        <!-- User Mission Credentials Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
+        <!-- User State Clearance Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-brand-50 to-brand-100 dark:from-slate-900 dark:to-slate-850 p-4 border border-brand-200 dark:border-slate-800 relative overflow-hidden">
           <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-shield-halved text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Flight Clearance</span>
+            <i class="fa-solid fa-sliders text-brand-500 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Adaptation Standing</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">Map initial and terminal coordinates. Complete tasks to elevate to the Grand Commander ranking!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed font-medium">Map structural changes and modify expressions. Master rules to secure prestigious accolades!</p>
         </div>
       </nav>
 
       <!-- Main Scrollable Content Panel -->
       <main class="flex-1 overflow-y-auto relative h-full">
         
-        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <!-- ==================== VIEW 1: DOSSIER & GLOSSARY ==================== -->
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-shuttle-space text-slate-700/60 text-lg animate-bounce"></i>
+            <!-- Left Side: Interactive Dossier -->
+            <div class="xl:col-span-7 bg-white/95 dark:bg-brand-900/90 rounded-3xl p-6 md:p-8 border border-brand-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-brand-200 dark:border-slate-800 bg-gradient-to-tr from-slate-100 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-arrows-spin text-brand-500/60 dark:text-slate-700/60 text-lg"></i>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-brand-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Launch of Horizon 1</h2>
-                  <p class="text-xs text-slate-400 mt-1">Sift through beginnings, terminations, and outcomes. Click highlighted collocations to pull up glossary cards.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Rules of Changes</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Study how physical state adjustments, alterations, and transformations occur. Click words to pronounce and analyze them.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
                   <i class="fa-solid fa-volume-high"></i>
                   <span>Broadcast Address</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 tracking-wide space-y-6 relative z-10 animate-fade-in">
+              <!-- Story Text synchronized directly with Lesson 36 curriculum (Changes) -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6 relative z-10">
                 <p>
-                  The launch of the Horizon 1 spacecraft represents the <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="dawn_new_era">dawn of a new era</span> in deep-space exploration. We are still in the <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="initial_stages">initial stages</span> of the mission, but the countdown has already <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="flying_start">gotten off to a flying start</span> with the main thrusters firing perfectly. Our <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="ultimate_goal">ultimate goal</span> is to reach the outer rims of the Solar System, though our <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="final_destination">final destination</span> is still years away.
+                  To talk about making small changes, you can say <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_adjustments">make adjustments</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_alterations">make alterations</span>, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_modifications">make modifications</span>. More informally, you can say <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_tweaks">make tweaks</span> — "We made a few tweaks to the website."
                 </p>
                 <p>
-                  Before liftoff, our software engineering team worked day and night on the guidance code. The <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="first_draft">first draft</span> of the telemetry script was riddled with bugs, but after rigorous diagnostic sweeps, they compiled the <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="final_draft">final draft</span> just in time. The pre-launch simulations provided excellent <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="preliminary_results">preliminary results</span>, ensuring our guidance metrics were flawless.
+                  To talk about bigger changes, you can use the verbs "transform" and "revolutionize": The internet has <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="revolutionize">revolutionized</span> the way people communicate. The city <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="transform_into">transformed</span> the vacant lot <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="transform_into">into</span> a playground (you usually "transform" one thing "into" something else).
                 </p>
                 <p>
-                  Of course, space flight is filled with high stakes; a minor hardware anomaly can bring the entire voyage to an <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="abrupt_end">abrupt end</span>. Any atmospheric rupture would put an <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="untimely_death">untimely end</span> to our hopes. Instead of worrying, we decided to trust our calibrations. Our team was sick of past failures, and this mission offered a clean slate to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_fresh_start">make a fresh start</span>.
+                  When you put on different clothes, you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="change_clothes">change your clothes</span>. When you remove a baby's dirty diaper and put on a clean one, you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="change_diaper">change the baby's diaper</span>. When you reverse a decision or opinion, then you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="change_mind">change your mind</span>. And when you introduce a different topic of conversation, then you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="change_subject">change the subject</span>. When you change your religion, then we often use the verb "convert": I <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="convert_to">converted to</span> Christianity; my brother wants to convert to Islam.
                 </p>
                 <p>
-                  As the mission <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="drew_close">drew to a close</span> for the launch phase, ground control cheered. The <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="end_result">end result</span> of years of preparation was a magnificent launch. There was <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="no_end_sight">no end in sight</span> to our joy as the ship drifted into orbit, proving that deep-space exploration is a journey of <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="virtually_endless">virtually endless</span> possibilities.
+                  Other verbs used for changes are "turn," "become," and "get." Let's look at their different collocations. Use "turn" with colors: Bananas <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="turn_black">turn black</span> if you put them in the refrigerator. You can also use "turn into" as a less formal expression for "transform into": Our living room couch <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="turn_into">turns into</span> a bed.
+                </p>
+                <p>
+                  Use "become" with emotions and states of being, including comparative adjectives: My sister <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="become_angry">became angry</span> when she found out I'd broken her computer. It's <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="become_apparent">becoming apparent/clear</span> that the treatment isn't working. The band's music <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="become_popular">became popular</span> among teenagers. It's <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="become_difficult">becoming more difficult</span> to separate one's personal and professional life. You can also use "become" with professions: My brother <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="become_consultant">became a consultant</span>.
+                </p>
+                <p>
+                  The word "get" can be used as a less formal alternative to "become" with emotions and comparative adjectives (but NOT with professions or states of being). I'm <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="get_excited">getting excited</span> about my upcoming trip to Spain. It's <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="get_expensive">getting more expensive</span> to rent a place in this neighborhood. Will it ever <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="get_easier">get easier</span> for me to understand movies in English? We also use the word "go" in a few specific collocations involving changes: <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="go_bald">go bald</span> (lose your hair), <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="go_blind">go blind</span> (lose your ability to see), <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="go_deaf">go deaf</span> (lose your ability to hear), or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="go_crazy">go crazy/insane</span> (lose your mental control).
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-brand-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse" id="glossary-category">Chronology Status</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-300 animate-pulse" id="glossary-category">Chronology Status</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -256,24 +262,24 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">dawn of a new era</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">make adjustments</h3>
                 
-                <p class="text-slate-200 text-sm leading-relaxed mb-6" id="glossary-definition">The very beginning of a highly significant historical period, trend, or scientific paradigm.</p>
+                <p class="text-slate-200 text-sm leading-relaxed mb-6" id="glossary-definition">To complete minor physical alterations or modifications to a budget, layout, or apparatus.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Context Precedent</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"The launch of the Horizon 1 spacecraft represents the dawn of a new era."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Precedent</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"We need to make adjustments to the budget."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-brand-400"></i>
-                  <span>Chronological Physics</span>
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-brand-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-700 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-brand-500"></i>
+                  <span>Metamorphosis Guide</span>
                 </h4>
-                <p class="text-xs text-slate-300 leading-relaxed font-medium">
-                  The vocabulary of beginning and ending is highly structured in natural English. We get off to a **flying start** rather than a 'rapid start', and events come to an **abrupt end** rather than a 'sudden close'. Use these formulas to write pristine documents.
+                <p class="text-xs text-slate-600 dark:text-slate-350 leading-relaxed font-medium">
+                  The vocabulary of change is remarkably exact in English. We <strong>turn</strong> colors, but we <strong>become</strong> emotions or professions. <strong>Get</strong> is an informal alternative to "become" with emotions and comparatives, but cannot be used with professions. Make sure to choose the verb carefully!
                 </p>
               </div>
             </div>
@@ -285,18 +291,18 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Transmitter Deck</h2>
-                <p class="text-xs text-slate-400 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Transmuter Deck</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-405 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-white dark:bg-[#020617] border border-brand-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
                 <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span id="flashcard-total">30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="w-full bg-brand-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
@@ -304,21 +310,21 @@
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-brand-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-brand-200 dark:border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
                     <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white animate-pulse" id="card-front-phrase">Phrase</h3>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white animate-pulse" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-300">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  <div class="text-center text-xs text-slate-400 dark:text-slate-300">
+                    <span class="bg-brand-50 dark:bg-slate-800 px-3 py-1 rounded-full border border-brand-200 dark:border-slate-800"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
@@ -326,7 +332,7 @@
                 <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-brand-950 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-brand-400 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-brand-400 font-semibold font-mono">Temporal Profile</span>
+                    <span class="text-xs text-brand-400 font-semibold font-mono">Transition Profile</span>
                   </div>
                   
                   <div class="space-y-4">
@@ -353,12 +359,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-brand-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-brand-50 dark:hover:bg-slate-805 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-[#010208] font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -366,31 +372,31 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <!-- ==================== VIEW 3: INTERACTIVE CHANGES EXAM ==================== -->
         <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white/95 dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-brand-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-brand-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 36 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct starting or ending collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 36 Graded Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Select the correct verb to complete the changes scenario.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span> of 10
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-brand-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-indigo-500 h-full transition-all duration-300" style="width: 10%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono">Active Timeline Scenario</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono">Active Change Scenario</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-800 dark:text-white">"Loading question..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -399,20 +405,20 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-450 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Aero-Linguistic Telemetry Analysis</span>
+                  <span>Transition Diagnostic Feedback</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-brand-200 dark:border-slate-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
                   <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 text-slate-400 rounded-xl text-xs sm:text-sm font-bold transition font-mono">
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition font-mono">
                   <span>Next Question</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -420,37 +426,37 @@
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-slate-950 rounded-3xl p-8 border border-slate-800 shadow-md space-y-8 text-center animate-fade-in">
+            <div id="quiz-result-screen" class="hidden bg-white/95 dark:bg-slate-950 rounded-3xl p-8 border border-brand-200 dark:border-slate-800 shadow-md space-y-8 text-center animate-fade-in">
               <div class="space-y-3">
                 <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-500/10 text-brand-440">
-                  <i class="fa-solid fa-flag-checkered text-3xl animate-bounce"></i>
+                  <i class="fa-solid fa-arrows-spin text-3xl animate-spin-slow"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black text-slate-200">Timeline Clearance Granted!</h2>
-                <p class="text-sm text-slate-400">Analysis completed. Review your temporal alignment metrics.</p>
+                <h2 class="font-heading text-2xl font-black text-slate-850 dark:text-slate-200">Adaptation Standing Cleared!</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Analysis completed. Review your state alignment scores below.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Targets Hit</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-brand-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-600 dark:text-brand-400 font-mono">Alignments Succeeded</span>
+                  <span class="text-2xl font-black text-emerald-500 dark:text-emerald-400 font-mono" id="quiz-score-correct">10/10</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Success Rate</span>
-                  <span class="text-2xl font-black text-brand-400 font-mono" id="quiz-score-percent">90%</span>
+                <div class="bg-brand-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-600 dark:text-brand-400 font-mono">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-brand-500 dark:text-brand-400 font-mono" id="quiz-score-percent">100%</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Controller Level</span>
-                  <span class="text-xs sm:text-sm font-bold text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Orbit Specialist</span>
+                <div class="bg-brand-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-600 dark:text-brand-400 font-mono">Assigned Rank</span>
+                  <span class="text-xs sm:text-sm font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Consultant</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
                 <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate</span>
+                  <span>Re-examine Drafts</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-semibold text-sm hover:bg-slate-800 transition">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-brand-200 dark:border-slate-800 font-semibold text-sm hover:bg-brand-50 dark:hover:bg-slate-800 transition">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -462,18 +468,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white/95 dark:bg-slate-900 rounded-3xl p-6 border border-brand-200 dark:border-slate-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-brand-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">AI Temporal Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom narratives, project outlines, or history logs using Lesson 36 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">AI Modifications Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Compose customized statements describing color shifts, personal conversions, or code tweaks using Lesson 36 collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-350 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-brand-200 dark:border-slate-700 text-slate-700 dark:text-slate-350 hover:bg-brand-100/50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition">
                     <i class="fa-solid fa-lightbulb mr-1 text-brand-400"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-505/10 text-brand-600 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -481,8 +487,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono">Telemetry Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-900 outline-none transition text-slate-100" placeholder="Example: Although the project was in its initial stages, it got off to a flying start and we look forward to a successful end result..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono">Drafting Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-brand-200 dark:border-slate-800 bg-white dark:bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition text-slate-800 dark:text-slate-100" placeholder="Example: Although the treatments were in their early phases, it became apparent that we needed to make modifications to the molecular structures..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -491,31 +497,31 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-brand-200 dark:border-slate-800 pt-4">
                 <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
                 <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-slate-950 rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Path Syntax</span>
+                  <span>Scan Modification Syntax</span>
                 </button>
               </div>
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Trajectory Alignment Report</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white/95 dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-brand-200 dark:border-slate-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-brand-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">State Transition Report</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-450 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-405 border border-emerald-900/40">Radar Alignment</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800 animate-pulse">
-                    <span class="text-3xl font-black font-mono tracking-tight text-brand-400" id="diagnostic-score">92</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-brand-200 dark:border-slate-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-brand-500 dark:text-brand-400" id="diagnostic-score">92</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
@@ -523,23 +529,23 @@
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing temporal structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Analyzing changes structures...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Tactical Soundness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  <div class="border-t border-brand-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono block mb-0.5">Tactical Soundness Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-[#010208] p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">Recommended Proposal Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-200 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-slate-100 dark:bg-slate-950 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 dark:text-slate-500 block mb-1">Recommended Script Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-brand-200 dark:border-slate-850 rounded-lg text-xs font-bold text-brand-700 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy"></i> Copy Alternative
                   </button>
                 </div>
@@ -560,7 +566,7 @@
                   <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 36</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold">Launch Studio: Milestones, Launches, and Ultimate Conclusions</p>
+                    <p class="text-[10px] text-slate-405 font-semibold">Metamorphosis Room: Turning, Getting, and Becoming</p>
                   </div>
                 </div>
                 <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
@@ -573,25 +579,25 @@
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
                 <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
-                <div class="wave-bar bg-amber-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
-                <div class="wave-bar bg-amber-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-violet-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-violet-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
                 <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we write "got off to a flying start"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to activate automated experts discussing beginnings, ends, drafts, and deadlines from Lesson 36.</p>
+                <h3 class="font-heading text-2xl font-black text-slate-105" id="podcast-current-phrase">The Wavelength of Change</h3>
+                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to activate automated experts discussing conversion, adjustments, and comparative adjectives from Lesson 36.</p>
               </div>
               
               <!-- Dialogue Box -->
               <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
-                  <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+                  <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Flight Director)</span>
-                    <p class="text-xs text-slate-300 font-serif italic">"Welcome to the telemetry deck. Today we analyze starting and ending parameters: why some projects hit an abrupt end, while others make a promising start."</p>
+                    <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (On-Air Host)</span>
+                    <p class="text-xs text-slate-300 font-serif italic">"Welcome to the metamorphosis suite. Today we analyze change parameters: why we make tweaks to recipes but convert to religions."</p>
                   </div>
                 </div>
               </div>
@@ -628,29 +634,30 @@
         
         <!-- ==================== VIEW 6: DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white/95 dark:bg-slate-900/90 rounded-3xl p-6 border border-brand-200 dark:border-slate-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-brand-200 dark:border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Genesis & Terminus Dictionary Ledger</h2>
-                <p class="text-xs text-slate-400">Search and filter active beginnings, endings, drafts, and deadlines from the Lesson 36 curriculum database.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">Modifications Dictionary Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Search and filter active adjustments, color changes, conversions, and states of being inside the Lesson 36 registry.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-550 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-brand-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-305 outline-none font-bold font-mono">
-                  <option value="all">All Phases</option>
-                  <option value="Beginnings">Beginnings & Launch</option>
-                  <option value="Endings">Endings & Touchdown</option>
-                  <option value="Transits & Drafts">Transits, Drafts & Duration</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-brand-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-300 outline-none font-bold font-mono">
+                  <option value="all">All Change Modifiers</option>
+                  <option value="Small Changes">Small Changes & Tweaks</option>
+                  <option value="Bigger Changes">Bigger Changes & Conversion</option>
+                  <option value="Verbal Shifts">Verbs of Change</option>
+                  <option value="Severe Changes">Severe Bodily Changes</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-305 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-brand-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-305 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -662,16 +669,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-brand-200 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-32">Wave Group</th>
                     <th class="py-3 px-4">Core Definition</th>
-                    <th class="py-3 px-4 hidden lg:table-cell">Precedent Context Example</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Luminous Precedent Example</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold">
+                <tbody id="dictionary-rows" class="divide-y divide-brand-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -684,28 +691,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+    <footer class="flex h-16 items-center justify-around border-t border-brand-200 dark:border-slate-800 bg-white dark:bg-brand-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-550 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-scroll text-base"></i>
         <span class="text-[9px] font-bold">Story</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-550 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-550 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-550 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-550 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-550 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -714,11 +721,11 @@
   </div>
 
   <!-- Speech Settings Modal -->
-  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-800">
-    <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-brand-900 rounded-3xl p-6 border border-brand-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-brand-200 dark:border-slate-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-slate-800 dark:text-white font-sans font-medium">Observer's Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -727,7 +734,7 @@
       <div class="space-y-4">
         <div class="space-y-1.5">
           <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <select id="voice-select" class="w-full border border-brand-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-brand-50 dark:bg-slate-950 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
@@ -751,24 +758,23 @@
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-brand-200 dark:border-slate-800 max-w-sm transition-all duration-300">
     <div class="h-8 w-8 rounded-lg bg-white/10 text-brand-450 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
       <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-300 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+      <p class="text-[11px] text-slate-355 mt-0.5 font-medium font-sans" id="toast-body">Dossiers synchronized successfully.</p>
     </div>
   </div>
 
-  <!-- JavaScript Logic Block -->
   <script>
     const state = {
       theme: 'dark',
@@ -780,61 +786,48 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'promising_start', phrase: 'promising start', definition: 'A highly favorable, encouraging, and positive beginning of a journey or process.', example: 'The launch countdown got off to a promising start, with all indicators nominal.', category: 'Beginnings', mastered: false },
-        { id: 'initial_stages', phrase: 'initial stages', definition: 'The very first phases or periods of a long-term development or mission.', example: 'We are still in the initial stages of the planetary scan project.', category: 'Beginnings', mastered: false },
-        { id: 'abrupt_end', phrase: 'abrupt end', definition: 'A sudden, completely unexpected, and rapid termination of an event.', example: 'Our stable orbit came to an abrupt end when space debris hit our wing.', category: 'Endings', mastered: false },
-        { id: 'drew_close', phrase: 'drew to a close', definition: 'Gradually reaching the final stage, conclusion, or completion point.', example: 'As the launch phase drew to a close, ground control celebrated.', category: 'Endings', mastered: false },
-        { id: 'put_end', phrase: 'put an end to', definition: 'Stopping an ongoing practice or hazardous activity completely and permanently.', example: 'Deploying the retro thrusters managed to put an end to the erratic spin.', category: 'Endings', mastered: false },
-        { id: 'introductory_offer', phrase: 'introductory offer', definition: 'A special promotional low price provided exclusively to first-time buyers.', example: 'We are providing an introductory offer of 30% off commercial shuttle tickets.', category: 'Beginnings', mastered: false },
-        { id: 'preliminary_results', phrase: 'preliminary results', definition: 'Initial, unverified data collected at the start of an evaluation.', example: 'Preliminary results of the scanner indicate high hydrogen levels.', category: 'Transits & Drafts', mastered: false },
-        { id: 'final_destination', phrase: 'final destination', definition: 'The absolute end of a journey; the place you are ultimately traveling to.', example: 'The moons of Saturn remain our crew\'s final destination.', category: 'Endings', mastered: false },
-        { id: 'first_draft', phrase: 'first draft', definition: 'The raw, unpolished, and original version of a written manifesto or script.', example: 'The navigator drew up the first draft of our flight flight coordinates.', category: 'Transits & Drafts', mastered: false },
-        { id: 'terminal_illness', phrase: 'terminal illness', definition: 'An incurable disease that will inevitably lead to biological termination.', example: 'The retired astronaut spent his final years battling a terminal illness.', category: 'Endings', mastered: false },
-        { id: 'clean_slate', phrase: 'clean slate', definition: 'An opportunity to start over without prejudice, past records, or mistakes.', example: 'Sovereign agreements allowed both space nations to start with a clean slate.', category: 'Beginnings', mastered: false },
-        { id: 'no_end_sight', phrase: 'no end in sight', definition: 'Seeming to continue indefinitely into the future with no visible conclusion.', example: 'As we drifted into deep space, there was no end in sight to the darkness.', category: 'Endings', mastered: false },
-        { id: 'ultimate_goal', phrase: 'ultimate goal', definition: 'The final, highest, and most ambitious target of a long campaign.', example: 'Our ultimate goal is to establish a self-sustaining Mars colony.', category: 'Endings', mastered: false },
-        { id: 'near_future', phrase: 'near future', definition: 'The time period that is relatively close to the current moment.', example: 'Ground control expects no additional shuttle launches in the near future.', category: 'Transits & Drafts', mastered: false },
-        { id: 'flying_start', phrase: 'gotten off to a flying start', definition: 'Commencing a process exceptionally quickly, successfully, and smoothly.', example: 'Our countdown had gotten off to a flying start on all metrics.', category: 'Beginnings', mastered: false },
-        { id: 'end_result', phrase: 'end result', definition: 'The final, ultimate consequence or outcome of a long-term process.', example: 'The end result of our multi-year build was a flawless orbit insertion.', category: 'Endings', mastered: false },
-        { id: 'dawn_new_era', phrase: 'dawn of a new era', definition: 'The beginning of a highly significant historical period, trend, or paradigm.', example: 'The launch of Horizon 1 represents the dawn of a new era in flight.', category: 'Beginnings', mastered: false },
-        { id: 'beginning_end', phrase: 'beginning of the end', definition: 'The start of a process that will inevitably lead to destruction or termination.', example: 'The fuel tank breach marked the beginning of the end for the old station.', category: 'Endings', mastered: false },
-        { id: 'final_draft', phrase: 'final draft', definition: 'The fully polished, completed, and final version of a text or code.', example: 'They compiled the final draft of the flight manifesto at dawn.', category: 'Transits & Drafts', mastered: false },
-        { id: 'fitting_end', phrase: 'fitting end', definition: 'An appropriate, suitable, and highly satisfying conclusion to an event.', example: 'Touchdown at the runway was a fitting end to her thirty-year career.', category: 'Endings', mastered: false },
-        { id: 'make_start', phrase: 'make a start on', definition: 'To begin actively working on a specific task or chore.', example: 'We must make a start on calibrating our landing parameters.', category: 'Beginnings', mastered: false },
-        { id: 'immediate_future', phrase: 'immediate future', definition: 'The time period directly following the current moment; right away.', example: 'All space flights have been grounded for the immediate future.', category: 'Transits & Drafts', mastered: false },
-        { id: 'untimely_end', phrase: 'untimely end', definition: 'A premature, early, or tragic conclusion to a life or venture.', example: 'The solar radiation burst put an untimely end to the satellite program.', category: 'Endings', mastered: false },
-        { id: 'virtually_endless', phrase: 'virtually endless', definition: 'Seemingly infinite; having no visible boundaries or termination.', example: 'The stellar trajectory data represented virtually endless possibilities.', category: 'Transits & Drafts', mastered: false },
-        { id: 'make_fresh_start', phrase: 'make a fresh start', definition: 'Actively choosing to discard old habits or issues and begin anew.', example: 'After the crash, the team relocated to Texas to make a fresh start.', category: 'Beginnings', mastered: false },
-        { id: 'bring_to_end', phrase: 'bring to an end', definition: 'To actively cause an activity, conflict, or process to terminate.', example: 'We hope this treaty will finally bring the orbital blockade to an end.', category: 'Endings', mastered: false },
-        { id: 'logical_conclusion', phrase: 'logical conclusion', definition: 'The reasonable, expected, or natural outcome of an argument or process.', example: 'Winding down the obsolete reactor was the logical conclusion.', category: 'Endings', mastered: false },
-        { id: 'terminal_stage', phrase: 'terminal stage', definition: 'The final, fatal phase of a progressive disease or project collapse.', example: 'The program entered its terminal stage when funding was fully cut.', category: 'Endings', mastered: false },
-        { id: 'conclude_proceedings', phrase: 'conclude proceedings', definition: 'Formally and legally ending a summit, trial, or meeting.', example: 'The general stood up to conclude proceedings and dismiss the board.', category: 'Endings', mastered: false },
-        { id: 'sudden_end', phrase: 'sudden end', definition: 'Synonymous with abrupt end; a quick and unexpected stop.', example: 'Our operations met a sudden end when the trade routes were blocked.', category: 'Endings', mastered: false }
+        { id: 'make_adjustments', phrase: 'make adjustments', definition: 'To complete minor physical alterations or modifications to a budget, layout, or apparatus.', example: 'We have fewer funds available than we expected, so we need to make some adjustments to the budget.', category: 'Small Changes', mastered: false },
+        { id: 'make_alterations', phrase: 'make alterations', definition: 'Completing tiny adjustments or tailoring to custom assets like drawings or fabrics.', example: 'The designer will make alterations to the blueprints before we print the final release.', category: 'Small Changes', mastered: false },
+        { id: 'make_modifications', phrase: 'make modifications', definition: 'Formulating small, structural adjustments on code bases or machine profiles.', example: 'We will make modifications to our solar turbines to handle high thermal output.', category: 'Small Changes', mastered: false },
+        { id: 'make_tweaks', phrase: 'make tweaks', definition: 'Making minor, informal refinements or adjustments to customize layouts or recipes.', example: 'I like to experiment in the kitchen - I make tweaks to the recipes in the cookbook.', category: 'Small Changes', mastered: false },
+        { id: 'revolutionize', phrase: 'revolutionize', definition: 'To completely and radically alter a process, industry, or culture.', example: 'The internet has revolutionized the way people communicate.', category: 'Bigger Changes', mastered: false },
+        { id: 'transform_into', phrase: 'transform into', definition: 'To undergo a major structural metamorphosis to convert one thing into another.', example: 'The city transformed the vacant lot into a playground.', category: 'Bigger Changes', mastered: false },
+        { id: 'change_clothes', phrase: 'change your clothes', definition: 'Putting on different articles of clothing.', example: 'I\'ll be ready in 10 minutes - just let me change my clothes.', category: 'Bigger Changes', mastered: false },
+        { id: 'change_diaper', phrase: 'change the baby\'s diaper', definition: 'Removing a baby\'s dirty diaper and replacing it with a clean one.', example: 'It is my turn to change the baby\'s diaper.', category: 'Bigger Changes', mastered: false },
+        { id: 'change_mind', phrase: 'change your mind', definition: 'Reversing or completely altering a decision, vote, or psychological opinion.', example: 'He\'s not going to change his mind. He seems pretty firm in his decision.', category: 'Bigger Changes', mastered: false },
+        { id: 'change_subject', phrase: 'change the subject', definition: 'Introducing a different topic to divert the focus of a conversation.', example: 'Every time we talk about finances, he tries to change the subject.', category: 'Bigger Changes', mastered: false },
+        { id: 'convert_to', phrase: 'convert to', definition: 'Undergoing a psychological conversion to a different religion or creed.', example: 'I converted to Christianity; my brother wants to convert to Islam.', category: 'Bigger Changes', mastered: false },
+        { id: 'turn_black', phrase: 'turn black', definition: 'Undergoing a complete organic color transformation.', example: 'Bananas turn black if you put them in the refrigerator.', category: 'Verbal Shifts', mastered: false },
+        { id: 'turn_into', phrase: 'turn into', definition: 'An informal equivalent of transform into; converting completely into another state.', example: 'My conversations with my sister always turn into arguments.', category: 'Verbal Shifts', mastered: false },
+        { id: 'become_angry', phrase: 'become angry', definition: 'Developing a state of irritation or rage (used for emotions/states of being).', example: 'My sister became angry when she found out I\'d broken her computer.', category: 'Verbal Shifts', mastered: false },
+        { id: 'become_apparent', phrase: 'become apparent', definition: 'Gradually developing into a clear, distinct, and easily recognized state.', example: 'It\'s becoming apparent that the treatment isn\'t working.', category: 'Verbal Shifts', mastered: false },
+        { id: 'become_popular', phrase: 'become popular', definition: 'Acquiring high communal fame or favor among demographics.', example: 'The band\'s music became popular among teenagers.', category: 'Verbal Shifts', mastered: false },
+        { id: 'become_difficult', phrase: 'become more difficult', definition: 'Developing a state of higher resistance or operational complexity.', example: 'It\'s becoming more difficult to separate one\'s personal and professional life.', category: 'Verbal Shifts', mastered: false },
+        { id: 'become_consultant', phrase: 'become a consultant', definition: 'Formally transitioning into a professional consultative career path.', example: 'After losing his job, George decided to become a consultant.', category: 'Verbal Shifts', mastered: false },
+        { id: 'get_excited', phrase: 'get excited', definition: 'Informal state transition into a highly happy, anticipatory mood.', example: 'I\'m getting excited about my upcoming trip to Spain.', category: 'Verbal Shifts', mastered: false },
+        { id: 'get_expensive', phrase: 'get more expensive', definition: 'Informal upward transition of economic prices or rent levels.', example: 'It\'s getting more expensive to rent a place in this neighborhood.', category: 'Verbal Shifts', mastered: false },
+        { id: 'get_easier', phrase: 'get easier', definition: 'Informal downward transition of operational complexity.', example: 'Will it ever get easier for me to understand movies in English?', category: 'Verbal Shifts', mastered: false },
+        { id: 'get_annoyed', phrase: 'get annoyed', definition: 'Developing a state of distinct, minor anger or psychological irritation.', example: 'I\'m getting annoyed with my bank\'s terrible customer service.', category: 'Verbal Shifts', mastered: false },
+        { id: 'get_better', phrase: 'get better', definition: 'Increasing your expertise, skill level, or physical health over time.', example: 'If you want to get better at playing the piano, you should practice more.', category: 'Verbal Shifts', mastered: false },
+        { id: 'go_bald', phrase: 'go bald', definition: 'Losing your scalp hair completely.', example: 'Daniel is embarrassed that he\'s starting to go bald, so he often wears a hat.', category: 'Severe Changes', mastered: false },
+        { id: 'go_blind', phrase: 'go blind', definition: 'Losing your physical visual ability completely.', example: 'Certain solar radiation bursts can cause astronauts to go blind.', category: 'Severe Changes', mastered: false },
+        { id: 'go_deaf', phrase: 'go deaf', definition: 'Losing your physical auditory hearing ability completely.', example: 'Working near jet engines without headphones will cause you to go deaf.', category: 'Severe Changes', mastered: false },
+        { id: 'go_crazy', phrase: 'go crazy/insane', definition: 'Losing your mental control or logical composure.', example: 'If ground control extends our mission by three months, we will go crazy.', category: 'Severe Changes', mastered: false }
       ],
-      // Exactly 20 high-fidelity scenario multiple-choice questions
+      // Exactly 10 scenario-based fill-in-the-blank questions from Page 2 of Lesson 36: Changes
       quiz: [
-        { id: 1, question: "The launch countdown got off to a ________, with all telemetry gauges reading nominal values.", options: ["promising start", "sudden end", "clean slate"], answer: "promising_start", explanation: "An encouraging, favorable beginning is a 'promising start'." },
-        { id: 2, question: "The planetary exploration mission is still in its ________, but we have already gathered vital soil samples.", options: ["initial stages", "terminal stages", "final destination"], answer: "initial_stages", explanation: "The very first phases of a long-term development are the 'initial stages'." },
-        { id: 3, question: "Our peaceful orbit came to an ________ when a micro-meteorite breached the secondary solar shield.", options: ["abrupt end", "untimely end", "end result"], answer: "abrupt_end", explanation: "A sudden, unexpected, and complete stop is an 'abrupt end'." },
-        { id: 4, question: "As the multi-year flight ________, the crew prepared for re-entry procedures.", options: ["drew to a close", "got off to a good start", "put an end to"], answer: "drew_close", explanation: "Gradually approaching the conclusion or end point is to 'draw to a close'." },
-        { id: 5, question: "Deploying the emergency backup thrusters managed to ________ the spacecraft's erratic spin.", options: ["put an end to", "make a start on", "draw to a close"], answer: "put_end", explanation: "Stopping an undesirable activity or motion permanently is to 'put an end to' it." },
-        { id: 6, question: "To celebrate the launch of our civilian shuttle line, we are offering an ________ of 30% off cabin tickets.", options: ["introductory offer", "preliminary result", "end result"], answer: "introductory_offer", explanation: "A special promotional low price for first-time buyers is an 'introductory offer'." },
-        { id: 7, question: "The ________ of the deep-space signal scans indicate the presence of a localized hydrogen cloud.", options: ["preliminary results", "final draft", "fresh start"], answer: "preliminary_results", explanation: "Initial, unconfirmed data collected at the start of research are 'preliminary results'." },
-        { id: 8, question: "We completed our planetary swing-by, but our ________ remains the moons of Saturn.", options: ["final destination", "initial stage", "logical conclusion"], answer: "final_destination", explanation: "The end of a journey is the 'final destination'." },
-        { id: 9, question: "The navigator compiled the ________ of the flight coordinates, which we will refine during orbit.", options: ["first draft", "final draft", "clean slate"], answer: "first_draft", explanation: "The raw, unpolished original version of a script or document is a 'first draft'." },
-        { id: 10, question: "The retired pioneer was diagnosed with a ________, but he vowed to witness the Horizon launch.", options: ["terminal illness", "fitting end", "fresh start"], answer: "terminal_illness", explanation: "An incurable disease that leads inevitably to death is a 'terminal illness'." },
-        { id: 11, question: "Accepting the treaty allowed both space nations to start negotiations with a ________.", options: ["clean slate", "sudden end", "promising start"], answer: "clean_slate", explanation: "An opportunity to start over without previous prejudice or past records is a 'clean slate'." },
-        { id: 12, question: "As our shuttle drifted into deep interstellar space, there was ________ to the dark void.", options: ["no end in sight", "an abrupt end", "a flying start"], answer: "no_end_sight", explanation: "Seeming to continue indefinitely with no conclusion is described as 'no end in sight'." },
-        { id: 13, question: "While we are collecting soil samples now, our ________ is to establish a permanent colony.", options: ["ultimate goal", "initial stage", "introductory offer"], answer: "ultimate_goal", explanation: "The final, highest ambition of a long campaign is the 'ultimate goal'." },
-        { id: 14, question: "We plan to upgrade the warp core in the ________, possibly within the next quarter.", options: ["near future", "terminal stage", "preliminary results"], answer: "near_future", explanation: "The time period close to the present is the 'near future'." },
-        { id: 15, question: "The new fusion engine got ________ with both turbines generating maximum thrust on the first test.", options: ["off to a flying start", "to an abrupt end", "to a logical conclusion"], answer: "flying_start", explanation: "Commencing a process exceptionally quickly and successfully is to get 'off to a flying start'." },
-        { id: 16, question: "Although we faced severe launch delays, the ________ was a highly successful deployment.", options: ["end result", "first draft", "initial stage"], answer: "end_result", explanation: "The final, ultimate consequence of a process is the 'end result'." },
-        { id: 17, question: "The launch of the reusable shuttle represents the ________ in commercial space travel.", options: ["dawn of a new era", "beginning of the end", "logical conclusion"], answer: "dawn_new_era", explanation: "The beginning of a highly significant historical trend is the 'dawn of a new era'." },
-        { id: 18, question: "A major fuel tank explosion marked the ________ for the aging space station program.", options: ["beginning of the end", "promising start", "fitting end"], answer: "beginning_end", explanation: "The start of a process that leads inevitably to destruction or completion is the 'beginning of the end'." },
-        { id: 19, question: "The crew compiled the ________ of the flight manifesto and sent it to planetary customs.", options: ["final draft", "first draft", "preliminary results"], answer: "final_draft", explanation: "The fully polished, completed, and final version of a text is the 'final draft'." },
-        { id: 20, question: "Having the shuttle land safely right at the museum runway was a ________ to her thirty-year career.", options: ["fitting end", "terminal stage", "clean slate"], answer: "fitting_end", explanation: "An appropriate, highly suitable conclusion is a 'fitting end'." }
+        { id: 1, question: "After losing his job, George decided to ________ a consultant.", options: ["become", "get", "turn", "go"], answer: "become", explanation: "Use 'become' with professions (George decided to become a consultant)." },
+        { id: 2, question: "Daniel is embarrassed that he's starting to ________ bald, so he often wears a hat.", options: ["go", "become", "get", "turn"], answer: "go", explanation: "Specific physical losses use 'go' (go bald = lose hair)." },
+        { id: 3, question: "Her face ________ red when she gets embarrassed.", options: ["turned", "turned / turns", "turned / turn", "turns"], answer: "turns", explanation: "Use 'turn' with colors (Her face turns red when she gets embarrassed)." },
+        { id: 4, question: "He's not going to ________ his mind. He seems pretty firm in his decision.", options: ["change", "turn", "make", "become"], answer: "change", explanation: "Reversing an opinion or decision is collocated as 'change your mind'." },
+        { id: 5, question: "I like to experiment in the kitchen - I ________ tweaks to the recipes in the cookbook.", options: ["make", "change", "turn", "do"], answer: "make", explanation: "Informal, small kitchen refinements are collocated as 'make tweaks'." },
+        { id: 6, question: "I'll be ready in 10 minutes - just let me ________ my clothes.", options: ["change", "turn", "convert", "become"], answer: "change", explanation: "Putting on different clothes is collocated as 'change your clothes'." },
+        { id: 7, question: "I'm ________ annoyed with my bank's terrible customer service.", options: ["getting", "going", "turning", "making"], answer: "getting", explanation: "Use 'get' as an informal alternative to 'become' with emotions (getting annoyed)." },
+        { id: 8, question: "My conversations with my sister always ________ into arguments.", options: ["turn", "go", "change", "become"], answer: "turn", explanation: "An informal equivalent of 'transform into' is 'turn into' (turn into arguments)." },
+        { id: 9, question: "We have fewer funds available than we expected, so we need to ________ some adjustments to the budget.", options: ["make", "change", "do", "turn"], answer: "make", explanation: "Completing minor budgetary changes is collocated as 'make adjustments'." },
+        { id: 10, question: "If you want to ________ better at playing the piano, you should practice more.", options: ["get", "become", "go", "turn"], answer: "get", explanation: "Improving skill sets or wellness is collocated as 'get better'." }
       ],
-      activeCardId: 'dawn_new_era',
+      activeCardId: 'make_adjustments',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -847,32 +840,32 @@
       isSynthesizing: false
     };
 
-    // Advanced Echolocation Sound Synthesizer via Web Audio API
+    // Advanced Web Audio API Echolocation/Transition Sound Synthesizer
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Tactical sonar click representing temporal node updates
-          const osc1 = audioCtx.createOscillator();
+          // Sharp static popping click representing molecular shift
+          const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
-          osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(1500, audioCtx.currentTime);
-          osc1.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.08);
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1800, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.04);
 
-          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
 
-          osc1.connect(gain);
+          osc.connect(gain);
           gain.connect(audioCtx.destination);
           
-          osc1.start();
-          osc1.stop(audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.04);
           
         } else if (type === 'correct') {
-          // Uplifting, harmonious major chord representing ignition success
-          const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+          // Harmonious major-chord arpeggio indicating state change success
+          const notes = [293.66, 369.99, 440.00, 587.33]; // D4, F#4, A4, D5
           const gain = audioCtx.createGain();
           gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.6);
@@ -881,26 +874,26 @@
           notes.forEach((freq, index) => {
             const osc = audioCtx.createOscillator();
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.08);
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.07);
             osc.connect(gain);
-            osc.start(audioCtx.currentTime + index * 0.08);
+            osc.start(audioCtx.currentTime + index * 0.07);
             osc.stop(audioCtx.currentTime + 0.6);
           });
           
         } else if (type === 'incorrect') {
-          // Low, descending buzz representing system termination / abrupt stop
+          // Descending low-frequency buzz representing collapse or error
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(140, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.25);
+          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+          osc.frequency.linearRampToValueAtTime(40, audioCtx.currentTime + 0.25);
 
           const lowpass = audioCtx.createBiquadFilter();
           lowpass.type = 'lowpass';
-          lowpass.frequency.setValueAtTime(200, audioCtx.currentTime);
+          lowpass.frequency.setValueAtTime(160, audioCtx.currentTime);
 
-          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.25);
 
           osc.connect(lowpass);
@@ -911,11 +904,11 @@
           osc.stop(audioCtx.currentTime + 0.25);
           
         } else if (type === 'flip') {
-          // Paper-shuffling swish noise
+          // Dossier swish paper rustle
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+          osc.frequency.setValueAtTime(180, audioCtx.currentTime);
           osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.12);
           
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
@@ -928,13 +921,13 @@
           osc.stop(audioCtx.currentTime + 0.12);
         }
       } catch (e) {
-        console.warn('Web Audio compilation context missed:', e);
+        console.warn('Web Audio synthesis context blocked:', e);
       }
     }
 
-    // HTML5 Canvas Crossroads Pathway Animation Background
+    // HTML5 Liquid Metamorphosis Pathway Animation Background
     function initBackgroundCanvas() {
-      const canvas = document.getElementById('observatory-canvas');
+      const canvas = document.getElementById('liquid-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
@@ -942,28 +935,35 @@
       let height = (canvas.height = canvas.offsetHeight);
       
       const nodes = [];
-      const nodeCount = 40;
+      const nodeCount = 35;
       
       class Node {
         constructor() {
           this.x = Math.random() * width;
           this.y = Math.random() * height;
-          this.vx = (Math.random() - 0.5) * 0.5;
-          this.vy = (Math.random() - 0.5) * 0.5;
-          // Genesis amber for launch, Terminus indigo for touchdown
-          this.type = Math.random() > 0.5 ? 'genesis' : 'terminus';
-          this.radius = Math.random() * 2.5 + 1.5;
+          this.vx = (Math.random() - 0.5) * 0.4;
+          this.vy = (Math.random() - 0.5) * 0.4;
+          // Violet for adjustments, Emerald for conversions
+          this.type = Math.random() > 0.5 ? 'adjustment' : 'conversion';
+          this.baseRadius = Math.random() * 3 + 2;
+          this.radius = this.baseRadius;
+          this.pulseSpeed = Math.random() * 0.05 + 0.02;
+          this.angle = Math.random() * Math.PI;
         }
         update() {
           this.x += this.vx;
           this.y += this.vy;
           if (this.x < 0 || this.x > width) this.vx *= -1;
           if (this.y < 0 || this.y > height) this.vy *= -1;
+          
+          // Slowly morph node radius representing liquid state change
+          this.angle += this.pulseSpeed;
+          this.radius = this.baseRadius + Math.sin(this.angle) * 1.5;
         }
         draw() {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = this.type === 'genesis' ? 'rgba(249, 115, 22, 0.6)' : 'rgba(99, 102, 241, 0.6)';
+          ctx.fillStyle = this.type === 'adjustment' ? 'rgba(139, 92, 246, 0.4)' : 'rgba(16, 185, 129, 0.4)';
           ctx.fill();
         }
       }
@@ -980,16 +980,17 @@
       function animate() {
         ctx.clearRect(0, 0, width, height);
         
-        // Draw branching lines representing launch trajectory sequences
+        // Render branching links representing fluid transitions
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-            if (dist < 110) {
+            if (dist < 120) {
               ctx.beginPath();
               ctx.moveTo(nodes[i].x, nodes[i].y);
               ctx.lineTo(nodes[j].x, nodes[j].y);
-              const opacity = (1 - dist / 110) * 0.12;
-              ctx.strokeStyle = nodes[i].type === 'genesis' ? `rgba(249, 115, 22, ${opacity})` : `rgba(99, 102, 241, ${opacity})`;
+              const opacity = (1 - dist / 120) * 0.15;
+              ctx.strokeStyle = nodes[i].type === 'adjustment' ? `rgba(139, 92, 246, ${opacity})` : `rgba(16, 185, 129, ${opacity})`;
+              ctx.lineWidth = 1;
               ctx.stroke();
             }
           }
@@ -1006,6 +1007,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      // Load standard localStorage configurations
       loadLocalStorage();
       initSpeechVoices();
       initStoryClicks();
@@ -1016,17 +1018,35 @@
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark Obsidian aesthetic for timeline depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-arrows-spin text-sm text-brand-400"></i>';
+      // Initialize theme on start up
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      if (state.theme === 'dark') {
+        html.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-400"></i>';
+      } else {
+        html.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-600"></i>';
+      }
       
       document.addEventListener('keyup', keyUpHandler);
     });
 
     function toggleTheme() {
-      // Recalibrate timeline intervals (triggers radar sweep bleep)
       playSynthSound('click');
-      showToast('Timelines Recalibrated', 'Acoustic chronometer filters synchronized.', 'fa-arrows-spin');
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l36', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-400"></i>';
+        showToast('Midnight Mode Activated', 'Transitioned to deep obsidian dark mode theme.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-600"></i>';
+        showToast('Parchment Mode Activated', 'Transitioned to clean light mode theme.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1041,7 +1061,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-800 hover:text-slate-100";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-brand-100/50 dark:hover:bg-slate-800 hover:text-brand-900 dark:hover:text-slate-100";
         }
       });
       
@@ -1053,7 +1073,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20";
       }
       
       state.currentView = viewName;
@@ -1065,6 +1085,9 @@
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l36')) {
+        state.theme = localStorage.getItem('colloc_theme_l36');
+      }
       if (localStorage.getItem('colloc_mastery_list_l36')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l36'));
@@ -1103,8 +1126,7 @@
         state.quiz.forEach(q => {
           const userAns = state.quizAnswers[q.id];
           const isCorrect = (userAns === q.answer) || 
-                            (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                            (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
+                            (state.collocations.find(c => c.id === q.answer)?.phrase === userAns);
           if (isCorrect) {
             correctCount++;
           }
@@ -1139,7 +1161,7 @@
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l36', JSON.stringify(state.voiceSettings));
-      showToast('Config Saved', 'Launch telemetry voice parameters updated.');
+      showToast('Config Saved', 'Modification voice synthesis parameters updated.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1190,7 +1212,10 @@
       }
       window.speechSynthesis.cancel();
       
-      const utterance = new SpeechSynthesisUtterance(text);
+      // Programmatically parse slash punctuation so it reads smoothly in speech
+      const sanitizedText = text.replace(/\//g, " or ").replace(/-/g, " ");
+      
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
       const voices = window.speechSynthesis.getVoices();
       
       let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
@@ -1225,11 +1250,11 @@
       const links = document.querySelectorAll('.colloc-ref');
       links.forEach(l => {
         l.addEventListener('click', (e) => {
-          const colId = e.target.getAttribute('data-id');
+          const colId = e.currentTarget.getAttribute('data-id');
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('dawn_new_era');
+      displayGlossaryCard('make_adjustments');
     }
 
     function displayGlossaryCard(id) {
@@ -1281,7 +1306,7 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "The launch of the Horizon 1 spacecraft represents the dawn of a new era in deep-space exploration. We are still in the initial stages of the mission, but the countdown has already gotten off to a flying start with the main thrusters firing perfectly. Our ultimate goal is to reach the outer rims of the Solar System, though our final destination is still years away. Before liftoff, our software engineering team worked day and night on the guidance code. The first draft of the telemetry script was riddled with bugs, but after rigorous diagnostic sweeps, they compiled the final draft just in time. The pre-launch simulations provided excellent preliminary results, ensuring our guidance metrics were flawless. Of course, space flight is filled with high stakes; a minor hardware anomaly can bring the entire voyage to an abrupt end. Any atmospheric rupture would put an untimely end to our hopes. Instead of worrying, we decided to trust our calibrations. Our team was sick of past failures, and this mission offered a clean slate to make a fresh start. As the mission drew to a close for the launch phase, ground control cheered. The end result of years of preparation was a magnificent launch. There was no end in sight to our joy as the ship drifted into orbit, proving that deep-space exploration is a journey of virtually endless possibilities.";
+      const narrativeText = "To talk about making small changes, you can say make adjustments, make alterations, or make modifications. More informally, you can say make tweaks — 'We made a few tweaks to the website.' To talk about bigger changes, you can use the verbs transform and revolutionize: The internet has revolutionized the way people communicate. The city transformed the vacant lot into a playground. When you put on different clothes, you change your clothes. When you remove a baby's dirty diaper and put on a clean one, you change the baby's diaper. When you reverse a decision or opinion, then you change your mind. And when you introduce a different topic of conversation, then you change the subject. When you change your religion, then we often use the verb convert: I converted to Christianity; my brother wants to convert to Islam. Other verbs used for changes are turn, become, and get. Let's look at their different collocations. Use turn with colors: Bananas turn black if you put them in the refrigerator. You can also use turn into as a less formal expression for transform into: Our living room couch turns into a bed. Use become with emotions and states of being, including comparative adjectives: My sister became angry when she found out I'd broken her computer. It's becoming apparent or clear that the treatment isn't working. The band's music became popular among teenagers. It's becoming more difficult to separate one's personal and professional life. You can also use become with professions: My brother became a consultant. The word get can be used as a less formal alternative to become with emotions and comparative adjectives, but not with professions or states of being. I'm getting excited about my upcoming trip to Spain. It's getting more expensive to rent a place in this neighborhood. Will it ever get easier for me to understand movies in English? We also use the word go in a few specific collocations involving changes: go bald, go blind, go deaf, or go crazy/insane.";
       triggerTTS(narrativeText);
     }
 
@@ -1299,6 +1324,7 @@
       document.getElementById('card-master-checkbox').checked = card.mastered;
       
       document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      document.getElementById('flashcard-total').innerText = state.collocations.length;
       const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
       document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
       
@@ -1323,7 +1349,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Limit Reached', 'This is the first briefing index card.');
+        showToast('Limit Reached', 'This is the first briefing index card.', 'fa-circle-info');
       }
     }
 
@@ -1333,13 +1359,12 @@
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Looping', 'Cycling back to the first timeline record.');
+        showToast('Looping', 'Cycling back to the first timeline record.', 'fa-arrows-spin');
         state.flashcardsIndex = 0;
         renderFlashcard();
       }
     }
 
-    // Fix sound triggers for keyboard bindings
     function keyUpHandler(e) {
       if (state.currentView !== 'flashcards') return;
       if (e.code === 'Space') {
@@ -1366,7 +1391,7 @@
       card.mastered = checkbox.checked;
       saveMastery();
       if (card.mastered) {
-        showToast('Milestone Decoded', `"${card.phrase}" logged as mastered.`);
+        showToast('Transition Decoded', `"${card.phrase}" logged as mastered.`, 'fa-circle-check');
       }
     }
 
@@ -1375,7 +1400,7 @@
       if (!quest) return;
       
       document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
-      document.getElementById('quiz-question-text').innerText = quest.question;
+      document.getElementById('quiz-question-text').innerText = `${state.quizIndex + 1}. ${quest.question}`;
       
       const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
       document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
@@ -1389,38 +1414,28 @@
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
         
-        // Find matching collocation based on option string/id
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.onclick = () => selectQuizAnswer(opt);
         btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic text-white";
         
         if (!answered) {
           btn.className += " bg-[#111827] border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
           
-          const isSelected = (collocId === userAns || opt === userAns);
-
-          if (isCorrect) {
+          if (opt === quest.answer) {
             btn.className += " bg-emerald-950 border-emerald-800 text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
-          } else if (isSelected) {
+          } else if (opt === userAns) {
             btn.className += " bg-rose-950 border-rose-900 text-rose-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
             btn.className += " bg-slate-900 border-slate-800 text-slate-500";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
           }
         }
         
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
-        }
         grid.appendChild(btn);
       });
       
@@ -1441,17 +1456,12 @@
       
       state.quizAnswers[quest.id] = selectedOption;
       
-      // Handle direct string mapping match
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
-      
-      if (isCorrect) {
+      if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Timeline Aligned!', 'Accurate collocation applied to flight telemetry.', 'fa-circle-check');
+        showToast('Adjustment Aligned!', 'Accurate collocation applied to changes checklist.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Navigation Obstructed!', 'Inconclusive alignment with standard temporal trajectories.', 'fa-triangle-exclamation');
+        showToast('Grammatical Friction!', 'Incorrect verb category chosen.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1482,11 +1492,7 @@
       
       let correct = 0;
       state.quiz.forEach(q => {
-        const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-        if (isCorrect) {
+        if (state.quizAnswers[q.id] === q.answer) {
           correct++;
         }
       });
@@ -1497,10 +1503,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Stargazer Cadet";
-      if (percentage === 100) rank = "Grand Commander";
-      else if (percentage >= 90) rank = "Mission Controller";
-      else if (percentage >= 70) rank = "Orbital Specialist";
+      let rank = "Adjustment Assistant";
+      if (percentage === 100) rank = "Chief Transmuter";
+      else if (percentage >= 80) rank = "Modification Lead";
+      else if (percentage >= 60) rank = "Tweaker Pro";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1523,12 +1529,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['dawn of a new era', 'initial stages', 'flying start', 'abrupt end', 'final destination', 'end result'];
+      const selectedWords = ['make tweaks', 'make adjustments', 'transform into', 'change your mind', 'become apparent', 'get excited'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-slate-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono";
+        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1540,7 +1546,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `The launch sequence marked the ${word} for commercial astronautics...`;
+        textarea.value = `To make the software perform better, we had to ${word}...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1554,7 +1560,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Analyze the chronological timeline: "${randomColloc}"`;
+        textarea.value = `Review the modification profile: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1566,10 +1572,10 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how the mission got off to a flying start but met an abrupt end due to software glitches.",
-        "Draft an evaluation showing how preliminary results gathered during the initial stages verify our ultimate goal.",
-        "Describe a historical launch representing the dawn of a new era that put an end to global competition.",
-        "Examine why compiling a final draft manifests as a wise decision before reaching your final destination."
+        "Detail how a developer made tweaks to the script until it became apparent that the system was running faster.",
+        "Draft a summary explaining why letting personal irritation color your judgment is a grave mistake when managing team adjustments.",
+        "Describe a color shift where leaves turn black, transforming the vibrant orchard into a gloomy landscape.",
+        "Examine why getting excited about a transition often precedes a hasty decision to change your mind."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1597,12 +1603,12 @@
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
-      document.getElementById('diagnostic-analysis').innerText = "Analyzing assertiveness frameworks... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard launch patterns...";
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing state transition metrics... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard changes patterns...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Astrodynamics Expert, Technical Editor, and English Scholar. Check if the user's sentence uses Lesson 36 starting and ending collocations (e.g., promising start, initial stages, abrupt end, drew to a close, put an end to, introductory offer, preliminary results, final destination, first draft, final draft, terminal illness, clean slate, no end in sight, ultimate goal, near future, gotten off to a flying start, end result, dawn of a new era, beginning of the end, fitting end) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving legal, press, or trial alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are a world-class Cognitive Linguist, State-Change Analyst, and English Scholar. Check if the user's sentence uses Lesson 36 changes, conversions, and verbal shifts (e.g., make adjustments, make alterations, make modifications, make tweaks, revolutionize, transform into, change your clothes, change the baby's diaper, change your mind, change the subject, convert to, turn black, turn into, become angry, become apparent, become popular, become more difficult, become a consultant, get excited, get more expensive, get easier, get annoyed, get better, go bald, go blind, go deaf, go crazy) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving change, state, or transition alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1635,7 +1641,7 @@
           attempt++;
           if (attempt >= 5) {
             showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Command deck scanner offline. Verify network connection and retry.";
+            document.getElementById('diagnostic-analysis').innerText = "Changes scanner offline. Verify network connection and retry.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1657,8 +1663,8 @@
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40";
-            badge.innerText = "Brief Aligned";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-955/20 text-emerald-400 border border-emerald-900/40";
+            badge.innerText = "State Aligned";
             playSynthSound('correct');
           } else {
             badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
@@ -1696,7 +1702,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Chronological Tracking";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - State Transition";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1711,7 +1717,7 @@
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
         document.getElementById('podcast-current-phrase').innerText = "Session Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 36. All timeline collocations resolved!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 36. All modification collocations resolved!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
@@ -1728,14 +1734,14 @@
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key starting and ending term. It is: ${currentWord.phrase}. Tom, how do launch directors map this structure out?`;
+        const textToSpeak = `Let's analyze our next key transition term. It is: ${currentWord.phrase}. Tom, how do modification specialists map this out?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H1</div>
+          <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Flight Director)</span>
+            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (On-Air Host)</span>
             <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1754,10 +1760,10 @@
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H2</div>
+          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
             <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Telemetry Analyst)</span>
-            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
+            <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1851,7 +1857,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-400 italic">No matching timeline records resolved.</td>
+            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif font-sans">No matching change records resolved.</td>
           </tr>
         `;
         return;
@@ -1869,12 +1875,12 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono font-heading">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-300 leading-relaxed font-semibold font-sans">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-500 dark:text-slate-450 font-semibold font-serif font-sans font-normal">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
             <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
@@ -1917,7 +1923,6 @@
       }, 4000);
     }
 
-    // Expose interaction functions to the browser global scope
     Object.assign(window, {
       switchView,
       toggleTheme,

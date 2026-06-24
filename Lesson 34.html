@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 34: Claiming & Denying Lab</title>
+  <title>CollocaStudy - Lesson 34: Statistics Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Investigative and Journalism Icons -->
+  <!-- FontAwesome for Statistical, Mathematical, and Data Analysis Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Investigative Journalism theme -->
+  <!-- Configuring Tailwind theme options for the Data Science and Statistics theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -32,12 +32,12 @@
               200: '#e2e8f0',
               300: '#cbd5e1',
               400: '#94a3b8',
-              500: '#06b6d4', /* Neon Cyan Shutter */
-              600: '#0891b2',
-              700: '#0e7490', 
-              800: '#155e75',
-              900: '#020617', /* Deep Midnight Slate */
-              950: '#010208'
+              500: '#3b82f6', /* High-fidelity Blue */
+              600: '#2563eb',
+              700: '#1d4ed8', 
+              800: '#1e40af',
+              900: '#0f172a', /* Midnight Slate */
+              950: '#020617'
             }
           }
         }
@@ -55,11 +55,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #06b6d4;
+      background: #3b82f6;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #0891b2;
+      background: #1d4ed8;
     }
     
     /* Smooth interactive transitions */
@@ -86,7 +86,7 @@
       transform: rotateY(180deg);
     }
     
-    /* Animated Equalizer Waveform */
+    /* Animated Equalizer Waveform representing statistical frequencies */
     @keyframes wave-bounce {
       0%, 100% { height: 8px; }
       50% { height: 42px; }
@@ -95,57 +95,57 @@
       animation: wave-bounce 1s ease-in-out infinite;
     }
     
-    /* Shutter flash ambient backdrop pulse */
-    @keyframes flash-pulse {
-      0%, 100% { opacity: 0.1; transform: scale(0.98); }
+    /* Subtle grid drift background animation */
+    @keyframes grid-pulse {
+      0%, 100% { opacity: 0.15; transform: scale(0.98); }
       50% { opacity: 0.3; transform: scale(1.02); }
     }
-    .flash-drift-glow {
-      animation: flash-pulse 8s infinite ease-in-out;
+    .grid-drift-glow {
+      animation: grid-pulse 10s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="h-full bg-[#010208] text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-[#020617] dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Camera Flash Shutter Pulse Canvas Background -->
-    <canvas id="press-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-30"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/30 via-slate-950/20 to-slate-950 pointer-events-none z-0 flash-drift-glow"></div>
+    <!-- Interactive HTML5 Live Chart Background -->
+    <canvas id="stats-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-40 dark:opacity-20"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-100/20 via-transparent to-brand-50/10 dark:from-brand-950/30 dark:via-transparent dark:to-transparent pointer-events-none z-0 grid-drift-glow"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white/85 dark:border-slate-800 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-sm">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-600 to-slate-950 text-white shadow-md shadow-cyan-500/20">
-          <i class="fa-solid fa-bullhorn text-lg animate-pulse"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-blue-600 to-slate-950 text-white shadow-md shadow-blue-500/20">
+          <i class="fa-solid fa-chart-line text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-cyan-400 to-indigo-300 bg-clip-text text-transparent font-sans">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-cyan-500/10 px-2 py-0.5 text-xs font-semibold text-cyan-300 border border-cyan-500/20 font-mono">Press Room</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300 font-sans">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-blue-500/10 px-2 py-0.5 text-xs font-semibold text-blue-600 dark:text-blue-300 border border-blue-500/20 font-mono">Metrics Lab</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-camera-retro text-cyan-400 animate-bounce"></i>
-        <h1 class="font-heading font-bold text-slate-200">Lesson 34: Claiming & Denying</h1>
+        <i class="fa-solid fa-calculator text-blue-500 animate-bounce"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 34: Statistics</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates signal recalibration) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Calibrate Flash Shutter">
-          <i class="fa-solid fa-camera text-sm text-cyan-400 animate-pulse"></i>
+        <!-- Custom theme toggle (Light/Dark theme calibration) -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Toggle Light/Dark Theme">
+          <i class="fa-solid fa-sun text-sm text-amber-500 animate-pulse"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
-          <div class="h-2 w-2 rounded-full bg-cyan-450 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-350" id="lesson-mastery-ratio">0/30 Mastered</span>
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-900 px-3 py-1.5 border border-slate-200 dark:border-slate-800">
+          <div class="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-355" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -154,98 +154,119 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-955/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white/70 dark:border-slate-800 dark:bg-slate-955/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-455 uppercase">Investigation Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">Statistical Modules</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-            <i class="fa-solid fa-newspaper text-base"></i>
-            <span>Dossier & Glossary</span>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Interactive Dossier</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-clone text-base"></i>
-            <span>Flashcard Studio</span>
+            <span>Data Flashcards</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-slate-900 hover:text-slate-150">
-            <i class="fa-solid fa-magnifying-glass text-base"></i>
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
+            <i class="fa-solid fa-square-poll-vertical text-base"></i>
             <span>Graded Scenario Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Investigation Lexicon</span>
+            <span>Metrics Lexicon</span>
           </button>
         </div>
         
-        <!-- User Press Badge Clearance Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
-          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-cyan-500/10 rounded-full"></div>
+        <!-- User Analytical Clearance Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 p-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-blue-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-id-card text-cyan-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Press Credentials</span>
+            <i class="fa-solid fa-chart-column text-blue-500 dark:text-blue-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Metric Standing</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-cyan-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Substantiate claims and verify leaks. Complete tasks to elevate to the Chief Editor ranking!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-blue-600 dark:text-blue-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed">Map sharp rises and gradual drops. Complete tasks to elevate to the Principal Analyst ranking!</p>
         </div>
       </nav>
 
       <!-- Main Scrollable Content Panel -->
       <main class="flex-1 overflow-y-auto relative h-full">
         
-        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <!-- ==================== VIEW 1: Interactive Story ==================== -->
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-cyan-955/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-passport text-slate-700/60 text-lg animate-pulse"></i>
+            <!-- Left Side: Interactive Dossier Lesson Text -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-200 dark:border-slate-800 bg-gradient-to-tr from-slate-50 to-blue-50/10 dark:from-slate-955 dark:to-blue-955/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-calculator text-slate-300 dark:text-slate-700 text-lg animate-pulse"></i>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Scandal of Sector 7</h2>
-                  <p class="text-xs text-slate-400 mt-1">Sift through leaks, denials, and allegations. Click highlighted collocations to pull up glossary cards.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">Lesson 34 Curriculum: Statistics</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Sift through countable numbers, uncountable amounts, and sharp trends. Click highlighted collocations to pull up glossary files.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-cyan-500/10 transition z-10">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-bold shadow-md shadow-blue-500/10 transition z-10 shrink-0">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Broadcast Address</span>
+                  <span>Broadcast Lesson</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 font-sans tracking-wide space-y-6 relative z-10">
+              <!-- Exact Lesson Text from Lesson 34.pdf with Fixed Pronunciation Spans and Proper HTML Formatting -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-350 font-sans tracking-wide space-y-6 relative z-10">
                 <p>
-                  When the underground journal decided to <span class="colloc-ref cursor-pointer font-bold text-cyan-400 border-b-2 border-dashed border-cyan-500 hover:bg-cyan-500/10 px-1 rounded transition" data-id="make_claim">make a claim</span> that Sector 7 was dumping waste, the corporate director went into full panic mode. They accused him of negligence, but he immediately attempted to <span class="colloc-ref cursor-pointer font-bold text-cyan-400 border-b-2 border-dashed border-cyan-500 hover:bg-cyan-500/10 px-1 rounded transition" data-id="deny_allegations">deny the allegations</span>. Our team scrambled to find facts to <span class="colloc-ref cursor-pointer font-bold text-cyan-400 border-b-2 border-dashed border-cyan-500 hover:bg-cyan-500/10 px-1 rounded transition" data-id="substantiate_claim">substantiate our claim</span>. Without physical evidence, his legal team insisted we were publishing completely <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="baseless_claims">baseless claims</span>.
+                  First, let's clarify the difference between "number" and "amount" - we use <strong>number</strong> with countable nouns, and <strong>amount</strong> with uncountable nouns.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-100/50 dark:bg-slate-955/40 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 font-mono text-xs">
+                  <div>
+                    <span class="text-blue-500 font-black block mb-2">COUNTABLE (number)</span>
+                    <ul class="space-y-1.5 list-disc pl-4">
+                      <li>A <span class="colloc-ref cursor-pointer text-blue-650 dark:text-blue-400 underline font-bold" data-id="large_number">large number of people</span></li>
+                      <li>A <span class="colloc-ref cursor-pointer text-blue-655 dark:text-blue-400 underline font-bold" data-id="significant_number">significant number of countries</span></li>
+                      <li>A <span class="colloc-ref cursor-pointer text-blue-660 dark:text-blue-400 underline font-bold" data-id="tiny_number">tiny number of computers</span></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <span class="text-indigo-500 font-black block mb-2">UNCOUNTABLE (amount)</span>
+                    <ul class="space-y-1.5 list-disc pl-4">
+                      <li>A <span class="colloc-ref cursor-pointer text-indigo-650 dark:text-indigo-400 underline font-bold" data-id="massive_amount">massive amount of damage</span></li>
+                      <li>A <span class="colloc-ref cursor-pointer text-indigo-655 dark:text-indigo-400 underline font-bold" data-id="considerable_amount">considerable amount of money</span></li>
+                      <li>A <span class="colloc-ref cursor-pointer text-indigo-660 dark:text-indigo-400 underline font-bold" data-id="miniscule_amount">miniscule amount of alcohol</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <p>
+                  Numbers and statistics can <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="increase_or_decrease">increase or decrease</span> (more formal), <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="rise_or_fall">rise or fall</span> (also formal) or <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="go_up_go_down">go up and go down</span> (more informally). 
                 </p>
                 <p>
-                  At a packed morning briefing, the CEO stood at the podium and chose to <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="flatly_deny">flatly deny</span> all wrongdoing. "The reports are entirely fabricated," he claimed. Shortly after, the company's PR firm decided to <span class="colloc-ref cursor-pointer font-bold text-cyan-400 border-b-2 border-dashed border-cyan-500 hover:bg-cyan-500/10 px-1 rounded transition" data-id="issue_denial">issue a denial</span> to all local television syndicates. However, an anonymous hacker group suddenly stepped forward to <span class="colloc-ref cursor-pointer font-bold text-cyan-400 border-b-2 border-dashed border-cyan-500 hover:bg-cyan-500/10 px-1 rounded transition" data-id="claim_responsibility">claim responsibility</span> for leaking the encrypted records.
+                  When a number goes up or down very fast, we can describe this as sharp or dramatic - for example, the sudden improvement in the economy has resulted in a <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="dramatic_drop">dramatic drop in unemployment</span> and a <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="sharp_rise">sharp rise in consumer spending</span>. When a number goes up or down slowly, then we can talk about a <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="gradual_increase">gradual increase in population</span> or a <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="slow_decline">slow decline in the number of violent crimes</span>. And if a number doesn't change, then it <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="remains_steady">remains steady</span> or <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="remains_constant">remains constant</span>.
                 </p>
                 <p>
-                  The leaked emails proved that the CEO had actively refused to <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-505/10 px-1 rounded transition" data-id="take_responsibility">take responsibility</span> for the environmental damage. Instead, he decided to <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-505/10 px-1 rounded transition" data-id="deny_responsibility">deny responsibility</span>, blaming a local subcontractor. This action was a <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-505/10 px-1 rounded transition" data-id="grave_mistake">grave mistake</span>. The subcontractor sued the company, stating they wouldn't stand by while the board made <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-505/10 px-1 rounded transition" data-id="baseless_accusations">baseless accusations</span> of sabotage.
+                  We use the word <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="widespread">"widespread"</span> to describe something that is happening frequently in many places. For example, there being <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="widespread_dissatisfaction">widespread dissatisfaction with the government</span>, or a new book winning <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="widespread_acclaim">widespread acclaim in the literary world</span>. A hurricane can cause <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="widespread_damage">widespread damage</span>, and a presidential candidate can have <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="widespread_support">widespread support among voters</span> of a certain demographic.
                 </p>
                 <p>
-                  When the chemical water diagnostics proved the contamination <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="beyond_doubt">beyond a shadow of a doubt</span>, the board had no choice but to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="admit_defeat">admit defeat</span>. The CEO was forced to resign. During his final press conference, he decided to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="confess_to_crime">confess to the crime</span> and apologized, stating he was deeply sorry to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="admit_mistake">admit making a mistake</span> that had compromised our regional ecosystem.
+                  In conversational English, we often use the structure <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="keep_doing">keep + -ING</span> to describe something that happens frequently. For example, "I'm trying to work, but my colleagues <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="keep_interrupting">keep interrupting me</span>" or "Why do you <span class="colloc-ref cursor-pointer font-bold text-blue-600 dark:text-blue-400 border-b-2 border-dashed border-blue-500 hover:bg-blue-500/10 px-1 rounded transition" data-id="keep_asking">keep asking me</span> about the problem? I've told you a thousand times I don't know how to solve it."
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-slate-900 to-slate-955 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 animate-pulse" id="glossary-category">Press Intelligence</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-blue-400 animate-pulse" id="glossary-category">Statistical Profile</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -256,24 +277,24 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-cyan-300" id="glossary-phrase">make a claim</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-blue-300" id="glossary-phrase">large number</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To state or assert that something is true, typically without providing immediate evidence or proof.</p>
+                <p class="text-slate-350 text-sm leading-relaxed mb-6" id="glossary-definition">Used specifically with countable nouns to refer to a great quantity of items or individuals.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Interactive Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"When the underground journal decided to make a claim..."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"A large number of students enrolled in the course."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-cyan-400"></i>
-                  <span>Linguistic Decisiveness</span>
+              <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-blue-500"></i>
+                  <span>Tactical Data Distinctions</span>
                 </h4>
-                <p class="text-xs text-slate-400 leading-relaxed font-sans">
-                  The vocabulary of litigation and journalism is highly precise. You **flatly deny** allegations but never 'warmly' or 'plainly' do so. You **substantiate a claim** rather than 'ground' it. Learn these native mappings to formulate flawless articles.
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
+                  The vocabulary of statistics is remarkably exact. Countable objects are paired with <strong>number</strong> (large/significant/tiny number), whereas uncountable assets are paired with <strong>amount</strong> (massive/considerable/miniscule amount). Rapid changes are described as <strong>dramatic</strong> or <strong>sharp</strong>, while slow trends are <strong>gradual</strong>.
                 </p>
               </div>
             </div>
@@ -285,65 +306,65 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Flashcard Studio</h2>
-                <p class="text-xs text-slate-400 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Metrics Flashcard Studio</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-455 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span class="text-slate-405">/</span>
+                <span id="flashcard-total">30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-cyan-400 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-blue-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-300 px-2.5 py-1 rounded-full border border-cyan-500/20" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-300 px-2.5 py-1 rounded-full border border-blue-500/20" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-850 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-heading">Quantitative Connection</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
                   <div class="text-center text-xs text-slate-400">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-cyan-955 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-blue-955 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-cyan-455 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-cyan-455 font-semibold font-mono">Press Profile</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-blue-455 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-blue-455 font-semibold font-mono">Statistical Profile</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-cyan-455 uppercase tracking-widest font-black">Definition</span>
+                      <span class="text-[10px] text-blue-455 uppercase tracking-widest font-black">Definition</span>
                       <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
                     <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-cyan-455 uppercase tracking-widest font-black font-mono">Luminous Context</span>
+                      <span class="text-[10px] text-blue-455 uppercase tracking-widest font-black font-mono">Analytical Context</span>
                       <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
                   
                   <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
-                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-cyan-500 focus:ring-cyan-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-300">Mark as Mastered</span>
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-blue-500 focus:ring-blue-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-350">Mark as Decoded</span>
                     </label>
                     <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
                   </div>
@@ -353,12 +374,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-100 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-slate-955 font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -371,26 +392,32 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-805 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 34 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct collocation to resolve the investigative scenario.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 34 Graded Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Resolve the opinion letter to the magazine by choosing standard statistical collocations.</p>
                 </div>
-                <div class="bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-blue-500/10 text-blue-600 dark:text-blue-300 border border-blue-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono shrink-0">
+                  Step <span id="quiz-question-current">1</span> of 16
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-cyan-500 to-indigo-500 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full transition-all duration-300" style="width: 6.25%"></div>
               </div>
               
-              <!-- Question Text -->
+              <!-- Magazine Letter Preview -->
+              <div class="bg-slate-100/50 dark:bg-slate-955/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs md:text-sm font-serif italic text-slate-600 dark:text-slate-355 leading-relaxed shadow-inner">
+                <span class="font-sans font-bold uppercase tracking-wider text-[10px] text-blue-500 block mb-2 not-italic">Magazine Opinion Letter Draft:</span>
+                <p id="magazine-letter-text">Draft loading...</p>
+              </div>
+              
+              <!-- Active Question Blank Selection -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 font-mono">Active Dossier Segment</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-blue-500 font-mono">Fill in active blank:</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-800 dark:text-white font-sans">"Loading question..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -399,59 +426,65 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-955/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-955/20 border border-emerald-100 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Editor's Proofreading Note</span>
+                  <span>Statistical Auditor's Note</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
                   <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
-                  <span>Next Question</span>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-500 dark:bg-slate-855 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Step</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-[#090d16] rounded-3xl p-8 border border-slate-800 shadow-md space-y-8 text-center">
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-[#090d16] rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-8 text-center">
               <div class="space-y-3">
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-400">
-                  <i class="fa-solid fa-bullseye text-3xl animate-bounce"></i>
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-blue-500/10 text-blue-500">
+                  <i class="fa-solid fa-check-double text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black">Press Clearance Granted!</h2>
-                <p class="text-sm text-slate-405 font-medium">Analysis completed. Review your professional standing metrics.</p>
+                <h2 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-200">Opinion Letter Calibrated!</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-405 font-medium">All 16 blanks of the statistics worksheet solved and submitted.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Dossiers Solved</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-slate-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Metrics Aligned</span>
+                  <span class="text-2xl font-black text-emerald-500 font-mono" id="quiz-score-correct">14/16</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                <div class="bg-slate-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
                   <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Accuracy Rate</span>
-                  <span class="text-2xl font-black text-cyan-400 font-mono" id="quiz-score-percent">90%</span>
+                  <span class="text-2xl font-black text-blue-500 font-mono" id="quiz-score-percent">88%</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Press Rating</span>
-                  <span class="text-xs sm:text-sm font-bold text-cyan-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Chief Editor</span>
+                <div class="bg-slate-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Clearance Rating</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Principal Analyst</span>
                 </div>
               </div>
               
+              <!-- Completed Letter Preview -->
+              <div class="bg-slate-50 dark:bg-slate-950/70 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 text-left text-xs md:text-sm font-serif italic leading-relaxed text-slate-700 dark:text-slate-300 max-h-48 overflow-y-auto shadow-inner">
+                <span class="font-sans font-bold uppercase tracking-wider text-[10px] text-blue-500 block mb-2 not-italic">Your Final Audited Letter:</span>
+                <p id="completed-magazine-letter"></p>
+              </div>
+              
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-slate-955 font-semibold text-sm shadow-lg transition">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate</span>
+                  <span>Re-examine Drafts</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-semibold text-sm hover:bg-slate-800 transition">
-                  <span>Back to Dossier</span>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                  <span>Back to Story</span>
                 </button>
               </div>
             </div>
@@ -462,18 +495,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Press Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom news reports, media announcements, or denial statements using Lesson 34 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Statistical Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Write a short news snippet or empirical evaluation. The model validates alignment with Lesson 34 statistics and trend guidelines.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-cyan-455"></i> Get Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-lightbulb mr-1 text-blue-500"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 text-xs font-bold rounded-xl transition border border-cyan-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-blue-500/10 text-blue-700 dark:bg-blue-955/40 dark:text-blue-300 hover:bg-blue-100 text-xs font-bold rounded-xl transition shadow-sm border border-blue-200/50">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -481,8 +514,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-455 font-mono">Briefing Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-zinc-955 p-4 text-sm font-medium focus:border-cyan-500 focus:bg-slate-900 outline-none transition text-slate-100" placeholder="Example: The company chose to flatly deny the allegations and issued a denial, refusing to take responsibility..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-500 font-mono">Data Draft Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-955 p-4 text-sm font-medium focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition text-slate-800 dark:text-slate-100" placeholder="Example: The sudden improvement in the economy has resulted in a dramatic drop in unemployment and a sharp rise in consumer spending..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -491,55 +524,55 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
                 <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-zinc-955 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Article Syntax</span>
+                  <span>Scan Metric Syntax</span>
                 </button>
               </div>
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Editorial Pattern Scan</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Analytical Calibration Scan</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-955/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40">Ideal Match</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800">
-                    <span class="text-3xl font-black font-mono tracking-tight text-cyan-400" id="diagnostic-score">92</span>
-                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-slate-800">
+                    <span class="text-3xl font-black font-mono tracking-tight text-blue-500" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-450 dark:text-slate-500 font-mono">Score</span>
                   </div>
                 </div>
                 
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing journalistic structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-455 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Analyzing statistical structures...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Tactical Soundness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-455 font-mono block mb-0.5">Statistical Precision Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-[#030712] p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-1">Recommended Editorial Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-250 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-slate-100 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-4a5 font-mono block mb-1">Recommended Editorial Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-655 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-855 transition shadow-sm font-mono font-sans font-medium">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
                   </button>
                 </div>
@@ -557,41 +590,41 @@
               <!-- Broadcast Header -->
               <div class="flex items-center justify-between pb-4 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                  <span class="flex h-3 w-3 rounded-full bg-cyan-500 animate-pulse"></span>
+                  <span class="flex h-3 w-3 rounded-full bg-blue-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 34</h2>
-                    <p class="text-[10px] text-slate-405 font-semibold font-mono">Press Briefing Room: Claims, Accusations, and Corporate Denials</p>
+                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Metrics Studio: Numbers, Amounts, and Sharp Trends</p>
                   </div>
                 </div>
-                <div class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
-                <div class="wave-bar bg-cyan-455 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
-                <div class="wave-bar bg-cyan-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
-                <div class="wave-bar bg-cyan-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-blue-450 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-blue-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-blue-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
                 <div class="wave-bar bg-indigo-500 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
                 <div class="wave-bar bg-indigo-655 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
-                <div class="wave-bar bg-cyan-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+                <div class="wave-bar bg-blue-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-cyan-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "flatly deny the allegations"</h3>
-                <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated journalists debating the vocabulary of claims, accusations, and denials from Lesson 34.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-blue-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "sharp rise"</h3>
+                <p class="text-xs text-slate-355 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated statisticians debating the standard collocations of quantities, percentages, and drops from Lesson 34.</p>
               </div>
               
               <!-- Dialogue Box -->
               <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
-                  <div class="h-6 w-6 rounded bg-cyan-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+                  <div class="h-6 w-6 rounded bg-blue-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-cyan-400 font-mono">Sarah (Investigative Lead)</span>
-                    <p class="text-xs text-slate-300 font-serif italic">"Welcome to the press room. Today we are analyzing Lesson 34 collocations regarding claiming, accusing, and denying. Let's start the wavelength scan!"</p>
+                    <span class="text-[10px] font-bold text-blue-400 font-mono">Sarah (Senior Analyst)</span>
+                    <p class="text-xs text-slate-300 font-serif italic">"Welcome to the statistics metrics desk. Today we map out Lesson 34 countable numbers versus uncountable amounts. Let's start the calibration sweep!"</p>
                   </div>
                 </div>
               </div>
@@ -599,25 +632,25 @@
               <!-- Podcast Controls -->
               <div class="flex flex-col gap-4">
                 <div class="flex items-center justify-between gap-4">
-                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-105 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-cyan-500 to-cyan-700 text-slate-955 hover:from-cyan-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-blue-500 to-blue-700 text-slate-955 hover:from-blue-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
-                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-105 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
                     <i class="fa-solid fa-forward-step"></i>
                   </button>
                 </div>
                 
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
-                  <div class="flex items-center justify-between text-[10px] text-cyan-300">
+                  <div class="flex items-center justify-between text-[10px] text-blue-300">
                     <span id="podcast-time-passed">Card 0/30</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                    <div id="podcast-loading-meter" class="bg-cyan-450 h-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="podcast-loading-meter" class="bg-blue-450 h-full transition-all duration-300" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -628,30 +661,31 @@
         
         <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Investigation Lexicon</h2>
-                <p class="text-xs text-slate-455">Search and filter active allegations, claims, and denials inside the Lesson 34 database.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200 font-sans">Metrics Lexicon</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-455 font-sans">Search and filter active quantity descriptors, rates of change, and statistical trends from the Lesson 34 registry.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-cyan-500 transition w-full md:w-48" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-405 dark:text-slate-550 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-955 text-slate-800 dark:text-white outline-none focus:border-blue-500 transition w-full md:w-48" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-955 text-slate-300 outline-none font-bold font-mono">
-                  <option value="all">All Assertions</option>
-                  <option value="Claims">Making Claims</option>
-                  <option value="Accusations">Accusations & Charges</option>
-                  <option value="Denials">Denials & Refusals</option>
-                  <option value="Confessions">Confessions & Admission</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-705 dark:text-slate-300 outline-none font-bold font-mono">
+                  <option value="all">All Metrics</option>
+                  <option value="Countable">Countable Numbers</option>
+                  <option value="Uncountable">Uncountable Amounts</option>
+                  <option value="Rates of Change">Rates of Change</option>
+                  <option value="Spread & Support">Widespread Phenoms</option>
+                  <option value="Conversational">Conversational Iterators</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-955 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-705 dark:text-slate-300 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -663,16 +697,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
-                    <th class="py-3 px-4 w-32">Assertive Group</th>
+                    <th class="py-3 px-4 w-32">Metric Group</th>
                     <th class="py-3 px-4">Core Definition</th>
                     <th class="py-3 px-4 hidden lg:table-cell">Luminous Precedent Example</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-sans">
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -685,28 +719,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-cyan-400">
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400">
         <i class="fa-solid fa-scroll text-base"></i>
         <span class="text-[9px] font-bold">Story</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-cyan-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-cyan-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400">
         <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-cyan-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400">
         <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-cyan-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-cyan-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -716,10 +750,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white font-sans font-medium">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-slate-800 dark:text-white font-sans font-medium">Observer's Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -728,7 +762,7 @@
       <div class="space-y-4">
         <div class="space-y-1.5">
           <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-slate-700 rounded-xl px-3 py-2 bg-slate-955 text-xs font-semibold outline-none text-white font-mono">
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-955 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
@@ -739,7 +773,7 @@
             <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
-          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-cyan-500">
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-blue-500">
         </div>
         
         <!-- Pitch Control -->
@@ -748,19 +782,19 @@
             <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
-          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-cyan-500">
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-blue-500">
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-cyan-500 hover:bg-cyan-600 text-slate-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300">
-    <div class="h-8 w-8 rounded-lg bg-white/10 text-cyan-400 flex items-center justify-center shrink-0">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 text-blue-400 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
@@ -781,61 +815,58 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'make_claim', phrase: 'make a claim', definition: 'To state or assert that something is true, often without immediate proof or evidence.', example: 'The reporter decided to make a claim that the facility dumped waste.', category: 'Claims', mastered: false },
-        { id: 'substantiate_claim', phrase: 'substantiate your claim', definition: 'To provide solid empirical evidence or proof to verify an assertion.', example: 'You will need key logs and diagnostics to substantiate your claim in court.', category: 'Claims', mastered: false },
-        { id: 'baseless_claims', phrase: 'baseless claims', definition: 'Assertions made without any logical backing or factual foundation.', example: 'Management dismissed the leaks as baseless claims fabricated by hackers.', category: 'Claims', mastered: false },
-        { id: 'unfounded_claims', phrase: 'unfounded claims', definition: 'Assertions with no verifiable source or reality; synonymous with baseless claims.', example: 'unfounded claims of corruption will ruin the team\'s timeline.', category: 'Claims', mastered: false },
-        { id: 'withdraw_claim', phrase: 'withdraw a claim', definition: 'To formally retract or take back a statement of claim.', example: 'The company was forced to withdraw their claim after audits proved otherwise.', category: 'Claims', mastered: false },
-        { id: 'deny_allegations', phrase: 'deny the allegations', definition: 'To state formally that accusations or complaints are completely untrue.', example: 'The administrator stood at the podium to deny the allegations.', category: 'Denials', mastered: false },
-        { id: 'deny_accusations', phrase: 'deny the accusations', definition: 'Stating that charges or blame leveled against you are false.', example: 'He continues to deny the accusations of financial misconduct.', category: 'Denials', mastered: false },
-        { id: 'flatly_deny', phrase: 'flatly deny the allegations', definition: 'To completely, forcefully, and absolutely deny charges without hesitation.', example: 'The CEO met with the trade board to flatly deny the allegations.', category: 'Denials', mastered: false },
-        { id: 'issue_denial', phrase: 'issue a denial', definition: 'Publishing a formal, written, or spoken statement declaring allegations false.', example: 'The public relations firm will issue a denial to the news networks.', category: 'Denials', mastered: false },
-        { id: 'claim_responsibility', phrase: 'claim responsibility', definition: 'Stating formally that your group or faction committed a specific crime or attack.', example: 'A mysterious activist group emerged to claim responsibility for the data breach.', category: 'Claims', mastered: false },
-        { id: 'confess_to_crime', phrase: 'confess to the crime', definition: 'Formally admitting to the authorities that you committed an illegal act.', example: 'Faced with the forensic records, the suspect decided to confess to the crime.', category: 'Confessions', mastered: false },
-        { id: 'admit_to_crime', phrase: 'admit to the crime', definition: 'Acknowledging responsibility for an offense; synonymous with confess to the crime.', example: 'The rogue trader finally chose to admit to the crime.', category: 'Confessions', mastered: false },
-        { id: 'admit_mistake', phrase: 'admit making a mistake', definition: 'To accept and acknowledge that you committed an error or miscalculation.', example: 'The designer was quick to admit making a mistake on the firewall configurations.', category: 'Confessions', mastered: false },
-        { id: 'take_responsibility', phrase: 'take responsibility', definition: 'Accepting the moral or professional blame and consequences for an action.', example: 'Good leaders will take responsibility for their department\'s failures.', category: 'Confessions', mastered: false },
-        { id: 'accept_responsibility', phrase: 'accept responsibility', definition: 'Accepting blame; synonymous with take responsibility.', example: 'The director chose to accept responsibility for the administrative delay.', category: 'Confessions', mastered: false },
-        { id: 'deny_responsibility', phrase: 'deny responsibility', definition: 'Refusing to accept blame or consequences for a negative outcome.', example: 'The manufacturer attempted to deny responsibility for the engine leaks.', category: 'Denials', mastered: false },
-        { id: 'refuse_responsibility', phrase: 'refuse to take responsibility', definition: 'Forcefully avoiding blame or refusing to accept any accountability.', example: 'The subcontractor chose to refuse to take responsibility for the layout bug.', category: 'Denials', mastered: false },
-        { id: 'make_accusation', phrase: 'make an accusation', definition: 'Accusing someone of doing something illegal, wrong, or unprofessional.', example: 'Never make an accusation against a colleague without auditing the files first.', category: 'Accusations', mastered: false },
-        { id: 'deny_accusation', phrase: 'deny the accusation', definition: 'Stating that a specific charge leveled against you is false.', example: 'She chose to deny the accusation of cheating on the program review.', category: 'Denials', mastered: false },
-        { id: 'baseless_accusations', phrase: 'baseless accusations', definition: 'Blame or charges made with zero factual foundation or proof.', example: 'Our competitors are launching baseless accusations to steal our market share.', category: 'Accusations', mastered: false },
-        { id: 'unfounded_accusations', phrase: 'unfounded accusations', definition: 'Charges without any basis or evidence; synonymous with baseless accusations.', example: 'Dismiss the report as it is compiled with unfounded accusations.', category: 'Accusations', mastered: false },
-        { id: 'admit_defeat', phrase: 'admit defeat', definition: 'To accept that you have lost a contest, argument, or campaign.', example: 'After the final ballots were fully counted, the candidate had to admit defeat.', category: 'Confessions', mastered: false },
-        { id: 'unfounded_allegations', phrase: 'unfounded allegations', definition: 'Formal complaints or charges carrying zero factual backing.', example: 'The court threw out the lawsuit, citing unfounded allegations.', category: 'Accusations', mastered: false },
-        { id: 'baseless_allegations', phrase: 'baseless allegations', definition: 'Charges or complaints with no proof; synonymous with unfounded allegations.', example: 'The board refused to investigate what they called baseless allegations.', category: 'Accusations', mastered: false },
-        { id: 'serious_allegations', phrase: 'serious allegations', definition: 'Complaints or charges carrying severe, high-consequence implications.', example: 'The board launched a closed audit following serious allegations of fraud.', category: 'Accusations', mastered: false },
-        { id: 'make_allegation', phrase: 'make an allegation', definition: 'To present a formal charge or complaint stating someone did wrong.', example: 'The whistleblower decided to make an allegation of corporate negligence.', category: 'Accusations', mastered: false },
-        { id: 'leak_news', phrase: 'leak the news', definition: 'To deliberately and secretly share confidential updates with the press.', example: 'An inside contractor chose to leak the news of the impending merger to the media.', category: 'Tactical Operations', mastered: false },
-        { id: 'deny_rumors', phrase: 'deny the rumors', definition: 'Stating officially that unverified gossip or media talk is false.', example: 'The studio released a statement to deny the rumors of a project cancellation.', category: 'Denials', mastered: false },
-        { id: 'mistaken_identity', phrase: 'mistaken identity', definition: 'An error where a person is incorrectly identified as someone else.', example: 'The innocent bystander was detained in a bizarre case of mistaken identity.', category: 'Tactical Operations', mastered: false },
-        { id: 'beyond_doubt', phrase: 'beyond a shadow of a doubt', definition: 'Completely proven, with absolutely zero uncertainty remaining.', example: 'The forensic security codes proved his hacking guilt beyond a shadow of a doubt.', category: 'Tactical Operations', mastered: false }
+        { id: 'large_number', phrase: 'large number of people', definition: 'A major countable group of individuals.', example: 'A large number of people gathered outside the town hall.', category: 'Countable', mastered: false },
+        { id: 'significant_number', phrase: 'significant number of countries', definition: 'A non-trivial, statistically noticeable count of sovereign states.', example: 'A significant number of countries signed the new environmental pact.', category: 'Countable', mastered: false },
+        { id: 'tiny_number', phrase: 'tiny number of computers', definition: 'A very small, minute countable quantity of machines.', example: 'A tiny number of computers in the laboratory were connected to the network.', category: 'Countable', mastered: false },
+        { id: 'massive_amount', phrase: 'massive amount of damage', definition: 'An enormous, unquantifiable measure of structural destruction.', example: 'The category-5 hurricane caused a massive amount of damage to the harbor.', category: 'Uncountable', mastered: false },
+        { id: 'considerable_amount', phrase: 'considerable amount of money', definition: 'A substantial, unmeasured sum of currency or assets.', example: 'The development of the quantum mainframe required a considerable amount of money.', category: 'Uncountable', mastered: false },
+        { id: 'miniscule_amount', phrase: 'miniscule amount of alcohol', definition: 'An exceptionally tiny, trace measure of liquid volume.', example: 'A miniscule amount of alcohol was detected in the final chemical compound.', category: 'Uncountable', mastered: false },
+        { id: 'increase_or_decrease', phrase: 'increase or decrease', definition: 'The formal verb pairs representing numeric statistics expanding or shrinking.', example: 'Data rates may increase or decrease according to active bandwidth.', category: 'Rates of Change', mastered: false },
+        { id: 'rose_or_fall', phrase: 'rise or fall', definition: 'An alternative formal set of verbs representing statistical ascent or descent.', example: 'Corporate index values routinely rise or fall according to seasonal metrics.', category: 'Rates of Change', mastered: false },
+        { id: 'go_up_go_down', phrase: 'go up and go down', definition: 'An informal, conversational way to denote numeric fluctuations.', example: 'Values go up and go down constantly on the public trade boards.', category: 'Rates of Change', mastered: false },
+        { id: 'dramatic_drop', phrase: 'dramatic drop in unemployment', definition: 'An exceptionally fast, massive decrease in joblessness.', example: 'The sudden economic boom resulted in a dramatic drop in unemployment.', category: 'Rates of Change', mastered: false },
+        { id: 'sharp_rise', phrase: 'sharp rise in consumer spending', definition: 'An exceptionally rapid and steep increase in financial output.', example: 'Tax cuts led directly to a sharp rise in consumer spending.', category: 'Rates of Change', mastered: false },
+        { id: 'gradual_increase', phrase: 'gradual increase in population', definition: 'A slow, steady, sequential rise in population over time.', example: 'Improved public health contributed to a gradual increase in population.', category: 'Rates of Change', mastered: false },
+        { id: 'slow_decline', phrase: 'slow decline in the number of violent crimes', definition: 'A minor, gradual drop in illegal community acts.', example: 'Community patrol programs resulted in a slow decline in the number of violent crimes.', category: 'Rates of Change', mastered: false },
+        { id: 'remains_steady', phrase: 'remains steady', definition: 'Refers to a metric maintaining a stable, unshifting value range.', example: 'Despite localized economic inflation, the national employment index remains steady.', category: 'Rates of Change', mastered: false },
+        { id: 'remains_constant', phrase: 'remains constant', definition: 'Remaining totally unshifting, uniform, and fixed over time.', example: 'The value of the mathematical ratio remains constant under any variable scale.', category: 'Rates of Change', mastered: false },
+        { id: 'widespread', phrase: 'widespread', definition: 'Happening frequently or located broadly across many different places.', example: 'High tax rate changes sparked widespread concerns among regional sectors.', category: 'Spread & Support', mastered: false },
+        { id: 'widespread_dissatisfaction', phrase: 'widespread dissatisfaction with the government', definition: 'Unhappiness or grievance shared frequently across many locations.', example: 'Unchecked tax rate increases fed widespread dissatisfaction with the government.', category: 'Spread & Support', mastered: false },
+        { id: 'widespread_acclaim', phrase: 'widespread acclaim', definition: 'Vast praise and recognition winning frequent support in many circles.', example: 'The breakthrough quantum algorithm won widespread acclaim from tech experts.', category: 'Spread & Support', mastered: false },
+        { id: 'widespread_damage', phrase: 'widespread damage', definition: 'Destruction spread out widely across multiple zones or neighborhoods.', example: 'Tornado strikes left widespread damage in several agricultural sectors.', category: 'Spread & Support', mastered: false },
+        { id: 'widespread_support', phrase: 'widespread support among voters', definition: 'Frequent and robust endorsement by public demographics.', example: 'The reform bill gained widespread support among voters in urban centers.', category: 'Spread & Support', mastered: false },
+        { id: 'keep_doing', phrase: 'keep + -ING', definition: 'The conversational structure used to denote frequent, repetitive action.', example: 'They keep running diagnostic routines without saving the results.', category: 'Conversational', mastered: false },
+        { id: 'keep_interrupting', phrase: 'keep interrupting me', definition: 'Repeatedly breaking into focus session activities without permission.', example: 'I\'m trying to work, but my colleagues keep interrupting me.', category: 'Conversational', mastered: false },
+        { id: 'keep_asking', phrase: 'keep asking me', definition: 'Constantly and repeatedly posing identical inquiries or requests.', example: 'Why do you keep asking me about the problem? I do not know.', category: 'Conversational', mastered: false },
+        { id: 'steady_percentage', phrase: 'steady percentage', definition: 'A consistent, proportional representation that does not fluctuate.', example: 'A steady percentage of the firm\'s capital remains in reserve.', category: 'Countable', mastered: false },
+        { id: 'going_up', phrase: 'going up', definition: 'An informal, conversational way to denote an ascending trend.', example: 'The prices of consumer microchips keep going up every quarter.', category: 'Rates of Change', mastered: false },
+        { id: 'widespread_consumption', phrase: 'widespread consumption', definition: 'The massive, highly frequent eating or usage of a product in many places.', example: 'The widespread consumption of carbonated soft drinks has led to weight issues.', category: 'Spread & Support', mastered: false },
+        { id: 'high_amounts', phrase: 'high amounts', definition: 'Uncountable volume in great quantities.', example: 'Processed chips contain extremely high amounts of sodium.', category: 'Uncountable', mastered: false },
+        { id: 'excessive_number', phrase: 'excessive number', definition: 'A countable quantity that surpasses reasonable, healthy, or legal bounds.', example: 'Children are exposed to an excessive number of sweet treats advertisements.', category: 'Countable', mastered: false },
+        { id: 'average_amount', phrase: 'average amount', definition: 'The standard, typical unmeasured quantity of a resource.', example: 'The average amount of physical activity practiced by teens has decreased.', category: 'Uncountable', mastered: false },
+        { id: 'miniscule_number', phrase: 'miniscule number', definition: 'An exceptionally tiny, countable quantity of items.', example: 'Only a miniscule number of teens spend time outdoors in winter.', category: 'Countable', mastered: false },
+        { id: 'considerable_amount_time', phrase: 'considerable amount of time', definition: 'A massive, unmeasured duration spent executing an activity.', example: 'He spent a considerable amount of time configuring the system firewall.', category: 'Uncountable', mastered: false },
+        { id: 'dramatic_increase', phrase: 'dramatic increase', definition: 'A massive, highly rapid and noticeable surge in stats.', example: 'Upgrading the processor triggered a dramatic increase in compiler speed.', category: 'Rates of Change', mastered: false }
       ],
-      // Exactly 20 scenario-based multiple choice questions for Lesson 34: Claiming & Denying
       quiz: [
-        { id: 1, question: "Accused of embezzling funds, the financial director stood before the committee to ________.", options: ["flatly deny the allegations", "claim responsibility", "admit defeat"], answer: "flatly_deny", explanation: "Completely, forcefully, and absolutely declaring accusations untrue is to 'flatly deny the allegations'." },
-        { id: 2, question: "A radical hacktivist collective emerged online to ________ for the server blackout.", options: ["claim responsibility", "deny responsibility", "make a claim"], answer: "claim_responsibility", explanation: "Declaring that your group committed a specific attack or act is to 'claim responsibility'." },
-        { id: 3, question: "The logistics company faced huge federal fines when they attempted to ________ for the cargo ship damage.", options: ["deny responsibility", "substantiate their claim", "confess to the crime"], answer: "deny_responsibility", explanation: "Refusing to accept accountability for an accident or error is to 'deny responsibility'." },
-        { id: 4, question: "If you want the insurance firm to pay out, you must produce certified photos to ________.", options: ["substantiate your claim", "withdraw your claim", "make an accusation"], answer: "substantiate_claim", explanation: "Providing physical proof or files to back up an assertion is to 'substantiate your claim'." },
-        { id: 5, question: "The security analyst dismissed the competitor's reports as ________ aimed at creating panic.", options: ["baseless claims", "informed decisions", "written agreements"], answer: "baseless_claims", explanation: "Assertions made without any logical backing or factual foundation are 'baseless claims'." },
-        { id: 6, question: "Faced with undeniable database trails, the corrupted admin had no choice but to ________.", options: ["admit defeat", "deny the accusations", "keep his options open"], answer: "admit_defeat", explanation: "Accepting that you have lost a conflict or that your guilt is proven is to 'admit defeat'." },
-        { id: 7, question: "Although the clerk was accused of corporate espionage, her union advised her to ________ under questioning.", options: ["deny the accusation", "confess to the crime", "issue a denial"], answer: "deny_accusation", explanation: "Declaring that a specific charge leveled against you is false is to 'deny the accusation'." },
-        { id: 8, question: "The corporate media team announced they will ________ regarding the safety failures tomorrow morning.", options: ["issue a denial", "flatly deny the allegations", "claim responsibility"], answer: "issue_denial", explanation: "Publishing a formal, written statement declaring allegations false is to 'issue a denial'." },
-        { id: 9, question: "The defense argued that the lead investigator was acting out of spite and making completely ________.", options: ["baseless accusations", "wise decisions", "verbal agreements"], answer: "baseless_accusations", explanation: "Charges or blame laid with absolutely zero proof or evidence are 'baseless accusations'." },
-        { id: 10, question: "The rogue developer finally decided to ________ to the authorities, hoping for a lighter sentence.", options: ["confess to the crime", "deny the allegations", "play it safe"], answer: "confess_to_crime", explanation: "Formally admitting to the authorities that you committed an offense is to 'confess to the crime'." },
-        { id: 11, question: "The witnesses' accounts of the event ________, leaving the jury extremely confused.", options: ["differed widely", "unanimous", "cordial"], answer: "differ_widely", explanation: "When accounts or versions are extremely divergent, they 'differ widely'." },
-        { id: 12, question: "Both leaders stepped up to the podium and decided to ________ before signing the final copies.", options: ["shake hands on the agreement", "breach the agreement", "flatly contradict"], answer: "shake_hands", explanation: "Finalizing a deal physically with a handshake is to 'shake hands on the agreement'." },
-        { id: 13, question: "The local newspaper published a massive retraction after realizing they had made ________ in their cover story.", options: ["an honest mistake", "a split-second decision", "a forced choice"], answer: "honest_mistake", explanation: "An error committed with entirely good intentions, without any malice, is 'an honest mistake'." },
-        { id: 14, question: "The database logs and security keys proved his direct hacking guilt ________.", options: ["beyond a shadow of a doubt", "behind schedule", "for the time being"], answer: "beyond_doubt", explanation: "Complete certainty with absolutely no uncertainty remaining is 'beyond a shadow of a doubt'." },
-        { id: 15, question: "Press leaks indicate that the board will ________ regarding the product defects in tomorrow's briefing.", options: ["issue a denial", "claim responsibility", "abide by the agreement"], answer: "issue_denial", explanation: "Formally publishing a statement to deny allegations is to 'issue a denial'." },
-        { id: 16, question: "The manufacturing director decided to resign after refusing to ________ for the factory warehouse collapse.", options: ["take responsibility", "deny the allegations", "substantiate his claim"], answer: "take_responsibility", explanation: "Accepting the moral or professional accountability for a failure is to 'take responsibility'." },
-        { id: 17, question: "If the prosecutors cannot produce any physical files or witnesses, the court will dismiss the case as an ________.", options: ["unfounded accusation", "honest mistake", "arbitrary decision"], answer: "unfounded_accusations", explanation: "A charge or blame made with zero factual backing is an 'unfounded accusation'." },
-        { id: 18, question: "The defense lawyer warned that making a ________ to settle the lawsuit without auditing the files was highly risky.", options: ["snap decision", "wise decision", "split-second decision"], answer: "snap_decision", explanation: "A rapid, impulsive choice made without proper research is a 'snap decision'." },
-        { id: 19, question: "After the patent records proved their claims were false, they had no choice but to ________.", options: ["withdraw the claim", "substantiate the claim", "deny the allegations"], answer: "withdraw_claim", explanation: "Formally retracting or taking back an assertion is to 'withdraw a claim'." },
-        { id: 20, question: "If they cannot prove the allegations of fraud, they will have to ________ and pay the legal fees.", options: ["admit defeat", "deny the accusations", "keep their options open"], answer: "admit_defeat", explanation: "Accepting that you have lost a conflict or that your claims are refuted is to 'admit defeat'." }
+        { id: 1, question: "The ________ rise in obesity is a major cause for concern.", options: ["sharp", "heavy"], answer: "sharp", explanation: "With rising/falling trends, we use 'sharp rise' to describe rapid, steep increases. 'Heavy rise' is not a standard English collocation." },
+        { id: 2, question: "A ________ percentage of adults are now overweight...", options: ["significant", "steady"], answer: "significant", explanation: "In this opening, a 'significant percentage' represents a statistically large, alarming proportion." },
+        { id: 3, question: "...and the ________ of children with weight problems is also getting up/going up.", options: ["number", "amount"], answer: "number", explanation: "Children are countable individuals, meaning we must use 'number of children'. 'Amount' is reserved strictly for uncountable nouns." },
+        { id: 4, question: "This weight problem metric among kids is also ________.", options: ["going up", "getting up"], answer: "going up", explanation: "An ascending trend is described informally as 'going up'. 'Getting up' refers to waking up or rising physically." },
+        { id: 5, question: "This crisis is partly due to the ________ consumption of processed foods...", options: ["widespread", "overall"], answer: "widespread", explanation: "'Widespread consumption' denotes a consumption pattern happening frequently in many different places." },
+        { id: 6, question: "...processed foods with high ________ of fat and sugar.", options: ["amounts", "numbers"], answer: "amounts", explanation: "Fat and sugar are uncountable masses, meaning they exist in high 'amounts'." },
+        { id: 7, question: "We're exposed to an excessive ________ of advertisements...", options: ["number", "amount"], answer: "number", explanation: "Advertisements are countable nouns, requiring the collocation 'excessive number'." },
+        { id: 8, question: "...advertisements that ________ encouraging us to consume more and more food...", options: ["keep", "stay"], answer: "keep", explanation: "In conversational English, we use the structure 'keep + -ING' (keep encouraging) to denote a repetitive, frequent action." },
+        { id: 9, question: "Other contributing factors to the obesity epidemic include a ________ increase in portion sizes...", options: ["gradual", "low"], answer: "gradual", explanation: "A slow, continuous rise is described as a 'gradual increase'. 'Low increase' is not standard." },
+        { id: 10, question: "...and a ________ in the average amount of physical exercise...", options: ["drop", "lack"], answer: "drop", explanation: "'Drop in the average amount...' is standard. 'Lack of physical exercise' would be correct, but 'lack in' does not fit grammatically." },
+        { id: 11, question: "...in the average ________ of physical exercise practiced by the population.", options: ["amount", "number"], answer: "amount", explanation: "Exercise is an uncountable activity, requiring the collocation 'average amount of exercise'." },
+        { id: 12, question: "A ________ number of kids nowadays play sports; instead...", options: ["miniscule", "short"], answer: "miniscule", explanation: "An exceptionally tiny countable proportion is a 'miniscule number'. 'Short number' is incorrect." },
+        { id: 13, question: "...they prefer to spend a ________ amount of time in front of computers, TVs, and video games.", options: ["considerable", "conventional"], answer: "considerable", explanation: "A substantial duration of time is described as a 'considerable amount of time'." },
+        { id: 14, question: "Health problems caused by excess weight have resulted in a ________ increase in health care costs...", options: ["dramatic", "vivid"], answer: "dramatic", explanation: "A massive, rapid, and highly noticeable surge is a 'dramatic increase'. 'Vivid increase' is not used." },
+        { id: 15, question: "...and although the life expectancy has remained ________ over the past 30 years...", options: ["steady", "reliable"], answer: "steady", explanation: "Refers to a metric maintaining balanced stability. Life expectancy has 'remained steady'." },
+        { id: 16, question: "...we can expect to see a ________ if the trend of over-eating and under-exercising continues.", options: ["decline", "decay"], answer: "decline", explanation: "A downward statistical trend or drop is a 'decline'. 'Decay' usually refers to biological rotting or decomposition." }
       ],
-      activeCardId: 'make_claim',
+      activeCardId: 'large_number',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -854,34 +885,24 @@
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Sharp camera shutter click
-          const bufferSize = audioCtx.sampleRate * 0.05;
-          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-          const data = buffer.getChannelData(0);
-          for (let i = 0; i < bufferSize; i++) {
-            data[i] = Math.random() * 2 - 1;
-          }
-          const noise = audioCtx.createBufferSource();
-          noise.buffer = buffer;
-
-          const filter = audioCtx.createBiquadFilter();
-          filter.type = 'bandpass';
-          filter.frequency.setValueAtTime(1500, audioCtx.currentTime);
-          filter.Q.setValueAtTime(8, audioCtx.currentTime);
-
+          const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(2200, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.04);
+
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
 
-          noise.connect(filter);
-          filter.connect(gain);
+          osc.connect(gain);
           gain.connect(audioCtx.destination);
-          noise.start();
-          noise.stop(audioCtx.currentTime + 0.05);
+          
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.04);
           
         } else if (type === 'correct') {
-          // Beautiful arpeggiated Major chord - Breaking News Alert Chime
-          const notes = [293.66, 369.99, 440.00, 587.33]; // D4, F#4, A4, D5
+          const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
           const gain = audioCtx.createGain();
           gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.6);
@@ -890,26 +911,25 @@
           notes.forEach((freq, index) => {
             const osc = audioCtx.createOscillator();
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.07);
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.08);
             osc.connect(gain);
-            osc.start(audioCtx.currentTime + index * 0.07);
+            osc.start(audioCtx.currentTime + index * 0.08);
             osc.stop(audioCtx.currentTime + 0.6);
           });
           
         } else if (type === 'incorrect') {
-          // Deep low Gavel Strike representing court objection sustained or denial rejected
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-          osc.frequency.linearRampToValueAtTime(40, audioCtx.currentTime + 0.25);
+          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.25);
 
           const lowpass = audioCtx.createBiquadFilter();
           lowpass.type = 'lowpass';
-          lowpass.frequency.setValueAtTime(160, audioCtx.currentTime);
+          lowpass.frequency.setValueAtTime(200, audioCtx.currentTime);
 
-          gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.25);
 
           osc.connect(lowpass);
@@ -920,12 +940,11 @@
           osc.stop(audioCtx.currentTime + 0.25);
           
         } else if (type === 'flip') {
-          // Shuffling dossier papers rustle
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.12);
+          osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.12);
           
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
@@ -941,97 +960,187 @@
       }
     }
 
-    // HTML5 Canvas Crossroads Pathway Animation Background
-    function initBackgroundCanvas() {
-      const canvas = document.getElementById('press-canvas');
+    // HTML5 Canvas Statistics Bar Chart & Fluctuations Background
+    function initStatsCanvas() {
+      const canvas = document.getElementById('stats-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
       let width = (canvas.width = canvas.offsetWidth);
       let height = (canvas.height = canvas.offsetHeight);
       
-      let pulses = [];
+      const bars = [];
+      const barCount = 18;
+      
+      class StatBar {
+        constructor(x) {
+          this.x = x;
+          this.targetHeight = Math.random() * (height * 0.45) + 30;
+          this.currentHeight = 0;
+          this.speed = Math.random() * 0.05 + 0.02;
+          this.pulseOffset = Math.random() * Math.PI * 2;
+          this.color = Math.random() > 0.5 ? 'rgba(59, 130, 246, 0.08)' : 'rgba(99, 102, 241, 0.08)';
+        }
+        update() {
+          this.currentHeight += (this.targetHeight - this.currentHeight) * this.speed;
+          const wave = Math.sin(Date.now() * 0.001 + this.pulseOffset) * 8;
+          this.currentHeight += wave * 0.1;
+          
+          if (Math.abs(this.currentHeight - this.targetHeight) < 1 && Math.random() < 0.01) {
+            this.targetHeight = Math.random() * (height * 0.45) + 30;
+          }
+        }
+        draw() {
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          const barWidth = width / barCount - 12;
+          ctx.roundRect(this.x, height - this.currentHeight, barWidth, this.currentHeight, [8, 8, 0, 0]);
+          ctx.fill();
+        }
+      }
+
+      function rebuildBars() {
+        bars.length = 0;
+        const spacing = width / barCount;
+        for (let i = 0; i < barCount; i++) {
+          bars.push(new StatBar(i * spacing + 6));
+        }
+      }
+      rebuildBars();
       
       window.addEventListener('resize', () => {
         width = canvas.width = canvas.offsetWidth;
         height = canvas.height = canvas.offsetHeight;
+        rebuildBars();
       });
       
-      window.addEventListener('mousedown', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        if (x >= 0 && x <= width && y >= 0 && y <= height) {
-          pulses.push({ x, y, radius: 0, opacity: 0.8, color: Math.random() > 0.5 ? '#06b6d4' : '#e11d48' });
-          playSynthSound('click');
-        }
-      });
-
       function animate() {
         ctx.clearRect(0, 0, width, height);
-        
-        // Draw subtle briefing grid lines
-        ctx.strokeStyle = 'rgba(30, 41, 59, 0.25)';
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.06)';
         ctx.lineWidth = 1;
-        const gridSize = 45;
-        for (let x = 0; x < width; x += gridSize) {
-          ctx.beginPath();
-          ctx.moveTo(x, 0);
-          ctx.lineTo(x, height);
-          ctx.stroke();
-        }
-        for (let y = 0; y < height; y += gridSize) {
+        const gridLines = 5;
+        for (let i = 1; i < gridLines; i++) {
+          const y = (height / gridLines) * i;
           ctx.beginPath();
           ctx.moveTo(0, y);
           ctx.lineTo(width, y);
           ctx.stroke();
         }
-
-        // Render pulses representing camera flashes or signal broadcasts
-        pulses.forEach((p, idx) => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = p.color;
-          ctx.lineWidth = 2 * p.opacity;
-          ctx.globalAlpha = p.opacity;
-          ctx.stroke();
-          ctx.globalAlpha = 1.0;
-          
-          p.radius += 2.5;
-          p.opacity -= 0.015;
-          
-          if (p.opacity <= 0) {
-            pulses.splice(idx, 1);
-          }
+        
+        bars.forEach(bar => {
+          bar.update();
+          bar.draw();
         });
-
         requestAnimationFrame(animate);
       }
       animate();
+    }
+
+    // Speech Synthesis and Pronunciation Engine
+    function triggerTTS(textOrId) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Error', 'Voice synthesizers not enabled on this machine.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+
+      // Look up phrase if an ID is passed
+      let text = textOrId;
+      const termMatch = state.collocations.find(c => c.id === textOrId);
+      if (termMatch) {
+        text = termMatch.phrase;
+      }
+
+      // Phonetic sanitization to read symbols aloud naturally
+      let cleanText = text
+        .replace(/_/g, ' ')               // Underscores to spaces
+        .replace(/\+/g, ' plus ')         // Plus symbol
+        .replace(/-ING/gi, ' ing ')       // ING structures
+        .replace(/-/g, ' ')               // Hyphens
+        .replace(/\//g, ' or ')           // Slashes
+        .replace(/\s+/g, ' ')             // Double spaces collapse
+        .trim();
+      
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith("en"));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       loadLocalStorage();
       initSpeechVoices();
       initStoryClicks();
-      initBackgroundCanvas();
+      initStatsCanvas();
       renderDictionary();
       renderFlashcard();
       renderQuizQuestion();
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark Pressroom aesthetic for optical depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-camera text-sm text-cyan-400"></i>';
+      document.getElementById('flashcard-total').innerText = state.collocations.length;
       
-      document.addEventListener('keyup', keyUpHandler);
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm text-blue-400"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500 animate-pulse"></i>';
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
     });
 
     function toggleTheme() {
-      // Simulate Camera Shutter Release (triggers flash sound + toast)
       playSynthSound('click');
-      showToast('Camera shutter clicked!', 'Ambient illumination parameters balanced.', 'fa-camera');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l34', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-blue-400"></i>';
+        showToast('Midnight Slate Active', 'Dark high-fidelity theme calibrated.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500 animate-pulse"></i>';
+        showToast('Sunny Parchment Active', 'Bright, balanced theme calibrated.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1046,7 +1155,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-zinc-900 hover:text-slate-150";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-355 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150";
         }
       });
       
@@ -1058,7 +1167,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-cyan-500/10 text-cyan-300 border border-cyan-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-500/20";
       }
       
       state.currentView = viewName;
@@ -1070,6 +1179,9 @@
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l34')) {
+        state.theme = localStorage.getItem('colloc_theme_l34');
+      }
       if (localStorage.getItem('colloc_mastery_list_l34')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l34'));
@@ -1107,10 +1219,7 @@
         let correctCount = 0;
         state.quiz.forEach(q => {
           const userAns = state.quizAnswers[q.id];
-          const isCorrect = (userAns === q.answer) || 
-                            (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                            (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-          if (isCorrect) {
+          if (userAns === q.answer) {
             correctCount++;
           }
         });
@@ -1144,7 +1253,7 @@
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l34', JSON.stringify(state.voiceSettings));
-      showToast('Config Saved', 'Press briefing voice parameters configured.');
+      showToast('Config Saved', 'Decisional audio synthesis parameters configured.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1188,44 +1297,6 @@
       });
     }
 
-    function triggerTTS(text) {
-      if (!('speechSynthesis' in window)) {
-        showToast('Error', 'Voice synthesizers not enabled on this machine.');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      
-      const utterance = new SpeechSynthesisUtterance(text);
-      const voices = window.speechSynthesis.getVoices();
-      
-      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
-      if (!selectedVoice) {
-        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
-                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
-                        voices.find(v => v.lang === "en-GB") ||
-                        voices.find(v => v.lang.startsWith('en'));
-      }
-      
-      utterance.voice = selectedVoice;
-      utterance.rate = state.voiceSettings.rate;
-      utterance.pitch = state.voiceSettings.pitch;
-      utterance.volume = state.voiceSettings.volume;
-      
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function stopSpeechSynthesis() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        state.isSynthesizing = false;
-        state.podcastIsPlaying = false;
-        const icon = document.getElementById('podcast-play-icon');
-        if (icon) {
-          icon.className = "fa-solid fa-play text-xl ml-0.5";
-        }
-      }
-    }
-
     function initStoryClicks() {
       const links = document.querySelectorAll('.colloc-ref');
       links.forEach(l => {
@@ -1234,7 +1305,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('make_claim');
+      displayGlossaryCard('large_number');
     }
 
     function displayGlossaryCard(id) {
@@ -1251,12 +1322,12 @@
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-blue-500"></i>';
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
       }
       
-      triggerTTS(term.phrase);
+      triggerTTS(term.id); // Read collocation securely by ID lookup
     }
 
     function speakGlossaryTerm() {
@@ -1276,7 +1347,7 @@
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-blue-500"></i>';
         showToast('Term Mastered', `Logged "${term.phrase}" into your mastered database!`);
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
@@ -1286,7 +1357,7 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "When the underground journal decided to make a claim that Sector 7 was dumping waste, the corporate director went into full panic mode. They accused him of negligence, but he immediately attempted to deny the allegations. Our team scrambled to find facts to substantiate our claim. Without physical evidence, his legal team insisted we were publishing completely baseless claims. At a packed morning briefing, the CEO stood at the podium and chose to flatly deny all wrongdoing. 'The reports are entirely fabricated,' he claimed. Shortly after, the company's PR firm decided to issue a denial to all local television syndicates. However, an anonymous hacker group suddenly stepped forward to claim responsibility for leaking the encrypted records. The leaked emails proved that the CEO had actively refused to take responsibility for the environmental damage. Instead, he decided to deny responsibility, blaming a local subcontractor. This action was a grave mistake. The subcontractor sued the company, stating they wouldn't stand by while the board made baseless accusations of sabotage. When the chemical water diagnostics proved the contamination beyond a shadow of a doubt, the board had no choice but to admit defeat. The CEO was forced to resign. During his final press conference, he decided to confess to the crime and apologized, stating he was deeply sorry to admit making a mistake that had compromised our regional ecosystem.";
+      const narrativeText = "First, let's clarify the difference between number and amount. We use number with countable nouns, and amount with uncountable nouns. We say: a large number of people, a significant number of countries, a tiny number of computers, and we say: a massive amount of damage, a considerable amount of money, a miniscule amount of alcohol. Numbers and statistics can increase or decrease (more formal), rise or fall (also formal) or go up and go down (more informally). When a number goes up or down very fast, we can describe this as sharp or dramatic. For example, the sudden improvement in the economy has resulted in a dramatic drop in unemployment and a sharp rise in consumer spending. When a number goes up or down slowly, then we can talk about a gradual increase in population or a slow decline in the number of violent crimes. And if a number doesn't change, then it remains steady or remains constant. We use the word widespread to describe something that is happening frequently in many places. For example, there being widespread dissatisfaction with the government, or a new book winning widespread acclaim in the literary world. A hurricane can cause widespread damage, and a presidential candidate can have widespread support among voters of a certain demographic. In conversational English, we often use the structure keep plus i-n-g to describe something that happens frequently. For example, I'm trying to work, but my colleagues keep interrupting me. Why do you keep asking me about the problem? I've told you a thousand times I don't know how to solve it.";
       triggerTTS(narrativeText);
     }
 
@@ -1328,7 +1399,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Limit Reached', 'This is the first briefing index card.');
+        showToast('Limit Reached', 'This is the first quantitative index card.');
       }
     }
 
@@ -1338,21 +1409,9 @@
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Looping', 'Cycling back to the first investigative record.');
+        showToast('Looping', 'Cycling back to the first analytical record.');
         state.flashcardsIndex = 0;
         renderFlashcard();
-      }
-    }
-
-    // Fix sound triggers for keyboard bindings
-    function keyUpHandler(e) {
-      if (state.currentView !== 'flashcards') return;
-      if (e.code === 'Space') {
-        flipFlashcard();
-      } else if (e.code === 'ArrowLeft') {
-        prevFlashcard();
-      } else if (e.code === 'ArrowRight') {
-        nextFlashcard();
       }
     }
 
@@ -1360,11 +1419,10 @@
       if (event) event.stopPropagation();
       const card = state.collocations[state.flashcardsIndex];
       if (card) {
-        triggerTTS(card.phrase);
+        triggerTTS(card.id);
       }
     }
 
-    // Fixed master toggle saving
     function toggleCardMasteryInFlashcard(checkbox) {
       const card = state.collocations[state.flashcardsIndex];
       if (!card) return;
@@ -1372,8 +1430,34 @@
       card.mastered = checkbox.checked;
       saveMastery();
       if (card.mastered) {
-        showToast('Claim Logged', `"${card.phrase}" logged as decoded.`);
+        showToast('Mapping Logged', `"${card.phrase}" logged as decoded.`);
       }
+    }
+
+    // Build opinion letter with highlighted answers as user proceeds
+    function getMagazineLetterDraft() {
+      const ans = state.quizAnswers;
+      
+      const b1 = ans[1] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[1]}</span>` : "<u>(1) ______</u>";
+      const b2 = ans[2] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[2]}</span>` : "<u>(2) ______</u>";
+      const b3 = ans[3] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[3]}</span>` : "<u>(3) ______</u>";
+      const b4 = ans[4] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[4]}</span>` : "<u>(4) ______</u>";
+      const b5 = ans[5] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[5]}</span>` : "<u>(5) ______</u>";
+      const b6 = ans[6] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[6]}</span>` : "<u>(6) ______</u>";
+      const b7 = ans[7] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[7]}</span>` : "<u>(7) ______</u>";
+      const b8 = ans[8] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[8]}</span>` : "<u>(8) ______</u>";
+      const b9 = ans[9] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[9]}</span>` : "<u>(9) ______</u>";
+      const b10 = ans[10] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[10]}</span>` : "<u>(10) ______</u>";
+      const b11 = ans[11] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[11]}</span>` : "<u>(11) ______</u>";
+      const b12 = ans[12] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[12]}</span>` : "<u>(12) ______</u>";
+      const b13 = ans[13] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[13]}</span>` : "<u>(13) ______</u>";
+      const b14 = ans[14] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[14]}</span>` : "<u>(14) ______</u>";
+      const b15 = ans[15] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[15]}</span>` : "<u>(15) ______</u>";
+      const b16 = ans[16] ? `<span class="text-blue-500 font-bold border-b border-blue-400 font-sans not-italic">${ans[16]}</span>` : "<u>(16) ______</u>";
+      
+      return `The ${b1} rise in obesity is a major cause for concern. A ${b2} percentage of adults are now overweight, and the ${b3} of children with weight problems is also ${b4}. This crisis is partly due to the ${b5} consumption of processed foods with high ${b6} of fat and sugar. We're exposed to an excessive ${b7} of advertisements that ${b8} encouraging us to consume more and more food with less and less nutritional value.<br><br>
+        Other contributing factors to the obesity epidemic include a ${b9} increase in portion sizes and a ${b10} in the average ${b11} of physical exercise practiced by the population. A ${b12} number of kids nowadays play sports; instead, they prefer to spend a ${b13} amount of time in front of computers, TVs, and video games.<br><br>
+        Health problems caused by excess weight have resulted in a ${b14} increase in health care costs, and although the life expectancy has remained ${b15} over the past 30 years, we can expect to see a ${b16} if the trend of over-eating and under-exercising continues.`;
     }
 
     function renderQuizQuestion() {
@@ -1382,6 +1466,9 @@
       
       document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
       document.getElementById('quiz-question-text').innerText = quest.question;
+      
+      // Update letter live preview
+      document.getElementById('magazine-letter-text').innerHTML = getMagazineLetterDraft();
       
       const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
       document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
@@ -1394,38 +1481,25 @@
       
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
-        
-        // Find matching collocation based on option string/id
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.onclick = () => selectQuizAnswer(opt);
         btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
         
         if (!answered) {
-          btn.className += "bg-[#111827] border-slate-800 hover:border-cyan-500 hover:bg-cyan-500/10";
+          btn.className += " bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 hover:border-blue-500 hover:bg-blue-500/10 text-slate-800 dark:text-slate-100";
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400"></i>`;
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
-          
-          const isSelected = (collocId === userAns || opt === userAns);
-
-          if (isCorrect) {
-            btn.className += "bg-emerald-955/20 border-emerald-800 text-emerald-400";
+          if (opt === quest.answer) {
+            btn.className += " bg-emerald-50 border-emerald-300 text-emerald-800 dark:bg-emerald-955/20 dark:border-emerald-800 dark:text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
-          } else if (isSelected) {
-            btn.className += "bg-rose-955/20 border-rose-900 text-rose-400";
+          } else if (opt === userAns) {
+            btn.className += " bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-955/20 dark:border-rose-900 dark:text-rose-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += "bg-slate-900 border-slate-800 text-slate-500";
+            btn.className += " bg-slate-100 border-slate-200 text-slate-400 dark:bg-slate-950 dark:border-slate-855 dark:text-slate-600";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300 dark:text-slate-700"></i>`;
           }
-        }
-        
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-750"></i>`;
         }
         grid.appendChild(btn);
       });
@@ -1433,11 +1507,11 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-bold transition font-mono";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-405 dark:bg-slate-855 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
@@ -1447,17 +1521,12 @@
       
       state.quizAnswers[quest.id] = selectedOption;
       
-      // Handle direct string mapping match
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
-      
-      if (isCorrect) {
+      if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Claims Verified!', 'Accurate collocation applied to briefing dossier.', 'fa-circle-check');
+        showToast('Trend Resolved!', 'Perfect statistical collocation applied.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Allegation Flagged!', 'Inconclusive alignment with verified statecraft.', 'fa-triangle-exclamation');
+        showToast('Unnatural Match!', 'Literal translations fail statistical constraints.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1488,11 +1557,7 @@
       
       let correct = 0;
       state.quiz.forEach(q => {
-        const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-        if (isCorrect) {
+        if (state.quizAnswers[q.id] === q.answer) {
           correct++;
         }
       });
@@ -1503,12 +1568,13 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Reporter Recruit";
-      if (percentage === 100) rank = "Chief Editor";
-      else if (percentage >= 90) rank = "Investigative Reporter";
-      else if (percentage >= 70) rank = "Press Correspondent";
+      let rank = "Mathematical Apprentice";
+      if (percentage === 100) rank = "Grand Mathematician";
+      else if (percentage >= 90) rank = "Principal Analyst";
+      else if (percentage >= 70) rank = "Data Scientist";
       
       document.getElementById('quiz-score-rank').innerText = rank;
+      document.getElementById('completed-magazine-letter').innerHTML = getMagazineLetterDraft();
     }
 
     function resetCurrentQuiz() {
@@ -1529,12 +1595,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['make a claim', 'substantiate your claim', 'deny the allegations', 'flatly deny the allegations', 'claim responsibility', 'admit defeat'];
+      const selectedWords = ['massive amount of damage', 'sharp rise in consumer spending', 'remains steady', 'dramatic drop in unemployment', 'gradual increase in population', 'slow decline in the number of violent crimes'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-cyan-500/10 text-slate-355 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
+        chip.className = "px-3 py-1 bg-slate-100 hover:bg-blue-500/10 dark:bg-zinc-800 text-slate-700 dark:text-slate-355 rounded-lg text-xs font-semibold transition border border-slate-200 dark:border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1546,7 +1612,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To protect the firm, the CEO decided to ${word} during the press conference...`;
+        textarea.value = `Recent empirical studies confirm a ${word} across several metropolitan cities...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1560,7 +1626,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Analyze the litigation context: "${randomColloc}"`;
+        textarea.value = `Evaluate the metric summary context: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1572,10 +1638,10 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how a corporate director attempted to deny responsibility but was forced to admit defeat when logs proved his guilt.",
-        "Draft a summary showing how presenting audited books can substantiate your claim and disprove baseless allegations.",
-        "Describe a press conference where the public relations team issued a denial to flatly deny the allegations.",
-        "Examine why claiming responsibility for a system leak represents a grave mistake."
+        "Detail how a dramatic drop in unemployment can trigger a sharp rise in consumer spending.",
+        "Draft a summary showing why a significant number of countries are experiencing a gradual increase in population.",
+        "Describe an economic scenario explaining why the average amount of physical exercise remains steady despite tech growth.",
+        "Examine why spending a considerable amount of time in front of video games triggers a dramatic increase in healthcare costs."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1599,16 +1665,16 @@
         return;
       }
       
-      showToast('AI Scanning', 'Streaming manuscript prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
+      showToast('AI Scanning', 'Streaming news snippet to the Gemini Statistics Oracle...', 'fa-wand-magic-sparkles');
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
-      document.getElementById('diagnostic-analysis').innerText = "Analyzing assertiveness frameworks... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard journalism patterns...";
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing quantitative alignments... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard countable/uncountable parameters...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Investigative Journalist, Press Arbitrator, and English Scholar. Check if the user's sentence uses Lesson 34 claiming and denying collocations (e.g., make a claim, substantiate your claim, baseless claims, unfounded claims, withdraw a claim, deny the allegations, deny the accusations, flatly deny the allegations, issue a denial, claim responsibility, confess to the crime, admit to the crime, admit making a mistake, take responsibility, refuse to take responsibility, make an accusation, deny the accusation, baseless accusations, admit defeat) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving legal, press, or trial alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are a world-class Statistician, Creative Writer, and English Scholar. Check if the user's sentence uses Lesson 34 statistics and quantity collocations (e.g., large number, significant number, massive amount, considerable amount, miniscule amount, sharp rise, dramatic drop, gradual increase, slow decline, remains steady, remains constant, widespread support, widespread acclaim, keep + -ING) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the quantitative accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving countability or trend descriptors), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1641,7 +1707,7 @@
           attempt++;
           if (attempt >= 5) {
             showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Pressroom scanner offline. Verify network connection and retry.";
+            document.getElementById('diagnostic-analysis').innerText = "Metrics scanner offline. Verify network connection and retry.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1663,12 +1729,12 @@
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-955/20 text-emerald-450 border border-emerald-900/40";
-            badge.innerText = "Brief Aligned";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40";
+            badge.innerText = "Quantitative Balance";
             playSynthSound('correct');
           } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
-            badge.innerText = "Dissonance Flagged";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 dark:bg-rose-955/20 dark:text-rose-400 border border-rose-200 dark:border-rose-900/40";
+            badge.innerText = "Syntactical Friction";
             playSynthSound('incorrect');
           }
           
@@ -1702,7 +1768,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Investigative Journalism";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Quantitative Analysis";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1717,7 +1783,7 @@
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
         document.getElementById('podcast-current-phrase').innerText = "Session Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 34. All assertive collocations resolved!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 34. All statistical collocations resolved!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
@@ -1734,14 +1800,14 @@
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key press term. It is: ${currentWord.phrase}. Tom, how do press specialists map this structure out?`;
+        const textToSpeak = `Let's analyze our next key metric term. It is: ${currentWord.phrase}. Tom, how do research experts apply this structure?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-cyan-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="h-6 w-6 rounded bg-blue-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-sans">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-cyan-400 font-mono">Sarah (Investigative Lead)</span>
+            <span class="text-[10px] font-bold text-blue-400 font-mono">Sarah (Senior Analyst)</span>
             <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1755,14 +1821,14 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. For instance, we note: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For instance, we note: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-cyan-300 font-mono">Tom (News Editor)</span>
+            <span class="text-[10px] font-bold text-blue-300 font-mono font-sans">Tom (Data Scientist)</span>
             <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1857,7 +1923,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif">No matching allegations or claims resolved.</td>
+            <td colspan="6" class="text-center py-8 text-slate-404 dark:text-slate-500 italic font-serif">No matching quantitative records resolved.</td>
           </tr>
         `;
         return;
@@ -1865,9 +1931,9 @@
       
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-800";
+        row.className = "hover:bg-slate-100/50 dark:hover:bg-slate-800/40 transition border-b border-slate-100 dark:border-slate-800";
         
-        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
+        const starIcon = c.mastered ? 'fa-star text-blue-500' : 'fa-star text-slate-300 dark:text-slate-700';
         
         row.innerHTML = `
           <td class="py-4 px-4 text-center">
@@ -1875,14 +1941,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-cyan-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-blue-500 dark:hover:text-blue-400 font-serif" onclick="triggerTTS('${c.id}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-300 px-2 py-0.5 rounded-full border border-cyan-500/20 font-mono">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-505 font-semibold font-serif">"${c.example}"</td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-450 dark:text-slate-500 font-semibold font-serif font-sans">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.id}')" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-800 dark:hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1916,10 +1982,10 @@
       tBody.innerText = body;
       tIcon.className = `fa-solid ${iconClass}`;
       
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-white text-slate-800 dark:bg-slate-900 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800 max-w-sm transition-all duration-300";
       
       setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-white text-slate-800 dark:bg-slate-900 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800 max-w-sm transition-all duration-300";
       }, 4000);
     }
 

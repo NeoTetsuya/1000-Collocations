@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 39: Agreeing & Disagreeing Lab</title>
+  <title>CollocaStudy - Lesson 39: Success & Failure Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Verification, Scales, and Conflict Resolution Icons -->
+  <!-- FontAwesome for Performance Metrics and Theme States -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Vortex Equilibrium theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -32,14 +31,14 @@
               200: '#fde68a',
               300: '#fcd34d',
               400: '#fbbf24',
-              500: '#f59e0b', /* Glowing Amber Consensus Signal */
+              500: '#f59e0b', /* Amber Consensus Signal */
               600: '#d97706',
               700: '#b45309', 
               800: '#78350f',
               900: '#451a03',
-              accent: '#34d399', /* Mint Highlights */
-              deception: '#f43f5e', /* Neon Rose Deception Alert */
-              discord: '#8b5cf6' /* Indigo Dissonance */
+              accent: '#34d399',
+              deception: '#f43f5e',
+              discord: '#8b5cf6'
             }
           }
         }
@@ -48,7 +47,6 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching custom styling */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -64,12 +62,10 @@
       background: #d97706;
     }
     
-    /* Smooth interactive transitions */
     .view-container {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* 3D Card Flip styling */
     .card-perspective {
       perspective: 1000px;
     }
@@ -88,7 +84,6 @@
       transform: rotateY(180deg);
     }
     
-    /* Animated Equalizer Waveform for Polygraph/Audio */
     @keyframes wave-bounce {
       0%, 100% { height: 8px; }
       50% { height: 42px; }
@@ -97,7 +92,6 @@
       animation: wave-bounce 1.2s ease-in-out infinite;
     }
     
-    /* Polygraph grid scan effect */
     @keyframes grid-scan {
       0% { background-position: 0 0; }
       100% { background-position: 0 40px; }
@@ -109,7 +103,6 @@
       animation: grid-scan 8s linear infinite;
     }
 
-    /* Veritas drift pulse */
     @keyframes veritas-pulse {
       0%, 100% { opacity: 0.1; transform: scale(0.97); }
       50% { opacity: 0.35; transform: scale(1.03); }
@@ -119,182 +112,167 @@
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-slate-955 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
-  <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Interactive HTML5 Veracity Node Canvas Background -->
+    <!-- Interactive Background Canvas -->
     <canvas id="vocal-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-25" onclick="spawnWaveNode(event)"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/20 via-slate-950/10 to-slate-950 pointer-events-none z-0 veritas-drift-glow"></div>
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/10 via-slate-950/5 to-transparent dark:via-slate-950/10 dark:to-slate-950 pointer-events-none z-0 veritas-drift-glow"></div>
     <div class="absolute inset-0 polygraph-scan pointer-events-none z-0"></div>
 
-    <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <!-- Header Navigation -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-brand-900 text-white shadow-md shadow-brand-500/20">
-          <i class="fa-solid fa-scale-balanced text-lg text-brand-300"></i>
+          <i class="fa-solid fa-trophy text-lg text-brand-300"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20 font-mono">Agreeing & Disagreeing Lab</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:to-brand-300 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-600 dark:text-brand-300 border border-brand-500/20 font-mono">Success & Failure Lab</span>
         </div>
       </div>
       
-      <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-circle-nodes text-brand-400"></i>
-        <h1 class="font-heading font-bold text-slate-100">Lesson 39: Consensus Dynamics</h1>
+        <i class="fa-solid fa-chart-line text-brand-500 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-100">Lesson 39: Performance Analysis</h1>
       </div>
 
-      <!-- Right Action Items -->
       <div class="flex items-center gap-4">
-        <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-350 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates polygraph sweep) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-355 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Calibrate Polygraph Grid">
-          <i class="fa-solid fa-scale-unbalanced text-sm text-brand-400"></i>
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Toggle Dynamic Appearance">
+          <i class="fa-solid fa-moon text-sm text-brand-500"></i>
         </button>
-        <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
-          <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Verified</span>
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-900 px-3 py-1.5 border border-slate-200 dark:border-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-500 dark:bg-brand-400 animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-300" id="lesson-mastery-ratio">0/30 Verified</span>
         </div>
       </div>
     </header>
 
-    <!-- App Body (Sidebar + Content Panel) -->
+    <!-- Content Split Layout -->
     <div class="flex h-full overflow-hidden z-10">
       
-      <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+      <!-- Side Menu -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Veracity Nodes</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Performance Tracks</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
-            <i class="fa-solid fa-passport text-base"></i>
-            <span>The Veritas Dossier</span>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>The Case Dossier</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-id-card-clip text-base"></i>
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-layer-group text-base"></i>
             <span>Transceiver Deck</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-user-check text-base"></i>
             <span>Arbitration Board</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-shield-virus text-base animate-pulse"></i>
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-laptop-code text-base animate-pulse"></i>
             <span>Resolution Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-tower-broadcast text-base"></i>
             <span>Veritas Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-database text-base"></i>
             <span>Cryptographic Ledger</span>
           </button>
         </div>
         
-        <!-- User Mission Credentials Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 p-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
           <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-key text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Veracity standing</span>
+            <i class="fa-solid fa-chart-pie text-brand-600 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Fluency Rank</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">Calibrate statements, isolate fabrications, and decode truth paradigms to verify absolute compliance!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed font-medium">Verify structural milestones across standard classifications of success and catastrophic business collapse.</p>
         </div>
       </nav>
 
-      <!-- Main Scrollable Content Panel -->
+      <!-- Main Display Container -->
       <main class="flex-1 overflow-y-auto relative h-full">
         
-        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <!-- ==================== VIEW 1: CASE STORY ==================== -->
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-fingerprint text-slate-700/65 text-xl animate-pulse"></i>
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-200 dark:border-slate-800 bg-gradient-to-tr from-slate-100 to-brand-500/5 dark:from-slate-955 dark:to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-award text-slate-400 dark:text-slate-700/65 text-xl animate-pulse"></i>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Veritas Dossier</h2>
-                  <p class="text-xs text-slate-400 mt-1">Harness professional honesty, resolve bitter disputes, and find common ground. Click collocations to scan parameters.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Case Dossier</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Harness performance indicators and parse outcomes. Click highlighted collocations to review semantic variables.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-955 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10">
                   <i class="fa-solid fa-volume-high"></i>
                   <span>Acoustic Broadcaster</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 tracking-wide space-y-6 relative z-10 animate-fade-in">
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 tracking-wide space-y-6 relative z-10">
                 <p>
-                  When leading a complex technical project, finding alignment is rarely a straightforward task. While you might <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="agree_wholeheartedly">agree wholeheartedly</span> with some team proposals, you will inevitably encounter members who <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="strongly_disagree">strongly disagree</span> with the system framework. To establish progress, you must learn to navigate these differences and try to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="find_common_ground">find common ground</span> before a minor dispute escalates.
+                  Successful Samantha has a long list of <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="impressive_accomplishments">impressive accomplishments</span>. It seems like everything she does ends up being a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="phenomenal_success">phenomenal success</span>. In her very first job, she created a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="highly_effective">highly effective</span> way to motivate the company's employees, resulting in a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="dramatic_improvement">dramatic improvement</span> in workplace morale.
                 </p>
                 <p>
-                  During executive syncs, colleagues often <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="share_an_opinion">share an opinion</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="share_a_view">share a view</span> about market trends, which can spark a <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="heated_debate">heated debate</span>. Even if you <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="agree_in_principle">agree in principle</span> with their overarching strategy, the logistical execution may reveal a <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="conflict_of_interest">conflict of interest</span>. Left unaddressed, a simple <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="difference_of_opinion">difference of opinion</span> can deteriorate into a <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="bitter_dispute">bitter dispute</span>.
+                  Now she’s developing a system for real-time translation among 100 different languages. If she can pull it off, it'll be an <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-accent border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="unprecedented_success">unprecedented success</span> success in something for the first time in history and the <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-accent border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="crowning_achievement">crowning achievement</span> best or most significant achievement of her career. So far, the program has enjoyed <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="modest_success">modest success</span> some limited success but there is still <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="room_for_improvement">room for improvement</span> potential for improvement. However, Samantha says that the team is making good progress, and that in the next month or two she hopes to <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-accent border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="make_a_breakthrough">make a breakthrough</span> make a sudden advance in success. Although Samantha is very ambitious, she’s also a very likeable person. She <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="brings_out_the_best">brings out the best</span> in other people, and quickly <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="wins_the_respect">wins the respect</span> of colleagues.
                 </p>
                 <p>
-                  When stakeholders <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="disagree_vehemently">disagree vehemently</span>, they might present data that will <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="flatly_disclose">flatly contradict</span> your assumptions. If you react defensively, you don't want to get dragged into a <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="lengthy_discussion">lengthy discussion</span> that ends in tension, or worse, cause you to <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_argument">have an argument</span> that spoils the mood. It is always more productive to present objective evidence to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="resolve_a_conflict">resolve a conflict</span>.
+                  Samantha's brother, Disastrous Dan, is the opposite—everything he attempts seems to <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="fail_miserably">fail miserably</span>. He wanted to be a doctor, but his teachers told him he wasnt smart enough, <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="dashing_his_hopes">dashing his hopes</span> making him abandon hope of a career in medicine. He had the opportunity to do a prestigious internship in another country, but he <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="lost_his_nerve">lost his nerve</span> lost his courage and turned down the offer. He then applied for various jobs, but completely failed to show up to the interviews on time. He was eventually hired, but later lost his job during an economic downturn due to his <span class="colloc-ref cursor-pointer font-bold text-indigo-500 dark:text-brand-discord border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="mediocre_performance">mediocre performance</span> average work, not very special and total lack of remarkable achievements.
                 </p>
                 <p>
-                  A <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="bitter_dispute">bitter dispute</span> can easily paralyze developmental milestones. Therefore, when leaders need to discuss high-pressure details, they must choose to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="settle_dispute">settle a dispute</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="settle_an_argument">settle an argument</span> through negotiation. Both sides must be willing to compromise. If they do not <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="see_eye_to_eye">see eye to eye</span> on key parameters, they must at least find a way to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="reach_a_compromise">reach a compromise</span>. When a middle ground is found, they can finally <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="reach_an_agreement">reach an agreement</span>.
-                </p>
-                <p>
-                  However, not every point of contention is easily resolved. When dealing with a <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="major_disagreement">major disagreement</span>, the parties might simply decide to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="agree_to_disagree">agree to disagree</span> on minor aspects to keep moving forward. In contrast, a <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="minor_disagreement">minor disagreement</span> shouldn't be allowed to block a decision that has reached a <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="unanimous_agreement">unanimous agreement</span> among the rest of the board.
-                </p>
-                <p>
-                  Some issues are <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="beyond_dispute">beyond dispute</span>, such as the need to adhere to international safety regulations. Other operational policies are <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="open_to_debate">open to debate</span>. I <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="firmly_believe">firmly believe</span> that healthy friction fosters innovation, as long as people do not <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="vehemently_oppose">vehemently oppose</span> changes simply because they are new. This is a <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="clear_cut_case">clear-cut case</span> of how constructive dialogue builds stronger systems.
+                  Dan then tried to start his own software company to compete with Samantha's; that was a <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="spectacular_failure">spectacular failure</span>. He invested his life savings in the business, despite all his friends telling him that it would be a <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="recipe_for_disaster">recipe for disaster</span> very likely to result in disaster. His sales predictions were <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="way_off_the_mark">way off the mark</span> completely inaccurate, and the company <span class="colloc-ref cursor-pointer font-bold text-brand-deception border-b-2 border-dashed border-brand-deception hover:bg-brand-deception/10 px-1 rounded transition" data-id="went_under">went under</span> lost all its money and shut down just eight months after it was founded. Poor Dan it seems like hes <span class="colloc-ref cursor-pointer font-bold text-slate-500 border-b-2 border-dashed border-slate-500 hover:bg-slate-500/10 px-1 rounded transition" data-id="doomed_to_failure">doomed to failure</span> destined to be unsuccessful. But if all else fails if everything is unsuccessful, he can always move into Samantha's mansion as a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="last_resort">last resort</span> a final possibility!
                 </p>
               </div>
             </div>
             
-            <!-- Right Side: Interactive Glossary Definition Card -->
+            <!-- Right Glossary Side -->
             <div class="xl:col-span-5 flex flex-col gap-6 font-medium">
               <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-450 animate-pulse font-mono" id="glossary-category">Integrity Analysis</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse font-mono" id="glossary-category">Lexical Alignment</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
                     </button>
-                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery Verification">
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Tracking Mastery">
                       <i class="fa-regular fa-star"></i>
                     </button>
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">agree wholeheartedly</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">impressive accomplishments</h3>
                 
-                <p class="text-slate-350 text-sm leading-relaxed mb-6 font-sans" id="glossary-definition">To agree completely and without any reservation.</p>
+                <p class="text-slate-350 text-sm leading-relaxed mb-6 font-sans" id="glossary-definition">Notable and major successes that evoke profound admiration.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Verifiable Precedent</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"I agree wholeheartedly with your suggestion to streamline our testing procedures."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Precedent Context</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"Successful Samantha has a long list of impressive accomplishments."</p>
                 </div>
               </div>
               
-              <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-scale-balanced text-brand-400"></i>
-                  <span>Forensic Mechanics of Consensus</span>
+              <!-- Core Help Guide -->
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-chart-line text-brand-500"></i>
+                  <span>Mechanics of Performance</span>
                 </h4>
-                <p class="text-xs text-slate-300 leading-relaxed font-semibold">
-                  Credibility relies on using exact combinations. We say a <strong class="text-brand-300">heated argument</strong> (never 'warm argument'), and we <strong class="text-brand-300">flatly contradict</strong> (never 'totally deny'). Mastering these semantic pairings isolates verbal deception and projects absolute authority.
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">
+                  Technical accuracy relies on matching structural indicators correctly. We state a firm has <strong class="text-brand-500">failed miserably</strong> (never 'poorly failed'), and predictions to be <strong class="text-brand-500">way off the mark</strong> to show advanced fluency.
                 </p>
               </div>
             </div>
@@ -306,58 +284,56 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">The Balance Deck</h2>
-                <p class="text-xs text-slate-400 font-semibold">Use arrow keys (Left/Right) to browse. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">The Balance Deck</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Use arrow keys (Left/Right) to browse. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono">
+              <div class="flex items-center gap-2 bg-white dark:bg-[#020617] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
+                <span class="text-slate-400 dark:text-slate-500">/</span>
                 <span>30</span>
               </div>
             </div>
             
-            <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
-            <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Consensus Token</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold font-mono">Performance Token</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-900 dark:text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-300">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-400"></i> Click to flip</span>
+                  <div class="text-center text-xs text-slate-500 dark:text-slate-400">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-500"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-brand-950/40 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-900 to-brand-950/40 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-950 text-brand-400 px-2.5 py-1 rounded-full border border-brand-800" id="card-back-category">Category</span>
-                    <span class="text-xs text-brand-400 font-semibold font-mono">Integrity Decoupled</span>
+                    <span class="text-xs text-brand-400 font-semibold font-mono">Structural Vector</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-brand-455 uppercase tracking-widest font-black font-mono">True Definition</span>
-                      <p class="text-base font-semibold leading-relaxed text-slate-100 font-sans" id="card-back-definition">Definition of the collocation goes here.</p>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">True Definition</span>
+                      <p class="text-base font-semibold leading-relaxed text-slate-100 font-sans" id="card-back-definition">Definition.</p>
                     </div>
                     <div class="border-t border-white/15 pt-3">
-                      <span class="text-[10px] text-brand-455 uppercase tracking-widest font-black font-mono">Forensic Precedent</span>
-                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5 font-sans" id="card-back-example">"Example sentence with the phrase."</p>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">Forensic Context</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5 font-sans" id="card-back-example">Example sentence.</p>
                     </div>
                   </div>
                   
@@ -372,9 +348,8 @@
               </div>
             </div>
             
-            <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
@@ -387,80 +362,71 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <!-- ==================== VIEW 3: ARBITRATION QUIZ ==================== -->
         <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
             
-            <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">The Arbitration Board</h2>
-                  <p class="text-xs text-slate-400 mt-1">Isolate fabrications and select the perfect truth-metric collocation to complete the statement.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">The Arbitration Board</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Select the natural collocation completion choice to satisfy standard curriculum logs.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span> of 15
                 </div>
               </div>
               
-              <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-400 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-400 h-full transition-all duration-300" style="width: 6.6%"></div>
               </div>
               
-              <!-- Question Text -->
               <div class="space-y-4">
                 <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono">Active Statements Analyzer</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white font-sans">"Loading scenario..."</p>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white font-sans">"Loading scenario..."</p>
               </div>
               
-              <!-- Question Options Grid -->
               <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
-                <!-- Rendered Dynamically -->
+                <!-- Rendered dynamically -->
               </div>
               
-              <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1 font-semibold">
-                <div class="flex items-center gap-2 text-brand-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-300 dark:border-emerald-800/40 rounded-2xl p-4 space-y-1 font-semibold">
+                <div class="flex items-center gap-2 text-emerald-600 dark:text-brand-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
                   <span>Forensic Semantic Verification</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-brand-300 leading-relaxed font-sans font-medium">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-brand-300 leading-relaxed font-sans font-medium">Explanation</p>
               </div>
               
-              <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:text-rose-400">
                   <i class="fa-solid fa-rotate-left mr-1"></i>Reset Exam
                 </button>
-                <button id="quiz-next-btn" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono">
+                <button id="quiz-next-btn" onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition font-mono">
                   Next Scenario <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
 
             <!-- Perfect Complete Card -->
-            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-slate-900 via-brand-950/20 to-slate-950 text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-brand-900">
-              <span class="inline-flex p-4 bg-brand-500/10 text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
+            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-brand-950/20 dark:to-slate-950 text-slate-900 dark:text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-slate-200 dark:border-brand-900">
+              <span class="inline-flex p-4 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
                 <i class="fa-solid fa-medal text-4xl animate-bounce"></i>
               </span>
               <div class="space-y-2">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-brand-300 to-indigo-400">Polygraph Calibrations Completed! 🛡️</h2>
-                <p class="text-sm font-semibold text-brand-300">Integrity index score: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-brand-500 to-indigo-600 dark:from-brand-400 dark:via-brand-300 dark:to-indigo-400">Fluency Performance Checked! 🛡️</h2>
+                <p class="text-sm font-semibold text-brand-600 dark:text-brand-300">Accuracy score: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
               </div>
-              <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 max-w-sm mx-auto">
-                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Veracity Officer Rank</span>
-                <span class="text-base font-bold text-brand-400 mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
+              <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-sm mx-auto">
+                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Veracity Office Position</span>
+                <span class="text-base font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
               </div>
-              <p class="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
-                Superb mastery of truth-building, secret protection, and deceit-detection collocations. Your linguistic calibration maintains flawless organizational standing!
-              </p>
               <div class="flex items-center justify-center gap-4">
                 <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-955 font-bold text-xs transition shadow-lg">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate Polygraph</span>
+                  <span>Recalibrate Stack</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-bold text-xs hover:bg-slate-800 transition text-slate-300">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -469,117 +435,105 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
+        <!-- ==================== VIEW 4: AI SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Resolution Diagnostic Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-semibold">Write an apology, an alibi, or an executive truth disclosure. Test statement reliability against Lesson 39 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Resolution Diagnostic Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Test custom corporate reports or failure declarations against standard Lesson 39 matrices.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-350 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-brand-455"></i> Get Audit Prompt
-                  </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
-                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Decrypt
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-600 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Token
                   </button>
                 </div>
               </div>
               
-              <!-- Text Area -->
               <div class="space-y-3">
                 <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-455 font-mono">Workspace Statement</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-900 outline-none transition text-slate-100 font-sans leading-relaxed" placeholder="Example: To be perfectly honest, it was just an honest mistake when he decided to stretch the truth to win our trust implicitly..."></textarea>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 outline-none transition text-slate-900 dark:text-slate-100 font-sans leading-relaxed" placeholder="Type custom logs or tap short tokens below to test semantic deployment paths..."></textarea>
               </div>
               
-              <!-- Quick Chips Selection -->
               <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
-                <!-- Rendered dynamically -->
+                <!-- Chips are populated via logic -->
               </div>
               
-              <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-500 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Manuscript
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-[#010208] rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-slate-955 rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-fingerprint animate-pulse"></i>
                   <span>Audit Statement Path</span>
                 </button>
               </div>
             </div>
             
-            <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Veracity Audit Analysis</h3>
-                <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40 font-mono">Calibrated</span>
+            <!-- Output Log Card -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Veracity Audit Analysis</h3>
+                <div>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-mono">Calibrated</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center font-medium">
-                <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800 animate-pulse">
-                    <span class="text-3xl font-black font-mono tracking-tight text-brand-400" id="diagnostic-score">--</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-slate-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-brand-600 dark:text-brand-400" id="diagnostic-score">--</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Veracity%</span>
                   </div>
                 </div>
                 
-                <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
                     <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Linguistic Authenticity Profile</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-sans">Analyzing structural metrics...</p>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">Analyzing structural metrics...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
+                  <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
                     <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Collocation Compliance Report</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-sans">Scanning promise & secret structures...</p>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">Scanning context indicators...</p>
                   </div>
                 </div>
               </div>
               
-              <!-- Alternatives Accordion Box -->
-              <div class="bg-[#010208] p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-1 font-mono">Recommended Statement Redirection</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-200 mt-1 font-sans">"Awaiting audit diagnostics..."</p>
+              <div class="bg-slate-50 dark:bg-[#010208] p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1 font-mono">Recommended Statement Redirection</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 mt-1 font-sans">"Awaiting analytics..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy"></i> Copy Alternative
                   </button>
                 </div>
               </div>
             </div>
-            
           </div>
         </section>
         
-        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <!-- ==================== VIEW 5: PODCAST STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-8">
               
-              <!-- Broadcast Header -->
-              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10">
                 <div class="flex items-center gap-3">
                   <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
                   <div>
-                    <h2 class="font-heading text-lg font-bold tracking-tight">Veritas Broadcast Station: Ep. 39</h2>
-                    <p class="text-[10px] text-slate-455 font-semibold">Integrity Metrics, Slander Safeguards, and Rebuilding Trust</p>
+                    <h2 class="font-heading text-lg font-bold tracking-tight text-slate-800 dark:text-white">Veritas Station: Ep. 39</h2>
+                    <p class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold animate-pulse">Linguistic Auditors dissecting Samantha & Dan's Performance</p>
                   </div>
                 </div>
-                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Stream
                 </div>
               </div>
               
-              <!-- Interactive visual equalizer -->
-              <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5 animate-pulse">
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-100 dark:bg-black/40 rounded-2xl p-4 border border-slate-200 dark:border-white/5 animate-pulse">
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
                 <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
@@ -588,40 +542,37 @@
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
-              <!-- Currently Playing Widget -->
               <div class="text-center space-y-3 font-medium">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Decoder Standby</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "agree wholeheartedly"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin speech synthesis between two forensic profiling linguists analyzing Lesson 39 integrity.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-600 dark:text-brand-300 font-mono" id="podcast-status">Decoder Standby</span>
+                <h3 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100" id="podcast-current-phrase">Why we analyze "spectacular failure"</h3>
+                <p class="text-xs text-slate-600 dark:text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin synthesis between two forensic profiling linguists analyzing structural integrity.</p>
               </div>
               
-              <!-- Dialogue Box -->
-              <div class="bg-black/85 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto custom-scrollbar text-[11px] font-mono text-brand-400 leading-relaxed">
+              <div class="bg-slate-50 dark:bg-black/85 rounded-2xl p-5 border border-slate-200 dark:border-white/10 space-y-4 max-h-48 overflow-y-auto text-[11px] font-mono text-slate-700 dark:text-brand-400 leading-relaxed">
                 <div id="podcast-chat-log" class="space-y-4">
-                  <p class="text-slate-500">// Activating Speech synthesis dialogues will stream real-time conversational breakdowns of truth and deception here.</p>
+                  <p class="text-slate-400">// Activating dialogue tracks streams conversational analytical breakdowns here.</p>
                 </div>
               </div>
               
-              <!-- Podcast Controls -->
               <div class="flex items-center justify-between">
-                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition">
+                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-white transition">
                   <i class="fa-solid fa-backward-step"></i>
                 </button>
-                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Start broadcast loop">
+                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition">
                   <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                 </button>
-                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 hover:bg-slate-700 text-white rounded-xl flex items-center justify-center transition">
+                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-white rounded-xl flex items-center justify-center transition">
                   <i class="fa-solid fa-forward-step"></i>
                 </button>
               </div>
               
               <!-- Podcast Progress bar -->
               <div class="space-y-1.5 font-mono">
-                <div class="flex items-center justify-between text-[10px] text-brand-300">
+                <div class="flex items-center justify-between text-[10px] text-brand-600 dark:text-brand-300">
                   <span id="podcast-time-passed">Token 0/30</span>
                   <span id="podcast-time-percent">0% Scanned</span>
                 </div>
-                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                <div class="w-full bg-slate-100 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
                   <div id="podcast-loading-meter" class="bg-brand-400 h-full transition-all duration-300" style="width: 0%"></div>
                 </div>
               </div>
@@ -630,132 +581,122 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 6: DICTIONARY ==================== -->
+        <!-- ==================== VIEW 6: THE CONCORD LEDGER ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">The Concord Ledger</h2>
-                <p class="text-xs text-slate-400">Deep-dive repository containing all Lesson 39 integrity phrases, fabrications, and promise structures.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">The Concord Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Deep-dive structural index containing all Lesson 39 success markers and catastrophic liability profiles.</p>
               </div>
-              <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
-                <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans font-semibold" placeholder="Audit registry...">
+                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-semibold" placeholder="Audit registry...">
                 </div>
-                <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-brand-350 outline-none font-bold font-mono text-white">
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-white outline-none font-bold font-mono">
                   <option value="all">All Sub-systems</option>
-                  <option value="Agreement">Agreement</option>
-                  <option value="Disagreement">Disagreement</option>
-                  <option value="Conflict Resolution">Conflict Resolution</option>
+                  <option value="High Success">High Success</option>
+                  <option value="Moderate Progress">Moderate Progress</option>
+                  <option value="Total Failure">Total Failure</option>
+                  <option value="Risk Assessment">Risk Assessment</option>
                 </select>
-                <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-brand-350 outline-none font-bold font-mono text-white">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-white outline-none font-bold font-mono">
                   <option value="all">All Registry</option>
-                  <option value="mastered">Verified</option>
+                  <option value="mastered">Verified Only</option>
                   <option value="unmastered">In Progress</option>
                 </select>
               </div>
             </div>
             
-            <!-- Table Container -->
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-36">Veracity Group</th>
                     <th class="py-3 px-4">Standard Definition</th>
-                    <th class="py-3 px-4 hidden lg:table-cell">Regulatory Precedent</th>
-                    <th class="py-3 px-4 w-16 text-center font-mono">Frequency</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Regulatory Precedent Context</th>
+                    <th class="py-3 px-4 w-16 text-center font-mono">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-medium">
-                  <!-- Javascript will render rows dynamically -->
+                <tbody id="dictionary-rows" class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
+                  <!-- Rendered dynamically -->
                 </tbody>
               </table>
             </div>
-            
           </div>
         </section>
-
       </main>
     </div>
 
-    <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-passport text-base"></i>
+    <!-- Mobile Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500">
+        <i class="fa-solid fa-book-open text-base"></i>
         <span class="text-[9px] font-bold">Dossier</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-id-card-clip text-base"></i>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500">
+        <i class="fa-solid fa-layer-group text-base"></i>
         <span class="text-[9px] font-bold">Transceiver</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500">
         <i class="fa-solid fa-user-check text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-shield-virus text-base"></i>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500">
+        <i class="fa-solid fa-laptop-code text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500">
         <i class="fa-solid fa-tower-broadcast text-base"></i>
         <span class="text-[9px] font-bold">Broadcast</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500">
         <i class="fa-solid fa-database text-base"></i>
         <span class="text-[9px] font-bold">Ledger</span>
       </button>
     </footer>
-
   </div>
 
-  <!-- Speech Settings Modal -->
-  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-850">
-    <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-3">
-        <h3 class="font-sans font-black text-lg text-white">Observer's Auditory Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+  <!-- Speech Overlay Modal Config -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-stone-900 text-slate-900 dark:text-white rounded-3xl p-6 border border-slate-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-stone-800 pb-3">
+        <h3 class="font-sans font-black text-lg">Observer Auditory Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
       
-      <!-- Selection of Voices -->
       <div class="space-y-4 font-semibold">
         <div class="space-y-1.5 font-medium">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono animate-pulse">Speech Synthesis Controller</label>
-          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
-            <!-- Rendered Dynamically -->
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-455 font-mono">Speech Controller Track</label>
+          <select id="voice-select" class="w-full border border-slate-300 dark:border-stone-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-950 text-xs font-semibold outline-none text-slate-900 dark:text-white font-mono">
+            <!-- Dynamically Rendered -->
           </select>
         </div>
         
-        <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 font-mono font-bold">
-            <span>Voice Velocity</span>
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 font-mono">
+            <span>Voice Velocity Rate</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
           <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
         </div>
         
-        <!-- Pitch Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono font-bold">
-            <span>Acoustic Frequency Pitch</span>
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono">
+            <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
           <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-slate-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-medium">
         Apply Diagnostics Voice
       </button>
     </div>
@@ -768,77 +709,65 @@
     </div>
     <div>
       <h5 class="text-xs font-black tracking-wide font-mono" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-300 mt-0.5 font-sans font-semibold" id="toast-body">Dossiers synchronized successfully.</p>
+      <p class="text-[11px] text-slate-300 mt-0.5 font-sans font-semibold" id="toast-body">Logs synchronizing.</p>
     </div>
   </div>
 
-  <!-- JavaScript Logic Block -->
   <script>
     const state = {
       theme: 'dark',
       currentView: 'story',
-      voiceSettings: {
-        voiceName: '',
-        rate: 1.0,
-        pitch: 1.0,
-        volume: 1.0
-      },
+      voiceSettings: { voiceName: '', rate: 1.0, pitch: 1.0, volume: 1.0 },
       collocations: [
-        { id: 'agree_wholeheartedly', phrase: 'agree wholeheartedly', definition: 'To agree completely and without any reservation.', example: 'I agree wholeheartedly with your suggestion to streamline our testing procedures.', category: 'Agreement', mastered: false },
-        { id: 'share_an_opinion', phrase: 'share an opinion', definition: 'To have the exact same opinion or viewpoint as someone else.', example: 'We share an opinion on how the technical architecture should be designed.', category: 'Agreement', mastered: false },
-        { id: 'share_a_view', phrase: 'share a view', definition: 'To have the same perspective or outlook as another person.', example: 'Many board members share a view that expansion into Asia is the priority.', category: 'Agreement', mastered: false },
-        { id: 'agree_in_principle', phrase: 'agree in principle', definition: 'To agree with the general idea of a plan or proposal, though not necessarily with all the specific details.', example: 'I agree in principle with the budget cut, but we must discuss the details.', category: 'Agreement', mastered: false },
-        { id: 'reach_a_compromise', phrase: 'reach a compromise', definition: 'To find an agreement where both sides make concessions to end a dispute.', example: 'After hours of hard bargaining, the two parties managed to reach a compromise.', category: 'Conflict Resolution', mastered: false },
-        { id: 'heated_argument', phrase: 'heated argument', definition: 'An angry, emotional, and loud disagreement.', example: 'They got into a heated argument about who was responsible for the server crash.', category: 'Disagreement', mastered: false },
-        { id: 'bitter_dispute', phrase: 'bitter dispute', definition: 'An intense, angry, and hostile disagreement that is hard to resolve.', example: 'The patent ownership resulted in a bitter dispute between the two companies.', category: 'Disagreement', mastered: false },
-        { id: 'disagree_vehemently', phrase: 'disagree vehemently', definition: 'To disagree with extreme force, emotion, or passion.', example: 'The engineering lead disagreed vehemently with the proposed release date.', category: 'Disagreement', mastered: false },
-        { id: 'strongly_disagree', phrase: 'strongly disagree', definition: 'To have a highly contrary or opposing opinion to another.', example: 'I strongly disagree with the notion that automated testing can replace manual QA entirely.', category: 'Disagreement', mastered: false },
-        { id: 'flatly_disclose', phrase: 'flatly contradict', definition: 'To directly, explicitly, and completely deny or state the opposite of something.', example: 'The system logs flatly contradict his claim that he was offline during the breach.', category: 'Disagreement', mastered: false },
-        { id: 'settle_dispute', phrase: 'settle a dispute', definition: 'To resolve an ongoing disagreement or argument conclusively.', example: 'The legal department stepped in to settle a dispute regarding contract terms.', category: 'Conflict Resolution', mastered: false },
-        { id: 'settle_an_argument', phrase: 'settle an argument', definition: 'To find a solution or agreement that ends an active debate or fight.', example: 'Objective server performance logs finally settled the argument.', category: 'Conflict Resolution', mastered: false },
-        { id: 'agree_to_disagree', phrase: 'agree to disagree', definition: 'To accept that both sides have different opinions and stop arguing about it.', example: 'We realized we wouldn\'t convince each other, so we decided to agree to disagree.', category: 'Conflict Resolution', mastered: false },
-        { id: 'long_running_dispute', phrase: 'long-running dispute', definition: 'A disagreement that has continued for a long period of time.', example: 'The long-running dispute between marketing and engineering was finally resolved.', category: 'Conflict Resolution', mastered: false },
-        { id: 'difference_of_opinion', phrase: 'difference of opinion', definition: 'A mild disagreement or varying viewpoints on a subject.', example: 'There is a slight difference of opinion regarding the UI color scheme.', category: 'Conflict Resolution', mastered: false },
-        { id: 'conflict_of_interest', phrase: 'conflict of interest', definition: 'A situation where a person\'s private interests conflict with their professional duties.', example: 'Hiring his spouse as a consultant was flagged as a clear conflict of interest.', category: 'Conflict Resolution', mastered: false },
-        { id: 'dispute_the_claim', phrase: 'dispute the claim', definition: 'To challenge or question the validity, accuracy, or truth of a statement.', example: 'Competitors immediately decided to dispute the claim of 100% uptime.', category: 'Conflict Resolution', mastered: false },
-        { id: 'see_eye_to_eye', phrase: 'see eye to eye', definition: 'To agree completely with someone; to have the exact same viewpoint.', example: 'My co-founder and I rarely see eye to eye on visual design, but we agree on architecture.', category: 'Agreement', mastered: false },
-        { id: 'resolve_a_conflict', phrase: 'resolve a conflict', definition: 'To find a peaceful or mutually satisfactory solution to a disagreement.', example: 'The human resources manager was called in to resolve a conflict within the team.', category: 'Conflict Resolution', mastered: false },
-        { id: 'find_common_ground', phrase: 'find common ground', definition: 'To discover areas of shared agreement or interest in a dispute.', example: 'Despite their political differences, they were able to find common ground on green energy.', category: 'Conflict Resolution', mastered: false },
-        { id: 'heated_debate', phrase: 'heated debate', definition: 'A highly intense, energetic, and sometimes angry public discussion.', example: 'The new data privacy regulations sparked a heated debate among technologists.', category: 'Disagreement', mastered: false },
-        { id: 'vehemently_oppose', phrase: 'vehemently oppose', definition: 'To strongly and passionately express opposition or resistance to a plan.', example: 'Local business owners vehemently oppose the new traffic restrictions.', category: 'Disagreement', mastered: false },
-        { id: 'unanimous_agreement', phrase: 'unanimous agreement', definition: 'Complete agreement by everyone involved in a decision or vote.', example: 'The board reached a unanimous agreement to promote her to Vice President.', category: 'Agreement', mastered: false },
-        { id: 'firmly_believe', phrase: 'firmly believe', definition: 'To hold a very strong, unshakable belief or conviction in something.', example: 'I firmly believe that open-source software makes the web safer for everyone.', category: 'Agreement', mastered: false },
-        { id: 'major_disagreement', phrase: 'major disagreement', definition: 'A significant, severe, and consequential clash of opinions.', example: 'A major disagreement on company valuation derailed the acquisition.', category: 'Disagreement', mastered: false },
-        { id: 'minor_disagreement', phrase: 'minor disagreement', definition: 'A small, trivial, or easily resolvable difference of opinion.', example: 'They had a minor disagreement over who should present the first slide.', category: 'Disagreement', mastered: false },
-        { id: 'beyond_dispute', phrase: 'beyond dispute', definition: 'Unquestionably true; completely certain and impossible to deny.', example: 'The geological data proves beyond dispute that the climate is changing.', category: 'Conflict Resolution', mastered: false },
-        { id: 'open_to_debate', phrase: 'open to debate', definition: 'Not yet resolved, certain, or agreed upon; open to discussion.', example: 'Whether AI-generated content can be patented is still open to debate.', category: 'Disagreement', mastered: false },
-        { id: 'clear_cut_case', phrase: 'clear-cut case', definition: 'A situation or issue that is highly obvious, unambiguous, and easy to resolve.', example: 'Duplicating entire paragraphs from a patented design was a clear-cut case of infringement.', category: 'Conflict Resolution', mastered: false },
-        { id: 'reach_an_agreement', phrase: 'reach an agreement', definition: 'To successfully come to a mutual decision or contract after discussions.', example: 'The union and management finally reached an agreement on wage increases.', category: 'Agreement', mastered: false }
+        { id: 'impressive_accomplishments', phrase: 'impressive accomplishments', definition: 'Great and noteworthy achievements that command deep admiration.', example: 'Successful Samantha has a long list of impressive accomplishments.', category: 'High Success', mastered: false },
+        { id: 'phenomenal_success', phrase: 'phenomenal success', definition: 'An extraordinarily large or outstanding success outcome.', example: 'It seems like everything she does ends up being a phenomenal success.', category: 'High Success', mastered: false },
+        { id: 'highly_effective', phrase: 'highly effective', definition: 'Producing an extremely successful or desired structural result.', example: 'She created a highly effective way to motivate the company\'s employees.', category: 'High Success', mastered: false },
+        { id: 'dramatic_improvement', phrase: 'dramatic improvement', definition: 'A very striking, sudden, or highly noticeable advancement.', example: 'Resulting in a dramatic improvement in workplace morale.', category: 'High Success', mastered: false },
+        { id: 'unprecedented_success', phrase: 'unprecedented success', definition: 'Achieving success in something unique for the first time in history.', example: 'If she can pull it off, it\'ll be an unprecedented success.', category: 'High Success', mastered: false },
+        { id: 'crowning_achievement', phrase: 'crowning achievement', definition: 'The absolute best, most unique, or significant milestone of a career.', example: 'The framework execution marks the crowning achievement of her career.', category: 'High Success', mastered: false },
+        { id: 'modest_success', phrase: 'modest success', definition: 'Achieving a small, safe, or limited degree of progress.', example: 'So far, the program has enjoyed modest success.', category: 'Moderate Progress', mastered: false },
+        { id: 'room_for_improvement', phrase: 'room for improvement', definition: 'Possessing clear potential or opportunities to enhance current working parameters.', example: 'The baseline program works okay, but there is still room for improvement.', category: 'Moderate Progress', mastered: false },
+        { id: 'make_a_breakthrough', phrase: 'make a breakthrough', definition: 'To secure a sudden advance or major step forward, especially when conquering an obstacle.', example: 'In the next month or two she hopes to make a breakthrough.', category: 'Moderate Progress', mastered: false },
+        { id: 'brings_out_the_best', phrase: 'brings out the best', definition: 'To cause the finest qualities or highest merits of individuals to emerge.', example: 'She easily brings out the best in other people.', category: 'High Success', mastered: false },
+        { id: 'wins_the_respect', phrase: 'wins the respect', definition: 'To successfully gain deep admiration and esteem from associates.', example: 'She quickly wins the respect of colleagues.', category: 'High Success', mastered: false },
+        { id: 'fail_miserably', phrase: 'fail miserably', definition: 'To fail completely, painfully, or in a highly embarrassing fashion.', example: 'Everything Disastrous Dan attempts seems to fail miserably.', category: 'Total Failure', mastered: false },
+        { id: 'dashing_his_hopes', phrase: 'dashing his hopes', definition: 'Making someone completely abandon or lose all their optimistic ambitions.', example: 'His teachers told him he wasnt smart enough, dashing his hopes of a career in medicine.', category: 'Total Failure', mastered: false },
+        { id: 'lost_his_nerve', phrase: 'lost his nerve', definition: 'Losing courage, confidence, or boldness at a critical operational point.', example: 'He had the opportunity to do an internship, but he lost his nerve.', category: 'Total Failure', mastered: false },
+        { id: 'mediocre_performance', phrase: 'mediocre performance', definition: 'Highly ordinary, unexceptional, or average work lacking any noteworthy merits.', example: 'He lost his job during an economic downturn due to his mediocre performance.', category: 'Total Failure', mastered: false },
+        { id: 'spectacular_failure', phrase: 'spectacular failure', definition: 'An extremely dramatic, glaring, and total corporate or personal collapse.', example: 'Dan then tried to start his own software company; that was a spectacular failure.', category: 'Total Failure', mastered: false },
+        { id: 'recipe_for_disaster', phrase: 'recipe for disaster', definition: 'A combination of elements or events highly likely to result in catastrophe.', example: 'Investing his life savings in the business was a clear recipe for disaster.', category: 'Risk Assessment', mastered: false },
+        { id: 'way_off_the_mark', phrase: 'way off the mark', definition: 'Completely incorrect, inaccurate, or missing the true factual metrics by a wide margin.', example: 'His sales predictions were way off the mark.', category: 'Risk Assessment', mastered: false },
+        { id: 'went_under', phrase: 'went under', definition: 'Losing all capital and going completely bankrupt or shutting operations down.', example: 'The company went under just eight months after it was founded.', category: 'Total Failure', mastered: false },
+        { id: 'doomed_to_failure', phrase: 'doomed to failure', definition: 'Destined or predestined from the beginning to lose or turn out unsuccessful.', example: 'Poor Dan it seems like hes doomed to failure.', category: 'Total Failure', mastered: false },
+        { id: 'last_resort', phrase: 'last resort', definition: 'A final choice, action, or possibility utilized when all other steps have failed.', example: 'He can always move into Samantha\'s mansion as a last resort.', category: 'Risk Assessment', mastered: false },
+        { id: 'good_progress', phrase: 'making good progress', definition: 'Advancing forward at a healthy, satisfactory, and successful rate.', example: 'Samantha says that the team is making good progress.', category: 'Moderate Progress', mastered: false },
+        { id: 'remarkable_achievements', phrase: 'remarkable achievements', definition: 'Extraordinary accomplishments that are clearly out of the ordinary.', example: 'His profile showed a total lack of remarkable achievements.', category: 'High Success', mastered: false },
+        { id: 'highly_ambitious', phrase: 'highly ambitious', definition: 'Possessing a strong, powerful determination to achieve ultimate success.', example: 'Although Samantha is highly ambitious, she\'s also a likeable person.', category: 'High Success', mastered: false },
+        { id: 'life_savings', phrase: 'life savings', definition: 'The total amount of money a person has saved across their entire life.', example: 'He invested his life savings in the business.', category: 'Risk Assessment', mastered: false },
+        { id: 'sales_predictions', phrase: 'sales predictions', definition: 'Forecasts or expectations regarding future product sales volumes.', example: 'His sales predictions were completely inaccurate.', category: 'Risk Assessment', mastered: false },
+        { id: 'economic_downturn', phrase: 'economic downturn', definition: 'A period of financial decline or recession inside a market ecosystem.', example: 'He lost his job during an economic downturn.', category: 'Risk Assessment', mastered: false },
+        { id: 'prestigious_internship', phrase: 'prestigious internship', definition: 'A highly respected, honored, and selective temporary work placement position.', example: 'He had the opportunity to do a prestigious internship.', category: 'High Success', mastered: false },
+        { id: 'all_else_fails', phrase: 'if all else fails', definition: 'A conditional situation where absolutely every other action has proven unsuccessful.', example: 'But if all else fails, he can move into her mansion.', category: 'Risk Assessment', mastered: false },
+        { id: 'turn_down_the_offer', phrase: 'turn down the offer', definition: 'To explicitly reject or decline an invitation or proposal.', example: 'He lost his courage and turned down the offer.', category: 'Total Failure', mastered: false }
       ],
-      // Exactly 20 high-fidelity scenarios representing Lesson 39 questions and context
       quiz: [
-        { id: 1, question: "We spent three hours arguing, but we eventually managed to ________ a compromise.", options: ["reached", "made", "took"], answer: "reach_a_compromise", explanation: "The standard English collocation is to 'reach a compromise'." },
-        { id: 2, question: "I ________ agree with your decision to focus on automated test integration first.", options: ["wholeheartedly", "deeply", "widely"], answer: "agree_wholeheartedly", explanation: "To agree completely and passionately is to 'agree wholeheartedly'." },
-        { id: 3, question: "The company's database logs ________ contradict the administrator's claim.", options: ["flatly", "sharply", "deeply"], answer: "flatly_disclose", explanation: "To directly deny or assert the absolute opposite is to 'flatly contradict'." },
-        { id: 4, question: "After a ________ argument about server permissions, they decided to walk away.", options: ["heated", "warm", "burning"], answer: "heated_argument", explanation: "An angry, emotional, and loud disagreement is a 'heated argument'." },
-        { id: 5, question: "They decided to ________ to disagree on minor visual components to focus on delivery.", options: ["agree", "yield", "decide"], answer: "agree_to_disagree", explanation: "To accept difference of opinion and cease arguments is to 'agree to disagree'." },
-        { id: 6, question: "There is a slight ________ of opinion about whether we should hire a new developer.", options: ["difference", "distance", "contrast"], answer: "difference_of_opinion", explanation: "A mild disagreement or distinct stance is a 'difference of opinion'." },
-        { id: 7, question: "Hiring his own brother's consulting company was a blatant ________ of interest.", options: ["conflict", "battle", "clash"], answer: "conflict_of_interest", explanation: "A conflict between duty and personal gain is a 'conflict of interest'." },
-        { id: 8, question: "The marketing and technical departments have a ________ dispute about ownership.", options: ["long-running", "far-stretching", "high-standing"], answer: "long_running_dispute", explanation: "A dispute extending over a prolonged era is a 'long-running dispute'." },
-        { id: 9, question: "The union and executive board finally reached an ________ on standard salary brackets.", options: ["agreement", "compromise", "debate"], answer: "reach_an_agreement", explanation: "Coming to a mutual decision is to 'reach an agreement'." },
-        { id: 10, question: "I ________ disagree with the assumption that our codebase is unsalvageable.", options: ["strongly", "flatly", "heavily"], answer: "strongly_disagree", explanation: "To have a highly Contrary opinion is to 'strongly disagree'." },
-        { id: 11, question: "The two managers don't see eye to ________ on how the design layout should look.", options: ["eye", "brain", "face"], answer: "see_eye_to_eye", explanation: "To agree completely with someone is to 'see eye to eye'." },
-        { id: 12, question: "The competitors immediately disputed the ________ that our app was copying code.", options: ["claim", "note", "word"], answer: "disp_the_claim", explanation: "Challenging the validity of an assertion is to 'dispute the claim'." },
-        { id: 13, question: "The legal teams managed to settle the patent ________ before going to court.", options: ["dispute", "argument", "disagreement"], answer: "settle_dispute", explanation: "Resolving an ongoing legal conflict is to 'settle a dispute'." },
-        { id: 14, question: "We agree in ________ with your business model, but we need to see financial details.", options: ["principle", "main", "code"], answer: "agree_in_principle", explanation: "Agreeing with the overarching idea but not specific terms is to 'agree in principle'." },
-        { id: 15, question: "Our lead developer disagreed ________ with the proposed launch window.", options: ["vehemently", "hotly", "totally"], answer: "disagree_vehemently", explanation: "To disagree with extreme force or passion is to 'disagree vehemently'." },
-        { id: 16, question: "There was a ________ agreement among the executives to approve the software security framework.", options: ["unanimous", "entire", "universal"], answer: "unanimous_agreement", explanation: "A complete consensus among all voters is a 'unanimous agreement'." },
-        { id: 17, question: "The impact of the new database system is ________ dispute; our server latency is down by 50%.", options: ["beyond", "without", "past"], answer: "beyond_dispute", explanation: "Something undeniably true is 'beyond dispute'." },
-        { id: 18, question: "Whether the market is ready for fully autonomous drone delivery is still open to ________.", options: ["debate", "argument", "dispute"], answer: "open_to_debate", explanation: "A topic not yet finalized is described as 'open to debate'." },
-        { id: 19, question: "Duplicating patented software designs without permission is a ________ case of infringement.", options: ["clear-cut", "simple-shaped", "flat-out"], answer: "clear_cut_case", explanation: "An obvious, unambiguous situation is a 'clear-cut case'." },
-        { id: 20, question: "If the two departments cannot find ________ ground, the project will be terminated.", options: ["common", "neutral", "open"], answer: "find_common_ground", explanation: "Finding areas of shared agreement is to 'find common ground'." }
+        { id: 1, question: "Edward certainly ________ my respect when he turned down an unethical business deal.", options: ["bet", "took", "won"], answer: "won", explanation: "The standard English collocation is to 'win respect' (past tense: won)." },
+        { id: 2, question: "Efforts to reduce teen pregnancy through better sex education have seen ________ success.", options: ["average", "modest", "ordinary"], answer: "modest", explanation: "Limited or partial success is naturally described as 'modest success'." },
+        { id: 3, question: "Getting a new haircut has made a ________ improvement in his overall appearance.", options: ["crowning", "dramatic", "theatrical"], answer: "dramatic", shortOverride: "crowning", explanation: "Note: The textbook prompt matches 'crowning' contextually inside selection rows, but sudden striking adjustment is an intuitive 'dramatic improvement'." },
+        { id: 4, question: "I made a real ________ in my English when I started practicing listening more often.", options: ["breakdown", "breakover", "breakthrough"], answer: "breakthrough", explanation: "A sudden advance overcoming an obstacle is to make a 'breakthrough'." },
+        { id: 5, question: "I wanted to try waterskiing, but I lost my ________ and ended up staying inside the boat.", options: ["heart", "nerve", "spirit"], answer: "nerve", explanation: "To lose your confidence or courage at the decisive moment is to 'lose your nerve'." },
+        { id: 6, question: "I'm not a complete pacifist—I just believe war should be the last ________.", options: ["option", "prospect", "resort"], answer: "resort", explanation: "The final possibility when all else fails is a 'last resort'." },
+        { id: 7, question: "Immigration reform was the ________ achievement of the president's term in office.", options: ["championing", "charming", "crowning"], answer: "crowning", explanation: "The finest or most significant milestone of a career lifecycle is a 'crowning achievement'." },
+        { id: 8, question: "My attempts at losing weight have failed ________ - in fact, I've gained a few pounds!", options: ["inadequately", "miserably", "strongly"], answer: "miserably", explanation: "To fail completely and unhappily is to 'fail miserably'." },
+        { id: 9, question: "My girlfriend really ________ out the best in me - I'm a better person thanks to our relationship.", options: ["brings", "gets", "helps"], answer: "brings", explanation: "To surface the finest attributes in someone is to 'bring out the best'." },
+        { id: 10, question: "Putting inexperienced teachers into the country's worst schools is a ________ for disaster.", options: ["method", "program", "recipe"], answer: "recipe", explanation: "An arrangement highly likely to cause catastrophe is a 'recipe for disaster'." },
+        { id: 11, question: "Researchers have invented a new, ________ effective treatment for leukemia.", options: ["highly", "richly", "sharply"], answer: "highly", explanation: "A treatment producing strong outcomes is 'highly effective'." },
+        { id: 12, question: "The company's advertising campaign was a ________ failure - it didn't attract a single customer.", options: ["miraculous", "spectacular", "wonderful"], answer: "spectacular", explanation: "A glaring, dramatic, or massive collapse is a 'spectacular failure'." },
+        { id: 13, question: "The new movie has been a ________ success, with billions of dollars in ticket sales.", options: ["mediocre", "phenomenal", "supernatural"], answer: "phenomenal", explanation: "An extraordinarily large, outstanding victory is a 'phenomenal success'." },
+        { id: 14, question: "There's a lot of ________ for improvement in his writing skills.", options: ["area", "room", "space"], answer: "room", explanation: "The standard English idiom for potential advancement is 'room for improvement'." },
+        { id: 15, question: "We thought repairs would cost about 500, but our estimate was way ________ - it was 4000.", options: ["off the mark", "off the point", "off the spot"], answer: "off the mark", explanation: "An estimation that is completely incorrect is described as 'way off the mark'." }
       ],
-      activeCardId: 'agree_wholeheartedly',
+      activeCardId: 'impressive_accomplishments',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -851,148 +780,69 @@
       isSynthesizing: false
     };
 
-    // Advanced Sound Synthesizer via Web Audio API
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
         if (type === 'click') {
-          // Sharp acoustic click representing a calibration ping
-          const osc1 = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          
-          osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(1400, audioCtx.currentTime);
+          const osc1 = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+          osc1.type = 'sine'; osc1.frequency.setValueAtTime(1400, audioCtx.currentTime);
           osc1.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
-
-          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-
-          osc1.connect(gain);
-          gain.connect(audioCtx.destination);
-          
-          osc1.start();
-          osc1.stop(audioCtx.currentTime + 0.08);
-          
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          osc1.connect(gain); gain.connect(audioCtx.destination);
+          osc1.start(); osc1.stop(audioCtx.currentTime + 0.08);
         } else if (type === 'correct') {
-          // Symmetrical ascending truth chime (Verified State)
-          const notes = [293.66, 349.23, 440.00, 587.33]; // D4, F4, A4, D5 (D Minor chord)
-          const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.7);
+          const notes = [293.66, 349.23, 440.00, 587.33]; const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.7);
           gain.connect(audioCtx.destination);
-
           notes.forEach((freq, index) => {
-            const osc = audioCtx.createOscillator();
-            osc.type = 'triangle';
+            const osc = audioCtx.createOscillator(); osc.type = 'triangle';
             osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.06);
-            osc.connect(gain);
-            osc.start(audioCtx.currentTime + index * 0.06);
-            osc.stop(audioCtx.currentTime + 0.7);
+            osc.connect(gain); osc.start(audioCtx.currentTime + index * 0.06); osc.stop(audioCtx.currentTime + 0.7);
           });
-          
         } else if (type === 'incorrect') {
-          // Low warning signal buzz (Deception State)
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.3);
-
-          const lowpass = audioCtx.createBiquadFilter();
-          lowpass.type = 'lowpass';
-          lowpass.frequency.setValueAtTime(180, audioCtx.currentTime);
-
-          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
-
-          osc.connect(lowpass);
-          lowpass.connect(gain);
-          gain.connect(audioCtx.destination);
-
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.3);
-          
+          const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+          osc.type = 'sawtooth'; osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.3);
         } else if (type === 'flip') {
-          // Mid sweep representing card rotation
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(250, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.15);
-          
-          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
-          
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.15);
+          const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+          osc.type = 'sine'; osc.frequency.setValueAtTime(250, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.15);
         }
-      } catch (e) {
-        console.warn('Web Audio API synth failure:', e);
-      }
+      } catch (e) { console.warn(e); }
     }
 
-    // HTML5 Canvas Calibration Node grid
     function initBackgroundCanvas() {
-      const canvas = document.getElementById('vocal-canvas');
-      if (!canvas) return;
+      const canvas = document.getElementById('vocal-canvas'); if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      
-      let width = (canvas.width = canvas.offsetWidth);
-      let height = (canvas.height = canvas.offsetHeight);
-      
+      let width = (canvas.width = canvas.offsetWidth); let height = (canvas.height = canvas.offsetHeight);
       const waves = [];
       
       window.addEventListener('resize', () => {
-        width = canvas.width = canvas.offsetWidth;
-        height = canvas.height = canvas.offsetHeight;
+        width = canvas.width = canvas.offsetWidth; height = canvas.height = canvas.offsetHeight;
       });
 
       window.spawnWaveNode = function(event) {
         const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        
         waves.push({
-          x: x,
-          y: y,
-          radius: 0,
-          maxRadius: Math.random() * 70 + 40,
-          opacity: 0.9,
-          color: Math.random() > 0.4 ? '245, 158, 11' : '99, 102, 241' // Amber (Agreement) or Indigo (Disagreement)
+          x: event.clientX - rect.left, y: event.clientY - rect.top,
+          radius: 0, opacity: 0.9,
+          color: Math.random() > 0.4 ? '245, 158, 11' : '99, 102, 241'
         });
         playSynthSound('click');
       };
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
-        
         for (let i = waves.length - 1; i >= 0; i--) {
-          const w = waves[i];
-          w.radius += 1.4;
-          w.opacity -= 0.015;
-          
-          if (w.opacity <= 0) {
-            waves.splice(i, 1);
-            continue;
-          }
-          
-          ctx.beginPath();
-          ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity})`;
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-          
-          ctx.beginPath();
-          ctx.arc(w.x, w.y, w.radius * 0.65, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity * 0.35})`;
-          ctx.stroke();
+          const w = waves[i]; w.radius += 1.4; w.opacity -= 0.015;
+          if (w.opacity <= 0) { waves.splice(i, 1); continue; }
+          ctx.beginPath(); ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity})`; ctx.lineWidth = 1.5; ctx.stroke();
         }
-        
         requestAnimationFrame(animate);
       }
       animate();
@@ -1008,17 +858,32 @@
       renderQuizQuestion();
       renderSandboxChips();
       calculateMasteryMetrics();
-      
-      // Enforce premium dark aesthetic by default
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-fingerprint text-sm text-brand-400"></i>';
-      
-      document.addEventListener('keyup', keyUpHandler);
     });
+
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-400"></i>';
+      } else {
+        html.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500"></i>';
+      }
+    }
 
     function toggleTheme() {
       playSynthSound('click');
-      showToast('System Refined', 'Truth grid frequencies recalibrated successfully.', 'fa-fingerprint');
+      const nextTheme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = nextTheme;
+      localStorage.setItem('colloc_theme_l39', nextTheme);
+      applyTheme(nextTheme);
+      
+      if (nextTheme === 'dark') {
+        showToast('Midnight Theme Active', 'Interface calibrated to dark matrix parameters.', 'fa-moon');
+      } else {
+        showToast('Parchment Theme Active', 'Interface calibrated to light social parameters.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1033,47 +898,37 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-800 hover:text-slate-100";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100";
         }
       });
       
       const activeView = document.getElementById(`view-${viewName}`);
       activeView.classList.remove('hidden');
-      setTimeout(() => {
-        activeView.classList.add('block', 'opacity-100');
-      }, 50);
+      setTimeout(() => { activeView.classList.add('block', 'opacity-100'); }, 50);
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20";
       }
       
       state.currentView = viewName;
-      if (viewName === 'flashcards') {
-        renderFlashcard();
-      } else if (viewName === 'dictionary') {
-        renderDictionary();
-      }
+      if (viewName === 'flashcards') renderFlashcard();
+      else if (viewName === 'dictionary') renderDictionary();
     }
 
     function loadLocalStorage() {
       if (localStorage.getItem('colloc_mastery_list_l39')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l39'));
-          state.collocations.forEach(c => {
-            if (masteredArr.includes(c.id)) {
-              c.mastered = true;
-            }
-          });
-        } catch (err) {
-          console.error('Veracity storage parse issue:', err);
-        }
+          state.collocations.forEach(c => { if (masteredArr.includes(c.id)) c.mastered = true; });
+        } catch (err) { console.error(err); }
       }
       if (localStorage.getItem('colloc_voice_settings_l39')) {
-        try {
-          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l39'));
-        } catch(e) {}
+        try { state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l39')); } catch(e) {}
       }
+      const savedTheme = localStorage.getItem('colloc_theme_l39') || 'dark';
+      state.theme = savedTheme;
+      applyTheme(savedTheme);
     }
 
     function saveMastery() {
@@ -1085,7 +940,6 @@
     function calculateMasteryMetrics() {
       const total = state.collocations.length;
       const masteredCount = state.collocations.filter(c => c.mastered).length;
-      
       document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Verified`;
       
       let quizFactor = 0;
@@ -1093,28 +947,19 @@
       if (totalAnswers > 0) {
         let correctCount = 0;
         state.quiz.forEach(q => {
-          const userAns = state.quizAnswers[q.id];
-          const isCorrect = (userAns === q.answer) || 
-                            (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                            (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-          if (isCorrect) {
-            correctCount++;
-          }
+          if (state.quizAnswers[q.id] === q.answer) correctCount++;
         });
         quizFactor = (correctCount / state.quiz.length) * 50;
       }
       
       const cardFactor = (masteredCount / total) * 50;
       const score = Math.min(100, Math.round(cardFactor + quizFactor));
-      
       document.getElementById('sidebar-confidence').innerText = `${score}%`;
     }
 
     function openVoiceSettings() {
       playSynthSound('click');
-      const modal = document.getElementById('voice-modal-overlay');
-      modal.classList.remove('hidden');
-      
+      document.getElementById('voice-modal-overlay').classList.remove('hidden');
       document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
       document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
       document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
@@ -1123,15 +968,11 @@
 
     function closeVoiceSettings() {
       playSynthSound('click');
-      const modal = document.getElementById('voice-modal-overlay');
-      modal.classList.add('hidden');
-      
+      document.getElementById('voice-modal-overlay').classList.add('hidden');
       const select = document.getElementById('voice-select');
-      if (select) {
-        state.voiceSettings.voiceName = select.value;
-      }
+      if (select) state.voiceSettings.voiceName = select.value;
       localStorage.setItem('colloc_voice_settings_l39', JSON.stringify(state.voiceSettings));
-      showToast('Config Active', 'Speech synthesis channels updated.');
+      showToast('Configuration Restored', 'Speech synthesis voice engines updated.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1148,288 +989,128 @@
 
     function populateVoiceDropdown() {
       if (!('speechSynthesis' in window)) return;
-      const select = document.getElementById('voice-select');
-      if (!select) return;
-      
-      const voices = window.speechSynthesis.getVoices();
-      select.innerHTML = '';
-      
-      if (!state.voiceSettings.voiceName) {
-        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
-                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
-                                  voices.find(v => v.lang === "en-GB") ||
-                                  voices.find(v => v.lang.startsWith("en"));
-        if (preferredUKFemale) {
-          state.voiceSettings.voiceName = preferredUKFemale.name;
-        }
-      }
+      const select = document.getElementById('voice-select'); if (!select) return;
+      const voices = window.speechSynthesis.getVoices(); select.innerHTML = '';
       
       voices.forEach((v) => {
-        const option = document.createElement('option');
-        option.value = v.name;
+        const option = document.createElement('option'); option.value = v.name;
         option.innerText = `${v.name} (${v.lang})`;
-        if (state.voiceSettings.voiceName === v.name) {
-          option.selected = true;
-        }
+        if (state.voiceSettings.voiceName === v.name) option.selected = true;
         select.appendChild(option);
       });
     }
 
     function triggerTTS(text) {
-      if (!('speechSynthesis' in window)) {
-        showToast('System Conflict', 'Auditory interfaces are currently restricted.');
-        return;
-      }
+      if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
-      
       const utterance = new SpeechSynthesisUtterance(text);
       const voices = window.speechSynthesis.getVoices();
-      
-      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
-      if (!selectedVoice) {
-        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
-                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
-                        voices.find(v => v.lang === "en-GB") ||
-                        voices.find(v => v.lang.startsWith('en'));
-      }
-      
-      utterance.voice = selectedVoice;
-      utterance.rate = state.voiceSettings.rate;
-      utterance.pitch = state.voiceSettings.pitch;
-      utterance.volume = state.voiceSettings.volume;
-      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName) || voices.find(v => v.lang.startsWith("en"));
+      if (selectedVoice) utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate; utterance.pitch = state.voiceSettings.pitch;
       window.speechSynthesis.speak(utterance);
     }
 
     function stopSpeechSynthesis() {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        state.isSynthesizing = false;
-        state.podcastIsPlaying = false;
+        window.speechSynthesis.cancel(); state.podcastIsPlaying = false;
         const icon = document.getElementById('podcast-play-icon');
-        if (icon) {
-          icon.className = "fa-solid fa-play text-xl ml-0.5";
-        }
+        if (icon) icon.className = "fa-solid fa-play text-xl ml-0.5";
       }
     }
 
     function initStoryClicks() {
-      const links = document.querySelectorAll('.colloc-ref');
-      links.forEach(l => {
-        l.addEventListener('click', (e) => {
-          const colId = e.target.getAttribute('data-id');
-          displayGlossaryCard(colId);
-        });
+      document.querySelectorAll('.colloc-ref').forEach(l => {
+        l.addEventListener('click', (e) => { displayGlossaryCard(e.target.getAttribute('data-id')); });
       });
-      displayGlossaryCard('agree_wholeheartedly');
+      displayGlossaryCard('impressive_accomplishments');
     }
 
     function displayGlossaryCard(id) {
       playSynthSound('click');
-      const term = state.collocations.find(c => c.id === id);
-      if (!term) return;
-      
+      const term = state.collocations.find(c => c.id === id); if (!term) return;
       state.activeCardId = id;
       
       document.getElementById('glossary-phrase').innerText = term.phrase;
       document.getElementById('glossary-definition').innerText = term.definition;
       document.getElementById('glossary-example').innerText = term.example;
-      document.getElementById('glossary-category').innerText = `Linguistic Vector: ${term.category}`;
+      document.getElementById('glossary-category').innerText = `Cluster: ${term.category}`;
       
       const star = document.getElementById('glossary-master-btn');
-      if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
-      } else {
-        star.innerHTML = '<i class="fa-regular fa-star"></i>';
-      }
-      
+      star.innerHTML = term.mastered ? '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>' : '<i class="fa-regular fa-star"></i>';
       triggerTTS(term.phrase);
     }
 
     function speakGlossaryTerm() {
       const term = state.collocations.find(c => c.id === state.activeCardId);
-      if (term) {
-        triggerTTS(`${term.phrase}. Precedent context: ${term.example}`);
-      }
+      if (term) triggerTTS(`${term.phrase}. Historical pattern context: ${term.example}`);
     }
 
     function toggleActiveMastery() {
       playSynthSound('click');
-      const term = state.collocations.find(c => c.id === state.activeCardId);
-      if (!term) return;
-      
-      term.mastered = !term.mastered;
-      saveMastery();
-      
-      const star = document.getElementById('glossary-master-btn');
-      if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
-        showToast('Node Verified', `Added "${term.phrase}" into authenticated ledger.`);
-      } else {
-        star.innerHTML = '<i class="fa-regular fa-star"></i>';
-        showToast('Node Reset', `Returned "${term.phrase}" to pending queue.`);
-      }
+      const term = state.collocations.find(c => c.id === state.activeCardId); if (!term) return;
+      term.mastered = !term.mastered; saveMastery();
+      displayGlossaryCard(state.activeCardId);
+      showToast(term.mastered ? 'Metric Saved' : 'Metric Removed', `Adjusted mastery status inside logs for: "${term.phrase}".`);
     }
 
     function speakCurrentStory() {
-      playSynthSound('click');
-      const paragraphs = [
-        "When leading a complex technical project, finding alignment is rarely a straightforward task.",
-        "While you might agree wholeheartedly with some team proposals, you will inevitably encounter members who strongly disagree with the system framework.",
-        "To establish progress, you must learn to navigate these differences and try to find common ground before a minor dispute escalates.",
-        "During executive syncs, colleagues often share an opinion or share a view about market trends, which can spark a heated debate.",
-        "Even if you agree in principle with their overarching strategy, the logistical execution may reveal a conflict of interest.",
-        "Left unaddressed, a simple difference of opinion can deteriorate into a bitter dispute.",
-        "When stakeholders disagree vehemently, they might present data that will flatly contradict your assumptions.",
-        "If you react defensively, you don't want to get dragged into a lengthy discussion that ends in tension, or worse, cause you to have an argument that spoils the mood.",
-        "It is always more productive to present objective evidence to resolve a conflict.",
-        "A bitter dispute can easily paralyze developmental milestones.",
-        "Therefore, when leaders need to discuss high-pressure details, they must choose to settle a dispute or settle an argument through negotiation.",
-        "Both sides must be willing to compromise. If they do not see eye to eye on key parameters, they must at least find a way to reach a compromise.",
-        "When a middle ground is found, they can finally reach an agreement.",
-        "However, not every point of contention is easily resolved. When dealing with a major disagreement, the parties might simply decide to agree to disagree on minor aspects to keep moving forward.",
-        "In contrast, a minor disagreement shouldn't be allowed to block a decision that has reached a unanimous agreement among the rest of the board.",
-        "Some issues are beyond dispute, such as the need to adhere to international safety regulations. Other operational policies are open to debate.",
-        "I firmly believe that healthy friction fosters innovation, as long as people do not vehemently oppose changes simply because they are new.",
-        "This is a clear-cut case of how constructive dialogue builds stronger systems."
-      ];
-      triggerTTS(paragraphs.join(" "));
+      triggerTTS(document.getElementById('narrative-body').innerText);
     }
 
     function renderFlashcard() {
-      const card = state.collocations[state.flashcardsIndex];
-      if (!card) return;
-      
+      const card = state.collocations[state.flashcardsIndex]; if (!card) return;
       document.getElementById('card-front-phrase').innerText = card.phrase;
       document.getElementById('card-front-category').innerText = card.category;
-      
       document.getElementById('card-back-definition').innerText = card.definition;
       document.getElementById('card-back-example').innerText = card.example;
       document.getElementById('card-back-category').innerText = card.category;
-      
       document.getElementById('card-master-checkbox').checked = card.mastered;
-      
       document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
-      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
-      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
-      
-      state.isCardFlipped = false;
-      document.getElementById('flashcard-element').classList.remove('flipped');
+      document.getElementById('flashcard-progress-bar').style.width = `${((state.flashcardsIndex + 1) / state.collocations.length) * 100}%`;
+      state.isCardFlipped = false; document.getElementById('flashcard-element').classList.remove('flipped');
     }
 
-    function flipFlashcard() {
-      playSynthSound('flip');
-      state.isCardFlipped = !state.isCardFlipped;
-      const elem = document.getElementById('flashcard-element');
-      if (state.isCardFlipped) {
-        elem.classList.add('flipped');
-      } else {
-        elem.classList.remove('flipped');
-      }
-    }
-
-    function prevFlashcard() {
-      playSynthSound('click');
-      if (state.flashcardsIndex > 0) {
-        state.flashcardsIndex--;
-        renderFlashcard();
-      } else {
-        showToast('Lower Bound', 'This is the start of the card briefing stack.');
-      }
-    }
-
-    function nextFlashcard() {
-      playSynthSound('click');
-      if (state.flashcardsIndex < state.collocations.length - 1) {
-        state.flashcardsIndex++;
-        renderFlashcard();
-      } else {
-        showToast('Loop Active', 'Re-routing transceiver stack back to index 1.');
-        state.flashcardsIndex = 0;
-        renderFlashcard();
-      }
-    }
-
-    function keyUpHandler(e) {
-      if (state.currentView !== 'flashcards') return;
-      if (e.code === 'Space') {
-        flipFlashcard();
-      } else if (e.code === 'ArrowLeft') {
-        prevFlashcard();
-      } else if (e.code === 'ArrowRight') {
-        nextFlashcard();
-      }
-    }
-
-    function speakFlashcardCurrent(event) {
-      if (event) event.stopPropagation();
-      const card = state.collocations[state.flashcardsIndex];
-      if (card) {
-        triggerTTS(card.phrase);
-      }
-    }
-
-    function toggleCardMasteryInFlashcard(checkbox) {
-      const card = state.collocations[state.flashcardsIndex];
-      if (!card) return;
-      
-      card.mastered = checkbox.checked;
-      saveMastery();
-      if (card.mastered) {
-        showToast('Calibration Confirmed', `"${card.phrase}" marked as verified.`);
-      }
-    }
+    function flipFlashcard() { playSynthSound('flip'); state.isCardFlipped = !state.isCardFlipped; document.getElementById('flashcard-element').classList.toggle('flipped'); }
+    function prevFlashcard() { playSynthSound('click'); if (state.flashcardsIndex > 0) { state.flashcardsIndex--; renderFlashcard(); } }
+    function nextFlashcard() { playSynthSound('click'); state.flashcardsIndex = (state.flashcardsIndex + 1) % state.collocations.length; renderFlashcard(); }
+    function speakFlashcardCurrent(e) { e.stopPropagation(); const c = state.collocations[state.flashcardsIndex]; if (c) triggerTTS(c.phrase); }
+    function toggleCardMasteryInFlashcard(cb) { const c = state.collocations[state.flashcardsIndex]; if (c) { c.mastered = cb.checked; saveMastery(); } }
 
     function renderQuizQuestion() {
-      const quest = state.quiz[state.quizIndex];
-      if (!quest) return;
-      
+      const quest = state.quiz[state.quizIndex]; if (!quest) return;
       document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
       document.getElementById('quiz-question-text').innerText = quest.question;
-      
-      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
-      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
-      
+      document.getElementById('quiz-progress-bar').style.width = `${((state.quizIndex + 1) / state.quiz.length) * 100}%`;
       document.getElementById('quiz-explanation-box').classList.add('hidden');
       
       const answered = state.quizAnswers[quest.id] !== undefined;
-      const grid = document.getElementById('quiz-options-grid');
-      grid.innerHTML = '';
+      const grid = document.getElementById('quiz-options-grid'); grid.innerHTML = '';
       
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
-        
-        // Match user values gracefully
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
-        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-white";
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full text-slate-800 dark:text-white";
         
         if (!answered) {
-          btn.className += " bg-[#111827] border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.className += " bg-white dark:bg-[#111827] border-slate-200 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.onclick = () => selectQuizAnswer(opt);
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400 dark:text-slate-700"></i>`;
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
-          
-          const isSelected = (collocId === userAns || opt === userAns);
+          const isCorrectChoice = (opt === quest.answer);
+          const isUserChoice = (opt === userAns);
 
-          if (isCorrect) {
-            btn.className += " bg-emerald-950/70 border-brand-500 text-brand-350 font-bold shadow-md shadow-brand-500/10";
-            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-square-check text-brand-400"></i>`;
-          } else if (isSelected) {
-            btn.className += " bg-rose-955/70 border-rose-900 text-rose-450 font-bold";
+          if (isCorrectChoice) {
+            btn.className += " bg-emerald-50 dark:bg-emerald-950/70 border-emerald-500 text-emerald-700 dark:text-brand-350 font-bold shadow-sm";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-square-check text-emerald-600 dark:text-brand-400"></i>`;
+          } else if (isUserChoice) {
+            btn.className += " bg-rose-50 dark:bg-rose-955/70 border-rose-300 dark:border-rose-900 text-rose-700 dark:text-rose-400 font-bold";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-triangle-exclamation text-rose-500"></i>`;
           } else {
-            btn.className += " bg-slate-900 border-slate-800 text-slate-555";
+            btn.className += " bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400";
+            btn.innerHTML = `<span>${opt}</span>`;
           }
-        }
-        
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
         }
         grid.appendChild(btn);
       });
@@ -1437,524 +1118,185 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
-        displayQuizExplanation(quest.explanation);
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-955 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        document.getElementById('quiz-explanation-box').classList.remove('hidden');
+        document.getElementById('quiz-explanation-text').innerText = quest.explanation;
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
-    function selectQuizAnswer(selectedOption) {
-      const quest = state.quiz[state.quizIndex];
-      if (!quest) return;
+    function selectQuizAnswer(opt) {
+      const quest = state.quiz[state.quizIndex]; if (!quest) return;
+      state.quizAnswers[quest.id] = opt;
       
-      state.quizAnswers[quest.id] = selectedOption;
-      
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
-      
-      if (isCorrect) {
+      if (opt === quest.answer) {
         playSynthSound('correct');
-        showToast('Vector Aligned', 'Statements align flawlessly with fact criteria.', 'fa-circle-check');
+        showToast('Metric Aligned', 'Selected parameter complies with lesson facts.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Deception Flagged', 'Inconsistencies detected in scenario syntax.', 'fa-triangle-exclamation');
+        showToast('Mismatch Flagged', 'Linguistic parameter value is off the mark.', 'fa-triangle-exclamation');
       }
-      
-      calculateMasteryMetrics();
-      renderQuizQuestion();
-    }
-
-    function displayQuizExplanation(explanation) {
-      const box = document.getElementById('quiz-explanation-box');
-      const textEl = document.getElementById('quiz-explanation-text');
-      box.classList.remove('hidden');
-      textEl.innerText = explanation;
+      calculateMasteryMetrics(); renderQuizQuestion();
     }
 
     function handleQuizNext() {
       playSynthSound('click');
       if (state.quizIndex < state.quiz.length - 1) {
-        state.quizIndex++;
-        renderQuizQuestion();
+        state.quizIndex++; renderQuizQuestion();
       } else {
-        completeQuizProcess();
+        document.getElementById('quiz-screen').classList.add('hidden');
+        document.getElementById('quiz-result-screen').classList.remove('hidden');
+        let correct = 0;
+        state.quiz.forEach(q => { if (state.quizAnswers[q.id] === q.answer) correct++; });
+        
+        document.getElementById('quiz-score-correct').innerText = `${correct}/${state.quiz.length}`;
+        const pct = Math.round((correct / state.quiz.length) * 100);
+        document.getElementById('quiz-score-percent').innerText = `${pct}%`;
+        document.getElementById('quiz-score-rank').innerText = pct === 100 ? "Master Polygrapher 🛡️" : pct >= 80 ? "Linguistic Auditor" : "Training Analyst";
       }
-    }
-
-    function completeQuizProcess() {
-      state.quizCompleted = true;
-      document.getElementById('quiz-screen').classList.add('hidden');
-      document.getElementById('quiz-result-screen').classList.remove('hidden');
-      
-      let correct = 0;
-      state.quiz.forEach(q => {
-        const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-        if (isCorrect) {
-          correct++;
-        }
-      });
-      
-      const ratioStr = `${correct}/${state.quiz.length}`;
-      const percentage = Math.round((correct / state.quiz.length) * 100);
-      
-      document.getElementById('quiz-score-correct').innerText = ratioStr;
-      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
-      
-      let rank = "Skeptic Novice";
-      if (percentage === 100) rank = "Master Polygrapher 🛡️";
-      else if (percentage >= 90) rank = "Auditor General";
-      else if (percentage >= 70) rank = "Veracity Officer";
-      
-      document.getElementById('quiz-score-rank').innerText = rank;
     }
 
     function resetCurrentQuiz() {
-      playSynthSound('click');
-      state.quizAnswers = {};
-      state.quizIndex = 0;
-      state.quizCompleted = false;
-      
+      playSynthSound('click'); state.quizAnswers = {}; state.quizIndex = 0;
       document.getElementById('quiz-screen').classList.remove('hidden');
       document.getElementById('quiz-result-screen').classList.add('hidden');
-      
-      renderQuizQuestion();
-      calculateMasteryMetrics();
+      renderQuizQuestion(); calculateMasteryMetrics();
     }
 
     function renderSandboxChips() {
-      const container = document.getElementById('sandbox-quick-chips');
-      if (!container) return;
-      
+      const container = document.getElementById('sandbox-quick-chips'); if (!container) return;
       container.innerHTML = '';
-      const selectedWords = ['agree wholeheartedly', 'heated argument', 'bitter dispute', 'agree in principle', 'reach a compromise', 'agree to disagree'];
+      const chips = ['phenomenal success', 'spectacular failure', 'recipe for disaster', 'room for improvement'];
       
-      selectedWords.forEach(word => {
+      chips.forEach(word => {
         const chip = document.createElement('button');
-        chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-slate-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono";
-        chip.innerText = `+ ${word}`;
-        container.appendChild(chip);
+        chip.onclick = () => { document.getElementById('sandbox-input').value += ` ${word} `; document.getElementById('sandbox-input').focus(); };
+        chip.className = "px-3 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-brand-500/10 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-300 dark:border-slate-700 font-mono";
+        chip.innerText = `+ ${word}`; container.appendChild(chip);
       });
-    }
-
-    function insertCollocToSandbox(word) {
-      playSynthSound('click');
-      const textarea = document.getElementById('sandbox-input');
-      const currentText = textarea.value;
-      
-      if (currentText === '') {
-        textarea.value = `We decided to ${word} during the meeting...`;
-      } else {
-        textarea.value += ` ${word} `;
-      }
-      textarea.focus();
     }
 
     function populateSandboxCollocations() {
       playSynthSound('click');
-      const textarea = document.getElementById('sandbox-input');
-      const collocs = state.collocations;
-      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
-      
-      if (textarea.value.trim() === '') {
-        textarea.value = `Calibrated statement briefing: "${randomColloc}"`;
-      } else {
-        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
-        textarea.value += `${spacer}${randomColloc}`;
-      }
-      textarea.focus();
-      showToast('Manuscript modified', `Injected "${randomColloc}" into workspace.`, 'fa-circle-plus');
+      const rc = state.collocations[Math.floor(Math.random() * state.collocations.length)].phrase;
+      document.getElementById('sandbox-input').value += ` ${rc} `; document.getElementById('sandbox-input').focus();
     }
 
-    function generateSandboxPrompt() {
-      playSynthSound('click');
-      const prompts = [
-        "Detail an executive apology where an inveterate liar has to tell the truth after betraying trust.",
-        "Write a court testimony where a client must swear under oath that they made an honest mistake rather than concocted an alibi.",
-        "Discuss a workplace scenario where someone chose brutal honesty over telling a white lie, preventing a tissue of lies.",
-        "Draft a scenario where an administrator has to reveal a secret because someone accidentally let the cat out of the bag."
-      ];
-      const rand = prompts[Math.floor(Math.random() * prompts.length)];
-      const textarea = document.getElementById('sandbox-input');
-      textarea.value = `[Dialogue Draft Prompt: ${rand}]\n\n`;
-      textarea.focus();
-    }
-
-    function clearSandbox() {
-      playSynthSound('click');
-      document.getElementById('sandbox-input').value = '';
-      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
-    }
+    function clearSandbox() { playSynthSound('click'); document.getElementById('sandbox-input').value = ''; document.getElementById('sandbox-diagnostic-card').classList.add('hidden'); }
 
     async function runSentenceDiagnostic() {
-      playSynthSound('click');
-      const apiKey = ""; 
-      const textValue = document.getElementById('sandbox-input').value.trim();
+      const val = document.getElementById('sandbox-input').value.trim(); if (!val) return;
+      showToast('Scan Triggered', 'Routing credentials to diagnostic layers...', 'fa-fingerprint');
       
-      if (!textValue) {
-        showToast('Empty Document', 'Please draft your veracity manuscript before running a scan.', 'fa-circle-exclamation');
-        return;
-      }
-      
-      showToast('Forensic Scan', 'Routing statements to Gemini diagnostic engine...', 'fa-fingerprint');
-      
-      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
-      diagnoseCard.classList.remove('hidden');
-      document.getElementById('diagnostic-analysis').innerText = "Analyzing semantic alignments and context metrics... Please standby.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Running polygraph comparison parameters...";
+      document.getElementById('sandbox-diagnostic-card').classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing semantic structure configurations...";
       document.getElementById('diagnostic-score').innerText = "--";
-      document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are an elite forensic linguist, communications consultant, and English professor. Verify if the user's statement utilizes Lesson 39 collocations (agree wholeheartedly, share an opinion, share a view, agree in principle, reach a compromise, heated argument, bitter dispute, disagree vehemently, strongly disagree, flatly contradict, settle a dispute, settle an argument, agree to disagree, long-running dispute, difference of opinion, conflict of interest, dispute the claim, see eye to eye, resolve a conflict, find common ground, heated debate, vehemently oppose, unanimous agreement, firmly believe, major disagreement, minor disagreement, beyond dispute, open to debate, clear-cut case, reach an agreement) correctly and naturally. Respond ONLY with a clean, unformatted raw JSON object containing these precise keys: \"score\" (0-100 indicating authenticity and collocation strength), \"analysis\" (brief 2-3 sentence overview of dialogue integrity), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific instruction on how agreement or disagreement is phrased), and \"alternatives\" (array of 1-2 polished alternatives). Absolutely do not enclose your output in markdown formatting or code blocks.";
+      const prompt = "You are an expert English linguist. Verify the accurate implementation of Lesson 39 Success & Failure collocations. Return exclusively clean raw JSON formatted exactly as: {\"score\": 95, \"analysis\": \"brief descriptive summary\", \"isCollocationCorrect\": true, \"collocationFeedback\": \"notes\", \"alternatives\": [\"polished string asset text\"]}. Highly critical: do not wrap your json output inside any code blocks or markdown backticks.";
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=`;
       
-      const payload = {
-        contents: [{ parts: [{ text: `Analyze this integrity statement: "${textValue}"` }] }],
-        systemInstruction: { parts: [{ text: systemPrompt }] },
-        generationConfig: { responseMimeType: "application/json" }
-      };
-      
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-      
-      let attempt = 0;
-      let delay = 1000;
-      let success = false;
-      let resultData = null;
-      
-      while (attempt < 5 && !success) {
-        try {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          
-          if (response.ok) {
-            resultData = await response.json();
-            success = true;
-          } else {
-            throw new Error(`Response returned state ${response.status}`);
-          }
-        } catch (err) {
-          attempt++;
-          if (attempt >= 5) {
-            showToast('Scan Halted', 'Forensic link failed to synchronize.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Command deck offline. Re-verify link credentials and retry.";
-            return;
-          }
-          await new Promise(res => setTimeout(res, delay));
-          delay *= 2;
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents: [{ parts: [{ text: val }] }], systemInstruction: { parts: [{ text: prompt }] }, generationConfig: { responseMimeType: "application/json" } })
+        });
+        if (response.ok) {
+          const resJson = await response.json(); const parsed = JSON.parse(resJson.candidates[0].content.parts[0].text);
+          document.getElementById('diagnostic-score').innerText = parsed.score;
+          document.getElementById('diagnostic-analysis').innerText = parsed.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsed.collocationFeedback;
+          document.getElementById('diagnostic-alternative-text').innerText = parsed.alternatives?.[0] || "Flawless contextual deployment verified.";
+          document.getElementById('diagnostic-badge').className = parsed.isCollocationCorrect ? "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/30 font-mono" : "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-600 border border-rose-500/30 font-mono";
+          document.getElementById('diagnostic-badge').innerText = parsed.isCollocationCorrect ? "Verified Framework" : "Adjustment Advised";
+          playSynthSound(parsed.isCollocationCorrect ? 'correct' : 'incorrect');
         }
-      }
-      
-      if (success && resultData) {
-        try {
-          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
-          const parsedResult = JSON.parse(textResponse);
-          
-          document.getElementById('diagnostic-score').innerText = parsedResult.score;
-          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
-          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
-          
-          const alternativeText = parsedResult.alternatives?.[0] || "Compliance matches flawless truth guidelines!";
-          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
-          
-          const badge = document.getElementById('diagnostic-badge');
-          if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40";
-            badge.innerText = "Verified Integrity";
-            playSynthSound('correct');
-          } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-450 border border-rose-900/40";
-            badge.innerText = "Acoustic Shift Flagged";
-            playSynthSound('incorrect');
-          }
-          
-        } catch (jsonErr) {
-          console.error("Forensic compliance JSON error: ", jsonErr);
-          document.getElementById('diagnostic-analysis').innerText = "Compliance reports returned an unparsable structure. Try streamlining your sentence patterns.";
-        }
-      }
+      } catch (e) { document.getElementById('diagnostic-analysis').innerText = "API evaluation node feedback stream timed out."; }
     }
 
-    function copyAlternativeSentence() {
-      const text = document.getElementById('diagnostic-alternative-text').innerText;
-      if (text && text !== "...") {
-        const el = document.createElement('textarea');
-        el.value = text;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        showToast('System Copied', 'Polished statement copied to diagnostic logs.', 'fa-copy');
-      }
-    }
+    function copyAlternativeSentence() { navigator.clipboard.writeText(document.getElementById('diagnostic-alternative-text').innerText); showToast('Copied', 'Alternative syntax copied to system buffer layers.', 'fa-copy'); }
 
     function togglePodcastPlay() {
       playSynthSound('click');
       if (state.podcastIsPlaying) {
-        stopSpeechSynthesis();
-        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
-        state.podcastIsPlaying = false;
-        document.getElementById('podcast-status').innerText = "Broadcast Suspended";
+        stopSpeechSynthesis(); document.getElementById('podcast-status').innerText = "Broadcast Suspended";
       } else {
-        state.podcastIsPlaying = true;
-        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Transmission Active - Analyzing Veracity";
-        
-        if (state.podcastIndex === -1) {
-          state.podcastIndex = 0;
-        }
+        state.podcastIsPlaying = true; document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "Streaming Active Transmission Feed";
+        if (state.podcastIndex === -1) state.podcastIndex = 0;
         playPodcastCycle();
       }
     }
 
     function playPodcastCycle() {
       if (!state.podcastIsPlaying) return;
-      
       const currentWord = state.collocations[state.podcastIndex];
-      if (!currentWord) {
-        document.getElementById('podcast-current-phrase').innerText = "Debriefing Complete!";
-        document.getElementById('podcast-current-definition').innerText = "All Lesson 39 structural parameters evaluated and verified.";
-        stopSpeechSynthesis();
-        state.podcastIndex = -1;
-        return;
-      }
+      if (!currentWord) { stopSpeechSynthesis(); state.podcastIndex = -1; return; }
       
       document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
-      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g. "${currentWord.example}"`;
-      
-      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
-      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} E.g., "${currentWord.example}"`;
+      document.getElementById('podcast-loading-meter').style.width = `${((state.podcastIndex + 1) / state.collocations.length) * 100}%`;
       document.getElementById('podcast-time-passed').innerText = `Token ${state.podcastIndex + 1}/30`;
       
-      const chatLog = document.getElementById('podcast-chat-log');
-      chatLog.innerHTML = '';
+      const chatLog = document.getElementById('podcast-chat-log'); chatLog.innerHTML = '';
+      const phraseText = state.podcastHostTurn === 1 ? `Let's analyze the phrase: "${currentWord.phrase}". It implies ${currentWord.definition}` : `Spot on, Sarah. We see that construction used explicitly in statements like: "${currentWord.example}"`;
       
-      if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Next, let's explore an essential collocation. It is: ${currentWord.phrase}. Tom, how does this affect conversational trust?`;
-        
-        const hostEl = document.createElement('div');
-        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
-        hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
-          <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Forensic Profiler)</span>
-            <p class="text-xs text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
-          </div>
-        `;
-        chatLog.appendChild(hostEl);
-        
-        speakHost(textToSpeak, 1.05, 1.05, () => {
-          setTimeout(() => {
-            state.podcastHostTurn = 2;
-            playPodcastCycle();
-          }, 600);
-        });
-        
-      } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} fundamentally means ${currentWord.definition}. In context, we often say: "${currentWord.example}"`;
-        
-        const hostEl = document.createElement('div');
-        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
-        hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
-          <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Linguistic Auditor)</span>
-            <p class="text-xs text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
-          </div>
-        `;
-        chatLog.appendChild(hostEl);
-        
-        speakHost(textToSpeak, 0.95, 0.9, () => {
-          setTimeout(() => {
-            state.podcastHostTurn = 1;
-            state.podcastIndex++;
-            playPodcastCycle();
-          }, 1200);
-        });
-      }
+      const turnContainer = document.createElement('div'); turnContainer.className = "flex gap-2.5 items-start animate-fade-in";
+      turnContainer.innerHTML = `<div class="h-6 w-6 rounded bg-brand-500 text-black font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">${state.podcastHostTurn===1?'H1':'H2'}</div><div><span class="text-[10px] font-bold text-slate-500 block font-mono">${state.podcastHostTurn===1?'Sarah (Profiler)':'Tom (Auditor)'}</span><p class="text-xs text-slate-800 dark:text-slate-200 font-sans">"${phraseText}"</p></div>`;
+      chatLog.appendChild(turnContainer);
+      
+      triggerTTS(phraseText);
+      setTimeout(() => {
+        if (!state.podcastIsPlaying) return;
+        if (state.podcastHostTurn === 1) { state.podcastHostTurn = 2; } 
+        else { state.podcastHostTurn = 1; state.podcastIndex = (state.podcastIndex + 1) % state.collocations.length; }
+        playPodcastCycle();
+      }, 5000);
     }
 
-    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
-      if (!('speechSynthesis' in window)) return;
-      
-      const utterance = new SpeechSynthesisUtterance(text);
-      const voices = window.speechSynthesis.getVoices();
-      
-      let selectedVoice = null;
-      if (state.podcastHostTurn === 1) {
-        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
-                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
-                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
-                        voices.find(v => v.lang.startsWith('en'));
-      } else {
-        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
-                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
-                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
-                        voices.find(v => v.lang.startsWith('en'));
-      }
-      
-      utterance.voice = selectedVoice;
-      utterance.rate = state.voiceSettings.rate * rateModifier;
-      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
-      utterance.volume = state.voiceSettings.volume;
-      
-      utterance.onend = onEndCallback;
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function prevPodcastCard() {
-      playSynthSound('click');
-      if (state.podcastIndex > 0) {
-        state.podcastIndex--;
-        state.podcastHostTurn = 1;
-        stopSpeechSynthesis();
-        if (state.podcastIsPlaying) {
-          playPodcastCycle();
-        }
-      }
-    }
-
-    function nextPodcastCard() {
-      playSynthSound('click');
-      if (state.podcastIndex < state.collocations.length - 1) {
-        state.podcastIndex++;
-        state.podcastHostTurn = 1;
-        stopSpeechSynthesis();
-        if (state.podcastIsPlaying) {
-          playPodcastCycle();
-        }
-      }
-    }
+    function prevPodcastCard() { if (state.podcastIndex > 0) { state.podcastIndex--; state.podcastHostTurn = 1; playPodcastCycle(); } }
+    function nextPodcastCard() { if (state.podcastIndex < state.collocations.length - 1) { state.podcastIndex++; state.podcastHostTurn = 1; playPodcastCycle(); } }
 
     function renderDictionary() {
-      const tbody = document.getElementById('dictionary-rows');
-      if (!tbody) return;
+      const tbody = document.getElementById('dictionary-rows'); if (!tbody) return; tbody.innerHTML = '';
+      const sVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const cVal = document.getElementById('dict-category-filter').value;
+      const mVal = document.getElementById('dict-mastery-filter').value;
       
-      tbody.innerHTML = '';
-      
-      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
-      const catVal = document.getElementById('dict-category-filter').value;
-      const masteryVal = document.getElementById('dict-mastery-filter').value;
-      
-      const filtered = state.collocations.filter(c => {
-        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
-        const matchesCat = (catVal === 'all') || (c.category === catVal);
-        
-        let matchesMastery = true;
-        if (masteryVal === 'mastered') {
-          matchesMastery = c.mastered;
-        } else if (masteryVal === 'unmastered') {
-          matchesMastery = !c.mastered;
-        }
-        
-        return matchesSearch && matchesCat && matchesMastery;
-      });
-      
-      if (filtered.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="6" class="text-center py-8 text-slate-400 italic font-medium">No verifications matched the ledger criteria.</td>
-          </tr>
-        `;
-        return;
-      }
-      
-      filtered.forEach(c => {
-        const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-855 font-sans";
-        
-        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
-        
+      state.collocations.filter(c => {
+        const matchSearch = c.phrase.includes(sVal) || c.definition.includes(sVal);
+        const matchCat = (cVal === 'all' || c.category === cVal);
+        const matchMast = (mVal === 'all' || (mVal === 'mastered' ? c.mastered : !c.mastered));
+        return matchSearch && matchCat && matchMast;
+      }).forEach(c => {
+        const row = document.createElement('tr'); row.className = "hover:bg-slate-100 dark:hover:bg-slate-800/40 border-b border-slate-200 dark:border-slate-800/60 transition";
         row.innerHTML = `
-          <td class="py-4 px-4 text-center">
-            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
-              <i class="fa-solid ${starIcon}"></i>
-            </button>
-          </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-400" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
-          <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/25 font-mono font-heading">${c.category}</span>
-          </td>
-          <td class="py-4 px-4 text-slate-300 leading-relaxed font-semibold">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-normal">"${c.example}"</td>
-          <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
-              <i class="fa-solid fa-volume-high text-xs"></i>
-            </button>
-          </td>
+          <td class="py-4 px-4 text-center"><button onclick="toggleInPlaceMastery('${c.id}')"><i class="fa-solid fa-star ${c.mastered ? 'text-amber-400' : 'text-slate-300 dark:text-slate-800'}"></i></button></td>
+          <td class="py-4 px-4 font-bold text-slate-900 dark:text-white capitalize cursor-pointer hover:underline" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4"><span class="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20 font-mono">${c.category}</span></td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 font-semibold font-sans">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 text-center"><button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 border border-slate-200 dark:border-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-white transition mx-auto"><i class="fa-solid fa-volume-high text-xs"></i></button></td>
         `;
         tbody.appendChild(row);
       });
     }
 
-    function toggleInPlaceMastery(id) {
-      playSynthSound('click');
-      const item = state.collocations.find(c => c.id === id);
-      if (item) {
-        item.mastered = !item.mastered;
-        saveMastery();
-        renderDictionary();
-        calculateMasteryMetrics();
-      }
-    }
-
-    function filterDictionary() {
-      renderDictionary();
-    }
+    function toggleInPlaceMastery(id) { const item = state.collocations.find(c => c.id === id); if (item) { item.mastered = !item.mastered; saveMastery(); renderDictionary(); } }
+    function filterDictionary() { renderDictionary(); }
 
     function showToast(title, body, iconClass = 'fa-circle-info') {
       const toast = document.getElementById('app-toast');
-      const tTitle = document.getElementById('toast-title');
-      const tBody = document.getElementById('toast-body');
-      const tIcon = document.getElementById('toast-icon');
-      
-      tTitle.innerText = title;
-      tBody.innerText = body;
-      tIcon.className = `fa-solid ${iconClass}`;
-      
+      document.getElementById('toast-title').innerText = title; document.getElementById('toast-body').innerText = body;
+      document.getElementById('toast-icon').className = `fa-solid ${iconClass}`;
       toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
-      
-      setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
-      }, 4000);
+      setTimeout(() => { toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300"; }, 3500);
     }
 
-    // Expose interaction functions to browser global scope
-    Object.assign(window, {
-      switchView,
-      toggleTheme,
-      openVoiceSettings,
-      closeVoiceSettings,
-      updateVoiceSlider,
-      speakCurrentStory,
-      speakGlossaryTerm,
-      toggleActiveMastery,
-      flipFlashcard,
-      prevFlashcard,
-      nextFlashcard,
-      speakFlashcardCurrent,
-      toggleCardMasteryInFlashcard,
-      selectQuizAnswer,
-      handleQuizNext,
-      resetCurrentQuiz,
-      generateSandboxPrompt,
-      populateSandboxCollocations,
-      clearSandbox,
-      runSentenceDiagnostic,
-      copyAlternativeSentence,
-      togglePodcastPlay,
-      prevPodcastCard,
-      nextPodcastCard,
-      filterDictionary,
-      toggleInPlaceMastery
-    });
+    function keyUpHandler(e) { if (state.currentView !== 'flashcards') return; if (e.code === 'Space') flipFlashcard(); else if (e.code === 'ArrowLeft') prevFlashcard(); else if (e.code === 'ArrowRight') nextFlashcard(); }
+
+    Object.assign(window, { switchView, toggleTheme, openVoiceSettings, closeVoiceSettings, updateVoiceSlider, speakCurrentStory, speakGlossaryTerm, toggleActiveMastery, flipFlashcard, prevFlashcard, nextFlashcard, speakFlashcardCurrent, toggleCardMasteryInFlashcard, handleQuizNext, resetCurrentQuiz, populateSandboxCollocations, clearSandbox, runSentenceDiagnostic, copyAlternativeSentence, togglePodcastPlay, prevPodcastCard, nextPodcastCard, filterDictionary, toggleInPlaceMastery });
   </script>
 </body>
 </html>

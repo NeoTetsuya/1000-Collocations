@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 35: Talking & Speaking Studio</title>
+  <title>CollocaStudy - Lesson 35: Movement & Speed Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <!-- Google Fonts: Inter, Plus Jakarta Sans, & Share Tech Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Broadcast, Mic, and Decibel Icons -->
+  <!-- FontAwesome for Velocity, Speedometer, and Kinetic Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the ON AIR Radio theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -32,12 +31,12 @@
               200: '#fed7aa',
               300: '#fdba74',
               400: '#fb923c',
-              500: '#f97316', /* Vintage Vacuum Tube Orange */
+              500: '#f97316', /* Tachometer Orange */
               600: '#ea580c',
               700: '#c2410c', 
               800: '#9a3412',
-              900: '#0c0a09', /* Dark Charcoal Slate */
-              950: '#030201'
+              900: '#090502', /* Premium Obsidian Carbon */
+              950: '#020100'
             }
           }
         }
@@ -46,7 +45,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching neon styling */
+    /* Premium Velocity Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -67,7 +66,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* 3D Card Flip styling */
+    /* 3D Card Flip styling for Flashcards */
     .card-perspective {
       perspective: 1000px;
     }
@@ -95,60 +94,59 @@
       animation: wave-bounce 1s ease-in-out infinite;
     }
     
-    /* Neon glow effect for ON AIR sign */
-    @keyframes pulse-neon {
-      0%, 100% { box-shadow: 0 0 5px #ef4444, 0 0 15px #ef4444, 0 0 25px rgba(239,68,68,0.5); opacity: 0.9; }
-      50% { box-shadow: 0 0 10px #ef4444, 0 0 30px #ef4444, 0 0 45px rgba(239,68,68,0.7); opacity: 1; }
+    /* Glowing Dashboard Radar Pulse */
+    @keyframes pulse-radar {
+      0%, 100% { box-shadow: 0 0 5px #f97316, 0 0 15px #f97316, 0 0 25px rgba(249,115,22,0.5); opacity: 0.9; }
+      50% { box-shadow: 0 0 10px #f97316, 0 0 30px #f97316, 0 0 45px rgba(249,115,22,0.7); opacity: 1; }
     }
-    .on-air-pulse {
-      animation: pulse-neon 1.8s infinite ease-in-out;
+    .radar-pulse {
+      animation: pulse-radar 1.8s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="h-full bg-stone-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-orange-50/10 text-slate-800 dark:bg-[#050201] dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
-  <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Interactive HTML5 Audio Frequency Spectrum Background Canvas -->
-    <canvas id="frequency-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-20"></canvas>
+    <!-- HTML5 Interactive Velocity Stream Particle Canvas -->
+    <canvas id="velocity-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-25 dark:opacity-40"></canvas>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-stone-800 bg-stone-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-orange-200 dark:border-stone-850 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 to-amber-500 text-white shadow-md shadow-brand-500/20">
-          <i class="fa-solid fa-microphone text-lg animate-pulse"></i>
+          <i class="fa-solid fa-gauge-high text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-400 to-amber-300 bg-clip-text text-transparent font-sans">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20 font-mono">ON AIR Studio</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-amber-600 dark:from-brand-400 dark:to-amber-300 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2 py-0.5 text-xs font-semibold text-brand-600 dark:text-brand-300 border border-brand-500/20 font-mono">Velocity Lab</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-4">
-        <!-- Glowing ON AIR Indicator -->
-        <div class="flex items-center gap-2 bg-red-600/10 border border-red-500/30 px-3 py-1 rounded-full on-air-pulse">
-          <span class="h-2.5 w-2.5 rounded-full bg-red-500 animate-ping"></span>
-          <span class="text-[10px] font-bold text-red-400 uppercase tracking-widest font-mono">ON AIR</span>
+        <!-- Glowing ON AIR / HIGH VELOCITY Indicator -->
+        <div class="flex items-center gap-2 bg-brand-500/10 border border-brand-500/30 px-3 py-1 rounded-full radar-pulse">
+          <span class="h-2.5 w-2.5 rounded-full bg-brand-500 animate-ping"></span>
+          <span class="text-[10px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest font-mono" id="tachometer-reading">SPEED: 1.0x</span>
         </div>
-        <h1 class="font-heading font-bold text-slate-200">Lesson 35: Talking & Speaking</h1>
+        <h1 class="font-heading font-bold text-slate-700 dark:text-slate-200">Lesson 35: Movement & Speed</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-800 text-slate-300 hover:bg-stone-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-800 text-slate-350 dark:text-slate-300 hover:bg-stone-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates signal recalibration) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-800 text-slate-300 hover:bg-stone-800 transition shadow-sm" id="theme-toggle" title="Discharge Sound Waves">
-          <i class="fa-solid fa-signal text-sm text-brand-400"></i>
+        <!-- Light / Dark Mode Toggle Button -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-800 text-slate-350 dark:text-slate-300 hover:bg-stone-800 transition shadow-sm" id="theme-toggle" title="Switch Theme">
+          <i class="fa-solid fa-moon text-sm text-brand-450"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-stone-900 px-3 py-1.5 border border-stone-800">
+        <div class="flex items-center gap-2 rounded-xl bg-orange-100/50 dark:bg-stone-900 px-3 py-1.5 border border-stone-800">
           <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-355" id="lesson-mastery-ratio">0/30 Mastered</span>
+          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -157,50 +155,50 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-stone-800 bg-stone-955/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-stone-850 bg-white/70 dark:bg-stone-955/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-455 uppercase">Vocal Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Velocity Modules</p>
           
           <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
-            <i class="fa-solid fa-scroll text-base"></i>
+            <i class="fa-solid fa-book-open text-base"></i>
             <span>Dossier & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-stone-900 hover:text-slate-150">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-stone-900 hover:text-slate-150">
             <i class="fa-solid fa-clone text-base"></i>
-            <span>Transmitter Deck</span>
+            <span>Kinetic Deck</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-stone-900 hover:text-slate-150">
-            <i class="fa-solid fa-circle-nodes text-base"></i>
-            <span>Broadcaster Exam</span>
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-355 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-slate-800 dark:hover:text-slate-150">
+            <i class="fa-solid fa-flag-checkered text-base animate-pulse"></i>
+            <span>Tachometer Matcher</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-stone-900 hover:text-slate-150">
-            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-355 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-slate-800 dark:hover:text-slate-150">
+            <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-stone-900 hover:text-slate-150">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-stone-900 hover:text-slate-150">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Broadcast Lexicon</span>
+            <span>Kinetic Lexicon</span>
           </button>
         </div>
         
-        <!-- User Decibel Clearance Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-stone-950 to-stone-900 p-4 border border-stone-800 relative overflow-hidden">
+        <!-- User Speedometer Clearance Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-orange-50 to-orange-100 dark:from-stone-950 dark:to-stone-900 p-4 border border-orange-200 dark:border-stone-850 relative overflow-hidden">
           <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-volume-high text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Audio Clearance</span>
+            <i class="fa-solid fa-gauge text-brand-500 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Tempo Clearance</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Establish your public speaking and interview credentials. Master definitions to unlock On-Air Host ranking!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-550 mt-1 leading-relaxed">Establish your command of English speed and movement collocations. Master terms to acquire premium credentials!</p>
         </div>
       </nav>
 
@@ -212,34 +210,52 @@
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
             <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-stone-900/90 rounded-3xl p-6 md:p-8 border border-stone-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-stone-800 bg-gradient-to-tr from-stone-950 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-podcast text-slate-700/60 text-lg animate-pulse"></i>
-              </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-stone-800">
+            <div class="xl:col-span-7 bg-white dark:bg-stone-900/95 rounded-3xl p-6 md:p-8 border border-orange-200 dark:border-stone-800 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-orange-200 dark:border-stone-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Live Broadcast</h2>
-                  <p class="text-xs text-slate-400 mt-1">Study verbal exchanges and speeches. Click highlighted collocations to pull up definition cards.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Rules of Movement & Velocity</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Read the verified lesson definitions. Click highlighted collocations to pull up speech guides and usage parameters.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-sans font-semibold">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white dark:text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition font-sans">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Broadcast Address</span>
+                  <span>Broadcast Lesson</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 font-sans tracking-wide space-y-6 relative z-10">
+              <!-- Exact Lesson Text synchronized directly with Lesson 35 curriculum (Movement & Speed) -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
                 <p>
-                  Before stepping into the live recording booth, Host Sarah liked to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_small_talk">make small talk</span> with the guest. "We have a highly influential trade leader today," she whispered. "I hope to hold a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="deep_conversation">deep conversation</span> concerning tariff boundaries." Their manager joined for a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="brief_chat">brief chat</span> before the microphone signals went live.
+                  Today you're going to learn the rules of movement and velocity! English has a number of words that mean "fast" — but each one has different collocations. Use <strong>fast</strong> to describe a vehicle, person, or action: a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="fast_car">fast car</span>, a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="fast_train">fast train</span>, or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="fast_runner">fast runner</span>, and actions like to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="work_fast">work fast</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="drive_fast">drive fast</span>, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="learn_fast">learn fast</span>.
                 </p>
                 <p>
-                  "We must <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speak_highly">speak highly of</span> their green logistics developments," the manager urged. "Our competitors often <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speak_ill">speak ill of</span> their carbon reports, but we want an objective, polite broadcast." Sarah nodded, adjusting her headset. "I will encourage them to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speak_your_mind">speak their mind</span> without hesitation. But if they begin dodging, I will instruct them to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="get_to_point">get straight to the point</span>."
+                  Use <strong>quick</strong> to describe an event or action: a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="quick_lunch">quick lunch</span>, a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="quick_glance">quick glance</span>, a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="quick_shower">quick shower</span>, or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="quick_decision">quick decision</span>.
                 </p>
                 <p>
-                  During the interview, the guest started to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="talk_nonsense">talk nonsense</span> about resource logistics. Sarah didn't want to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="raise_voice">raise her voice</span> on air, so she chose to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="drop_a_hint">drop a hint</span> by pointing to the timer. The guest caught her glance, stopped complaining, and began to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="talk_business">talk business</span> instead. 
+                  Use <strong>rapid</strong> to describe a change: a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="rapid_increase">rapid increase/decline</span>, a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="rapid_change">rapid change</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="rapid_growth">rapid growth</span>, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="rapid_progress">rapid progress</span>.
                 </p>
                 <p>
-                  He offered several <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="words_of_wisdom">words of wisdom</span> regarding industrial scaling. "To <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_the_truth">tell the truth</span>," he admitted, "many leaders make a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="grave_mistake">grave mistake</span> by ignoring local subcontractors." When asked about specific corporate secrets, a sudden, <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="awkward_silence">awkward silence</span> filled the air. He leaned in to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="whisper_softly">whisper softly</span> into the mic: "If you promise to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="keep_a_secret">keep a secret</span>, I will share the real deal." Sarah smiled, concluding the show by saying, "We truly <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speak_same_language">speak the same language</span>."
+                  The word <strong>speedy</strong> is often used with recovery and resolution: a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speedy_recovery">speedy recovery from surgery</span>, or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speedy_resolution">speedy resolution to the problem</span>.
+                </p>
+                <p>
+                  The word <strong>swift</strong> is often used with action, response, and reaction: The <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="swift_action">swift action</span> of the police enabled the criminal to be caught immediately, or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="swift_response">swift response</span> to our request.
+                </p>
+                <p>
+                  The word <strong>prompt</strong> means "fast and punctual" — it is often used with information and payment or customer service. For example, you can give a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="prompt_reply">prompt reply</span> to an e-mail, or receive <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="prompt_delivery">prompt delivery</span> of a product.
+                </p>
+                <p>
+                  The word <strong>hasty</strong> means "fast and in a rush" — He made a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="hasty_exit">hasty exit</span> from the party when he saw his ex-girlfriend walk in. This word often has a connotation of doing something without sufficient consideration. You might come to a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="hasty_conclusion">hasty conclusion</span>, or make a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="hasty_decision">hasty decision</span> that you'll regret later.
+                </p>
+                <p>
+                  When you're driving, you need to pay attention to the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speed_limit">speed limit</span>. If you're driving at <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="breakneck_speed">breakneck speed</span>, you might need to slow down. If you get caught in a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speed_trap">speed trap</span>, you might have to pay a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speeding_ticket">speeding ticket</span>.
+                </p>
+                <p>
+                  Of course, you might need to put on a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="burst_of_speed">burst of speed</span> to pass a car that's moving at a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="snails_pace">snail's pace</span>. If major construction is being done, traffic might <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="slow_to_a_crawl">slow to a crawl</span> and eventually <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="come_to_standstill">come to a standstill</span>.
+                </p>
+                <p>
+                  To talk about changes in speed, we can say something is <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="gaining_speed">gaining speed</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="speeding_up">speeding up</span> (faster) or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="losing_speed">losing speed</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="slowing_down">slowing down</span> (slower).
+                </p>
+                <p>
+                  Finally, to talk about eating or walking in a slow and relaxed way, you can use the word "leisurely" — after a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="leisurely_breakfast">leisurely breakfast</span>, we took a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="leisurely_stroll">leisurely stroll</span> through the park.
                 </p>
               </div>
             </div>
@@ -248,7 +264,7 @@
             <div class="xl:col-span-5 flex flex-col gap-6">
               <div class="bg-gradient-to-tr from-stone-900 to-stone-950 text-white rounded-3xl p-6 border border-stone-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse" id="glossary-category">Vocal Metric</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse" id="glossary-category">Kinetic Parameter</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -259,13 +275,13 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">make small talk</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">fast car</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To engage in casual, light conversation about unimportant topics like weather, sports, or travel at a social function.</p>
+                <p class="text-slate-350 text-sm leading-relaxed mb-6" id="glossary-definition">A high-speed automobile capable of covering substantial distances rapidly.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
                   <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Precedent</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Before stepping into the live recording booth, Host Sarah liked to make small talk."</p>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"He bought a sleek fast car to enjoy highway road trips."</p>
                 </div>
               </div>
               
@@ -273,10 +289,10 @@
               <div class="bg-stone-900/40 rounded-3xl p-6 border border-stone-800 shadow-sm">
                 <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
                   <i class="fa-solid fa-circle-question text-brand-400"></i>
-                  <span>Vocal Physics</span>
+                  <span>Velocity Physics</span>
                 </h4>
-                <p class="text-xs text-slate-405 leading-relaxed font-sans">
-                  The vocabulary of spoken communication is remarkably structured. You **deliver a speech** but never 'say' or 'do' a speech. Factions that share similar viewpoints **speak the same language** rather than 'mutter the same code'. Use these native maps.
+                <p class="text-xs text-slate-400 leading-relaxed font-sans">
+                  The vocabulary of speed and movement is remarkably structured. You describe a change as <strong>rapid</strong> but a recovery or resolution as <strong>speedy</strong>. On the other hand, you make a <strong>hasty</strong> decision if you act without thinking. Avoid mixing these native patterns.
                 </p>
               </div>
             </div>
@@ -288,45 +304,45 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Transmitter Deck</h2>
-                <p class="text-xs text-slate-400 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-700 dark:text-slate-200">Kinetic Deck</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-orange-100/50 dark:bg-[#020617] border border-orange-200 dark:border-stone-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
                 <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span id="flashcard-total">38</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-stone-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            <div class="w-full bg-orange-100 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-500 h-full w-[2.6%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-stone-900 border border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-stone-900 border border-orange-200 dark:border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-orange-200 dark:border-slate-800 text-slate-450 hover:text-slate-700 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
                     <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white animate-pulse" id="card-front-phrase">Phrase</h3>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
                   <div class="text-center text-xs text-slate-400">
-                    <span class="bg-stone-850 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                    <span class="bg-orange-50 dark:bg-stone-850 px-3 py-1 rounded-full border border-orange-200 dark:border-stone-800"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-stone-950 to-brand-955 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-stone-950 to-brand-950 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-brand-400 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
                     <span class="text-xs text-brand-400 font-semibold font-mono">Spectrum Profile</span>
@@ -346,7 +362,7 @@
                   <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
                       <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-350">Mark as Decoded</span>
+                      <span class="font-bold text-slate-300">Mark as Decoded</span>
                     </label>
                     <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
                   </div>
@@ -356,12 +372,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-stone-800 bg-stone-900 font-semibold text-sm hover:bg-stone-850 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-orange-200 dark:border-stone-800 bg-white dark:bg-stone-900 font-semibold text-sm hover:bg-orange-50 dark:hover:bg-stone-850 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-stone-955 font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white dark:text-stone-955 font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -369,91 +385,95 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <!-- ==================== VIEW 3: MATCHING QUIZ WORKSPACE ==================== -->
         <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="max-w-2xl mx-auto space-y-6">
+          <div class="max-w-4xl mx-auto space-y-6">
             
-            <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-stone-900 rounded-3xl p-6 md:p-8 border border-stone-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-stone-800 pb-4">
+            <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 md:p-8 border border-orange-200 dark:border-stone-800 shadow-sm space-y-6">
+              <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-orange-200 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 35 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct talking or speaking collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 35 Matching Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Match the Left sentence-stems with the correct Right halves from **Lesson 35 - Quiz**.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Matched: <span id="quiz-matches-count">0</span> / 15
                 </div>
               </div>
               
-              <!-- Progress Indicator -->
-              <div class="w-full bg-stone-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
+              <!-- Left and Right matching interface -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Stems Column -->
+                <div class="lg:col-span-6 space-y-3">
+                  <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-2">Sentence Stems</span>
+                  <div class="space-y-2.5 max-h-[500px] overflow-y-auto pr-2" id="quiz-stems-container">
+                    <!-- Rendered Dynamically -->
+                  </div>
+                </div>
+                
+                <!-- Right Targets Column -->
+                <div class="lg:col-span-6 space-y-3">
+                  <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-2">Target Completions</span>
+                  <div class="space-y-2.5 max-h-[500px] overflow-y-auto pr-2" id="quiz-targets-container">
+                    <!-- Rendered Dynamically -->
+                  </div>
+                </div>
+
               </div>
-              
-              <!-- Question Text -->
-              <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 font-mono">Active Broadcast Brief</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
-              </div>
-              
-              <!-- Question Options Grid -->
-              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3.5 pt-2">
-                <!-- Rendered Dynamically -->
-              </div>
-              
+
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-955/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-match-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-955/20 border border-emerald-200 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Broadcaster's Speech Blueprint</span>
+                  <span>Log Verification Note</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-match-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Match correct!</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-stone-800 pt-4">
+              <div class="flex items-center justify-between border-t border-orange-200 dark:border-stone-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
-                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Matching
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
-                  <span>Next Question</span>
-                  <i class="fa-solid fa-arrow-right"></i>
+                <button id="quiz-submit-btn" disabled onclick="verifyAllMatches()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-100 dark:bg-stone-800 text-slate-400 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Verify All Matches</span>
+                  <i class="fa-solid fa-check-double"></i>
                 </button>
               </div>
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-stone-950 rounded-3xl p-8 border border-stone-800 shadow-md space-y-8 text-center">
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-stone-955 rounded-3xl p-8 border border-orange-200 dark:border-stone-800 shadow-md space-y-8 text-center">
               <div class="space-y-3">
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-500/10 text-brand-400">
-                  <i class="fa-solid fa-tower-broadcast text-3xl animate-bounce"></i>
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-500/10 text-brand-500">
+                  <i class="fa-solid fa-flag-checkered text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black">Transmitter Clearance Granted!</h2>
-                <p class="text-sm text-slate-400">Analysis completed. Review your vocal proficiency ratings.</p>
+                <h2 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-200">Velocity Calibration Complete!</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">All matching sentences synchronized. Check your ratings below.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Signals Succeeded</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-orange-50 dark:bg-stone-900/60 p-4 rounded-2xl border border-orange-100 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-450 dark:text-slate-400 font-mono">Sync Ratio</span>
+                  <span class="text-2xl font-black text-emerald-500 font-mono" id="quiz-score-correct">15/15</span>
                 </div>
-                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Transmission Rate</span>
-                  <span class="text-2xl font-black text-brand-400 font-mono" id="quiz-score-percent">90%</span>
+                <div class="bg-orange-50 dark:bg-stone-900/60 p-4 rounded-2xl border border-orange-100 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-455 dark:text-slate-400 font-mono">Accuracy</span>
+                  <span class="text-2xl font-black text-brand-500 font-mono" id="quiz-score-percent">100%</span>
                 </div>
-                <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Studio Status</span>
-                  <span class="text-xs sm:text-sm font-bold text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">On-Air Host</span>
+                <div class="bg-orange-50 dark:bg-stone-900/60 p-4 rounded-2xl border border-orange-100 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-455 dark:text-slate-400 font-mono">Rank</span>
+                  <span class="text-xs sm:text-sm font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Tempo Racer</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white dark:text-slate-955 font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate</span>
+                  <span>Recalibrate Paths</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-stone-800 font-semibold text-sm hover:bg-stone-800 transition">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-orange-200 dark:border-stone-800 font-semibold text-sm hover:bg-orange-50 dark:hover:bg-stone-805 transition">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -465,18 +485,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-orange-200 dark:border-stone-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-stone-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-orange-200 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Vocal Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom radio scripts, interview transcripts, or debate briefs using Lesson 35 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">AI Decisional Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Compose custom travel profiles, timing diagnostics, or speed logs using Lesson 35 collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-stone-700 text-slate-300 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-orange-200 dark:border-stone-700 text-slate-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-800 text-xs font-bold rounded-xl transition">
                     <i class="fa-solid fa-lightbulb mr-1 text-brand-400"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-600 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -484,8 +504,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-455 font-mono">Script Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-stone-800 bg-stone-955 p-4 text-sm font-medium focus:border-brand-500 focus:bg-stone-900 outline-none transition text-slate-100" placeholder="Example: Before making a speech, the executive decided to make small talk with the delegates to lighten the mood..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-455 font-mono">Proposal Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-orange-200 dark:border-stone-800 bg-orange-50/20 dark:bg-stone-955 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white dark:focus:bg-stone-900 outline-none transition text-slate-800 dark:text-slate-100" placeholder="Example: We set out at a breakneck speed, but as soon as we got caught in a speed trap, we had to slow down to a crawl..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -494,11 +514,11 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-stone-800 pt-4">
+              <div class="flex items-center justify-between border-t border-orange-200 dark:border-stone-800 pt-4">
                 <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-stone-950 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-white dark:text-stone-955 rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
                   <span>Scan Script Syntax</span>
                 </button>
@@ -506,19 +526,19 @@
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-stone-900 rounded-3xl p-6 md:p-8 border border-stone-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-stone-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Vocal Alignment Report</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-stone-900 rounded-3xl p-6 md:p-8 border border-orange-200 dark:border-stone-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-orange-200 dark:border-stone-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-850 dark:text-slate-200">Velocity Alignment Report</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40">Radar Alignment</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-stone-800">
-                    <span class="text-3xl font-black font-mono tracking-tight text-brand-400" id="diagnostic-score">92</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-orange-200 dark:border-stone-800">
+                    <span class="text-3xl font-black font-mono tracking-tight text-brand-500 dark:text-brand-400" id="diagnostic-score">92</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
@@ -527,22 +547,22 @@
                 <div class="md:col-span-9 space-y-4">
                   <div>
                     <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing spoken structures...</p>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold font-sans">Analyzing speed structures...</p>
                   </div>
                   
-                  <div class="border-t border-stone-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Vocal Clarity Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  <div class="border-t border-orange-200 dark:border-stone-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Velocity Flow Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold font-sans">Measuring syntax authenticity...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-stone-955 p-4 rounded-2xl border border-stone-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-1">Recommended Script Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-250 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-orange-50/50 dark:bg-stone-955 p-4 rounded-2xl border border-orange-200 dark:border-stone-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-1">Recommended Script Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 mt-1 font-sans">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-stone-900 border border-stone-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-stone-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-stone-900 border border-orange-200 dark:border-stone-750 rounded-lg text-xs font-bold text-brand-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
                   </button>
                 </div>
@@ -563,7 +583,7 @@
                   <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 35</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Audio Studio: Social Small Talk, Speeches, and Silent Tensions</p>
+                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Audio Studio: Vehicles, Rapid Growth, and Deliberate Pacing</p>
                   </div>
                 </div>
                 <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
@@ -575,7 +595,7 @@
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
-                <div class="wave-bar bg-brand-650 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-brand-655 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
                 <div class="wave-bar bg-amber-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
                 <div class="wave-bar bg-amber-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
@@ -584,17 +604,17 @@
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
                 <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we write "make small talk"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing spoken phrasing, address patterns, and quiet muttering from Lesson 35.</p>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">The Speed Paradox</h3>
+                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing fast cars, swift actions, and slow strolls from Lesson 35.</p>
               </div>
               
               <!-- Dialogue Box -->
-              <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto font-sans" id="podcast-chat-log font-sans">
+              <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto font-sans text-stone-100" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
                   <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
                     <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (On-Air Host)</span>
-                    <p class="text-xs text-slate-300 font-serif italic">"Welcome to the microphone pool. Today we analyze speech parameters: why we make small talk but deliver speeches."</p>
+                    <p class="text-xs text-slate-300 font-serif italic">"Welcome to the velocity zone. Today we analyze pace parameters: why we drive fast but make quick decisions."</p>
                   </div>
                 </div>
               </div>
@@ -616,7 +636,7 @@
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
                   <div class="flex items-center justify-between text-[10px] text-brand-300">
-                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-passed">Card 0/38</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
@@ -629,32 +649,32 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 6: BROADCAST LEXICON ==================== -->
+        <!-- ==================== VIEW 6: KINETIC LEXICON ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-stone-900/90 rounded-3xl p-6 border border-stone-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-stone-900/90 rounded-3xl p-6 border border-orange-200 dark:border-stone-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-stone-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-orange-200 dark:border-stone-850 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200 font-sans">Broadcast Lexicon</h2>
-                <p class="text-xs text-slate-455 font-sans">Search and filter active spoken, speech-delivery, and conversation collocations in the Lesson 35 registry.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200 font-sans">Kinetic Lexicon</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-455 font-sans">Search and filter active speed, pace, and timing collocations in the Lesson 35 registry.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-stone-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-orange-200 dark:border-stone-700 rounded-xl text-xs bg-orange-50/20 dark:bg-stone-955 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-stone-700 rounded-xl text-xs bg-slate-955 text-slate-300 outline-none font-bold font-mono">
-                  <option value="all">All Vocal Types</option>
-                  <option value="Social Talk">Social Conversations</option>
-                  <option value="Opinions">Expressing Views</option>
-                  <option value="Speeches">Formal Addresses</option>
-                  <option value="Complaints/Compliments">Complaint & Composure</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-orange-200 dark:border-stone-700 rounded-xl text-xs bg-white dark:bg-stone-955 text-slate-600 dark:text-slate-300 outline-none font-bold font-mono">
+                  <option value="all">All Pace Types</option>
+                  <option value="Fast & Quick">Fast & Quick Actions</option>
+                  <option value="Changes & Transitions">Pace Changes</option>
+                  <option value="Roads & Limits">Driving & Traffic</option>
+                  <option value="Slow Pacing">Leisurely & Slow</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-stone-700 rounded-xl text-xs bg-slate-955 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-orange-200 dark:border-stone-700 rounded-xl text-xs bg-white dark:bg-stone-955 text-slate-600 dark:text-slate-300 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -666,7 +686,7 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-stone-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-orange-100 dark:border-stone-850 text-[10px] text-slate-400 dark:text-slate-455 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-32">Wave Group</th>
@@ -675,7 +695,7 @@
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-stone-800 text-slate-300 font-semibold font-sans">
+                <tbody id="dictionary-rows" class="divide-y divide-orange-100 dark:divide-stone-800 text-slate-600 dark:text-slate-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -688,8 +708,8 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-stone-800 bg-stone-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+    <footer class="flex h-16 items-center justify-around border-t border-orange-200 bg-white backdrop-blur-md md:hidden dark:border-stone-800 dark:bg-stone-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-brand-500 dark:text-slate-400 dark:hover:text-brand-400">
         <i class="fa-solid fa-scroll text-base"></i>
         <span class="text-[9px] font-bold">Story</span>
       </button>
@@ -719,10 +739,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white font-sans font-medium">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-orange-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-orange-200 dark:border-slate-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-slate-800 dark:text-white font-sans font-medium">Observer's Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -731,7 +751,7 @@
       <div class="space-y-4">
         <div class="space-y-1.5">
           <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-955 text-xs font-semibold outline-none text-white font-mono">
+          <select id="voice-select" class="w-full border border-orange-200 dark:border-stone-700 rounded-xl px-3 py-2 bg-orange-50 dark:bg-slate-955 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
@@ -755,14 +775,14 @@
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium font-sans">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-white dark:text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-800 max-w-sm transition-all duration-300">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300">
     <div class="h-8 w-8 rounded-lg bg-white/10 text-brand-450 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
@@ -772,7 +792,6 @@
     </div>
   </div>
 
-  <!-- JavaScript Logic Block -->
   <script>
     const state = {
       theme: 'dark',
@@ -784,86 +803,106 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'make_small_talk', phrase: 'make small talk', definition: 'To talk about unimportant subjects (weather, sports) at a social function.', example: 'I hate going to cocktail parties because I find it difficult to make small talk.', category: 'Social Talk', mastered: false },
-        { id: 'brief_chat', phrase: 'brief chat', definition: 'A very short, casual conversation.', example: 'We only had a brief chat at the water cooler, but she seemed excited.', category: 'Social Talk', mastered: false },
-        { id: 'deep_conversation', phrase: 'deep conversation', definition: 'An intellectually stimulating, serious, or meaningful discussion.', example: 'After dinner, we sat on the terrace and fell into a deep conversation.', category: 'Social Talk', mastered: false },
-        { id: 'speak_highly', phrase: 'speak highly of', definition: 'To say very positive or flattering things about someone or something.', example: 'Our professors speak highly of her research, recommending her to several panels.', category: 'Opinions', mastered: false },
-        { id: 'speak_ill', phrase: 'speak ill of', definition: 'To make critical, bad, or negative remarks about someone behind their back.', example: 'It is extremely unprofessional to speak ill of your coworkers.', category: 'Opinions', mastered: false },
-        { id: 'speak_your_mind', phrase: 'speak your mind', definition: 'Saying exactly what you honestly think without fear of reaction.', example: 'If you disagree with the executive proposal, you should speak your mind.', category: 'Opinions', mastered: false },
-        { id: 'get_to_point', phrase: 'get straight to the point', definition: 'Addressing the most important, critical matter immediately without delay.', example: 'We are short on time, so please skip the intro slides and get straight to the point.', category: 'Social Talk', mastered: false },
-        { id: 'drop_a_hint', phrase: 'drop a hint', definition: 'Making a subtle, indirect suggestion instead of stating it directly.', example: 'I tried to drop a hint that I wanted to leave by checking my watch.', category: 'Social Talk', mastered: false },
-        { id: 'raise_voice', phrase: 'raise your voice', definition: 'Speaking more loudly, typically due to anger, frustration, or crowd noise.', example: 'There is no need to raise your voice—I can hear you perfectly fine.', category: 'Social Talk', mastered: false },
-        { id: 'mutter_under_breath', phrase: 'mutter under your breath', definition: 'Speaking in a low, quiet, and complaining voice that is hard to hear.', example: 'I heard him muttering under his breath as he walked back to his desk.', category: 'Complaints/Compliments', mastered: false },
-        { id: 'talk_nonsense', phrase: 'talk nonsense', definition: 'Saying things that are foolish, absurd, or completely untrue.', example: 'Don\'t listen to him; he is just talking nonsense about our server security.', category: 'Complaints/Compliments', mastered: false },
-        { id: 'talk_business', phrase: 'talk business', definition: 'Focusing on and beginning discussions regarding commercial or professional affairs.', example: 'We spent the first hour drinking coffee, but then we decided to talk business.', category: 'Social Talk', mastered: false },
-        { id: 'tell_the_truth', phrase: 'tell the truth', definition: 'Stating the actual facts honestly and without deception.', example: 'If you want me to trust you, you must tell the truth about the missing code.', category: 'Opinions', mastered: false },
-        { id: 'tell_a_lie', phrase: 'tell a lie', definition: 'Stating something that is false or deliberately misleading.', example: 'He had to tell a lie to his boss about why his report was late.', category: 'Complaints/Compliments', mastered: false },
-        { id: 'tell_a_joke', phrase: 'tell a joke', definition: 'Narrating a funny anecdote designed to make people laugh.', example: 'Everyone erupted in laughter after she managed to tell a joke at the end of dinner.', category: 'Social Talk', mastered: false },
-        { id: 'tell_a_story', phrase: 'tell a story', definition: 'Describing a sequence of actual or imaginary events.', example: 'He has an incredible ability to tell a story that keeps kids engaged.', category: 'Social Talk', mastered: false },
-        { id: 'tell_a_secret', phrase: 'tell a secret', definition: 'Revealing highly confidential, private information to someone.', example: 'Promise me you won\'t tell a secret to anyone else in the office.', category: 'Social Talk', mastered: false },
-        { id: 'keep_a_secret', phrase: 'keep a secret', definition: 'Maintaining and protecting confidential data without leaking it.', example: 'If I share this prototype file with you, do you promise to keep a secret?', category: 'Social Talk', mastered: false },
-        { id: 'speak_same_language', phrase: 'speak the same language', definition: 'Sharing identical values, viewpoints, and mutual understandings.', example: 'We worked together for ten years, so we really speak the same language.', category: 'Agreement', mastered: false },
-        { id: 'words_of_wisdom', phrase: 'words of wisdom', definition: 'Wise, highly insightful advice delivered by an experienced person.', example: 'My supervisor offered valuable words of wisdom during the product launch.', category: 'Speeches', mastered: false },
-        { id: 'awkward_silence', phrase: 'awkward silence', definition: 'An uncomfortable, tense pause inside a conversation.', example: 'After he asked about her salary history, an awkward silence settled over the table.', category: 'Social Talk', mastered: false },
-        { id: 'stony_silence', phrase: 'stony silence', definition: 'A cold, highly hostile, and complete refusal to speak.', example: 'The proposal was met with stony silence from the board directors.', category: 'Social Talk', mastered: false },
-        { id: 'prolonged_silence', phrase: 'prolonged silence', definition: 'A long, extended period where nobody speaks.', example: 'A prolonged silence followed the announcement of the department downscaling.', category: 'Social Talk', mastered: false },
-        { id: 'speak_in_public', phrase: 'speak in public', definition: 'Delivering an address or speech to an open, gathered crowd.', example: 'He used to get incredibly nervous whenever he had to speak in public.', category: 'Speeches', mastered: false },
-        { id: 'speak_up', phrase: 'speak up', definition: 'Talking more loudly so you can be heard, or stating an opinion courageously.', example: 'Please speak up—the fan noise in this room is exceptionally loud.', category: 'Social Talk', mastered: false },
-        { id: 'speak_on_behalf', phrase: 'speak on behalf of', definition: 'Representing and speaking as the authorized voice of another person or group.', example: 'The legal representative stood up to speak on behalf of the subcontractor.', category: 'Speeches', mastered: false },
-        { id: 'address_the_audience', phrase: 'address the audience', definition: 'To formally speak to a gathered crowd, viewers, or listener pool.', example: 'The chancellor stepped onto the stage to address the audience.', category: 'Speeches', mastered: false },
-        { id: 'deliver_a_speech', phrase: 'deliver a speech', definition: 'Presenting a prepared, formal address to an assembled group.', example: 'The keynote speaker will deliver a speech on quantum data processing at noon.', category: 'Speeches', mastered: false },
-        { id: 'state_your_business', phrase: 'state your business', definition: 'Formally and directly declaring your reason for requesting an audience.', example: 'The security officer stopped the courier, instructing him to state his business.', category: 'Speeches', mastered: false },
-        { id: 'whisper_softly', phrase: 'whisper softly', definition: 'Speaking in an extremely quiet, breathy voice to maintain absolute privacy.', example: 'She leaned over to whisper softly so the other investigators wouldn\'t hear.', category: 'Social Talk', mastered: false }
+        { id: 'fast_car', phrase: 'fast car', definition: 'A vehicle engineered for high speeds.', example: 'He bought a sleek fast car to enjoy highway road trips.', category: 'Fast & Quick', mastered: false },
+        { id: 'fast_train', phrase: 'fast train', definition: 'An express railway vehicle moving at high speeds.', example: 'We took a fast train from Paris to London.', category: 'Fast & Quick', mastered: false },
+        { id: 'fast_runner', phrase: 'fast runner', definition: 'A person capable of sprinting at extreme speeds.', example: 'The champion is a fast runner, securing three gold medals.', category: 'Fast & Quick', mastered: false },
+        { id: 'work_fast', phrase: 'work fast', definition: 'The action of performing tasks with extreme efficiency.', example: 'You will need to work fast to complete the deployment on schedule.', category: 'Fast & Quick', mastered: false },
+        { id: 'drive_fast', phrase: 'drive fast', definition: 'Operating a vehicle above typical speeds.', example: 'Avoid trying to drive fast when traveling on icy mountain passes.', category: 'Fast & Quick', mastered: false },
+        { id: 'learn_fast', phrase: 'learn fast', definition: 'Acquiring skills at an incredibly accelerated rate.', example: 'Apply our study techniques, and you will learn fast in no time.', category: 'Fast & Quick', mastered: false },
+        { id: 'quick_lunch', phrase: 'quick lunch', definition: 'A brief, rapidly consumed meal to accommodate a busy timetable.', example: 'Let\'s grab a quick lunch before our next product review meeting.', category: 'Fast & Quick', mastered: false },
+        { id: 'quick_glance', phrase: 'quick glance', definition: 'An extremely fast, momentary look at something.', example: 'She cast a quick glance at the dials to check the temperature ranges.', category: 'Fast & Quick', mastered: false },
+        { id: 'quick_shower', phrase: 'quick shower', definition: 'Washing yourself rapidly to preserve minutes in a busy schedule.', example: 'He took a quick shower and ran out to catch his morning commute train.', category: 'Fast & Quick', mastered: false },
+        { id: 'quick_decision', phrase: 'quick decision', definition: 'A conclusion reached instantly without prolonged hesitation.', example: 'We had to make a quick decision to secure the office space before others bid.', category: 'Fast & Quick', mastered: false },
+        { id: 'rapid_increase', phrase: 'rapid increase', definition: 'A highly accelerated rise in numerical rates or performance metrics.', example: 'Astronomical analysis detected a rapid increase in signal activity.', category: 'Changes & Transitions', mastered: false },
+        { id: 'rapid_decline', phrase: 'rapid decline', definition: 'An extremely fast drop or decrease in values or health.', example: 'Stocks went into a rapid decline when the network failed.', category: 'Changes & Transitions', mastered: false },
+        { id: 'rapid_change', phrase: 'rapid change', definition: 'A fast, sudden shift within ambient conditions.', example: 'The climate model predicts rapid change in regional ocean currents.', category: 'Changes & Transitions', mastered: false },
+        { id: 'rapid_growth', phrase: 'rapid growth', definition: 'Extremely fast physical expansion or corporate scaling.', example: 'Our logistics firm is witnessing rapid growth across international ports.', category: 'Changes & Transitions', mastered: false },
+        { id: 'rapid_progress', phrase: 'rapid progress', definition: 'Fast development towards completion of a major milestone.', example: 'Despite initial system bottlenecks, we are making rapid progress.', category: 'Changes & Transitions', mastered: false },
+        { id: 'speedy_recovery', phrase: 'speedy recovery', definition: 'A fast return to peak health after surgery, trauma, or physical illnesses.', example: 'We sent flower bouquets wishing her a speedy recovery from her operation.', category: 'Changes & Transitions', mastered: false },
+        { id: 'speedy_resolution', phrase: 'speedy resolution', definition: 'Fast, successful settlement of a dispute, legal suit, or logistics issue.', example: 'Both sides are hoping for a speedy resolution to the lawsuit.', category: 'Changes & Transitions', mastered: false },
+        { id: 'swift_action', phrase: 'swift action', definition: 'Immediate, highly effective steps taken to address an active emergency.', example: 'The lifeguard\'s swift action saved the little boy from drowning.', category: 'Changes & Transitions', mastered: false },
+        { id: 'swift_response', phrase: 'swift response', definition: 'An extremely fast, prompt feedback message or action.', example: 'We received a swift response to our request for additional server clearance.', category: 'Changes & Transitions', mastered: false },
+        { id: 'prompt_reply', phrase: 'prompt reply', definition: 'A fast, punctual answer to an email, message, or memo request.', example: 'Thank you for your prompt reply regarding the custom manufacturing schedule.', category: 'Changes & Transitions', mastered: false },
+        { id: 'prompt_delivery', phrase: 'prompt delivery', definition: 'Highly punctual, rapid shipping of products to a consumer target.', example: 'The vendor guaranteed prompt delivery of our sensor units.', category: 'Changes & Transitions', mastered: false },
+        { id: 'hasty_exit', phrase: 'hasty exit', definition: 'An extremely fast, rushed departure, often due to embarrassment.', example: 'He made a hasty exit from the gala when he spotted his former contractor.', category: 'Fast & Quick', mastered: false },
+        { id: 'hasty_conclusion', phrase: 'hasty conclusion', definition: 'Forming an opinion or judgment without sufficient evidence.', example: 'Don\'t jump to a hasty conclusion before analyzing the telescope charts.', category: 'Changes & Transitions', mastered: false },
+        { id: 'hasty_decision', phrase: 'hasty decision', definition: 'A rushed, poorly planned choice that may lead to subsequent regret.', example: 'He ended up regretting his hasty decision to quit his job.', category: 'Changes & Transitions', mastered: false },
+        { id: 'speed_limit', phrase: 'speed limit', definition: 'The maximum legally permitted velocity on a public road.', example: 'The speed limit on the highway is 65 miles per hour.', category: 'Roads & Limits', mastered: false },
+        { id: 'breakneck_speed', phrase: 'breakneck speed', definition: 'An extremely fast, potentially dangerous pace.', example: 'We roared down the mountain curve at breakneck speed.', category: 'Roads & Limits', mastered: false },
+        { id: 'speed_trap', phrase: 'speed trap', definition: 'A road segment where officers measure velocity to enforce driving codes.', example: 'Slow down near the bypass; there is a known speed trap.', category: 'Roads & Limits', mastered: false },
+        { id: 'speeding_ticket', phrase: 'speeding ticket', definition: 'A legal financial penalty received for exceeding the speed limit.', example: 'After he got five speeding tickets, his driver\'s license was suspended.', category: 'Roads & Limits', mastered: false },
+        { id: 'burst_of_speed', phrase: 'burst of speed', definition: 'A sudden, powerful acceleration to bypass an obstacle or win a sprint.', example: 'With a burst of speed, the runner passed his opponent and won the race.', category: 'Changes & Transitions', mastered: false },
+        { id: 'snails_pace', phrase: 'snail\'s pace', definition: 'An exceptionally slow, tedious speed of progress or travel.', example: 'This project is moving at a snail\'s pace due to government bureaucracy.', category: 'Roads & Limits', mastered: false },
+        { id: 'slow_to_a_crawl', phrase: 'slow to a crawl', definition: 'To reduce velocity to an extremely slow, sluggish pace.', example: 'My computer has slowed to a crawl because I\'m downloading a big file.', category: 'Roads & Limits', mastered: false },
+        { id: 'come_to_standstill', phrase: 'come to a standstill', definition: 'Decelerating until all movement stops completely.', example: 'The marching soldiers came to a standstill at the admiral\'s signal.', category: 'Roads & Limits', mastered: false },
+        { id: 'gaining_speed', phrase: 'gaining speed', definition: 'Gradually moving faster and faster.', example: 'The train is gaining speed as it leaves the central station.', category: 'Changes & Transitions', mastered: false },
+        { id: 'speeding_up', phrase: 'speeding up', definition: 'Increasing your velocity of motion or action.', example: 'The driver started speeding up once they reached the open highway.', category: 'Changes & Transitions', mastered: false },
+        { id: 'losing_speed', phrase: 'losing speed', definition: 'Gradually slowing down and reducing velocity.', example: 'The bicycle is losing speed as it ascends the steep hill.', category: 'Changes & Transitions', mastered: false },
+        { id: 'slowing_down', phrase: 'slowing down', definition: 'Decreasing rate of motion or operation.', example: 'You should start slowing down when approaching a major intersection.', category: 'Changes & Transitions', mastered: false },
+        { id: 'leisurely_breakfast', phrase: 'leisurely breakfast', definition: 'A slow, relaxed, and peaceful morning meal.', example: 'We enjoyed a leisurely breakfast on the sunlit terrace before sightseeing.', category: 'Slow Pacing', mastered: false },
+        { id: 'leisurely_stroll', phrase: 'leisurely stroll', definition: 'A slow, relaxed, and casual walk taken for pure enjoyment.', example: 'We took a leisurely stroll along the boardwalk as the sun set.', category: 'Slow Pacing', mastered: false }
       ],
-      // Custom scenario-based quiz containing exactly 20 questions
+      // Verified matching definitions and pairs for Page 2 of Lesson 35 Size/Pacing Quiz
+      // Labeled left stems paired with select drop-down elements
       quiz: [
-        { id: 1, question: "I hate attending corporate cocktail receptions because I find it incredibly difficult to ________ with absolute strangers.", options: ["make small talk", "deliver a speech", "mutter under my breath"], answer: "make_small_talk", explanation: "Casual, light conversation at social events is collocated as 'make small talk'." },
-        { id: 2, question: "We only had a ________ near the coffee machine, but she seemed extremely optimistic about the merger.", options: ["deep conversation", "brief chat", "prolonged silence"], answer: "brief_chat", explanation: "A short, casual conversation is a 'brief chat'." },
-        { id: 3, question: "After the seminar, we sat in the lobby and fell into a ________ about the meaning of life.", options: ["deep conversation", "brief chat", "stony silence"], answer: "deep_conversation", explanation: "An intellectually stimulating or serious discussion is a 'deep conversation'." },
-        { id: 4, question: "All our professors ________ her research, recommending her for several global fellowships.", options: ["flatly deny", "speak highly of", "speak ill of"], answer: "speak_highly", explanation: "Saying very positive things about someone is to 'speak highly of' them." },
-        { id: 5, question: "It is extremely unprofessional and toxic to ________ your teammates behind their backs.", options: ["speak ill of", "speak highly of", "get straight to the point"], answer: "speak_ill", explanation: "Making critical, negative remarks behind someone's back is to 'speak ill of' them." },
-        { id: 6, question: "If you disagree with the executive's product roadmap, you shouldn't hesitate to ________.", options: ["speak your mind", "mutter under your breath", "keep a secret"], answer: "speak_your_mind", explanation: "Honestly saying what you think without fear is to 'speak your mind'." },
-        { id: 7, question: "We are pressed for time today, so please skip the background slides and ________.", options: ["get straight to the point", "make small talk", "drop a hint"], answer: "get_to_point", explanation: "Addressing the most important matter immediately is to 'get straight to the point'." },
-        { id: 8, question: "I tried to ________ that I wanted to wrap up the meeting by looking at my watch, but he ignored it.", options: ["drop a hint", "tell a lie", "talk business"], answer: "drop_a_hint", explanation: "Making a subtle or indirect suggestion is to 'drop a hint'." },
-        { id: 9, question: "There is no need to ________—I am sitting right next to you and can hear you perfectly.", options: ["raise your voice", "whisper softly", "speak up"], answer: "raise_voice", explanation: "Speaking loudly due to anger or noise is to 'raise your voice'." },
-        { id: 10, question: "I heard the developer ________ about the server migrations as he walked back to his desk.", options: ["mutter under your breath", "speak highly of", "make small talk"], answer: "mutter_under_breath", explanation: "Speaking in a low, complaining voice that is hard to hear is to 'mutter under your breath'." },
-        { id: 11, question: "Don't listen to his claims; he is just ________—none of his figures match our audited balance sheets.", options: ["talk nonsense", "tell the truth", "speak highly of"], answer: "talk_nonsense", explanation: "Saying things that are foolish, absurd, or untrue is to 'talk nonsense'." },
-        { id: 12, question: "We spent the first hour drinking coffee, but then we decided to get down to the table and ________.", options: ["talk business", "make small talk", "drop a hint"], answer: "talk_business", explanation: "Beginning to discuss commercial or professional affairs is to 'talk business'." },
-        { id: 13, question: "If you want the board to trust your department, you must tell the ________ about the data loss.", options: ["tell the truth", "talk nonsense", "tell a story"], answer: "tell_the_truth", explanation: "Stating actual facts honestly is to 'tell the truth'." },
-        { id: 14, question: "He had to ________ to his manager about why he was late, claiming he was sick.", options: ["tell a lie", "deliver a speech", "speak your mind"], answer: "tell_a_lie", explanation: "Stating something that is false or misleading is to 'tell a lie'." },
-        { id: 15, question: "Everyone erupted in laughter after she managed to ________ at the end of the tense session.", options: ["tell a joke", "mutter under her breath", "abide by the agreement"], answer: "tell_a_joke", explanation: "Sharing a funny anecdote to make people laugh is to 'tell a joke'." },
-        { id: 16, question: "She has an incredible ability to ________ that keeps the school children fully engaged for hours.", options: ["tell a story", "deliver a speech", "talk business"], answer: "tell_a_story", explanation: "Narrating a sequence of events in an engaging way is to 'tell a story'." },
-        { id: 17, question: "If I share this encrypted diagnostic prototype with you, do you promise to ________?", options: ["keep a secret", "tell a lie", "speak in public"], answer: "keep_a_secret", explanation: "Protecting and not leaking confidential information is to 'keep a secret'." },
-        { id: 18, question: "We have worked together in software engineering for ten years, so we really ________.", options: ["speak the same language", "talk business", "dispel doubts"], answer: "speak_same_language", explanation: "Sharing similar understandings, viewpoints, and backgrounds is to 'speak the same language'." },
-        { id: 19, question: "The senior engineer offered valuable ________ regarding code optimization during our review.", options: ["words of wisdom", "baseless claims", "nagging doubts"], answer: "words_of_wisdom", explanation: "Wise, highly insightful advice is collocated as 'words of wisdom'." },
-        { id: 20, question: "After the CEO announced the abrupt cancellation of the pension plan, an ________ settled over the room.", options: ["awkward silence", "stony silence", "prolonged silence"], answer: "awkward_silence", explanation: "An uncomfortable, tense pause in a conversation is an 'awkward silence'." }
+        { id: 1, left: "After he got five speeding", key: "o", text: "tickets, his driver's license was suspended.", answer: "tickets, his driver's license was suspended." },
+        { id: 2, left: "Both sides are hoping for a speedy", key: "k", text: "resolution to the lawsuit.", answer: "resolution to the lawsuit." },
+        { id: 3, left: "He ended up regretting his hasty", key: "c", text: "decision to quit his job.", answer: "decision to quit his job." },
+        { id: 4, left: "I took a quick", key: "i", text: "nap after I got home from work.", answer: "nap after I got home from work." },
+        { id: 5, left: "If this bill is not paid", key: "j", text: "promptly, a late fee will be applied.", answer: "promptly, a late fee will be applied." },
+        { id: 6, left: "I'm impressed by the rapid", key: "e", text: "expansion of that company.", answer: "expansion of that company." },
+        { id: 7, left: "It's nice to have a leisurely", key: "h", text: "lunch on Sunday afternoon.", answer: "lunch on Sunday afternoon." },
+        { id: 8, left: "My computer has slowed to a", key: "b", text: "crawl because I'm downloading a big file.", answer: "crawl because I'm downloading a big file." },
+        { id: 9, left: "The lifeguard's swift", key: "a", text: "action saved the little boy from drowning.", answer: "action saved the little boy from drowning." },
+        { id: 10, left: "The marching soldiers came to a", key: "n", text: "standstill at the admiral's signal.", answer: "standstill at the admiral's signal." },
+        { id: 11, left: "The speed", key: "g", text: "limit on the highway is 65 miles per hour.", answer: "limit on the highway is 65 miles per hour." },
+        { id: 12, left: "This project is moving at a", key: "l", text: "snail's pace due to government bureaucracy.", answer: "snail's pace due to government bureaucracy." },
+        { id: 13, left: "We have a fast", key: "f", text: "internet connection at the university.", answer: "internet connection at the university." },
+        { id: 14, left: "With a burst of", key: "m", text: "speed, the runner passed his opponent and won the race.", answer: "speed, the runner passed his opponent and won the race." },
+        { id: 15, left: "You should slow", key: "d", text: "down when driving in the rain.", answer: "down when driving in the rain." }
       ],
-      activeCardId: 'make_small_talk',
+      quizTargets: [
+        { key: "a", text: "action saved the little boy from drowning." },
+        { key: "b", text: "crawl because I'm downloading a big file." },
+        { key: "c", text: "decision to quit his job." },
+        { key: "d", text: "down when driving in the rain." },
+        { key: "e", text: "expansion of that company." },
+        { key: "f", text: "internet connection at the university." },
+        { key: "g", text: "limit on the highway is 65 miles per hour." },
+        { key: "h", text: "lunch on Sunday afternoon." },
+        { key: "i", text: "nap after I got home from work." },
+        { key: "j", text: "promptly, a late fee will be applied." },
+        { key: "k", text: "resolution to the lawsuit." },
+        { key: "l", text: "snail's pace due to government bureaucracy." },
+        { key: "m", text: "speed, the runner passed his opponent and won the race." },
+        { key: "n", text: "standstill at the admiral's signal." },
+        { key: "o", text: "tickets, his driver's license was suspended." }
+      ],
+      activeCardId: 'fast_car',
       flashcardsIndex: 0,
       isCardFlipped: false,
-      quizIndex: 0,
       quizAnswers: {},
       quizCompleted: false,
       podcastIsPlaying: false,
       podcastIndex: -1,
       podcastUtterance: null,
       podcastHostTurn: 1,
-      isSynthesizing: false
+      isSynthesizing: false,
+      currentActiveSpeedFactor: 1.0 // Dynamic controls for HTML5 particle speed multiplier
     };
 
-    // Advanced Web Audio API Node-Discharge Synthesizer representing sound frequencies
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Sharp radio static pop
+          // Sharp click transient
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(1600, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.05);
+          osc.frequency.setValueAtTime(1400, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(1900, audioCtx.currentTime + 0.05);
 
           gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
@@ -875,85 +914,88 @@
           osc.stop(audioCtx.currentTime + 0.05);
           
         } else if (type === 'correct') {
-          // Beautiful arpeggiated broadcast bleep alert
-          const notes = [329.63, 392.00, 523.25, 659.25]; // E4, G4, C5, E5
+          // Kinetic racecar gear acceleration scale
+          const osc1 = audioCtx.createOscillator();
+          const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+
+          osc1.type = 'sine';
+          osc1.frequency.setValueAtTime(440, audioCtx.currentTime); 
+          osc1.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.2); 
+
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(554.37, audioCtx.currentTime); 
+          osc2.frequency.exponentialRampToValueAtTime(1108.73, audioCtx.currentTime + 0.2); 
+
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+
+          osc1.connect(gain);
+          osc2.connect(gain);
           gain.connect(audioCtx.destination);
 
-          notes.forEach((freq, index) => {
-            const osc = audioCtx.createOscillator();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.07);
-            osc.connect(gain);
-            osc.start(audioCtx.currentTime + index * 0.07);
-            osc.stop(audioCtx.currentTime + 0.5);
-          });
+          osc1.start();
+          osc2.start();
+          osc1.stop(audioCtx.currentTime + 0.35);
+          osc2.stop(audioCtx.currentTime + 0.35);
           
         } else if (type === 'incorrect') {
-          // Deep mic feedback error buzz
+          // Squealing tire brakes slowdown
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(130, audioCtx.currentTime);
-          osc.frequency.linearRampToValueAtTime(30, audioCtx.currentTime + 0.3);
+          osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+          osc.frequency.linearRampToValueAtTime(80, audioCtx.currentTime + 0.25);
 
-          const lowpass = audioCtx.createBiquadFilter();
-          lowpass.type = 'lowpass';
-          lowpass.frequency.setValueAtTime(150, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
 
-          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.3);
-
-          osc.connect(lowpass);
-          lowpass.connect(gain);
+          osc.connect(gain);
           gain.connect(audioCtx.destination);
 
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.35);
+          osc.stop(audioCtx.currentTime + 0.3);
           
         } else if (type === 'flip') {
-          // Card swish / mic wind noise
+          // Wind stream whoosh
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(380, audioCtx.currentTime + 0.12);
+          osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.1);
           
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.1);
           
           osc.connect(gain);
           gain.connect(audioCtx.destination);
           
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.12);
+          osc.stop(audioCtx.currentTime + 0.1);
         }
       } catch (e) {
-        console.warn('Web Audio synthesis context blocked:', e);
+        console.warn('Web Audio compile blocker handled:', e);
       }
     }
 
-    // HTML5 Canvas Frequency Analyzer Visualizer
-    function initFrequencyCanvas() {
-      const canvas = document.getElementById('frequency-canvas');
+    function initVelocityCanvas() {
+      const canvas = document.getElementById('velocity-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
       let width = (canvas.width = canvas.offsetWidth);
       let height = (canvas.height = canvas.offsetHeight);
       
-      const bars = [];
-      const barCount = 60;
-      const barWidth = width / barCount;
+      const stars = [];
+      const count = 75;
       
-      for (let i = 0; i < barCount; i++) {
-        bars.push({
-          targetHeight: 0,
-          currentHeight: 0,
-          speed: 1.5 + Math.random() * 2
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          length: Math.random() * 80 + 10,
+          speed: Math.random() * 8 + 2
         });
       }
       
@@ -964,28 +1006,23 @@
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
+        ctx.strokeStyle = 'rgba(249, 115, 22, 0.45)'; // Bright Tachometer orange streams
+        ctx.lineWidth = 1.5;
         
-        ctx.fillStyle = 'rgba(249, 115, 22, 0.15)'; // Neon Orange columns
-        
-        for (let i = 0; i < barCount; i++) {
-          const bar = bars[i];
+        stars.forEach(s => {
+          ctx.beginPath();
+          ctx.moveTo(s.x, s.y);
+          ctx.lineTo(s.x - s.length, s.y);
+          ctx.stroke();
           
-          // Generate active noise if podcast is playing or synthesized TTS is triggered
-          if (state.podcastIsPlaying || window.speechSynthesis.speaking) {
-            bar.targetHeight = Math.random() * (height * 0.7) + 5;
-          } else {
-            bar.targetHeight = Math.max(0, bar.targetHeight - 2);
+          // Modify particle scrolling speed dynamically according to clicked collocations
+          s.x += s.speed * state.currentActiveSpeedFactor;
+          
+          if (s.x > width + s.length) {
+            s.x = -s.length;
+            s.y = Math.random() * height;
           }
-          
-          bar.currentHeight += (bar.targetHeight - bar.currentHeight) * 0.2;
-          
-          const x = i * (width / barCount);
-          const y = height - bar.currentHeight;
-          const w = (width / barCount) - 3;
-          const h = bar.currentHeight;
-          
-          ctx.fillRect(x, y, w, h);
-        }
+        });
         
         requestAnimationFrame(animate);
       }
@@ -996,24 +1033,49 @@
       loadLocalStorage();
       initSpeechVoices();
       initStoryClicks();
-      initFrequencyCanvas();
+      initVelocityCanvas();
       renderDictionary();
       renderFlashcard();
       renderQuizQuestion();
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Force midnight obsidian background for visual depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-signal text-sm text-brand-400"></i>';
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-400"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-500"></i>';
+      }
       
-      document.addEventListener('keyup', keyUpHandler);
+      document.addEventListener('keydown', (e) => {
+        if (state.currentView === 'flashcards') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          }
+        }
+      });
     });
 
     function toggleTheme() {
-      // Re-route signal channels (triggers bleep + toast)
       playSynthSound('click');
-      showToast('Frequencies Synced', 'Microphone signal channels recalibrated.', 'fa-signal');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l35', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-400 animate-pulse"></i>';
+        showToast('Midnight Engine Aligned', 'Friction values adjusted for Dark Mode.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-500"></i>';
+        showToast('Parchment Mode Aligned', 'Friction values adjusted for Light Mode.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1028,7 +1090,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-zinc-900 hover:text-slate-150";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-stone-900 hover:text-slate-150";
         }
       });
       
@@ -1052,6 +1114,9 @@
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l35')) {
+        state.theme = localStorage.getItem('colloc_theme_l35');
+      }
       if (localStorage.getItem('colloc_mastery_list_l35')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l35'));
@@ -1061,7 +1126,7 @@
             }
           });
         } catch (err) {
-          console.error('Mastery index parse error', err);
+          console.error('Mastery database reading error', err);
         }
       }
       if (localStorage.getItem('colloc_voice_settings_l35')) {
@@ -1089,11 +1154,7 @@
         let correctCount = 0;
         state.quiz.forEach(q => {
           const userAns = state.quizAnswers[q.id];
-          const isCorrect = (userAns === q.answer) || 
-                            (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                            (state.collocations.find(c => c.id === userAns)?.phrase === q.answer) ||
-                            (q.options[userAns] === q.answer);
-          if (isCorrect) {
+          if (userAns === q.key) {
             correctCount++;
           }
         });
@@ -1127,7 +1188,7 @@
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l35', JSON.stringify(state.voiceSettings));
-      showToast('Config Saved', 'Press room voice parameters updated.');
+      showToast('Config Saved', 'Velocity audio synthesis configured.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1213,11 +1274,11 @@
       const links = document.querySelectorAll('.colloc-ref');
       links.forEach(l => {
         l.addEventListener('click', (e) => {
-          const colId = e.target.getAttribute('data-id');
+          const colId = e.currentTarget.getAttribute('data-id');
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('make_small_talk');
+      displayGlossaryCard('fast_car');
     }
 
     function displayGlossaryCard(id) {
@@ -1234,12 +1295,37 @@
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-brand-400"></i>';
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
       }
       
       triggerTTS(term.phrase);
+      
+      // Update dynamic speedometer indicator and HTML5 scrolling speeds
+      const reading = document.getElementById('tachometer-reading');
+      if (id.includes('standstill')) {
+        reading.innerText = 'SPEED: 0.0x';
+        state.currentActiveSpeedFactor = 0.0;
+      } else if (id.includes('crawl')) {
+        reading.innerText = 'SPEED: 0.2x';
+        state.currentActiveSpeedFactor = 0.2;
+      } else if (id.includes('snails_pace')) {
+        reading.innerText = 'SPEED: 0.1x';
+        state.currentActiveSpeedFactor = 0.1;
+      } else if (id.includes('breakneck')) {
+        reading.innerText = 'SPEED: 8.5x';
+        state.currentActiveSpeedFactor = 8.5;
+      } else if (id.includes('burst')) {
+        reading.innerText = 'SPEED: 5.0x';
+        state.currentActiveSpeedFactor = 5.0;
+      } else if (id.includes('leisurely')) {
+        reading.innerText = 'SPEED: 0.4x';
+        state.currentActiveSpeedFactor = 0.4;
+      } else {
+        reading.innerText = 'SPEED: 1.0x';
+        state.currentActiveSpeedFactor = 1.0;
+      }
     }
 
     function speakGlossaryTerm() {
@@ -1259,7 +1345,7 @@
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-brand-400"></i>';
         showToast('Term Mastered', `Logged "${term.phrase}" into your mastered database!`);
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
@@ -1269,29 +1355,8 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "Before stepping into the live recording booth, Host Sarah liked to make small talk with the guest. We have a highly influential trade leader today, she whispered. I hope to hold a deep conversation concerning tariff boundaries. Their manager joined for a brief chat before the microphone signals went live. We must speak highly of their green logistics developments, the manager urged. Our competitors often speak ill of their carbon reports, but we want an objective, polite broadcast. Sarah nodded, adjusting her headset. I will encourage them to speak their mind without hesitation. But if they begin dodging, I will instruct them to get straight to the point. During the interview, the guest started to talk nonsense about resource logistics. Sarah didn't want to raise her voice on air, so she chose to drop a hint by pointing to the timer. The guest caught her glance, stopped complaining, and began to talk business instead. He offered several words of wisdom regarding industrial scaling. To tell the truth, he admitted, many leaders make a grave mistake by ignoring local subcontractors. When asked about specific corporate secrets, a sudden, awkward silence filled the air. He leaned in to whisper softly into the mic: If you promise to keep a secret, I will share the real deal. Sarah smiled, concluding the show by saying, We truly speak the same language.";
+      const narrativeText = "Today you're going to learn the rules of movement and velocity! English has a number of words that mean fast — but each one has different collocations. Use fast to describe a vehicle, person, or action: a fast car, a fast train, a fast runner, work fast, drive fast, learn fast. Use quick to describe an event or action: a quick lunch, a quick glance, a quick shower, a quick decision. Use rapid to describe a change: a rapid increase or decline, a rapid change, rapid growth, rapid progress. The word speedy is often used with recovery and resolution: a speedy recovery from surgery, a speedy resolution to the problem. The word swift is often used with action, response, and reaction: The swift action of the police enabled the criminal to be caught immediately; we received a swift response to our request for information. The word prompt means fast and punctual — it is often used with information and payment or customer service. For example, you can give a prompt reply to an e-mail, and receive prompt delivery of a product you ordered. The word hasty means fast and in a rush — He made a hasty exit from the party when he saw his ex-girlfriend walk in. This word often has connotation of doing something without sufficient consideration. You might come to a hasty conclusion before considering all the evidence, and make a hasty decision that you'll regret later. When you're driving, you need to pay attention to the speed limit — the maximum velocity permitted. If you're driving at breakneck speed, then you might need to slow down. If you get caught in a speed trap, you might have to pay a speeding ticket. Of course, you might need to put on a burst of speed to pass a car that's moving at a snail's pace. If major construction is being done on the road, then traffic might slow to a crawl and eventually come to a standstill. To talk about changes in speed, we can say something is gaining speed or speeding up or losing speed or slowing down. Finally, to talk about eating or walking in a slow and relaxed way, you can use the word leisurely — After a leisurely breakfast, we took a leisurely stroll through the park.";
       triggerTTS(narrativeText);
-    }
-
-    function renderFlashcard() {
-      const card = state.collocations[state.flashcardsIndex];
-      if (!card) return;
-      
-      document.getElementById('card-front-phrase').innerText = card.phrase;
-      document.getElementById('card-front-category').innerText = card.category;
-      
-      document.getElementById('card-back-definition').innerText = card.definition;
-      document.getElementById('card-back-example').innerText = card.example;
-      document.getElementById('card-back-category').innerText = card.category;
-      
-      document.getElementById('card-master-checkbox').checked = card.mastered;
-      
-      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
-      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
-      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
-      
-      state.isCardFlipped = false;
-      document.getElementById('flashcard-element').classList.remove('flipped');
     }
 
     function flipFlashcard() {
@@ -1321,21 +1386,9 @@
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Looping', 'Cycling back to the first investigative record.');
+        showToast('Looping', 'Cycling back to the first velocity record.');
         state.flashcardsIndex = 0;
         renderFlashcard();
-      }
-    }
-
-    // Fix sound triggers for keyboard bindings
-    function keyUpHandler(e) {
-      if (state.currentView !== 'flashcards') return;
-      if (e.code === 'Space') {
-        flipFlashcard();
-      } else if (e.code === 'ArrowLeft') {
-        prevFlashcard();
-      } else if (e.code === 'ArrowRight') {
-        nextFlashcard();
       }
     }
 
@@ -1347,7 +1400,6 @@
       }
     }
 
-    // Fixed master toggle saving
     function toggleCardMasteryInFlashcard(checkbox) {
       const card = state.collocations[state.flashcardsIndex];
       if (!card) return;
@@ -1359,138 +1411,153 @@
       }
     }
 
-    function renderQuizQuestion() {
-      const quest = state.quiz[state.quizIndex];
-      if (!quest) return;
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
       
-      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
-      document.getElementById('quiz-question-text').innerText = quest.question;
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
       
-      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
-      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
       
-      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      document.getElementById('card-master-checkbox').checked = card.mastered;
       
-      const answered = state.quizAnswers[quest.id] !== undefined;
-      const grid = document.getElementById('quiz-options-grid');
-      grid.innerHTML = '';
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      document.getElementById('flashcard-total').innerText = state.collocations.length;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
       
-      quest.options.forEach(opt => {
-        const btn = document.createElement('button');
-        
-        // Find matching collocation based on option string/id
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
-        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
-        
-        if (!answered) {
-          btn.className += "bg-[#111827] border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
-        } else {
-          btn.disabled = true;
-          const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
-          
-          const isSelected = (collocId === userAns || opt === userAns);
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
 
+    function renderQuizQuestion() {
+      const stemsContainer = document.getElementById('quiz-stems-container');
+      const targetsContainer = document.getElementById('quiz-targets-container');
+      if (!stemsContainer || !targetsContainer) return;
+      
+      stemsContainer.innerHTML = '';
+      targetsContainer.innerHTML = '';
+
+      // Render Left Stems with a beautifully integrated select option selector
+      state.quiz.forEach((q) => {
+        const row = document.createElement('div');
+        row.className = "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/60 transition";
+        
+        const isMatched = state.quizAnswers[q.id] !== undefined;
+        const isCorrect = isMatched && (state.quizAnswers[q.id] === q.key);
+
+        let statusIndicator = `<i class="fa-regular fa-circle text-slate-400"></i>`;
+        let highlightClass = "";
+        
+        if (isMatched) {
           if (isCorrect) {
-            btn.className += "bg-emerald-955/20 border-emerald-800 text-emerald-400";
-            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
-          } else if (isSelected) {
-            btn.className += "bg-rose-955/20 border-rose-900 text-rose-400";
-            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+            statusIndicator = `<i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+            highlightClass = "border-emerald-500/50 bg-emerald-500/5";
           } else {
-            btn.className += "bg-slate-900 border-slate-800 text-slate-500";
+            statusIndicator = `<i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+            highlightClass = "border-rose-500/50 bg-rose-500/5";
           }
         }
+
+        if (highlightClass) row.className += " " + highlightClass;
+
+        const leftTextSpan = document.createElement('div');
+        leftTextSpan.className = "text-sm font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2 font-sans";
+        leftTextSpan.innerHTML = `${statusIndicator} <span>${q.id}. ${q.left} ...</span>`;
+
+        // Selection select dropdown box listing letters a to o
+        const selector = document.createElement('select');
+        selector.onchange = (e) => selectMatchAnswer(q.id, e.target.value);
+        selector.className = "px-2.5 py-1.5 border border-stone-300 dark:border-stone-750 bg-white dark:bg-stone-955 text-xs font-bold font-mono rounded-lg outline-none text-slate-800 dark:text-slate-200 w-full sm:w-auto";
         
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-750"></i>`;
-        }
-        grid.appendChild(btn);
+        const placeholderOpt = document.createElement('option');
+        placeholderOpt.value = '';
+        placeholderOpt.innerText = 'Select Match Half...';
+        selector.appendChild(placeholderOpt);
+
+        state.quizTargets.forEach((t) => {
+          const opt = document.createElement('option');
+          opt.value = t.key;
+          opt.innerText = `${t.key}) ${t.text.substring(0, 40)}...`;
+          if (state.quizAnswers[q.id] === t.key) {
+            opt.selected = true;
+          }
+          selector.appendChild(opt);
+        });
+
+        row.appendChild(leftTextSpan);
+        row.appendChild(selector);
+        stemsContainer.appendChild(row);
       });
+
+      // Render Right Target guidelines for convenient student matching review
+      state.quizTargets.forEach((t) => {
+        const item = document.createElement('div');
+        item.className = "p-3.5 rounded-xl border border-stone-200 dark:border-stone-850 bg-white dark:bg-stone-950 font-mono text-xs flex items-start gap-2.5 text-slate-600 dark:text-slate-350 shadow-sm";
+        item.innerHTML = `<span class="h-5 w-5 bg-brand-500/10 text-brand-600 dark:text-brand-400 font-black rounded-lg flex items-center justify-center shrink-0 border border-brand-500/20">${t.key}</span> <p class="italic">${t.text}</p>`;
+        targetsContainer.appendChild(item);
+      });
+
+      // Verification controls enabling rules
+      const matchedKeys = Object.keys(state.quizAnswers);
+      document.getElementById('quiz-matches-count').innerText = matchedKeys.length;
       
-      const nextBtn = document.getElementById('quiz-next-btn');
-      if (answered) {
-        nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-955 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
-        displayQuizExplanation(quest.explanation);
+      const submitBtn = document.getElementById('quiz-submit-btn');
+      if (matchedKeys.length === 15) {
+        submitBtn.removeAttribute('disabled');
+        submitBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs sm:text-sm font-bold transition font-mono";
       } else {
-        nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        submitBtn.setAttribute('disabled', 'true');
+        submitBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-100 dark:bg-stone-800 text-slate-400 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed";
       }
     }
 
-    function selectQuizAnswer(selectedOption) {
-      const quest = state.quiz[state.quizIndex];
-      if (!quest) return;
-      
-      state.quizAnswers[quest.id] = selectedOption;
-      
-      // Handle direct string mapping match
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
-      
-      if (isCorrect) {
-        playSynthSound('correct');
-        showToast('Claims Verified!', 'Accurate collocation applied to briefing dossier.', 'fa-circle-check');
+    function selectMatchAnswer(stemId, targetLetter) {
+      if (!targetLetter) {
+        delete state.quizAnswers[stemId];
       } else {
-        playSynthSound('incorrect');
-        showToast('Allegation Flagged!', 'Inconclusive alignment with verified statecraft.', 'fa-triangle-exclamation');
+        state.quizAnswers[stemId] = targetLetter;
+        
+        // Instant check feedback values
+        const targetQ = state.quiz.find(q => q.id === stemId);
+        if (targetQ && targetQ.key === targetLetter) {
+          playSynthSound('correct');
+        } else {
+          playSynthSound('incorrect');
+        }
       }
-      
       calculateMasteryMetrics();
       renderQuizQuestion();
     }
 
-    function displayQuizExplanation(explanation) {
-      const box = document.getElementById('quiz-explanation-box');
-      const textEl = document.getElementById('quiz-explanation-text');
-      box.classList.remove('hidden');
-      textEl.innerText = explanation;
-    }
-
-    function handleQuizNext() {
+    function verifyAllMatches() {
       playSynthSound('click');
-      if (state.quizIndex < state.quiz.length - 1) {
-        state.quizIndex++;
-        renderQuizQuestion();
-      } else {
-        completeQuizProcess();
-      }
-    }
-
-    function completeQuizProcess() {
-      state.quizCompleted = true;
-      document.getElementById('quiz-screen').classList.add('hidden');
-      document.getElementById('quiz-result-screen').classList.remove('hidden');
-      
-      let correct = 0;
-      state.quiz.forEach(q => {
-        const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-        if (isCorrect) {
-          correct++;
+      let scoreCorrect = 0;
+      state.quiz.forEach((q) => {
+        if (state.quizAnswers[q.id] === q.key) {
+          scoreCorrect++;
         }
       });
+
+      document.getElementById('quiz-stems-container').parentElement.classList.add('hidden');
+      document.getElementById('quiz-targets-container').parentElement.classList.add('hidden');
+      document.getElementById('quiz-submit-btn').classList.add('hidden');
       
-      const ratioStr = `${correct}/${state.quiz.length}`;
-      const percentage = Math.round((correct / state.quiz.length) * 100);
-      
-      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      const resultScreen = document.getElementById('quiz-result-screen');
+      resultScreen.classList.remove('hidden');
+
+      const percentage = Math.round((scoreCorrect / 15) * 100);
+      document.getElementById('quiz-score-correct').innerText = `${scoreCorrect} / 15`;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
-      
-      let rank = "Radio Novice";
-      if (percentage === 100) rank = "Executive Producer";
-      else if (percentage >= 90) rank = "On-Air Host";
-      else if (percentage >= 70) rank = "Sound Engineer";
-      
+
+      let rank = "Kinetic Novice";
+      if (percentage === 100) rank = "Velocity Master";
+      else if (percentage >= 80) rank = "Tempo Racer";
+      else if (percentage >= 60) rank = "Pace Analyst";
+
       document.getElementById('quiz-score-rank').innerText = rank;
     }
 
@@ -1500,7 +1567,9 @@
       state.quizIndex = 0;
       state.quizCompleted = false;
       
-      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-stems-container').parentElement.classList.remove('hidden');
+      document.getElementById('quiz-targets-container').parentElement.classList.remove('hidden');
+      document.getElementById('quiz-submit-btn').classList.remove('hidden');
       document.getElementById('quiz-result-screen').classList.add('hidden');
       
       renderQuizQuestion();
@@ -1512,12 +1581,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['make small talk', 'speak your mind', 'get straight to the point', 'drop a hint', 'talk business', 'tell the truth'];
+      const selectedWords = ['breakneck speed', 'burst of speed', 'snail\'s pace', 'slow to a crawl', 'prompt delivery', 'speedy resolution'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-brand-500/10 text-slate-350 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
+        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1529,7 +1598,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To build a comfortable atmosphere before the interview, Sarah decided to ${word}...`;
+        textarea.value = `To finish the construction on time, the trucks set off at a ${word}...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1543,7 +1612,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Draft an interview quote with: "${randomColloc}"`;
+        textarea.value = `Review the velocity report: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1555,10 +1624,10 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how a person\'s muttering under their breath led to an awkward silence in a business negotiation.",
-        "Draft an abstract showing why speaking highly of colleagues helps to build strong professional relationships.",
-        "Describe a press conference where the spokesperson was urged to speak up and get straight to the point.",
-        "Examine why keeping a secret in investigative journalism is sometimes a matter of professional survival."
+        "Detail how a vehicle driving at a breakneck speed can result in getting a speeding ticket.",
+        "Draft a summary showing how the project came to a standstill because we ran out of time.",
+        "Describe a highway bypass speed trap where police measure the velocity of passing cars.",
+        "Examine why speedy resolution to shipping delays requires swift action from port authoritarians."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1587,11 +1656,11 @@
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
       document.getElementById('diagnostic-analysis').innerText = "Analyzing assertiveness frameworks... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard vocal patterns...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard velocity patterns...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Communications Expert, Speech Writer, and English Scholar. Check if the user's sentence uses Lesson 35 talking and speaking collocations (e.g., make small talk, brief chat, deep conversation, speak highly of, speak ill of, speak your mind, get straight to the point, drop a hint, raise your voice, mutter under your breath, talk nonsense, talk business, tell the truth, tell a lie, tell a secret, keep a secret, speak the same language, words of wisdom, awkward silence, stony silence, speak in public, speak up, deliver a speech) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving vocal, conversation, or speech alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are a world-class Speed Logistics Analyst, Driver Education Instructor, and English Scholar. Check if the user's sentence uses Lesson 35 speed and movement collocations (e.g., fast car, fast train, fast runner, work fast, drive fast, learn fast, quick lunch, quick glance, quick shower, quick decision, rapid increase, rapid decline, rapid change, rapid growth, rapid progress, speedy recovery, speedy resolution, swift action, swift response, prompt reply, prompt delivery, hasty exit, hasty conclusion, hasty decision, speed limit, breakneck speed, speed trap, speeding ticket, burst of speed, snail's pace, slow to a crawl, come to a standstill, gaining speed, speeding up, losing speed, slowing down, leisurely breakfast, leisurely stroll) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving velocity, pace, or timing alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1624,7 +1693,7 @@
           attempt++;
           if (attempt >= 5) {
             showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Pressroom scanner offline. Verify network connection and retry.";
+            document.getElementById('diagnostic-analysis').innerText = "Manuscript scanner offline. Verify network connection and retry.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1685,7 +1754,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Broadcast Analysis";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Speed & Movement";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1711,20 +1780,20 @@
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
       document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
-      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/38`;
       
       const chatLog = document.getElementById('podcast-chat-log');
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key speaking term. It is: ${currentWord.phrase}. Tom, how do vocal professionals apply this structure?`;
+        const textToSpeak = `Let's analyze our next speed-related term. It is: ${currentWord.phrase}. Tom, how do professionals apply this structure?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-cyan-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H1</div>
+          <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-cyan-400 font-mono">Sarah (On-Air Host)</span>
+            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (On-Air Host)</span>
             <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1738,14 +1807,14 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. For instance, we note: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For instance, we note: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H2</div>
+          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-cyan-300 font-mono">Tom (News Editor)</span>
+            <span class="text-[10px] font-bold text-cyan-300 font-mono font-sans">Tom (News Editor)</span>
             <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1840,12 +1909,12 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif font-sans">No matching spoken records resolved.</td>
+            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif font-sans">No matching kinetic records resolved.</td>
           </tr>
         `;
         return;
       }
-      
+
       filtered.forEach(c => {
         const row = document.createElement('tr');
         row.className = "hover:bg-slate-800/40 transition border-b border-stone-850";
@@ -1858,14 +1927,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono font-heading">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-505 font-semibold font-serif font-sans font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-450 dark:text-slate-505 font-semibold font-serif font-sans font-normal">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-450 hover:text-slate-800 dark:hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1899,14 +1968,13 @@
       tBody.innerText = body;
       tIcon.className = `fa-solid ${iconClass}`;
       
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-855 max-w-sm transition-all duration-300";
       
       setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-855 max-w-sm transition-all duration-300";
       }, 4000);
     }
 
-    // Expose interaction functions to the browser global scope
     Object.assign(window, {
       switchView,
       toggleTheme,
@@ -1921,8 +1989,8 @@
       nextFlashcard,
       speakFlashcardCurrent,
       toggleCardMasteryInFlashcard,
-      selectQuizAnswer,
-      handleQuizNext,
+      selectMatchAnswer,
+      verifyAllMatches,
       resetCurrentQuiz,
       generateSandboxPrompt,
       populateSandboxCollocations,

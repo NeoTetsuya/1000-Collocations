@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" class="h-full dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 42: Problems & Solutions Lab</title>
+  <title>CollocaStudy - Lesson 42: Agreeing & Disagreeing Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Verification, Scales, and Conflict Resolution Icons -->
+  <!-- FontAwesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Tailwind Theme Customizations for the Decision Matrix theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -48,7 +47,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching system styling */
+    /* Custom Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -64,7 +63,7 @@
       background: #10b981;
     }
     
-    /* View transition mechanics */
+    /* Smooth View transition mechanics */
     .view-container {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -119,7 +118,7 @@
     }
   </style>
 </head>
-<body class="h-full bg-brand-deepDark text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-brand-deepDark dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
@@ -130,37 +129,37 @@
     <div class="absolute inset-0 matrix-scan pointer-events-none z-0"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-brand-900 text-white shadow-md shadow-brand-500/20">
-          <i class="fa-solid fa-wrench text-lg text-brand-300"></i>
+          <i class="fa-solid fa-scale-balanced text-lg text-brand-300"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent font-sans">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20 font-mono">Lesson 42 Lab</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:to-brand-300 bg-clip-text text-transparent font-sans">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-600 dark:text-brand-300 border border-brand-500/20 font-mono">Lesson 42 Lab</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-triangle-exclamation text-brand-400"></i>
-        <h1 class="font-heading font-bold text-slate-100">Lesson 42: Problems & Solutions</h1>
+        <i class="fa-solid fa-code-merge text-brand-500 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-100">Lesson 42: Agreeing & Disagreeing</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-350 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-650 dark:text-slate-355 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates sweep) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-355 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Calibrate Remediation Grid">
-          <i class="fa-solid fa-shield-halved text-sm text-brand-400"></i>
+        <!-- Custom Aesthetic toggle -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-355 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Calibrate Consensus Grid">
+          <i class="fa-solid fa-moon text-sm text-brand-500"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
-          <div class="h-2 w-2 rounded-full bg-brand-450 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Verified</span>
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-900 px-3 py-1.5 border border-slate-200 dark:border-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-300" id="lesson-mastery-ratio">0/30 Verified</span>
         </div>
       </div>
     </header>
@@ -169,50 +168,50 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">System Nodes</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">System Nodes</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
-            <i class="fa-solid fa-shield-virus text-base"></i>
-            <span>Remediation Dossier</span>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
+            <i class="fa-solid fa-file-invoice text-base"></i>
+            <span>Agreement Dossier</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-650 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-clone text-base"></i>
-            <span>Option Transceiver</span>
+            <span>Opinion Transceiver</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-gavel text-base"></i>
             <span>Arbitration Board</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-laptop-code text-base animate-pulse"></i>
             <span>Resolution Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-podcast text-base"></i>
             <span>Equilibrium Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-spell-check text-base"></i>
             <span>The Concord Ledger</span>
           </button>
         </div>
         
         <!-- User Mission Credentials Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 p-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
           <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-brain text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Diagnostic Status</span>
+            <i class="fa-solid fa-brain text-brand-600 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Diagnostic Status</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed font-medium">Isolate critical faults, clear up misunderstandings, and deploy permanent solutions to claim absolute operational authority!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-450" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed font-medium font-sans">Reconcile divergent opinions, settle bitter disputes, and find compromises to claim absolute linguistic authority!</p>
         </div>
       </nav>
 
@@ -220,75 +219,75 @@
       <main class="flex-1 overflow-y-auto relative h-full">
         
         <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
-        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6 animate-fade-in">
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
             <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-wrench text-slate-700/65 text-xl animate-pulse"></i>
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-200 dark:border-slate-800 bg-gradient-to-tr from-slate-100 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-scale-balanced text-slate-400 dark:text-slate-700/65 text-xl animate-pulse"></i>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Remediation Dossier</h2>
-                  <p class="text-xs text-slate-400 mt-1">Isolate database faults, resolve complex bottlenecks, and deploy workable solutions. Click collocations to scan metrics.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Agreement Dossier</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Navigate conflicting perspectives, resolve long-running disputes, and build mutual understanding. Click collocations to scan metrics.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-955 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold cursor-pointer">
                   <i class="fa-solid fa-volume-high"></i>
                   <span>Acoustic Broadcaster</span>
                 </button>
               </div>
               
               <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-350 tracking-wide space-y-6 relative z-10 animate-fade-in">
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-355 tracking-wide space-y-6 relative z-10 animate-fade-in font-medium">
                 <p>
-                  When managing an enterprise system, it is inevitable that you will eventually <span class="colloc-ref cursor-pointer font-bold text-amber-500 border-b-2 border-dashed border-amber-600 hover:bg-amber-500/10 px-1 rounded transition" data-id="encounter_problems">encounter problems</span> that challenge your operational continuity. In our latest server migration, our database administration team began to <span class="colloc-ref cursor-pointer font-bold text-amber-500 border-b-2 border-dashed border-amber-600 hover:bg-amber-500/10 px-1 rounded transition" data-id="run_into_difficulties">run into difficulties</span> with data synchronization. What initially appeared to be a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="minor_problem">minor problem</span> quickly evolved into a <span class="colloc-ref cursor-pointer font-bold text-amber-500 border-b-2 border-dashed border-amber-600 hover:bg-amber-500/10 px-1 rounded transition" data-id="serious_problem">serious problem</span> as latency spiked across three European nodes.
+                  When you agree with someone completely, you can say I <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-550 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="totally_agree">totally agree</span> or I <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-550 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="strongly_agree">strongly agree</span>. Another way to describe <span class="font-semibold text-brand-600 dark:text-brand-400">100% agreement</span> is to say a person <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-550 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="agree_wholeheartedly">agrees wholeheartedly</span>. On the other hand, you can say I <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-550 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="agree_up_to_a_point">agree up to a point</span> if you agree with part of the person's opinion, but disagree with another part. Another expression is I <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-550 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="agree_in_principle">agree in principle</span> if you agree with the idea, but not with the practical application. 
                 </p>
                 <p>
-                  Faced with this unexpected bottleneck, the lead architect decided to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="tackle_problem">tackle the problem</span> directly. She knew that trying to rush the patch might only <span class="colloc-ref cursor-pointer font-bold text-amber-500 border-b-2 border-dashed border-amber-600 hover:bg-amber-500/10 px-1 rounded transition" data-id="exacerbate_problem">exacerbate the problem</span> rather than fix it. Instead, they had to isolate the system metrics to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="get_root_problem">get to the root of the problem</span>. While some engineers proposed a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="temporary_solution">temporary solution</span> of server recycling, she wanted a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="permanent_solution">permanent solution</span> to secure their infrastructure.
+                  Avoid the common error of saying "I'm agree"; the correct phrase is simply "I agree" or, more formally, <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="in_agreement">I'm in agreement</span>. We can say that two people <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="share_an_opinion">share an opinion</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="share_a_view">share a view</span> if they have the same perspective. But if there are differences, then we call this a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="difference_of_opinion">difference of opinion</span>. If the difference of opinion is very big, then the two sides are said to be <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-555 border-b-2 border-dashed border-amber-650 hover:bg-amber-500/10 px-1 rounded transition" data-id="worlds_apart">worlds apart</span> on the issue.
                 </p>
                 <p>
-                  To <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="remedy_situation">remedy the situation</span>, they held an emergency sync with the cloud provider to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="clear_misunderstanding">clear up a misunderstanding</span> about API usage quotas. The high-volume calls were <span class="colloc-ref cursor-pointer font-bold text-amber-500 border-b-2 border-dashed border-amber-600 hover:bg-amber-500/10 px-1 rounded transition" data-id="pose_threat">posing a serious threat</span> to the overall system bandwidth. By communicating transparently, they were able to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="smooth_things_over">smooth things over</span> and negotiate an instant increase in query limits.
+                  Hopefully, two people who think differently will be able to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="reach_a_compromise">reach a compromise</span> without having a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-555 border-b-2 border-dashed border-amber-650 hover:bg-amber-500/10 px-1 rounded transition" data-id="heated_argument">heated argument</span>. One polite way to express your disagreement is <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="afraid_i_disagree">I'm afraid I disagree</span>. You can also say <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="see_your_point">I see your point</span> to communicate the fact that you understand the other person's idea or opinion. We call a small disagreement a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="minor_disagreement">minor disagreement</span>, and a big disagreement is a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="major_disagreement">major disagreement</span>.
                 </p>
                 <p>
-                  With the cloud provider's assistance, the team worked diligently to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="find_solution">find a solution</span> that was both scalable and secure. They designed a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="viable_solution">viable solution</span> utilizing redis caching to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="alleviate_problem">alleviate the problem</span> of database stress. It was a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="workable_solution">workable solution</span> that allowed them to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="overcome_obstacle">overcome the obstacles</span> and maintain their system integrity.
+                  It's easy to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="reason_with">reason with</span> a person who disagrees respectfully, but it's more difficult to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="settle_a_disagreement">settle a disagreement</span> if the other person <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-555 border-b-2 border-dashed border-amber-650 hover:bg-amber-500/10 px-1 rounded transition" data-id="disagree_vehemently">disagrees vehemently</span>. If a conflict continues for a long time, it can be called a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-555 border-b-2 border-dashed border-amber-650 hover:bg-amber-500/10 px-1 rounded transition" data-id="long_running_dispute">long-running dispute</span>, and if it involves lots of angry and negative emotions, then it's a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-555 border-b-2 border-dashed border-amber-650 hover:bg-amber-500/10 px-1 rounded transition" data-id="bitter_dispute">bitter dispute</span>. If the two sides cannot <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="agree_to_disagree">agree to disagree</span>, then they may need the help of a third party to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="resolve_the_conflict">resolve the conflict</span>.
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6 font-medium">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl animate-fade-in" id="glossary-display">
+              <div class="bg-gradient-to-tr from-white to-slate-100 dark:from-slate-900 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-xl animate-fade-in" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse font-mono" id="glossary-category">System Status Check</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-brand-400 animate-pulse font-mono" id="glossary-category">Consensus Status Check</span>
                   <div class="flex items-center gap-2">
-                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition flex items-center justify-center text-sm cursor-pointer" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
                     </button>
-                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery Verification">
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition flex items-center justify-center text-sm cursor-pointer" id="glossary-master-btn" title="Toggle Mastery Verification">
                       <i class="fa-regular fa-star"></i>
                     </button>
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-amber-500" id="glossary-phrase">encounter problems</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-amber-600 dark:text-amber-500" id="glossary-phrase">totally agree</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6 font-sans" id="glossary-definition">To experience unexpected problems or difficulties while performing a task.</p>
+                <p class="text-slate-600 dark:text-slate-350 text-sm leading-relaxed mb-6 font-sans" id="glossary-definition">To be in 100% full, uncompromised agreement with another person's opinion or perspective.</p>
                 
-                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Empirical Precedent</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"Any major enterprise migration will inevitably encounter problems."</p>
+                <div class="bg-slate-100 dark:bg-white/5 rounded-2xl p-4 border border-slate-200 dark:border-white/10 space-y-1.5 font-mono">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase font-sans">Empirical Precedent</span>
+                  <p class="text-xs md:text-sm font-semibold italic text-slate-800 dark:text-slate-100 font-sans" id="glossary-example">"I totally agree with the team's decision to relax the deployment guidelines."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-scale-balanced text-brand-400"></i>
-                  <span>Linguistic Laws of Remediation</span>
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-scale-balanced text-brand-500 dark:text-brand-400"></i>
+                  <span>Linguistic Laws of Consensus</span>
                 </h4>
-                <p class="text-xs text-slate-350 leading-relaxed font-semibold">
-                  Remediation clarity depends on structural pairings. We say a <strong class="text-amber-500">pressing problem</strong> (never 'pushing problem'), and we <strong class="text-brand-accent">remedy the situation</strong> (never 'cure the situation'). Mastering these exact pairings defines administrative logic and technical competence.
+                <p class="text-xs text-slate-650 dark:text-slate-350 leading-relaxed font-semibold">
+                  Expressing agreement precisely avoids common pitfalls. We say <strong class="text-amber-600 dark:text-amber-500">agree wholeheartedly</strong> (never 'agree fully-hearted'), and we say <strong class="text-brand-accent">reason with</strong> a disrespectful person (never 'logic with'). Mastering these forms demonstrates conversational mastery.
                 </p>
               </div>
             </div>
@@ -300,18 +299,18 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">The Balance Deck</h2>
-                <p class="text-xs text-slate-400 font-semibold">Use arrow keys (Left/Right) to browse. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">The Balance Deck</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold font-sans">Use arrow keys (Left/Right) to browse. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono">
+              <div class="flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span class="text-slate-400 dark:text-slate-500">/</span>
+                <span id="flashcard-total">30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
@@ -319,26 +318,26 @@
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition flex items-center justify-center cursor-pointer">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Decisional Vector</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-slate-405 dark:text-slate-400 uppercase tracking-widest font-bold font-mono">Opinion Transceiver</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white animate-pulse" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-355">
-                    <span class="bg-slate-855 px-3 py-1 rounded-full border border-slate-800"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-400"></i> Click to flip</span>
+                  <div class="text-center text-xs text-slate-500 dark:text-slate-400">
+                    <span class="bg-slate-100 dark:bg-slate-850 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-500"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-brand-950/40 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-900 to-brand-950/40 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-950 text-brand-400 px-2.5 py-1 rounded-full border border-brand-800" id="card-back-category">Category</span>
                     <span class="text-xs text-brand-400 font-semibold font-mono">Remediation Point</span>
@@ -346,11 +345,11 @@
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-amber-500 uppercase tracking-widest font-black font-mono">True Definition</span>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">True Definition</span>
                       <p class="text-base font-semibold leading-relaxed text-slate-100 font-sans" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
                     <div class="border-t border-white/15 pt-3">
-                      <span class="text-[10px] text-amber-500 uppercase tracking-widest font-black font-mono">Forensic Precedent</span>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">Forensic Precedent</span>
                       <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5 font-sans" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
@@ -368,12 +367,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-950 font-bold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-950 dark:text-slate-950 font-bold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -386,26 +385,26 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">The Arbitration Board</h2>
-                  <p class="text-xs text-slate-400 mt-1">Audit the statements and select the perfect logical collocation to remediate the system scenario.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">The Arbitration Board</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Audit the statements and select the perfect logical collocation to remediate the system scenario.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span> of 13
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-cyan-400 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-cyan-400 h-full transition-all duration-300" style="width: 7%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono">Active Statements Analyzer</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white font-sans">"Loading scenario..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-450 font-mono">Active Statements Analyzer</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white font-sans">"Loading scenario..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -414,39 +413,39 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1 font-semibold animate-fade-in">
-                <div class="flex items-center gap-2 text-brand-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-4 space-y-1 font-semibold animate-fade-in">
+                <div class="flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
                   <span>Philosophical Alignment Check</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-brand-200 leading-relaxed font-sans font-medium">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-brand-700 dark:text-brand-200 leading-relaxed font-sans font-medium">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:text-rose-400">
                   <i class="fa-solid fa-rotate-left mr-1"></i>Reset Board
                 </button>
-                <button id="quiz-next-btn" onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono">
+                <button id="quiz-next-btn" onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono">
                   Next Scenario <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
 
             <!-- Perfect Complete Card -->
-            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-slate-900 via-brand-950/20 to-slate-950 text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-brand-900 animate-fade-in">
-              <span class="inline-flex p-4 bg-brand-500/10 text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
+            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-brand-950/20 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-slate-200 dark:border-brand-900 animate-fade-in">
+              <span class="inline-flex p-4 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
                 <i class="fa-solid fa-trophy text-4xl animate-bounce"></i>
               </span>
               <div class="space-y-2">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-brand-300 to-cyan-400">Cognitive Equilibrium Restored! 🧠</h2>
-                <p class="text-sm font-semibold text-brand-300">Intelligent remediation index: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:via-brand-300 dark:to-cyan-400">Cognitive Equilibrium Restored! 🧠</h2>
+                <p class="text-sm font-semibold text-brand-650 dark:text-brand-300">Intelligent remediation index: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
               </div>
-              <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 max-w-sm mx-auto">
+              <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-sm mx-auto">
                 <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Technical Rank</span>
-                <span class="text-base font-bold text-brand-400 mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
+                <span class="text-base font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
               </div>
-              <p class="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+              <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
                 Superb navigation of problem-handling patterns, conflict resolution pathways, and logical remediations. Your analytical skills project absolute operational authority!
               </p>
               <div class="flex items-center justify-center gap-4">
@@ -454,7 +453,7 @@
                   <i class="fa-solid fa-rotate-right"></i>
                   <span>Recalibrate Board</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-bold text-xs hover:bg-slate-800 transition text-slate-300">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -466,18 +465,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Resolution Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-semibold">Write an executive alignment note, a risk log, or a troubleshooting brief. Test sentence logic against Lesson 42 parameters.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Resolution Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Write an executive alignment note, a risk log, or a troubleshooting brief. Test sentence logic against Lesson 42 parameters.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-350 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-brand-400"></i> Get Audit Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition cursor-pointer">
+                    <i class="fa-solid fa-lightbulb mr-1 text-brand-500 dark:text-brand-400"></i> Get Audit Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-600 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25 cursor-pointer">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -485,8 +484,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono">Workspace Statement</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-brand-deepDark p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-900 outline-none transition text-slate-100 font-sans leading-relaxed" placeholder="Example: Before implementing a temporary solution, our strategic leaders must weigh the options to get to the root of the problem..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono">Workspace Statement</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-deepDark p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-50 dark:focus:bg-slate-900 outline-none transition text-slate-900 dark:text-slate-100 font-sans leading-relaxed" placeholder="Example: Although they initially disagreed vehemently, both parties were able to share an opinion and settle the disagreement..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -495,11 +494,11 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono cursor-pointer">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Manuscript
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-slate-950 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-slate-950 rounded-xl text-sm font-bold shadow-lg transition cursor-pointer">
                   <i class="fa-solid fa-fingerprint animate-pulse"></i>
                   <span>Scan Resolution Path</span>
                 </button>
@@ -507,19 +506,19 @@
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6 animate-fade-in">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Resolution Diagnostics</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-6 animate-fade-in">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Resolution Diagnostics</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40 font-mono">Calibrated</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/20 text-brand-600 dark:text-brand-400 border border-brand-500/20 dark:border-brand-900/40 font-mono">Calibrated</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center font-medium">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800 animate-pulse">
-                    <span class="text-3xl font-black font-mono tracking-tight text-amber-500" id="diagnostic-score">--</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-slate-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-amber-600 dark:text-amber-500" id="diagnostic-score font-mono">--</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Remedy%</span>
                   </div>
                 </div>
@@ -527,23 +526,23 @@
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Choice Rationality Profile</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-350 leading-relaxed font-sans">Analyzing structural metrics...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 dark:text-slate-400 font-mono block mb-0.5">Choice Rationality Profile</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-650 dark:text-slate-350 leading-relaxed font-sans">Analyzing structural metrics...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Collocation Accuracy Check</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-350 leading-relaxed font-sans">Scanning problem & conclusion metrics...</p>
+                  <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 dark:text-slate-400 font-mono block mb-0.5">Collocation Accuracy Check</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-650 dark:text-slate-350 leading-relaxed font-sans">Scanning consensus & contradiction metrics...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-brand-deepDark p-4 rounded-2xl border border-slate-800">
+              <div class="bg-slate-50 dark:bg-brand-deepDark p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-1 font-mono">Recommended Path Redirection</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-200 mt-1 font-sans">"Awaiting audit diagnostics..."</p>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 mt-1 font-sans">"Awaiting audit diagnostics..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 transition shadow-sm font-mono cursor-pointer">
                     <i class="fa-solid fa-copy"></i> Copy Alternative
                   </button>
                 </div>
@@ -556,24 +555,24 @@
         <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-white dark:bg-slate-900 text-slate-850 dark:text-white rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
-              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10">
                 <div class="flex items-center gap-3">
                   <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">Equilibrium Broadcast Station: Ep. 42</h2>
-                    <p class="text-[10px] text-slate-450 font-semibold">Remediating Complex Bottlenecks, Alleviating Stress, and Dispelling Doubts</p>
+                    <p class="text-[10px] text-slate-500 dark:text-slate-450 font-semibold font-sans font-medium">Reconciling Complex Bottlenecks, Alleviating Stress, and Dispelling Doubts</p>
                   </div>
                 </div>
-                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Stream
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
-              <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5 animate-pulse">
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-50 dark:bg-black/40 rounded-2xl p-4 border border-slate-200 dark:border-white/5 animate-pulse">
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
                 <div class="wave-bar bg-cyan-500 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
@@ -584,38 +583,38 @@
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3 font-medium">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Decoder Standby</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "encounter problems"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin speech synthesis between two forensic profiling linguists analyzing Lesson 42 integrity.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-600 dark:text-brand-300 font-mono" id="podcast-status">Decoder Standby</span>
+                <h3 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100" id="podcast-current-phrase">Why we say "totally agree"</h3>
+                <p class="text-xs text-slate-550 dark:text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin speech synthesis between two forensic profiling linguists analyzing Lesson 42 integrity.</p>
               </div>
               
               <!-- Dialogue Box -->
-              <div class="bg-black/85 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto custom-scrollbar text-[11px] font-mono text-brand-400 leading-relaxed font-semibold">
+              <div class="bg-slate-100 dark:bg-black/85 rounded-2xl p-5 border border-slate-200 dark:border-white/10 space-y-4 max-h-48 overflow-y-auto text-[11px] font-mono text-slate-700 dark:text-brand-400 leading-relaxed font-semibold">
                 <div id="podcast-chat-log" class="space-y-4 font-mono">
-                  <p class="text-slate-550">// Activating Speech synthesis dialogues will stream real-time conversational breakdowns of truth and deception here.</p>
+                  <p class="text-slate-400">// Activating Speech synthesis dialogues will stream real-time conversational breakdowns of truth and deception here.</p>
                 </div>
               </div>
               
               <!-- Podcast Controls -->
               <div class="flex items-center justify-between">
-                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition">
+                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-white transition cursor-pointer">
                   <i class="fa-solid fa-backward-step"></i>
                 </button>
-                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Start broadcast loop">
+                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition cursor-pointer" title="Start broadcast loop">
                   <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                 </button>
-                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 hover:bg-slate-700 text-white rounded-xl flex items-center justify-center transition">
+                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-white rounded-xl flex items-center justify-center transition cursor-pointer">
                   <i class="fa-solid fa-forward-step"></i>
                 </button>
               </div>
               
               <!-- Podcast Progress bar -->
               <div class="space-y-1.5 font-mono">
-                <div class="flex items-center justify-between text-[10px] text-brand-300 font-semibold">
+                <div class="flex items-center justify-between text-[10px] text-brand-600 dark:text-brand-300 font-semibold">
                   <span id="podcast-time-passed">Token 0/30</span>
                   <span id="podcast-time-percent">0% Scanned</span>
                 </div>
-                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                <div class="w-full bg-slate-200 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
                   <div id="podcast-loading-meter" class="bg-brand-400 h-full transition-all duration-300" style="width: 0%"></div>
                 </div>
               </div>
@@ -626,30 +625,31 @@
         
         <!-- ==================== VIEW 6: DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">The Concord Ledger</h2>
-                <p class="text-xs text-slate-400">Deep-dive repository containing all Lesson 42 decisions, analytical paths, and conclusion structures.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">The Concord Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-sans font-medium">Deep-dive database containing exactly 30 Lesson 42 agreement, disagreement, and arbitration collocations.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans font-semibold" placeholder="Audit registry...">
+                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans font-semibold" placeholder="Audit registry...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-brand-350 outline-none font-bold font-mono text-white">
-                  <option value="all">All Sub-systems</option>
-                  <option value="Symptom Isolation">Symptom Isolation</option>
-                  <option value="Critical Solutions">Critical Solutions</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-white outline-none font-bold font-mono cursor-pointer">
+                  <option value="all">All Clusters</option>
+                  <option value="Agreement Frameworks">Agreement Frameworks</option>
+                  <option value="Divergence & Disagreement">Divergence & Disagreement</option>
+                  <option value="Conflict Resolution">Conflict Resolution</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-brand-350 outline-none font-bold font-mono text-white">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-white outline-none font-bold font-mono cursor-pointer">
                   <option value="all">All Registry</option>
-                  <option value="mastered">Verified</option>
+                  <option value="mastered">Verified Only</option>
                   <option value="unmastered">In Progress</option>
                 </select>
               </div>
@@ -659,16 +659,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-36">Registry Group</th>
                     <th class="py-3 px-4">Standard Definition</th>
                     <th class="py-3 px-4 hidden lg:table-cell">Regulatory Precedent</th>
-                    <th class="py-3 px-4 w-16 text-center font-mono">Auditory</th>
+                    <th class="py-3 px-4 w-16 text-center font-mono">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-medium">
+                <tbody id="dictionary-rows" class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-semibold font-medium font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -681,28 +681,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-folder-tree text-base"></i>
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-scroll text-base"></i>
         <span class="text-[9px] font-bold">Dossier</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
         <i class="fa-solid fa-clone text-base"></i>
         <span class="text-[9px] font-bold">Cards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-scale-balanced text-base"></i>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-gavel text-base"></i>
         <span class="text-[9px] font-bold">Board</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
         <i class="fa-solid fa-laptop-code text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
         <i class="fa-solid fa-tower-broadcast text-base"></i>
         <span class="text-[9px] font-bold">Cast</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Ledger</span>
       </button>
@@ -711,11 +711,11 @@
   </div>
 
   <!-- Speech Settings Modal -->
-  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-850">
-    <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 max-w-sm w-full shadow-2xl space-y-6 font-semibold">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-3">
-        <h3 class="font-sans font-black text-lg text-white">Observer's Auditory Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition cursor-pointer">
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-250 dark:border-slate-850">
+    <div class="bg-white dark:bg-[#111827] rounded-3xl p-6 border border-slate-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6 font-semibold">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-stone-800 pb-3">
+        <h3 class="font-sans font-black text-lg text-slate-800 dark:text-white">Observer's Auditory Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-white transition cursor-pointer">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -723,19 +723,19 @@
       <!-- Selection of Voices -->
       <div class="space-y-4">
         <div class="space-y-1.5 font-medium">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono animate-pulse">Speech Synthesis Controller</label>
-          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-405 dark:text-slate-400 font-mono animate-pulse">Speech Synthesis Controller</label>
+          <select id="voice-select" class="w-full border border-slate-300 dark:border-stone-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-950 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono cursor-pointer">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono font-bold">
             <span>Voice Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
-          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500 cursor-pointer">
         </div>
         
         <!-- Pitch Control -->
@@ -744,7 +744,7 @@
             <span>Acoustic Frequency Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
-          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500 cursor-pointer">
         </div>
       </div>
       
@@ -777,60 +777,54 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'encounter_problems', phrase: 'encounter problems', definition: 'To experience unexpected problems or difficulties while performing a task.', example: 'Any major enterprise migration will inevitably encounter problems.', category: 'Symptom Isolation', mastered: false },
-        { id: 'face_problems', phrase: 'face problems', definition: 'To have to deal with active obstacles or problems.', example: 'As developers, we face problems on a daily basis and must remain flexible.', category: 'Symptom Isolation', mastered: false },
-        { id: 'run_into_difficulties', phrase: 'run into difficulties', definition: 'To begin experiencing problems, obstacles, or setbacks.', example: 'The hardware team began to run into difficulties with high temperatures.', category: 'Symptom Isolation', mastered: false },
-        { id: 'experience_difficulties', phrase: 'experience difficulties', definition: 'To have problems, physical or mental friction during an execution.', example: 'Our cloud servers are experiencing difficulties in handling high loads.', category: 'Symptom Isolation', mastered: false },
-        { id: 'minor_problem', phrase: 'minor problem', definition: 'A small, insignificant, and easily resolvable problem.', example: 'Don\'t panic; it\'s just a minor problem with the UI margin spacing.', category: 'Symptom Isolation', mastered: false },
-        { id: 'grave_difficulty', phrase: 'grave difficulty', definition: 'Extremely serious, severe, and consequential difficulties.', example: 'The regional node outage caused grave difficulty for our client syncs.', category: 'Symptom Isolation', mastered: false },
-        { id: 'serious_problem', phrase: 'serious problem', definition: 'A major, significant problem that could threaten operations.', example: 'The critical database corruption was a serious problem that required rolling back.', category: 'Symptom Isolation', mastered: false },
-        { id: 'pressing_problem', phrase: 'pressing problem', definition: 'An urgent problem requiring immediate attention, time, and resources.', example: 'Solving the memory leak is a pressing problem before the holiday sales begin.', category: 'Symptom Isolation', mastered: false },
-        { id: 'resolve_problem', phrase: 'resolve a problem', definition: 'To settle, end, or solve a problem successfully.', example: 'HR helped us resolve a problem regarding team project assignments.', category: 'Critical Solutions', mastered: false },
-        { id: 'solve_problem', phrase: 'solve a problem', definition: 'To find a technical or logical answer to a puzzle or error.', example: 'We managed to solve the problem by caching repetitive API queries.', category: 'Critical Solutions', mastered: false },
-        { id: 'find_solution', phrase: 'find a solution', definition: 'To discover or engineer a way to fix an ongoing issue.', example: 'The optimization task-force managed to find a solution for high latencies.', category: 'Critical Solutions', mastered: false },
-        { id: 'tackle_problem', phrase: 'tackle a problem', definition: 'To deal with a challenge in a highly determined, direct, and aggressive way.', example: 'She chose to tackle the problem immediately by analyzing telemetry logs.', category: 'Critical Solutions', mastered: false },
-        { id: 'deal_with_problem', phrase: 'deal with a problem', definition: 'To take active steps and administrative actions to handle a problem.', example: 'The cloud support team will deal with the problem of server latency today.', category: 'Critical Solutions', mastered: false },
-        { id: 'address_problem', phrase: 'address a problem', definition: 'To direct attention or efforts to resolve a specific issue.', example: 'We must address the problem of technical debt in our next operational sprint.', category: 'Critical Solutions', mastered: false },
-        { id: 'exacerbate_problem', phrase: 'exacerbate the problem', definition: 'To make an existing problem or issue significantly worse.', example: 'Adding more network calls will only exacerbate the problem of thread pool exhaustion.', category: 'Symptom Isolation', mastered: false },
-        { id: 'alleviate_problem', phrase: 'alleviate the problem', definition: 'To make an existing problem less severe, intense, or painful.', example: 'Spreading system load across two database regions helped alleviate the problem.', category: 'Critical Solutions', mastered: false },
-        { id: 'troubleshoot_problem', phrase: 'troubleshoot a problem', definition: 'To trace, analyze, and repair technical or logical faults systematically.', example: 'The network administrator spent hours trying to troubleshoot the problem.', category: 'Symptom Isolation', mastered: false },
-        { id: 'remedy_situation', phrase: 'remedy the situation', definition: 'To correct, improve, or salvage an unsatisfactory situation.', example: 'To remedy the situation, they offered a 15% discount to all affected clients.', category: 'Critical Solutions', mastered: false },
-        { id: 'overcome_obstacle', phrase: 'overcome an obstacle', definition: 'To successfully bypass, resolve, or master a barrier or difficulty.', example: 'Our core team had to overcome several obstacles to obtain the security clearance.', category: 'Critical Solutions', mastered: false },
-        { id: 'surmount_difficulties', phrase: 'surmount difficulties', definition: 'To overcome major, severe, or complex difficulties successfully.', example: 'We managed to surmount great difficulties and launched the framework on schedule.', category: 'Critical Solutions', mastered: false },
-        { id: 'get_root_problem', phrase: 'get to the root of the problem', definition: 'To find the ultimate, fundamental cause of an issue instead of treating symptoms.', example: 'Let\'s run a memory profiler to get to the root of the problem once and for all.', category: 'Symptom Isolation', mastered: false },
-        { id: 'clear_misunderstanding', phrase: 'clear up a misunderstanding', definition: 'To resolve a confusion, false assumption, or slight conflict through clear talk.', example: 'The emergency meeting helped clear up a misunderstanding about our API requirements.', category: 'Critical Solutions', mastered: false },
-        { id: 'smooth_things_over', phrase: 'smooth things over', definition: 'To make problems, tension, or disagreements appear less serious or painful.', example: 'The manager brought coffee to the dev room to smooth things over after the delay.', category: 'Critical Solutions', mastered: false },
-        { id: 'find_compromise', phrase: 'find a compromise', definition: 'To reach a mutual agreement where both sides make concessions to end friction.', example: 'They had to find a compromise on delivery deadlines to satisfy the contract.', category: 'Critical Solutions', mastered: false },
-        { id: 'workable_solution', phrase: 'workable solution', definition: 'A highly practical, realistic, and effective solution.', example: 'Storing credentials in a secure environment file was a workable solution.', category: 'Critical Solutions', mastered: false },
-        { id: 'viable_solution', phrase: 'viable solution', definition: 'A solution capable of functioning successfully under standard conditions.', example: 'Redis replication represents a viable solution to our data integrity bottlenecks.', category: 'Critical Solutions', mastered: false },
-        { id: 'temporary_solution', phrase: 'temporary solution', definition: 'A short-term fix intended primarily to buy time before a permanent patch.', example: 'Rebooting the service daily is only a temporary solution.', category: 'Critical Solutions', mastered: false },
-        { id: 'permanent_solution', phrase: 'permanent solution', definition: 'A complete, durable, and final fix that eliminates a problem indefinitely.', example: 'Refactoring the faulty database query represents our permanent solution.', category: 'Critical Solutions', mastered: false },
-        { id: 'ultimate_solution', phrase: 'ultimate solution', definition: 'The absolute best, ultimate, or most complete way to solve a challenge.', example: 'Migrating to a microservice model represents the ultimate solution to our scaling bottlenecks.', category: 'Critical Solutions', mastered: false },
-        { id: 'pose_threat', phrase: 'pose a threat', definition: 'To present a significant danger, risk, or challenge to someone or something.', example: 'Unpatched security gaps pose a serious threat to customer data integrity.', category: 'Symptom Isolation', mastered: false }
+        { id: 'totally_agree', phrase: 'totally agree', definition: 'To agree 100% and without reservation with an opinion.', example: 'I totally agree with the company\'s decision to relax the guidelines.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'strongly_agree', phrase: 'strongly agree', definition: 'To hold a very firm, intense agreement with a particular perspective.', example: 'We strongly agree that we need to spend less time on mobile devices.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'agree_wholeheartedly', phrase: 'agree wholeheartedly', definition: 'To agree with complete sincerity, depth of emotion, and enthusiasm.', example: 'She agreed wholeheartedly with my suggested changes to the system layout.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'agree_up_to_a_point', phrase: 'agree up to a point', definition: 'To agree with some elements of an opinion, but maintain disagreement with others.', example: 'We agree with your project plan up to a point, but we think you should reconsider key details.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'agree_in_principle', phrase: 'agree in principle', definition: 'To agree with the general idea of something, but not necessarily its practical setup.', example: 'I agree in principle that we must reduce working hours, but implementation is complex.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'in_agreement', phrase: 'be in agreement', definition: 'A formal expression indicating that two or more entities have reached consensus.', example: 'I am in agreement with the corporate restructuring proposal.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'share_an_opinion', phrase: 'share an opinion', definition: 'To hold the exact same opinion or perspective as others.', example: 'The other students share my opinion that the module is extremely valuable.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'share_a_view', phrase: 'share a view', definition: 'To have the same perspective or outlook as someone else.', example: 'Fortunately, both managers share a view on security upgrades.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'difference_of_opinion', phrase: 'difference of opinion', definition: 'A divergence, variation, or mismatch in perspectives or judgments.', example: 'A difference of opinion about system parameters delayed our launch.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'worlds_apart', phrase: 'worlds apart', definition: 'Having completely opposite, vastly distant, or irreconcilable views on a topic.', example: 'I am worlds apart from my parents when it comes to religious views.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'reach_a_compromise', phrase: 'reach a compromise', definition: 'To arrive at an agreement through mutual concessions.', example: 'My roommates and I reached a compromise about cleaning our quarters.', category: 'Conflict Resolution', mastered: false },
+        { id: 'heated_argument', phrase: 'heated argument', definition: 'An exceptionally angry, intense, or loud debate between people.', example: 'We resolved the problem without getting into a heated argument.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'afraid_i_disagree', phrase: 'I\'m afraid I disagree', definition: 'A highly polite way of introducing your disagreement with someone else.', example: 'I\'m afraid I disagree with your analysis of server resource bounds.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'see_your_point', phrase: 'I see your point', definition: 'Communicating that you understand the logic behind someone else\'s opposing view.', example: 'I see your point, but we still need to evaluate thermal limitations.', category: 'Conflict Resolution', mastered: false },
+        { id: 'minor_disagreement', phrase: 'minor disagreement', definition: 'A small, insignificant, and easily resolvable clash of opinions.', example: 'A minor disagreement about font styling didn\'t delay the launch.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'major_disagreement', phrase: 'major disagreement', definition: 'A significant, severe, and impactful divergence of views.', example: 'The soccer players had a major disagreement with the referee\'s ruling.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'reason_with', phrase: 'reason with', definition: 'To persuade or talk to someone logically and respectfully to settle an issue.', example: 'It\'s easy to reason with a person who communicates calmly.', category: 'Conflict Resolution', mastered: false },
+        { id: 'settle_a_disagreement', phrase: 'settle a disagreement', definition: 'To find a solution or consensus to resolve a clash of views.', example: 'My best friend and I always settle our disagreements without fighting.', category: 'Conflict Resolution', mastered: false },
+        { id: 'disagree_vehemently', phrase: 'disagree vehemently', definition: 'To disagree with exceptional emotional intensity, heat, and force.', example: 'The architect disagreed vehemently with the cheap material choices.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'long_running_dispute', phrase: 'long-running dispute', definition: 'A conflict or argument that has persisted for a highly extended period.', example: 'Those two countries have a long-running dispute over that border.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'bitter_dispute', phrase: 'bitter dispute', definition: 'A highly angry, resentful, and emotionally negative conflict.', example: 'The division of legacy assets led to a bitter dispute between siblings.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'agree_to_disagree', phrase: 'agree to disagree', definition: 'Accepting your differences to remain civil without trying to convince each other.', example: 'We couldn\'t align our views, so we decided to agree to disagree.', category: 'Conflict Resolution', mastered: false },
+        { id: 'resolve_the_conflict', phrase: 'resolve the conflict', definition: 'To settle or end an active argument or dispute permanently.', example: 'We preferred to resolve the conflict immediately rather than argue indefinitely.', category: 'Conflict Resolution', mastered: false },
+        { id: 'slight_disagreement', phrase: 'slight disagreement', definition: 'A minor, very small discrepancy in opinions.', example: 'Tom and Larry had a slight disagreement about where to park the vehicle.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'reach_consensus', phrase: 'reach consensus', definition: 'To successfully guide a whole group to a state of unanimous agreement.', example: 'It was hard to reach consensus with thirty delegates present.', category: 'Agreement Frameworks', mastered: false },
+        { id: 'deeply_divided', phrase: 'deeply divided', definition: 'When a group is separated into highly oppositional, irreconcilable factions.', example: 'The committee was deeply divided on the new taxation code.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'bridge_the_gap', phrase: 'bridge the gap', definition: 'To connect or reconcile two highly divergent, opposing views.', example: 'We held a brainstorming session to bridge the gap between our teams.', category: 'Conflict Resolution', mastered: false },
+        { id: 'stark_difference', phrase: 'stark difference', definition: 'A sharp, extremely clear, and undeniable contrast in perspectives.', example: 'There is a stark difference in how both managers handle budget cuts.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'unbending_stance', phrase: 'unbending stance', definition: 'An completely rigid, inflexible, and uncompromising position.', example: 'Her unbending stance made finding a viable compromise impossible.', category: 'Divergence & Disagreement', mastered: false },
+        { id: 'viable_compromise', phrase: 'viable compromise', definition: 'A highly workable, fair, and practical middle ground for both sides.', example: 'Sharing the repository space was a viable compromise for our divisions.', category: 'Conflict Resolution', mastered: false }
       ],
+      
       quiz: [
-        { id: 1, question: "The engineering team scheduled an emergency sprint to ________ the database replication issues.", options: ["tackle", "make", "carry"], answer: "tackle_problem", explanation: "We 'tackle a problem' (deal with it in a direct and aggressive way)." },
-        { id: 2, question: "Our developers ________ several unforeseen problems during the cloud infrastructure migration.", options: ["encountered", "run into", "occurred"], answer: "encounter_problems", explanation: "We 'encounter problems' while performing a complex task." },
-        { id: 3, question: "A typographical mistake in the documentation was just a ________ problem, but we fixed it immediately.", options: ["minor", "grave", "smallish"], answer: "minor_problem", explanation: "A small, insignificant problem is a 'minor problem'." },
-        { id: 4, question: "The security breach has ________ a serious threat to the company's customer data safety.", options: ["posed", "made", "cast"], answer: "pose_threat", explanation: "Unresolved risks or breaches 'pose a threat' to safety." },
-        { id: 5, question: "She had to ________ several professional obstacles to become the chief technical architect.", options: ["overcome", "surmount", "beat"], answer: "overcome_obstacle", explanation: "We 'overcome an obstacle' (successfully deal with a barrier)." },
-        { id: 6, question: "We must get to the ________ of the problem instead of just applying superficial software patches.", options: ["root", "base", "core"], answer: "get_root_problem", explanation: "Finding the fundamental cause is to 'get to the root of the problem'." },
-        { id: 7, question: "Adding more server instances without fixing the memory leak will only ________ the problem.", options: ["exacerbate", "increase", "worsen"], answer: "exacerbate_problem", explanation: "To make an existing problem worse is to 'exacerbate the problem'." },
-        { id: 8, question: "The manager held a meeting with the clients to ________ up the misunderstanding regarding the API costs.", options: ["clear", "smooth", "wipe"], answer: "clear_misunderstanding", explanation: "To resolve a confusion is to 'clear up a misunderstanding'." },
-        { id: 9, question: "Our systems ________ into some difficulties with the third-party payment gateway yesterday.", options: ["ran", "went", "crossed"], answer: "run_into_difficulties", explanation: "To begin experiencing problems is to 'run into difficulties'." },
-        { id: 10, question: "Deploying a backup script is only a ________ solution; we still need a permanent architecture fix.", options: ["temporary", "short-lived", "momentary"], answer: "temporary_solution", explanation: "A short-term fix is a 'temporary solution'." },
-        { id: 11, question: "This firmware update should ________ the situation with the device connectivity losses.", options: ["remedy", "cure", "repair"], answer: "remedy_situation", explanation: "To correct an unsatisfactory state of affairs is to 'remedy the situation'." },
-        { id: 12, question: "Climate change poses a ________ problem that requires immediate international coordination.", options: ["pressing", "pushing", "heavy"], answer: "pressing_problem", explanation: "An urgent issue requiring immediate attention is a 'pressing problem'." },
-        { id: 13, question: "Implementing an aggressive cache policy helped ________ the problem of high database load.", options: ["alleviate", "reduce", "soothe"], answer: "alleviate_problem", explanation: "To make an existing problem less severe is to 'alleviate the problem'." },
-        { id: 14, question: "The two departments had a major disagreement, but HR helped them ________ a compromise.", options: ["find", "make", "compromise"], answer: "find_compromise", explanation: "To reach an agreement with mutual concessions is to 'find a compromise'." },
-        { id: 15, question: "We need to ________ the problem of employee burnout before more developers resign.", options: ["address", "answer", "look"], answer: "address_problem", explanation: "To direct attention and resolve an issue is to 'address a problem'." },
-        { id: 16, question: "The support team spent all night trying to ________ the database replication delays.", options: ["troubleshoot", "isolate", "debug"], answer: "troubleshoot_problem", explanation: "Analyzing and solving technical faults is to 'troubleshoot a problem'." },
-        { id: 17, question: "The project leader managed to ________ things over after the controversial design change.", options: ["smooth", "clear", "wipe"], answer: "smooth_things_over", explanation: "To make problems seem less serious or rebuild harmony is to 'smooth things over'." },
-        { id: 18, question: "Finding a ________ solution that is both cost-effective and reliable is our primary goal.", options: ["workable", "practical", "doing"], answer: "workable_solution", explanation: "A practical and effective solution is a 'workable solution'." },
-        { id: 19, question: "The latest report proved that their alternative model was a ________ solution for logistics.", options: ["viable", "possible", "livable"], answer: "viable_solution", explanation: "A feasible solution capable of working successfully is a 'viable solution'." },
-        { id: 20, question: "The server downtime caused ________ difficulties for the active client sessions.", options: ["grave", "deep", "heavy"], answer: "grave_difficulty", explanation: "Extremely serious, severe difficulties are described as 'grave difficulties'." }
+        { id: 1, question: "I agree in ________ that we need to spend less time on our iPhones... but I can't seem to stop using mine!", options: ["basis", "foundation", "principle"], answer: "principle", explanation: "To agree 'in principle' means accepting the general theory or idea, even if implementation remains problematic." },
+        { id: 2, question: "I am worlds ________ from my parents when it comes to our religious views.", options: ["along", "apart", "away"], answer: "apart", explanation: "To be 'worlds apart' indicates a massive, extremely wide divergence in perspective." },
+        { id: 3, question: "I ________ agree with the company's decision to relax the dress code for employees.", options: ["highly", "totally", "very"], answer: "totally", explanation: "We use 'totally agree' or 'strongly agree' to describe complete consensus." },
+        { id: 4, question: "I'm ________ I disagree with your analysis; I think you've overlooked some important points.", options: ["afraid", "fearful", "scared"], answer: "afraid", explanation: "'I'm afraid I disagree' is a standard polite formula used to introduce a differing viewpoint." },
+        { id: 5, question: "My best friend and I have always been able to ________ our disagreements without fighting.", options: ["conclude", "satisfy", "settle"], answer: "settle", explanation: "To 'settle a disagreement' means to find an acceptable resolution to a mismatch of opinions." },
+        { id: 6, question: "My roommates and I ________ a compromise about cleaning the apartment.", options: ["arrived", "entered", "reached"], answer: "reached", explanation: "We 'reach a compromise' when both sides make mutual concessions to find common ground." },
+        { id: 7, question: "She agreed ________ with my suggested changes to the design.", options: ["comprehensively", "generously", "wholeheartedly"], answer: "wholeheartedly", explanation: "To agree 'wholeheartedly' describes complete, deeply sincere 100% agreement." },
+        { id: 8, question: "Some people prefer to argue indefinitely rather than trying to ________ the conflict.", options: ["answer", "resolve", "resume"], answer: "resolve", explanation: "We say 'resolve the conflict' when settling disputes or arguments permanently." },
+        { id: 9, question: "The other students ________ my opinion that the teacher is not very knowledgeable.", options: ["combine", "divide", "share"], answer: "share", explanation: "To 'share an opinion' means holding the exact same viewpoint as another." },
+        { id: 10, question: "The soccer players had a ________ disagreement with the referee.", options: ["large-scale", "major", "principal"], answer: "major", explanation: "A big, highly significant clash of views is a 'major disagreement'." },
+        { id: 11, question: "Those two countries have a long-running ________ over that particular territory.", options: ["dispel", "dispute", "disturbance"], answer: "dispute", explanation: "A conflict persisting over an extended historical period is a 'long-running dispute'." },
+        { id: 12, question: "Tom and Larry had a ________ disagreement about where to park the car.", options: ["slight", "slim", "weak"], answer: "slight", explanation: "A very small, minor mismatch of opinions is a 'slight disagreement' (or minor disagreement)." },
+        { id: 13, question: "We agree with your plans up to a ________, but we think you should reconsider a few aspects.", options: ["limit", "place", "point"], answer: "point", explanation: "To agree 'up to a point' means accepting part of an argument but maintaining reservations on others." }
       ],
-      activeCardId: 'encounter_problems',
+      activeCardId: 'totally_agree',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -843,75 +837,82 @@
       isSynthesizing: false
     };
 
-    // Web Audio Synthesizer for high-fidelity interactive audio cues
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          const osc = audioCtx.createOscillator();
+          const osc1 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(1400, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(750, audioCtx.currentTime + 0.08);
+          
+          osc1.type = 'sine';
+          osc1.frequency.setValueAtTime(1400, audioCtx.currentTime);
+          osc1.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+
           gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-          osc.connect(gain);
+
+          osc1.connect(gain);
           gain.connect(audioCtx.destination);
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.08);
+          
+          osc1.start();
+          osc1.stop(audioCtx.currentTime + 0.08);
+          
         } else if (type === 'correct') {
-          // Ascending major chord representing logical consensus (Emerald Mint)
-          const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+          const notes = [293.66, 349.23, 440.00, 587.33]; // D4, F4, A4, D5 (Consensus chord)
           const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.7);
           gain.connect(audioCtx.destination);
 
           notes.forEach((freq, index) => {
             const osc = audioCtx.createOscillator();
-            osc.type = 'sine';
+            osc.type = 'triangle';
             osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.06);
             osc.connect(gain);
             osc.start(audioCtx.currentTime + index * 0.06);
-            osc.stop(audioCtx.currentTime + 0.6);
+            osc.stop(audioCtx.currentTime + 0.7);
           });
+          
         } else if (type === 'incorrect') {
-          // Flat low buzz representing contradiction/doubt (Tox Amber)
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
+          
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(110, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.25);
+          osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.3);
+
           const lowpass = audioCtx.createBiquadFilter();
           lowpass.type = 'lowpass';
-          lowpass.frequency.setValueAtTime(160, audioCtx.currentTime);
+          lowpass.frequency.setValueAtTime(180, audioCtx.currentTime);
+
           gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+
           osc.connect(lowpass);
           lowpass.connect(gain);
           gain.connect(audioCtx.destination);
+
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.25);
+          osc.stop(audioCtx.currentTime + 0.3);
+          
         } else if (type === 'flip') {
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.12);
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(250, audioCtx.currentTime);
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
           osc.connect(gain);
           gain.connect(audioCtx.destination);
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.12);
+          osc.stop(audioCtx.currentTime + 0.15);
         }
       } catch (e) {
-        console.warn('Web Audio API not supported or suspended by browser settings:', e);
+        console.warn('Web Audio API not supported:', e);
       }
     }
 
-    // HTML5 Canvas concentric choices & conclusion rings background
     function initBackgroundCanvas() {
       const canvas = document.getElementById('matrix-canvas');
       if (!canvas) return;
@@ -932,8 +933,7 @@
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
         
-        // Spawn amber circles (problems) or emerald rings (solutions) based on randomness
-        const isProblem = Math.random() > 0.45;
+        const isAgreement = Math.random() > 0.45;
         
         waveSources.push({
           x: x,
@@ -941,7 +941,7 @@
           radius: 0,
           maxRadius: Math.random() * 80 + 50,
           opacity: 0.85,
-          color: isProblem ? '245, 158, 11' : '16, 185, 129' // Amber or Emerald
+          color: isAgreement ? '16, 185, 129' : '245, 158, 11' // Emerald (consensus) or Amber (divergence)
         });
         playSynthSound('click');
       };
@@ -951,8 +951,8 @@
         
         for (let i = waveSources.length - 1; i >= 0; i--) {
           const w = waveSources[i];
-          w.radius += 1.5;
-          w.opacity -= 0.015;
+          w.radius += 1.6;
+          w.opacity -= 0.016;
           
           if (w.opacity <= 0) {
             waveSources.splice(i, 1);
@@ -966,8 +966,8 @@
           ctx.stroke();
           
           ctx.beginPath();
-          ctx.arc(w.x, w.y, w.radius * 0.7, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity * 0.4})`;
+          ctx.arc(w.x, w.y, w.radius * 0.72, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity * 0.45})`;
           ctx.stroke();
         }
         
@@ -976,26 +976,30 @@
       animate();
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      loadLocalStorage();
-      initSpeechVoices();
-      initStoryClicks();
-      initBackgroundCanvas();
-      renderDictionary();
-      renderFlashcard();
-      renderQuizQuestion();
-      renderSandboxChips();
-      calculateMasteryMetrics();
-      
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-shield-halved text-sm text-brand-400"></i>';
-      
-      document.addEventListener('keyup', keyUpHandler);
-    });
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-400"></i>';
+      } else {
+        html.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500"></i>';
+      }
+    }
 
     function toggleTheme() {
       playSynthSound('click');
-      showToast('Grid Calibrated', 'Remediation grid frequencies balanced successfully.', 'fa-shield-halved');
+      const nextTheme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = nextTheme;
+      localStorage.setItem('colloc_theme_l42', nextTheme);
+      applyTheme(nextTheme);
+      
+      if (nextTheme === 'dark') {
+        showToast('Twilight Theme Active', 'Interface calibrated to dark parameters.', 'fa-moon');
+      } else {
+        showToast('Parchment Theme Active', 'Interface calibrated to light parameters.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1010,7 +1014,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-650 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100";
         }
       });
       
@@ -1022,7 +1026,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20";
       }
       
       state.currentView = viewName;
@@ -1051,6 +1055,9 @@
           state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l42'));
         } catch(e) {}
       }
+      const savedTheme = localStorage.getItem('colloc_theme_l42') || 'dark';
+      state.theme = savedTheme;
+      applyTheme(savedTheme);
     }
 
     function saveMastery() {
@@ -1108,7 +1115,7 @@
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l42', JSON.stringify(state.voiceSettings));
-      showToast('Config Active', 'Speech synthesis voice options finalized.');
+      showToast('Config Active', 'Speech synthesis voice engines updated.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1118,7 +1125,9 @@
 
     function initSpeechVoices() {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        window.speechSynthesis.onvoiceschanged = () => {
+          populateVoiceDropdown();
+        };
         populateVoiceDropdown();
       }
     }
@@ -1154,12 +1163,15 @@
 
     function triggerTTS(text) {
       if (!('speechSynthesis' in window)) {
-        showToast('System Conflict', 'Speech synthesizers not available in this environment.');
+        showToast('System Conflict', 'Auditory interfaces are currently restricted.');
         return;
       }
       window.speechSynthesis.cancel();
       
-      const utterance = new SpeechSynthesisUtterance(text);
+      // Programmatically parse slash punctuation so it reads smoothly in speech
+      const sanitizedText = text.replace(/\//g, " or ").replace(/-/g, " ");
+      
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
       const voices = window.speechSynthesis.getVoices();
       
       let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
@@ -1198,7 +1210,13 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('encounter_problems');
+      displayGlossaryCard('totally_agree');
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const text = document.getElementById('narrative-body').innerText;
+      triggerTTS(text);
     }
 
     function displayGlossaryCard(id) {
@@ -1211,11 +1229,11 @@
       document.getElementById('glossary-phrase').innerText = term.phrase;
       document.getElementById('glossary-definition').innerText = term.definition;
       document.getElementById('glossary-example').innerText = term.example;
-      document.getElementById('glossary-category').innerText = `Linguistic Vector: ${term.category}`;
+      document.getElementById('glossary-category').innerText = `Consensus Cluster: ${term.category}`;
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500 animate-pulse"></i>';
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
       }
@@ -1241,31 +1259,11 @@
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
         star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
-        showToast('Node Verified', `Added "${term.phrase}" into verified registry.`);
+        showToast('Node Verified', `Added "${term.phrase}" into authenticated registry.`);
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
-        showToast('Node Reset', `Returned "${term.phrase}" to pending queue.`);
+        showToast('Node Reset', `Returned "${term.phrase}" to pending study queue.`);
       }
-    }
-
-    function speakCurrentStory() {
-      playSynthSound('click');
-      const paragraphs = [
-        "When managing an enterprise system, it is inevitable that you will eventually encounter problems that challenge your operational continuity.",
-        "In our latest server migration, our database administration team began to run into difficulties with data synchronization.",
-        "What initially appeared to be a minor problem quickly evolved into a serious problem as latency spiked across three European nodes.",
-        "Faced with this unexpected bottleneck, the lead architect decided to tackle the problem directly.",
-        "She knew that trying to rush the patch might only exacerbate the problem rather than fix it.",
-        "Instead, they had to isolate the system metrics to get to the root of the problem.",
-        "While some engineers proposed a temporary solution of server recycling, she wanted a permanent solution to secure their infrastructure.",
-        "To remedy the situation, they held an emergency sync with the cloud provider to clear up a misunderstanding about API usage quotas.",
-        "The high-volume calls were posing a serious threat to the overall system bandwidth.",
-        "By communicating transparently, they were able to smooth things over and negotiate an instant increase in query limits.",
-        "With the cloud provider's assistance, the team worked diligently to find a solution that was both scalable and secure.",
-        "They designed a viable solution utilizing redis caching to alleviate the problem of database stress.",
-        "It was a workable solution that allowed them to overcome the obstacles and maintain their system integrity."
-      ];
-      triggerTTS(paragraphs.join(" "));
     }
 
     function renderFlashcard() {
@@ -1282,6 +1280,7 @@
       document.getElementById('card-master-checkbox').checked = card.mastered;
       
       document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      document.getElementById('flashcard-total').innerText = state.collocations.length;
       const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
       document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
       
@@ -1306,7 +1305,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Lower Bound', 'This is the start of the choice briefing deck.');
+        showToast('Lower Bound', 'This is the start of the opinion deck briefing stack.');
       }
     }
 
@@ -1357,7 +1356,7 @@
       if (!quest) return;
       
       document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
-      document.getElementById('quiz-question-text').innerText = quest.question;
+      document.getElementById('quiz-question-text').innerText = `${state.quizIndex + 1}. ${quest.question}`;
       
       const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
       document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
@@ -1371,37 +1370,28 @@
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
         
-        // Match option strings with collocation IDs to handle answers correctly
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
-        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-white cursor-pointer";
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-slate-800 dark:text-white cursor-pointer";
         
         if (!answered) {
-          btn.className += " bg-slate-900 border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.className += " bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400 dark:text-slate-700"></i>`;
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
-          
-          const isSelected = (collocId === userAns || opt === userAns);
+          const isCorrect = (opt === quest.answer);
+          const isSelected = (opt === userAns);
 
           if (isCorrect) {
-            btn.className += " bg-emerald-950/70 border-brand-500 text-brand-350 font-bold shadow-md shadow-brand-500/10";
-            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-square-check text-brand-400"></i>`;
+            btn.className += " bg-emerald-50 dark:bg-emerald-950/70 border-emerald-500 dark:border-brand-500 text-emerald-700 dark:text-brand-350 font-bold shadow-md shadow-brand-500/10";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-square-check text-emerald-600 dark:text-brand-400"></i>`;
           } else if (isSelected) {
-            btn.className += " bg-rose-955/70 border-rose-900 text-rose-450 font-bold";
+            btn.className += " bg-rose-50 dark:bg-rose-955/70 border-rose-350 dark:border-rose-900 text-rose-700 dark:text-rose-450 font-bold";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-triangle-exclamation text-rose-500"></i>`;
           } else {
-            btn.className += " bg-slate-950 border-slate-800 text-slate-500";
+            btn.className += " bg-slate-100 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-500";
+            btn.innerHTML = `<span>${opt}</span>`;
           }
-        }
-        
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
         }
         grid.appendChild(btn);
       });
@@ -1409,11 +1399,11 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono cursor-pointer";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-955 rounded-xl text-xs sm:text-sm font-bold transition font-mono cursor-pointer";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
@@ -1423,16 +1413,14 @@
       
       state.quizAnswers[quest.id] = selectedOption;
       
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
+      const isCorrect = (selectedOption === quest.answer);
       
       if (isCorrect) {
         playSynthSound('correct');
-        showToast('Vector Aligned', 'Strategic steps aligned perfectly with empirical data.', 'fa-circle-check');
+        showToast('Vector Aligned', 'Opinions matched and resolved correctly.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Cognitive Disrupted', 'Dissonance detected in operational syntax choice.', 'fa-triangle-exclamation');
+        showToast('Dissonance Logged', 'Mismatched or ungrammatical phrasing applied.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1464,9 +1452,7 @@
       let correct = 0;
       state.quiz.forEach(q => {
         const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
+        const isCorrect = (userAns === q.answer);
         if (isCorrect) {
           correct++;
         }
@@ -1478,10 +1464,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Diagnostics Intern";
-      if (percentage === 100) rank = "Lead Remediation Architect 🧠";
-      else if (percentage >= 90) rank = "Troubleshooting Engineer";
-      else if (percentage >= 70) rank = "Arbitration Specialist";
+      let rank = "Arbitration Intern";
+      if (percentage === 100) rank = "Consensus Grandmaster 🧠";
+      else if (percentage >= 90) rank = "Dialogue Specialist";
+      else if (percentage >= 70) rank = "Conflict Resolver";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1504,12 +1490,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['encounter problems', 'weigh the options', 'run into difficulties', 'tackle the problem', 'remedy the situation', 'find a solution'];
+      const selectedWords = ['totally agree', 'agree wholeheartedly', 'worlds apart', 'afraid I disagree', 'settle a disagreement', 'resolve the conflict'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-slate-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono cursor-pointer";
+        chip.className = "px-3 py-1 bg-slate-200 dark:bg-slate-800 hover:bg-brand-500/10 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-300 dark:border-slate-700 font-mono cursor-pointer";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1535,7 +1521,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Calibrated choice briefing: "${randomColloc}"`;
+        textarea.value = `Arbitration statement: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1547,10 +1533,10 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail an operational brief where a lead engineer who made a hasty decision must now explain the permanent solution to database failure.",
-        "Write a corporate debriefing on why developers had to run into difficulties and tackle the problem of database stress.",
-        "Discuss a workplace scenario where someone chose to keep an open mind while finding a viable solution under intense server pressure.",
-        "Draft a litigation statement where executives must smooth things over and find a compromise after a major system breach."
+        "Detail a narrative scenario where two senior developers who were initially worlds apart managed to reach a compromise.",
+        "Write a dialogue analysis explaining how to politely use 'I'm afraid I disagree' while showing you see their point.",
+        "Discuss a corporate conflict where a minor disagreement escalated into a bitter dispute because teams refused to agree to disagree.",
+        "Draft a creative log entry about a heated argument where one architect chose to reason with the other respectfully."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1570,7 +1556,7 @@
       const textValue = document.getElementById('sandbox-input').value.trim();
       
       if (!textValue) {
-        showToast('Empty Document', 'Please draft your decisional manuscript before running a scan.', 'fa-circle-exclamation');
+        showToast('Empty Document', 'Please draft your manuscript before running a scan.', 'fa-circle-exclamation');
         return;
       }
       
@@ -1583,7 +1569,7 @@
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are an elite forensic linguist, corporate strategist, and English professor. Verify if the user's statement utilizes Lesson 42 collocations (encounter problems, face problems, run into difficulties, experience difficulties, minor problem, grave difficulty, serious problem, pressing problem, resolve a problem, solve a problem, find a solution, tackle a problem, deal with a problem, address a problem, exacerbate the problem, alleviate the problem, troubleshoot a problem, remedy the situation, overcome an obstacle, surmount difficulties, get to the root of the problem, clear up a misunderstanding, smooth things over, find a compromise, workable solution, viable solution, temporary solution, permanent solution, ultimate solution, pose a threat) correctly and naturally. Respond ONLY with a clean, unformatted raw JSON object containing these precise keys: \"score\" (0-100 indicating decision logic and collocation strength), \"analysis\" (brief 2-3 sentence overview of executive clarity), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific instruction on how choices or conclusions are phrased), and \"alternatives\" (array of 1-2 polished alternatives). Absolutely do not enclose your output in markdown formatting or code blocks.";
+      const systemPrompt = "You are an elite forensic linguist, corporate strategist, and English professor. Verify if the user's statement utilizes Lesson 42 Agreeing & Disagreeing collocations (totally agree, strongly agree, agree wholeheartedly, agree up to a point, agree in principle, share an opinion, share a view, difference of opinion, worlds apart, reach a compromise, heated argument, afraid I disagree, see your point, minor disagreement, major disagreement, reason with, settle a disagreement, disagree vehemently, long-running dispute, bitter dispute, agree to disagree, resolve the conflict, slight disagreement, reach consensus, deeply divided, bridge the gap, stark difference, unbending stance, viable compromise) correctly and naturally. Respond ONLY with a clean, unformatted raw JSON object containing these precise keys: \"score\" (0-100 indicating decision logic and collocation strength), \"analysis\" (brief 2-3 sentence overview of executive clarity), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific instruction on how choices or conclusions are phrased), and \"alternatives\" (array of 1-2 polished alternatives). Absolutely do not enclose your output in markdown formatting or code blocks.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this decisional analysis: "${textValue}"` }] }],
@@ -1638,11 +1624,11 @@
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/20 text-emerald-600 dark:text-brand-400 border border-brand-500/20 dark:border-brand-900/40 font-mono";
             badge.innerText = "Verified Compliance";
             playSynthSound('correct');
           } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-450 border border-rose-900/40";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 dark:bg-rose-955/20 text-rose-600 dark:text-rose-450 border border-rose-300 dark:border-rose-900/40 font-mono";
             badge.innerText = "Logical Shift Flagged";
             playSynthSound('incorrect');
           }
@@ -1709,15 +1695,15 @@
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Next, let's explore an essential decisional collocation. It is: ${currentWord.phrase}. Tom, how does this affect structural choice-making?`;
+        const textToSpeak = `Next, let's explore an essential agreement collocation. It is: ${currentWord.phrase}. Tom, why is this critical for resolving conflicts?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Enterprise Advisor)</span>
-            <p class="text-xs text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+            <span class="text-[10px] font-bold text-brand-500 dark:text-brand-400 font-mono">Sarah (Enterprise Advisor)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1730,15 +1716,15 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} fundamentally refers to ${currentWord.definition}. In corporate operations, we usually say: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} basically means ${currentWord.definition}. In context, we often observe: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-cyan-400 font-mono">Tom (Strategic CTO)</span>
-            <p class="text-xs text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+            <span class="text-[10px] font-bold text-cyan-500 dark:text-cyan-400 font-mono">Tom (Strategic Advisor)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1756,7 +1742,8 @@
     function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
       if (!('speechSynthesis' in window)) return;
       
-      const utterance = new SpeechSynthesisUtterance(text);
+      const sanitizedText = text.replace(/\//g, " or ").replace(/-/g, " ");
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
       const voices = window.speechSynthesis.getVoices();
       
       let selectedVoice = null;
@@ -1832,7 +1819,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-400 italic font-medium">No records matched the ledger criteria.</td>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic font-medium">No agreement records matched the registry criteria.</td>
           </tr>
         `;
         return;
@@ -1840,9 +1827,9 @@
       
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-800 font-sans";
+        row.className = "hover:bg-slate-100 dark:hover:bg-slate-800/40 transition border-b border-slate-200 dark:border-slate-800 font-sans";
         
-        const starIcon = c.mastered ? 'fa-star text-amber-400 animate-pulse' : 'fa-star text-slate-700';
+        const starIcon = c.mastered ? 'fa-star text-amber-500 dark:text-amber-450 animate-pulse' : 'fa-star text-slate-300 dark:text-slate-700';
         
         row.innerHTML = `
           <td class="py-4 px-4 text-center">
@@ -1850,14 +1837,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-300" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-600 dark:hover:text-brand-300 font-sans" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/25 font-mono font-heading">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/25 font-mono font-heading">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-300 leading-relaxed font-semibold">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-405 font-semibold font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-300 leading-relaxed font-semibold font-sans">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 dark:text-slate-405 font-sans font-normal">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto cursor-pointer">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-stone-800 flex items-center justify-center text-slate-400 hover:text-slate-800 dark:hover:text-white transition mx-auto cursor-pointer">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1926,6 +1913,20 @@
       nextPodcastCard,
       filterDictionary,
       toggleInPlaceMastery
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      initBackgroundCanvas();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      document.addEventListener('keyup', keyUpHandler);
     });
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 31: Agree & Disagree Lab</title>
+  <title>CollocaStudy - Lesson 31: Texture Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Diplomatic, Consensus, and Debate Icons -->
+  <!-- FontAwesome for Tactile, Sensory, and Textured Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Diplomatic Agreement/Disagreement theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -27,16 +26,16 @@
           },
           colors: {
             brand: {
-              50: '#f0fdf4', 
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              300: '#86efac',
-              400: '#4ade80',
-              500: '#0ea5e9', /* Diplomatic Sky Blue */
-              600: '#0284c7',
-              700: '#0369a1', 
-              800: '#075985',
-              900: '#0f172a', /* Boardroom Slate */
+              50: '#f0fdfa', 
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6', /* Tactile Teal */
+              600: '#0d9488',
+              700: '#0f766e', 
+              800: '#115e59',
+              900: '#0f172a', /* Surface Slate */
               955: '#020617'
             }
           }
@@ -46,7 +45,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching collaborative styling */
+    /* Premium Scrollbars matching tactile sensory styling */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -55,11 +54,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #0ea5e9;
+      background: #14b8a6;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #0369a1;
+      background: #0f766e;
     }
     
     /* Smooth interactive transitions */
@@ -86,7 +85,7 @@
       transform: rotateY(180deg);
     }
     
-    /* Animated Equalizer Waveform */
+    /* Animated Equalizer Waveform representing sonic texture */
     @keyframes wave-bounce {
       0%, 100% { height: 8px; }
       50% { height: 42px; }
@@ -95,7 +94,7 @@
       animation: wave-bounce 1s ease-in-out infinite;
     }
     
-    /* Radar sweep representing the balance of diplomatic arbitration */
+    /* Surface sweep mapping grid */
     @keyframes radar-sweep {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -105,7 +104,7 @@
       animation: radar-sweep 8s infinite linear;
     }
     
-    /* Ambient diplomatic light shift */
+    /* Ambient tactile light shift */
     @keyframes ambient-shift {
       0%, 100% { opacity: 0.1; transform: scale(0.95); }
       50% { opacity: 0.2; transform: scale(1.05); }
@@ -115,46 +114,46 @@
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-slate-955 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Ambient diplomatic shift backdrop -->
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/30 via-slate-900/20 to-slate-955 pointer-events-none z-0 ambient-drift-glow"></div>
+    <!-- Ambient tactile shift backdrop -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/10 via-slate-500/5 to-slate-200 dark:from-brand-900/30 dark:via-slate-900/20 dark:to-slate-955 pointer-events-none z-0 ambient-drift-glow"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white/80 dark:border-slate-800 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-600 to-[#1e1b4b] text-white shadow-md shadow-sky-500/20">
-          <i class="fa-solid fa-handshake-simple text-lg animate-pulse"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-teal-600 to-[#0f172a] text-white shadow-md shadow-teal-500/20">
+          <i class="fa-solid fa-fingerprint text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-sky-400 to-emerald-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-sky-500/10 px-2 py-0.5 text-xs font-semibold text-sky-300 border border-sky-500/20">Lesson 31</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-teal-500/10 px-2 py-0.5 text-xs font-semibold text-teal-600 dark:text-teal-300 border border-teal-500/20">Lesson 31</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-scale-balanced text-sky-450"></i>
-        <h1 class="font-heading font-bold text-slate-200 font-heading">Lesson 31: Agree & Disagree</h1>
+        <i class="fa-solid fa-feather text-teal-500"></i>
+        <h1 class="font-heading font-bold text-slate-700 dark:text-slate-200">Lesson 31: Texture & Surfaces</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-850 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates adaptive radar recalibration) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Recalibrate Signals">
-          <i class="fa-solid fa-arrows-spin text-sm text-sky-450"></i>
+        <!-- Light / Dark mode toggle -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-850 transition shadow-sm" id="theme-toggle" title="Toggle Adaptive Theme">
+          <i class="fa-solid fa-moon text-sm text-teal-500"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
-          <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-350" id="lesson-mastery-ratio">0/30 Mastered</span>
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 border border-slate-200 px-3 py-1.5 dark:bg-slate-900 dark:border-slate-800">
+          <div class="h-2 w-2 rounded-full bg-teal-400 animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-350" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -163,50 +162,50 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-950/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white/70 dark:border-slate-800 dark:bg-slate-955/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-450 uppercase">Arbitration Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-400 uppercase">Sensory Modules</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-sky-500/10 text-sky-300 border border-sky-500/20">
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-teal-500/10 text-teal-600 dark:text-teal-300 border border-teal-500/20">
             <i class="fa-solid fa-book-open text-base"></i>
-            <span>Dossier & Glossary</span>
+            <span>Curriculum & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-500 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-clone text-base"></i>
             <span>3D Flashcards</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
-            <i class="fa-solid fa-gavel text-base"></i>
-            <span>Graded Treaty Exam</span>
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-500 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
+            <i class="fa-solid fa-clipboard-check text-base"></i>
+            <span>Graded Texture Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-500 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-500 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-500 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Diplomatic Lexicon</span>
+            <span>Tactile Lexicon</span>
           </button>
         </div>
         
         <!-- User Echolocation Security Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
-          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-sky-500/10 rounded-full radar-beam"></div>
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 p-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-teal-500/10 rounded-full radar-beam"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-magnifying-glass-chart text-sky-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Diplomatic Standing</span>
+            <i class="fa-solid fa-magnifying-glass-chart text-teal-500"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Surface Profile</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-sky-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Synthesize consensus and master agreements. Complete tasks to elevate to the Grand Chancellor ranking!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-teal-600 dark:text-teal-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed">Map surface, skin, water, voice, and food textures. Complete evaluations to unlock the Sensory Specialist rank!</p>
         </div>
       </nav>
 
@@ -217,69 +216,81 @@
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+            <!-- Left Side: Interactive Curriculum -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Arbitration Accord</h2>
-                  <p class="text-xs text-slate-400 mt-1">Explore precise agreements and deep disputes. Click highlighted collocations to pull up definition cards.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">Interactive Curriculum: Texture</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Explore descriptions of surfaces, skin, liquids, and foods. Click any highlighted collocation to view its grammatical insights.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-sky-500/10 transition">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-teal-500 hover:bg-teal-600 text-slate-955 rounded-xl text-sm font-bold shadow-md shadow-teal-500/10 transition shrink-0">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Broadcast Address</span>
+                  <span>Broadcast Lesson</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-350 font-sans tracking-wide space-y-6">
+              <!-- Core PDF Text Content -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-650 dark:text-slate-300 font-sans tracking-wide space-y-6">
                 <p>
-                  At the annual assembly of the Trade Federation, delegates met hoping to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="settle_dispute">settle a dispute</span> that had disrupted maritime supply routes. Initially, negotiators held a <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="matter_opinion">matter of opinion</span> over cargo tariffs, causing a highly <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="heated_debate">heated debate</span>. Many representatives chose to <span class="colloc-ref cursor-pointer font-bold text-indigo-400 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="play_it_safe">play it safe</span>, but the opposing factions were <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="poles_apart">poles apart</span> in their core demands.
+                  The word <strong>"texture"</strong> refers to the way something feels, and there are many different collocations used to describe it. Let's look at them in pairs of opposites.
                 </p>
                 <p>
-                  "To be honest," remarked the chief arbiter, "establishing a sustainable model is an <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="uphill_battle">uphill battle</span> when both teams <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="flatly_contradict">flatly contradict</span> one another's data." He urged the delegations to find common ground. "We don't need to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="reinvent_wheel">reinvent the wheel</span>. We must draft a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="written_agreement">written agreement</span> that honors everyone's baseline parameters."
+                  First, let's look at <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="dry_hair">dry hair</span> versus <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="oily_hair">oily hair</span> or <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="greasy_hair">greasy hair</span>. You need to wash oily hair more often than you need to wash dry hair. We also distinguish between <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="dry_skin">dry skin</span> and <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="oily_skin">oily skin</span>. Oily skin is prone to acne, whereas dry skin often needs moisturizer.
                 </p>
                 <p>
-                  Although they entered into a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="verbal_agreement">verbal agreement</span> regarding regional boundaries, resolving the main tariff schedules remained a <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="matter_dispute">matter of dispute</span>. There was a <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="major_disagreement">major disagreement</span> regarding labor standards. Some delegates voiced an <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="unshakable_belief">unshakable belief</span> that local markets would collapse if forced to adopt foreign rules. The friction triggered a <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="bitter_dispute">bitter dispute</span> that delayed the final summit draft.
+                  Surfaces such as the ground, a road, and your skin can be a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="smooth_surface">smooth surface</span> (with a consistent surface) or a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="rough_surface">rough surface</span> (with a varied surface).
                 </p>
                 <p>
-                  To avoid a complete breakdown, the delegates worked all night to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="reach_compromise">reach a compromise</span>. When they finally presented the revised code, there was a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="unanimous_agreement">unanimous agreement</span>. The core concepts were <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="crystal_clear">crystal clear</span>. After both sides vowed to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="abide_by">abide by the agreement</span>, the ambassadors stepped forward to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="shake_hands">shake hands on the agreement</span>, bringing lasting stability to the regional ports.
+                  The water of the ocean is <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="calm_water">calm water</span> when the weather is mild, and it is <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="choppy_water">choppy water</span> or <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="rough_water">rough water</span> when there are high winds. A mattress or pillow, for example, can be a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="hard_object">hard object</span> or a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="soft_object">soft object</span>.
+                </p>
+                <p>
+                  Meat that is <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="tender_meat">tender meat</span> is easy to cut and chew, and meat that is <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="tough_meat">tough meat</span> is difficult to cut and chew. A knife or a pencil can have a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="sharp_blade">sharp blade</span> (meaning it can cut easily) or a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="dull_blade">dull blade</span> (meaning it has lost its ability to cut).
+                </p>
+                <p>
+                  The verbs <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="soften">soften</span> and <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="harden">harden</span> describe the process of becoming soft and becoming hard. For example, potatoes soften when you cook them in boiling water, while snow hardens if the temperature decreases and the snow begins turning into ice.
+                </p>
+                <p>
+                  We can also use "soften" and "harden" in a more metaphorical way - we can say a person's <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="voice_softens">voice softens</span> when they begin speaking in a more friendly tone, and their <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="voice_hardens">voice hardens</span> when they begin speaking in a less friendly tone. A person's <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="attitude_softens">attitude softens</span> (becomes more friendly/tolerant) or <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="attitude_hardens">attitude hardens</span> (becomes less friendly/less tolerant).
+                </p>
+                <p>
+                  Texture words are often used when describing food. The word <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="creamy">creamy</span> describes a smooth and rich texture, like cream, typical for a <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="creamy_sauce">creamy alfredo sauce</span>, soup, pudding, or chocolate. Foods that make a noise when you chew them can be described as <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="crunchy">crunchy</span> or <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="crispy">crispy</span> (like crackers, chips, <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="crispy_bacon">crispy bacon</span>, or granola). Caramels are <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="chewy">chewy</span>, which can be negative when meat is overcooked and becomes tough and chewy. Finally, <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="greasy">greasy</span> describes oily food, such as a greasy hamburger, <span class="colloc-ref cursor-pointer font-bold text-teal-600 dark:text-teal-400 border-b-2 border-dashed border-teal-500 hover:bg-teal-500/10 px-1 rounded transition" data-id="greasy_fries">greasy French fries</span>, or chicken wings.
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-[#111827] to-[#020617] border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-white rounded-3xl p-6 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-sky-400 animate-pulse" id="glossary-category">Consensus Parameter</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-teal-500 animate-pulse" id="glossary-category">Sensory Profile</span>
                   <div class="flex items-center gap-2">
-                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-700 dark:text-slate-350 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
                     </button>
-                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-white/10 dark:hover:bg-white/20 text-slate-700 dark:text-slate-350 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
                       <i class="fa-regular fa-star"></i>
                     </button>
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-sky-300" id="glossary-phrase">settle a dispute</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-teal-600 dark:text-teal-300" id="glossary-phrase">dry hair</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To resolve an ongoing conflict, argument, or legal battle through arbitration or compromise.</p>
+                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">Hair lacking sufficient moisture or natural oils; feels brittle.</p>
                 
-                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Delegates met hoping to settle a dispute that had disrupted supply routes."</p>
+                <div class="bg-slate-100 dark:bg-white/5 rounded-2xl p-4 border border-slate-200 dark:border-white/10 space-y-1.5">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase">Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-700 dark:text-slate-100" id="glossary-example">"You need to wash oily hair more often than dry hair."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-sky-400"></i>
-                  <span>Linguistic Diplomacy</span>
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-teal-500"></i>
+                  <span>Tactile Boundaries</span>
                 </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  Consensus layouts operate under distinct semantic boundaries. You **reach a compromise** but never 'gain' it. Factions are described as **poles apart** rather than 'worlds apart' in standard collocations. This laboratory is engineered to lock these structures into memory.
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+                  English separates textures clearly. **Water** is described as **calm** or **choppy**, while **meat** is classified as **tender** or **tough**. **Blades** can be **sharp** or **dull**. Metaphorically, a person's voice or attitude can **soften** or **harden** over time.
                 </p>
               </div>
             </div>
@@ -291,10 +302,10 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight">Arbitration Flashcards</h2>
-                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Tactile Flashcards</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-slate-100 dark:bg-[#020617] border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
                 <span class="text-slate-500">/</span>
                 <span>30</span>
@@ -302,56 +313,56 @@
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-sky-400 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-teal-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-teal-500/10 text-teal-600 dark:text-teal-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
                     <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
                   <div class="text-center text-xs text-slate-400">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-sky-950 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-white to-teal-50 dark:from-slate-950 dark:to-teal-955 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-slate-800 dark:text-white font-medium">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-sky-450 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-sky-450 font-semibold">Semantic Profile</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-teal-500/10 text-teal-600 dark:text-teal-450 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-teal-600 dark:text-teal-455 font-semibold">Semantic Profile</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-sky-450 uppercase tracking-widest font-black">Definition</span>
-                      <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
+                      <span class="text-[10px] text-teal-600 dark:text-teal-455 uppercase tracking-widest font-black">Definition</span>
+                      <p class="text-base font-semibold leading-relaxed text-slate-700 dark:text-slate-100" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
-                    <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-sky-450 uppercase tracking-widest font-black">Luminous Context</span>
-                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    <div class="border-t border-slate-200 dark:border-white/10 pt-3">
+                      <span class="text-[10px] text-teal-600 dark:text-teal-455 uppercase tracking-widest font-black">Luminous Context</span>
+                      <p class="text-xs sm:text-sm italic text-slate-600 dark:text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
                   
-                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                  <div class="flex items-center justify-between border-t border-slate-200 dark:border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
-                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-sky-500 focus:ring-sky-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-300">Mark as Decoded</span>
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-teal-500 focus:ring-teal-500 bg-transparent border-slate-300 dark:border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-600 dark:text-slate-300">Mark as Decoded</span>
                     </label>
-                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                    <span class="text-slate-500 dark:text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
                   </div>
                 </div>
               </div>
@@ -359,12 +370,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 font-semibold text-slate-700 dark:text-slate-200 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-teal-500 hover:bg-teal-600 text-slate-955 font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -377,26 +388,26 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 31 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct diplomatic collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 31 Graded Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Directly matching the dual sentence segments from the Lesson 31 Quiz sheet.</p>
                 </div>
-                <div class="bg-sky-500/10 text-sky-300 border border-sky-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-teal-500/10 text-teal-600 dark:text-teal-300 border border-teal-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono shrink-0">
+                  Segment <span id="quiz-question-current">1</span> of 12
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-emerald-500 to-indigo-500 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-teal-500 to-indigo-500 h-full transition-all duration-300" style="width: 8%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 font-mono">Active Treaty Draft</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-teal-500 dark:text-teal-450 font-mono">Unfinished Sentence Frame</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-800 dark:text-white">"Loading sentence..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -405,20 +416,20 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-900/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-955/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-teal-600 dark:text-teal-455 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Treaty Counselor's Note</span>
+                  <span>Curriculum Verification Note</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Explanation details...</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
                   <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-405 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
                   <span>Next Question</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -426,38 +437,38 @@
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-[#090d16] rounded-3xl p-8 border border-slate-800 shadow-md space-y-8 text-center">
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-[#090d16] rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-8 text-center">
               <div class="space-y-3">
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-sky-500/10 text-sky-400">
-                  <i class="fa-solid fa-file-contract text-3xl animate-bounce"></i>
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-teal-500/10 text-teal-500">
+                  <i class="fa-solid fa-square-check text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black">Arbitration Clearance Granted!</h2>
-                <p class="text-sm text-slate-400">Analysis completed. Review your diplomatic metrics.</p>
+                <h2 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100">Segment Alignment Complete!</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Evaluation finished. Review your surface analysis scores.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Consensus Established</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-400 font-mono">Sensory Matches</span>
+                  <span class="text-2xl font-black text-teal-600 dark:text-teal-400 font-mono" id="quiz-score-correct">12/12</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Accuracy Rate</span>
-                  <span class="text-2xl font-black text-sky-400 font-mono" id="quiz-score-percent">90%</span>
+                <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-400 font-mono">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-teal-600 dark:text-teal-400 font-mono" id="quiz-score-percent">100%</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Diplomatic Rank</span>
-                  <span class="text-xs sm:text-sm font-bold text-sky-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Senior Negotiator</span>
+                <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-400 font-mono">Tactile Rank</span>
+                  <span class="text-xs sm:text-sm font-bold text-teal-655 dark:text-teal-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Sensory Specialist</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold text-sm transition">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-teal-500 hover:bg-teal-600 text-slate-955 font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate</span>
+                  <span>Re-examine</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-semibold text-sm hover:bg-slate-800 transition">
-                  <span>Back to Dossier</span>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-semibold text-slate-700 dark:text-slate-300 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                  <span>Back to Lesson</span>
                 </button>
               </div>
             </div>
@@ -468,27 +479,27 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Arbitration Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom corporate proposals, dispute briefs, or trade treaties using Lesson 31 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Sensory Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Compose sentences detailing textures, surfaces, and cooking states. The model verifies correct tactile collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-sky-450"></i> Get Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-300 dark:border-slate-750 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-lightbulb mr-1 text-teal-500"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-sky-500/10 text-sky-300 hover:bg-sky-500/20 text-xs font-bold rounded-xl transition border border-sky-500/25">
-                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-teal-500/10 text-teal-600 dark:text-teal-300 hover:bg-teal-500/20 text-xs font-bold rounded-xl transition border border-teal-500/25">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Chip
                   </button>
                 </div>
               </div>
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono">Briefing Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm font-medium focus:border-sky-500 focus:bg-slate-900 outline-none transition text-slate-100" placeholder="Example: Although the opposing parties were initially poles apart, we managed to reach a compromise and sign a written agreement..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono">Surface Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-955 p-4 text-sm font-medium focus:border-teal-500 dark:focus:border-teal-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition text-slate-800 dark:text-slate-100" placeholder="Example: After years of manual labor, the skin on his hands was rough, but his voice softened as he talked about his family..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -497,55 +508,55 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-500 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-zinc-950 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-teal-500 hover:bg-teal-600 text-slate-955 rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Treaty Syntax</span>
+                  <span>Scan Texture Syntax</span>
                 </button>
               </div>
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Diplomatic Pattern Scan</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Texture Pattern Scan</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40">Teal Alignment</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800">
-                    <span class="text-3xl font-black font-mono tracking-tight text-sky-400" id="diagnostic-score">92</span>
-                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-slate-800">
+                    <span class="text-3xl font-black font-mono tracking-tight text-teal-600 dark:text-teal-400" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
                 
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed">Analyzing diplomatic structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-405 font-mono block mb-0.5">Syntactical Texture Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Analyzing tactile phrases...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Consensus Integrity Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed">Measuring alchemical synchronization...</p>
+                  <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-405 font-mono block mb-0.5">Consensus Integrity Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Measuring physical matches...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-1">Recommended Editorial Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-250 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-slate-100 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono block mb-1">Recommended Editorial Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
                   </button>
                 </div>
@@ -558,46 +569,46 @@
         <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-[#111827] text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
               <div class="flex items-center justify-between pb-4 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                  <span class="flex h-3 w-3 rounded-full bg-sky-500 animate-pulse"></span>
+                  <span class="flex h-3 w-3 rounded-full bg-teal-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 31</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Arbitration Room: Consensus, Debates, and Disputes</p>
+                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Acoustic Room: Surfaces, Opposites, and Foods</p>
                   </div>
                 </div>
-                <div class="bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-teal-500/10 text-teal-400 border border-teal-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
-                <div class="wave-bar bg-sky-450 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
-                <div class="wave-bar bg-sky-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
-                <div class="wave-bar bg-sky-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-teal-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-teal-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-teal-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
                 <div class="wave-bar bg-emerald-500 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
                 <div class="wave-bar bg-emerald-650 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
-                <div class="wave-bar bg-sky-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+                <div class="wave-bar bg-teal-500 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-sky-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "reach a compromise"</h3>
-                <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing agreement, disagreement, and arbitration collocations from Lesson 31.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-teal-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "tender meat"</h3>
+                <p class="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing surface texture collocations from Lesson 31.</p>
               </div>
               
               <!-- Dialogue Box -->
               <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
-                  <div class="h-6 w-6 rounded bg-sky-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+                  <div class="h-6 w-6 rounded bg-teal-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-sky-400 font-mono">Sarah (Lead Mediator)</span>
-                    <p class="text-xs text-slate-300">"Welcome to the negotiation table. Today we focus on Lesson 31 Agreement and Disagreement collocations!"</p>
+                    <span class="text-[10px] font-bold text-teal-400 font-mono">Sarah (Lead Analyst)</span>
+                    <p class="text-xs text-slate-300">"Welcome to the Sensory Lab. Today we focus on Lesson 31: Texture, examining oppositions and properties."</p>
                   </div>
                 </div>
               </div>
@@ -608,7 +619,7 @@
                   <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-sky-500 to-sky-700 text-slate-950 hover:from-sky-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-teal-500 to-teal-700 text-slate-955 hover:from-teal-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
                   <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
@@ -618,12 +629,12 @@
                 
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
-                  <div class="flex items-center justify-between text-[10px] text-sky-300">
+                  <div class="flex items-center justify-between text-[10px] text-teal-350">
                     <span id="podcast-time-passed">Card 0/30</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                    <div id="podcast-loading-meter" class="bg-sky-400 h-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="podcast-loading-meter" class="bg-teal-400 h-full transition-all duration-300" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -634,30 +645,31 @@
         
         <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Diplomatic Lexicon</h2>
-                <p class="text-xs text-slate-455">Search and filter active consensus and dispute collocations inside the Lesson 31 registry.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">Tactile Lexicon</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Search and filter active sensory and touch collocations inside the Lesson 31 registry.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-sky-500 transition w-full md:w-48" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-300 rounded-xl text-xs bg-slate-50 dark:bg-slate-955 text-slate-800 dark:text-white outline-none focus:border-teal-500 transition w-full md:w-48" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 rounded-xl text-xs bg-slate-50 dark:bg-slate-955 text-slate-650 dark:text-slate-300 outline-none font-bold font-mono border-slate-300 dark:border-slate-750">
                   <option value="all">All Sub-categories</option>
-                  <option value="Agreement">Agreement & Harmony</option>
-                  <option value="Disagreement">Disagreement & Dispute</option>
-                  <option value="Compromise">Compromise & Treaties</option>
-                  <option value="Conflict">Conflict & Arguments</option>
+                  <option value="Hair & Skin">Hair & Skin</option>
+                  <option value="Surfaces & Liquids">Surfaces & Liquids</option>
+                  <option value="Objects & Meat">Objects, Blades & Meat</option>
+                  <option value="Transition Verbs">Verbs & Metaphors</option>
+                  <option value="Food Texture">Food Textures</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 rounded-xl text-xs bg-slate-50 dark:bg-slate-955 text-slate-650 dark:text-slate-300 outline-none font-bold font-mono border-slate-300 dark:border-slate-750">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -669,16 +681,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
-                    <th class="py-3 px-4 w-32">Arbitration Group</th>
+                    <th class="py-3 px-4 w-32">Tactile Group</th>
                     <th class="py-3 px-4">Core Definition</th>
                     <th class="py-3 px-4 hidden lg:table-cell">Luminous Precedent Example</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-sans">
+                <tbody id="dictionary-rows" class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -691,28 +703,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden shrink-0 z-30 shadow-md dark:border-slate-800 dark:bg-slate-900">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-405 hover:text-teal-500">
         <i class="fa-solid fa-scroll text-base"></i>
-        <span class="text-[9px] font-bold">Story</span>
+        <span class="text-[9px] font-bold">Curriculum</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-405 hover:text-teal-500">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-405 hover:text-teal-500">
         <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-405 hover:text-teal-500">
         <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-405 hover:text-teal-500">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-405 hover:text-teal-500">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -722,10 +734,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-[#111827] rounded-3xl p-6 border border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-[#111827] rounded-3xl p-6 border border-slate-200 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-slate-800 dark:text-white">Sensory Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-404 hover:text-slate-800 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -733,45 +745,45 @@
       <!-- Selection of Voices -->
       <div class="space-y-4">
         <div class="space-y-1.5">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-slate-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-slate-200 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-955 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono font-bold">
             <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
-          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-sky-500">
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-teal-500">
         </div>
         
         <!-- Pitch Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono font-bold">
             <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
-          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-sky-500">
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-teal-500">
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-sky-500 hover:bg-sky-600 text-slate-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-teal-500 hover:bg-teal-600 text-slate-955 dark:text-slate-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300">
-    <div class="h-8 w-8 rounded-lg bg-white/10 text-sky-400 flex items-center justify-center shrink-0">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-white dark:bg-[#111827] text-slate-800 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-teal-50 dark:bg-white/10 text-teal-500 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
       <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-350 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+      <p class="text-[11px] text-slate-505 dark:text-slate-350 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
     </div>
   </div>
 
@@ -787,61 +799,52 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'share_opinion', phrase: 'share an opinion', definition: 'To hold the identical perspective or view on a subject as another person.', example: 'Negotiators quickly realized they share an opinion on reducing customs fees.', category: 'Agreement', mastered: false },
-        { id: 'share_view', phrase: 'share a view', definition: 'To share the same outlook or general assessment on a specific topic.', example: 'My colleague and I share a view regarding the market risks.', category: 'Agreement', mastered: false },
-        { id: 'agree_completely', phrase: 'agree completely', definition: 'To possess zero disagreement; to be in absolute alignment.', example: 'The trade partners agree completely on the shipping safety measures.', category: 'Agreement', mastered: false },
-        { id: 'agree_heartily', phrase: 'agree heartily', definition: 'To support an opinion with great warmth, enthusiasm, and sincerity.', example: 'The council members agree heartily with the proposed structural amendments.', category: 'Agreement', mastered: false },
-        { id: 'agree_warmly', phrase: 'agree warmly', definition: 'To politely and cordially endorse another person\'s outlook.', example: 'The chancellor agreed warmly to host the next regional summit.', category: 'Agreement', mastered: false },
-        { id: 'agree_principle', phrase: 'agree in principle', definition: 'To support the general concept of an plan, even if specifics are unresolved.', example: 'We agree in principle, but the exact financial schedules require revision.', category: 'Compromise', mastered: false },
-        { id: 'unanimous_agreement', phrase: 'unanimous agreement', definition: 'When 100% of the participants in a discussion vote or decide identically.', example: 'There was a unanimous agreement on the revised maritime labor code.', category: 'Agreement', mastered: false },
-        { id: 'widely_shared', phrase: 'widely shared view', definition: 'An opinion or outlook endorsed by a large majority of citizens or experts.', example: 'It is a widely shared view that free trade builds regional prosperity.', category: 'Agreement', mastered: false },
-        { id: 'widely_held', phrase: 'widely held belief', definition: 'A deep conviction held in common by a vast number of individuals.', example: 'It was a widely held belief that the dispute would end by spring.', category: 'Agreement', mastered: false },
-        { id: 'reach_compromise', phrase: 'reach a compromise', definition: 'Arriving at an accord where both conflicting sides yield some demands.', example: 'The trade unions worked overnight to reach a compromise on working hours.', category: 'Compromise', mastered: false },
-        { id: 'settle_dispute', phrase: 'settle a dispute', definition: 'Resolving an active argument, legal challenge, or contract issue permanently.', example: 'The mediators arrived to help settle a dispute concerning water tariffs.', category: 'Compromise', mastered: false },
-        { id: 'agree_disagree', phrase: 'agree to disagree', definition: 'Choosing to stop debating when you realize consensus is impossible.', example: 'After four hours of gridlock, the ambassadors chose to agree to disagree.', category: 'Compromise', mastered: false },
-        { id: 'uphill_battle', phrase: 'uphill battle', definition: 'An exceptionally hard, exhausting task requiring immense stamina and patience.', example: 'Drafting a comprehensive global treaty remains a severe uphill battle.', category: 'Conflict', mastered: false },
-        { id: 'flatly_contradict', phrase: 'flatly contradict', definition: 'To assert the exact opposite of a statement clearly and directly.', example: 'His claims flatly contradict the physical telemetry logs.', category: 'Conflict', mastered: false },
-        { id: 'differ_widely', phrase: 'differ widely', definition: 'When two or more sets of parameters or opinions are extremely divergent.', example: 'The local statistics differ widely from the central estimates.', category: 'Disagreement', mastered: false },
-        { id: 'poles_apart', phrase: 'poles apart', definition: 'Having completely opposite views with no visible hope of agreement.', example: 'Initially, the two manufacturing cartels were poles apart.', category: 'Disagreement', mastered: false },
-        { id: 'matter_dispute', phrase: 'matter of dispute', definition: 'A specific topic or clause that is still actively argued or unsettled.', example: 'The exact maritime boundary remains a major matter of dispute.', category: 'Conflict', mastered: false },
-        { id: 'conflict_interest', phrase: 'conflict of interest', definition: 'A situation where personal stakes undermine professional duties.', example: 'The judge was removed due to an obvious conflict of interest.', category: 'Conflict', mastered: false },
-        { id: 'bitter_dispute', phrase: 'bitter dispute', definition: 'A deeply hostile, emotional, and long-standing disagreement.', example: 'They entered a bitter dispute over the distribution of company assets.', category: 'Disagreement', mastered: false },
-        { id: 'strong_disagreement', phrase: 'strong disagreement', definition: 'An unyielding, intense difference of opinion.', example: 'He voiced strong disagreement concerning the safety exemptions.', category: 'Disagreement', mastered: false },
-        { id: 'shake_hands', phrase: 'shake hands on the agreement', definition: 'Finalizing an agreement physically or cordially via a handshake.', example: 'They stepped forward to shake hands on the agreement at the podium.', category: 'Compromise', mastered: false },
-        { id: 'compromise_reached', phrase: 'compromise was reached', definition: 'When a balanced mutual settlement is successfully finalized.', example: 'An economic compromise was reached after three days of talks.', category: 'Compromise', mastered: false },
-        { id: 'verbal_agreement', phrase: 'verbal agreement', definition: 'An unwritten, oral pact established purely through conversation.', example: 'They held a verbal agreement, but their legal team wanted it written.', category: 'Agreement', mastered: false },
-        { id: 'written_agreement', phrase: 'written agreement', definition: 'A formal, signed document that legally binds both participating teams.', example: 'They signed a written agreement before the cargo was shipped.', category: 'Agreement', mastered: false },
-        { id: 'enter_agreement', phrase: 'enter into an agreement', definition: 'Formally committing to and signing a legal contract or pact.', example: 'The two countries entered into an agreement to reduce carbon output.', category: 'Compromise', mastered: false },
-        { id: 'breach_agreement', phrase: 'breach the agreement', definition: 'To violate, break, or fail to follow the clauses of a signed contract.', example: 'If they delay the delivery again, they will breach the agreement.', category: 'Conflict', mastered: false },
-        { id: 'abide_by', phrase: 'abide by the agreement', definition: 'Strictly following and respecting the rules laid out in a contract.', example: 'Both sides promised they would abide by the agreement.', category: 'Compromise', mastered: false },
-        { id: 'grave_disagreement', phrase: 'grave disagreement', definition: 'An extremely serious, high-consequence conflict of opinion.', example: 'A grave disagreement over nuclear testing led to a recall of delegates.', category: 'Disagreement', mastered: false },
-        { id: 'ongoing_dispute', phrase: 'ongoing dispute', definition: 'A conflict that has persisted for a long, unresolved duration.', example: 'The ongoing dispute over fishing rights continues to strain borders.', category: 'Conflict', mastered: false },
-        { id: 'unshakable_belief', phrase: 'unshakable belief', definition: 'A deeply held, unalterable conviction that cannot be swayed.', example: 'He had an unshakable belief that justice would eventually prevail.', category: 'Agreement', mastered: false }
+        { id: 'dry_hair', phrase: 'dry hair', definition: 'Hair lacking sufficient moisture or natural oils; feels brittle.', example: 'You need to wash oily hair more often than dry hair.', category: 'Hair & Skin', mastered: false },
+        { id: 'oily_hair', phrase: 'oily hair', definition: 'Hair that accumulates excess natural sebum or grease quickly.', example: 'Oily hair requires frequent washing to look clean.', category: 'Hair & Skin', mastered: false },
+        { id: 'greasy_hair', phrase: 'greasy hair', definition: 'An alternative descriptor for hair covered in excess natural oils.', example: 'Her greasy hair was a result of skipped washes during the trip.', category: 'Hair & Skin', mastered: false },
+        { id: 'dry_skin', phrase: 'dry skin', definition: 'Skin surface showing a lack of standard cellular hydration or lipids.', example: 'Dry skin often needs moisturizer to avoid irritation.', category: 'Hair & Skin', mastered: false },
+        { id: 'oily_skin', phrase: 'oily skin', definition: 'Skin that produces excessive sebum; highly prone to breakouts.', example: 'Oily skin is prone to acne, particularly in hot climates.', category: 'Hair & Skin', mastered: false },
+        { id: 'smooth_surface', phrase: 'smooth surface', definition: 'A surface showing consistent, uniform leveling with no bumps.', example: 'Surfaces such as roads, tables, and skin can be smooth.', category: 'Surfaces & Liquids', mastered: false },
+        { id: 'rough_surface', phrase: 'rough surface', definition: 'A surface showing varied, uneven, or coarse physical elevations.', example: 'The rough surface of the sandpaper tore through the wood easily.', category: 'Surfaces & Liquids', mastered: false },
+        { id: 'calm_water', phrase: 'calm water', definition: 'Liquid surfaces showing zero waves, ripples, or wind disruptions.', example: 'The ocean is calm water when the weather is mild and windless.', category: 'Surfaces & Liquids', mastered: false },
+        { id: 'choppy_water', phrase: 'choppy water', definition: 'Liquid surface broken by small, rapid, irregular wave formations.', example: 'The choppy water of the bay made small boats sway violently.', category: 'Surfaces & Liquids', mastered: false },
+        { id: 'rough_water', phrase: 'rough water', definition: 'Liquid surface marked by heavy, powerful waves from high winds.', example: 'Rough water is common in the open ocean during storm cycles.', category: 'Surfaces & Liquids', mastered: false },
+        { id: 'hard_object', phrase: 'hard object', definition: 'A solid object that resists pressure, indents, or structural molding.', example: 'That old orthopedic mattress is a remarkably hard object.', category: 'Objects & Meat', mastered: false },
+        { id: 'soft_object', phrase: 'soft object', definition: 'An object that yields easily to physical pressure, like a pillow.', example: 'Her new goose-down pillow is a delightfully soft object.', category: 'Objects & Meat', mastered: false },
+        { id: 'tender_meat', phrase: 'tender meat', definition: 'Meat cooked perfectly, making it very easy to cut and chew.', example: 'She cooked the beef chuck until it was tender meat.', category: 'Objects & Meat', mastered: false },
+        { id: 'tough_meat', phrase: 'tough meat', definition: 'Meat that is overly firm, fibrous, and very difficult to chew.', example: 'The flank was overcooked, resulting in tough meat.', category: 'Objects & Meat', mastered: false },
+        { id: 'sharp_blade', phrase: 'sharp blade', definition: 'A blade containing a fine, clean edge designed to cut easily.', example: 'A chef always relies on a sharp blade to slice tomatoes.', category: 'Objects & Meat', mastered: false },
+        { id: 'dull_blade', phrase: 'dull blade', definition: 'A blade that has lost its clean edge and struggles to cut.', example: 'Avoid slicing vegetables with a dull blade as it can slip.', category: 'Objects & Meat', mastered: false },
+        { id: 'soften', phrase: 'soften', definition: 'The physical action of becoming soft, or speaker voice modulation.', example: 'Potatoes soften when cooked in boiling water for some time.', category: 'Transition Verbs', mastered: false },
+        { id: 'harden', phrase: 'harden', definition: 'The physical state change of freezing solid, or attitude becoming strict.', example: 'Snow hardens as temperatures decrease, turning into ice.', category: 'Transition Verbs', mastered: false },
+        { id: 'voice_softens', phrase: 'voice softens', definition: 'Speaking in a highly friendly, warm, or gentle tone of voice.', example: 'A mother\'s voice softens when speaking to her newborn child.', category: 'Transition Verbs', mastered: false },
+        { id: 'voice_hardens', phrase: 'voice hardens', definition: 'Speaking in a harsh, cold, or highly unfriendly tone of voice.', example: 'His voice hardens whenever he brings up the legal audit.', category: 'Transition Verbs', mastered: false },
+        { id: 'attitude_softens', phrase: 'attitude softens', definition: 'Becoming significantly more friendly, tolerant, or lenient.', example: 'After reviewing our progress, the client\'s attitude softens.', category: 'Transition Verbs', mastered: false },
+        { id: 'attitude_hardens', phrase: 'attitude hardens', definition: 'Becoming significantly less friendly, more strict, or stubborn.', example: 'Her attitude hardens when colleagues miss safety targets.', category: 'Transition Verbs', mastered: false },
+        { id: 'creamy', phrase: 'creamy', definition: 'A smooth, rich texture resembling fresh cream or dairy fat.', example: 'Sauces, soups, and puddings are appreciated when creamy.', category: 'Food Texture', mastered: false },
+        { id: 'crunchy', phrase: 'crunchy', definition: 'Food that makes a sharp cracking sound when chewed.', example: 'Granola, celery, and chips are classically crunchy.', category: 'Food Texture', mastered: false },
+        { id: 'crispy', phrase: 'crispy', definition: 'Food with a thin, brittle outer texture that cracks when chewed.', example: 'I like my bacon cooked until it is completely crispy.', category: 'Food Texture', mastered: false },
+        { id: 'chewy', phrase: 'chewy', definition: 'Food requiring continuous physical effort to break down before swallowing.', example: 'Caramels are meant to be chewy, but tough meat is not.', category: 'Food Texture', mastered: false },
+        { id: 'greasy', phrase: 'greasy', definition: 'Food containing a visible, heavy amount of oil or fat.', example: 'Fast-food establishments often serve greasy french fries.', category: 'Food Texture', mastered: false },
+        { id: 'greasy_fries', phrase: 'greasy fries', definition: 'Oily, deep-fried potato strips that leave heavy residue on hands.', example: 'I felt sluggish after eating a large box of greasy fries.', category: 'Food Texture', mastered: false },
+        { id: 'crispy_bacon', phrase: 'crispy bacon', definition: 'Pork belly cooked until completely dry and brittle.', example: 'Breakfast scrambles taste best when paired with crispy bacon.', category: 'Food Texture', mastered: false },
+        { id: 'creamy_sauce', phrase: 'creamy alfredo sauce', definition: 'Rich, smooth pasta sauce made of melted cheese, butter, and cream.', example: 'Pasta served with creamy alfredo sauce is my absolute favorite.', category: 'Food Texture', mastered: false }
       ],
-      // Exactly 20 high-fidelity scenario multiple-choice questions
       quiz: [
-        { id: 1, question: "After months of negotiations, the border teams finally managed to ________ and sign the tariff accord.", options: ["breach the agreement", "settle a dispute", "flatly contradict"], answer: "settle_dispute", explanation: "Resolving an active argument or conflict is to 'settle a dispute'." },
-        { id: 2, question: "Both CEOs declared that they ________ regarding the necessity of reducing carbon output.", options: ["differ widely", "share an opinion", "flatly contradict"], answer: "share_opinion", explanation: "To have the identical perspective is to 'share an opinion'." },
-        { id: 3, question: "The newly hired audit specialist\'s claims ________ the automated logs retrieved from the network hub.", options: ["agree heartily", "flatly contradict", "abide by the agreement"], answer: "flatly_contradict", explanation: "Asserting the exact opposite of another statement is to 'flatly contradict'." },
-        { id: 4, question: "The board members ________ with the proposed infrastructure expansion, voting 'yes' without delay.", options: ["differed widely", "agreed completely", "breached the agreement"], answer: "agree_completely", explanation: "Being in absolute alignment with no dissent is to 'agree completely'." },
-        { id: 5, question: "Although we ________ on the ultimate objective, the exact logistical budget remains a minor point of contention.", options: ["agree in principle", "breach the agreement", "are poles apart"], answer: "agree_principle", explanation: "Supporting the general concept of a plan while details are being sorted is to 'agree in principle'." },
-        { id: 6, question: "The union and the company were initially ________, with one demanding a 15% raise and the other offering 0%.", options: ["agreeing heartily", "poles apart", "abiding by the agreement"], answer: "poles_apart", explanation: "Having completely opposite views with no visible hope of meeting is to be 'poles apart'." },
-        { id: 7, question: "It is a ________ that introducing green tech will reduce long-term operational expenditures.", options: ["widely shared view", "bitter dispute", "grave disagreement"], answer: "widely_shared", explanation: "An opinion endorsed by a large majority of citizens or experts is a 'widely shared view'." },
-        { id: 8, question: "If they decide to ship the cargo via an unapproved carrier, they will definitely ________.", options: ["abide by the agreement", "breach the agreement", "settle the dispute"], answer: "breach_agreement", explanation: "Violating the terms of a signed contract is to 'breach an agreement'." },
-        { id: 9, question: "To prevent a lawsuit, the lawyers urged both companies to negotiate and ________.", options: ["reach a compromise", "flatly contradict", "keep in the dark"], answer: "reach_compromise", explanation: "Arriving at an agreement where both sides make concessions is to 'reach a compromise'." },
-        { id: 10, question: "The treaty was signed by all thirty representatives, representing ________ among the member states.", options: ["unanimous agreement", "ongoing dispute", "minor disagreement"], answer: "unanimous_agreement", explanation: "When everyone in a group agrees completely, it is a 'unanimous agreement'." },
-        { id: 11, question: "Because the opposing factions held completely ________ opinions on the land claims, discussions stalled.", options: ["widely differing", "unanimous", "cordial"], answer: "differ_widely", options: ["differing widely", "unanimous", "cordial"], answer: "differ_widely", explanation: "Opinions that are extremely divergent are described as 'differing widely'." },
-        { id: 12, question: "Both leaders stepped up to the podium and decided to ________ before signing the final copies.", options: ["shake hands on the agreement", "breach the agreement", "flatly contradict"], answer: "shake_hands", explanation: "Finalizing a deal physically with a handshake is to 'shake hands on the agreement'." },
-        { id: 13, question: "Whether the contractor should pay for the pipe repairs remains a major ________.", options: ["unanimous agreement", "matter of dispute", "verbal agreement"], answer: "matter_dispute", explanation: "A specific clause or topic that is still actively argued is a 'matter of dispute'." },
-        { id: 14, question: "The director had to excuse herself from the vendor selection due to a clear ________.", options: ["conflict of interest", "unanimous agreement", "written agreement"], answer: "conflict_interest", explanation: "When personal stakes clash with professional duties, it is a 'conflict of interest'." },
-        { id: 15, question: "Our team voiced ________ concerning the dangerous testing exemptions.", options: ["strong disagreement", "verbal agreement", "unanimous agreement"], answer: "strong_disagreement", explanation: "An intense, unyielding difference of opinion is a 'strong disagreement'." },
-        { id: 16, question: "Both companies signed a formal ________ before sharing their proprietary code bases.", options: ["written agreement", "verbal agreement", "matter of dispute"], answer: "written_agreement", explanation: "A legally binding signed document is a 'written agreement'." },
-        { id: 17, question: "Although we made a ________, we still need our legal team to draft a formal contract.", options: ["verbal agreement", "grave disagreement", "written agreement"], answer: "verbal_agreement", explanation: "An informal, spoken agreement is a 'verbal agreement' or 'verbal contract' (represented here as 'verbal agreement/arrangements')." },
-        { id: 18, question: "The delegates shook hands, promising they would fully ________ and fulfill all trade quotas.", options: ["abide by the agreement", "breach the agreement", "differ widely"], answer: "abide_by", explanation: "Respecting and following the rules of a contract is to 'abide by the agreement'." },
-        { id: 19, question: "The border skirmishes erupted once again, feeding into an ________ over resource distribution.", options: ["ongoing dispute", "written agreement", "unanimous agreement"], answer: "ongoing_dispute", explanation: "A conflict that has continued for a long, unresolved time is an 'ongoing dispute'." },
-        { id: 20, question: "He possessed an ________ that his team would resolve the network complications before midnight.", options: ["unshakable belief", "grave disagreement", "verbal agreement"], answer: "unshakable_belief", explanation: "A deeply held, unalterable conviction is an 'unshakable belief'." }
+        { id: 1, question: "After my dental surgery, I could only eat soft ________.", options: ["foods for three weeks.", "slices of pizza.", "alfredo sauce is my favorite dish."], answer: "foods for three weeks.", explanation: "Soft foods (like soups, puddings, mashes) are required during recovery as they need no chewing." },
+        { id: 2, question: "His facial expression ________.", options: ["hardened when he mentioned his ex-wife.", "was wonderfully tender.", "rough due to years of manual labor."], answer: "hardened when he mentioned his ex-wife.", explanation: "Facial expressions or voices 'harden' when a person shifts to a cold or hostile attitude." },
+        { id: 3, question: "I felt sick after eating four greasy ________.", options: ["slices of pizza.", "dry in the wintertime.", "was wonderfully tender."], answer: "slices of pizza.", explanation: "Pizza slices contain high amounts of cooking oils and fats, making them 'greasy'." },
+        { id: 4, question: "My skin gets really ________.", options: ["dry in the wintertime.", "choppy; it's not a good day to go sailing.", "was wonderfully tender."], answer: "dry in the wintertime.", explanation: "Cold winter air lacks humidity, striping natural moisture and leaving skin dry." },
+        { id: 5, question: "Pasta with creamy ________.", options: ["alfredo sauce is my favorite dish.", "slices of pizza.", "dull it won't even cut a tomato."], answer: "alfredo sauce is my favorite dish.", explanation: "Creamy collocates perfectly with rich dairy-based items like alfredo sauce." },
+        { id: 6, question: "She simmered the stew for hours until the meat ________.", options: ["was wonderfully tender.", "choppy; it's not a good day to go sailing.", "rough due to years of manual labor."], answer: "was wonderfully tender.", explanation: "Simmering tough cuts of meat slowly breaks down collagen fibers, making it tender." },
+        { id: 7, question: "The boss' voice ________.", options: ["softened after we told her that the mistake could be fixed.", "hardened when he mentioned his ex-wife.", "dull it won't even cut a tomato."], answer: "softened after we told her that the mistake could be fixed.", explanation: "A person's voice 'softens' when they shift from an angry tone to a friendly, relieved tone." },
+        { id: 8, question: "The skin on his hands is ________.", options: ["rough due to years of manual labor.", "dry in the wintertime.", "choppy; it's not a good day to go sailing."], answer: "rough due to years of manual labor.", explanation: "Repeated physical work creates calluses, changing skin texture from smooth to rough." },
+        { id: 9, question: "The water is quite ________.", options: ["choppy; it's not a good day to go sailing.", "was wonderfully tender.", "dry in the wintertime."], answer: "choppy; it's not a good day to go sailing.", explanation: "Water becomes choppy (small rough waves) under windy weather, preventing safe sailing." },
+        { id: 10, question: "There are some crunchy ________.", options: ["bits of Oreo cookies in this ice cream.", "slices of pizza.", "stew for hours until the meat."], answer: "bits of Oreo cookies in this ice cream.", explanation: "Oreo cookie crumbs are baked cookies which remain hard and 'crunchy' inside cream." },
+        { id: 11, question: "This chicken is a little bit ________.", options: ["chewy; I think it's overcooked.", "dull it won't even cut a tomato.", "dry in the wintertime."], answer: "chewy; I think it's overcooked.", explanation: "Overcooked meats dry out and turn stringy, making them tough and chewy." },
+        { id: 12, question: "This knife is so ________.", options: ["dull it won't even cut a tomato.", "choppy; it's not a good day to go sailing.", "was wonderfully tender."], answer: "dull it won't even cut a tomato.", explanation: "A dull knife has lost its sharp bevel edge, rendering it unable to pierce delicate skins like tomatoes." }
       ],
-      activeCardId: 'settle_dispute',
+      activeCardId: 'dry_hair',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -860,7 +863,7 @@
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Sonar / Typewriter high-pass click
+          // Typewriter mechanical click
           const bufferSize = audioCtx.sampleRate * 0.04;
           const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
           const data = buffer.getChannelData(0);
@@ -886,7 +889,7 @@
           noise.stop(audioCtx.currentTime + 0.04);
           
         } else if (type === 'correct') {
-          // Harmonious arpeggiated C-Major chord (C4, E4, G4, C5) - Agreement & Resolution
+          // Harmonious arpeggiated C-Major chord (C4, E4, G4, C5) - Resolution
           const notes = [261.63, 329.63, 392.00, 523.25];
           const gain = audioCtx.createGain();
           gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
@@ -903,7 +906,7 @@
           });
           
         } else if (type === 'incorrect') {
-          // Discordant minor-second slide (Eb4 to D4) representing Disagreement
+          // Discordant minor-second slide (Eb4 to D4) representing Error/Disagreement
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
@@ -934,7 +937,7 @@
           osc2.stop(audioCtx.currentTime + 0.4);
           
         } else if (type === 'flip') {
-          // Card flip rustle
+          // Card flip swish
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
@@ -965,9 +968,14 @@
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark/Obsidian aesthetic for diplomatic visualization depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-arrows-spin text-sm text-sky-450"></i>';
+      // Load current theme on startup
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm text-teal-400"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm text-teal-500"></i>';
+      }
       
       document.addEventListener('keydown', (e) => {
         if (state.currentView === 'flashcards') {
@@ -984,9 +992,19 @@
     });
 
     function toggleTheme() {
-      // Recalibrate arbitration frequencies (triggers radar sweep feedback)
       playSynthSound('click');
-      showToast('Agreement Calibrated', 'Acoustic consensus-mapping filters synchronized.', 'fa-arrows-spin');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l31', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-teal-400"></i>';
+        showToast('Dark Mode Active', 'Obsidian tactile-mapping filters activated.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-teal-500"></i>';
+        showToast('Light Mode Active', 'Illuminated tactile grids activated.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1001,7 +1019,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-500 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-800 dark:hover:text-slate-150";
         }
       });
       
@@ -1013,7 +1031,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-sky-500/10 text-sky-300 border border-sky-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-teal-500/10 text-teal-600 dark:text-teal-300 border border-teal-500/20";
       }
       
       state.currentView = viewName;
@@ -1025,6 +1043,9 @@
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l31')) {
+        state.theme = localStorage.getItem('colloc_theme_l31');
+      }
       if (localStorage.getItem('colloc_mastery_list_l31')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l31'));
@@ -1185,7 +1206,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('settle_dispute');
+      displayGlossaryCard('dry_hair');
     }
 
     function displayGlossaryCard(id) {
@@ -1237,7 +1258,7 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "At the annual assembly of the Trade Federation, delegates met hoping to settle a dispute that had disrupted maritime supply routes. Initially, negotiators held a matter of opinion over cargo tariffs, causing a highly heated debate. Many representatives chose to play it safe, but the opposing factions were poles apart in their core demands. 'To be honest,' remarked the chief arbiter, 'establishing a sustainable model is an uphill battle when both teams flatly contradict one another's data.' He urged the delegations to find common ground. 'We don't need to reinvent the wheel. We must draft a written agreement that honors everyone's baseline parameters.' Although they entered into a verbal agreement regarding regional boundaries, resolving the main tariff schedules remained a matter of dispute. There was a major disagreement regarding labor standards. Some delegates voiced an unshakable belief that local markets would collapse if forced to adopt foreign rules. The friction triggered a bitter dispute that delayed the final summit draft. To avoid a complete breakdown, the delegates worked all night to reach a compromise. When they finally presented the revised code, there was a unanimous agreement. The core concepts were crystal clear. After both sides vowed to abide by the agreement, the ambassadors stepped forward to shake hands on the agreement, bringing lasting stability to the regional ports.";
+      const narrativeText = "The word 'texture' refers to the way something feels, and there are many different collocations used to describe it. Let's look at them in pairs of opposites. First, let's look at dry hair versus oily hair or greasy hair. You need to wash oily hair more often than dry hair. We also distinguish between dry skin and oily skin. Oily skin is prone to acne, whereas dry skin often needs moisturizer. Surfaces such as the ground, a road, and your skin can be a smooth surface or a rough surface. The water of the ocean is calm water when the weather is mild, and it is choppy water or rough water when there are high winds. A mattress or pillow, for example, can be a hard object or a soft object. Meat that is tender meat is easy to cut and chew, and meat that is tough meat is difficult to cut and chew. A knife or a pencil can have a sharp blade or a dull blade. The verbs soften and harden describe the process of becoming soft and becoming hard. For example, potatoes soften when you cook them in boiling water, while snow hardens if the temperature decreases and the snow begins turning into ice. We can also use soften and harden in a more metaphorical way. We say a person's voice softens when they begin speaking in a more friendly tone, and their voice hardens when they begin speaking in a less friendly tone. A person's attitude or views can also soften or harden. Texture words are often used when describing food. Creamy describes a smooth and rich texture, like cream, typical for a creamy alfredo sauce, soup, pudding, or chocolate. Foods that make a noise when you chew them can be described as crunchy or crispy. Caramels are chewy, which can be negative when meat is overcooked and becomes tough and chewy. Finally, greasy describes oily food, such as a greasy hamburger, greasy French fries, or chicken wings.";
       triggerTTS(narrativeText);
     }
 
@@ -1279,7 +1300,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Limit Reached', 'This is the first arbitration card.');
+        showToast('Limit Reached', 'This is the first sensory card.');
       }
     }
 
@@ -1332,32 +1353,27 @@
       
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
-        
-        // Find matching collocation based on option string/id
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.onclick = () => selectQuizAnswer(opt);
         btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
         
         if (!answered) {
-          btn.className += "bg-[#111827] border-slate-800 hover:border-sky-500 hover:bg-sky-500/10";
+          btn.className += " bg-white dark:bg-[#111827] border-slate-200 dark:border-slate-800 hover:border-teal-500 hover:bg-teal-500/10 text-slate-800 dark:text-slate-100";
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          if (collocId === quest.answer) {
-            btn.className += "bg-emerald-955/20 border-emerald-800 text-emerald-400";
+          if (opt === quest.answer) {
+            btn.className += " bg-emerald-50 border-emerald-450 text-emerald-800 dark:bg-emerald-955/20 dark:border-emerald-800 dark:text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
-          } else if (collocId === userAns) {
-            btn.className += "bg-rose-955/20 border-rose-900 text-rose-400";
+          } else if (opt === userAns) {
+            btn.className += " bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-955/20 dark:border-rose-900 text-rose-500";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += "bg-slate-900 border-slate-800 text-slate-500";
+            btn.className += " bg-slate-100 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-500";
           }
         }
         
         if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-750"></i>`;
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400"></i>`;
         }
         grid.appendChild(btn);
       });
@@ -1365,11 +1381,11 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-teal-500 text-slate-955 rounded-xl text-xs sm:text-sm font-bold transition-all duration-150 font-mono";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-zinc-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
@@ -1381,10 +1397,10 @@
       
       if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Agreement Reached!', 'Accurate collocation applied to treaty draft.', 'fa-circle-check');
+        showToast('Match Established!', 'Perfect semantic segment coupling logged.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Procedural Error!', 'Inconclusive alignment with standard statecraft.', 'fa-triangle-exclamation');
+        showToast('Semantic Error!', 'Mismatch detected in segmental collocations.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1426,10 +1442,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Mediator Recruit";
-      if (percentage === 100) rank = "Grand Chancellor";
-      else if (percentage >= 90) rank = "Senior Negotiator";
-      else if (percentage >= 70) rank = "Conflict Analyst";
+      let rank = "Sensory Novice";
+      if (percentage === 100) rank = "Sensory Specialist";
+      else if (percentage >= 80) rank = "Tactile Auditor";
+      else if (percentage >= 50) rank = "Texture Apprentice";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1452,12 +1468,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['settle a dispute', 'reach a compromise', 'written agreement', 'unanimous agreement', 'poles apart', 'abide by the agreement'];
+      const selectedWords = ['tender meat', 'choppy water', 'voice softens', 'creamy alfredo sauce', 'smooth surface', 'dull blade'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-sky-500/10 text-slate-350 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
+        chip.className = "px-3 py-1 bg-slate-100 dark:bg-zinc-800 hover:bg-teal-500/10 text-slate-600 dark:text-slate-350 rounded-lg text-xs font-semibold transition border border-slate-200 dark:border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1469,7 +1485,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To prevent the outbreak of further conflict, delegates worked to ${word} before signing the final draft...`;
+        textarea.value = `To guarantee a delightful dining experience, she cooked until we had ${word} served with potatoes...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1483,7 +1499,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Draft a proposal with: "${randomColloc}"`;
+        textarea.value = `Compose description utilizing: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1495,14 +1511,14 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how backchannel communications helped negotiate a compromise and settle a dispute.",
-        "Draft a summary showing why opposing parties were initially poles apart but reached an agreement in principle.",
-        "Describe a corporate scenario showing why failure to abide by the agreement leads to a breach of contract.",
-        "Examine why it is crucial to establish unanimous agreement before putting a written agreement into effect."
+        "Detail why choppy water makes sail navigation hazardous while calm water is ideal.",
+        "Contrast a smooth surface like skin with rough hands affected by heavy manual work.",
+        "Describe why overcooked chicken turns tough and chewy, whereas simmering meat makes it wonderfully tender.",
+        "Explain how potato textures soften during cooking, while voice or attitude hardens during a strict talk."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
-      textarea.value = `[Treaty Prompt: ${rand}]\n\n`;
+      textarea.value = `[Sensory Prompt: ${rand}]\n\n`;
       textarea.focus();
     }
 
@@ -1518,20 +1534,20 @@
       const textValue = document.getElementById('sandbox-input').value.trim();
       
       if (!textValue) {
-        showToast('Empty Workspace', 'Please write a brief before scanning.', 'fa-triangle-exclamation');
+        showToast('Empty Workspace', 'Please write a draft before scanning.', 'fa-triangle-exclamation');
         return;
       }
       
-      showToast('AI Scanning', 'Streaming treaty prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
+      showToast('AI Scanning', 'Streaming sensory prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
       document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical alignment... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard negotiation parameters...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard texture, surface and food descriptors...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Diplomat, Corporate Arbitrator, and English Language Professor. Check if the user's sentence uses Lesson 31 agreement, disagreement, or dispute collocations (e.g., share an opinion, agree completely, agree in principle, unanimous agreement, widely shared view, reach a compromise, settle a dispute, flatly contradict, differ widely, poles apart, matter of dispute, conflict of interest, abide by the agreement, breach the agreement) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving consensus alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are an English Language Expert specializing in descriptive vocabulary and lexical collocations. Check if the user's sentence uses Lesson 31 texture collocations (e.g., dry hair, oily skin, greasy fries, smooth road, rough surface, calm water, choppy sea, tender meat, tough steak, sharp blade, dull knife, voice softens, attitude hardens, creamy sauce, crispy bacon, crunchy biscuit, chewy candy) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of tactile accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (tips on sensory adjectives), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1564,7 +1580,7 @@
           attempt++;
           if (attempt >= 5) {
             showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Agreement scanner offline. Verify network connection and retry.";
+            document.getElementById('diagnostic-analysis').innerText = "Sensory scanner offline. Verify network connection and retry.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1586,11 +1602,11 @@
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40";
-            badge.innerText = "Consensus Aligned";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40";
+            badge.innerText = "Teal Alignment";
             playSynthSound('correct');
           } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-55 dark:bg-rose-955/20 dark:text-rose-400 border border-rose-200 dark:border-rose-900/40";
             badge.innerText = "Conflict Detected";
             playSynthSound('incorrect');
           }
@@ -1625,7 +1641,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Dispute Arbitration";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Tactile Properties";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1639,8 +1655,8 @@
       
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
-        document.getElementById('podcast-current-phrase').innerText = "Summit Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 31. All agreements and disputes resolved!";
+        document.getElementById('podcast-current-phrase').innerText = "Broadcasting Closed!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 31. All texture descriptors mapped!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
@@ -1657,14 +1673,14 @@
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key trade term. It is: ${currentWord.phrase}. Tom, how do arbitration experts map this out?`;
+        const textToSpeak = `Next up, let's explore this essential Lesson 31 tactile descriptor. It is: "${currentWord.phrase}". Tom, how do speakers apply this to texture?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-sky-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="h-6 w-6 rounded bg-teal-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-sky-400 font-mono">Sarah (Lead Mediator)</span>
+            <span class="text-[10px] font-bold text-teal-400 font-mono">Sarah (Lead Analyst)</span>
             <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1678,14 +1694,14 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. For example: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, "${currentWord.phrase}" describes ${currentWord.definition}. For example, we say: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-sky-300 font-mono">Tom (Arbitration Specialist)</span>
+            <span class="text-[10px] font-bold text-sky-350 font-mono">Tom (Sensory Specialist)</span>
             <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1780,7 +1796,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif">No matching negotiation records resolved.</td>
+            <td colspan="6" class="text-center py-8 text-slate-500 italic font-serif">No matching sensory records resolved.</td>
           </tr>
         `;
         return;
@@ -1788,9 +1804,9 @@
       
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-800";
+        row.className = "hover:bg-slate-100 dark:hover:bg-slate-800/40 transition border-b border-slate-200 dark:border-slate-800";
         
-        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
+        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-300 dark:text-slate-700';
         
         row.innerHTML = `
           <td class="py-4 px-4 text-center">
@@ -1798,14 +1814,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-sky-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-teal-650 dark:hover:text-teal-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-300 px-2 py-0.5 rounded-full border border-sky-500/20 font-mono">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-teal-500/10 text-teal-600 dark:text-teal-300 px-2 py-0.5 rounded-full border border-teal-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
           <td class="py-4 px-4 hidden lg:table-cell italic text-slate-505 font-semibold font-serif">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1839,10 +1855,10 @@
       tBody.innerText = body;
       tIcon.className = `fa-solid ${iconClass}`;
       
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-white dark:bg-[#111827] text-slate-800 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800 max-w-sm transition-all duration-300";
       
       setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-white dark:bg-[#111827] text-slate-800 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-200 dark:border-slate-800 max-w-sm transition-all duration-300";
       }, 4000);
     }
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 26: Time Horology Lab</title>
+  <title>CollocaStudy - Lesson 26: Time Management Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +14,6 @@
   <!-- FontAwesome for Mechanical and Temporal Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for Time/Horology theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -73,8 +72,8 @@
       perspective: 1000px;
     }
     .card-preserve-3d {
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.6s;
     }
     .card-back {
       transform: rotateY(180deg);
@@ -140,7 +139,7 @@
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
         <i class="fa-solid fa-hourglass-half text-brand-600 dark:text-brand-400 animate-pulse"></i>
-        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 26: Time</h1>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-200">Lesson 26: Time (Curriculum Update)</h1>
       </div>
 
       <!-- Right Action Items -->
@@ -156,7 +155,7 @@
         <!-- Lesson Progress Pill -->
         <div class="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 dark:bg-slate-800">
           <div class="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></div>
-          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/30 Mastered</span>
+          <span class="text-xs font-semibold" id="lesson-mastery-ratio">0/24 Mastered</span>
         </div>
       </div>
     </header>
@@ -202,7 +201,6 @@
         
         <!-- User Chrono Badge Clearance Box -->
         <div class="relative rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 p-4 border border-slate-300/60 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800 overflow-hidden">
-          <!-- Background SVG Gear decoration for luxury feel -->
           <svg class="absolute right-[-20px] bottom-[-20px] w-24 h-24 text-brand-500/10 dark:text-brand-500/5 gear-spin-slow" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="10 5"/>
             <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="4"/>
@@ -229,7 +227,7 @@
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
                 <div>
                   <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl">Lesson 26 Brief: Time</h2>
-                  <p class="text-xs text-slate-400 mt-1">Grounded in the official curriculum files. Click highlighted collocations to pull up policy intelligence files.</p>
+                  <p class="text-xs text-slate-400 mt-1">Sourced from the dossier page <span class="font-semibold underline">image_7ca924.jpg</span>. Click highlighted collocations to pull up definitions.</p>
                 </div>
                 <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
                   <i class="fa-solid fa-volume-high"></i>
@@ -237,19 +235,33 @@
                 </button>
               </div>
               
-              <!-- Story Text -->
+              <!-- Story Text synchronized directly with image_7ca924.jpg -->
               <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
                 <p>
-                  If you have a lot of <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="free_time">free time</span> (or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="spare_time">spare time</span>), you can choose how to spend it. Some people like to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="spend_time">spend time</span> studying, while others prefer to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="waste_time">waste time</span> on social media—which is often a complete <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="waste_of_time">waste of time</span>. 
+                  Are you always <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="in_a_rush">in a rush</span>, or do you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="take_your_time">take your time</span>? Do you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="spend_your_time">spend your time</span> efficiently, or do you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="waste_time">waste time</span> and procrastinate important tasks – then stay up working until <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="ungodly_hours">ungodly hours</span>?
                 </p>
                 <p>
-                  If your schedule is busy, you must try to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="make_time">make time</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="find_time">find time</span> for exercise. Doing things efficiently will <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="save_time">save time</span>. If you have to wait at an airport, you can read a book to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="kill_time">kill time</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="pass_the_time">pass the time</span>. When writing an exam, don't rush—you can <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="take_your_time">take your time</span>, but be careful not to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="run_out_of_time">run out of time</span> before the instructor announces that your <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="time_is_up">time is up</span>.
+                  It has <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="taken_me_ages">taken me ages</span>, but I've finally adopted some <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="time_management">time-management</span> habits:
                 </p>
+                <ul class="list-disc pl-5 space-y-4 text-sm md:text-base">
+                  <li>
+                    Plan things <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="well_in_advance">well in advance</span> and don't underestimate the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="amount_of_time">amount of time</span> things will take – otherwise you'll end up being a slave to your <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="grueling_schedule">grueling schedule</span>.
+                  </li>
+                  <li>
+                    Take care of <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="time_consuming_tasks">time-consuming tasks</span> on a day when you have no <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="pressing_commitments">pressing commitments</span>.
+                  </li>
+                  <li>
+                    Establish a timeline for major projects, so that you don't <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="leave_things_to_the_last_minute">leave things to the last minute</span> and risk <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="running_out_of_time">running out of time</span>. Then, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="stick_to_the_schedule">stick to the schedule</span> and try to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="get_ahead">get ahead</span> if possible. There's nothing worse than <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="falling_behind">falling behind</span> on a project with a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="strict_deadline">strict deadline</span>.
+                  </li>
+                  <li>
+                    Leave home and work a little earlier than normal to avoid <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="rush_hour">rush hour</span>.
+                  </li>
+                  <li>
+                    Sleep for <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="eight_solid_hours">eight solid hours</span> every night; you'll wake up with more energy.
+                  </li>
+                </ul>
                 <p>
-                  To succeed, it is crucial to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="keep_track">keep track of time</span>. Always arrive <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="on_time">on time</span> for meetings, or at least <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="in_time">in time</span> to prepare your presentation. If you arrive at the last second, you are <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="just_in_time">just in time</span>. If you are running late, you are <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="behind_schedule">behind schedule</span>, but if you plan in advance, you can finish <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="ahead_of_time">ahead of time</span> or right <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="on_schedule">on schedule</span>.
-                </p>
-                <p>
-                  If you are <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="short_on_time">short on time</span> (or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="pressed_for_time">pressed for time</span>), you might feel stressed. Everyone experiences a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="rough_time">rough time</span> (or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="hard_time">hard time</span>) occasionally, but <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="at_times">at times</span> it is best to simply <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="take_time_off">take time off</span> from work. Although we only go on vacation <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="from_time_to_time">from time to time</span>, it is always <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="time_well_spent">time well spent</span>. For <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="for_the_time_being">the time being</span>, let's focus on mastering these collocations—you will learn them <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="in_no_time">in no time</span>!
+                  If you're working <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="from_dawn_till_dusk">from dawn till dusk</span> and you have little or no <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="spare_free_time">spare/free time</span>, it could mean that you're overworked, and you should <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="cut_back_on_your_hours">cut back on your hours</span> to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-50 dark:hover:bg-brand-950/20 px-1 rounded transition" data-id="free_up_some_time">free up some time</span>.
                 </p>
               </div>
             </div>
@@ -269,13 +281,13 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">free time</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3" id="glossary-phrase">in a rush</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">Time when you do not have to work or study, and can do whatever you want.</p>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">In a hurry; performing actions very quickly due to time constraints.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
                   <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Chronological Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"If you have a lot of free time, you can choose how to spend it."</p>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Are you always in a rush, or do you take your time?"</p>
                 </div>
               </div>
               
@@ -286,7 +298,7 @@
                   <span>Lexical Precision</span>
                 </h4>
                 <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  Time-related English is filled with delicate dualities. Confusing **"on time"** with **"in time"** changes the entire semantic landscape. This module ensures your temporal pairings are balanced and accurate.
+                  Time-related collocations form the backbone of productivity english. This module synchronizes all concepts directly with standard time-management terminology to ensure precise business communication.
                 </p>
               </div>
             </div>
@@ -304,13 +316,13 @@
               <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-850 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
                 <span class="text-slate-450">/</span>
-                <span>30</span>
+                <span id="flashcard-total">24</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
             <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-brand-600 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+              <div class="bg-brand-600 h-full w-[4.1%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
@@ -319,7 +331,7 @@
                 <!-- FRONT OF CARD -->
                 <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/50 text-brand-700 dark:text-brand-350 px-2.5 py-1 rounded-full" id="card-front-category">Chrono Category</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-955/50 text-brand-700 dark:text-brand-350 px-2.5 py-1 rounded-full" id="card-front-category">Chrono Category</span>
                     <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 text-slate-450 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
@@ -327,7 +339,7 @@
                   
                   <div class="text-center">
                     <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-heading">Lexicon Index</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-950 dark:text-white" id="card-front-phrase">free time</h3>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-955 dark:text-white" id="card-front-phrase">in a rush</h3>
                   </div>
                   
                   <div class="text-center text-xs text-slate-450">
@@ -402,7 +414,7 @@
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450">Active Chrono Prompt</span>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-455">Active Chrono Prompt</span>
                 <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white">"Loading briefing..."</p>
               </div>
               
@@ -413,7 +425,7 @@
               
               <!-- Explanations Box -->
               <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-450 font-bold text-sm">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-455 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
                   <span>Philosopher's Clockwork</span>
                 </div>
@@ -425,7 +437,7 @@
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
                   <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-slate-850 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-450 dark:bg-slate-855 dark:text-slate-600 rounded-xl text-xs sm:text-sm font-bold transition">
                   <span>Next Briefing</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -480,7 +492,7 @@
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
                 <div>
                   <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Temporal Sandbox</h2>
-                  <p class="text-xs text-slate-400">Compose custom emails, timetables, or professional briefs. The model validates syntactical accuracy regarding Lesson 26 terms.</p>
+                  <p class="text-xs text-slate-400">Compose sentences using Lesson 26 terms. The model validates syntactical accuracy based on the dossier.</p>
                 </div>
                 <div class="flex gap-2">
                   <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm">
@@ -495,7 +507,7 @@
               <!-- Text Area -->
               <div class="space-y-3">
                 <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400">Draft Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: Since we are short on time, let's make time to discuss this ahead of time to stay on schedule..."></textarea>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 p-4 text-sm font-medium focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: Since I have a grueling schedule, I must adopt better time-management habits..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -604,7 +616,7 @@
                   <div class="h-6 w-6 rounded bg-brand-650 text-white font-bold text-[10px] flex items-center justify-center shrink-0">H1</div>
                   <div class="space-y-0.5">
                     <span class="text-[10px] font-bold text-brand-400">Host Sarah (Chrono Lead)</span>
-                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast Summit 26. Today we analyze temporal logistics: how to effectively manage, save, and make time."</p>
+                    <p class="text-xs text-slate-300">"Welcome back to CollocaPodcast Summit 26. Today we analyze temporal logistics: how to manage, prioritize, and structure our hours based on official curriculums."</p>
                   </div>
                 </div>
               </div>
@@ -626,7 +638,7 @@
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5">
                   <div class="flex items-center justify-between text-[10px] text-slate-400">
-                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-passed">Card 0/24</span>
                     <span id="podcast-time-percent">0% Reviewed</span>
                   </div>
                   <div class="w-full bg-slate-850 h-1.5 rounded-full overflow-hidden">
@@ -658,10 +670,10 @@
                 <!-- Dropdown Categories -->
                 <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
                   <option value="all">All Jurisdictions</option>
-                  <option value="Allocation">Time Allocation</option>
-                  <option value="Management">Time Management</option>
-                  <option value="Punctuality">Punctuality & Schedules</option>
-                  <option value="Durations">Durations & Breaks</option>
+                  <option value="Habits">Urgency & Habits</option>
+                  <option value="Planning">Advance Planning</option>
+                  <option value="Tasks">Tasks & Deadlines</option>
+                  <option value="Durations">Working Hours</option>
                 </select>
                 <!-- Mastery Filter -->
                 <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-slate-750 rounded-xl text-xs bg-slate-50 dark:bg-slate-850 text-slate-800 dark:text-slate-200 outline-none font-bold">
@@ -793,62 +805,57 @@
         pitch: 1.0,
         volume: 1.0
       },
+      // 24 Updated collocations directly matching the image_7ca924.jpg content
       collocations: [
-        { id: 'free_time', phrase: 'free time', definition: 'Time when you are not obligated to work or study and can pursue leisure.', example: 'If you have a lot of free time, you can choose how to spend it.', category: 'Allocation', mastered: false },
-        { id: 'spare_time', phrase: 'spare time', definition: 'Extra time that is unallocated; synonymous with free time.', example: 'He builds model ships in his spare time.', category: 'Allocation', mastered: false },
-        { id: 'spend_time', phrase: 'spend time', definition: 'To allocate time to a specific task, activity, or geographical location.', example: 'Some people like to spend time studying collocations.', category: 'Allocation', mastered: false },
-        { id: 'waste_time', phrase: 'waste time', definition: 'To exhaust time inefficiently, unproductively, or on trivial matters.', example: 'Don\'t waste time scrolling social feeds instead of working.', category: 'Allocation', mastered: false },
-        { id: 'waste_of_time', phrase: 'waste of time', definition: 'An activity or process that produces no constructive value or outcome.', example: 'Argueing with stubborn people online is a complete waste of time.', category: 'Allocation', mastered: false },
-        { id: 'make_time', phrase: 'make time', definition: 'To deliberately adjust your schedule to accommodate a specific activity.', example: 'I\'ll make time to hit the gym after work tonight.', category: 'Management', mastered: false },
-        { id: 'find_time', phrase: 'find time', definition: 'To locate a window of availability within a heavily congested schedule.', example: 'We must find time to analyze the project deliverables.', category: 'Management', mastered: false },
-        { id: 'save_time', phrase: 'save time', definition: 'To complete a task faster or conserve minutes through efficiency.', example: 'Taking the bypass highway will save time during peak rush hours.', category: 'Management', mastered: false },
-        { id: 'kill_time', phrase: 'kill time', definition: 'To perform an idle task simply to make the minutes pass quicker while waiting.', example: 'I played crossword puzzles to kill time during the flight layover.', category: 'Allocation', mastered: false },
-        { id: 'pass_the_time', phrase: 'pass the time', definition: 'To do something to make waiting less tedious; synonymous with kill time.', example: 'Reading books is a constructive way to pass the time on long train rides.', category: 'Allocation', mastered: false },
-        { id: 'take_your_time', phrase: 'take your time', definition: 'To proceed at a relaxed, careful pace without rushing or panic.', example: 'There is no rush; take your time completing the legal draft.', category: 'Management', mastered: false },
-        { id: 'run_out_of_time', phrase: 'run out of time', definition: 'To fully exhaust the available period before a task is completed.', example: 'I had to guess the last five answers because I ran out of time.', category: 'Management', mastered: false },
-        { id: 'time_is_up', phrase: 'time is up', definition: 'An announcement indicating that the allocated duration has fully expired.', example: 'The examiner yelled \'time is up!\' and collected our exams.', category: 'Management', mastered: false },
-        { id: 'keep_track', phrase: 'keep track of time', definition: 'To monitor and remain aware of how much time has elapsed.', example: 'Without a watch on, it\'s incredibly difficult to keep track of time.', category: 'Management', mastered: false },
-        { id: 'on_time', phrase: 'on time', definition: 'Punctual; arriving exactly at the scheduled or pre-arranged hour.', example: 'The train pulled into the station on time, right at 8:15 AM.', category: 'Punctuality', mastered: false },
-        { id: 'in_time', phrase: 'in time', definition: 'Arriving before a critical limit or deadline; early enough.', example: 'We reached the theater in time to buy some drinks before the show.', category: 'Punctuality', mastered: false },
-        { id: 'just_in_time', phrase: 'just in time', definition: 'Arriving at the absolute last possible second before it is too late.', example: 'I caught the closing doors of the subway train just in time.', category: 'Punctuality', mastered: false },
-        { id: 'behind_schedule', phrase: 'behind schedule', definition: 'Progressing slower or running later than the expected timetable.', example: 'Heavy snowstorms pushed our delivery trucks behind schedule.', category: 'Punctuality', mastered: false },
-        { id: 'ahead_of_time', phrase: 'ahead of time', definition: 'Completing tasks or arriving in advance of the scheduled timeline.', example: 'Submit your homework ahead of time to secure extra credit points.', category: 'Punctuality', mastered: false },
-        { id: 'on_schedule', phrase: 'on schedule', definition: 'Progressing or arriving exactly in accordance with the pre-set plan.', example: 'Despite the initial delays, the building construction is on schedule.', category: 'Punctuality', mastered: false },
-        { id: 'short_on_time', phrase: 'short on time', definition: 'Having very little time left to complete an action; rushed.', example: 'I am a bit short on time today, so let\'s skip the pleasantries.', category: 'Management', mastered: false },
-        { id: 'pressed_for_time', phrase: 'pressed for time', definition: 'Experiencing extreme urgency due to limited availability.', example: 'We are pressed for time, so please keep your comments brief.', category: 'Management', mastered: false },
-        { id: 'rough_time', phrase: 'rough time', definition: 'A difficult period marked by distress, problems, or emotional hardship.', example: 'He\'s been having a rough time since his business partner resigned.', category: 'Durations', mastered: false },
-        { id: 'hard_time', phrase: 'hard time', definition: 'Experiencing severe difficulty or struggle in completing something.', example: 'She had a hard time finding a parking space in the city center.', category: 'Durations', mastered: false },
-        { id: 'at_times', phrase: 'at times', definition: 'Occasionally; from time to time; sometimes.', example: 'The job is rewarding, though at times it can be highly exhausting.', category: 'Durations', mastered: false },
-        { id: 'take_time_off', phrase: 'take time off', definition: 'To request or take a temporary absence from your professional duties.', example: 'She decided to take time off to care for her ailing father.', category: 'Durations', mastered: false },
-        { id: 'from_time_to_time', phrase: 'from time to time', definition: 'Once in a while; occasionally; not happening regularly.', example: 'We eat takeout from time to time, but we prefer cooking.', category: 'Durations', mastered: false },
-        { id: 'time_well_spent', phrase: 'time well spent', definition: 'An activity or period of time that was highly rewarding and valuable.', example: 'The weekend writing workshop was absolutely time well spent.', category: 'Allocation', mastered: false },
-        { id: 'for_the_time_being', phrase: 'for the time being', definition: 'Temporarily; for now; until a more permanent arrangement is made.', example: 'For the time being, we are staying in a cozy rented flat.', category: 'Durations', mastered: false },
-        { id: 'in_no_time', phrase: 'in no time', definition: 'Almost instantly; extremely quickly.', example: 'Apply our study techniques, and you will learn English in no time.', category: 'Durations', mastered: false }
+        { id: 'in_a_rush', phrase: 'in a rush', definition: 'In a hurry; performing actions very quickly due to time constraints.', example: 'Are you always in a rush, or do you take your time?', category: 'Habits', mastered: false },
+        { id: 'take_your_time', phrase: 'take your time', definition: 'To do something slowly and carefully, without rushing.', example: 'Please take your time on the exam; there is no need to panic.', category: 'Habits', mastered: false },
+        { id: 'spend_your_time', phrase: 'spend your time', definition: 'To occupy or use one\'s time with certain productive or pleasant activities.', example: 'Do you spend your time efficiently, or do you waste it?', category: 'Habits', mastered: false },
+        { id: 'waste_time', phrase: 'waste time', definition: 'To use time unproductively or inefficiently; procrastinate.', example: 'Do you waste time and procrastinate important tasks?', category: 'Habits', mastered: false },
+        { id: 'ungodly_hours', phrase: 'ungodly hours', definition: 'Very late at night or extremely early in the morning.', example: 'Do you stay up working until ungodly hours?', category: 'Habits', mastered: false },
+        { id: 'taken_me_ages', phrase: 'taken me ages', definition: 'Taken a very long time.', example: 'It has taken me ages, but I\'ve finally adopted some habits.', category: 'Habits', mastered: false },
+        { id: 'time_management', phrase: 'time-management', definition: 'The practice of planning and controlling how much time you spend on activities.', example: 'I\'ve finally adopted some healthy time-management habits.', category: 'Habits', mastered: false },
+        { id: 'well_in_advance', phrase: 'well in advance', definition: 'A long time before something happens or is due.', example: 'Plan things well in advance and don\'t underestimate tasks.', category: 'Planning', mastered: false },
+        { id: 'amount_of_time', phrase: 'amount of time', definition: 'The quantity or duration of time that something requires.', example: 'Don\'t underestimate the amount of time things will take.', category: 'Planning', mastered: false },
+        { id: 'grueling_schedule', phrase: 'grueling schedule', definition: 'A very intense, exhausting, and demanding schedule.', example: 'Otherwise you\'ll end up being a slave to your grueling schedule.', category: 'Planning', mastered: false },
+        { id: 'time_consuming_tasks', phrase: 'time-consuming tasks', definition: 'Tasks or activities that take a lot of time to complete.', example: 'Take care of time-consuming tasks when you have no commitments.', category: 'Tasks', mastered: false },
+        { id: 'pressing_commitments', phrase: 'pressing commitments', definition: 'Urgent appointments, tasks, or obligations that require immediate attention.', example: 'Choose a day when you have no pressing commitments.', category: 'Tasks', mastered: false },
+        { id: 'leave_things_to_the_last_minute', phrase: 'leave things to the last minute', definition: 'To delay starting or doing something until the final possible moment.', example: 'Establish a timeline so that you don\'t leave things to the last minute.', category: 'Tasks', mastered: false },
+        { id: 'running_out_of_time', phrase: 'running out of time', definition: 'Having very little or no time remaining before a limit expires.', example: 'Avoid leaving things late and risking running out of time.', category: 'Tasks', mastered: false },
+        { id: 'stick_to_the_schedule', phrase: 'stick to the schedule', definition: 'To follow a planned timetable strictly without deviation.', example: 'Stick to the schedule and try to get ahead if possible.', category: 'Tasks', mastered: false },
+        { id: 'get_ahead', phrase: 'get ahead', definition: 'To make progress faster than planned or stay ahead of expectations.', example: 'Try to get ahead if possible to avoid last-minute stress.', category: 'Tasks', mastered: false },
+        { id: 'falling_behind', phrase: 'falling behind', definition: 'Progressing slower than the planned schedule.', example: 'There\'s nothing worse than falling behind on a project.', category: 'Tasks', mastered: false },
+        { id: 'strict_deadline', phrase: 'strict deadline', definition: 'A definite, unyielding date or time before which something must be finished.', example: 'Avoid falling behind on a project with a strict deadline.', category: 'Tasks', mastered: false },
+        { id: 'rush_hour', phrase: 'rush hour', definition: 'The time when there is heavy traffic because everyone is commuting.', example: 'Leave home a little earlier than normal to avoid rush hour.', category: 'Planning', mastered: false },
+        { id: 'eight_solid_hours', phrase: 'eight solid hours', definition: 'Eight continuous, uninterrupted hours of sleep or work.', example: 'Sleep for eight solid hours every night to wake up with energy.', category: 'Durations', mastered: false },
+        { id: 'from_dawn_till_dusk', phrase: 'from dawn till dusk', definition: 'From the early morning (sunrise) to the late evening (sunset).', example: 'If you\'re working from dawn till dusk, you are overworked.', category: 'Durations', mastered: false },
+        { id: 'spare_free_time', phrase: 'spare/free time', definition: 'Leisure time when you do not have to work or study.', example: 'Working long hours leaves you with little or no spare/free time.', category: 'Durations', mastered: false },
+        { id: 'cut_back_on_your_hours', phrase: 'cut back on your hours', definition: 'To reduce your total working hours.', example: 'You should cut back on your hours to balance your life.', category: 'Durations', mastered: false },
+        { id: 'free_up_some_time', phrase: 'free up some time', definition: 'To make more time available in your schedule.', example: 'Cut back on your workload to free up some time.', category: 'Durations', mastered: false }
       ],
-      // Custom 20-question scenario-based quiz grounded in Lesson 26: Time
+      // Scenario-based quiz tailored precisely to Lesson 26 (Time) content from the image
       quiz: [
-        { id: 1, question: "I\'m sorry, I cannot chat right now. I am a bit ________ because my meeting starts in three minutes.", options: ["short on time", "out of schedule", "wasting time"], answer: "short_on_time", explanation: "Having very little time left or being in a hurry is collocated as 'short on time'." },
-        { id: 2, question: "With three demanding toddlers and a full-time corporate job, she has a very hard ________ to relax.", options: ["time finding", "finding time", "free time"], answer: "finding_time", explanation: "Finding a free slot in a busy schedule is collocated as 'finding time'." },
-        { id: 3, question: "There is absolutely no need to rush your artwork. Please ________ and focus on the details.", options: ["take your time", "pass the time", "save time"], answer: "take_your_time", explanation: "To proceed carefully without rushing is to 'take your time'." },
-        { id: 4, question: "My brother has been going through a highly ________ lately, ever since his startup went bankrupt.", options: ["rough time", "time off", "time well spent"], answer: "rough_time", explanation: "A difficult period of suffering or struggle is termed a 'rough time'." },
-        { id: 5, question: "We had a truly ________ at the music festival last night; the energy was spectacular!", options: ["great time", "time well spent", "just in time"], answer: "great_time", explanation: "An enjoyable, fun, and memorable experience is a 'great time' or 'good time'." },
-        { id: 6, question: "I continuously checked my watch throughout the test to ________.", options: ["keep track of time", "pass the time", "run out of time"], answer: "keep_track", explanation: "Monitoring how much time has elapsed is to 'keep track of time'." },
-        { id: 7, question: "The high-speed rail arrived ________, right at the scheduled 8:15 AM mark.", options: ["on time", "in time", "at times"], answer: "on_time", explanation: "Punctuality, arriving exactly at the scheduled hour, is 'on time'." },
-        { id: 8, question: "We managed to reach the airport gate ________ to buy water and board before they closed the doors.", options: ["in time", "on time", "for the time being"], answer: "in_time", explanation: "Arriving before a critical limit or deadline (early enough) is 'in time'." },
-        { id: 9, question: "It is ________ you cleaned out your archive closet—the dust is getting unbearable!", options: ["about time", "ahead of time", "from time to time"], answer: "about_time", explanation: "An action that is long overdue is described with 'about time'." },
-        { id: 10, question: "I downloaded a few offline strategy games to ________ during the eight-hour flight.", options: ["pass the time", "take your time", "free time"], answer: "pass_the_time", explanation: "Doing something to make waiting less tedious is to 'pass the time'." },
-        { id: 11, question: "The instructor stood up and announced, 'Your ________!' and we had to stop typing.", options: ["time is up", "time off", "in no time"], answer: "time_is_up", explanation: "The expiration of an allocated test or task duration is announced as 'time is up'." },
-        { id: 12, question: "He ________ playing video games all afternoon instead of writing his project brief.", options: ["wastes a lot of time", "keeps track of time", "takes his time"], answer: "waste_time", explanation: "Using time unproductively or inefficiently is to 'waste time'." },
-        { id: 13, question: "If you submit your application through the automated online portal, it will ________.", options: ["save you time", "kill time", "be about time"], answer: "save_time", explanation: "Reducing the hours needed for an administrative task 'saves time'." },
-        { id: 14, question: "I am trying to ________ in my schedule for daily jogging, but my agenda is completely packed.", options: ["make time", "spare time", "take time off"], answer: "make_time", explanation: "Deliberately adjusting your calendar to insert a new activity is to 'make time'." },
-        { id: 15, question: "I don\'t see my former college classmates very often, but we meet up ________ for coffee.", options: ["from time to time", "for the time being", "ahead of time"], answer: "from_time_to_time", explanation: "Occasional, irregular meetups are collocated as 'from time to time'." },
-        { id: 16, question: "________, we are working out of a co-working space while our primary office is being renovated.", options: ["For the time being", "Behind schedule", "At times"], answer: "for_the_time_being", explanation: "A temporary arrangement for now is expressed as 'for the time being'." },
-        { id: 17, question: "We finished all the project blueprints three days ________, allowing us to review them in detail.", options: ["ahead of time", "behind schedule", "from time to time"], answer: "ahead_of_time", explanation: "Completing tasks in advance of the expected deadline is to finish 'ahead of time'." },
-        { id: 18, question: "If we don\'t start writing immediately, we are going to ________ before the portal closes.", options: ["run out of time", "keep track of time", "make time"], answer: "run_out_of_time", explanation: "Exhausting the remaining available hours before finishing is to 'run out of time'." },
-        { id: 19, question: "The commuter bus was fifteen minutes ________ because of the heavy highway construction.", options: ["behind schedule", "on schedule", "at times"], answer: "behind_schedule", explanation: "Running late or progressing slower than the timetable is 'behind schedule'." },
-        { id: 20, question: "Despite the initial supply chain delays, the product launch went off exactly ________.", options: ["on schedule", "at times", "for the time being"], answer: "on_schedule", explanation: "Progressing precisely according to the pre-set plan is to be 'on schedule'." }
+        { id: 1, question: "I had to stay up working until 4:00 AM again last night. Working at such ________ is starting to ruin my health.", options: ["ungodly hours", "pressing commitments", "rush hour"], answer: "ungodly_hours", explanation: "Staying up very late at night or early in the morning is defined as working at 'ungodly hours'." },
+        { id: 2, question: "It has ________ for me to learn how to play the piano, but I can finally play a full sonata.", options: ["taken me ages", "get ahead", "free up some time"], answer: "taken_me_ages", explanation: "To take a very long time is collocated as 'taken me ages'." },
+        { id: 3, question: "To prevent high stress, you should plan all your events ________ instead of doing them the night before.", options: ["well in advance", "from dawn till dusk", "in a rush"], answer: "well_in_advance", explanation: "Planning a long time before an event or deadline is referred to as planning 'well in advance'." },
+        { id: 4, question: "The primary problem with our team is poor ________; we rarely structure our calendar correctly.", options: ["time-management", "grueling schedule", "strict deadline"], answer: "time_management", explanation: "The practice of planning and organizing your time efficiently is called 'time-management'." },
+        { id: 5, question: "She is always ________ in the morning, rushing out the door without eating any breakfast.", options: ["in a rush", "taking her time", "falling behind"], answer: "in_a_rush", explanation: "Arriving or proceeding in a hurry is collocated as being 'in a rush'." },
+        { id: 6, question: "Please ________ during your clinical examination; there is no penalty for finishing slowly.", options: ["take your time", "waste time", "stick to the schedule"], answer: "take_your_time", explanation: "To work carefully and slowly without rushing is to 'take your time'." },
+        { id: 7, question: "They have a very ________ with zero extension options, so we must submit the report on Wednesday.", options: ["strict deadline", "grueling schedule", "pressing commitments"], answer: "strict_deadline", explanation: "A definite date/time before which something must be finished without exception is a 'strict deadline'." },
+        { id: 8, question: "If you ________ on your weekly deliverables, you might have to work over the weekend.", options: ["fall behind", "get ahead", "take your time"], answer: "falling_behind", explanation: "Progressing slower than the planned timeline is 'falling behind'." },
+        { id: 9, question: "I managed to complete all my tasks by Tuesday, which allowed me to ________ with next week's preparation.", options: ["get ahead", "spend my time", "waste time"], answer: "get_ahead", explanation: "To make progress faster than scheduled is to 'get ahead'." },
+        { id: 10, question: "Doing tax filings is one of the most ________ jobs at our accounting firm.", options: ["time-consuming tasks", "pressing commitments", "eight solid hours"], answer: "time_consuming_tasks", explanation: "Things that take up a very large amount of time are 'time-consuming tasks'." },
+        { id: 11, question: "I would love to help you move, but I have several ________ today that I cannot postpone.", options: ["pressing commitments", "grueling schedules", "time-consuming tasks"], answer: "pressing_commitments", explanation: "Urgent appointments, duties, or things to do are 'pressing commitments'." },
+        { id: 12, question: "If you always ________, you will experience extreme stress as the clock ticks down.", options: ["leave things to the last minute", "plan well in advance", "stick to the schedule"], answer: "leave_things_to_the_last_minute", explanation: "Delaying actions until the final possible moment is described as 'leaving things to the last minute'." },
+        { id: 13, question: "Hurry up! We are ________ and the submission gate closes in exactly three minutes!", options: ["running out of time", "taking our time", "getting ahead"], answer: "running_out_of_time", explanation: "Exhausting the remaining period before a critical limit is to be 'running out of time'." },
+        { id: 14, question: "To stay organized, we must create a clear roadmap and ________ throughout the month.", options: ["stick to the schedule", "leave things to the last minute", "cut back on our hours"], answer: "stick_to_the_schedule", explanation: "Following a pre-arranged calendar strictly is to 'stick to the schedule'." },
+        { id: 15, question: "The heavy construction trucks caused massive delays on the main bridge during morning ________.", options: ["rush hour", "ungodly hours", "grueling schedule"], answer: "rush_hour", explanation: "The daily peak traffic hours when people commute to/from work is called 'rush hour'." },
+        { id: 16, question: "You should aim to get ________ of uninterrupted sleep every night to maintain brain health.", options: ["eight solid hours", "ungodly hours", "amount of time"], answer: "eight_solid_hours", explanation: "Eight continuous, uninterrupted hours of rest represents 'eight solid hours'." },
+        { id: 17, question: "Working ________ at the warehouse left him completely exhausted by the end of the week.", options: ["from dawn till dusk", "well in advance", "in a rush"], answer: "from_dawn_till_dusk", explanation: "Working all day long (from sunrise to sunset) is working 'from dawn till dusk'." },
+        { id: 18, question: "Due to her intense burnout, the doctor suggested that she ________ at the clinic.", options: ["cut back on her hours", "stick to the schedule", "procrastinate tasks"], answer: "cut_back_on_your_hours", explanation: "Reducing your total working hours is expressed as 'cutting back on your hours'." },
+        { id: 19, question: "We decided to automate our invoicing process in order to ________ for customer support.", options: ["free up some time", "waste time", "take our time"], answer: "free_up_some_time", explanation: "Rearranging things or reducing labor to make more time available is to 'free up some time'." },
+        { id: 20, question: "I\'m exhausted because our manager has placed us on a highly ________ with consecutive project launches.", options: ["grueling schedule", "time-consuming task", "spare/free time"], answer: "grueling_schedule", explanation: "A very intense and exhausting program/timetable is a 'grueling schedule'." }
       ],
-      activeCardId: 'free_time',
+      activeCardId: 'in_a_rush',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -861,6 +868,7 @@
       isSynthesizing: false
     };
 
+    // Synthesizer audio indicators (click, correct, incorrect, flip sound effects)
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -898,7 +906,7 @@
           osc.stop(audioCtx.currentTime + 0.12);
         }
       } catch (e) {
-        console.warn('AudioContext syntax error:', e);
+        console.warn('AudioContext synth error:', e);
       }
     }
 
@@ -938,7 +946,7 @@
       playSynthSound('click');
       const isDark = document.documentElement.classList.toggle('dark');
       state.theme = isDark ? 'dark' : 'light';
-      localStorage.setItem('colloc_theme_l26', state.theme);
+      localStorage.setItem('colloc_theme_l26_updated', state.theme);
       
       const themeBtn = document.getElementById('theme-toggle');
       if (isDark) {
@@ -984,12 +992,12 @@
     }
 
     function loadLocalStorage() {
-      if (localStorage.getItem('colloc_theme_l26')) {
-        state.theme = localStorage.getItem('colloc_theme_l26');
+      if (localStorage.getItem('colloc_theme_l26_updated')) {
+        state.theme = localStorage.getItem('colloc_theme_l26_updated');
       }
-      if (localStorage.getItem('colloc_mastery_list_l26')) {
+      if (localStorage.getItem('colloc_mastery_list_l26_updated')) {
         try {
-          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l26'));
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l26_updated'));
           state.collocations.forEach(c => {
             if (masteredArr.includes(c.id)) {
               c.mastered = true;
@@ -999,16 +1007,16 @@
           console.error('Mastery index parse error', err);
         }
       }
-      if (localStorage.getItem('colloc_voice_settings_l26')) {
+      if (localStorage.getItem('colloc_voice_settings_l26_updated')) {
         try {
-          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l26'));
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l26_updated'));
         } catch(e) {}
       }
     }
 
     function saveMastery() {
       const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
-      localStorage.setItem('colloc_mastery_list_l26', JSON.stringify(masteredIds));
+      localStorage.setItem('colloc_mastery_list_l26_updated', JSON.stringify(masteredIds));
       calculateMasteryMetrics();
     }
 
@@ -1017,6 +1025,7 @@
       const masteredCount = state.collocations.filter(c => c.mastered).length;
       
       document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Mastered`;
+      document.getElementById('flashcard-total').innerText = total;
       
       let quizFactor = 0;
       const totalAnswers = Object.keys(state.quizAnswers).length;
@@ -1056,7 +1065,7 @@
       if (select) {
         state.voiceSettings.voiceName = select.value;
       }
-      localStorage.setItem('colloc_voice_settings_l26', JSON.stringify(state.voiceSettings));
+      localStorage.setItem('colloc_voice_settings_l26_updated', JSON.stringify(state.voiceSettings));
       showToast('Configurations Saved', 'Speech voice parameters synchronized.');
     }
 
@@ -1103,7 +1112,7 @@
 
     function triggerTTS(text) {
       if (!('speechSynthesis' in window)) {
-        showToast('Error', 'Synthesizer is not supported on this node.');
+        showToast('Error', 'Synthesizer is not supported on this device.');
         return;
       }
       window.speechSynthesis.cancel();
@@ -1147,7 +1156,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('free_time');
+      displayGlossaryCard('in_a_rush');
     }
 
     function displayGlossaryCard(id) {
@@ -1175,7 +1184,7 @@
     function speakGlossaryTerm() {
       const term = state.collocations.find(c => c.id === state.activeCardId);
       if (term) {
-        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+        triggerTTS(`${term.phrase}. Example context: ${term.example}`);
       }
     }
 
@@ -1197,9 +1206,10 @@
       }
     }
 
+    // Story narrative speech updated completely with exact values from image_7ca924.jpg
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "If you have a lot of free time (or spare time), you can choose how to spend it. Some people like to spend time studying, while others prefer to waste time on social media—which is often a complete waste of time. If your schedule is busy, you must try to make time or find time for exercise. Doing things efficiently will save time. If you have to wait at an airport, you can read a book to kill time or pass the time. When writing an exam, don't rush—you can take your time, but be careful not to run out of time before the instructor announces that your time is up. To succeed, it is crucial to keep track of time. Always arrive on time for meetings, or at least in time to prepare your presentation. If you arrive at the last second, you are just in time. If you are running late, you are behind schedule, but if you plan in advance, you can finish ahead of time or right on schedule. If you are short on time (or pressed for time), you might feel stressed. Everyone experiences a rough time (or hard time) occasionally, but at times it is best to simply take time off from work. Although we only go on vacation from time to time, it is always time well spent. For the time being, let's focus on mastering these collocations—you will learn them in no time!";
+      const narrativeText = "Are you always in a rush, or do you take your time? Do you spend your time efficiently, or do you waste time and procrastinate important tasks – then stay up working until ungodly hours? It has taken me ages, but I've finally adopted some time-management habits: Plan things well in advance and don't underestimate the amount of time things will take – otherwise you'll end up being a slave to your grueling schedule. Take care of time-consuming tasks on a day when you have no pressing commitments. Establish a timeline for major projects, so that you don't leave things to the last minute and risk running out of time. Then, stick to the schedule and try to get ahead if possible. There's nothing worse than falling behind on a project with a strict deadline. Leave home and work a little earlier than normal to avoid rush hour. Sleep for eight solid hours every night; you'll wake up with more energy. If you're working from dawn till dusk and you have little or no spare or free time, it could mean that you're overworked, and you should cut back on your hours to free up some time.";
       triggerTTS(narrativeText);
     }
 
@@ -1295,7 +1305,6 @@
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
         
-        // Find matching collocation based on option string/id
         const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
         const collocId = matchingColloc ? matchingColloc.id : opt;
         
@@ -1343,10 +1352,10 @@
       
       if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Strategic Accord!', 'Accurate collocation applied to treaty draft.', 'fa-circle-check');
+        showToast('Strategic Accord!', 'Accurate collocation applied.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Intelligence Error!', 'Inconclusive alignment with standard statecraft.', 'fa-triangle-exclamation');
+        showToast('Intelligence Error!', 'Inconclusive alignment with lesson text.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1414,7 +1423,7 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['short on time', 'make time', 'ahead of time', 'run out of time', 'time well spent', 'for the time being'];
+      const selectedWords = ['in a rush', 'grueling schedule', 'well in advance', 'running out of time', 'strict deadline', 'free up some time'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
@@ -1431,7 +1440,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `Since we are short on time, let's work ahead of time so we do not run out of time during the presentations...`;
+        textarea.value = `Since I was in a rush and had a grueling schedule, I had to plan well in advance so I didn't run out of time near the strict deadline...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1445,22 +1454,22 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Evaluate the temporal implication: "${randomColloc}"`;
+        textarea.value = `Analyze standard workflow logistics: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
       }
       textarea.focus();
-      showToast('Intel Appended', `Written "${randomColloc}" to strategic brief.`, 'fa-plus-circle');
+      showToast('Intel Appended', `Written "${randomColloc}" to sandbox brief.`, 'fa-plus-circle');
     }
 
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how planning ahead of time can save time during large product rollouts.",
-        "Draft a summary showing why employees should take time off to avoid experiencing a rough time.",
-        "Describe a schedule bottleneck showing why the project is behind schedule because we ran out of time.",
-        "Examine why it is crucial to keep track of time when you are pressed for time."
+        "Detail how planning well in advance can help someone handle a grueling schedule.",
+        "Explain why taking care of time-consuming tasks ahead of time prevents leaving things to the last minute.",
+        "Discuss the physical consequences of working from dawn till dusk without sleep.",
+        "How can someone cut back on their hours to free up some time for family?"
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1489,11 +1498,11 @@
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
       document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical alignment... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard schedule parameters...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with Lesson 26 parameters...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Corporate Secretary, Productivity Consultant, and English Language Professor. Check if the user's sentence uses Lesson 26 time-management collocations (e.g., spend time, waste time, make time, save time, take your time, run out of time, keep track of time, on time, in time, behind schedule, ahead of time, pressed for time, rough time, for the time being, in no time) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are an English Language Professor reviewing productivity briefs based on Lesson 26 (Time) from image_7ca924.jpg. Check if the user's sentence uses collocations like: in a rush, take your time, spend your time, waste time, ungodly hours, taken me ages, time-management, well in advance, amount of time, grueling schedule, time-consuming tasks, pressing commitments, leave things to the last minute, running out of time, stick to the schedule, get ahead, falling behind, strict deadline, rush hour, eight solid hours, from dawn till dusk, spare/free time, cut back on your hours, free up some time. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze: "${textValue}"` }] }],
@@ -1543,23 +1552,23 @@
           document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
           document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
           
-          const alternativeText = parsedResult.alternatives?.[0] || "Your structure is remarkably solid!";
+          const alternativeText = parsedResult.alternatives?.[0] || "Your structure matches outstandingly well!";
           document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
             badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300";
-            badge.innerText = "Chrono Alignment";
+            badge.innerText = "Perfect Temporal Fit";
             playSynthSound('correct');
           } else {
             badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 dark:bg-rose-955/40 dark:text-rose-300";
-            badge.innerText = "Imperfect / Unnatural";
+            badge.innerText = "Imperfect Construction";
             playSynthSound('incorrect');
           }
           
         } catch (jsonErr) {
           console.error("JSON parse error: ", jsonErr);
-          document.getElementById('diagnostic-analysis').innerText = "Scan returned an unexpected schema. Re-verify the composition text.";
+          document.getElementById('diagnostic-analysis').innerText = "Scan returned an unexpected schema. Re-verify composition text.";
         }
       }
     }
@@ -1613,7 +1622,7 @@
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
       document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
-      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/24`;
       
       const chatLog = document.getElementById('podcast-chat-log');
       chatLog.innerHTML = '';
@@ -1640,7 +1649,7 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For example, we noted: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. In the dossier, we noted: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
@@ -1765,7 +1774,7 @@
             <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">${c.category}</span>
           </td>
           <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-450 font-semibold font-sans">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
             <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>

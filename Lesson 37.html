@@ -14,7 +14,6 @@
   <!-- FontAwesome for Speaking, Audio, and Signal Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Speaking Spectrum theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -105,47 +104,47 @@
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
     <!-- Interactive HTML5 Vocal Spectrum & Nodes Canvas Background -->
     <canvas id="vocal-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-20" onclick="spawnWaveNode(event)"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/30 via-slate-950/20 to-slate-950 pointer-events-none z-0 vocal-drift-glow"></div>
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/10 via-slate-950/10 to-slate-950 pointer-events-none z-0 vocal-drift-glow"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-rose-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-brand-900 text-white shadow-md shadow-brand-500/20">
           <i class="fa-solid fa-microphone-lines text-lg"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20 font-mono">Speaking Lab</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:to-brand-300 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-700 dark:text-brand-300 border border-brand-500/20 font-mono">Speaking Lab</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-comments text-brand-400"></i>
-        <h1 class="font-heading font-bold text-slate-100">Lesson 37: Speaking Mechanics</h1>
+        <i class="fa-solid fa-comments text-brand-500 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-700 dark:text-slate-200">Lesson 37: Speaking</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-350 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates vocal calibration) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-355 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Calibrate Spectrum Wave">
-          <i class="fa-solid fa-arrows-spin text-sm text-brand-400"></i>
+        <!-- Light / Dark Mode Toggle Button -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Switch Theme">
+          <i class="fa-solid fa-moon text-sm text-brand-500"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
+        <div class="flex items-center gap-2 rounded-xl bg-white dark:bg-slate-900 px-3 py-1.5 border border-rose-200 dark:border-slate-800">
           <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Mastered</span>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-355" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -154,50 +153,50 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-rose-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Dialogue Nodes</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Dialogue Modules</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
-            <i class="fa-solid fa-circle-nodes text-base"></i>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
             <span>Dossier & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-rose-50 dark:hover:bg-slate-850 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-clone text-base"></i>
             <span>Transmitter Deck</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-rose-50 dark:hover:bg-slate-850 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-circle-check text-base"></i>
             <span>Launch Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-rose-50 dark:hover:bg-slate-850 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-rose-50 dark:hover:bg-slate-855 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-rose-50 dark:hover:bg-slate-850 hover:text-brand-900 dark:hover:text-slate-100">
             <i class="fa-solid fa-spell-check text-base"></i>
             <span>Genesis Ledger</span>
           </button>
         </div>
         
         <!-- User Mission Credentials Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
+        <div class="rounded-2xl bg-gradient-to-tr from-rose-50 to-rose-100 dark:from-slate-950 dark:to-slate-900 p-4 border border-rose-200 dark:border-slate-800 relative overflow-hidden">
           <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-shield-halved text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Acoustic clearance</span>
+            <i class="fa-solid fa-shield-halved text-brand-500 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Vocal Standing</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">Decode conversational, structural, and social dialogue nodes to secure optimal communication efficiency!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed font-medium">Decode conversational, structural, and social dialogue nodes to secure optimal communication efficiency!</p>
         </div>
       </nav>
 
@@ -209,49 +208,46 @@
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
             <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-volume-high text-slate-700/60 text-lg animate-bounce"></i>
+            <div class="xl:col-span-7 bg-white/95 dark:bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-rose-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-rose-200 dark:border-slate-800 bg-gradient-to-tr from-rose-50 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-volume-high text-brand-500/60 dark:text-slate-700/60 text-lg"></i>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-rose-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Dialogue Protocol</h2>
-                  <p class="text-xs text-slate-400 mt-1">Harness conversational etiquette, tone, and critiques. Click highlighted collocations to pull up definitions.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Rules of Speaking</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-405 mt-1">Sift through beginnings, negotiations, and dialogue etiquette. Click highlighted words to pronounce and study them.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
                   <i class="fa-solid fa-volume-high"></i>
                   <span>Broadcast Address</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 tracking-wide space-y-6 relative z-10 animate-fade-in">
+              <!-- Story Text directly synchronized with Lesson 37 speaking curriculum -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-350 font-sans tracking-wide space-y-6 relative z-10 animate-fade-in">
                 <p>
-                  To become a better communicator, you must learn to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_small_talk">make small talk</span> easily. When you meet new colleagues, look for a natural moment to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="strike_up_conv">strike up a conversation</span>. You can safely <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_comments">make comments</span> about your environment or the weather. 
+                  Want to become a better conversationalist? Here are a few tips for <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_small_talk">making small talk</span> (talking casually about simple topics). To <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="strike_up_conv">strike up a conversation</span> (start a conversation), you can make comments about the weather or the <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="local_surroundings">local surroundings</span>.
                 </p>
                 <p>
-                  However, try to steer clear of <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="delicate_subjects">delicate subjects</span> like personal finances, politics, or beliefs. You don't want to drag someone into a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="lengthy_discussion">lengthy discussion</span> that might end in tension, or worse, cause you to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="have_argument">have an argument</span> that spoils the mood.
+                  Stay away from <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="delicate_subjects">delicate subjects</span> (sensitive topics like religion and politics) — you don’t want to get into a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="lengthy_discussion">lengthy discussion</span> (a long discussion) or have an <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="have_argument">argument</span> (have a verbal fight). If there’s a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="lull_in_conv">lull in the conversation</span> (a pause in the conversation), ask the other person a question about themselves.
                 </p>
                 <p>
-                  If there is ever a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="lull_in_conv">lull in the conversation</span>, gracefully ask the other person about their day or hobbies. When telling a personal anecdote, avoid the temptation to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="go_on_and_on">go on and on</span> about yourself. Remember, you are just having a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="brief_chat">brief chat</span>; you are not trying to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_speech">make a speech</span> to an assembly!
+                  If you tell a story, don’t <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="go_on_and_on">go on and on</span> (talk too much) — remember that you’re having a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="brief_chat">brief chat</span> (a quick conversation); you’re not making a speech. Be careful about <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="crack_jokes">cracking jokes</span> — you might end up having to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="apologize_profusely">apologize profusely</span> (apologize many times) if the person is offended.
                 </p>
                 <p>
-                  Be particularly careful when <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="crack_jokes">cracking jokes</span>, as misunderstandings happen quickly. If someone takes offense, you must step forward and <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="apologize_profusely">apologize profusely</span>. Outstanding <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="comm_skills">communication skills</span> revolve around knowing how to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="straight_to_point">get straight to the point</span> cleanly instead of <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="drop_hints">dropping hints</span> and expecting people to guess.
+                  Having good communication skills can really improve your relationships. People appreciate it when you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="straight_to_point">get straight to the point</span> (talk directly about the essential message) rather than <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="drop_hints">dropping hints</span> (trying to communicate very indirectly). Of course, nobody trusts a person who <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_lies">tells lies</span> (says things that aren’t true) or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="stretch_truth">stretches the truth</span> (exaggerates and distorts the facts).
                 </p>
                 <p>
-                  It's equally important to build trust. Never <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_lies">tell lies</span>, and resist the urge to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="stretch_truth">stretch the truth</span> to sound more impressive. Always <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_truth">tell the truth</span> so that when you <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="give_word">give your word</span>, people know they can rely on you. 
-                </p>
-                <p>
-                  Finally, pay attention to your <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tone_of_voice">tone of voice</span>. Sarcasm or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="sarcastic_remarks">sarcastic remarks</span> can erode friendships, while <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="disparaging_comments">disparaging comments</span> will only alienate those around you. If you have to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_complaint">make a complaint</span>, frame it as <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="constructive_criticism">constructive criticism</span>, and whenever you <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="ask_favor">ask a favor</span>, always speak with politeness.
+                  If you always <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_truth">tell the truth</span>, then people know they can <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="count_on_you">count on you</span> when you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="give_word">give your word</span> (make a promise or statement of the truth). It’s also important to watch your <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tone_of_voice">tone of voice</span> (the emotion with which you speak) and avoid making <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="sarcastic_remarks">sarcastic remarks</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="disparaging_comments">disparaging comments</span> (very negative and destructive comments). If you must make a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_complaint">complaint</span>, try to give <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="constructive_criticism">constructive criticism</span> (criticism that helps the situation improve). And if you need to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="ask_favor">ask a favor</span> of someone, always do it politely — don’t forget to say “Please”!
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-rose-250 dark:border-slate-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse" id="glossary-category">Acoustic Alignment</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse" id="glossary-category">Vocal Matrix</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -262,24 +258,24 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">make small talk</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">making small talk</h3>
                 
-                <p class="text-slate-200 text-sm leading-relaxed mb-6" id="glossary-definition">Talking casually about simple or everyday topics to establish a comfortable social atmosphere.</p>
+                <p class="text-slate-200 text-sm leading-relaxed mb-6" id="glossary-definition">Talking casually about simple or everyday topics to put people at ease.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
                   <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Context Precedent</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"To become a better communicator, you must learn to make small talk easily."</p>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"To become a better conversationalist, learn tips for making small talk."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-brand-400"></i>
-                  <span>Linguistic Physics</span>
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-rose-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-700 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-brand-500"></i>
+                  <span>Linguistic Tuning</span>
                 </h4>
-                <p class="text-xs text-slate-300 leading-relaxed font-medium">
-                  The vocabulary of interpersonal speaking is strictly bound by natural formulas. We **apologize profusely** rather than 'sorry highly', and we **stretch the truth** rather than 'grow the facts'. Master these exact patterns to elevate your speaking and writing competence.
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                  English separates conversational patterns very clearly. Uncountable terms use specific verbs like <strong>make comments</strong> or <strong>issue a complaint</strong>, whereas relational bonds involve actions like <strong>asking a favor</strong> or <strong>striking up a conversation</strong>. Master these to refine your flow!
                 </p>
               </div>
             </div>
@@ -291,18 +287,18 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Transmitter Deck</h2>
-                <p class="text-xs text-slate-400 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Dialogue Transmitter Deck</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-405 font-medium">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-white dark:bg-[#020617] border border-rose-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
                 <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span id="flashcard-total">30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="w-full bg-rose-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
@@ -310,21 +306,21 @@
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-rose-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-rose-200 dark:border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
                     <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation Phrase</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white animate-pulse" id="card-front-phrase">Phrase</h3>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white animate-pulse" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-300">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  <div class="text-center text-xs text-slate-400">
+                    <span class="bg-rose-50 dark:bg-slate-800 px-3 py-1 rounded-full border border-rose-150 dark:border-slate-800"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
@@ -349,7 +345,7 @@
                   <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
                       <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-300">Mark as Decoded</span>
+                      <span class="font-bold text-slate-300">Mark as Mastered</span>
                     </label>
                     <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
                   </div>
@@ -359,12 +355,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-rose-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-rose-50 dark:hover:bg-slate-850 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-[#010208] font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -377,26 +373,26 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white/95 dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-rose-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-rose-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 37 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct speaking collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 37 Graded Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Select the correct speaking collocation to complete the sentence.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span> of 17
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="w-full bg-rose-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
                 <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono">Active Dialogue Scenario</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 dark:text-slate-500 font-mono">Active Dialogue Scenario</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-800 dark:text-white">"Loading question..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -405,47 +401,48 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Aero-Linguistic Dialogue Analysis</span>
+                  <span>Acoustic Dialogue Analysis</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:text-rose-400">
+              <div class="flex items-center justify-between border-t border-rose-200 dark:border-slate-800 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-600 dark:text-rose-400 hover:underline">
                   <i class="fa-solid fa-rotate-left mr-1"></i>Reset Exam
                 </button>
-                <button id="quiz-next-btn" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono">
-                  Next Scenario <i class="fa-solid fa-arrow-right"></i>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition font-mono">
+                  <span>Next Scenario</span>
+                  <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
 
             <!-- Perfect Complete Card -->
-            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-slate-900 via-brand-950 to-slate-950 text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-brand-900">
-              <span class="inline-flex p-4 bg-brand-500/10 text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-brand-950 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-rose-200 dark:border-brand-900">
+              <span class="inline-flex p-4 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-full border border-rose-200 dark:border-brand-500/20 shadow-inner">
                 <i class="fa-solid fa-trophy class-trophy text-4xl animate-bounce"></i>
               </span>
               <div class="space-y-2">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-brand-300 to-indigo-400">Vocal Calibration Concluded! 🎙️</h2>
-                <p class="text-sm font-semibold text-brand-300">Exam score finalized: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-650 dark:from-brand-400 dark:via-brand-300 dark:to-indigo-400">Vocal Calibration Concluded! 🎙️</h2>
+                <p class="text-sm font-semibold text-slate-600 dark:text-brand-300">Exam score finalized: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
               </div>
-              <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 max-w-sm mx-auto">
-                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Dialogue Competency Rank</span>
-                <span class="text-base font-bold text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Calculating...</span>
+              <div class="bg-rose-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-rose-200 dark:border-slate-800 max-w-sm mx-auto">
+                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-400 font-mono">Dialogue Competency Rank</span>
+                <span class="text-base font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Calculating...</span>
               </div>
-              <p class="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+              <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
                 Excellent mastery of interpersonal speaking frameworks. You have successfully aligned conversational guidelines to clear social parameters.
               </p>
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-[#010208] font-bold text-xs transition shadow-lg">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition shadow-lg">
                   <i class="fa-solid fa-rotate-right"></i>
                   <span>Recalibrate</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-bold text-xs hover:bg-slate-800 transition text-slate-300">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-rose-200 dark:border-slate-800 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -457,18 +454,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white/95 dark:bg-slate-900 rounded-3xl p-6 border border-rose-200 dark:border-slate-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-rose-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">AI Verbal Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom dialogues, formal complaints, or feedback using Lesson 37 speaking collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">AI Verbal Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Compose custom dialogues, formal complaints, or feedback using Lesson 37 speaking collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-350 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-rose-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition">
                     <i class="fa-solid fa-lightbulb mr-1 text-brand-400"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-700 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -476,8 +473,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono">Verbal workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-900 outline-none transition text-slate-100" placeholder="Example: Rather than dropping hints, he decided to get straight to the point and speak his mind during the brief chat..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono">Verbal workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-rose-200 dark:border-slate-800 bg-white dark:bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition text-slate-800 dark:text-slate-100" placeholder="Example: Rather than dropping hints, he decided to get straight to the point and speak his mind during the brief chat..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -486,11 +483,11 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-rose-200 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-600 dark:hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-[#010208] rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
                   <span>Scan Dialogue Path</span>
                 </button>
@@ -498,9 +495,9 @@
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Dialogue Calibration Report</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white/95 dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-rose-200 dark:border-slate-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-rose-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Dialogue Calibration Report</h3>
                 <div class="flex items-center gap-2">
                   <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-450 border border-emerald-900/40">Calibrated</span>
                 </div>
@@ -509,8 +506,8 @@
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800 animate-pulse">
-                    <span class="text-3xl font-black font-mono tracking-tight text-brand-400" id="diagnostic-score">--</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-rose-200 dark:border-slate-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-brand-600 dark:text-brand-400" id="diagnostic-score">--</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
@@ -518,23 +515,23 @@
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing verbal structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Analyzing verbal structures...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Acoustic Appropriateness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring dialogue flow...</p>
+                  <div class="border-t border-rose-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono block mb-0.5">Acoustic Appropriateness Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold font-sans">Measuring dialogue flow...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-[#010208] p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">Recommended Dialogue Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-200 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-rose-50 dark:bg-[#010208] p-4 rounded-2xl border border-rose-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">Recommended Dialogue Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-rose-200 dark:border-slate-800 rounded-lg text-xs font-bold text-brand-700 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-slate-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy"></i> Copy Alternative
                   </button>
                 </div>
@@ -547,24 +544,24 @@
         <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-white dark:bg-slate-900 text-slate-800 dark:text-white rounded-3xl p-6 md:p-8 border border-rose-200 dark:border-slate-800 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
-              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div class="flex items-center justify-between pb-4 border-b border-rose-200 dark:border-white/10">
                 <div class="flex items-center gap-3">
                   <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">Vocal Broadcaster: Episode 37</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold">Vocal Station: Speaking Protocol, Conversation Lulls, and Polite Complaints</p>
+                    <p class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold font-mono">Vocal Station: Speaking Protocol, Conversation Lulls, and Polite Complaints</p>
                   </div>
                 </div>
-                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
-              <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5 animate-pulse">
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-rose-50/50 dark:bg-black/40 rounded-2xl p-4 border border-rose-100 dark:border-white/5 animate-pulse">
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
                 <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
@@ -575,38 +572,38 @@
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "make small talk"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to activate communication experts discussing Lesson 37 dialogues, sarcasm, remarks, and honesty.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 dark:text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100" id="podcast-current-phrase">Why we say "make small talk"</h3>
+                <p class="text-xs text-slate-600 dark:text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to activate communication experts discussing Lesson 37 dialogues, sarcasm, remarks, and honesty.</p>
               </div>
               
               <!-- Dialogue Box -->
-              <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto custom-scrollbar text-[11px] font-mono text-emerald-400 leading-relaxed">
+              <div class="bg-rose-50/50 dark:bg-black/80 rounded-2xl p-5 border border-rose-200 dark:border-white/10 space-y-4 max-h-48 overflow-y-auto custom-scrollbar text-[11px] font-mono text-slate-700 dark:text-emerald-400 leading-relaxed">
                 <div id="podcast-chat-box">
-                  <p class="text-slate-500">// Clicking Play starts automated speech synthesis dialogue between two linguists discussing collocations.</p>
+                  <p class="text-slate-400 dark:text-slate-500">// Clicking Play starts automated speech synthesis dialogue between two linguists discussing collocations.</p>
                 </div>
               </div>
               
               <!-- Podcast Controls -->
               <div class="flex items-center justify-between">
-                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition">
+                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 border border-rose-200 dark:border-slate-700 text-slate-600 dark:text-white hover:bg-rose-50 dark:hover:bg-slate-700 transition">
                   <i class="fa-solid fa-backward-step"></i>
                 </button>
-                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-white dark:text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                   <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                 </button>
-                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 hover:bg-slate-700 text-white rounded-xl flex items-center justify-center transition">
+                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white dark:bg-slate-800 border border-rose-200 dark:border-slate-700 text-slate-600 dark:text-white hover:bg-rose-50 dark:hover:bg-slate-700 transition">
                   <i class="fa-solid fa-forward-step"></i>
                 </button>
               </div>
               
               <!-- Podcast Progress bar -->
               <div class="space-y-1.5 font-mono">
-                <div class="flex items-center justify-between text-[10px] text-brand-300">
+                <div class="flex items-center justify-between text-[10px] text-brand-650 dark:text-brand-300">
                   <span id="podcast-time-passed">Card 0/30</span>
                   <span id="podcast-time-percent">0% Scanned</span>
                 </div>
-                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                <div class="w-full bg-rose-100 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
                   <div id="podcast-loading-meter" class="bg-brand-400 h-full transition-all duration-300" style="width: 0%"></div>
                 </div>
               </div>
@@ -617,29 +614,29 @@
         
         <!-- ==================== VIEW 6: DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white/95 dark:bg-slate-900/90 rounded-3xl p-6 border border-rose-200 dark:border-slate-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-rose-200 dark:border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Genesis & Terminus Dictionary Ledger</h2>
-                <p class="text-xs text-slate-400">Search and filter active collocations, remarks, and communication traits from the Lesson 37 database.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">Genesis & Terminus Dictionary Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Search and filter active collocations, remarks, and communication traits from the Lesson 37 database.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-rose-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-800 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-305 outline-none font-bold font-mono text-white">
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-rose-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-605 dark:text-slate-305 outline-none font-bold font-mono">
                   <option value="all">All Phases</option>
                   <option value="Conversational Elements">Conversation Flows</option>
                   <option value="Truth & Honesty">Truth & Pledges</option>
                   <option value="Acoustics & Remarks">Tone & Criticisms</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-305 outline-none font-bold font-mono text-white">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-rose-200 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-950 text-slate-605 dark:text-slate-305 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -651,7 +648,7 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-rose-100 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-550 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-32">Wave Group</th>
@@ -660,7 +657,7 @@
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold">
+                <tbody id="dictionary-rows" class="divide-y divide-rose-50 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -673,28 +670,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+    <footer class="flex h-16 items-center justify-around border-t border-rose-200 dark:border-slate-800 bg-white dark:bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-500 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-comments text-base"></i>
         <span class="text-[9px] font-bold">Story</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-500 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-500 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-circle-check text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-500 hover:text-brand-500 dark:hover:text-brand-400">
+        <i class="fa-solid :fa-wand-magic-sparkles text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-500 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 dark:text-slate-500 hover:text-brand-500 dark:hover:text-brand-400">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -704,10 +701,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-800">
-    <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-3">
-        <h3 class="font-sans font-black text-lg text-white">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-rose-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-rose-200 dark:border-stone-800 pb-3">
+        <h3 class="font-heading font-black text-lg text-slate-800 dark:text-white font-sans font-medium">Observer's Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -715,15 +712,15 @@
       <!-- Selection of Voices -->
       <div class="space-y-4">
         <div class="space-y-1.5">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-450 dark:text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-rose-200 dark:border-stone-750 rounded-xl px-3 py-2 bg-rose-50 dark:bg-slate-950 text-xs font-semibold outline-none text-slate-850 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 dark:text-slate-400 font-mono font-bold">
             <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
@@ -732,7 +729,7 @@
         
         <!-- Pitch Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 dark:text-slate-400 font-mono font-bold">
             <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
@@ -740,20 +737,20 @@
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-white dark:text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300">
     <div class="h-8 w-8 rounded-lg bg-white/10 text-brand-450 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
       <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-300 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+      <p class="text-[11px] text-slate-300 mt-0.5 font-medium font-sans" id="toast-body">Dossiers synchronized successfully.</p>
     </div>
   </div>
 
@@ -772,10 +769,12 @@
         { id: 'make_small_talk', phrase: 'make small talk', definition: 'Talking casually about simple or everyday topics to put people at ease.', example: 'He tried to make small talk with the receptionist while waiting.', category: 'Conversational Elements', mastered: false },
         { id: 'strike_up_conv', phrase: 'strike up a conversation', definition: 'To start a conversation with someone naturally and casually.', example: 'I managed to strike up a conversation with a woman standing near the entrance.', category: 'Conversational Elements', mastered: false },
         { id: 'make_comments', phrase: 'make comments', definition: 'Offer remarks or express opinions about a subject or situation.', example: 'Please do not make comments during the lecture.', category: 'Conversational Elements', mastered: false },
+        { id: 'local_surroundings', phrase: 'local surroundings', definition: 'The immediate environment, scenery, or setting around a person.', example: 'He struck up a conversation by commenting on the beautiful local surroundings.', category: 'Conversational Elements', mastered: false },
         { id: 'delicate_subjects', phrase: 'delicate subjects', definition: 'Highly sensitive, personal, or controversial topics that require careful handling.', example: 'She skillfully avoided discussing delicate subjects like religious beliefs.', category: 'Conversational Elements', mastered: false },
         { id: 'lengthy_discussion', phrase: 'lengthy discussion', definition: 'A long, detailed, and elaborate talk about a complex topic.', example: 'The committee got into a lengthy discussion about the annual budget allocation.', category: 'Conversational Elements', mastered: false },
         { id: 'have_argument', phrase: 'have an argument', definition: 'To engage in an angry, verbal dispute or disagreement.', example: 'I had an argument with my neighbor regarding the property border.', category: 'Conversational Elements', mastered: false },
         { id: 'lull_in_conv', phrase: 'lull in the conversation', definition: 'A temporary pause or quiet moment in a dialogue.', example: 'During a lull in the conversation, she excused herself to get water.', category: 'Conversational Elements', mastered: false },
+        { id: 'go_on_and_on', phrase: 'go on and on', definition: 'To speak continuously and excessively, often in a repetitive or boring way.', example: 'He went on and on about his golf game, oblivious to our growing boredom.', category: 'Conversational Elements', mastered: false },
         { id: 'brief_chat', phrase: 'brief chat', definition: 'A short, quick, and informal conversation.', example: 'I had a brief chat with my manager about the upcoming project milestone.', category: 'Conversational Elements', mastered: false },
         { id: 'make_speech', phrase: 'make a speech', definition: 'Deliver a formal address to an assembled audience.', example: 'He had to make a speech at his brother\'s wedding reception.', category: 'Conversational Elements', mastered: false },
         { id: 'crack_jokes', phrase: 'crack jokes', definition: 'Tell jokes or say funny things to make people laugh.', example: 'The speaker kept cracking jokes to ease the tension in the auditorium.', category: 'Conversational Elements', mastered: false },
@@ -783,9 +782,10 @@
         { id: 'comm_skills', phrase: 'communication skills', definition: 'The ability to convey information effectively and efficiently.', example: 'Developing strong communication skills is essential for effective leadership.', category: 'Conversational Elements', mastered: false },
         { id: 'straight_to_point', phrase: 'get straight to the point', definition: 'Speak directly about the most essential message without detour.', example: 'My father doesn\'t talk much; he always gets straight to the point.', category: 'Conversational Elements', mastered: false },
         { id: 'drop_hints', phrase: 'dropping hints', definition: 'Trying to communicate something very indirectly or subtly.', example: 'She has been dropping hints that she expects a promotion soon.', category: 'Conversational Elements', mastered: false },
-        { id: 'tell_lies', phrase: 'telling lies', definition: 'Saying things that are untruthful or false.', example: 'Telling lies might be convenient now, but it will ruin your credibility later.', category: 'Truth & Honesty', mastered: false },
-        { id: 'stretch_truth', phrase: 'stretches the truth', definition: 'Exaggerating or distorting facts slightly rather than lying completely.', example: 'He often stretches the truth when discussing his professional achievements.', category: 'Truth & Honesty', mastered: false },
+        { id: 'tell_lies', phrase: 'tell lies', definition: 'Saying things that are untruthful or false.', example: 'Telling lies might be convenient now, but it will ruin your credibility later.', category: 'Truth & Honesty', mastered: false },
+        { id: 'stretch_truth', phrase: 'stretch the truth', definition: 'Exaggerating or distorting facts slightly rather than lying completely.', example: 'He often stretches the truth when discussing his professional achievements.', category: 'Truth & Honesty', mastered: false },
         { id: 'tell_truth', phrase: 'tell the truth', definition: 'Speak honestly and accurately about facts.', example: 'You should always tell the truth regardless of the consequences.', category: 'Truth & Honesty', mastered: false },
+        { id: 'count_on_you', phrase: 'count on you', definition: 'Rely or depend on someone with absolute trust.', example: 'The team knows they can always count on you in times of crisis.', category: 'Truth & Honesty', mastered: false },
         { id: 'give_word', phrase: 'give your word', definition: 'Make a solemn promise or pledge of truthfulness.', example: 'If you give your word, you must ensure that you keep the promise.', category: 'Truth & Honesty', mastered: false },
         { id: 'tone_of_voice', phrase: 'tone of voice', definition: 'The emotional quality or inflection with which one speaks.', example: 'My mother always taught me to speak with a respectful tone of voice.', category: 'Acoustics & Remarks', mastered: false },
         { id: 'sarcastic_remarks', phrase: 'sarcastic remarks', definition: 'Sharp, ironic, or mocking comments intended to tease or hurt.', example: 'Rachel\'s sarcastic remarks kept making the entire crew laugh.', category: 'Acoustics & Remarks', mastered: false },
@@ -795,12 +795,9 @@
         { id: 'ask_favor', phrase: 'ask a favor', definition: 'Politely request someone to do something helpful for you.', example: 'Can I ask you a favor? I need a ride to the clinic tomorrow.', category: 'Conversational Elements', mastered: false },
         { id: 'speak_mind', phrase: 'speak your mind', definition: 'Express your opinions honestly and directly without hesitation.', example: 'In some cultures, it is considered impolite to speak your mind directly.', category: 'Conversational Elements', mastered: false },
         { id: 'bear_grudge', phrase: 'bear a grudge', definition: 'Maintain feelings of resentment or anger towards someone over time.', example: 'My husband forgives people very easily; he is not one to bear a grudge.', category: 'Conversational Elements', mastered: false },
-        { id: 'hurt_feelings', phrase: 'hurt my feelings', definition: 'Make someone feel sad, upset, or offended by your words.', example: 'He really hurt my feelings when he called my painting foolish.', category: 'Conversational Elements', mastered: false },
-        { id: 'honest_opinion', phrase: 'honest opinion', definition: 'A completely truthful, unbiased personal viewpoint.', example: 'I want your honest opinion about whether this proposal is viable.', category: 'Truth & Honesty', mastered: false },
-        { id: 'casual_acquaintance', phrase: 'casual acquaintance', definition: 'A person you know slightly but are not close friends with.', example: 'He isn\'t a close friend, just a casual acquaintance from my yoga class.', category: 'Conversational Elements', mastered: false },
-        { id: 'vivid_imagination', phrase: 'vivid imagination', definition: 'A highly creative, colorful, and active mind.', example: 'The author has a vivid imagination, which shines through in her fantasy novels.', category: 'Conversational Elements', mastered: false }
+        { id: 'hurt_feelings', phrase: 'hurt my feelings', definition: 'Make someone feel sad, upset, or offended by your words.', example: 'He really hurt my feelings when he called my painting foolish.', category: 'Conversational Elements', mastered: false }
       ],
-      // Exactly 20 high-fidelity scenario multiple-choice questions matching page 75
+      // Exactly 17 questions matching standard textbook exam of Lesson 37: Speaking
       quiz: [
         { id: 1, question: "After the last argument I ________ with my brother, we didn't speak to each other for months.", options: ["had", "made", "took"], answer: "had", explanation: "We 'have' an argument with someone." },
         { id: 2, question: "At my college graduation, a famous entrepreneur ________ a speech about the importance of innovation.", options: ["made", "spoke", "told"], answer: "made", explanation: "One 'makes' a speech to an audience." },
@@ -809,7 +806,7 @@
         { id: 5, question: "Dave apologized ________ for forgetting about our appointment.", options: ["profusely", "highly", "deeply"], answer: "profusely", explanation: "To say sorry multiple times with great sincerity is to 'apologize profusely'." },
         { id: 6, question: "During a ________ in the conversation, she excused herself to go make a phone call.", options: ["lull", "gap", "break"], answer: "lull", explanation: "A quiet pause in a dialogue is a 'lull in the conversation'." },
         { id: 7, question: "Have I ever ________ you the story of how I met my husband?", options: ["told", "said", "spoke"], answer: "told", explanation: "We 'tell' someone a story." },
-        { id: 8, question: "I don't like networking events - spending hours trying to ________ small talk with strangers just isn't my cup of tea.", options: ["make", "do", "engage"], answer: "make", explanation: "The correct collocation is to 'make small talk'." },
+        { id: 8, question: "I don't like networking events – spending hours trying to ________ small talk with strangers just isn't my cup of tea.", options: ["make", "do", "engage"], answer: "make", explanation: "The correct collocation is to 'make small talk'." },
         { id: 9, question: "I had a ________ chat with my manager and gave him an update on the project.", options: ["brief", "short", "quick"], answer: "brief", explanation: "A brief chat refers to a quick, concise meeting." },
         { id: 10, question: "I ________ up a conversation with a woman at the library, and she gave me some interesting book recommendations.", options: ["struck", "began", "started"], answer: "struck", explanation: "To 'strike up a conversation' means to initiate a dialogue casually." },
         { id: 11, question: "Jim and Nicole had a ________ discussion about the best school to put their children in.", options: ["lengthy", "long", "broad"], answer: "lengthy", explanation: "An elaborate, detailed conversation is a 'lengthy discussion'." },
@@ -818,10 +815,7 @@
         { id: 14, question: "My mother taught me always to speak with a respectful ________ of voice.", options: ["tone", "sound", "note"], answer: "tone", explanation: "The emotional inflection of speaking is our 'tone of voice'." },
         { id: 15, question: "Rachel's sarcastic ________ kept making me laugh during the movie.", options: ["remarks", "notes", "sayings"], answer: "remarks", explanation: "Sarcastic comments are referred to as 'sarcastic remarks'." },
         { id: 16, question: "Sally has been dropping ________ that she's interested in Kevin.", options: ["hints", "signs", "clues"], answer: "hints", explanation: "To communicate indirectly is to 'drop hints'." },
-        { id: 17, question: "Telling ________ may be convenient at the time, but it can get you into trouble later.", options: ["lies", "fables", "errors"], answer: "lies", explanation: "The correct standard expression is to 'tell lies'." },
-        { id: 18, question: "In some cultures, speaking directly and aggressively is discouraged; it is vital to learn when to ________ without offending.", options: ["speak your mind", "crack jokes", "stretch the truth"], answer: "speak_mind", explanation: "To express your opinions honestly and directly is to 'speak your mind'." },
-        { id: 19, question: "Instead of calling his work useless, she tried to offer ________ that could help him refine the system.", options: ["constructive criticism", "disparaging comments", "sarcastic remarks"], answer: "constructive_criticism", explanation: "Helpful, improvement-focused advice is 'constructive criticism'." },
-        { id: 20, question: "My brother is extremely forgiving; he is simply not the type of person to ________.", options: ["bear a grudge", "apologize profusely", "get straight to the point"], answer: "bear_grudge", explanation: "To hold resentment over time is to 'bear a grudge'." }
+        { id: 17, question: "Telling ________ may be convenient at the time, but it can get you into trouble later.", options: ["lies", "fables", "errors"], answer: "lies", explanation: "The correct standard expression is to 'tell lies'." }
       ],
       activeCardId: 'make_small_talk',
       flashcardsIndex: 0,
@@ -996,16 +990,38 @@
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Keep dark aesthetic locked
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-arrows-spin text-sm text-brand-400"></i>';
+      // Load stored theme or default to dark
+      const savedTheme = localStorage.getItem('colloc_theme_l37') || 'dark';
+      state.theme = savedTheme;
+      applyTheme(savedTheme);
       
       document.addEventListener('keyup', keyUpHandler);
     });
 
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-400"></i>';
+      } else {
+        html.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500"></i>';
+      }
+    }
+
     function toggleTheme() {
       playSynthSound('click');
-      showToast('Wave Refined', 'Vocal acoustics recalibrated successfully.', 'fa-arrows-spin');
+      const nextTheme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = nextTheme;
+      localStorage.setItem('colloc_theme_l37', nextTheme);
+      applyTheme(nextTheme);
+      
+      if (nextTheme === 'dark') {
+        showToast('Midnight Theme Active', 'Vocal acoustics recalibrated to Dark laboratory canvas.', 'fa-moon');
+      } else {
+        showToast('Botanical Theme Active', 'Vocal acoustics recalibrated to Light social parchment.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1020,7 +1036,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-800 hover:text-slate-100";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-400 hover:bg-rose-50 dark:hover:bg-slate-850 hover:text-brand-900 dark:hover:text-slate-100";
         }
       });
       
@@ -1032,7 +1048,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20";
       }
       
       state.currentView = viewName;
@@ -1117,7 +1133,7 @@
       if (select) {
         state.voiceSettings.voiceName = select.value;
       }
-      localStorage.setItem('colloc_voice_settings_l36', JSON.stringify(state.voiceSettings));
+      localStorage.setItem('colloc_voice_settings_l37', JSON.stringify(state.voiceSettings));
       showToast('Config Saved', 'Dialogue spectrum parameters updated.');
     }
 
@@ -1169,7 +1185,13 @@
       }
       window.speechSynthesis.cancel();
       
-      const utterance = new SpeechSynthesisUtterance(text);
+      // Clean phonetic variables representing mathematical characters or slashes cleanly
+      const sanitizedText = text
+        .replace(/\//g, " or ")
+        .replace(/_ING/g, "ing")
+        .replace(/-/g, " ");
+        
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
       const voices = window.speechSynthesis.getVoices();
       
       let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
@@ -1204,7 +1226,7 @@
       const links = document.querySelectorAll('.colloc-ref');
       links.forEach(l => {
         l.addEventListener('click', (e) => {
-          const colId = e.target.getAttribute('data-id');
+          const colId = e.currentTarget.getAttribute('data-id');
           displayGlossaryCard(colId);
         });
       });
@@ -1261,21 +1283,19 @@
     function speakCurrentStory() {
       playSynthSound('click');
       const storyParagraphs = [
-        "To become a better communicator, you must learn to make small talk easily.",
-        "When you meet new colleagues, look for a natural moment to strike up a conversation.",
-        "You can safely make comments about your environment or the weather.",
-        "However, try to steer clear of delicate subjects like personal finances, politics, or beliefs.",
-        "You don't want to drag someone into a lengthy discussion that might end in tension, or worse, cause you to have an argument that spoils the mood.",
-        "If there is ever a lull in the conversation, gracefully ask the other person about their day or hobbies.",
-        "When telling a personal anecdote, avoid the temptation to go on and on about yourself.",
-        "Remember, you are just having a brief chat; you are not trying to make a speech to an assembly!",
-        "Be particularly careful when cracking jokes, as misunderstandings happen quickly.",
-        "If someone takes offense, you must step forward and apologize profusely.",
-        "Outstanding communication skills revolve around knowing how to get straight to the point cleanly instead of dropping hints and expecting people to guess.",
-        "It's equally important to build trust. Never tell lies, and resist the urge to stretch the truth to sound more impressive.",
-        "Always tell the truth so that when you give your word, people know they can rely on you.",
-        "Finally, pay attention to your tone of voice. Sarcasm or sarcastic remarks can erode friendships, while disparaging comments will only alienate those around you.",
-        "If you have to make a complaint, frame it as constructive criticism, and whenever you ask a favor, always speak with politeness."
+        "Want to become a better conversationalist? Here are a few tips for making small talk, talking casually about simple topics.",
+        "To strike up a conversation, start a conversation, you can make comments about the weather or the local surroundings.",
+        "Stay away from delicate subjects, sensitive topics like religion and politics — you don’t want to get into a lengthy discussion, a long discussion, or have an argument, have a verbal fight.",
+        "If there’s a lull in the conversation, ask the other person a question about themselves.",
+        "If you tell a story, don’t go on and on, talk too much — remember that you’re having a brief chat, you’re not making a speech.",
+        "Be careful about cracking jokes — you might end up having to apologize profusely, apologize many times, if the person is offended.",
+        "Having good communication skills can really improve your relationships.",
+        "People appreciate it when you get straight to the point rather than dropping hints, trying to communicate very indirectly.",
+        "Of course, nobody trusts a person who tells lies or stretches the truth, exaggerates and distorts the facts.",
+        "If you always tell the truth, then people know they can count on you when you give your word.",
+        "It’s also important to watch your tone of voice and avoid making sarcastic remarks or disparaging comments.",
+        "If you must make a complaint, try to give constructive criticism, criticism that helps the situation improve.",
+        "And if you need to ask a favor of someone, always do it politely — don’t forget to say please!"
       ];
       triggerTTS(storyParagraphs.join(" "));
     }
@@ -1369,7 +1389,7 @@
       if (!quest) return;
       
       document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
-      document.getElementById('quiz-question-text').innerText = quest.question;
+      document.getElementById('quiz-question-text').innerText = `${state.quizIndex + 1}. ${quest.question}`;
       
       const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
       document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
@@ -1383,37 +1403,28 @@
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
         
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
-        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-white";
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-slate-800 dark:text-white";
         
         if (!answered) {
-          btn.className += " bg-[#111827] border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.className += " bg-white dark:bg-[#111827] border-rose-200 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400 dark:text-slate-700"></i>`;
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
           
-          const isSelected = (collocId === userAns || opt === userAns);
-
-          if (isCorrect) {
-            btn.className += " bg-emerald-950 border-emerald-800 text-emerald-400 font-bold";
+          if (opt === quest.answer) {
+            btn.className += " bg-emerald-100 dark:bg-emerald-950 border-emerald-400 dark:border-emerald-800 text-emerald-800 dark:text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
-          } else if (isSelected) {
-            btn.className += " bg-rose-955 border-rose-900 text-rose-400 font-bold";
+          } else if (opt === userAns) {
+            btn.className += " bg-rose-100 dark:bg-rose-950 border-rose-400 dark:border-rose-900 text-rose-800 dark:text-rose-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += " bg-slate-900 border-slate-800 text-slate-500";
+            btn.className += " bg-white dark:bg-slate-900 border-rose-100 dark:border-slate-800 text-slate-400 dark:text-slate-500";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300 dark:text-slate-750"></i>`;
           }
         }
         
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
-        }
         grid.appendChild(btn);
       });
       
@@ -1424,7 +1435,7 @@
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-slate-400 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
@@ -1434,16 +1445,12 @@
       
       state.quizAnswers[quest.id] = selectedOption;
       
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
-      
-      if (isCorrect) {
+      if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Node Calibrated!', 'Linguistic structure aligned perfectly.', 'fa-circle-check');
+        showToast('Tactical Success!', 'Vocal sequence verified.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Calibration Disrupted!', 'Dissonance noted in dialogue coordinates.', 'fa-triangle-exclamation');
+        showToast('Dissonance Logged!', 'Incorrect speech structure applied.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1474,11 +1481,7 @@
       
       let correct = 0;
       state.quiz.forEach(q => {
-        const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-        if (isCorrect) {
+        if (state.quizAnswers[q.id] === q.answer) {
           correct++;
         }
       });
@@ -1490,7 +1493,7 @@
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
       let rank = "Signal Novice";
-      if (percentage === 100) rank = "Acoustic Grandmaster";
+      if (percentage === 100) rank = "Acoustic Grandmaster 🎙️";
       else if (percentage >= 90) rank = "Vocal Specialist";
       else if (percentage >= 70) rank = "Acoustic Officer";
       
@@ -1520,7 +1523,7 @@
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-slate-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono";
+        chip.className = "px-3 py-1 bg-white dark:bg-zinc-800 hover:bg-brand-500/10 dark:hover:bg-brand-500/10 text-slate-600 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-rose-200 dark:border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1728,7 +1731,7 @@
           <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H1</div>
           <div class="space-y-0.5">
             <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Communication Coach)</span>
-            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1749,7 +1752,7 @@
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono font-heading">H2</div>
           <div class="space-y-0.5">
             <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Speech Pathologist)</span>
-            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1861,14 +1864,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-sans" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-sans" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono font-heading">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono font-heading">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-300 leading-relaxed font-semibold font-sans">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-sans font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-400 leading-relaxed font-semibold font-sans">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-500 dark:text-slate-400 font-semibold font-sans font-normal">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-450 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>

@@ -7,11 +7,11 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <!-- Google Fonts: Inter & Plus Jakarta Sans & Share Tech Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Luminous and Astro Icons -->
+  <!-- FontAwesome for Astro, Star, and Meteorological Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
   <!-- Configuring Tailwind theme options for the Starlight theme -->
@@ -32,7 +32,7 @@
               200: '#fde68a',
               300: '#fcd34d',
               400: '#fbbf24',
-              500: '#d97706', /* Polished Brass */
+              500: '#d97706', /* Polished Brass Amber */
               600: '#b45309',
               700: '#92400e', /* Deep Copper */
               800: '#78350f',
@@ -116,18 +116,18 @@
     <!-- Top Nav Header -->
     <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-amber-500 to-amber-700 text-white shadow-md shadow-amber-500/20">
-          <i class="fa-solid fa-moon text-lg animate-pulse"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-amber-500 to-amber-750 text-white shadow-md shadow-amber-500/20">
+          <i class="fa-solid fa-lightbulb text-lg animate-pulse"></i>
         </div>
         <div>
           <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">Time & Light</span>
+          <span class="ml-2 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">Observation Lab</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-cloud-sun text-amber-500"></i>
+        <i class="fa-solid fa-cloud-sun text-amber-550 animate-bounce"></i>
         <h1 class="font-heading font-bold text-slate-200">Lesson 29: Light</h1>
       </div>
 
@@ -144,7 +144,7 @@
         <!-- Lesson Progress Pill -->
         <div class="flex items-center gap-2 rounded-xl bg-slate-800 px-3 py-1.5 border border-slate-700">
           <div class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Mastered</span>
+          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/24 Mastered</span>
         </div>
       </div>
     </header>
@@ -155,7 +155,7 @@
       <!-- Side Navigation Panel -->
       <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Astro-Linguistic Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Spectral Modules</p>
           
           <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-amber-500/10 text-amber-300 border border-amber-500/20">
             <i class="fa-solid fa-book-open text-base"></i>
@@ -192,10 +192,10 @@
         <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-850 p-4 border border-slate-800">
           <div class="flex items-center gap-2 mb-2">
             <i class="fa-solid fa-satellite-dish text-amber-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Astro Clearance</span>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Prismatic Clearance</span>
           </div>
           <div class="text-2xl font-black font-heading tracking-tight text-amber-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-405 mt-1 leading-relaxed">Establish your photonics and optical classification credentials. Master definitions to unlock the Grand Astronomer ranking!</p>
+          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Establish your photonics and optical classification credentials. Master definitions to unlock the Grand Astronomer ranking!</p>
         </div>
       </nav>
 
@@ -206,12 +206,12 @@
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
+            <!-- Left Side: Interactive Story (Verbatim match to image_7cb3a7.png) -->
             <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Lighthouse of Cape Hope</h2>
-                  <p class="text-xs text-slate-400 mt-1">Explore physical and metaphorical light structures. Click highlighted collocations to pull up optical records.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">Lesson 29 Brief: Light</h2>
+                  <p class="text-xs text-slate-400 mt-1">Direct from curriculum dossier <span class="font-semibold underline">image_7cb3a7.png</span>. Click highlighted phrases to observe structural rules.</p>
                 </div>
                 <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-amber-500/10 transition">
                   <i class="fa-solid fa-volume-high"></i>
@@ -219,22 +219,22 @@
                 </button>
               </div>
               
-              <!-- Story Text -->
+              <!-- Story Text synchronized directly with image_7cb3a7.png -->
               <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 font-sans tracking-wide space-y-6">
                 <p>
-                  High above the jagged rocks of Cape Hope, the old keeper tended to the central <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="source_of_light">source of light</span> that guided ships through treacherous straits. Inside the tower, the lenses hummed, producing a steady <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="beam_of_light">beam of light</span> that pierced the midnight fog. On stormless nights, the sea slept beneath the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="pale_light">pale light</span> of the moon, but tonight, a severe tempest was brewing.
+                  We use the expression “<span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="sun_is_shining">the sun is shining</span>” to talk about the sun emitting light. If the light is so strong that it’s difficult to see, we can describe it as <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="blinding_sunlight">blinding sunlight</span> – and if the light is not very strong, then it is <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="weak_sunlight">weak sunlight</span>.
                 </p>
                 <p>
-                  Suddenly, a brilliant <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="flash_of_lightning">flash of lightning</span> ripped through the dark sky, followed by a deafening clap of thunder. A jagged <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="bolt_of_lightning">bolt of lightning</span> struck a nearby pine tree, leaving it smoldering. Inside the keeper's cozy cabin, the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="flickering_candle">flickering candle</span> on his desk struggled to stay lit, casting an unsteady, <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="flickering_light">flickering light</span> against the wooden walls.
+                  When the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="sun_sets">sun sets</span>, everything <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="grows_dark">grows dark</span>. If there’s a <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="full_moon">full moon</span>, then there will still be some light. But if there’s a <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="crescent_moon">crescent moon</span> or a <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="new_moon">new moon</span>, then it will be <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="pitch_dark">pitch dark/black</span> and you’ll be able to see the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="stars_twinkling">stars twinkling</span> in the night sky.
                 </p>
                 <p>
-                  Outside, the harbor's <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="powerful_floodlights">powerful floodlights</span> illuminated the loading docks, and the town's automatic <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="street_lights">street lights</span> hummed to life. To protect incoming vessels, the coast guard switched on their <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="security_searchlights">security searchlights</span>, sweeping the bay.
+                  To describe the strength of a light, you can use the words “bright” and “dim.” A <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="fluorescent_light_bulb">fluorescent light bulb</span> emits <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="bright_light">bright light</span>, and the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="faint_glow">faint glow</span> of a <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="flickering_candle">flickering candle</span> is <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="dim_light">dim light</span>. When light shines on an object, it makes the object <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="cast_a_shadow">cast a shadow</span>. An area that is protected from the sunlight is often called “the shade.” If you don’t want to get sunburned, it’s a good idea to <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="sit_in_the_shade">sit in the shade</span>.
                 </p>
                 <p>
-                  Arthur remembered his youth, when he would wander the forests beneath the pleasant <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="dappled_light">dappled light</span> of the pine canopy, enjoying the warm, <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="direct_sunlight">direct sunlight</span> of summer afternoons. But here, the lighthouse's <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="harsh_light">harsh light</span> was built for survival, not comfort. It stood in stark contrast to the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="soft_light">soft light</span> of his small fireplace, which was still <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="glowing_warmly">glowing warmly</span> in the dark corner.
+                  We use the word “lighting” to refer to a system of artificial lights, especially inside a house or building. A place can have <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="bright_strong_lighting">bright/strong lighting</span> or the opposite – <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="soft_subdued_lighting">soft/subdued lighting</span>. And along the highways and roads, we have <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="street_lights">street lights</span>.
                 </p>
                 <p>
-                  Years ago, a secret maritime conspiracy had been <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="brought_to_light">brought to light</span> when an old logbook was recovered. Arthur had managed to <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="shed_some_light">shed some light on</span> the mystery, showing that the crew had navigated by artificial <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="incandescent_light">incandescent light</span> when their instruments failed. He had always preferred <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="natural_light">natural light</span>, but in times of crisis, man-made <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="artificial_light">artificial light</span> saved countless lives, ensuring that no dark reef could <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="cast_a_shadow">cast a shadow</span> over Cape Hope again.
+                  If it’s nighttime and the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="power_goes_out">power goes out</span>, then the city will be <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="plunged_into_darkness">plunged into darkness</span>. You can describe the darkness as <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="complete_total_darkness">complete/total darkness</span> to emphasize that it is 100% dark. People will have to use flashlights or <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="light_candles">light candles</span> to be able to see – until the next morning when the <span class="colloc-ref cursor-pointer font-bold text-amber-300 border-b-2 border-dashed border-amber-400 hover:bg-amber-500/10 px-1 rounded transition" data-id="sun_rises">sun rises/comes up</span>.
                 </p>
               </div>
             </div>
@@ -254,13 +254,13 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-amber-300" id="glossary-phrase">source of light</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-amber-300 animate-pulse" id="glossary-phrase">the sun is shining</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">The origin of any illumination, such as the sun, a lamp, or a fire.</p>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To describe the action of the sun emitting visible light.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Arthur tended to the central source of light that guided ships."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Precedent</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"We use the expression 'the sun is shining' to talk about the sun emitting light."</p>
                 </div>
               </div>
               
@@ -271,7 +271,7 @@
                   <span>Optical Precision</span>
                 </h4>
                 <p class="text-xs text-slate-400 leading-relaxed">
-                  Linguistic lighting operates under exact parameters. You **cast a shadow** but never 'throw' it. You **shed light on** complex problems but never 'pour' it. This observatory lab is designed to lock these structural combinations into your semantic memory.
+                  Linguistic lighting operates under exact parameters. You **cast a shadow** but never 'throw' it. You say **plunged into darkness** when the power goes out. This observatory lab is designed to lock these structural combinations into your semantic memory.
                 </p>
               </div>
             </div>
@@ -288,18 +288,18 @@
               </div>
               <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span class="text-slate-500 font-bold">/</span>
+                <span>24</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
             <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-amber-400 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+              <div class="bg-amber-400 h-full w-[4.16%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
-            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+            <div class="card-perspective h-85 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
                 <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
@@ -311,7 +311,7 @@
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-450 uppercase tracking-widest font-bold">Collocation</span>
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
                     <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
@@ -329,11 +329,11 @@
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black">Definition</span>
+                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black font-mono">Definition</span>
                       <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
                     <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black">Luminous Context</span>
+                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black font-mono">Dossier Context</span>
                       <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
@@ -465,7 +465,7 @@
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
                 <div>
                   <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Spectral Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom proposals, stories, or scientific descriptions using Lesson 29 collocations.</p>
+                  <p class="text-xs text-slate-400 font-medium font-mono">Compose custom proposals, stories, or scientific descriptions using Lesson 29 collocations.</p>
                 </div>
                 <div class="flex gap-2">
                   <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
@@ -480,7 +480,7 @@
               <!-- Text Area -->
               <div class="space-y-3">
                 <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono">Writing Parchment</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm font-medium focus:border-amber-500 focus:bg-slate-900 outline-none transition" placeholder="Example: A sudden flash of lightning illuminated the valley, allowing a bright beam of light from our security floodlights to cast a shadow against the canyon wall..."></textarea>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-slate-955 p-4 text-sm font-medium focus:border-amber-500 focus:bg-slate-900 outline-none transition text-white" placeholder="Example: When the power goes out, the room is plunged into darkness. We must light candles immediately to escape complete darkness..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -513,7 +513,7 @@
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
                   <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800">
-                    <span class="text-3xl font-black font-mono tracking-tight" id="diagnostic-score">92</span>
+                    <span class="text-3xl font-black font-mono tracking-tight text-amber-400" id="diagnostic-score">92</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
@@ -522,18 +522,18 @@
                 <div class="md:col-span-9 space-y-4">
                   <div>
                     <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed">Analyzing light structures...</p>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing light structures...</p>
                   </div>
                   
                   <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5">Luminous Soundness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed">Measuring alchemical synchronization...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5 font-mono">Luminous Soundness Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring optical synchronization...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
+              <div class="bg-slate-955 p-4 rounded-2xl border border-slate-800">
                 <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-1">Recommended Editorial Polish</span>
                 <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
@@ -555,30 +555,30 @@
               <!-- Broadcast Header -->
               <div class="flex items-center justify-between pb-4 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                  <span class="flex h-3 w-3 rounded-full bg-amber-500 animate-pulse"></span>
+                  <span class="flex h-3 w-3 rounded-full bg-amber-550 animate-pulse"></span>
                   <div>
-                    <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 29</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Obs-Studio: Natural, Artificial, and Meterological Lights</p>
+                    <h2 class="font-heading text-lg font-bold tracking-tight text-amber-400">CollocaPodcast: Episode 29</h2>
+                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Spectral Dynamics: Natural, Artificial, and Meterological Lights</p>
                   </div>
                 </div>
-                <div class="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-amber-500/10 text-amber-300 border border-amber-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
-                <div class="wave-bar bg-amber-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-amber-450 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-amber-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
                 <div class="wave-bar bg-amber-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
                 <div class="wave-bar bg-amber-700 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
-                <div class="wave-bar bg-amber-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
-                <div class="wave-bar bg-amber-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+                <div class="wave-bar bg-amber-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-amber-450 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-amber-300 font-mono" id="podcast-status">Studio Ready</span>
+                <span class="text-[10px] font-black uppercase tracking-wider text-amber-450 font-mono" id="podcast-status">Studio Ready</span>
                 <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "shed some light"</h3>
                 <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing physical, meteorological, and metaphorical light collocations from Lesson 29.</p>
               </div>
@@ -589,7 +589,7 @@
                   <div class="h-6 w-6 rounded bg-amber-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
                     <span class="text-[10px] font-bold text-amber-400 font-mono">Sarah (Observatory Director)</span>
-                    <p class="text-xs text-slate-300">"Welcome back to the Observatory. Today, we are exploring Lesson 29 Light collocations. Let's begin the wavelength scan!"</p>
+                    <p class="text-xs text-slate-300 font-medium">"Welcome back to the Observatory. Today, we are exploring Lesson 29 Light collocations. Let's begin the wavelength scan!"</p>
                   </div>
                 </div>
               </div>
@@ -600,7 +600,7 @@
                   <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-amber-500 to-amber-700 text-slate-950 hover:from-amber-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-amber-500 to-amber-750 text-slate-950 hover:from-amber-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
                   <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
@@ -611,7 +611,7 @@
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
                   <div class="flex items-center justify-between text-[10px] text-amber-300">
-                    <span id="podcast-time-passed">Card 0/30</span>
+                    <span id="podcast-time-passed">Card 0/24</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
@@ -630,8 +630,8 @@
             
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Metaphor-Lexicon</h2>
-                <p class="text-xs text-slate-455">Search and filter active optical collocations inside the Lesson 29 Observatory files.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-200">Prismatic Lexicon</h2>
+                <p class="text-xs text-slate-400">Search and filter active optical collocations inside the Lesson 29 Observatory database.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
@@ -645,7 +645,6 @@
                   <option value="all">All Wavelengths</option>
                   <option value="Nature of Light">Nature of Light</option>
                   <option value="Sources & Tech">Sources & Tech</option>
-                  <option value="Metaphorical">Metaphorical</option>
                   <option value="Meteorological">Meteorological</option>
                 </select>
                 <!-- Mastery Filter -->
@@ -661,12 +660,12 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-slate-800 text-[10px] text-slate-500 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-32">Wave Group</th>
                     <th class="py-3 px-4">Core Definition</th>
-                    <th class="py-3 px-4 hidden lg:table-cell">Luminous Precedent Example</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Luminous Context Precedent</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
@@ -778,62 +777,58 @@
         pitch: 1.0,
         volume: 1.0
       },
+      // 24 updated collocations representing the exact curriculum vocabulary of image_7cb3a7.png
       collocations: [
-        { id: 'bright_light', phrase: 'bright light', definition: 'Very intense, high-illumination illumination.', example: 'The lab was flooded with bright light, revealing all the microscopic targets.', category: 'Nature of Light', mastered: false },
-        { id: 'strong_light', phrase: 'strong light', definition: 'High-intensity, highly powerful illumination.', example: 'A strong light from the observatory telescope beamed across the mountain ridge.', category: 'Nature of Light', mastered: false },
-        { id: 'faint_light', phrase: 'faint light', definition: 'Extremely weak, barely visible illumination.', example: 'We spotted a faint light in the distance, which turned out to be a cabin candle.', category: 'Nature of Light', mastered: false },
-        { id: 'dim_light', phrase: 'dim light', definition: 'Low, muted, or soft lighting that leaves a space mostly dark.', example: 'Arthur worked inside the dim light of the ancient research library.', category: 'Nature of Light', mastered: false },
-        { id: 'flickering_light', phrase: 'flickering light', definition: 'Unsteady, rapidly changing light that flashes on and off.', example: 'The flickering light from the dying light bulb made it hard to write my papers.', category: 'Nature of Light', mastered: false },
-        { id: 'flickering_candle', phrase: 'flickering candle', definition: 'A candle flame that wavers unsteadily, often due to moving air.', example: 'The drafty cabin window made the flickering candle go out completely.', category: 'Nature of Light', mastered: false },
-        { id: 'shining_brightly', phrase: 'shining brightly', definition: 'Emitting powerful, brilliant, and radiant rays.', example: 'The sun was shining brightly, reflecting off the glaciers.', category: 'Nature of Light', mastered: false },
-        { id: 'glowing_warmly', phrase: 'glowing warmly', definition: 'Emitting a steady, pleasant, and warm light without open active flames.', example: 'The fireplace was still glowing warmly hours after we went to bed.', category: 'Nature of Light', mastered: false },
-        { id: 'beam_of_light', phrase: 'beam of light', definition: 'A concentrated, single narrow stream of electromagnetic radiation.', example: 'A concentrated beam of light from the laser illuminated the optical lens.', category: 'Nature of Light', mastered: false },
-        { id: 'ray_of_sunlight', phrase: 'ray of sunlight', definition: 'A single, elegant line of solar radiation filtering downwards.', example: 'A warm ray of sunlight filtered through the dense rainforest canopy.', category: 'Nature of Light', mastered: false },
-        { id: 'cast_a_shadow', phrase: 'cast a shadow', definition: 'Creating a dark silhouette when blocking a line of light.', example: 'The tall observatory tower cast a shadow over our gardens.', category: 'Nature of Light', mastered: false },
-        { id: 'shed_some_light', phrase: 'shed some light on', definition: 'To provide information, clues, or insights that explain a mystery.', example: 'The auditor\'s report managed to shed some light on the missing funds.', category: 'Metaphorical', mastered: false },
-        { id: 'brought_to_light', phrase: 'brought to light', definition: 'Revealed to the public after being hidden or kept secret.', example: 'The investigative reporters brought the environmental crimes to light.', category: 'Metaphorical', mastered: false },
-        { id: 'street_lights', phrase: 'street lights', definition: 'Standard lamps along roads designed to illuminate routes at night.', example: 'The city was pitch black until the automatic street lights switched on.', category: 'Sources & Tech', mastered: false },
-        { id: 'powerful_floodlights', phrase: 'floodlights', definition: 'Powerful, wide-angle lamps designed to illuminate large outdoor fields or buildings.', example: 'The stadium turned on its powerful floodlights for the night game.', category: 'Sources & Tech', mastered: false },
-        { id: 'security_searchlights', phrase: 'searchlights', definition: 'Powerful, adjustable narrow-beam lamps used to scan target zones.', example: 'The security searchlights swept the prison yard continuously.', category: 'Sources & Tech', mastered: false },
-        { id: 'fluorescent_light', phrase: 'fluorescent light', definition: 'Artificial illumination produced by electrical gas tubes, common in offices.', example: 'Working under buzzing fluorescent light for twelve hours gave him a headache.', category: 'Sources & Tech', mastered: false },
-        { id: 'incandescent_light', phrase: 'incandescent light', definition: 'Warm artificial light produced by running electricity through a thin filament wire.', example: 'The old cottage relied on warm incandescent light rather than neon tubes.', category: 'Sources & Tech', mastered: false },
-        { id: 'soft_light', phrase: 'soft light', definition: 'Gentle, приятный, and diffused lighting that avoids unappealing harsh shadows.', example: 'Photographers prefer shooting portraits in soft light to avoid glares.', category: 'Sources & Tech', mastered: false },
-        { id: 'harsh_light', phrase: 'harsh light', definition: 'Unpleasantly intense, direct, and glare-heavy illumination.', example: 'The harsh light of the desert sun was almost blinding without sunglasses.', category: 'Sources & Tech', mastered: false },
-        { id: 'natural_light', phrase: 'natural light', definition: 'Organic light produced by cosmic sources such as the sun, stars, or moon.', example: 'We designed the loft with massive skylights to maximize natural light.', category: 'Sources & Tech', mastered: false },
-        { id: 'artificial_light', phrase: 'artificial light', definition: 'Man-made illumination produced by electrical filaments, LEDs, or gas.', example: 'Late-night study sessions rely entirely on artificial light.', category: 'Sources & Tech', mastered: false },
-        { id: 'flash_of_lightning', phrase: 'flash of lightning', definition: 'A sudden, brilliant flare of electrostatic discharge in storm clouds.', example: 'A sudden flash of lightning illuminated the bay, revealing a small sailing ship.', category: 'Meteorological', mastered: false },
-        { id: 'bolt_of_lightning', phrase: 'bolt of lightning', definition: 'A single, powerful discharge path of lightning striking a ground target.', example: 'A jagged bolt of lightning struck the old oak, splitting its trunk in half.', category: 'Meteorological', mastered: false },
-        { id: 'pale_light', phrase: 'pale light', definition: 'Weak, colorless, or ghostly illumination, often from the moon or stars.', example: 'We walked along the mountain ridge beneath the pale light of starlight.', category: 'Nature of Light', mastered: false },
-        { id: 'ambient_light', phrase: 'ambient light', definition: 'The existing, general background illumination within an environment.', example: 'Adjust the telescope exposure to compensate for city ambient light.', category: 'Sources & Tech', mastered: false },
-        { id: 'backlight_source', phrase: 'backlight', definition: 'A light positioned behind a target object to create depth or a silhouette.', example: 'The photographer placed a backlight behind the subject to define her silhouette.', category: 'Sources & Tech', mastered: false },
-        { id: 'direct_sunlight', phrase: 'direct sunlight', definition: 'Unfiltered solar radiation hitting a target directly.', example: 'Place the solar cells in direct sunlight to achieve maximum power generation.', category: 'Nature of Light', mastered: false },
-        { id: 'dappled_light', phrase: 'dappled light', definition: 'Sunlight filtered through dynamic canopies, creating irregular spotted patterns.', example: 'We enjoyed a picnic beneath the dappled light of the apple orchards.', category: 'Nature of Light', mastered: false },
-        { id: 'source_of_light', phrase: 'source of light', definition: 'The active physical origin of any illumination.', example: 'The sun is the primary source of light and energy for our solar system.', category: 'Nature of Light', mastered: false }
+        { id: 'sun_is_shining', phrase: 'the sun is shining', definition: 'The action of the sun emitting visible daylight.', example: 'We use the expression "the sun is shining" to talk about the sun emitting light.', category: 'Meteorological', mastered: false },
+        { id: 'blinding_sunlight', phrase: 'blinding sunlight', definition: 'Extremely strong sunlight that makes it very difficult to see clearly.', example: 'If the light is so strong that it\'s difficult to see, we can describe it as blinding sunlight.', category: 'Meteorological', mastered: false },
+        { id: 'weak_sunlight', phrase: 'weak sunlight', definition: 'Filtered, low-intensity solar radiation that is not strong.', example: 'And if the light is not very strong, then it is weak sunlight.', category: 'Meteorological', mastered: false },
+        { id: 'sun_sets', phrase: 'sun sets', definition: 'The daily disappearance of the sun below the western horizon.', example: 'When the sun sets (disappears below the horizon), everything grows dark.', category: 'Meteorological', mastered: false },
+        { id: 'grows_dark', phrase: 'grows dark', definition: 'The visual transition of daylight fading into nocturnal darkness.', example: 'When the sun sets, everything grows dark.', category: 'Nature of Light', mastered: false },
+        { id: 'full_moon', phrase: 'full moon', definition: 'The celestial phase where the moon\'s face is fully illuminated.', example: 'If there\'s a full moon, then there will still be some light.', category: 'Meteorological', mastered: false },
+        { id: 'crescent_moon', phrase: 'crescent moon', definition: 'The curved phase of the moon showing less than half illumination.', example: 'But if there\'s a crescent moon or a new moon, then it will be pitch dark/black.', category: 'Meteorological', mastered: false },
+        { id: 'new_moon', phrase: 'new moon', definition: 'The lunar phase where the moon is completely unilluminated from Earth.', example: 'If there is a new moon, you will see the stars twinkling.', category: 'Meteorological', mastered: false },
+        { id: 'pitch_dark', phrase: 'pitch dark/black', definition: 'Completely black and dark with absolute zero illumination.', example: 'Without moon light, the forest will be pitch dark/black.', category: 'Nature of Light', mastered: false },
+        { id: 'stars_twinkling', phrase: 'stars twinkling', definition: 'The stellar shimmer caused by atmospheric refraction at night.', example: 'You\'ll be able to see the stars twinkling in the night sky.', category: 'Meteorological', mastered: false },
+        { id: 'fluorescent_light_bulb', phrase: 'fluorescent light bulb', definition: 'An artificial low-pressure gas-discharge light bulb.', example: 'A fluorescent light bulb emits bright light.', category: 'Sources & Tech', mastered: false },
+        { id: 'bright_light', phrase: 'bright light', definition: 'Illumination of high intensity, clarity, and strength.', example: 'A fluorescent light bulb emits bright light.', category: 'Nature of Light', mastered: false },
+        { id: 'faint_glow', phrase: 'faint glow', definition: 'A highly weak, soft, and gentle emission of light.', example: 'The faint glow of a flickering candle is dim light.', category: 'Nature of Light', mastered: false },
+        { id: 'flickering_candle', phrase: 'flickering candle', definition: 'A candle flame wavering unsteadily due to light drafts.', example: 'The faint glow of a flickering candle is dim light.', category: 'Sources & Tech', mastered: false },
+        { id: 'dim_light', phrase: 'dim light', definition: 'A low-intensity level of light that leaves a space mostly in shadow.', example: 'The faint glow of a flickering candle is dim light.', category: 'Nature of Light', mastered: false },
+        { id: 'cast_a_shadow', phrase: 'cast a shadow', definition: 'To obstruct light rays, projecting a dark shape on a surface.', example: 'When light shines on an object, it makes the object cast a shadow.', category: 'Nature of Light', mastered: false },
+        { id: 'sit_in_the_shade', phrase: 'sit in the shade', definition: 'To shelter oneself in an area shielded from direct sunlight.', example: 'If you don\'t want to get sunburned, it\'s a good idea to sit in the shade.', category: 'Meteorological', mastered: false },
+        { id: 'bright_strong_lighting', phrase: 'bright/strong lighting', definition: 'A high-illumination artificial lighting system inside a space.', example: 'A place can have bright/strong lighting or the opposite – soft/subdued lighting.', category: 'Sources & Tech', mastered: false },
+        { id: 'soft_subdued_lighting', phrase: 'soft/subdued lighting', definition: 'A cozy low level of light designed for artistic or romantic effects.', example: 'We prefer soft/subdued lighting for romantic dinners.', category: 'Sources & Tech', mastered: false },
+        { id: 'street_lights', phrase: 'street lights', definition: 'Lamps mounted on poles along public roads to provide nighttime safety.', example: 'And along the highways and roads, we have street lights.', category: 'Sources & Tech', mastered: false },
+        { id: 'power_goes_out', phrase: 'power goes out', definition: 'A sudden failure of the local electrical utility system.', example: 'If it\'s nighttime and the power goes out, the city will be plunged into darkness.', category: 'Sources & Tech', mastered: false },
+        { id: 'plunged_into_darkness', phrase: 'plunged into darkness', definition: 'Thrown suddenly into absolute pitch-black shadow or blackout.', example: 'When the grid fails, the neighborhood is plunged into darkness.', category: 'Nature of Light', mastered: false },
+        { id: 'complete_total_darkness', phrase: 'complete/total darkness', definition: 'An environment with absolute zero light (100% dark).', example: 'We call this complete/total darkness to emphasize that it is 100% dark.', category: 'Nature of Light', mastered: false },
+        { id: 'light_candles', phrase: 'light candles', definition: 'To set fire to candle wicks to obtain temporary artificial illumination.', example: 'People will have to use flashlights or light candles to be able to see.', category: 'Sources & Tech', mastered: false },
+        { id: 'sun_rises', phrase: 'sun rises/comes up', definition: 'The daily morning appearance of the sun over the eastern horizon.', example: 'Wait until the next morning when the sun rises/comes up.', category: 'Meteorological', mastered: false }
       ],
-      // Custom 20-question scenario-based quiz grounded in Lesson 29: Light
+      // Graded Exam covering Lesson 29 Light topics
       quiz: [
-        { id: 1, question: "The romantic restaurant was decorated with candles that created a ________ light, perfect for dining.", options: ["soft", "harsh", "artificial"], answer: "soft", explanation: "Gentle, pleasant, and diffused lighting is collocated as 'soft light'." },
-        { id: 2, question: "As the storm raged over the valley, a brilliant ________ of lightning lit up the sky for a fraction of a second.", options: ["flash", "bolt", "beam"], answer: "flash", explanation: "A sudden, brilliant flare of electrostatic discharge in storm clouds is a 'flash of lightning'." },
-        { id: 3, question: "The old generator failed, and our computer monitors began to blink in the ________ light.", options: ["flickering", "glowing", "harsh"], answer: "flickering", explanation: "An unsteady light that turns on and off rapidly is described as 'flickering light'." },
-        { id: 4, question: "The shipping logs were finally ________ to light during the federal audits, exposing years of corruption.", options: ["brought", "shed", "cast"], answer: "brought", explanation: "Revealing hidden secrets or crimes to the public is to 'bring them to light' (brought to light)." },
-        { id: 5, question: "Can anyone here ________ some light on why our logistics pipeline has stalled?", options: ["shed", "bring", "cast"], answer: "shed", explanation: "Providing insights or information to clarify a mystery is to 'shed some light' on it." },
-        { id: 6, question: "A thin ________ of sunlight filtered through the heavy velvet curtains.", options: ["ray", "flash", "bolt"], answer: "ray", explanation: "A single narrow line of solar radiation is a 'ray of sunlight'." },
-        { id: 7, question: "The mountain peaks ________ a long shadow across the quiet valley during sunset.", options: ["cast", "threw", "made"], answer: "cast", explanation: "The correct verb collocation for creating a shadow by blocking light is 'cast a shadow'." },
-        { id: 8, question: "The stadium's powerful ________ turned midnight into day for the championship soccer game.", options: ["floodlights", "street lights", "searchlights"], answer: "floodlights", explanation: "Wide-beam, highly powerful stadium illumination units are 'floodlights'." },
-        { id: 9, question: "Artists often prefer studios with abundant ________ light because it represents colors accurately.", options: ["natural", "artificial", "fluorescent"], answer: "natural", explanation: "Organic, unfiltered illumination from the sun/sky is 'natural light'." },
-        { id: 10, question: "A terrifying ________ of lightning struck the radio tower, knocking out all communications.", options: ["bolt", "flash", "ray"], answer: "bolt", explanation: "A single discharge path hitting a ground target is a 'bolt of lightning'." },
-        { id: 11, question: "Arthur adjusted the lens, projecting a concentrated ________ of light across the misty ocean.", options: ["beam", "ray", "flash"], answer: "beam", explanation: "A concentrated, single narrow stream of electromagnetic radiation from a device is a 'beam of light'." },
-        { id: 12, question: "We had to read the tiny manual under the ________ light of the warehouse, which caused severe eye strain.", options: ["harsh", "soft", "faint"], answer: "harsh", explanation: "Unpleasantly intense, direct, and glare-heavy lighting is 'harsh light'." },
-        { id: 13, question: "The embers of the campfire were still ________ in the dark, hours after the flames died down.", options: ["glowing", "flickering", "shining"], answer: "glowing", explanation: "Emitting a steady, pleasant, warm light without open flames is collocated as 'glowing' (or glowing warmly)." },
-        { id: 14, question: "The forest path was covered in ________ light, with spots of sun filtering through the dense pine leaves.", options: ["dappled", "pale", "direct"], answer: "dappled", explanation: "Irregular, spotted light patterns filtered through canopies is 'dappled light'." },
-        { id: 15, question: "City maintenance crews are scheduled to replace all broken ________ lights along the main avenue.", options: ["street", "flood", "ambient"], answer: "street", explanation: "Roadside illumination lamps are 'street lights'." },
-        { id: 16, question: "We sat on the beach, watching the waves roll in under the ________ light of the full moon.", options: ["pale", "harsh", "direct"], answer: "pale", explanation: "Weak, colorless, or ghostly celestial light (moon/stars) is collocated as 'pale light'." },
-        { id: 17, question: "The suspect was spotted by security guards when the ________ swept over his hiding spot near the prison wall.", options: ["searchlights", "floodlights", "street lights"], answer: "searchlights", explanation: "Powerful, adjustable narrow-beam security scanning lights are 'searchlights'." },
-        { id: 18, question: "Working under flickering ________ lights in the office can trigger migraines for some employees.", options: ["fluorescent", "incandescent", "ambient"], answer: "fluorescent", explanation: "Artificial gas tube lighting common in commercial offices is 'fluorescent light'." },
-        { id: 19, question: "The modern laptop features a bright ________, allowing programmers to type comfortably in pitch-black rooms.", options: ["backlight", "ambient light", "faint light"], answer: "backlight", explanation: "An internal light source positioned behind an interface is a 'backlight'." },
-        { id: 20, question: "Because our camp was deep in the canyon, we received less than two hours of ________ sunlight each day.", options: ["direct", "dappled", "harsh"], answer: "direct", explanation: "Unfiltered solar rays hitting a target directly are collocated as 'direct sunlight'." }
+        { id: 1, question: "We packed sunglasses and solar hats because the sun is ________ in the desert.", options: ["shining brightly", "grows dark", "faint glow"], answer: "sun_is_shining", explanation: "The sun emitting active light is referred to as 'the sun is shining'." },
+        { id: 2, question: "Without sunglasses, it was impossible to drive straight into the ________ of the setting sun.", options: ["blinding sunlight", "weak sunlight", "soft/subdued lighting"], answer: "blinding_sunlight", explanation: "Extremely intense light that makes it hard to see is collocated as 'blinding sunlight'." },
+        { id: 3, question: "Because the storm clouds were so thick, only a ________ filtered down into the forest.", options: ["weak sunlight", "bright/strong lighting", "flickering candle"], answer: "weak_sunlight", explanation: "Sunlight that is filtered, dim, or lacking power is described as 'weak sunlight'." },
+        { id: 4, question: "Arthur waited on the cliffs until the ________, turning the ocean dark blue.", options: ["sun sets", "sun rises/comes up", "power goes out"], answer: "sun_sets", explanation: "The daily disappearance of the sun below the western horizon is the sun setting (sun sets)." },
+        { id: 5, question: "As soon as the solar disk slipped beneath the horizon, everything ________.", options: ["grows dark", "twinkles", "casts a shadow"], answer: "grows_dark", explanation: "Losing light and transition to nighttime is described as growing dark (grows dark)." },
+        { id: 6, question: "We walked home without flashlights because a beautiful ________ illuminated the shoreline.", options: ["full moon", "new moon", "flickering candle"], answer: "full_moon", explanation: "The moon phase emitting substantial visible light at night is the 'full_moon'." },
+        { id: 7, question: "The forest trail was extremely dark because there was only a sliver of a ________ visible.", options: ["crescent moon", "full moon", "bright light"], answer: "crescent_moon", explanation: "A thin curved lunar sliver is a 'crescent moon'." },
+        { id: 8, question: "During the lunar eclipse, the landscape became completely ________.", options: ["pitch dark/black", "dim light", "soft/subdued lighting"], answer: "pitch_dark", explanation: "Completely dark or 100% black is 'pitch dark/black'." },
+        { id: 9, question: "We laid back in the telescope meadow, watching the ________ across the dark sky.", options: ["stars twinkling", "power goes out", "sun is shining"], answer: "stars_twinkling", explanation: "Stellar bodies shimmering at night is 'stars twinkling'." },
+        { id: 10, question: "To save energy, they replaced every single bulb in the corridor with a ________.", options: ["fluorescent light bulb", "flickering candle", "street light"], answer: "fluorescent_light_bulb", explanation: "A gas-discharge artificial light bulb is a 'fluorescent light bulb'." },
+        { id: 11, question: "She blinked her eyes in pain when she turned on the ________ in the dark basement.", options: ["bright light", "faint glow", "weak sunlight"], answer: "bright_light", explanation: "Illumination of high, dazzling intensity is 'bright light'." },
+        { id: 12, question: "We could see the ________ of campfire embers through the trees.", options: ["faint glow", "blinding sunlight", "harsh light"], answer: "faint_glow", explanation: "A soft, barely visible light emission is a 'faint glow'." },
+        { id: 13, question: "The drafty windows caused the ________ to waver and cast eerie patterns on the walls.", options: ["flickering candle", "fluorescent light bulb", "street light"], answer: "flickering_candle", explanation: "An unsteady candle flame fluctuating in moving air is a 'flickering candle'." },
+        { id: 14, question: "I had a hard time reading the small book coordinates in the ________ of the attic.", options: ["dim light", "bright light", "natural light"], answer: "dim_light", explanation: "Low levels of light leaving a space mostly dark represent 'dim light'." },
+        { id: 15, question: "When you block the projector beam, you will ________ against the map board.", options: ["cast a shadow", "light candles", "grow dark"], answer: "cast_a_shadow", explanation: "To block light rays projecting a silhouette is to 'cast a shadow'." },
+        { id: 16, question: "The desert temperature was blistering, so we decided to ________ under a sandstone cliff.", options: ["sit in the shade", "light candles", "watch stars twinkling"], answer: "sit_in_the_shade", explanation: "Sheltering in a location protected from direct solar rays is to 'sit in the shade'." },
+        { id: 17, question: "The sterile surgical room was fitted with ________ to avoid any visibility errors.", options: ["bright/strong lighting", "soft/subdued lighting", "dim light"], answer: "bright_strong_lighting", explanation: "An artificial system of high-illumination lights is 'bright/strong lighting'." },
+        { id: 18, question: "We chose a small cafe with ________ for our anniversary dinner.", options: ["soft/subdued lighting", "bright/strong lighting", "blinding sunlight"], answer: "soft_subdued_lighting", explanation: "Low-intensity artificial lighting for cozy or romantic settings is 'soft/subdued lighting'." },
+        { id: 19, question: "The highway construction zone was dangerous because the automatic ________ were offline.", options: ["street lights", "flickering candles", "new moons"], answer: "street_lights", explanation: "Roadway safety illumination lamps are 'street lights'." },
+        { id: 20, question: "Suddenly, the lightning struck the transformer, the ________, and the building went dark.", options: ["power goes out", "sun rises/comes up", "candle flickering"], answer: "power_goes_out", explanation: "A failure of the main electrical supply grid is the power going out (power goes out)." }
       ],
-      activeCardId: 'source_of_light',
+      activeCardId: 'sun_is_shining',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -846,13 +841,11 @@
       isSynthesizing: false
     };
 
-    // Advanced Prismatic Starlight Web Audio Synthesizer
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // A light, modern starlight "twinkle" click (two quick high sine sweeps)
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
@@ -878,23 +871,22 @@
           osc2.stop(audioCtx.currentTime + 0.05);
           
         } else if (type === 'correct') {
-          // A brilliant astronomical "Starlight Twinkle Chime" (harmonious chime chord)
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
           const osc3 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
 
           osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(1046.50, audioCtx.currentTime); // C6
-          osc1.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.15); // Sweep to E6
+          osc1.frequency.setValueAtTime(1046.50, audioCtx.currentTime);
+          osc1.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.15);
 
           osc2.type = 'sine';
-          osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime); // E6
-          osc2.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.15); // Sweep to G6
+          osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime);
+          osc2.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.15);
 
           osc3.type = 'sine';
-          osc3.frequency.setValueAtTime(1567.98, audioCtx.currentTime); // G6
-          osc3.frequency.exponentialRampToValueAtTime(2093.00, audioCtx.currentTime + 0.15); // Sweep to C7
+          osc3.frequency.setValueAtTime(1567.98, audioCtx.currentTime);
+          osc3.frequency.exponentialRampToValueAtTime(2093.00, audioCtx.currentTime + 0.15);
 
           gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.45);
@@ -912,7 +904,6 @@
           osc3.stop(audioCtx.currentTime + 0.5);
           
         } else if (type === 'incorrect') {
-          // Low, descending damp buzz representing a sudden shadow / light failure
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
@@ -935,7 +926,6 @@
           osc.stop(audioCtx.currentTime + 0.25);
           
         } else if (type === 'flip') {
-          // A light "paper rustle" sound using a brief sine wave sweep
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'sine';
@@ -966,7 +956,6 @@
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark/Starlight aesthetic for optical visualization depth
       document.documentElement.classList.add('dark');
       document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-amber-400"></i>';
       
@@ -985,9 +974,8 @@
     });
 
     function toggleTheme() {
-      // Toggle decorative starlight accents (always maintaining premium dark mode base for Observatory feel)
       playSynthSound('click');
-      showToast('Optics Calibrated', 'Star observation background parameters balanced.', 'fa-star');
+      showToast('Optics Balanced', 'Observatory dark mode optimization complete.', 'fa-star');
     }
 
     function switchView(viewName) {
@@ -1186,7 +1174,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('source_of_light');
+      displayGlossaryCard('sun_is_shining');
     }
 
     function displayGlossaryCard(id) {
@@ -1238,7 +1226,7 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "High above the jagged rocks of Cape Hope, the old keeper tended to the central source of light that guided ships through treacherous straits. Inside the tower, the lenses hummed, producing a steady beam of light that pierced the midnight fog. On stormless nights, the sea slept beneath the pale light of the moon, but tonight, a severe tempest was brewing. Suddenly, a brilliant flash of lightning ripped through the dark sky, followed by a deafening clap of thunder. A jagged bolt of lightning struck a nearby pine tree, leaving it smoldering. Inside the keeper's cozy cabin, the flickering candle on his desk struggled to stay lit, casting an unsteady, flickering light against the wooden walls. Outside, the harbor's powerful floodlights illuminated the loading docks, and the town's automatic street lights hummed to life. To protect incoming vessels, the coast guard switched on their security searchlights, sweeping the bay. Arthur remembered his youth, when he would wander the forests beneath the pleasant dappled light of the pine canopy, enjoying the warm, direct sunlight of summer afternoons. But here, the lighthouse's harsh light was built for survival, not comfort. It stood in stark contrast to the soft light of his small fireplace, which was still glowing warmly in the dark corner. Years ago, a secret maritime conspiracy had been brought to light when an old logbook was recovered. Arthur had managed to shed some light on the mystery, showing that the crew had navigated by artificial incandescent light when their instruments failed. He had always preferred natural light, but in times of crisis, man-made artificial light saved countless lives, ensuring that no dark reef could cast a shadow over Cape Hope again.";
+      const narrativeText = "We use the expression \"the sun is shining\" to talk about the sun emitting light. If the light is so strong that it’s difficult to see, we can describe it as blinding sunlight – and if the light is not very strong, then it is weak sunlight. When the sun sets, everything grows dark. If there’s a full moon, then there will still be some light. But if there’s a crescent moon or a new moon, then it will be pitch dark or black and you’ll be able to see the stars twinkling in the night sky. To describe the strength of a light, you can use the words \"bright\" and \"dim.\" A fluorescent light bulb emits bright light, and the faint glow of a flickering candle is dim light. When light shines on an object, it makes the object cast a shadow. An area that is protected from the sunlight is often called \"the shade.\" If you don’t want to get sunburned, it’s a good idea to sit in the shade. We use the word \"lighting\" to refer to a system of artificial lights, especially inside a house or building. A place can have bright or strong lighting or the opposite – soft or subdued lighting. And along the highways and roads, we have street lights. If it’s nighttime and the power goes out, then the city will be plunged into darkness. You can describe the darkness as complete or total darkness to emphasize that it is 100% dark. People will have to use flashlights or light candles to be able to see – until the next morning when the sun rises or comes up.";
       triggerTTS(narrativeText);
     }
 
@@ -1453,12 +1441,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['flickering light', 'beam of light', 'cast a shadow', 'shed some light', 'brought to light', 'direct sunlight'];
+      const selectedWords = ['pitch dark/black', 'fluorescent light bulb', 'cast a shadow', 'sun rises/comes up', 'plunged into darkness', 'sit in the shade'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-slate-800 hover:bg-amber-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono";
+        chip.className = "px-3 py-1 bg-slate-850 hover:bg-amber-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1470,7 +1458,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To clarify the mystery of the eclipse, we must let the focal lens ${word}...`;
+        textarea.value = `When the power goes out, the room is plunged into darkness. We must light candles immediately to escape complete darkness...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1497,9 +1485,9 @@
       playSynthSound('click');
       const prompts = [
         "Detail how a flickering light inside a dark cabin can cast a shadow and cloud someone\'s judgment.",
-        "Draft a summary showing how new forensic data was brought to light, helping to shed some light on the crime.",
-        "Describe an experiment using a powerful beam of light from an incandescent light bulb.",
-        "Examine why plants grown under fluorescent light pale in comparison to those exposed to direct sunlight."
+        "Draft a summary showing how the power goes out and plunges a modern neighborhood into darkness.",
+        "Describe an experiment using a powerful fluorescent light bulb.",
+        "Examine why plants grown under artificial light pale in comparison to those exposed to direct sunlight."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1532,7 +1520,7 @@
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Optical Physicist, Creative Writing Professor, and English Scholar. Check if the user's sentence uses Lesson 29 light collocations (e.g., bright light, dim light, flickering light, beam of light, ray of sunlight, cast a shadow, shed some light, brought to light, soft light, harsh light, natural light, artificial light, flash of lightning, glowing warmly, pale light) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving light, darkness, reflection, or meteorology alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are a world-class Optical Physicist, Creative Writing Professor, and English Scholar. Check if the user's sentence uses Lesson 29 light collocations (e.g., blinding sunlight, weak sunlight, sun sets, grows dark, full moon, crescent moon, pitch dark/black, stars twinkling, fluorescent light bulb, bright light, faint glow, flickering candle, dim light, cast a shadow, sit in the shade, bright/strong lighting, soft/subdued lighting, street lights, power goes out, plunged into darkness, complete/total darkness, light candles, sun rises/comes up) correctly and naturally based on the image_7cb3a7.png. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving light, darkness, reflection, or meteorology alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1591,7 +1579,7 @@
             badge.innerText = "Luminous Alignment";
             playSynthSound('correct');
           } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-950/20 text-rose-400 border border-rose-900/40";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-450 border border-rose-900/40";
             badge.innerText = "Unnatural Mapping";
             playSynthSound('incorrect');
           }
@@ -1652,7 +1640,7 @@
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
       document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
-      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/24`;
       
       const chatLog = document.getElementById('podcast-chat-log');
       chatLog.innerHTML = '';

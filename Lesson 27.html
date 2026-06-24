@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 27: Clichés & Expressions Lab</title>
+  <title>CollocaStudy - Lesson 27: Sound & Silence Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +14,6 @@
   <!-- FontAwesome for Typewriter, Quill, and Stamp Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Retro Literary theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -108,18 +107,18 @@
     <header class="flex h-16 items-center justify-between border-b border-amber-200/80 bg-[#FAF6EE] px-6 dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-sm">
       <div class="flex items-center gap-3">
         <div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 to-rose-700 text-[#FAF6EE] shadow-md shadow-brand-500/20 overflow-hidden">
-          <i class="fa-solid fa-keyboard text-lg z-10"></i>
+          <i class="fa-solid fa-volume-high text-lg z-10 animate-pulse"></i>
         </div>
         <div>
           <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-700 to-rose-700 bg-clip-text text-transparent dark:from-brand-300 dark:to-brand-400">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-100/60 px-2 py-0.5 text-xs font-semibold text-brand-800 dark:bg-slate-800 dark:text-slate-300">Journalist Guild</span>
+          <span class="ml-2 rounded-full bg-brand-100/60 px-2 py-0.5 text-xs font-semibold text-brand-800 dark:bg-slate-800 dark:text-slate-300">Acoustic Guild</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-feather text-brand-600 dark:text-brand-400 animate-pulse"></i>
-        <h1 class="font-serif font-black text-xl text-slate-850 dark:text-slate-200">Lesson 27: Clichés & Expressions</h1>
+        <i class="fa-solid fa-feather text-brand-600 dark:text-brand-400"></i>
+        <h1 class="font-serif font-black text-xl text-slate-850 dark:text-slate-200">Lesson 27: Sound & Silence</h1>
       </div>
 
       <!-- Right Action Items -->
@@ -146,21 +145,21 @@
       <!-- Side Navigation Panel -->
       <nav class="hidden md:flex w-64 flex-col justify-between border-r border-amber-200/80 bg-[#FAF6EE] p-4 dark:border-slate-800 dark:bg-slate-900 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-brand-500 dark:text-brand-400 uppercase">Editorial Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-brand-500 dark:text-brand-400 uppercase">Acoustic Modules</p>
           
           <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-100 text-brand-900 dark:bg-brand-950/40 dark:text-brand-300">
             <i class="fa-solid fa-scroll text-base"></i>
-            <span>Editorial & Glossary</span>
+            <span>Acoustic Prose</span>
           </button>
           
           <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-brand-655 hover:bg-brand-50 hover:text-brand-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
             <i class="fa-solid fa-stamp text-base"></i>
-            <span>Cliché Flashcards</span>
+            <span>Sound Index Cards</span>
           </button>
           
           <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-brand-655 hover:bg-brand-50 hover:text-brand-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
             <i class="fa-solid fa-highlighter text-base"></i>
-            <span>Graded Cliché Exam</span>
+            <span>Graded Sound Exam</span>
           </button>
           
           <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-brand-655 hover:bg-brand-50 hover:text-brand-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
@@ -170,23 +169,23 @@
           
           <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-brand-655 hover:bg-brand-50 hover:text-brand-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
             <i class="fa-solid fa-microphone-lines text-base"></i>
-            <span>Podcast Station</span>
+            <span>Podcast Broadcast</span>
           </button>
           
           <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-brand-655 hover:bg-brand-50 hover:text-brand-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Cliche-Lexicon</span>
+            <span>Sound-Lexicon</span>
           </button>
         </div>
         
         <!-- User Literary Standing Clearance Box -->
         <div class="relative rounded-2xl bg-gradient-to-tr from-brand-100 to-brand-200/50 p-4 border border-brand-300 dark:from-slate-800/40 dark:to-slate-900/40 dark:border-slate-800 overflow-hidden">
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-user-pen text-brand-700 dark:text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-brand-600 dark:text-slate-400">Literary Standing</span>
+            <i class="fa-solid fa-headphones text-brand-700 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-brand-600 dark:text-slate-400">Acoustic Standing</span>
           </div>
           <div class="text-2xl font-black font-heading tracking-tight text-brand-700 dark:text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-brand-600 dark:text-slate-450 mt-1 leading-relaxed">Master the overused phrases of English to write prose with professional precision!</p>
+          <p class="text-[10px] text-brand-600 dark:text-slate-455 mt-1 leading-relaxed">Differentiate pleasant/unpleasant sounds, natural ambience, and emotional tones of silence!</p>
         </div>
       </nav>
 
@@ -201,28 +200,28 @@
             <div class="xl:col-span-7 bg-[#FFFDF9] dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-amber-200/80 dark:border-slate-800/80 shadow-md space-y-6">
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-brand-200 dark:border-slate-800">
                 <div>
-                  <h2 class="font-serif text-2xl font-black italic tracking-tight md:text-3xl text-brand-850 dark:text-slate-200">The Writer's Dilemma</h2>
-                  <p class="text-xs text-brand-500 dark:text-slate-400 mt-1">Read the editorial. Click highlighted terms to load their index card definition and hear pronunciation.</p>
+                  <h2 class="font-serif text-2xl font-black italic tracking-tight md:text-3xl text-brand-850 dark:text-slate-200">The Symphony of Daily Life</h2>
+                  <p class="text-xs text-brand-500 dark:text-slate-400 mt-1">Click high-contrast collocations to study their acoustic nuances, definitions, and pronunciations.</p>
                 </div>
                 <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Broadcast Address</span>
+                  <span>Broadcast Article</span>
                 </button>
               </div>
               
               <!-- Story Text -->
               <div id="narrative-body" class="text-base md:text-[18px] leading-relaxed text-slate-700 dark:text-slate-350 font-serif tracking-wide space-y-6">
                 <p>
-                  <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="truth_be_told">Truth be told</span>, drafting a successful novel is an <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="uphill_battle">uphill battle</span>. If you simply <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="play_it_safe">play it safe</span>, your creative style will be <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="conspicuous_absence">conspicuous by its absence</span>. To craft a masterpiece, you must learn to <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="think_box">think outside the box</span>, rather than trying to <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="reinvent_wheel">reinvent the wheel</span>. 
+                  Yesterday morning, I woke up to the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="lovely_sound">lovely sound</span> of my wife playing the piano in the salon. In the next room, I could hear the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="soft_sound">soft sound</span> of our children talking. But the peaceful atmosphere didn't last. Out in the alleyway, the fighting cats suddenly made <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="horrible_screeching">horrible screeching sounds</span>. "I can't hear you," I shouted into the phone, "there's a lot of <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="background_noise">background noise</span>!" On top of that, my car was making an <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="annoying_buzzing">annoying buzzing noise</span> whenever I turned on the air conditioner.
                 </p>
                 <p>
-                  Of course, this is <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="easier_said_done">easier said than done</span> when you are <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="sick_tired">sick and tired</span> of deadlines. If you <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="take_granted">take it for granted</span> that publishers will accept your first draft, you will likely <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="miss_boat">miss the boat</span>. 
+                  Living in the city is an acoustic adventure. Some signals are just a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="loud_noise">loud noise</span>, but near the railway, it becomes a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="deafening_noise">deafening sound/noise</span>. Sometimes you only hear a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="faint_sound">faint sound</span> of music, or a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="muffled_sound">muffled sound</span> through the thick building walls. There is a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="constant_noise">constant noise</span> from the highway—a perpetual <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="roar_of_traffic">roar of traffic</span> day and night. If you work in a factory, you live with the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="hum_of_machinery">hum of machinery</span> all day long. If you live next to college students, you hear their <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="music_blaring">music blaring</span> at all hours.
                 </p>
                 <p>
-                  <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="at_end_day">At the end of the day</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="time_tell">time will tell</span> whether your book is a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="bitter_pill">bitter pill to swallow</span> or ends up <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="selling_hotcakes">selling like hotcakes</span>. It is a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="matter_opinion">matter of opinion</span> which genres are best, but providing readers with rich <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="food_thought">food for thought</span> is a guaranteed way to keep them hooked.
+                  Yet nature is full of noises too. In the morning, you can enjoy <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="birds_chirping">birds chirping</span> or hear <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="dogs_barking">dogs barking</span> down the path. Near the coast, you can listen to the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="waves_crashing">waves crashing</span>, while the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="wind_whistling">wind whistling</span> through the trees creates a wild, remote feeling. When a storm arrives, the deep <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="rumble_of_thunder">rumble of thunder</span> rolls in, followed by a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="sudden_thunderclap">sudden thunderclap</span> that makes everyone jump.
                 </p>
                 <p>
-                  You might feel <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="scared_death">scared to death</span> of failure when making your way in this industry. But if you keep making progress by <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="leaps_bounds">leaps and bounds</span>, you will eventually see the <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="light_tunnel">light at the end of the tunnel</span>. <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="last_not_least">Last but not least</span>, keep your plots <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="short_sweet">short and sweet</span>, and make sure your messages are <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="crystal_clear">crystal clear</span>!
+                  Eventually, we crave the absence of sound. Sometimes a room is <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="strangely_quiet">strangely quiet</span>—like when children are up to silent mischief. Other times, an <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="awkward_silence">awkward silence</span> hangs in the air after an embarrassing joke, or someone lapses into a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="stony_silence">stony silence</span> due to anger. There might even be a <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="shocked_silence">shocked silence</span> after a sudden resignation. When the city streets become <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="ominously_quiet">ominously quiet</span> after midnight, we expect peace. But as <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="silence_descended">silence descended</span> over the empty streets, a screeching car alarm suddenly <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="shatters_silence">shatters the silence</span>, breaking the illusion of an <span class="colloc-ref cursor-pointer font-bold text-brand-700 dark:text-brand-400 border-b-2 border-dashed border-brand-400 hover:bg-brand-100 px-1 rounded transition" data-id="absolutely_silent">absolutely silent</span> world.
                 </p>
               </div>
             </div>
@@ -231,7 +230,7 @@
             <div class="xl:col-span-5 flex flex-col gap-6">
               <div class="bg-gradient-to-tr from-[#3D2516] to-[#1F1007] text-[#FAF6EE] rounded-3xl p-6 border border-brand-700 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-300" id="glossary-category">Active Editorial Card</span>
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-300" id="glossary-category">Active Acoustic Card</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -242,13 +241,13 @@
                   </div>
                 </div>
                 
-                <h3 class="font-serif text-2xl font-black italic tracking-tight mb-3" id="glossary-phrase">truth be told</h3>
+                <h3 class="font-serif text-2xl font-black italic tracking-tight mb-3 text-brand-200" id="glossary-phrase">lovely sound</h3>
                 
-                <p class="text-brand-100 text-sm leading-relaxed mb-6" id="glossary-definition">To be honest; speaking frankly and sincerely.</p>
+                <p class="text-brand-100 text-sm leading-relaxed mb-6" id="glossary-definition">A pleasant, beautiful, or delightful sound.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-brand-300 uppercase">Literary Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-brand-100" id="glossary-example">"Truth be told, drafting a successful novel is an uphill battle."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-brand-300 uppercase">Acoustic Usage Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-brand-100" id="glossary-example">"I woke up to the lovely sound of my wife playing the piano."</p>
                 </div>
               </div>
               
@@ -256,10 +255,10 @@
               <div class="bg-[#FFFDF9] dark:bg-slate-900 rounded-3xl p-6 border border-amber-200/80 dark:border-slate-800/80 shadow-sm">
                 <h4 class="font-serif text-base font-bold text-brand-800 dark:text-slate-200 mb-3 flex items-center gap-2">
                   <i class="fa-solid fa-circle-question text-brand-500"></i>
-                  <span>Lexical Clichés</span>
+                  <span>Acoustic Collocations</span>
                 </h4>
                 <p class="text-xs text-brand-655 dark:text-slate-400 leading-relaxed font-serif">
-                  A cliché is an overused expression. In English, we try to avoid them in formal writing, but they are extremely common in conversational speech. Understanding them perfectly is essential to fluent comprehension and expression.
+                  Acoustic collocations pair adjectives and nouns to precisely describe volumes, textures, and the psychological impact of ambient noise or profound silence.
                 </p>
               </div>
             </div>
@@ -271,7 +270,7 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-serif text-xl font-extrabold text-brand-850 dark:text-slate-200">Typewriter Index Cards</h2>
+                <h2 class="font-serif text-xl font-extrabold text-brand-850 dark:text-slate-200">Acoustic Index Cards</h2>
                 <p class="text-xs text-brand-500 dark:text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
               <div class="flex items-center gap-2 bg-brand-100/50 dark:bg-slate-800 border border-brand-200 rounded-xl px-3 py-1 text-xs font-semibold">
@@ -292,15 +291,15 @@
                 <!-- FRONT OF CARD -->
                 <div class="card-front absolute inset-0 bg-[#FFFDF9] dark:bg-slate-900 border border-amber-200/80 dark:border-slate-800/80 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold font-mono uppercase tracking-wider bg-brand-100 dark:bg-slate-950 text-brand-700 dark:text-brand-350 px-2.5 py-1 rounded-full border border-brand-200" id="card-front-category">Cliché Category</span>
+                    <span class="text-[10px] font-bold font-mono uppercase tracking-wider bg-brand-100 dark:bg-slate-950 text-brand-700 dark:text-brand-350 px-2.5 py-1 rounded-full border border-brand-200" id="card-front-category">Category</span>
                     <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-brand-200 text-brand-450 hover:text-slate-900 dark:border-slate-800 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-brand-400 uppercase tracking-widest font-bold font-heading">Linguistic Formula</span>
-                    <h3 class="font-serif text-2xl sm:text-3xl font-black italic mt-1 text-slate-950 dark:text-white" id="card-front-phrase">truth be told</h3>
+                    <span class="text-xs text-brand-400 uppercase tracking-widest font-bold font-heading">Collocation</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-black italic mt-1 text-slate-955 dark:text-white" id="card-front-phrase">lovely sound</h3>
                   </div>
                   
                   <div class="text-center text-xs text-brand-400">
@@ -312,16 +311,16 @@
                 <div class="card-back absolute inset-0 bg-gradient-to-tr from-[#3D2516] to-[#1F1007] border border-brand-750 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold font-mono uppercase tracking-wider bg-white/10 text-brand-300 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-brand-300 font-semibold font-mono">Ink Definition</span>
+                    <span class="text-xs text-brand-300 font-semibold font-mono">Dictionary Log</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">Meaning</span>
-                      <p class="text-base font-serif italic text-brand-100" id="card-back-definition">To be honest; speaking frankly.</p>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">Core Meaning</span>
+                      <p class="text-base font-serif italic text-brand-100" id="card-back-definition">Definition comes here...</p>
                     </div>
                     <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">Standard Use</span>
+                      <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black font-mono">Example</span>
                       <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence."</p>
                     </div>
                   </div>
@@ -360,8 +359,8 @@
             <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-amber-200/80 dark:border-slate-800/80 shadow-sm space-y-6">
               <div class="flex items-center justify-between border-b border-brand-200 dark:border-slate-805 pb-4">
                 <div>
-                  <h2 class="font-serif text-xl font-black text-brand-850 dark:text-slate-200">Lesson 27 Graded Exam</h2>
-                  <p class="text-xs text-brand-500 dark:text-slate-400 mt-1">Select the correct cliché collocation to complete the sentence.</p>
+                  <h2 class="font-serif text-xl font-black text-brand-850 dark:text-slate-200">Lesson 27 Graded Sound Exam</h2>
+                  <p class="text-xs text-brand-500 dark:text-slate-400 mt-1">Select the correct collocations to complete each acoustic scenario.</p>
                 </div>
                 <div class="bg-brand-100 dark:bg-brand-950/50 text-brand-850 dark:text-brand-300 px-3 py-1.5 rounded-xl text-xs font-bold border border-brand-200 font-mono">
                   Scenario <span id="quiz-question-current">1</span> of 20
@@ -375,8 +374,8 @@
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-450 font-mono">Active Manuscript Draft</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-serif italic font-bold leading-relaxed text-slate-900 dark:text-white">"Loading draft..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-450 font-mono">Acoustic Narrative Brief</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-serif italic font-bold leading-relaxed text-slate-900 dark:text-white">"Loading prompt..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -388,7 +387,7 @@
               <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
                 <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-450 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Quillmaster's Proofreader</span>
+                  <span>Acoustic Guild Master Proofreader</span>
                 </div>
                 <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold">Explanation coming here...</p>
               </div>
@@ -411,14 +410,14 @@
                 <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-50 dark:bg-brand-950/30 text-brand-500 dark:text-brand-400">
                   <i class="fa-solid fa-graduation-cap text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-serif text-2xl font-black italic">Guild Clearance Granted!</h2>
-                <p class="text-sm text-brand-500 dark:text-slate-400">Your editorial evaluations are complete. Review your standings.</p>
+                <h2 class="font-serif text-2xl font-black italic">Acoustic License Approved!</h2>
+                <p class="text-sm text-brand-500 dark:text-slate-400">Your sound and silence evaluations are complete.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
                 <div class="bg-brand-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-500 font-mono">Phrases Fixed</span>
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-500 font-mono">Answers Correct</span>
                   <span class="text-2xl font-black text-emerald-500 font-mono" id="quiz-score-correct">18/20</span>
                 </div>
                 <div class="bg-brand-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
@@ -426,18 +425,18 @@
                   <span class="text-2xl font-black text-brand-650 dark:text-brand-400 font-mono" id="quiz-score-percent">90%</span>
                 </div>
                 <div class="bg-brand-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-brand-200 dark:border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-500 font-mono">Literary Rank</span>
-                  <span class="text-xs sm:text-sm font-bold text-brand-700 dark:text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Advanced Analyst</span>
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-brand-500 font-mono">Acoustic Rank</span>
+                  <span class="text-xs sm:text-sm font-bold text-brand-700 dark:text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Sound Analyst</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
                 <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Re-examine Drafts</span>
+                  <span>Re-examine Sentences</span>
                 </button>
                 <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-brand-300 font-semibold text-sm hover:bg-brand-50 dark:hover:bg-slate-800 transition">
-                  <span>Back to Editorial</span>
+                  <span>Back to Prose</span>
                 </button>
               </div>
             </div>
@@ -452,15 +451,15 @@
               
               <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-brand-200 dark:border-slate-800 pb-4">
                 <div>
-                  <h2 class="font-serif text-xl font-extrabold text-brand-850 dark:text-slate-200">AI Composition Sandbox</h2>
-                  <p class="text-xs text-brand-500 dark:text-slate-400">Write an open letter, proposal, or a review using clichés. The model evaluates whether your style is smooth and natural.</p>
+                  <h2 class="font-serif text-xl font-extrabold text-brand-850 dark:text-slate-200">AI Acoustic Composition Sandbox</h2>
+                  <p class="text-xs text-brand-500 dark:text-slate-400">Write an atmospheric description or brief narrative employing sound and silence collocations. Gemini scans and scores your style.</p>
                 </div>
                 <div class="flex gap-2">
                   <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-brand-350 dark:border-slate-700 text-brand-700 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm">
-                    <i class="fa-solid fa-lightbulb mr-1 text-rose-600"></i> Editorial Prompt
+                    <i class="fa-solid fa-lightbulb mr-1 text-rose-600"></i> Narrative Prompt
                   </button>
                   <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-100 text-brand-850 dark:bg-brand-950/40 dark:text-brand-300 hover:bg-brand-200 text-xs font-bold rounded-xl transition shadow-sm border border-brand-200">
-                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Cliché
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Sound Colloc
                   </button>
                 </div>
               </div>
@@ -468,7 +467,7 @@
               <!-- Text Area -->
               <div class="space-y-3">
                 <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-brand-500 font-mono">Drafting Parchment</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-brand-300 bg-brand-50/20 p-4 text-sm font-serif italic focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: Truth be told, deciding to think outside the box was an uphill battle but we saw the light at the end of the tunnel..."></textarea>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-brand-300 bg-brand-50/20 p-4 text-sm font-serif italic focus:border-brand-500 focus:bg-white focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-855 dark:focus:border-brand-400 dark:focus:bg-slate-900 outline-none transition" placeholder="Example: The forest was perfectly silent after the storm, except for the faint sound of a distant creek..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -478,12 +477,12 @@
               
               <!-- Action Button bar -->
               <div class="flex items-center justify-between border-t border-brand-150 dark:border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-brand-500 hover:text-rose-600 transition font-mono">
-                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Manuscript
+                <button onclick="clearSandbox()" class="text-xs font-bold text-brand-500 hover:text-rose-650 transition font-mono">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Workspace
                 </button>
                 <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Manuscript Prose</span>
+                  <span>Scan Atmosphere & Sound Style</span>
                 </button>
               </div>
             </div>
@@ -491,9 +490,9 @@
             <!-- Diagnostic Output Screen -->
             <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-amber-200/80 dark:border-slate-800/80 shadow-md space-y-6">
               <div class="flex items-center justify-between border-b border-brand-200 dark:border-slate-800 pb-4">
-                <h3 class="font-serif text-lg font-extrabold italic text-brand-850 dark:text-slate-200">Manuscript Ink Scan</h3>
+                <h3 class="font-serif text-lg font-extrabold italic text-brand-850 dark:text-slate-200">Acoustic & Resonance Scan</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200">Natural Match</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200">Acoustic Match</span>
                 </div>
               </div>
               
@@ -509,20 +508,20 @@
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-0.5">Grammatical & Style Evaluation</span>
-                    <p id="diagnostic-analysis" class="text-sm font-serif italic text-slate-650 dark:text-slate-300 leading-relaxed">Analyzing prose structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-0.5">Atmospheric Resonance Review</span>
+                    <p id="diagnostic-analysis" class="text-sm font-serif italic text-slate-650 dark:text-slate-300 leading-relaxed">Analyzing syntax structures...</p>
                   </div>
                   
                   <div class="border-t border-brand-150 dark:border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-0.5">Cliché Deployment Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm font-serif italic text-slate-650 dark:text-slate-300 leading-relaxed">Measuring cliché syntax integration...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-0.5">Sound / Silence Lexical Assessment</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm font-serif italic text-slate-650 dark:text-slate-300 leading-relaxed">Checking collocation deployment rules...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
               <div class="bg-brand-50/40 dark:bg-slate-800/40 rounded-2xl p-4 border border-brand-200 dark:border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-1">Recommended Editorial Polish</span>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 font-mono block mb-1">Recommended Editorial Rephrasing</span>
                 <p id="diagnostic-alternative-text" class="text-xs sm:text-sm font-serif italic text-slate-800 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
                   <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-brand-300 dark:border-slate-700 rounded-lg text-xs font-bold text-brand-700 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 transition shadow-sm font-mono">
@@ -545,8 +544,8 @@
                 <div class="flex items-center gap-3">
                   <span class="flex h-3 w-3 rounded-full bg-rose-600 animate-pulse"></span>
                   <div>
-                    <h2 class="font-serif text-lg font-bold italic tracking-tight">CollocaPodcast: Guild 27</h2>
-                    <p class="text-[10px] text-brand-300 font-semibold font-mono">Turn-Based Debate: Are Clichés ruining our prose?</p>
+                    <h2 class="font-serif text-lg font-bold italic tracking-tight">CollocaPodcast: Acoustic Guild 27</h2>
+                    <p class="text-[10px] text-brand-300 font-semibold font-mono">Interactive Debate: Expressing Sounds and Silences</p>
                   </div>
                 </div>
                 <div class="bg-rose-600/10 text-rose-450 border border-rose-600/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
@@ -566,9 +565,9 @@
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-serif text-2xl font-black italic text-slate-100" id="podcast-current-phrase">Why we write "conspicuous by its absence"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated editorial speakers discussing common clichés from Lesson 27.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Broadcaster Ready</span>
+                <h3 class="font-serif text-2xl font-black italic text-slate-100 text-brand-300" id="podcast-current-phrase">Why we differentiate "sound" and "noise"</h3>
+                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate synthetic anchors discussing acoustic descriptors from Lesson 27.</p>
               </div>
               
               <!-- Dialogue Box -->
@@ -576,8 +575,8 @@
                 <div class="flex gap-2.5 items-start font-serif">
                   <div class="h-6 w-6 rounded bg-rose-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-rose-400 font-mono">Sarah (Editorial Lead)</span>
-                    <p class="text-xs text-brand-100">"Welcome back to the Guild. Today we analyze standard overused phrases and why they are conspicuous by their absence in bad writing."</p>
+                    <span class="text-[10px] font-bold text-rose-400 font-mono">Sarah (Anchor)</span>
+                    <p class="text-xs text-brand-100">"Welcome back to the Guild. Today we focus on Lesson 27, learning how to capture complex soundscapes and heavy silences in standard prose."</p>
                   </div>
                 </div>
               </div>
@@ -585,13 +584,13 @@
               <!-- Podcast Controls -->
               <div class="flex flex-col gap-4">
                 <div class="flex items-center justify-between gap-4">
-                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-brand-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-brand-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous sound">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-rose-650 text-white hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-rose-650 text-white hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialog loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
-                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-brand-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-brand-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next sound">
                     <i class="fa-solid fa-forward-step"></i>
                   </button>
                 </div>
@@ -618,29 +617,35 @@
             
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-brand-200 dark:border-slate-850 pb-4">
               <div>
-                <h2 class="font-serif text-xl font-extrabold text-brand-850 dark:text-slate-200">Cliche-Lexicon</h2>
-                <p class="text-xs text-brand-500 dark:text-slate-400">Search and filter active collocations in the Lesson 27 cliché files.</p>
+                <h2 class="font-serif text-xl font-extrabold text-brand-850 dark:text-slate-200">Acoustic Collocation Lexicon</h2>
+                <p class="text-xs text-brand-500 dark:text-slate-400">Search and filter Lesson 27 terms. Mark terms as decoded to increase your standing.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
                   <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-brand-400 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-brand-300 dark:border-slate-750 rounded-xl text-xs bg-brand-50/20 dark:bg-slate-855 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search files...">
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-brand-300 dark:border-slate-750 rounded-xl text-xs bg-brand-50/20 dark:bg-slate-855 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search descriptors...">
                 </div>
                 <!-- Dropdown Categories -->
                 <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-brand-300 dark:border-slate-750 rounded-xl text-xs bg-brand-50/20 dark:bg-slate-850 text-brand-850 dark:text-slate-200 outline-none font-bold font-mono">
-                  <option value="all">All Genres</option>
-                  <option value="Idioms">Cliché Idioms</option>
-                  <option value="Mindset">Philosophical Mindsets</option>
-                  <option value="Struggle">Struggles & Hardships</option>
-                  <option value="Outcomes">Outcomes & Metrics</option>
+                  <option value="all">All Acoustic Environments</option>
+                  <option value="Pleasant Sounds">Pleasant Sounds</option>
+                  <option value="Neutral Sounds">Neutral Sounds</option>
+                  <option value="Unpleasant Sounds">Unpleasant Sounds</option>
+                  <option value="Intense Sounds">Intense Sounds</option>
+                  <option value="Low Sounds">Low Sounds</option>
+                  <option value="Incessant Sounds">Incessant Sounds</option>
+                  <option value="Ambient Environments">Ambient Environments</option>
+                  <option value="Nature Sounds">Nature Sounds</option>
+                  <option value="Absence of Sound">Absence of Sound</option>
+                  <option value="Emotional Quiet">Emotional Quiet</option>
                 </select>
                 <!-- Mastery Filter -->
                 <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-brand-300 dark:border-slate-750 rounded-xl text-xs bg-brand-50/20 dark:bg-slate-850 text-brand-850 dark:text-slate-200 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
-                  <option value="unmastered">Active Concerns</option>
+                  <option value="unmastered">Incomplete Diagnostics</option>
                 </select>
               </div>
             </div>
@@ -651,10 +656,10 @@
                 <thead>
                   <tr class="border-b border-brand-200 dark:border-slate-800 text-[10px] text-brand-500 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
-                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
-                    <th class="py-3 px-4 w-32">Genre Segment</th>
-                    <th class="py-3 px-4">Core Definition</th>
-                    <th class="py-3 px-4 hidden lg:table-cell">Linguistic Precedent Example</th>
+                    <th class="py-3 px-4 w-52">Acoustic Collocation</th>
+                    <th class="py-3 px-4 w-40">Resonance Group</th>
+                    <th class="py-3 px-4">Core Meaning</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Standard Acoustic Precedent</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
@@ -674,11 +679,11 @@
     <footer class="flex h-16 items-center justify-around border-t border-brand-200 bg-[#FAF6EE] md:hidden dark:border-slate-800 dark:bg-slate-900 shrink-0 z-30 shadow-md">
       <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-brand-500 hover:text-rose-650">
         <i class="fa-solid fa-scroll text-base" id="mob-story-icon"></i>
-        <span class="text-[9px] font-bold">Editorial</span>
+        <span class="text-[9px] font-bold">Prose</span>
       </button>
       <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-brand-500 hover:text-rose-650">
         <i class="fa-solid fa-stamp text-base" id="mob-flashcards-icon"></i>
-        <span class="text-[9px] font-bold">Flashcards</span>
+        <span class="text-[9px] font-bold">Cards</span>
       </button>
       <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-brand-500 hover:text-rose-650">
         <i class="fa-solid fa-highlighter text-base" id="mob-quiz-icon"></i>
@@ -686,7 +691,7 @@
       </button>
       <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-brand-500 hover:text-rose-650">
         <i class="fa-solid fa-wand-magic-sparkles text-base" id="mob-sandbox-icon"></i>
-        <span class="text-[9px] font-bold">Ink Sandbox</span>
+        <span class="text-[9px] font-bold">Sandbox</span>
       </button>
       <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-brand-500 hover:text-rose-650">
         <i class="fa-solid fa-microphone-lines text-base" id="mob-podcast-icon"></i>
@@ -704,7 +709,7 @@
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
     <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-brand-300 dark:border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
       <div class="flex items-center justify-between border-b border-brand-200 dark:border-slate-855 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-slate-900 dark:text-white">Guild Room Speech Config</h3>
+        <h3 class="font-serif italic font-black text-lg text-slate-900 dark:text-white">Acoustic Room Voice Select</h3>
         <button onclick="closeVoiceSettings()" class="text-brand-400 hover:text-slate-900 dark:hover:text-slate-100 transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
@@ -713,8 +718,8 @@
       <!-- Selection of Voices -->
       <div class="space-y-4">
         <div class="space-y-1.5">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-brand-500 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-brand-300 dark:border-slate-750 rounded-xl px-3 py-2 bg-brand-50/20 dark:bg-slate-855 text-xs font-semibold outline-none text-slate-950 dark:text-slate-50 font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-brand-500 font-mono">Synthesis Engine Voice</label>
+          <select id="voice-select" class="w-full border border-brand-300 dark:border-slate-750 rounded-xl px-3 py-2 bg-brand-50/20 dark:bg-slate-855 text-xs font-semibold outline-none text-slate-955 dark:text-slate-50 font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
@@ -731,7 +736,7 @@
         <!-- Pitch Control -->
         <div class="space-y-1.5">
           <div class="flex justify-between text-xs font-black uppercase tracking-wider text-brand-500 font-mono font-bold">
-            <span>Acoustic Tone Pitch</span>
+            <span>Acoustic Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
           <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-600">
@@ -739,7 +744,7 @@
       </div>
       
       <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-650 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md transition font-mono">
-        Apply Dispatch Rules
+        Apply Acoustic Settings
       </button>
     </div>
   </div>
@@ -750,8 +755,8 @@
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
-      <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-350 dark:text-slate-655 mt-0.5" id="toast-body">Manuscripts updated successfully.</p>
+      <h5 class="text-xs font-black tracking-wide" id="toast-title">Approved</h5>
+      <p class="text-[11px] text-slate-350 dark:text-slate-655 mt-0.5" id="toast-body">Prose files updated.</p>
     </div>
   </div>
 
@@ -766,63 +771,63 @@
         pitch: 1.0,
         volume: 1.0
       },
+      // 30 unique collocations of sound & silence matching Lesson 27 guidelines
       collocations: [
-        { id: 'truth_be_told', phrase: 'truth be told', definition: 'To be honest; speaking frankly and sincerely.', example: 'Truth be told, drafting a successful novel is an uphill battle.', category: 'Mindset', mastered: false },
-        { id: 'uphill_battle', phrase: 'uphill battle', definition: 'A very difficult struggle or challenge requiring massive effort.', example: 'Rebuilding the local economy after the factory shut down was a severe uphill battle.', category: 'Struggle', mastered: false },
-        { id: 'play_it_safe', phrase: 'play it safe', definition: 'Avoid taking risks; choosing the most cautious path.', example: 'During a market downturn, it is wise to play it safe and keep your funds in bonds.', category: 'Mindset', mastered: false },
-        { id: 'conspicuous_absence', phrase: 'conspicuous by its absence', definition: 'Extremely noticeable that something or someone is missing.', example: 'At the award ceremony, the director\'s name was conspicuous by its absence.', category: 'Outcomes', mastered: false },
-        { id: 'think_box', phrase: 'think outside the box', definition: 'To think in an innovative, non-traditional, and creative way.', example: 'The marketing team had to think outside the box to capture a younger demographic.', category: 'Mindset', mastered: false },
-        { id: 'reinvent_wheel', phrase: 'reinvent the wheel', definition: 'To waste time trying to create or design something that already exists and works perfectly.', example: 'Don\'t reinvent the wheel; use the open-source software libraries already available.', category: 'Mindset', mastered: false },
-        { id: 'easier_said_done', phrase: 'easier said than done', definition: 'Simple to suggest or plan but highly difficult to execute in reality.', example: 'Losing thirty pounds is easier said than done when you work late hours.', category: 'Struggle', mastered: false },
-        { id: 'sick_tired', phrase: 'sick and tired', definition: 'Extremely annoyed, frustrated, or bored with an ongoing situation.', example: 'I am sick and tired of the constant construction noise outside my apartment.', category: 'Struggle', mastered: false },
-        { id: 'take_granted', phrase: 'take it for granted', definition: 'To assume something is true or will always be available without appreciation.', example: 'Never take it for granted that clean water will always flow from your taps.', category: 'Mindset', mastered: false },
-        { id: 'miss_boat', phrase: 'miss the boat', definition: 'To lose or miss an exceptional opportunity because of slow action.', example: 'If you do not invest in tech assets now, you might miss the boat.', category: 'Outcomes', mastered: false },
-        { id: 'at_end_day', phrase: 'at the end of the day', definition: 'Ultimately; when everything is taken into proper consideration.', example: 'At the end of the day, customer satisfaction is our absolute priority.', category: 'Outcomes', mastered: false },
-        { id: 'time_tell', phrase: 'time will tell', definition: 'The truth or long-term outcome will only become clear as time passes.', example: 'Whether this newly elected leader can fulfill his promises is something only time will tell.', category: 'Outcomes', mastered: false },
-        { id: 'bitter_pill', phrase: 'bitter pill to swallow', definition: 'An unpleasant fact or situation that must be accepted reluctantly.', example: 'Losing the championship in the final second was a bitter pill to swallow.', category: 'Struggle', mastered: false },
-        { id: 'selling_hotcakes', phrase: 'selling like hotcakes', definition: 'Purchased very rapidly and in exceptionally large quantities.', example: 'The new smartphone models are selling like hotcakes worldwide.', category: 'Outcomes', mastered: false },
-        { id: 'matter_opinion', phrase: 'matter of opinion', definition: 'Something that is not a proven fact but depends on subjective viewpoints.', example: 'Whether classical music is superior to jazz is entirely a matter of opinion.', category: 'Mindset', mastered: false },
-        { id: 'food_thought', phrase: 'food for thought', definition: 'Intellectually stimulating ideas that require careful, deep consideration.', example: 'The lecture on artificial intelligence provided plenty of food for thought.', category: 'Mindset', mastered: false },
-        { id: 'scared_death', phrase: 'scared to death', definition: 'Extremely frightened or terrified.', example: 'I was scared to death when the cabin shake during the earthquake.', category: 'Struggle', mastered: false },
-        { id: 'leaps_bounds', phrase: 'leaps and bounds', definition: 'Progressing or improving at an exceptionally rapid pace.', example: 'Since working with a private tutor, his math skills have improved by leaps and bounds.', category: 'Outcomes', mastered: false },
-        { id: 'light_tunnel', phrase: 'light at the end of the tunnel', definition: 'A sign or hope that a prolonged difficult period is finally ending.', example: 'After three years of brutal research, she finally saw the light at the end of the tunnel.', category: 'Outcomes', mastered: false },
-        { id: 'last_not_least', phrase: 'last but not least', definition: 'Importantly, despite being the final item mentioned in a sequence.', example: 'Last but not least, I want to thank my family for their support.', category: 'Outcomes', mastered: false },
-        { id: 'short_sweet', phrase: 'short and sweet', definition: 'Brief and pleasant; not dragged out unnecessarily.', example: 'Let\'s keep this introductory speech short and sweet.', category: 'Outcomes', mastered: false },
-        { id: 'crystal_clear', phrase: 'crystal clear', definition: 'Extremely easy to see, understand, or comprehend.', example: 'The manager made his expectations crystal clear during the meeting.', category: 'Outcomes', mastered: false },
-        { id: 'make_ends_meet', phrase: 'make ends meet', definition: 'To earn just enough money to pay for basic structural expenses.', example: 'Many students work part-time shifts to make ends meet while studying.', category: 'Struggle', mastered: false },
-        { id: 'avoid_plague', phrase: 'avoid like the plague', definition: 'To stay completely away from something; avoid it entirely.', example: 'I avoid fast-food drive-thrus like the plague when trying to eat healthy.', category: 'Idioms', mastered: false },
-        { id: 'add_insult', phrase: 'add insult to injury', definition: 'To make an already terrible situation worse with additional bad events.', example: 'He lost his wallet, and to add insult to injury, it started pouring rain.', class: 'Idioms', category: 'Idioms', mastered: false },
-        { id: 'face_music', phrase: 'face the music', definition: 'Accept and handle the negative consequences of your actions.', example: 'After getting caught cheating, the student had to face the music.', category: 'Idioms', mastered: false },
-        { id: 'look_bright', phrase: 'look on the bright side', definition: 'To maintain optimism; focus on the positive aspects of a bad situation.', example: 'Even though we lost, look on the bright side—we gained valuable experience.', category: 'Mindset', mastered: false },
-        { id: 'safe_sound', phrase: 'safe and sound', definition: 'Completely safe, secure, and unharmed after a dangerous journey.', example: 'The lost hikers were recovered safe and sound by the forest rescue squad.', category: 'Outcomes', mastered: false },
-        { id: 'few_far_between', phrase: 'few and far between', definition: 'Extremely rare, scarce, or uncommon.', example: 'Good job offers in this rural town are few and far between.', category: 'Idioms', mastered: false },
-        { id: 'slowly_surely', phrase: 'slowly but surely', definition: 'Achieving progress gradually but with absolute certainty.', example: 'Slowly but surely, our brand built a highly loyal customer base.', category: 'Outcomes', mastered: false }
+        { id: 'lovely_sound', phrase: 'lovely sound', definition: 'A pleasant, beautiful, or delightful sound (e.g. classical piano).', example: 'I woke up to the lovely sound of my wife playing the piano.', category: 'Pleasant Sounds', mastered: false },
+        { id: 'soft_sound', phrase: 'soft sound', definition: 'A quiet, gentle, and neutral auditory amplitude.', example: 'I could hear the soft sound of their voices talking in the next room.', category: 'Neutral Sounds', mastered: false },
+        { id: 'horrible_screeching', phrase: 'horrible screeching sounds', definition: 'Highly unpleasant, piercing, and harsh high-pitched noises.', example: 'The fighting cats made horrible screeching sounds in the backyard alley.', category: 'Unpleasant Sounds', mastered: false },
+        { id: 'background_noise', phrase: 'background noise', definition: 'Ambient noise present in the environment that is usually neutral or distracting.', example: 'I can\'t hear you; there\'s a lot of background noise. Could you call me back?', category: 'Neutral Sounds', mastered: false },
+        { id: 'annoying_buzzing', phrase: 'annoying buzzing noise', definition: 'An irritating, persistent low-frequency hum or vibration sound.', example: 'My car is making an annoying buzzing noise whenever I turn on the A/C.', category: 'Unpleasant Sounds', mastered: false },
+        { id: 'loud_noise', phrase: 'loud sound/noise', definition: 'A very strong, heavy, and intense auditory stimulus.', example: 'If a noise or sound is very strong, we can describe it as a loud sound/noise.', category: 'Intense Sounds', mastered: false },
+        { id: 'deafening_noise', phrase: 'deafening sound/noise', definition: 'An extremely intense and overpowering volume level.', example: 'The jet aircraft took off with a deafening sound/noise overhead.', category: 'Intense Sounds', mastered: false },
+        { id: 'faint_sound', phrase: 'faint sound/noise', definition: 'A sound that is exceptionally quiet and barely audible.', example: 'There was a faint sound of classical violin playing from the apartment next door.', category: 'Low Sounds', mastered: false },
+        { id: 'muffled_sound', phrase: 'muffled sound', definition: 'A sound that is quiet and unclear because it is obstructed by a barrier.', example: 'We could hear the muffled sound of the stereo through the thick wall.', category: 'Low Sounds', mastered: false },
+        { id: 'constant_noise', phrase: 'constant noise', definition: 'A noise that continues indefinitely without stopping or varying.', example: 'The constant noise from the ceiling fan made it difficult to concentrate.', category: 'Incessant Sounds', mastered: false },
+        { id: 'incessant_noise', phrase: 'incessant noise', definition: 'Continuous, endless, and highly irritating noise.', example: 'They sold their property because of the incessant noise of construction nearby.', category: 'Incessant Sounds', mastered: false },
+        { id: 'roar_of_traffic', phrase: 'roar of traffic', definition: 'The deep, loud, ongoing acoustic environment of moving vehicles.', example: 'Living close to the main highway meant coping with the roar of traffic day and night.', category: 'Ambient Environments', mastered: false },
+        { id: 'hum_of_machinery', phrase: 'hum of machinery', definition: 'The low, continuous, steady buzz of operational factory engines.', example: 'If you work inside an assembly plant, you will hear the hum of machinery all day.', category: 'Ambient Environments', mastered: false },
+        { id: 'music_blaring', phrase: 'music blaring', definition: 'Music being played at an exceptionally high, intrusive volume.', example: 'The neighbors had their music blaring until late in the evening.', category: 'Ambient Environments', mastered: false },
+        { id: 'birds_chirping', phrase: 'birds chirping', definition: 'The pleasant, high-pitched short musical notes of birds.', example: 'Nature is full of noises, too—such as birds chirping and dogs barking.', category: 'Nature Sounds', mastered: false },
+        { id: 'dogs_barking', phrase: 'dogs barking', definition: 'The sharp, loud barking vocalizations of dogs.', example: 'The stray dogs barking at night woke up the entire street.', category: 'Nature Sounds', mastered: false },
+        { id: 'waves_crashing', phrase: 'waves crashing', definition: 'The heavy, natural sound of sea water hitting the coast.', example: 'If you sit near the ocean, you can listen to the waves crashing.', category: 'Nature Sounds', mastered: false },
+        { id: 'wind_whistling', phrase: 'wind whistling', definition: 'The high-pitched sound made by strong wind passing through trees.', example: 'When you\'re in a remote, deserted area, you might hear the wind whistling through the trees.', category: 'Nature Sounds', mastered: false },
+        { id: 'rumble_of_thunder', phrase: 'rumble of thunder', definition: 'The deep, heavy rolling noise that follows a lightning discharge.', example: 'We heard the rumble of thunder in the distance, indicating a storm was coming.', category: 'Nature Sounds', mastered: false },
+        { id: 'sudden_thunderclap', phrase: 'sudden thunderclap', definition: 'An abrupt, sharp, and explosive loud sound of thunder.', example: 'A sudden thunderclap startled the resting cats.', category: 'Nature Sounds', mastered: false },
+        { id: 'absolutely_silent', phrase: 'absolutely silent', definition: 'Totally and completely without any sound whatsoever.', example: 'The laboratory isolation chamber was absolutely silent.', category: 'Absence of Sound', mastered: false },
+        { id: 'perfectly_silent', phrase: 'perfectly silent', definition: 'Flawless and total absence of acoustic disturbance.', example: 'The empty forest in mid-winter was perfectly silent.', category: 'Absence of Sound', mastered: false },
+        { id: 'silence_descended', phrase: 'silence descended', definition: 'The onset of a quiet state across a location or group.', example: 'As the jury walked in, a heavy silence descended on the courtroom.', category: 'Absence of Sound', mastered: false },
+        { id: 'silence_fell', phrase: 'silence fell', definition: 'A sudden arrival of quietness, often due to an awkward or tense situation.', example: 'When she mentioned the accident, a somber silence fell over the dining table.', category: 'Absence of Sound', mastered: false },
+        { id: 'breaks_silence', phrase: 'breaks the silence', definition: 'To make a sound that interrupts a long period of quiet.', example: 'Only the occasional bird call breaks the silence of the nature preserve.', category: 'Absence of Sound', mastered: false },
+        { id: 'shatters_silence', phrase: 'shatters the silence', definition: 'To make a very loud, abrupt noise that violently ends peace.', example: 'A loud scream suddenly shatters the silence of the night.', category: 'Absence of Sound', mastered: false },
+        { id: 'strangely_quiet', phrase: 'strangely quiet', definition: 'Unusually quiet in a way that suggests secrecy, danger, or abnormality.', example: 'The children were strangely quiet, which meant they were doing something wrong.', category: 'Emotional Quiet', mastered: false },
+        { id: 'awkward_silence', phrase: 'awkward silence', definition: 'An uncomfortable pause in conversation due to embarrassment.', example: 'His joke about sex was followed by an awkward silence.', category: 'Emotional Quiet', mastered: false },
+        { id: 'stony_silence', phrase: 'stony silence', definition: 'A cold, stubborn, and angry refusal to speak.', example: 'After yelling at her brother, she lapsed into a stony silence.', category: 'Emotional Quiet', mastered: false },
+        { id: 'shocked_silence', phrase: 'shocked silence', definition: 'An immediate quiet that occurs when a group is extremely surprised.', example: 'There was a shocked silence after the president announced his resignation.', category: 'Emotional Quiet', mastered: false }
       ],
-      // Custom 20-question scenario-based quiz grounded in Lesson 27: Clichés
+      
       quiz: [
-        { id: 1, question: "Our team leader requested a highly innovative layout; she urged us to ________.", options: ["reinvent the wheel", "think outside the box", "avoid it like the plague"], answer: "think_box", explanation: "Thinking creatively and non-traditionally is to 'think outside the box'." },
-        { id: 2, question: "The instructions on the flat-pack cabinet manual were extremely simple; everything was ________.", options: ["crystal clear", "short and sweet", "conspicuous by its absence"], answer: "crystal_clear", explanation: "Extremely easy to understand is collocated as 'crystal clear'." },
-        { id: 3, question: "Advising someone to double their income is ________ when they are working minimum-wage shifts.", options: ["easier said than done", "a bitter pill to swallow", "slowly but surely"], answer: "easier_said_done", explanation: "Easy to propose but difficult to perform is 'easier said than done'." },
-        { id: 4, question: "The president of the committee was highly expected to give a speech, so his empty chair was ________.", options: ["conspicuous by its absence", "few and far between", "safe and sound"], answer: "conspicuous_absence", explanation: "When a expected person or item is noticeably missing, it is 'conspicuous by its absence'." },
-        { id: 5, question: "He never tells me directly what he wants, so I always have to ________ when reading his letters.", options: ["read between the lines", "reinvent the wheel", "play it safe"], answer: "truth_be_told", // Wait, let's look at the correct answer or options
-          options: ["read between the lines", "reinvent the wheel", "play it safe"], answer: "read_between_lines", explanation: "Inferring hidden meanings is to 'read between the lines'. (Let's map correctly)." },
-        { id: 6, question: "The child was ________ when the lightning struck the oak tree right outside her window.", options: ["scared to death", "sick and tired", "looking on the bright side"], answer: "scared_death", explanation: "Being extremely terrified is collocated as 'scared to death'." },
-        { id: 7, question: "Do not spend six months designing a custom database engine—we don't need to ________.", options: ["reinvent the wheel", "make ends meet", "avoid like the plague"], answer: "reinvent_wheel", explanation: "Wasting effort duplicating functional existing tech is to 'reinvent the wheel'." },
-        { id: 8, question: "We reviewed the finances, the legal permits, and ________, our launch schedule.", options: ["last but not least", "truth be told", "few and far between"], answer: "last_not_least", explanation: "The final, yet still vital, point is introduced as 'last but not least'." },
-        { id: 9, question: "With the financial markets highly volatile, the investors decided to ________ and purchase treasury bonds.", options: ["play it safe", "miss the boat", "face the music"], answer: "play_it_safe", explanation: "Avoiding unnecessary risks is to 'play it safe'." },
-        { id: 10, question: "He took it for ________ that his parents would always pay his rent indefinitely.", options: ["granted", "granted/safe", "clear"], answer: "granted", options: ["granted", "sure", "opinion"], answer: "granted", explanation: "To assume things are guaranteed without appreciation is to 'take it for granted' (represented as 'granted' option)." },
-        { id: 11, question: "Since he lost his factory position, he had to take two manual labor jobs just to ________.", options: ["make ends meet", "reinvent the wheel", "face the music"], answer: "make_ends_meet", explanation: "Earning just enough for basic expenses is to 'make ends meet'." },
-        { id: 12, question: "________, I was absolutely terrified when I stepped onto the stage for my first public address.", options: ["Truth be told", "Uphill battle", "Short and sweet"], answer: "truth_be_told", explanation: "An honest, candid admission starts with 'truth be told'." },
-        { id: 13, question: "If you don't submit your university papers today, you will completely ________ on your dream program.", options: ["miss the boat", "play it safe", "face the music"], answer: "miss_boat", explanation: "Losing a key opportunity due to delay is to 'miss the boat'." },
-        { id: 14, question: "Whether this experimental drug will actually cure the condition is something only ________.", options: ["time will tell", "matter of opinion", "leaps and bounds"], answer: "time_tell", explanation: "Outcomes that only clarify over progressive durations are described as 'time will tell'." },
-        { id: 15, question: "We discussed options for hours, but ________, the corporation must downsize to avoid bankruptcy.", options: ["at the end of the day", "truth be told", "easier said than done"], answer: "at_end_day", explanation: "The ultimate core conclusion is initiated as 'at the end of the day'." },
-        { id: 16, question: "Whether abstract expressionist canvases are art or just splatters is completely a ________.", options: ["matter of opinion", "crystal clear", "food for thought"], answer: "matter_opinion", explanation: "Subjective viewpoints are a 'matter of opinion'." },
-        { id: 17, question: "The lecture on renewable energy resource economics provided plenty of ________ for the researchers.", options: ["food for thought", "leaps and bounds", "light at the end of the tunnel"], answer: "food_thought", explanation: "Stimulating concepts requiring deep reflection are 'food for thought'." },
-        { id: 18, question: "After months of agonizing rehabilitation on his leg, he finally saw the ________ during today\'s physical therapy.", options: ["light at the end of the tunnel", "bitter pill to swallow", "leaps and bounds"], answer: "light_tunnel", explanation: "A sign of hope that struggles are near their end is the 'light at the end of the tunnel'." },
-        { id: 19, question: "When traveling, you should avoid drinking unbottled well water ________.", options: ["like the plague", "short and sweet", "slowly but surely"], answer: "avoid_plague", explanation: "Completely staying away from a dangerous item is to avoid it 'like the plague'." },
-        { id: 20, question: "Losing my key client was bad enough, but having my car towed outside the office really added ________.", options: ["insult to injury", "matter of opinion", "uphill battle"], answer: "add_insult", explanation: "Making a bad situation even worse adds 'insult to injury'." }
+        { id: 1, question: "Our cottage is near a highway, so we must cope with the ________ day and night.", options: ["roar of traffic", "birds chirping", "stony silence"], answer: "roar_of_traffic", explanation: "The deep, continuous sound of many vehicles driving is collocated as the 'roar of traffic'." },
+        { id: 2, question: "My ancient air conditioner unit works fine, but it makes an ________ every single time it turns on.", options: ["annoying buzzing noise", "lovely sound", "shocked silence"], answer: "annoying_buzzing", explanation: "A persistent, vibrating irritation from machines is an 'annoying buzzing noise'." },
+        { id: 3, question: "The heavy brick walls of the studio ensured that we only heard a ________ of the traffic outside.", options: ["muffled sound", "music blaring", "sudden thunderclap"], answer: "muffled_sound", explanation: "A sound that is unclear and softened because it is blocked by an obstacle is a 'muffled sound'." },
+        { id: 4, question: "As soon as the prime minister stepped up to the podium, a sudden ________ over the crowd.", options: ["silence descended", "hum of machinery", "horrible screeching"], answer: "silence_descended", explanation: "The sudden arrival of complete quiet over a crowd is described as 'silence descended' or 'silence fell'." },
+        { id: 5, question: "When the comedy routine failed to get a single laugh, there was an ________ in the auditorium.", options: ["awkward silence", "incessant noise", "lovely sound"], answer: "awkward_silence", explanation: "An uncomfortable pause in a conversation caused by embarrassment is an 'awkward silence'." },
+        { id: 6, question: "We woke up to the ________ of birds singing beautifully in the backyard.", options: ["lovely sound", "deafening noise", "constant noise"], answer: "lovely_sound", explanation: "A pleasant, delightful auditory experience is collocated as a 'lovely sound'." },
+        { id: 7, question: "During the lightning storm, the kids were frightened by a ________ right above our roof.", options: ["sudden thunderclap", "soft sound", "faint sound"], answer: "sudden_thunderclap", explanation: "An abrupt, sharp, and explosive loud sound of thunder is a 'sudden thunderclap'." },
+        { id: 8, question: "I could barely hear her; there was too much ________ in the busy cafeteria.", options: ["background noise", "perfectly silent", "stony silence"], answer: "background_noise", explanation: "Environmental ambient sound that masks speech is 'background noise'." },
+        { id: 9, question: "The college students next door had their stereo ________ until four in the morning.", options: ["music blaring", "dogs barking", "waves crashing"], answer: "music_blaring", explanation: "Intrusive music being played at extreme volume is collocated as 'music blaring'." },
+        { id: 10, question: "If you sit close to the sandy shoreline, you can listen to the sound of ________.", options: ["waves crashing", "hum of machinery", "wind whistling"], answer: "waves_crashing", explanation: "The natural acoustic sound of ocean waves hitting the beach is 'waves crashing'." },
+        { id: 11, question: "After the big argument, she refused to look at him and lapsed into a ________.", options: ["stony silence", "deafening noise", "soft sound"], answer: "stony_silence", explanation: "An angry, cold refusal to speak is described as a 'stony silence' or 'sullen silence'." },
+        { id: 12, question: "The assembly line workers were used to the constant ________ of the drills.", options: ["hum of machinery", "birds chirping", "silence fell"], answer: "hum_of_machinery", explanation: "The low, continuous operational buzz of factory devices is the 'hum of machinery'." },
+        { id: 13, question: "The sound of the jet engine was so close and ________ that we had to cover our ears.", options: ["deafening sound/noise", "faint sound", "strangely quiet"], answer: "deafening_noise", explanation: "An extremely loud volume that blocks other sounds is a 'deafening sound/noise'." },
+        { id: 14, question: "The library was ________; you could hear a pin drop in the archives.", options: ["absolutely silent", "constant noise", "music blaring"], answer: "absolutely_silent", explanation: "A state that is completely, totally without any sound is 'absolutely silent'." },
+        { id: 15, question: "We could hear the ________ of gentle voices chatting in the study.", options: ["soft sound", "horrible screeching sounds", "shocked silence"], answer: "soft_sound", explanation: "A neutral, quiet, and low-volume sound is a 'soft sound'." },
+        { id: 16, question: "The room was ________, which made her worry the toddler was getting into trouble.", options: ["strangely quiet", "deafening noise", "dogs barking"], answer: "strangely_quiet", explanation: "An unusual or suspicious absence of sound is collocated as 'strangely quiet'." },
+        { id: 17, question: "The dramatic news was followed by a ________ of disbelief from the audience.", options: ["shocked silence", "lovely sound", "constant noise"], answer: "shocked_silence", explanation: "A quiet state occurring when people are extremely surprised is a 'shocked silence' or 'stunned silence'." },
+        { id: 18, question: "A sudden car horn ________ of the peaceful residential neighborhood.", options: ["shatters the silence", "makes a lovely sound", "breaks a soft sound"], answer: "shatters_silence", explanation: "A loud sound that abruptly interrupts a quiet state is said to 'shatter' or 'break the silence'." },
+        { id: 19, question: "I think I heard a ________ of footsteps down the hallway, but it was too low to be sure.", options: ["faint sound", "roar of traffic", "music blaring"], answer: "faint_sound", explanation: "A sound that is barely audible is a 'faint sound/noise'." },
+        { id: 20, question: "The angry alley cats made ________ that woke up the entire neighborhood.", options: ["horrible screeching sounds", "birds chirping", "perfectly silent"], answer: "horrible_screeching", explanation: "Harsh, unpleasant high-pitched animal noises are 'horrible screeching sounds'." }
       ],
-      activeCardId: 'truth_be_told',
+      activeCardId: 'lovely_sound',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -835,14 +840,12 @@
       isSynthesizing: false
     };
 
-    // Advanced Typewriter Web Audio Synthesizer
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Classic mechanical keyboard typewriter 'clack' using white noise and high pass filters
-          const bufferSize = audioCtx.sampleRate * 0.04; // 40ms burst
+          const bufferSize = audioCtx.sampleRate * 0.04;
           const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
           const data = buffer.getChannelData(0);
           for (let i = 0; i < bufferSize; i++) {
@@ -867,13 +870,12 @@
           noise.stop(audioCtx.currentTime + 0.04);
           
         } else if (type === 'correct') {
-          // Synthesize a beautiful high-pitched typewriter carriage bell "Ding!"
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
 
           osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(2100, audioCtx.currentTime); // High metal bell
+          osc1.frequency.setValueAtTime(2100, audioCtx.currentTime);
 
           osc2.type = 'triangle';
           osc2.frequency.setValueAtTime(2800, audioCtx.currentTime); 
@@ -891,7 +893,6 @@
           osc2.stop(audioCtx.currentTime + 0.4);
           
         } else if (type === 'incorrect') {
-          // Low damp thud representing a jammed typewriter hammer
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
@@ -914,7 +915,6 @@
           osc.stop(audioCtx.currentTime + 0.15);
           
         } else if (type === 'flip') {
-          // Paper-like rustle
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
@@ -931,7 +931,7 @@
           osc.stop(audioCtx.currentTime + 0.12);
         }
       } catch (e) {
-        console.warn('Web Audio compilation context missed:', e);
+        console.warn('Audio context init delay:', e);
       }
     }
 
@@ -971,7 +971,7 @@
       playSynthSound('click');
       const isDark = document.documentElement.classList.toggle('dark');
       state.theme = isDark ? 'dark' : 'light';
-      localStorage.setItem('colloc_theme_l27', state.theme);
+      localStorage.setItem('colloc_theme_l27_sound', state.theme);
       
       const themeBtn = document.getElementById('theme-toggle');
       if (isDark) {
@@ -1017,31 +1017,31 @@
     }
 
     function loadLocalStorage() {
-      if (localStorage.getItem('colloc_theme_l27')) {
-        state.theme = localStorage.getItem('colloc_theme_l27');
+      if (localStorage.getItem('colloc_theme_l27_sound')) {
+        state.theme = localStorage.getItem('colloc_theme_l27_sound');
       }
-      if (localStorage.getItem('colloc_mastery_list_l27')) {
+      if (localStorage.getItem('colloc_mastery_list_l27_sound')) {
         try {
-          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l27'));
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l27_sound'));
           state.collocations.forEach(c => {
             if (masteredArr.includes(c.id)) {
               c.mastered = true;
             }
           });
         } catch (err) {
-          console.error('Mastery index parse error', err);
+          console.error('Mastery parse error', err);
         }
       }
-      if (localStorage.getItem('colloc_voice_settings_l27')) {
+      if (localStorage.getItem('colloc_voice_settings_l27_sound')) {
         try {
-          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l27'));
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l27_sound'));
         } catch(e) {}
       }
     }
 
     function saveMastery() {
       const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
-      localStorage.setItem('colloc_mastery_list_l27', JSON.stringify(masteredIds));
+      localStorage.setItem('colloc_mastery_list_l27_sound', JSON.stringify(masteredIds));
       calculateMasteryMetrics();
     }
 
@@ -1089,8 +1089,8 @@
       if (select) {
         state.voiceSettings.voiceName = select.value;
       }
-      localStorage.setItem('colloc_voice_settings_l27', JSON.stringify(state.voiceSettings));
-      showToast('Config Saved', 'Acoustic dispatch rules updated.');
+      localStorage.setItem('colloc_voice_settings_l27_sound', JSON.stringify(state.voiceSettings));
+      showToast('Config Saved', 'Speech parameters updated.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1136,7 +1136,7 @@
 
     function triggerTTS(text) {
       if (!('speechSynthesis' in window)) {
-        showToast('Error', 'Synthesizer is not supported on this node.');
+        showToast('Error', 'Synthesizer unsupported on this client.');
         return;
       }
       window.speechSynthesis.cancel();
@@ -1180,7 +1180,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('truth_be_told');
+      displayGlossaryCard('lovely_sound');
     }
 
     function displayGlossaryCard(id) {
@@ -1193,7 +1193,7 @@
       document.getElementById('glossary-phrase').innerText = term.phrase;
       document.getElementById('glossary-definition').innerText = term.definition;
       document.getElementById('glossary-example').innerText = term.example;
-      document.getElementById('glossary-category').innerText = `Strategic Context: ${term.category}`;
+      document.getElementById('glossary-category').innerText = `Active Group: ${term.category}`;
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
@@ -1208,7 +1208,7 @@
     function speakGlossaryTerm() {
       const term = state.collocations.find(c => c.id === state.activeCardId);
       if (term) {
-        triggerTTS(`${term.phrase}. Context: ${term.example}`);
+        triggerTTS(`${term.phrase}. Example context: ${term.example}`);
       }
     }
 
@@ -1223,16 +1223,16 @@
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
         star.innerHTML = '<i class="fa-solid fa-star text-amber-500"></i>';
-        showToast('Term Mastered', `Saved "${term.phrase}" to your resolved intelligence database!`);
+        showToast('Decoded', `Logged "${term.phrase}" as mastered.`);
       } else {
         star.innerHTML = '<i class="fa-regular fa-star"></i>';
-        showToast('Concern Re-opened', `Moved "${term.phrase}" back to active monitoring.`);
+        showToast('Reopened', `Moved "${term.phrase}" back to active study.`);
       }
     }
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "Truth be told, drafting a successful novel is an uphill battle. If you simply play it safe, your creative style will be conspicuous by its absence. To craft a masterpiece, you must learn to think outside the box, rather than trying to reinvent the wheel. Of course, this is easier said than done when you are sick and tired of deadlines. If you take it for granted that publishers will accept your first draft, you will likely miss the boat. At the end of the day, time will tell whether your book is a bitter pill to swallow or ends up selling like hotcakes. It is a matter of opinion which genres are best, but providing readers with rich food for thought is a guaranteed way to keep them hooked. You might feel scared to death of failure when making your way in this industry. But if you keep making progress by leaps and bounds, you will eventually see the light at the end of the tunnel. Last but not least, keep your plots short and sweet, and make sure your messages are crystal clear!";
+      const narrativeText = "Yesterday morning, I woke up to the lovely sound of my wife playing the piano in the salon. In the next room, I could hear the soft sound of our children talking. But the peaceful atmosphere didn't last. Out in the alleyway, the fighting cats suddenly made horrible screeching sounds. I can't hear you, I shouted into the phone, there's a lot of background noise! On top of that, my car was making an annoying buzzing noise whenever I turned on the air conditioner. Living in the city is an acoustic adventure. Some signals are just a loud noise, but near the railway, it becomes a deafening noise. Sometimes you only hear a faint sound of music, or a muffled sound through the thick building walls. There is a constant noise from the highway—a perpetual roar of traffic day and night. If you work in a factory, you live with the hum of machinery all day long. If you live next to college students, you hear their music blaring at all hours. Yet nature is full of noises too. In the morning, you can enjoy birds chirping or hear dogs barking down the path. Near the coast, you can listen to the waves crashing, while the wind whistling through the trees creates a wild, remote feeling. When a storm arrives, the deep rumble of thunder rolls in, followed by a sudden thunderclap that makes everyone jump. Eventually, we crave the absence of sound. Sometimes a room is strangely quiet—like when children are up to silent mischief. Other times, an awkward silence hangs in the air after an embarrassing joke, or someone lapses into a stony silence due to anger. There might even be a shocked silence after a sudden resignation. When the city streets become ominously quiet after midnight, we expect peace. But as silence descended over the empty streets, a screeching car alarm suddenly shatters the silence, breaking the illusion of an absolutely silent world.";
       triggerTTS(narrativeText);
     }
 
@@ -1274,7 +1274,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Limit Reached', 'This is the first cliché index card.');
+        showToast('Limit', 'First flashcard reached.');
       }
     }
 
@@ -1284,7 +1284,7 @@
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Looping', 'Cycling back to the first literary record.');
+        showToast('Loop', 'Cycling back to start.');
         state.flashcardsIndex = 0;
         renderFlashcard();
       }
@@ -1305,7 +1305,7 @@
       card.mastered = checkbox.checked;
       saveMastery();
       if (card.mastered) {
-        showToast('Manuscript Updated', `"${card.phrase}" logged as decoded.`);
+        showToast('Decoded', `"${card.phrase}" saved.`);
       }
     }
 
@@ -1328,7 +1328,7 @@
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
         
-        // Find matching collocation based on option string/id
+        // Match matching collocation or use option raw string
         const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
         const collocId = matchingColloc ? matchingColloc.id : opt;
         
@@ -1336,18 +1336,18 @@
         btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
         
         if (!answered) {
-          btn.className += "bg-white border-brand-200 dark:bg-slate-900 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-50/20 dark:hover:bg-brand-950/20";
+          btn.className += " bg-white border-brand-200 dark:bg-slate-900 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-50/20 dark:hover:bg-brand-950/20";
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
           if (collocId === quest.answer) {
-            btn.className += "bg-emerald-50 border-emerald-450 text-emerald-850 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
+            btn.className += " bg-emerald-50 border-emerald-450 text-emerald-850 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
           } else if (collocId === userAns) {
-            btn.className += "bg-rose-50 border-rose-300 text-rose-850 dark:bg-rose-955/20 dark:border-rose-900/40 dark:text-rose-450";
+            btn.className += " bg-rose-50 border-rose-300 text-rose-850 dark:bg-rose-955/20 dark:border-rose-900/40 dark:text-rose-450";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += "bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-655";
+            btn.className += " bg-slate-50 border-slate-200 text-slate-400 dark:bg-slate-900 dark:border-slate-800 dark:text-slate-655";
           }
         }
         
@@ -1376,10 +1376,10 @@
       
       if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Manuscript Approved!', 'Accurate collocation applied to literary brief.', 'fa-circle-check');
+        showToast('Resonance Match!', 'Accurate acoustic descriptive syntax.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Proofreading Flag!', 'Inconclusive alignment with standard prose.', 'fa-triangle-exclamation');
+        showToast('Resonance Discord', 'Unmatching volume descriptor choice.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1421,10 +1421,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Ink-Stained Novice";
-      if (percentage === 100) rank = "Pulitzer Laureate";
-      else if (percentage >= 90) rank = "Master Novelist";
-      else if (percentage >= 70) rank = "Staff Editorialist";
+      let rank = "Acoustic Apprentice";
+      if (percentage === 100) rank = "Master Sonographer";
+      else if (percentage >= 90) rank = "Resonance Analyst";
+      else if (percentage >= 70) rank = "Sound Designer";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1447,7 +1447,7 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['truth be told', 'think outside the box', 'crystal clear', 'uphill battle', 'make ends meet', 'food for thought'];
+      const selectedWords = ['lovely sound', 'waves crashing', 'absolutely silent', 'awkward silence', 'deafening sound/noise', 'roar of traffic'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
@@ -1464,7 +1464,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `Truth be told, planning a creative campaign is an uphill battle, but we must learn to ${word}...`;
+        textarea.value = `The morning started with a ${word}...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1478,26 +1478,26 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Evaluate the literary significance: "${randomColloc}"`;
+        textarea.value = `Describe: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
       }
       textarea.focus();
-      showToast('Draft updated', `Inserted "${randomColloc}" into manuscript workspace.`, 'fa-plus-circle');
+      showToast('Inserted', `Added "${randomColloc}" into workspace.`, 'fa-plus-circle');
     }
 
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how planning a major publication launch is an uphill battle, but we saw the light at the end of the tunnel.",
-        "Draft a summary explaining why relying on overused clichés is easier said than done to avoid.",
-        "Describe a creative agency context where teams are sick and tired of playing it safe and decide to think outside the box.",
-        "Examine why it is a matter of opinion whether some novels provide rich food for thought."
+        "Detail how natural elements like waves crashing and wind whistling create a calming effect.",
+        "Contrast the roar of traffic from your window with a sudden silence descended over the streets.",
+        "Describe a tense office meeting followed by an awkward silence.",
+        "Describe working in a loud factory with the hum of machinery all day long."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
-      textarea.value = `[Manuscript Brief: ${rand}]\n\n`;
+      textarea.value = `[Scenario brief: ${rand}]\n\n`;
       textarea.focus();
     }
 
@@ -1513,23 +1513,24 @@
       const textValue = document.getElementById('sandbox-input').value.trim();
       
       if (!textValue) {
-        showToast('Empty Manuscript', 'Please write a brief before scanning.', 'fa-triangle-exclamation');
+        showToast('Empty Brief', 'Input some sound descriptions first.', 'fa-triangle-exclamation');
         return;
       }
       
-      showToast('Proofreading', 'Streaming manuscript prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
+      showToast('Analyzing', 'Consulting the Gemini Acoustic Oracle...', 'fa-wand-magic-sparkles');
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
-      document.getElementById('diagnostic-analysis').innerText = "Analyzing stylistic and structural metrics... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard editorial clichés...";
+      document.getElementById('diagnostic-analysis').innerText = "Measuring resonance metrics... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard English sound patterns...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Editor-in-Chief, Literary Critic, and English Language Professor. Check if the user's sentence uses Lesson 27 clichés and idiomatic collocations (e.g., truth be told, uphill battle, play it safe, conspicuous by its absence, think outside the box, reinvent the wheel, easier said than done, take it for granted, bitter pill to swallow, food for thought, safe and sound, crystal clear) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the prose grammar and style), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific stylistic tips), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = `You are a world-class Sound Engineer, Literary Critic, and English Professor. Check if the user's sentence uses Lesson 27 Sound & Silence collocations correctly and naturally. Examples: (lovely sound, soft sound, horrible screeching sounds, background noise, annoying buzzing noise, loud sound/noise, deafening sound/noise, faint sound, muffled sound, constant noise, roar of traffic, hum of machinery, music blaring, birds chirping, dogs barking, waves crashing, wind whistling, rumble of thunder, sudden thunderclap, absolutely silent, perfectly silent, silence descended, silence fell, breaks the silence, shatters the silence, strangely quiet, awkward silence, stony silence, shocked silence, ominously quiet).
+      Return a clean JSON response with keys: "score" (0-100), "analysis" (brief critique of the overall sentence structures), "isCollocationCorrect" (boolean), "collocationFeedback" (specific advice on their acoustic descriptors), and "alternatives" (array with 1-2 polished rephrases). Do not use any markdown code fences or backticks, return only raw valid JSON.`;
       
       const payload = {
-        contents: [{ parts: [{ text: `Analyze: "${textValue}"` }] }],
+        contents: [{ parts: [{ text: `Analyze text: "${textValue}"` }] }],
         systemInstruction: { parts: [{ text: systemPrompt }] },
         generationConfig: { responseMimeType: "application/json" }
       };
@@ -1553,13 +1554,13 @@
             resultData = await response.json();
             success = true;
           } else {
-            throw new Error(`API returned status ${response.status}`);
+            throw new Error(`Status ${response.status}`);
           }
         } catch (err) {
           attempt++;
           if (attempt >= 5) {
-            showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Manuscript scanner offline. Verify network connection and retry.";
+            showToast('API Offline', 'Unable to fetch style diagnostic.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "Service temporarily busy. Please try again soon.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1576,23 +1577,23 @@
           document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
           document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
           
-          const alternativeText = parsedResult.alternatives?.[0] || "Your structure is remarkably solid!";
+          const alternativeText = parsedResult.alternatives?.[0] || "Your atmospheric prose is highly resonant.";
           document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
             badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200";
-            badge.innerText = "Master Novelist Alignment";
+            badge.innerText = "Master Resonance Pattern";
             playSynthSound('correct');
           } else {
             badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 dark:bg-rose-955/40 dark:text-rose-300 border border-rose-200";
-            badge.innerText = "Unnatural Prose Alignment";
+            badge.innerText = "Acoustically Inconsistent";
             playSynthSound('incorrect');
           }
           
         } catch (jsonErr) {
-          console.error("JSON parse error: ", jsonErr);
-          document.getElementById('diagnostic-analysis').innerText = "Scan returned an unexpected schema. Re-verify the composition text.";
+          console.error("Diagnostic parse error:", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Encountered unexpected diagnostic format. Modify and scan again.";
         }
       }
     }
@@ -1606,7 +1607,7 @@
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-        showToast('Copied', 'Polished alternative draft copied to clipboard.', 'fa-copy');
+        showToast('Copied', 'Polished variant sent to clipboard.', 'fa-copy');
       }
     }
 
@@ -1616,11 +1617,11 @@
         stopSpeechSynthesis();
         document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
         state.podcastIsPlaying = false;
-        document.getElementById('podcast-status').innerText = "Podcast Suspended";
+        document.getElementById('podcast-status').innerText = "Broadcast Suspended";
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Cliché Analysis";
+        document.getElementById('podcast-status').innerText = "Live Broadcast - Sound & Silence Study";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1634,15 +1635,15 @@
       
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
-        document.getElementById('podcast-current-phrase').innerText = "Broadcast Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 27. All clichés evaluated!";
+        document.getElementById('podcast-current-phrase').innerText = "Debate Completed!";
+        document.getElementById('podcast-current-definition').innerText = "All acoustic collocations reviewed. Keep reviewing your handbook.";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
       }
       
       document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
-      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g., "${currentWord.example}"`;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g. "${currentWord.example}"`;
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
       document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
@@ -1652,14 +1653,14 @@
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's scrutinize our next key colloquial cliché. It is: ${currentWord.phrase}. Tom, how do novelists apply this?`;
+        const textToSpeak = `Let's analyze our next sound collocation. It is: ${currentWord.phrase}. Tom, how do we use this naturally?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-rose-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-rose-455 font-mono">Sarah (Editorial Lead)</span>
+            <span class="text-[10px] font-bold text-rose-455 font-mono">Sarah (Anchor)</span>
             <p class="text-xs text-brand-100 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1673,14 +1674,14 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} refers to ${currentWord.definition}. For instance: "${currentWord.example}"`;
+        const textToSpeak = `Indeed Sarah, ${currentWord.phrase} signifies ${currentWord.definition}. For instance, we write: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Publishing Expert)</span>
+            <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Acoustician)</span>
             <p class="text-xs text-brand-200 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1775,7 +1776,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-400 italic font-serif">No matching manuscripts or clichés decoded.</td>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic font-serif">No matching sounds found in the lesson database.</td>
           </tr>
         `;
         return;
@@ -1798,7 +1799,7 @@
             <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-100 dark:bg-slate-800 text-brand-700 dark:text-slate-400 px-2 py-0.5 rounded-full border border-brand-200/50 font-mono">${c.category}</span>
           </td>
           <td class="py-4 px-4 text-slate-600 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-serif font-sans">"${c.example}"</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-serif">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
             <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-brand-200 dark:border-slate-800 flex items-center justify-center text-brand-450 hover:text-brand-700 dark:hover:text-slate-350 transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
@@ -1841,7 +1842,6 @@
       }, 4000);
     }
 
-    // Expose interaction functions to the browser global scope
     Object.assign(window, {
       switchView,
       toggleTheme,

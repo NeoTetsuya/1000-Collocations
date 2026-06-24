@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 32: Belief & Doubt Lab</title>
+  <title>CollocaStudy - Lesson 32: Olfactory Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Neural, Brain, and Epistemological Icons -->
+  <!-- FontAwesome for Botanical, Fragrance, and Sensory Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Cognitive Psychology theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -27,17 +26,17 @@
           },
           colors: {
             brand: {
-              50: '#fafafa', 
-              100: '#f4f4f5',
-              200: '#e4e4e7',
-              300: '#d4d4d8',
-              400: '#a1a1aa',
-              500: '#8b5cf6', /* Neural Violet */
-              600: '#7c3aed',
-              700: '#6d28d9', 
-              800: '#5b21b6',
-              900: '#090d16', /* Deep Midnight Obsidian */
-              950: '#02040a'
+              50: '#fbfbfa', 
+              100: '#f5f5f4',
+              200: '#e7e5e4',
+              300: '#d6d3d1',
+              400: '#a8a29e',
+              500: '#10b981', /* Aromatic Mint Green */
+              600: '#059669',
+              700: '#047857', 
+              800: '#065f46',
+              900: '#0c0a09', /* Warm Obsidian Stone */
+              950: '#020201'
             }
           }
         }
@@ -46,7 +45,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching cognitive styling */
+    /* Premium Scrollbars matching custom botanical style */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -55,11 +54,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #8b5cf6;
+      background: #10b981;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #5b21b6;
+      background: #047857;
     }
     
     /* Smooth interactive transitions */
@@ -86,7 +85,7 @@
       transform: rotateY(180deg);
     }
     
-    /* Animated Equalizer Waveform */
+    /* Animated Equalizer Waveform representing wafting scent notes */
     @keyframes wave-bounce {
       0%, 100% { height: 8px; }
       50% { height: 42px; }
@@ -96,46 +95,46 @@
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-stone-50 text-stone-850 dark:bg-brand-950 dark:text-stone-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Interactive HTML5 Neural Net Canvas Background -->
-    <canvas id="neural-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-40"></canvas>
+    <!-- Olfactory Vapor Particle Dispersion Canvas -->
+    <canvas id="vapor-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-40 dark:opacity-55"></canvas>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-stone-200 bg-white/80 dark:border-stone-800 dark:bg-stone-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-700 to-fuchsia-600 text-white shadow-md shadow-brand-500/20">
-          <i class="fa-solid fa-brain text-lg animate-pulse"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-700 text-white shadow-md shadow-emerald-500/20">
+          <i class="fa-solid fa-wind text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-300 to-fuchsia-400 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20">Lesson 32</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-emerald-500 to-amber-500 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-300 border border-emerald-500/20">Lesson 32</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-circle-nodes text-brand-400"></i>
-        <h1 class="font-heading font-bold text-slate-200">Lesson 32: Belief & Doubt</h1>
+        <i class="fa-solid fa-eye-dropper text-emerald-500"></i>
+        <h1 class="font-heading font-bold text-stone-700 dark:text-stone-200">Lesson 32: Smell & Olfaction</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-stone-600 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300 dark:hover:bg-stone-850 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates adaptive node sweep) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Discharge Pulse">
-          <i class="fa-solid fa-bolt-lightning text-sm text-brand-400 animate-pulse"></i>
+        <!-- Adaptive Theme Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-200 bg-white hover:bg-stone-50 text-stone-600 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300 dark:hover:bg-stone-850 transition shadow-sm" id="theme-toggle" title="Toggle Adaptive Theme">
+          <i class="fa-solid fa-moon text-sm text-emerald-500"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
-          <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-350" id="lesson-mastery-ratio">0/30 Mastered</span>
+        <div class="flex items-center gap-2 rounded-xl bg-stone-100 border border-stone-200 px-3 py-1.5 dark:bg-stone-900 dark:border-stone-800">
+          <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
+          <span class="text-xs font-semibold text-stone-600 dark:text-stone-350" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -144,50 +143,49 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-950/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-stone-200 bg-white/70 dark:border-stone-800 dark:bg-stone-955/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-450 uppercase">Cognitive Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-stone-400 dark:text-stone-400 uppercase">Olfactory Modules</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/20">
             <i class="fa-solid fa-book-open text-base"></i>
-            <span>Dossier & Glossary</span>
+            <span>Curriculum & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
             <i class="fa-solid fa-clone text-base"></i>
-            <span>Neural Flashcards</span>
+            <span>Sensory Flashcards</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
-            <i class="fa-solid fa-gavel text-base"></i>
-            <span>Graded Exam</span>
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
+            <i class="fa-solid fa-clipboard-check text-base"></i>
+            <span>Graded Smell Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Cognitive Lexicon</span>
+            <span>Olfactory Lexicon</span>
           </button>
         </div>
         
-        <!-- User Epistemology Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
-          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
+        <!-- User Echolocation Security Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-stone-100 to-stone-200 dark:from-stone-950 dark:to-stone-900 p-4 border border-stone-200 dark:border-stone-800 relative overflow-hidden">
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-graduation-cap text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Cognitive standing</span>
+            <i class="fa-solid fa-seedling text-emerald-500"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-stone-500 dark:text-stone-400">Olfactory Profile</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Shatter doubts and build unshakable beliefs. Complete tasks to elevate to the Grand Epistemologist ranking!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-emerald-600 dark:text-emerald-400" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-stone-500 dark:text-stone-450 mt-1 leading-relaxed">Map aromas, fragrances, odors, and environmental smells. Complete evaluations to unlock the Sensory Specialist rank!</p>
         </div>
       </nav>
 
@@ -198,69 +196,84 @@
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+            <!-- Left Side: Interactive Curriculum -->
+            <div class="xl:col-span-7 bg-white dark:bg-stone-900/90 rounded-3xl p-6 md:p-8 border border-stone-200 dark:border-stone-800 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-stone-200 dark:border-stone-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Skeptic's Journey</h2>
-                  <p class="text-xs text-slate-400 mt-1">Explore convictions, errors, and lingering reservations. Click highlighted collocations to pull up cognitive files.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-stone-800 dark:text-stone-200">Interactive Curriculum: Smell</h2>
+                  <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">Explore definitions of aroma, fragrance, odors, and common descriptors. Click any highlighted collocation to view its grammatical insights.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-650 hover:bg-brand-700 text-white rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-stone-950 rounded-xl text-sm font-bold shadow-md shadow-emerald-500/10 transition shrink-0">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Broadcast Briefing</span>
+                  <span>Broadcast Lesson</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 font-sans tracking-wide space-y-6">
+              <!-- Core PDF Text Content -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-stone-650 dark:text-stone-350 font-sans tracking-wide space-y-6">
                 <p>
-                  As a researcher in cognitive science, I <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="strongly_believe">strongly believe</span> (and in fact, <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="firmly_believe">firmly believe</span>) that our minds shape our reality. Every individual operates based on a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="deeply_held">deeply-held belief</span>, which often evolves into an <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="unshakable_belief">unshakable belief</span> over time. However, many biases are rooted in a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="subconscious_belief">subconscious belief</span> that we are unaware of; these assumptions can easily <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="color_judgment">color your judgment</span>.
+                  Today we'll continue learning collocations related to the five senses, with expressions for describing different smells. Let's begin by looking at some commonly confused words.
                 </p>
                 <p>
-                  Skeptics warn that trusting ideas without verifying evidence represents <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="blind_faith">blind faith</span>. When fresh experimental data emerges, it can either <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="strengthen_belief">strengthen your belief</span> or completely <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="shatter_belief">shatter your belief</span>. 
+                  <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="aroma">Aroma</span>, <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="scent">scent</span>, and <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="fragrance">fragrance</span> all describe a good smell. You can talk about the wonderful <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="aroma">aroma of a cake</span> that has just been taken out of the oven, the fresh <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="scent">scent of flowers</span>, and the sweet <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="fragrance">fragrance of perfume</span>.
                 </p>
                 <p>
-                  Even the most confident scholars often <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="harbor_doubts">harbor doubts</span> in private. A <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="nagging_doubt">nagging doubt</span> or a <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="lingering_doubt">lingering doubt</span> can stay in the back of your mind for years. It requires robust validation protocols to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="dispel_doubts">dispel doubts</span>. If an anomaly is detected, it will naturally <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="raise_doubts">raise doubts</span> or <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="cast_doubt">cast doubt on</span> the whole project. Only when results are consistent can we declare the hypotheses proven <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="shadow_doubt">beyond a shadow of a doubt</span>.
+                  The word <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="smell">smell</span> is neutral; you can have the lovely smell of fresh-baked bread, or the horrible smell of rotting food. The word "smell" can be a noun or a verb - so you can also say "It smells delicious" or "It smells nasty."
                 </p>
                 <p>
-                  Of course, every scientist is prone to <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="make_mistake">make a mistake</span>. Sometimes, it is merely an <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="honest_mistake">honest mistake</span> made during rapid logging, but skipping calibrations is a <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="grave_mistake">grave mistake</span>. We must avoid making any <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="foolish_mistake">foolish mistake</span> that ruins the data. If a test subject is misclassified, we are looking at a case of <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="mistaken_identity">mistaken identity</span>. If something was altered <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="by_mistake">by mistake</span>, it is vital to immediately <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="correct_mistake">correct the mistake</span> to ensure structural integrity.
+                  The words <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="stench">stench</span>, <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="stink">stink</span>, and <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="odor">odor</span> all describe bad smells - there's the <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="foul_odor">foul odor</span> of a dead animal, and the revolting <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="revolting_stench">stench of sewage</span>. The unpleasant smell of a person who doesn't take showers or use deodorant is called <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="body_odor">body odor</span>.
+                </p>
+                <p>
+                  STREAMING_CHUNK: Continuing Story Text Highlights
+                  To describe the strength of smells, you can say they are <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="faint_smell">light / faint smells</span> or <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="strong_smell">strong smells</span>. When a smell is extremely strong, you can say it is an <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="overpowering_smell">overpowering smell</span>. A smell that you recognize can be called a <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="familiar_smell">familiar smell</span>, and a smell that is unique and easy to identify can be called a <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="distinctive_smell">distinctive smell</span> or an <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="unmistakable_smell">unmistakable smell</span>.
+                </p>
+                <p>
+                  Smells can "waft" - that means float through the air. For example, the mouth-watering <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="scent_wafted">scent wafted</span> across the room. Another verb used with smell is "fill" - the acrid <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="smell_filled">smell of smoke filled</span> the hallway. Finally, if a smell stays in a place for a long time, we can use the verb "linger" - the spicy <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="aroma_lingered">aroma lingered</span> in the kitchen for hours.
+                </p>
+                <p>
+                  Here are some additional collocations for describing smells:
+                  <br>• <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="earthy_smell">earthy</span> / <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="fishy_smell">fishy</span> / <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="fruity_smell">fruity</span> / <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="metallic_smell">metallic smell</span> – smells like soil/dirt, fish, fruit, or metal.
+                  <br>• <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="rancid_smell">rancid</span> / <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="putrid_smell">putrid smell</span> – a disgusting smell of things that are rotten.
+                  <br>• <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="damp_smell">damp</span> / <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="dank_smell">dank smell</span> – a smell of wet things and mold.
+                  <br>• <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="pervasive_smell">pervasive smell</span> – a smell that tends to fill the space and remain there.
+                  <br>• <span class="colloc-ref cursor-pointer font-bold text-emerald-600 dark:text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="pungent_smell">pungent smell</span> – a smell that is "sharp" and strong; it almost hurts your nose when you smell it.
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-stone-900 to-stone-950 border border-stone-200 dark:border-stone-850 text-white rounded-3xl p-6 shadow-xl relative overflow-hidden" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse" id="glossary-category">Cognitive Node</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 animate-pulse" id="glossary-category">Sensory Profile</span>
                   <div class="flex items-center gap-2">
-                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 text-stone-300 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
                     </button>
-                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 text-stone-300 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
                       <i class="fa-regular fa-star"></i>
                     </button>
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">strongly believe</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-emerald-450 dark:text-emerald-300" id="glossary-phrase">aroma</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To have an extremely robust, convinced, and unwavering mental commitment to an idea or premise.</p>
+                <p class="text-stone-350 text-sm leading-relaxed mb-6" id="glossary-definition">A pleasant, distinctive smell, typically associated with delicious food, spices, or fresh coffee.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"As a researcher in cognitive science, I strongly believe that our minds shape our reality."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-stone-400 uppercase">Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-stone-200" id="glossary-example">"the spicy aroma of her cooking lingered in the kitchen for hours."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-brand-400"></i>
-                  <span>Cognitive Dissonance</span>
+              <div class="bg-white dark:bg-stone-900/40 rounded-3xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-stone-850 dark:text-stone-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-emerald-500"></i>
+                  <span>Olfactory Boundaries</span>
                 </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  Mind-mapping relies heavily on standard combinations. You have a ** deeply-held belief** but never a 'profoundly-held' one. You **harbor doubts** rather than 'host' them. Learn these native mappings to formulate flawless academic abstracts!
+                <p class="text-xs text-stone-655 dark:text-stone-400 leading-relaxed font-sans">
+                  English separates smells clearly. **Good smells** are described as **aromas**, **scents**, or **fragrances**. **Bad smells** are categorized as **stenches**, **stinks**, or **odors**. Smells can **waft** through the air, **fill** a room, or **linger** in a space over time.
                 </p>
               </div>
             </div>
@@ -272,67 +285,67 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight">Neural Flashcards</h2>
-                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight">Sensory Flashcards</h2>
+                <p class="text-xs text-stone-500 dark:text-stone-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
+                <span class="text-stone-500">/</span>
                 <span>30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            <div class="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-emerald-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-stone-200 dark:border-stone-800 text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:hover:text-stone-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-stone-400 uppercase tracking-widest font-bold">Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-stone-800 dark:text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-400">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  <div class="text-center text-xs text-stone-400">
+                    <span class="bg-stone-100 dark:bg-stone-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-indigo-950 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-stone-950 to-emerald-950 border border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-brand-400 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-brand-400 font-semibold">Semantic Profile</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-emerald-450 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-emerald-450 font-semibold">Semantic Profile</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-brand-400 uppercase tracking-widest font-black">Definition</span>
+                      <span class="text-[10px] text-emerald-455 uppercase tracking-widest font-black">Definition</span>
                       <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
                     <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-brand-400 uppercase tracking-widest font-black">Luminous Context</span>
-                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                      <span class="text-[10px] text-emerald-455 uppercase tracking-widest font-black">Luminous Context</span>
+                      <p class="text-xs sm:text-sm italic text-stone-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
                   
                   <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
-                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-300">Mark as Decoded</span>
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-emerald-500 focus:ring-emerald-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-stone-300">Mark as Decoded</span>
                     </label>
-                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                    <span class="text-stone-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
                   </div>
                 </div>
               </div>
@@ -340,12 +353,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900 font-semibold text-stone-700 dark:text-stone-200 text-sm hover:bg-stone-50 dark:hover:bg-stone-850 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-stone-950 font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -358,26 +371,26 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white dark:bg-stone-900 rounded-3xl p-6 md:p-8 border border-stone-200 dark:border-stone-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 32 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct cognitive collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-stone-800 dark:text-stone-200">Lesson 32 Graded Exam</h2>
+                  <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">Directly matching the sentences from the Lesson 32 Quiz sheet.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono shrink-0">
+                  Question <span id="quiz-question-current">1</span> of 10
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-fuchsia-500 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-emerald-500 to-amber-500 h-full transition-all duration-300" style="width: 10%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 font-mono">Active Mind Brief</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-emerald-500 dark:text-emerald-450 font-mono">Unfinished Sentence Frame</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-stone-850 dark:text-white">"Loading sentence..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -386,20 +399,20 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-955/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-955/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-455 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Philosopher's Synapse</span>
+                  <span>Curriculum Verification Note</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Explanation details...</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-stone-200 dark:border-stone-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
                   <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-100 dark:bg-stone-800 text-stone-405 dark:text-stone-500 rounded-xl text-xs sm:text-sm font-bold transition">
                   <span>Next Question</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -407,38 +420,38 @@
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-slate-950 rounded-3xl p-8 border border-slate-800 shadow-md space-y-8 text-center">
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-[#090d16] rounded-3xl p-8 border border-stone-200 dark:border-stone-800 shadow-md space-y-8 text-center">
               <div class="space-y-3">
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-500/10 text-brand-440">
-                  <i class="fa-solid fa-brain text-3xl"></i>
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
+                  <i class="fa-solid fa-square-check text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black">Neural Clearance Granted!</h2>
-                <p class="text-sm text-slate-400">Analysis completed. Review your cognitive metrics.</p>
+                <h2 class="font-heading text-2xl font-black text-stone-850 dark:text-stone-100">Olfactory Analysis Complete!</h2>
+                <p class="text-sm text-stone-500 dark:text-stone-400">Evaluation finished. Review your smell analysis scores.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Synapses Aligned</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-stone-100 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-stone-500 dark:text-stone-400 font-mono">Sensory Matches</span>
+                  <span class="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono" id="quiz-score-correct">10/10</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Accuracy Rate</span>
-                  <span class="text-2xl font-black text-brand-400 font-mono" id="quiz-score-percent">90%</span>
+                <div class="bg-stone-100 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-stone-500 dark:text-stone-400 font-mono">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono" id="quiz-score-percent">100%</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Mind Ranking</span>
-                  <span class="text-xs sm:text-sm font-bold text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Belief Architect</span>
+                <div class="bg-stone-100 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-stone-500 dark:text-stone-400 font-mono">Tactile Rank</span>
+                  <span class="text-xs sm:text-sm font-bold text-emerald-655 dark:text-emerald-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Sensory Specialist</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-750 text-white font-semibold text-sm transition">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-stone-950 font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate</span>
+                  <span>Re-examine</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-semibold text-sm hover:bg-slate-800 transition">
-                  <span>Back to Dossier</span>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-stone-200 dark:border-stone-800 font-semibold text-stone-700 dark:text-stone-300 text-sm hover:bg-stone-50 dark:hover:bg-stone-800 transition">
+                  <span>Back to Lesson</span>
                 </button>
               </div>
             </div>
@@ -449,27 +462,27 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Mind Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom psychological profiles, belief reports, or debate briefs using Lesson 32 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Sensory Sandbox</h2>
+                  <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">Compose sentences detailing smells, perfumes, odors, and cooking states. The model verifies correct olfactory collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-brand-400"></i> Get Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-stone-300 dark:border-stone-750 text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-lightbulb mr-1 text-emerald-500"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
-                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 hover:bg-emerald-500/20 text-xs font-bold rounded-xl transition border border-emerald-500/25">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Chip
                   </button>
                 </div>
               </div>
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono">Briefing Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-slate-950 p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-900 outline-none transition text-slate-100" placeholder="Example: Although she holds a deeply-held belief, she still harbors doubts that color her judgment..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-stone-500 dark:text-stone-400 font-mono">Sensory Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-brand-950 p-4 text-sm font-medium focus:border-emerald-500 dark:focus:border-emerald-500 focus:bg-white dark:focus:bg-stone-900 outline-none transition text-stone-800 dark:text-stone-100" placeholder="Example: As we walked through the old botanical gardens, the sweet fragrance of roses wafted through the morning air..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -478,55 +491,55 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-stone-200 dark:border-stone-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-stone-505 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-zinc-950 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-stone-950 rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Mind Syntax</span>
+                  <span>Scan Smell Syntax</span>
                 </button>
               </div>
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Epistemological Pattern Scan</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-stone-900 rounded-3xl p-6 md:p-8 border border-stone-200 dark:border-stone-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-stone-800 dark:text-stone-200">Aromatic Pattern Scan</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40">Emerald Alignment</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800">
-                    <span class="text-3xl font-black font-mono tracking-tight text-brand-400" id="diagnostic-score">92</span>
-                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-stone-200 dark:border-stone-800">
+                    <span class="text-3xl font-black font-mono tracking-tight text-emerald-600 dark:text-emerald-400" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-stone-500 dark:text-stone-400 font-mono">Score</span>
                   </div>
                 </div>
                 
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing cognitive structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-stone-500 dark:text-stone-405 font-mono block mb-0.5">Syntactical Smell Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-stone-655 dark:text-stone-300 leading-relaxed">Analyzing olfactory phrases...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Tactical Soundness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                  <div class="border-t border-stone-200 dark:border-stone-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-stone-500 dark:text-stone-405 font-mono block mb-0.5">Consensus Integrity Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-stone-655 dark:text-stone-300 leading-relaxed">Measuring physical matches...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-slate-955 p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-1">Recommended Editorial Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-250 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-stone-100 dark:bg-[#020201] p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-stone-505 dark:text-stone-400 font-mono block mb-1">Recommended Editorial Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-stone-700 dark:text-stone-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white border border-stone-200 dark:bg-stone-900 dark:border-stone-800 rounded-lg text-xs font-bold text-stone-600 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-850 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
                   </button>
                 </div>
@@ -539,46 +552,46 @@
         <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-stone-900 text-white rounded-3xl p-6 md:p-8 border border-stone-800 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
               <div class="flex items-center justify-between pb-4 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                  <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
+                  <span class="flex h-3 w-3 rounded-full bg-emerald-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 32</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Arb-Studio: Minding Beliefs, Doubts, and Structural Errors</p>
+                    <p class="text-[10px] text-stone-400 font-semibold font-mono">Acoustic Room: Good Smells, Foul Odors, and Environmental Descriptors</p>
                   </div>
                 </div>
-                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
-                <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
-                <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
-                <div class="wave-bar bg-brand-650 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
-                <div class="wave-bar bg-fuchsia-600 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
-                <div class="wave-bar bg-fuchsia-400 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
-                <div class="wave-bar bg-brand-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+                <div class="wave-bar bg-emerald-500 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-emerald-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-emerald-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-amber-500 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-amber-650 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-emerald-500 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "deeply-held belief"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing convictions, reservations, and common errors from Lesson 32.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-emerald-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-stone-100" id="podcast-current-phrase">Why we say "foul odor"</h3>
+                <p class="text-xs text-stone-300 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing good and bad smells from Lesson 32.</p>
               </div>
               
               <!-- Dialogue Box -->
               <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
-                  <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+                  <div class="h-6 w-6 rounded bg-emerald-600 text-stone-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Epistemology Director)</span>
-                    <p class="text-xs text-slate-300">"Welcome back to the mind palace. Today, we are exploring Lesson 32 Belief & Doubt collocations. Let's begin the neural scan!"</p>
+                    <span class="text-[10px] font-bold text-emerald-400 font-mono">Sarah (Lead Analyst)</span>
+                    <p class="text-xs text-stone-300">"Welcome to the Sensory Lab. Today we focus on Lesson 32: Smell, examining pleasant scents, foul odors, and how smells float through spaces."</p>
                   </div>
                 </div>
               </div>
@@ -586,25 +599,25 @@
               <!-- Podcast Controls -->
               <div class="flex flex-col gap-4">
                 <div class="flex items-center justify-between gap-4">
-                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-stone-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-fuchsia-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-emerald-500 to-emerald-700 text-stone-950 hover:from-emerald-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
-                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-stone-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
                     <i class="fa-solid fa-forward-step"></i>
                   </button>
                 </div>
                 
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
-                  <div class="flex items-center justify-between text-[10px] text-brand-300">
-                    <span id="podcast-time-passed">Card 0/30</span>
+                  <div class="flex items-center justify-between text-[10px] text-emerald-350">
+                    <span id="podcast-time-passed">Card 0/20</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                    <div id="podcast-loading-meter" class="bg-brand-400 h-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="podcast-loading-meter" class="bg-emerald-400 h-full transition-all duration-300" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -615,29 +628,31 @@
         
         <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-stone-900/90 rounded-3xl p-6 border border-stone-200 dark:border-stone-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-stone-200 dark:border-stone-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Cognitive Lexicon</h2>
-                <p class="text-xs text-slate-455">Search and filter active belief, doubt, and mistake collocations in the Lesson 32 database.</p>
+                <h2 class="font-heading text-xl font-extrabold text-stone-800 dark:text-stone-200">Olfactory Lexicon</h2>
+                <p class="text-xs text-stone-500 dark:text-stone-400">Search and filter active sensory smell and aroma collocations inside the Lesson 32 registry.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-stone-300 rounded-xl text-xs bg-stone-50 dark:bg-brand-950 text-stone-800 dark:text-white outline-none focus:border-emerald-500 transition w-full md:w-48" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-300 outline-none font-bold font-mono">
-                  <option value="all">All Cognitive Types</option>
-                  <option value="Beliefs">Conviction & Beliefs</option>
-                  <option value="Doubts">Doubt & Skepticism</option>
-                  <option value="Mistakes">Errors & Mistakes</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-stone-300 rounded-xl text-xs bg-stone-50 dark:bg-brand-955 text-stone-655 dark:text-stone-300 outline-none font-bold font-mono border-stone-300 dark:border-stone-750">
+                  <option value="all">All Fragrances</option>
+                  <option value="Pleasant Smells">Pleasant Smells</option>
+                  <option value="Bad Smells">Bad Smells</option>
+                  <option value="Strength & Clarity">Strength & Identity</option>
+                  <option value="Actions & Dynamics">Olfactory Actions</option>
+                  <option value="Smell Classifications">Smell Types</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-stone-300 rounded-xl text-xs bg-stone-50 dark:bg-brand-955 text-stone-655 dark:text-stone-300 outline-none font-bold font-mono border-stone-300 dark:border-stone-750">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -649,16 +664,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-stone-200 dark:border-stone-800 text-[10px] text-stone-400 dark:text-stone-500 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
-                    <th class="py-3 px-4 w-32">Wave Group</th>
+                    <th class="py-3 px-4 w-32">Sensory Group</th>
                     <th class="py-3 px-4">Core Definition</th>
                     <th class="py-3 px-4 hidden lg:table-cell">Luminous Precedent Example</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-sans">
+                <tbody id="dictionary-rows" class="divide-y divide-stone-150 dark:divide-stone-800 text-stone-600 dark:text-stone-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -671,28 +686,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+    <footer class="flex h-16 items-center justify-around border-t border-stone-200 bg-white md:hidden shrink-0 z-30 shadow-md dark:border-stone-800 dark:bg-stone-900">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-stone-405 hover:text-emerald-500">
         <i class="fa-solid fa-scroll text-base"></i>
-        <span class="text-[9px] font-bold">Story</span>
+        <span class="text-[9px] font-bold">Curriculum</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-stone-405 hover:text-emerald-500">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-stone-405 hover:text-emerald-500">
         <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-stone-405 hover:text-emerald-500">
         <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-stone-405 hover:text-emerald-500">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-stone-405 hover:text-emerald-500">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -702,10 +717,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-stone-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-stone-200 dark:border-stone-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-stone-800 dark:text-white">Sensory Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-stone-404 hover:text-stone-850 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -713,45 +728,45 @@
       <!-- Selection of Voices -->
       <div class="space-y-4">
         <div class="space-y-1.5">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-slate-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-stone-500 dark:text-stone-400 font-mono animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-stone-200 rounded-xl px-3 py-2 bg-stone-50 dark:bg-[#020201] text-xs font-semibold outline-none text-stone-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-stone-500 dark:text-stone-400 font-mono font-bold">
             <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
-          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-emerald-500">
         </div>
         
         <!-- Pitch Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-stone-500 dark:text-stone-400 font-mono font-bold">
             <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
-          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-emerald-500">
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-emerald-500 hover:bg-emerald-600 text-stone-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300">
-    <div class="h-8 w-8 rounded-lg bg-white/10 text-brand-450 flex items-center justify-center shrink-0">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-white dark:bg-stone-900 text-stone-800 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-200 dark:border-stone-800 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-emerald-50 dark:bg-white/10 text-emerald-500 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
       <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-355 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+      <p class="text-[11px] text-stone-505 dark:text-stone-350 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
     </div>
   </div>
 
@@ -767,61 +782,47 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'strongly_believe', phrase: 'strongly believe', definition: 'To have an incredibly robust, deep conviction about an idea.', example: 'As a researcher, I strongly believe our thoughts shape our health.', category: 'Beliefs', mastered: false },
-        { id: 'firmly_believe', phrase: 'firmly believe', definition: 'Holding an unwavering, logical intellectual stance regarding a concept.', example: 'The trade partners firmly believe in mutual support.', category: 'Beliefs', mastered: false },
-        { id: 'deeply_held', phrase: 'deeply-held belief', definition: 'A deep value conviction ingrained inside a person\'s character.', example: 'She maintained a deeply-held belief in individual freedom.', category: 'Beliefs', mastered: false },
-        { id: 'unshakable_belief', phrase: 'unshakable belief', definition: 'A conviction that cannot be swayed, weakened, or altered under any circumstances.', example: 'His unshakable belief sustained him through the long exile.', category: 'Beliefs', mastered: false },
-        { id: 'subconscious_belief', phrase: 'subconscious belief', definition: 'A cognitive assumption held below the level of conscious awareness.', example: 'He had a subconscious belief that he was unworthy of success.', category: 'Beliefs', mastered: false },
-        { id: 'color_judgment', phrase: 'color your judgment', definition: 'When subjective emotions, bias, or noise prevent clear, objective evaluation.', example: 'Never let personal anger color your judgment during scientific testing.', category: 'Beliefs', mastered: false },
-        { id: 'blind_faith', phrase: 'blind faith', definition: 'Unquestioning, absolute trust without demanding empirical proof or logic.', example: 'Accepting the leader\'s word without auditing the telemetry is blind faith.', category: 'Beliefs', mastered: false },
-        { id: 'strengthen_belief', phrase: 'strengthen your belief', definition: 'New evidence or positive outcomes making a conviction even more robust.', example: 'Seeing the prototype run flawlessly helped to strengthen our belief.', category: 'Beliefs', mastered: false },
-        { id: 'shatter_belief', phrase: 'shatter your belief', definition: 'To completely demolish or dismantle someone\'s conviction or trust.', example: 'The data leakage served to shatter their belief in the algorithm\'s integrity.', category: 'Beliefs', mastered: false },
-        { id: 'harbor_doubts', phrase: 'harbor doubts', definition: 'To maintain or hold on to secret feelings of uncertainty or suspicion.', example: 'Despite their public claims, researchers still harbor doubts.', category: 'Doubts', mastered: false },
-        { id: 'nagging_doubt', phrase: 'nagging doubt', definition: 'A persistent, small uncertainty that continuously bothers someone.', example: 'I have a nagging doubt about the security of the cloud server.', category: 'Doubts', mastered: false },
-        { id: 'lingering_doubt', phrase: 'lingering doubt', definition: 'A trace of uncertainty that remains over a long period.', example: 'A lingering doubt remained regarding the engine\'s fuel valve assembly.', category: 'Doubts', mastered: false },
-        { id: 'dispel_doubts', phrase: 'dispel doubts', definition: 'To clear up or remove uncertainties entirely through evidence or proof.', example: 'The demonstration was engineered to dispel doubts about the prototype.', category: 'Doubts', mastered: false },
-        { id: 'raise_doubts', phrase: 'raise doubts', definition: 'To generate or cause fresh feelings of uncertainty or suspicion.', example: 'The sudden system shutdown will raise doubts about our system design.', category: 'Doubts', mastered: false },
-        { id: 'cast_doubt', phrase: 'cast doubt on', definition: 'To make an idea, statement, or person appear less credible or reliable.', example: 'The flawed calculations cast doubt on the team\'s main thesis.', category: 'Doubts', mastered: false },
-        { id: 'shadow_doubt', phrase: 'beyond a shadow of a doubt', definition: 'Incredibly certain, with absolutely no uncertainty remaining.', example: 'The database logs proved his alignment beyond a shadow of a doubt.', category: 'Doubts', mastered: false },
-        { id: 'make_mistake', phrase: 'make a mistake', definition: 'To commit an error, miscalculation, or incorrect action.', example: 'It is easy to make a mistake when typing complex algorithms rapidly.', category: 'Mistakes', mastered: false },
-        { id: 'honest_mistake', phrase: 'honest mistake', definition: 'An error committed with entirely good intentions, without malice.', example: 'The cashier handed me extra change, but it was an honest mistake.', category: 'Mistakes', mastered: false },
-        { id: 'grave_mistake', phrase: 'grave mistake', definition: 'An exceptionally serious error with major negative consequences.', example: 'Bypassing the firewall calibrations was a grave mistake.', category: 'Mistakes', mastered: false },
-        { id: 'foolish_mistake', phrase: 'foolish mistake', definition: 'A silly, careless, or easily avoidable error.', example: 'Leaving the backup drive unlocked was a foolish mistake.', category: 'Mistakes', mastered: false },
-        { id: 'mistaken_identity', phrase: 'mistaken identity', definition: 'An error where a person is incorrectly identified as someone else.', example: 'The innocent tourist was arrested due to mistaken identity.', category: 'Mistakes', mastered: false },
-        { id: 'by_mistake', phrase: 'by mistake', definition: 'Doing something accidentally, rather than deliberately.', example: 'I deleted the configuration files by mistake.', category: 'Mistakes', mastered: false },
-        { id: 'correct_mistake', phrase: 'correct the mistake', definition: 'To rectify, resolve, or fix a committed error.', example: 'The developers worked all night to correct the database mistake.', category: 'Mistakes', mastered: false },
-        { id: 'slight_doubt', phrase: 'slight doubt', definition: 'A very minor, non-critical trace of uncertainty.', example: 'I have a slight doubt that they can deliver all assets by dawn.', category: 'Doubts', mastered: false },
-        { id: 'common_mistake', phrase: 'common mistake', definition: 'An error that is frequently made by many individuals.', example: 'Mixing up these two lookalike components is a common mistake.', category: 'Mistakes', mastered: false },
-        { id: 'fatal_mistake', phrase: 'fatal mistake', definition: 'A critical error that completely ruins or terminates a plan\'s success.', example: 'Deploying the untested build directly to production was a fatal mistake.', category: 'Mistakes', mastered: false },
-        { id: 'understandable_mistake', phrase: 'understandable mistake', definition: 'An error that is easy to comprehend or excuse under the circumstances.', example: 'Given the chaotic conditions, his lag was an understandable mistake.', category: 'Mistakes', mastered: false },
-        { id: 'lead_to_doubts', phrase: 'lead to doubts', definition: 'An action or event that subsequently triggers a feeling of uncertainty.', example: 'The initial communication failures will lead to doubts among investors.', category: 'Doubts', mastered: false },
-        { id: 'express_doubts', phrase: 'express doubts', definition: 'To formally or verbally communicate uncertainties to others.', example: 'Several engineers chose to express doubts during the code audit.', category: 'Doubts', mastered: false },
-        { id: 'clear_up_doubts', phrase: 'clear up doubts', definition: 'Investigating and clarifying confusing elements to remove uncertainty.', example: 'We held a Q&A session to clear up doubts regarding the project transition.', category: 'Doubts', mastered: false }
+        { id: 'aroma', phrase: 'aroma', definition: 'A pleasant, distinctive smell, typically associated with delicious food, spices, or fresh coffee.', example: 'The spicy aroma of her cooking lingered in the kitchen for hours.', category: 'Pleasant Smells', mastered: false },
+        { id: 'scent', phrase: 'scent', definition: 'A pleasant, natural smell, especially from flowers, pine needles, or plants.', example: 'The fresh scent of flowers filled the aromatic greenhouse.', category: 'Pleasant Smells', mastered: false },
+        { id: 'fragrance', phrase: 'fragrance', definition: 'A sweet, delicate, and pleasant smell, typically associated with perfume or forests.', example: 'She breathed in the sweet fragrance of her sister\'s perfume.', category: 'Pleasant Smells', mastered: false },
+        { id: 'smell', phrase: 'smell', definition: 'A neutral sensory quality perceived by the nose (can be pleasant or disgusting).', example: 'We noticed the horrible smell of rotting garbage near the fence.', category: 'Pleasant Smells', mastered: false },
+        { id: 'stench', phrase: 'stench', definition: 'A revolting, extremely bad smell (often associated with sewage or decay).', example: 'The revolting stench of sewage made us cover our noses immediately.', category: 'Bad Smells', mastered: false },
+        { id: 'stink', phrase: 'stink', definition: 'A strong, unpleasant, or foul smell.', example: 'That old trash container began to stink in the midsummer heat.', category: 'Bad Smells', mastered: false },
+        { id: 'odor', phrase: 'odor', definition: 'An unpleasant, stale, or distinct bad smell.', example: 'The foul odor of a dead animal lingered in the crawlspace.', category: 'Bad Smells', mastered: false },
+        { id: 'body_odor', phrase: 'body odor', definition: 'Unpleasant natural smell of a person who doesn\'t shower or use deodorant.', example: 'Regular showers and hygienic soaps help to prevent body odor.', category: 'Bad Smells', mastered: false },
+        { id: 'faint_smell', phrase: 'faint smell', definition: 'A very light, barely noticeable smell.', example: 'There was a faint smell of alcohol on the driver\'s breath.', category: 'Strength & Clarity', mastered: false },
+        { id: 'strong_smell', phrase: 'strong smell', definition: 'An intense, highly noticeable smell.', example: 'There was a strong smell of cleaning solution inside the clinic.', category: 'Strength & Clarity', mastered: false },
+        { id: 'overpowering_smell', phrase: 'overpowering smell', definition: 'An extremely intense smell that completely dominates and saturates the air.', example: 'The overpowering smell of bleach forced us to open all windows.', category: 'Strength & Clarity', mastered: false },
+        { id: 'familiar_smell', phrase: 'familiar smell', definition: 'A smell that you instantly recognize from past experience.', example: 'I love the familiar smell of my grandmother\'s chicken soup.', category: 'Strength & Clarity', mastered: false },
+        { id: 'distinctive_smell', phrase: 'distinctive smell', definition: 'A unique, easily identifiable smell characteristic of one thing.', example: 'We sensed the distinctive smell of frying onions from the kitchen.', category: 'Strength & Clarity', mastered: false },
+        { id: 'unmistakable_smell', phrase: 'unmistakable smell', definition: 'An absolutely certain, highly unique smell that cannot be confused with any other.', example: 'The unmistakable smell of fresh wood smoke drifted over the farm.', category: 'Strength & Clarity', mastered: false },
+        { id: 'scent_wafted', phrase: 'scent wafted', definition: 'To float gently through the air (often describing good scents).', example: 'The mouth-watering scent of chocolate chip cookies wafted across the room.', category: 'Actions & Dynamics', mastered: false },
+        { id: 'smell_filled', phrase: 'smell filled', definition: 'Saturating a room or space entirely (often describing bad or intense smells).', example: 'The acrid smell of smoke filled the dark hallway during the fire.', category: 'Actions & Dynamics', mastered: false },
+        { id: 'aroma_lingered', phrase: 'aroma lingered', definition: 'Remaining in a place or hanging in the air for a long time.', example: 'The pleasant aroma of fresh cinnamon rolls lingered in the diner.', category: 'Actions & Dynamics', mastered: false },
+        { id: 'earthy_smell', phrase: 'earthy smell', definition: 'A smell resembling damp soil, clay, or wet forest floors.', example: 'We enjoyed the rich, earthy fragrance of the forest after the rain.', category: 'Smell Classifications', mastered: false },
+        { id: 'fishy_smell', phrase: 'fishy smell', definition: 'A smell reminiscent of raw fish, sea products, or marine decay.', example: 'The old fish market had a highly distinctive, fishy smell.', category: 'Smell Classifications', mastered: false },
+        { id: 'fruity_smell', phrase: 'fruity smell', definition: 'A sweet, pleasant smell resembling fresh fruit, grapes, or berries.', example: 'The fine red wine has a light, elegant, fruity aroma.', category: 'Smell Classifications', mastered: false },
+        { id: 'metallic_smell', phrase: 'metallic smell', definition: 'A clean, sharp smell reminiscent of iron, copper, or steel.', example: 'The damp basement had a strange, metallic smell from the copper pipes.', category: 'Smell Classifications', mastered: false },
+        { id: 'rancid_smell', phrase: 'rancid smell', definition: 'A disgusting smell of stale, spoiled, or decomposing fats, butter, or oils.', example: 'We threw out the butter because it had developed a rancid smell.', category: 'Smell Classifications', mastered: false },
+        { id: 'putrid_smell', phrase: 'putrid smell', definition: 'An extremely disgusting, sickening smell of decomposing organic matter.', example: 'The putrid smell of rotting meat inside the warm container was revolting.', category: 'Smell Classifications', mastered: false },
+        { id: 'damp_smell', phrase: 'damp smell', definition: 'A musty, damp smell of wet things, moist air, and stagnant water.', example: 'The cottage had been closed for winter, leaving a damp smell in the sheets.', category: 'Smell Classifications', mastered: false },
+        { id: 'dank_smell', phrase: 'dank smell', definition: 'A cold, wet, musty smell typical of dark caves, basements, or dungeons.', example: 'A dank smell of mold rose from the stone cellar floors.', category: 'Smell Classifications', mastered: false },
+        { id: 'pervasive_smell', phrase: 'pervasive smell', definition: 'A smell that spreads widely throughout an entire area and remains there.', example: 'I can\'t stand the pervasive odor of stale cigarette smoke in that pub.', category: 'Smell Classifications', mastered: false },
+        { id: 'pungent_smell', phrase: 'pungent smell', definition: 'A very sharp, biting smell that strongly affects the nasal passages.', example: 'Garlic and strong vinegar have a highly pungent smell.', category: 'Smell Classifications', mastered: false }
       ],
-      // Exactly 20 high-fidelity scenario multiple-choice questions
       quiz: [
-        { id: 1, question: "I ________ that everyone possesses the capacity for creative innovation, regardless of background.", options: ["strongly believe", "harbor doubt", "make mistake"], answer: "strongly_believe", explanation: "To have an incredibly robust conviction about an idea is to 'strongly believe' (or firmly believe)." },
-        { id: 2, question: "The new data leaked from the competing lab began to ________ the validity of the original research.", options: ["cast doubt on", "dispel doubts", "strengthen belief"], answer: "cast_doubt", explanation: "Making an idea appear less credible or reliable is to 'cast doubt on' it." },
-        { id: 3, question: "We entered the wrong coordinates into the satellite navigation system entirely ________.", options: ["by mistake", "shatter belief", "dimly lit"], answer: "by_mistake", explanation: "Doing something accidentally rather than deliberately is to do it 'by mistake'." },
-        { id: 4, question: "After his alibi was fully verified by three independent security cameras, his guilt was cleared ________.", options: ["beyond a shadow of a doubt", "under cover of darkness", "in utter darkness"], answer: "shadow_doubt", explanation: "Complete certainty with zero remaining uncertainty is 'beyond a shadow of a doubt'." },
-        { id: 5, question: "The company apologized for charging the wrong credit card, calling it a completely ________.", options: ["honest mistake", "grave mistake", "foolish mistake"], answer: "honest_mistake", explanation: "An error committed with entirely good intentions, without any malice, is an 'honest mistake'." },
-        { id: 6, question: "Despite his public displays of confidence, I still ________ regarding his ability to lead the team.", options: ["harbor doubts", "dispel doubts", "strengthen beliefs"], answer: "harbor_doubts", explanation: "Maintaining or keeping feelings of uncertainty in secret is to 'harbor doubts'." },
-        { id: 7, question: "Choosing to bypass the critical industrial safety protocols turned out to be a ________.", options: ["grave mistake", "foolish mistake", "honest mistake"], answer: "grave_mistake", explanation: "An exceptionally serious error with major negative consequences is a 'grave mistake'." },
-        { id: 8, question: "He spent all afternoon presenting independent validation logs to ________ inside the team.", options: ["dispel the doubts", "raise doubts", "shatter beliefs"], answer: "dispel_doubts", explanation: "Clearing up or removing uncertainties entirely through evidence is to 'dispel doubts' (dispel the doubts)." },
-        { id: 9, question: "His childhood experiences left him with a ________ that he was destined for failure.", options: ["subconscious belief", "unshakable belief", "nagging doubt"], answer: "subconscious_belief", explanation: "An assumption held below active conscious awareness is a 'subconscious belief'." },
-        { id: 10, question: "The security officer arrested the innocent tourist in a bizarre case of ________.", options: ["mistaken identity", "flickering shadow", "honest mistake"], answer: "mistaken_identity", explanation: "An error where a person is incorrectly identified as someone else is 'mistaken identity'." },
-        { id: 11, question: "I have a ________ about this contract, though I can't quite pinpoint what is wrong with it.", options: ["nagging doubt", "lingering doubt", "subconscious belief"], answer: "nagging_doubt", explanation: "A persistent, small uncertainty that continuously bothers you is a 'nagging doubt'." },
-        { id: 12, question: "A single contradictory reading in the telemetry will ________ regarding the spacecraft's integrity.", options: ["raise doubts", "dispel doubts", "color judgment"], answer: "raise_doubts", explanation: "Generating or causing fresh feelings of uncertainty is to 'raise doubts'." },
-        { id: 13, question: "Never let your personal affection for a contractor ________ during objective vendor evaluations.", options: ["color your judgment", "correct the mistake", "strengthen your belief"], answer: "color_judgment", explanation: "Allowing subjective emotions to distort objective reasoning is to 'color your judgment'." },
-        { id: 14, question: "Following the leader's instructions without verifying their credentials represents complete ________.", options: ["blind faith", "unshakable belief", "grave mistake"], answer: "blind_faith", explanation: "Unquestioning, absolute trust without demanding empirical proof or logic is 'blind faith'." },
-        { id: 15, question: "Seeing the model prototype function flawlessly in person helped to ________ in the startup's mission.", options: ["strengthen our belief", "shatter our belief", "harbor doubts"], answer: "strengthen_belief", explanation: "Making a conviction more robust through new evidence 'strengthens your belief'." },
-        { id: 16, question: "Discovering that their trusted founder was secretly selling patents served to ________ in the firm.", options: ["shatter their belief", "strengthen their belief", "dispel their doubts"], answer: "shatter_belief", explanation: "To completely destroy long-held conviction or trust is to 'shatter your belief' (shatter their belief)." },
-        { id: 17, question: "The program release is still delayed because we had to spend three days trying to ________.", options: ["correct the mistake", "make a mistake", "flatly contradict"], answer: "correct_mistake", explanation: "Rectifying or fixing an erroneous action is to 'correct the mistake'." },
-        { id: 18, question: "Leaving your keys in the ignition lock inside a busy parking garage is a highly ________.", options: ["foolish mistake", "grave mistake", "honest mistake"], answer: "foolish_mistake", explanation: "A silly, careless, easily avoidable error is a 'foolish mistake'." },
-        { id: 19, question: "Although she felt confident, a ________ remained in the back of her head as she signed the deal.", options: ["lingering doubt", "nagging doubt", "subconscious belief"], answer: "lingering_doubt", explanation: "A trace of uncertainty that remains over a long period is a 'lingering doubt'." },
-        { id: 20, question: "Mistyping a single semicolon in the primary database trigger was a ________ that crashed the server.", options: ["fatal mistake", "foolish mistake", "honest mistake"], answer: "fatal_mistake", explanation: "A critical error that completely terminates or ruins a plan's success is a 'fatal mistake'." }
+        { id: 1, question: "I can't stand the ________ odor of smoke in that bar.", options: ["extensive", "pervasive", "prevalent"], answer: "pervasive", explanation: "Pervasive describes a smell that fills the entire space and remains there persistently." },
+        { id: 2, question: "I love the ________ smell of my grandmother's chicken soup.", options: ["familiar", "pungent", "revolting"], answer: "familiar", explanation: "A familiar smell is one that you easily recognize and associate with warm personal memories." },
+        { id: 3, question: "I sensed the ________ smell of frying onions.", options: ["differential", "distinctive", "distinguished"], answer: "distinctive", explanation: "A distinctive smell is highly unique, easily identifiable, and characteristic of frying onions." },
+        { id: 4, question: "She breathed in the ________ fragrance of the forest.", options: ["earthy", "metallic", "putrid"], answer: "earthy", explanation: "An earthy smell resembles fresh soil, pine needles, and forest floors, especially after rain." },
+        { id: 5, question: "Something in the fridge smells ________ - like rotting meat.", options: ["damp", "rancid", "stink"], answer: "rancid", explanation: "Rancid describes disgusting smells of rotten, stale, or spoiled meat, butter, or cooking oils." },
+        { id: 6, question: "The bathroom smells so ________ right after it's been cleaned!", options: ["fresh", "frisky", "foul"], answer: "fresh", explanation: "Fresh describes clean, pleasant smells from disinfectants or botanical soaps right after washing." },
+        { id: 7, question: "The smell of vomit ________ in the hospital room.", options: ["continued", "lasted", "lingered"], answer: "lingered", explanation: "To linger means to stay suspended in a physical room or place for an extended period." },
+        { id: 8, question: "There was a ________ smell of alcohol on his breath.", options: ["faint", "small", "mild"], answer: "faint", explanation: "A faint smell is light, subtle, and barely noticeable." },
+        { id: 9, question: "This wine has a light fruity ________.", options: ["aroma", "odor", "stench"], answer: "aroma", explanation: "Aroma describes good smells, especially sweet fruity, herbal, or spice characters of beverages." },
+        { id: 10, question: "Your sweaty gym clothes smell ________.", options: ["faint", "nasty", "spicy"], answer: "nasty", explanation: "Nasty is used as a neutral-to-bad descriptor for bad sweat or damp fabric odors." }
       ],
-      activeCardId: 'pitch_dark',
+      activeCardId: 'aroma',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -834,85 +835,92 @@
       isSynthesizing: false
     };
 
-    // Advanced Web Audio API Synaptic Synthesizer
+    // Advanced Web Audio Synthesizer
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Sharp static popping click (quick high-pass sweep) representing synaptic focus
-          const osc = audioCtx.createOscillator();
+          // Sharp static mechanical click representing sensory focus
+          const bufferSize = audioCtx.sampleRate * 0.04;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1;
+          }
+          const noise = audioCtx.createBufferSource();
+          noise.buffer = buffer;
+
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(1200, audioCtx.currentTime);
+          filter.Q.setValueAtTime(8, audioCtx.currentTime);
+
           const gain = audioCtx.createGain();
-          
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(2000, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.04);
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.035);
 
-          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
-
-          osc.connect(gain);
+          noise.connect(filter);
+          filter.connect(gain);
           gain.connect(audioCtx.destination);
-          
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.04);
+          noise.start();
+          noise.stop(audioCtx.currentTime + 0.04);
           
         } else if (type === 'correct') {
-          // Pure, harmonious high-pitched brainwave click (emerald chime)
+          // Harmonious G-Major chime representing accurate pairing
+          const notes = [392.00, 493.88, 587.33, 783.99];
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.6);
+          gain.connect(audioCtx.destination);
+
+          notes.forEach((freq, index) => {
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.08);
+            osc.connect(gain);
+            osc.start(audioCtx.currentTime + index * 0.08);
+            osc.stop(audioCtx.currentTime + 0.6);
+          });
+          
+        } else if (type === 'incorrect') {
+          // Discordant low hum representing olfactory mismatch
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
 
-          osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(1200, audioCtx.currentTime); 
-          osc1.frequency.exponentialRampToValueAtTime(1600, audioCtx.currentTime + 0.12); 
+          osc1.type = 'sawtooth';
+          osc1.frequency.setValueAtTime(180, audioCtx.currentTime); 
+          osc1.frequency.linearRampToValueAtTime(120, audioCtx.currentTime + 0.35); 
 
-          osc2.type = 'sine';
-          osc2.frequency.setValueAtTime(1500, audioCtx.currentTime); 
-          osc2.frequency.exponentialRampToValueAtTime(2000, audioCtx.currentTime + 0.12); 
+          osc2.type = 'sawtooth';
+          osc2.frequency.setValueAtTime(190, audioCtx.currentTime); 
+          osc2.frequency.linearRampToValueAtTime(130, audioCtx.currentTime + 0.35); 
 
-          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.35);
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(250, audioCtx.currentTime);
 
-          osc1.connect(gain);
-          osc2.connect(gain);
+          gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.4);
+
+          osc1.connect(filter);
+          osc2.connect(filter);
+          filter.connect(gain);
           gain.connect(audioCtx.destination);
 
           osc1.start();
           osc2.start();
-          osc1.stop(audioCtx.currentTime + 0.35);
-          osc2.stop(audioCtx.currentTime + 0.35);
-          
-        } else if (type === 'incorrect') {
-          // Low discordant sliding buzz representing cognitive dissonance
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(140, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.25);
-
-          const lowpass = audioCtx.createBiquadFilter();
-          lowpass.type = 'lowpass';
-          lowpass.frequency.setValueAtTime(200, audioCtx.currentTime);
-
-          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.25);
-
-          osc.connect(lowpass);
-          lowpass.connect(gain);
-          gain.connect(audioCtx.destination);
-
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.25);
+          osc1.stop(audioCtx.currentTime + 0.4);
+          osc2.stop(audioCtx.currentTime + 0.4);
           
         } else if (type === 'flip') {
-          // Dynamic paper flip rustle
+          // Card flip rustle
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(180, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.12);
+          osc.frequency.setValueAtTime(160, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.12);
           
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
@@ -924,73 +932,89 @@
           osc.stop(audioCtx.currentTime + 0.12);
         }
       } catch (e) {
-        console.warn('Web Audio compilation context missed:', e);
+        console.warn('Web Audio synthesis blocked:', e);
       }
     }
 
-    // HTML5 Canvas Neural Net Animation Background
-    function initNeuralCanvas() {
-      const canvas = document.getElementById('neural-canvas');
+    // Floating aromatic scent particle simulation
+    function initVaporCanvas() {
+      const canvas = document.getElementById('vapor-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
       let width = (canvas.width = canvas.offsetWidth);
       let height = (canvas.height = canvas.offsetHeight);
       
-      const nodes = [];
-      const nodeCount = 50;
+      const particles = [];
+      const particleCount = 45;
       
-      class Node {
+      let mouseX = -1000;
+      let mouseY = -1000;
+      
+      class ScentParticle {
         constructor() {
-          this.x = Math.random() * width;
+          this.reset();
           this.y = Math.random() * height;
-          this.vx = (Math.random() - 0.5) * 0.8;
-          this.vy = (Math.random() - 0.5) * 0.8;
-          // Emerald nodes for Beliefs, Fuchsia for Doubts
-          this.type = Math.random() > 0.5 ? 'belief' : 'doubt';
-          this.radius = Math.random() * 2.5 + 1.5;
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = height + Math.random() * 40;
+          this.vy = -(Math.random() * 0.7 + 0.3);
+          this.vx = (Math.random() - 0.5) * 0.4;
+          this.size = Math.random() * 20 + 15;
+          this.opacity = Math.random() * 0.3 + 0.05;
+          // Soft botanical greens & warm spice orange color options
+          this.colorType = Math.random() > 0.5 ? 'emerald' : 'amber';
         }
         update() {
-          this.x += this.vx;
           this.y += this.vy;
-          if (this.x < 0 || this.x > width) this.vx *= -1;
-          if (this.y < 0 || this.y > height) this.vy *= -1;
+          this.x += this.vx;
+          
+          // Softly float away from mouse coordinates (wafting dynamics)
+          const dist = Math.hypot(this.x - mouseX, this.y - mouseY);
+          if (dist < 120) {
+            const angle = Math.atan2(this.y - mouseY, this.x - mouseX);
+            this.x += Math.cos(angle) * 1.5;
+            this.y += Math.sin(angle) * 1.5;
+          }
+          
+          if (this.y < -30) {
+            this.reset();
+          }
         }
         draw() {
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = this.type === 'belief' ? 'rgba(16, 185, 129, 0.7)' : 'rgba(236, 72, 153, 0.7)';
+          const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          const colStr = this.colorType === 'emerald' ? '16, 185, 129' : '245, 158, 11';
+          grad.addColorStop(0, `rgba(${colStr}, ${this.opacity})`);
+          grad.addColorStop(1, `rgba(${colStr}, 0)`);
+          ctx.fillStyle = grad;
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push(new Node());
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new ScentParticle());
       }
+      
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      });
+      
+      canvas.addEventListener('mouseleave', () => {
+        mouseX = -1000;
+        mouseY = -1000;
+      });
       
       function animate() {
         ctx.clearRect(0, 0, width, height);
-        
-        // Render links between close nodes
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-            if (dist < 100) {
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
-              const opacity = (1 - dist / 100) * 0.15;
-              ctx.strokeStyle = nodes[i].type === 'belief' ? `rgba(16, 185, 129, ${opacity})` : `rgba(236, 72, 153, ${opacity})`;
-              ctx.stroke();
-            }
-          }
-        }
-        
-        nodes.forEach(node => {
-          node.update();
-          node.draw();
+        particles.forEach(p => {
+          p.update();
+          p.draw();
         });
-        
         requestAnimationFrame(animate);
       }
       
@@ -1006,35 +1030,37 @@
       loadLocalStorage();
       initSpeechVoices();
       initStoryClicks();
-      initNeuralCanvas();
+      initVaporCanvas();
       renderDictionary();
       renderFlashcard();
       renderQuizQuestion();
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark Obsidian aesthetic for optical visualization depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-bolt-lightning text-sm text-brand-400"></i>';
-      
-      document.addEventListener('keydown', (e) => {
-        if (state.currentView === 'flashcards') {
-          if (e.code === 'Space') {
-            e.preventDefault();
-            flipFlashcard();
-          } else if (e.code === 'ArrowLeft') {
-            prevFlashcard();
-          } else if (e.code === 'ArrowRight') {
-            nextFlashcard();
-          }
-        }
-      });
+      // Load current theme on startup
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm text-emerald-400"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm text-emerald-500"></i>';
+      }
     });
 
     function toggleTheme() {
-      // Calibrate mental wavelengths (triggers radar sweep feedback)
       playSynthSound('click');
-      showToast('Wavelengths Synced', 'Acoustic mind-palace node balance synchronized.', 'fa-bolt-lightning');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l32', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-emerald-400"></i>';
+        showToast('Dark Mode Active', 'Opaque laboratory background activated.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-emerald-500"></i>';
+        showToast('Light Mode Active', 'Botanical parchment paper layout activated.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1049,7 +1075,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-zinc-900 hover:text-slate-150";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-slate-150";
         }
       });
       
@@ -1061,7 +1087,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-505/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border border-emerald-500/20";
       }
       
       state.currentView = viewName;
@@ -1073,6 +1099,9 @@
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l32')) {
+        state.theme = localStorage.getItem('colloc_theme_l32');
+      }
       if (localStorage.getItem('colloc_mastery_list_l32')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l32'));
@@ -1143,7 +1172,7 @@
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l32', JSON.stringify(state.voiceSettings));
-      showToast('Config Saved', 'Cognitive audio synthesis parameters configured.');
+      showToast('Config Saved', 'Olfactory audio synthesis parameters configured.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1233,7 +1262,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('strongly_believe');
+      displayGlossaryCard('aroma');
     }
 
     function displayGlossaryCard(id) {
@@ -1285,7 +1314,7 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "As a researcher in cognitive science, I strongly believe and firmly believe that our minds shape our reality. Every individual operates based on a deeply-held belief, which often evolves into an unshakable belief over time. However, many biases are rooted in a subconscious belief that we are unaware of; these assumptions can easily color your judgment. Skeptics warn that trusting ideas without verifying evidence represents blind faith. When fresh experimental data emerges, it can either strengthen your belief or completely shatter your belief. Even the most confident scholars often harbor doubts in private. A nagging doubt or a lingering doubt can stay in the back of your mind for years. It requires robust validation protocols to dispel doubts. If an anomaly is detected, it will naturally raise doubts or cast doubt on the whole project. Only when results are consistent can we declare the hypotheses proven beyond a shadow of a doubt. Of course, every scientist is prone to make a mistake. Sometimes, it is merely an honest mistake made during rapid logging, but skipping calibrations is a grave mistake. We must avoid making any foolish mistake that ruins the data. If a test subject is misclassified, we are looking at a case of mistaken identity. If something was altered by mistake, it is vital to immediately correct the mistake to ensure structural integrity.";
+      const narrativeText = "Today we'll continue learning collocations related to the five senses, with expressions for describing different smells. Let's begin by looking at some commonly confused words. Aroma, scent, and fragrance all describe a good smell. You can talk about the wonderful aroma of a cake that has just been taken out of the oven, the fresh scent of flowers, and the sweet fragrance of a woman's perfume. The word smell is neutral; you can have the lovely smell of fresh-baked bread, or the horrible smell of rotting food. The word 'smell' can be a noun or a verb - so you can also say 'It smells delicious' or 'It smells nasty.' The words stench, stink, and odor all describe bad smells - there's the foul odor of a dead animal, and the revolting stench of sewage. The unpleasant smell of a person who doesn't take showers or use deodorant is called body odor. To describe the strength of smells, you can say they are light or faint smells or strong smells. When a smell is extremely strong, you can say it is an overpowering smell. A smell that you recognize can be called a familiar smell, and a smell that is unique and easy to identify can be called a distinctive smell or an unmistakable smell. Smells can waft - that means float through the air. For example, the mouth-watering scent wafted across the room. Another verb used with smell is fill - the acrid smell of smoke filled the hallway. Finally, if a smell stays in a place for a long time, we can use the verb linger - the spicy aroma lingered in the kitchen for hours. Here are some additional collocations for describing smells: earthy, fishy, fruity, or metallic smells; rancid or putrid smells; damp or dank smells; pervasive smells, and pungent smells.";
       triggerTTS(narrativeText);
     }
 
@@ -1327,7 +1356,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Limit Reached', 'This is the first cognitive index card.');
+        showToast('Limit Reached', 'This is the first olfactory card.');
       }
     }
 
@@ -1337,7 +1366,7 @@
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Looping', 'Cycling back to the first cognitive record.');
+        showToast('Looping', 'Cycling back to the first record.');
         state.flashcardsIndex = 0;
         renderFlashcard();
       }
@@ -1358,7 +1387,7 @@
       card.mastered = checkbox.checked;
       saveMastery();
       if (card.mastered) {
-        showToast('Mapping Logged', `"${card.phrase}" logged as decoded.`);
+        showToast('Consensus Logged', `"${card.phrase}" logged as mastered.`);
       }
     }
 
@@ -1380,32 +1409,27 @@
       
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
-        
-        // Find matching collocation based on option string/id
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
+        btn.onclick = () => selectQuizAnswer(opt);
         btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
         
         if (!answered) {
-          btn.className += "bg-[#111827] border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.className += " bg-white dark:bg-[#111827] border-stone-200 dark:border-stone-850 hover:border-emerald-500 hover:bg-emerald-500/10 text-stone-800 dark:text-stone-100";
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          if (collocId === quest.answer) {
-            btn.className += "bg-emerald-955/20 border-emerald-800 text-emerald-400";
+          if (opt === quest.answer) {
+            btn.className += " bg-emerald-50 border-emerald-450 text-emerald-800 dark:bg-emerald-955/20 dark:border-emerald-800 dark:text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
-          } else if (collocId === userAns) {
-            btn.className += "bg-rose-955/20 border-rose-900 text-rose-400";
+          } else if (opt === userAns) {
+            btn.className += " bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-955/20 dark:border-rose-900 text-rose-500";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += "bg-slate-900 border-slate-800 text-slate-500";
+            btn.className += " bg-stone-100 border-stone-200 text-stone-400 dark:bg-stone-900 dark:border-stone-800 dark:text-stone-500";
           }
         }
         
         if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-750"></i>`;
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-stone-400"></i>`;
         }
         grid.appendChild(btn);
       });
@@ -1413,11 +1437,11 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500 text-stone-950 rounded-xl text-xs sm:text-sm font-bold transition-all duration-150 font-mono";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-150 dark:bg-zinc-800 text-stone-400 dark:text-stone-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
@@ -1429,10 +1453,10 @@
       
       if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Synapses Aligned!', 'Accurate collocation applied to research brief.', 'fa-circle-check');
+        showToast('Match Established!', 'Perfect semantic segment coupling logged.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Cognitive Friction!', 'Inconclusive alignment with standard logic.', 'fa-triangle-exclamation');
+        showToast('Semantic Error!', 'Mismatch detected in segmental collocations.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1474,10 +1498,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Cognitive Novice";
-      if (percentage === 100) rank = "Grand Epistemologist";
-      else if (percentage >= 90) rank = "Belief Architect";
-      else if (percentage >= 70) rank = "Mind Analyst";
+      let rank = "Sensory Apprentice";
+      if (percentage === 100) rank = "Sensory Specialist";
+      else if (percentage >= 80) rank = "Olfactory Auditor";
+      else if (percentage >= 50) rank = "Smell Apprentice";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1500,12 +1524,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['unshakable belief', 'harbor doubts', 'dispel doubts', 'color your judgment', 'honest mistake', 'correct the mistake'];
+      const selectedWords = ['sweet fragrance', 'pungent smell', 'revolting stench', 'aroma lingered', 'scent wafted', 'unmistakable smell'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-brand-500/10 text-slate-350 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
+        chip.className = "px-3 py-1 bg-stone-100 dark:bg-zinc-800 hover:bg-emerald-500/10 text-stone-600 dark:text-stone-350 rounded-lg text-xs font-semibold transition border border-stone-200 dark:border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1517,7 +1541,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To prevent cognitive dissonance, the subject held an ${word}...`;
+        textarea.value = `As we walked near the rustic bakery, we noticed a delightful ${word} floating in the morning air...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1531,7 +1555,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Evaluate the psychological context: "${randomColloc}"`;
+        textarea.value = `Compose description utilizing: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1543,14 +1567,14 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how a person\'s subconscious belief can color their judgment and lead to severe errors.",
-        "Draft a summary showing how presenting empirical research can dispel doubts and strengthen belief.",
-        "Describe a clinical case of mistaken identity occurring because security officers made a foolish mistake.",
-        "Examine why harboring doubts over long periods constitutes an understandable mistake."
+        "Detail why a revolting stench makes sewage plants unpleasant, while a sweet fragrance makes gardens paradise.",
+        "Contrast a faint smell of alcohol with an overpowering smell of bleach or toxic chemical agents.",
+        "Describe why a distinctive smell of onions fills a kitchen, whereas chocolate cookies leave a lingering aroma.",
+        "Explain how spices waft through rooms, leaving a pervasive smell that remains for several hours."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
-      textarea.value = `[Draft Scenario: ${rand}]\n\n`;
+      textarea.value = `[Sensory Prompt: ${rand}]\n\n`;
       textarea.focus();
     }
 
@@ -1566,20 +1590,20 @@
       const textValue = document.getElementById('sandbox-input').value.trim();
       
       if (!textValue) {
-        showToast('Empty Manuscript', 'Please write a brief before scanning.', 'fa-triangle-exclamation');
+        showToast('Empty Workspace', 'Please write a draft before scanning.', 'fa-triangle-exclamation');
         return;
       }
       
-      showToast('AI Scanning', 'Streaming manuscript prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
+      showToast('AI Scanning', 'Streaming sensory prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
-      document.getElementById('diagnostic-analysis').innerText = "Analyzing conceptual frameworks... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard cognitive structures...";
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing syntactical alignment... Please hold.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard smell, scent, aroma, and stench descriptors...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Cognitive Psychologist, Philosopher of Mind, and English Scholar. Check if the user's sentence uses Lesson 32 belief, doubt, and mistake collocations (e.g., strongly believe, firmly believe, deeply-held belief, unshakable belief, subconscious belief, color your judgment, blind faith, strengthen your belief, shatter your belief, harbor doubts, nagging doubt, lingering doubt, dispel doubts, raise doubts, cast doubt on, beyond a shadow of a doubt, make a mistake, honest mistake, grave mistake, foolish mistake, mistaken identity, correct the mistake) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving belief, reservation, or mistake alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are an English Language Expert specializing in descriptive vocabulary and lexical collocations. Check if the user's sentence uses Lesson 32 smell collocations (e.g., aroma, scent, fragrance, body odor, stench, stink, odor, faint smell, strong smell, overpowering smell, waft, linger, earthy smell, fishy smell, fruity aroma, metallic smell, rancid smell, putrid smell, damp smell, dank basement, pervasive odor, pungent smell) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of olfactory accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (tips on sensory adjectives), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1612,7 +1636,7 @@
           attempt++;
           if (attempt >= 5) {
             showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Manuscript scanner offline. Verify network connection and retry.";
+            document.getElementById('diagnostic-analysis').innerText = "Sensory scanner offline. Verify network connection and retry.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1634,12 +1658,12 @@
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40";
-            badge.innerText = "Epistemic Alignment";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-955/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40";
+            badge.innerText = "Emerald Alignment";
             playSynthSound('correct');
           } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
-            badge.innerText = "Dissonance Flagged";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-55 dark:bg-rose-955/20 dark:text-rose-400 border border-rose-200 dark:border-rose-900/40";
+            badge.innerText = "Conflict Detected";
             playSynthSound('incorrect');
           }
           
@@ -1673,7 +1697,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Epistemic Calibration";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Smells & Aromas";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1687,8 +1711,8 @@
       
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
-        document.getElementById('podcast-current-phrase').innerText = "Broadcast Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 32. All cognitive constructs evaluated!";
+        document.getElementById('podcast-current-phrase').innerText = "Broadcasting Closed!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 32. All smell and aroma descriptors mapped!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
@@ -1699,21 +1723,21 @@
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
       document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
-      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/20`;
       
       const chatLog = document.getElementById('podcast-chat-log');
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key cognitive term. It is: ${currentWord.phrase}. Tom, how do psychologists map this structure out?`;
+        const textToSpeak = `Next up, let's explore this essential Lesson 32 sensory descriptor. It is: "${currentWord.phrase}". Tom, how do speakers apply this to smell?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="h-6 w-6 rounded bg-emerald-600 text-stone-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Epistemology Director)</span>
-            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
+            <span class="text-[10px] font-bold text-emerald-400 font-mono">Sarah (Lead Analyst)</span>
+            <p class="text-xs text-stone-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1726,15 +1750,15 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. For example: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, "${currentWord.phrase}" describes ${currentWord.definition}. For example, we say: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
+          <div class="h-6 w-6 rounded bg-stone-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Mind Specialist)</span>
-            <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
+            <span class="text-[10px] font-bold text-amber-350 font-mono">Tom (Sensory Specialist)</span>
+            <p class="text-xs text-stone-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1813,7 +1837,20 @@
       
       const filtered = state.collocations.filter(c => {
         const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
-        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        let matchesCat = true;
+        if (catVal !== 'all') {
+          if (catVal === 'Pleasant Smells') {
+            matchesCat = c.category === 'Pleasant Smells';
+          } else if (catVal === 'Bad Smells') {
+            matchesCat = c.category === 'Bad Smells';
+          } else if (catVal === 'Strength & Clarity') {
+            matchesCat = c.category === 'Strength & Clarity';
+          } else if (catVal === 'Actions & Dynamics') {
+            matchesCat = c.category === 'Actions & Dynamics';
+          } else if (catVal === 'Smell Classifications') {
+            matchesCat = c.category === 'Smell Classifications';
+          }
+        }
         
         let matchesMastery = true;
         if (masteryVal === 'mastered') {
@@ -1828,7 +1865,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif">No matching mental models resolved.</td>
+            <td colspan="6" class="text-center py-8 text-stone-500 italic font-serif">No matching sensory records resolved.</td>
           </tr>
         `;
         return;
@@ -1836,9 +1873,9 @@
       
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-800";
+        row.className = "hover:bg-stone-100 dark:hover:bg-stone-800/40 transition border-b border-stone-200 dark:border-stone-800";
         
-        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
+        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-stone-300 dark:text-stone-700';
         
         row.innerHTML = `
           <td class="py-4 px-4 text-center">
@@ -1846,14 +1883,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-stone-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-emerald-650 dark:hover:text-emerald-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-505 font-semibold font-serif">"${c.example}"</td>
+          <td class="py-4 px-4 text-stone-600 dark:text-stone-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-stone-505 font-semibold font-serif">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-200 dark:border-stone-800 flex items-center justify-center text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1887,10 +1924,10 @@
       tBody.innerText = body;
       tIcon.className = `fa-solid ${iconClass}`;
       
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-white dark:bg-stone-900 text-stone-800 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-200 dark:border-stone-800 max-w-sm transition-all duration-300";
       
       setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-white dark:bg-stone-900 text-stone-800 dark:text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-200 dark:border-stone-800 max-w-sm transition-all duration-300";
       }, 4000);
     }
 

@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 30: Darkness Lab</title>
+  <title>CollocaStudy - Lesson 30: Color Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <!-- Google Fonts: Inter & Plus Jakarta Sans & Share Tech Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Darkness, Tact, and Night-Vision Icons -->
+  <!-- FontAwesome for Chromatic, Artistic, and Design Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Darkness/Obsidian theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -27,17 +26,17 @@
           },
           colors: {
             brand: {
-              50: '#fafafa', 
-              100: '#f4f4f5',
-              200: '#e4e4e7',
-              300: '#d4d4d8',
-              400: '#a1a1aa',
-              500: '#10b981', /* Bioluminescent Emerald */
-              600: '#059669',
-              700: '#047857', 
-              800: '#065f46',
-              900: '#090d16', /* Deep Midnight Obsidian */
-              950: '#02040a'
+              50: '#fff1f2', 
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e', /* Vivid Rose */
+              600: '#e11d48',
+              700: '#be123c', 
+              800: '#9f1239',
+              900: '#0b060f', /* Obsidian Violet Depth */
+              955: '#04020a'
             }
           }
         }
@@ -46,7 +45,6 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching bioluminescent styling */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -55,11 +53,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #10b981;
+      background: #f43f5e;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #065f46;
+      background: #9f1239;
     }
     
     /* Smooth interactive transitions */
@@ -95,66 +93,55 @@
       animation: wave-bounce 1s ease-in-out infinite;
     }
     
-    /* Radar sweep representing echolocation in pitch darkness */
-    @keyframes radar-sweep {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    /* Chromatic aurora pulse effects representing dynamic colors */
+    @keyframes aurora-glow {
+      0%, 100% { opacity: 0.08; transform: scale(0.95); filter: hue-rotate(0deg); }
+      50% { opacity: 0.22; transform: scale(1.05); filter: hue-rotate(180deg); }
     }
-    .radar-beam {
-      transform-origin: bottom right;
-      animation: radar-sweep 8s infinite linear;
-    }
-    
-    /* Ambient shadows moving around */
-    @keyframes shadow-drift {
-      0%, 100% { opacity: 0.1; transform: scale(0.95) translate(0px, 0px); }
-      50% { opacity: 0.25; transform: scale(1.05) translate(10px, 5px); }
-    }
-    .shadow-drift-glow {
-      animation: shadow-drift 15s infinite ease-in-out;
+    .chromatic-glow {
+      animation: aurora-glow 15s infinite linear;
     }
   </style>
 </head>
-<body class="h-full bg-zinc-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-50 text-slate-805 dark:bg-zinc-955 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
-  <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Ambient shadow movement backdrop -->
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/40 via-[#030712]/20 to-zinc-950 pointer-events-none z-0 shadow-drift-glow"></div>
+    <!-- Chromatic shifting backdrop glow representing Lesson 30: Color -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-200/20 via-rose-100/10 dark:from-brand-900/40 dark:via-purple-950/20 to-zinc-50 dark:to-zinc-950 pointer-events-none z-0 chromatic-glow"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-zinc-800 bg-zinc-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 bg-white/95 dark:border-zinc-800 dark:bg-zinc-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-600 to-indigo-950 text-white shadow-md shadow-emerald-500/20">
-          <i class="fa-solid fa-eye-slash text-lg animate-pulse"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-rose-500 to-indigo-950 text-white shadow-md shadow-rose-500/20">
+          <i class="fa-solid fa-palette text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-indigo-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300 border border-emerald-500/20">Lesson 30</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-rose-500 to-purple-500 dark:from-rose-400 dark:to-purple-300 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-rose-500/10 px-2 py-0.5 text-xs font-semibold text-rose-600 dark:text-rose-350 border border-rose-500/20">Lesson 30</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-ghost text-emerald-400"></i>
-        <h1 class="font-heading font-bold text-slate-200">Lesson 30: Darkness</h1>
+        <i class="fa-solid fa-wand-magic-sparkles text-rose-500 dark:text-rose-455"></i>
+        <h1 class="font-heading font-bold text-slate-700 dark:text-slate-200">Lesson 30: Color Lab</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-800 text-slate-300 hover:bg-zinc-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 dark:border-zinc-800 dark:bg-zinc-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-zinc-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates adaptive radar recalibration) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-800 text-slate-300 hover:bg-zinc-800 transition shadow-sm" id="theme-toggle" title="Recalibrate Radar">
-          <i class="fa-solid fa-radar text-sm text-emerald-400"></i>
+        <!-- Light / Dark Mode Toggle Button -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 dark:border-zinc-800 dark:bg-zinc-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-zinc-800 transition shadow-sm" id="theme-toggle" title="Switch Theme">
+          <i class="fa-solid fa-moon text-sm"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-zinc-900 px-3 py-1.5 border border-zinc-800">
-          <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-350" id="lesson-mastery-ratio">0/30 Mastered</span>
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 border border-slate-200 dark:border-zinc-800 dark:bg-zinc-900 px-3 py-1.5">
+          <div class="h-2 w-2 rounded-full bg-rose-500 dark:bg-rose-450 animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-355" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -163,50 +150,50 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-zinc-800 bg-zinc-950/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-955/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-450 uppercase">Tactical Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-455 uppercase">Design Modules</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-rose-500/10 text-rose-600 dark:text-rose-350 border border-rose-500/20">
             <i class="fa-solid fa-book-open text-base"></i>
             <span>Story & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-zinc-900 hover:text-slate-900 dark:hover:text-slate-150">
             <i class="fa-solid fa-clone text-base"></i>
             <span>Interactive Cards</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-zinc-900 hover:text-slate-900 dark:hover:text-slate-150">
             <i class="fa-solid fa-circle-notch text-base"></i>
-            <span>Graded Shadow Exam</span>
+            <span>Graded Color Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-zinc-900 hover:text-slate-900 dark:hover:text-slate-150">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-355 hover:bg-slate-100 dark:hover:bg-zinc-900 hover:text-slate-900 dark:hover:text-slate-150">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-zinc-900 hover:text-slate-900 dark:hover:text-slate-150">
             <i class="fa-solid fa-spell-check text-base"></i>
-            <span>Shadowy Lexicon</span>
+            <span>Chromatic Lexicon</span>
           </button>
         </div>
         
-        <!-- User Echolocation Security Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-zinc-950 to-zinc-900 p-4 border border-zinc-800 relative overflow-hidden">
-          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-emerald-500/10 rounded-full radar-beam"></div>
+        <!-- User Chromatic Clearance Box -->
+        <div class="rounded-2xl bg-gradient-to-tr bg-white border border-slate-200 dark:from-zinc-950 dark:to-zinc-900 p-4 dark:border-zinc-800 relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-rose-500/10 rounded-full chromatic-glow"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-satellite-dish text-emerald-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Optical Clearance</span>
+            <i class="fa-solid fa-paint-brush text-rose-500 dark:text-rose-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Chromatic Clearance</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-emerald-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Establish your command of English darkness phrasings. Complete modules to acquire high-ranking certificates!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-rose-600 dark:text-rose-455" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed">Establish your command of English color, paint, and fabric dye phrasings. Complete modules to acquire high-ranking designer credentials!</p>
         </div>
       </nav>
 
@@ -218,40 +205,46 @@
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
             <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-zinc-900/90 rounded-3xl p-6 md:p-8 border border-zinc-800 shadow-sm space-y-6">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-zinc-800">
+            <div class="xl:col-span-7 bg-white/95 dark:bg-zinc-900/90 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-6">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-zinc-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Spelunking Incident</h2>
-                  <p class="text-xs text-slate-400 mt-1">Explore physical and metaphorical darkness structures. Click highlighted collocations to pull up optical records.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Chromatic Studio</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Explore physical and metaphorical color structures based on Lesson 30. Click highlighted collocations to pull up design records.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-emerald-500/10 transition">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-sm font-bold shadow-md shadow-rose-500/10 transition">
                   <i class="fa-solid fa-volume-high"></i>
                   <span>Broadcast Address</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 font-sans tracking-wide space-y-6">
+              <!-- Story Text synchronized directly with Lesson 30 curriculum -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6">
                 <p>
-                  Our exploration began late in the afternoon, just as the sun set and <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="shadows_lengthened">shadows lengthened</span> across the valley. It was rapidly <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="growing_dark">growing dark</span>, forcing us to hasten our pace. To enter the forbidden cavern undetected, we had decided to move <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="under_cover_darkness">under cover of darkness</span>.
+                  Today you're going to expand your vocabulary by learning various collocations about colors! You can describe a color as light or dark—for example, someone can have <span class="colloc-ref cursor-pointer" data-id="light_brown">light brown</span> or <span class="colloc-ref cursor-pointer" data-id="dark_brown">dark brown</span> hair. If a color is very intense, you can describe it as bright—for example, a <span class="colloc-ref cursor-pointer" data-id="bright_red">bright red</span> apple. If the color is not very intense, you can describe it as pale—for example, a <span class="colloc-ref cursor-pointer" data-id="pale_green">pale green</span> dress. 
                 </p>
                 <p>
-                  As we stepped inside, the mouth of the cave was only <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="dimly_lit">dimly lit</span> by the fading twilight. Soon, the path sloped downwards, and we were suddenly <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="plunged_darkness">plunged into darkness</span>. It was absolutely <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="pitch_dark">pitch dark</span>—or as some Spelunkers prefer to say, <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="pitch_black">pitch black</span>. This was <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="complete_darkness">complete darkness</span>; a thick, heavy, <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="utter_darkness">utter darkness</span> that felt almost physical.
+                  When describing colors in general, we talk about intense, <span class="colloc-ref cursor-pointer" data-id="bold_vivid_colors">bold/vivid colors</span>, or light, delicate <span class="colloc-ref cursor-pointer" data-id="pastel_colors">pastel colors</span>. Designers utilize diverse objects to describe specific <span class="colloc-ref cursor-pointer" data-id="shades_of_color">shades of a color</span>. Our studio exhibits gems of <span class="colloc-ref cursor-pointer" data-id="ruby_red">ruby red</span> and <span class="colloc-ref cursor-pointer" data-id="cherry_red">cherry red</span>, paintings of a <span class="colloc-ref cursor-pointer" data-id="fiery_orange">fiery orange</span> sunset, and autumn leaves of <span class="colloc-ref cursor-pointer" data-id="burnt_orange">burnt orange</span>. 
                 </p>
                 <p>
-                  We switched on our headlamps, which cast erratic, <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="flickering_shadows">flickering shadows</span> against the limestone formations. I thought I saw a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="shadowy_figure">shadowy figure</span> disappear into the <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="deep_shadows">deep shadows</span> at the end of the corridor, but my companion claimed it was just my imagination. "Don't let <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="dark_thoughts">dark thoughts</span> or fear cloud your judgment," he whispered.
+                  We catalog vibrant <span class="colloc-ref cursor-pointer" data-id="lemon_yellow">lemon yellow</span> and <span class="colloc-ref cursor-pointer" data-id="golden_yellow">golden yellow</span>, contrasting them with rich <span class="colloc-ref cursor-pointer" data-id="emerald_green">emerald green</span> and organic <span class="colloc-ref cursor-pointer" data-id="olive_green">olive green</span>. For skies, we use a light shade like <span class="colloc-ref cursor-pointer" data-id="sky_blue">sky blue</span>, transitioning to deep <span class="colloc-ref cursor-pointer" data-id="royal_blue">royal blue</span>, or a dark <span class="colloc-ref cursor-pointer" data-id="navy_midnight_blue">navy blue / midnight blue</span>.
                 </p>
                 <p>
-                  As we waited for our <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="eyes_adapt">eyes to adapt</span>, we spotted a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="faint_outline">faint outline</span> of a passageway ahead. There was no <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="shadow_doubt">shadow of a doubt</span> that we had discovered the lost tomb. The walls were covered in ancient inscriptions <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="shrouded_darkness">shrouded in darkness</span> for centuries. For the time being, we stood silently in the <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="deepening_gloom">deepening gloom</span>, enjoying our discovery.
+                  When you have something that is primarily one color, but with a little bit of another color included, we can use the word "tinge". You might describe white flowers with a <span class="colloc-ref cursor-pointer" data-id="tinge_of_pink">tinge of pink</span>, or a light gray fabric with a slight <span class="colloc-ref cursor-pointer" data-id="brownish_tinge">brownish tinge</span>. Combining color bases with "-ish" describes blended shades, such as clay with a <span class="colloc-ref cursor-pointer" data-id="reddish_brown">reddish brown</span> hue or sand that appears <span class="colloc-ref cursor-pointer" data-id="yellowish_brown">yellowish brown</span>.
+                </p>
+                <p>
+                  In wardrobe styling, some colors look good together—in this case, we say the <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-450 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="colors_match">colors match</span>. Other colors look terrible together—in this case, we say the <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="colors_clash">colors clash</span>. Choosing shades that match a person's <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="skin_tone">skin tone</span> is vital—if a garment looks good, you can say "<span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="color_suits_you">that color suits you</span>" or "<span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="looks_good_on_you">that color looks good on you</span>." 
+                </p>
+                <p>
+                  Finally, a tip about changing the color of something. We use the verb "paint" in most cases—you <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="paint_house">paint a house</span> and <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="paint_nails">paint your nails</span>. But we use the verb "dye" for hair and cloth/fabric—so you <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="dye_your_hair">dye your hair</span> blonde and <span class="colloc-ref cursor-pointer font-bold text-rose-500 dark:text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="dye_shirt">dye a shirt</span> blue!
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-zinc-900 to-zinc-950 text-white rounded-3xl p-6 border border-zinc-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-slate-900 to-zinc-950 text-white rounded-3xl p-6 border border-zinc-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 animate-pulse" id="glossary-category">Nature of Darkness</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-rose-455 animate-pulse" id="glossary-category">Nature of Color</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -262,24 +255,24 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-emerald-300" id="glossary-phrase">pitch dark</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-rose-350" id="glossary-phrase">shades of color</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">Absolutely black; complete and total absence of any light source.</p>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">Variations of a specific color, often defined by typical objects resembling that shade.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5">
                   <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"It was absolutely pitch dark inside the cavern."</p>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"Artists spend lifetimes studying different shades of a color."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-emerald-400"></i>
-                  <span>Lexical Darkness</span>
+              <div class="bg-white dark:bg-zinc-900/45 rounded-3xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm transition-colors duration-200">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-rose-500 dark:text-rose-455"></i>
+                  <span>Lexical Precision</span>
                 </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  English maps descriptions of shadows and darkness to exact, fixed combinations. You move **under cover of darkness**, are **plunged into darkness**, or witness a **deepening gloom**. Avoid incorrect groupings like "shrouded by dark" or "thrown in dark" to maintain standard professional English.
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Color descriptions in English follow exact collocational patterns. You **dye** cloth, fabric, and hair, but you **paint** houses and nails. Some colors **match** beautifully, while others **clash** terribly. This design lab secures these standard pairings directly in your brain.
                 </p>
               </div>
             </div>
@@ -291,64 +284,64 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight">Shadowy Flashcards</h2>
-                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-100">Chromatic Flashcards</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
+                <span class="text-slate-450">/</span>
                 <span>30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-zinc-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-emerald-400 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            <div class="w-full bg-slate-200 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-rose-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-3xl p-8 flex flex-col justify-between shadow-md text-slate-800 dark:text-slate-100">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-zinc-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-rose-500/10 text-rose-600 dark:text-rose-355 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-zinc-800 text-slate-500 dark:text-slate-400 hover:text-rose-500 dark:hover:text-slate-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-slate-405 uppercase tracking-widest font-bold font-mono">Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1" id="card-front-phrase">Phrase</h3>
                   </div>
                   
                   <div class="text-center text-xs text-slate-400">
-                    <span class="bg-zinc-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                    <span class="bg-slate-100 dark:bg-zinc-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-zinc-950 to-emerald-950 border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-900 to-rose-950 border border-zinc-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-emerald-400 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-emerald-400 font-semibold">Semantic Profile</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-rose-400 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-rose-455 font-semibold">Semantic Profile</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-emerald-400 uppercase tracking-widest font-black">Definition</span>
+                      <span class="text-[10px] text-rose-400 uppercase tracking-widest font-black font-mono">Definition</span>
                       <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
                     <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-emerald-400 uppercase tracking-widest font-black">Luminous Context</span>
+                      <span class="text-[10px] text-rose-400 uppercase tracking-widest font-black font-mono">Chromatic Context</span>
                       <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
                   
                   <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
-                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-emerald-500 focus:ring-emerald-500 bg-transparent border-white/20 h-4 w-4">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-rose-500 focus:ring-rose-500 bg-transparent border-white/20 h-4 w-4">
                       <span class="font-bold text-slate-300">Mark as Decoded</span>
                     </label>
                     <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
@@ -359,12 +352,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-zinc-800 bg-zinc-900 font-semibold text-sm hover:bg-zinc-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 bg-white text-slate-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-zinc-800 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-zinc-950 font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -377,26 +370,26 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-zinc-900 rounded-3xl p-6 md:p-8 border border-zinc-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+            <div id="quiz-screen" class="bg-white/95 dark:bg-zinc-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 30 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct darkness collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 30 Graded Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Select the correct color collocation to complete the fashion show commentary.</p>
                 </div>
-                <div class="bg-emerald-500/10 text-emerald-300 border border-emerald-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-rose-500/10 text-rose-600 dark:text-rose-300 border border-rose-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span> of 16
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-zinc-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-emerald-500 to-emerald-350 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-slate-200 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-rose-500 to-rose-350 h-full transition-all duration-300" style="width: 5.25%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 font-mono">Active Optical Brief</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-405 font-mono">Fashion Show Commentary</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-800 dark:text-white">"Loading question..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -405,58 +398,58 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-900/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-100/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Astronomer's Aperture</span>
+                  <span>Designer's Core Insight</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-zinc-800 pt-4">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-zinc-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
-                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Quiz
+                  <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
-                  <span>Next Question</span>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-zinc-800 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
+                  <span>Next Scenario</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-zinc-950 rounded-3xl p-8 border border-zinc-800 shadow-md space-y-8 text-center">
+            <div id="quiz-result-screen" class="hidden bg-white/95 dark:bg-zinc-955 rounded-3xl p-8 border border-slate-200 dark:border-zinc-800 shadow-md space-y-8 text-center">
               <div class="space-y-3">
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-450">
-                  <i class="fa-solid fa-eye-slash text-3xl animate-bounce"></i>
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-rose-500/10 text-rose-500 dark:text-rose-450">
+                  <i class="fa-solid fa-palette text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black">Midnight Clearance Granted!</h2>
-                <p class="text-sm text-slate-400">Analysis completed. Review your darkness metrics.</p>
+                <h2 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100">Chromatic Clearance Granted!</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Analysis completed. Review your design accuracy.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-zinc-900 p-4 rounded-2xl border border-zinc-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Decoupled Alignments</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-slate-50 dark:bg-zinc-900 p-4 rounded-2xl border border-slate-200 dark:border-zinc-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-455 font-mono">Matched Alignments</span>
+                  <span class="text-2xl font-black text-emerald-500 font-mono" id="quiz-score-correct">14/16</span>
                 </div>
-                <div class="bg-zinc-900 p-4 rounded-2xl border border-zinc-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Accuracy Rate</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-percent">90%</span>
+                <div class="bg-slate-50 dark:bg-zinc-900 p-4 rounded-2xl border border-slate-200 dark:border-zinc-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-455 font-mono">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-rose-500 dark:text-rose-400 font-mono" id="quiz-score-percent">87%</span>
                 </div>
-                <div class="bg-zinc-900 p-4 rounded-2xl border border-zinc-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Sensor Level</span>
-                  <span class="text-xs sm:text-sm font-bold text-emerald-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Optical Specialist</span>
+                <div class="bg-slate-50 dark:bg-zinc-900 p-4 rounded-2xl border border-slate-200 dark:border-zinc-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-455 font-mono">Expert Level</span>
+                  <span class="text-xs sm:text-sm font-bold text-rose-600 dark:text-rose-455 mt-2 block truncate animate-pulse" id="quiz-score-rank">Chroma Specialist</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-zinc-950 font-semibold text-sm transition">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
                   <span>Recalibrate</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-zinc-800 font-semibold text-sm hover:bg-zinc-800 transition">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-slate-355 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-zinc-850 transition">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -468,18 +461,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-zinc-900 rounded-3xl p-6 border border-zinc-800 shadow-sm space-y-6">
+            <div class="bg-white/95 dark:bg-zinc-900 rounded-3xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-zinc-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Dark Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom spooky stories, security protocols, or night-patrol layouts using Lesson 30 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">AI Chromatic Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium font-mono">Compose custom design layouts, fashion lookbooks, or color strategies using Lesson 30 collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-zinc-700 text-slate-350 hover:bg-zinc-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-emerald-450"></i> Get Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 bg-white dark:border-zinc-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-zinc-800 text-xs font-bold rounded-xl transition">
+                    <i class="fa-solid fa-lightbulb mr-1 text-rose-500"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 text-xs font-bold rounded-xl transition border border-emerald-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-rose-500/10 text-rose-600 dark:text-rose-300 hover:bg-rose-500/20 text-xs font-bold rounded-xl transition border border-rose-500/25">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -487,8 +480,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono">Writing Parchment</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-zinc-800 bg-zinc-950 p-4 text-sm font-medium focus:border-emerald-500 focus:bg-zinc-900 outline-none transition text-slate-100" placeholder="Example: Under cover of darkness, the team stepped into the pitch black cavern, completely plunged into darkness..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-455 font-mono">Design Canvas</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-955 p-4 text-sm font-medium focus:border-rose-500 focus:bg-white dark:focus:bg-zinc-900 outline-none transition text-slate-800 dark:text-slate-100" placeholder="Example: We decided to paint a house in pastel colors, making sure the colors match beautifully with the owner's gardens..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -497,55 +490,55 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-zinc-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-zinc-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-500 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-zinc-950 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Dark Prose</span>
+                  <span>Scan Color Prose</span>
                 </button>
               </div>
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-zinc-900 rounded-3xl p-6 md:p-8 border border-zinc-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Optical Pattern Scan</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white/95 dark:bg-zinc-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-zinc-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-700 dark:text-slate-200">Prismatic Spectrum Scan</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100/50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40">Balanced Spectrum</span>
                 </div>
               </div>
               
               <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-zinc-800">
-                    <span class="text-3xl font-black font-mono tracking-tight text-emerald-400" id="diagnostic-score">92</span>
-                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-zinc-800">
+                    <span class="text-3xl font-black font-mono tracking-tight text-rose-500 dark:text-rose-455" id="diagnostic-score">92</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
                 
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed">Analyzing darkness structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-455 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Analyzing color structures...</p>
                   </div>
                   
-                  <div class="border-t border-zinc-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Tactical Soundness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed">Measuring alchemical synchronization...</p>
+                  <div class="border-t border-slate-200 dark:border-zinc-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-455 font-mono block mb-0.5">Luminous Design Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Measuring chromatic synchronization...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-1">Recommended Editorial Polish</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-250 mt-1">"Awaiting analysis..."</p>
+              <div class="bg-slate-50 dark:bg-zinc-955 p-4 rounded-2xl border border-slate-200 dark:border-zinc-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-450 font-mono block mb-1">Recommended Editorial Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-zinc-800 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white border border-slate-200 dark:border-zinc-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-zinc-800 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy mr-1"></i> Copy Alternative
                   </button>
                 </div>
@@ -558,46 +551,46 @@
         <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-zinc-900 text-white rounded-3xl p-6 md:p-8 border border-zinc-800 shadow-xl space-y-8">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
               <div class="flex items-center justify-between pb-4 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                  <span class="flex h-3 w-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span class="flex h-3 w-3 rounded-full bg-rose-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 30</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Darkness Logistics: Shadows, Gloom, and Adaptive Vision</p>
+                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Design-Studio: Shades, Dyes, and Harmonious Tones</p>
                   </div>
                 </div>
-                <div class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-rose-500/10 text-rose-455 border border-rose-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
-                <div class="wave-bar bg-emerald-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
-                <div class="wave-bar bg-emerald-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
-                <div class="wave-bar bg-emerald-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
-                <div class="wave-bar bg-emerald-700 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
-                <div class="wave-bar bg-emerald-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
-                <div class="wave-bar bg-emerald-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+                <div class="wave-bar bg-rose-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-rose-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-purple-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-purple-700 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-rose-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-rose-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-emerald-450 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "under cover of darkness"</h3>
-                <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing physical, meteorological, and metaphorical darkness collocations from Lesson 30.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-rose-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we "paint" nails but "dye" hair</h3>
+                <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing hues, clothes, skin tones, and metaphorical color collocations from Lesson 30.</p>
               </div>
               
               <!-- Dialogue Box -->
               <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
-                  <div class="h-6 w-6 rounded bg-emerald-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+                  <div class="h-6 w-6 rounded bg-rose-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-emerald-405 font-mono">Sarah (Night Operations)</span>
-                    <p class="text-xs text-slate-300">"Welcome back to the studio. Today we dive into the deep shadows and explain Lesson 30 Darkness collocations!"</p>
+                    <span class="text-[10px] font-bold text-rose-455 font-mono">Sarah (Creative Director)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to the Studio. Today, we are exploring Lesson 30 Color collocations. Let's begin the wavelength scan!"</p>
                   </div>
                 </div>
               </div>
@@ -608,7 +601,7 @@
                   <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-emerald-500 to-emerald-700 text-slate-950 hover:from-emerald-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-rose-500 to-rose-700 text-slate-950 hover:from-rose-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
                   <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
@@ -618,12 +611,12 @@
                 
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
-                  <div class="flex items-center justify-between text-[10px] text-emerald-350">
+                  <div class="flex items-center justify-between text-[10px] text-rose-355">
                     <span id="podcast-time-passed">Card 0/30</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                    <div id="podcast-loading-meter" class="bg-emerald-400 h-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="podcast-loading-meter" class="bg-rose-400 h-full transition-all duration-300" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -634,30 +627,31 @@
         
         <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-zinc-900/90 rounded-3xl p-6 border border-zinc-800 shadow-sm space-y-6">
+          <div class="bg-white/95 dark:bg-zinc-900/90 rounded-3xl p-6 border border-slate-200 dark:border-zinc-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-zinc-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-zinc-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Shadowy Lexicon</h2>
-                <p class="text-xs text-slate-455">Search and filter active optical darkness collocations inside the Lesson 30 files.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">Chromatic Lexicon</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-455">Search and filter active color, paint, and dye collocations inside the Lesson 30 database.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-zinc-700 rounded-xl text-xs bg-zinc-950 text-white outline-none focus:border-emerald-500 transition w-full md:w-48" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-200 dark:border-zinc-700 rounded-xl text-xs bg-slate-50 dark:bg-zinc-950 text-slate-800 dark:text-white outline-none focus:border-rose-500 transition w-full md:w-48" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-zinc-700 rounded-xl text-xs bg-zinc-950 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-zinc-700 rounded-xl text-xs bg-slate-50 dark:bg-zinc-955 text-slate-700 dark:text-slate-300 outline-none font-bold font-mono">
                   <option value="all">All Wavelengths</option>
-                  <option value="Total Darkness">Total Darkness</option>
-                  <option value="Shadows & Gloom">Shadows & Gloom</option>
-                  <option value="Metaphorical">Metaphorical</option>
-                  <option value="Tactical Operations">Tactical Operations</option>
+                  <option value="General Descriptions">General Descriptions</option>
+                  <option value="Specific Shades">Specific Shades</option>
+                  <option value="Tinges & Mixes">Tinges & Mixes</option>
+                  <option value="Matches & Aesthetics">Matches & Aesthetics</option>
+                  <option value="Changing Colors">Changing Colors</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-zinc-700 rounded-xl text-xs bg-zinc-950 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-200 dark:border-zinc-700 rounded-xl text-xs bg-slate-50 dark:bg-zinc-955 text-slate-700 dark:text-slate-300 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -669,16 +663,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-zinc-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-slate-200 dark:border-zinc-800 text-[10px] text-slate-500 dark:text-slate-455 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-32">Wave Group</th>
                     <th class="py-3 px-4">Core Definition</th>
-                    <th class="py-3 px-4 hidden lg:table-cell">Luminous Precedent Example</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Design Precedent Example</th>
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-zinc-800 text-slate-300 font-semibold font-sans">
+                <tbody id="dictionary-rows" class="divide-y divide-slate-200 dark:divide-zinc-800 text-slate-700 dark:text-slate-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -691,28 +685,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-zinc-800 bg-zinc-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-400">
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 bg-white md:hidden dark:border-zinc-850 dark:bg-zinc-900 shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-rose-500">
         <i class="fa-solid fa-scroll text-base"></i>
         <span class="text-[9px] font-bold">Story</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-rose-500">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-rose-500">
         <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-rose-500">
         <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-rose-500">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-emerald-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 hover:text-rose-500">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -722,10 +716,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-zinc-900 rounded-3xl p-6 border border-zinc-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-zinc-900 rounded-3xl p-6 border border-slate-200 dark:border-zinc-800 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-slate-800 dark:text-white">Observer's Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -734,18 +728,18 @@
       <div class="space-y-4">
         <div class="space-y-1.5">
           <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-zinc-700 rounded-xl px-3 py-2 bg-zinc-950 text-xs font-semibold outline-none text-white font-mono">
+          <select id="voice-select" class="w-full border border-slate-200 dark:border-zinc-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-zinc-955 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-404 font-mono font-bold">
             <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
-          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-emerald-500">
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-rose-500">
         </div>
         
         <!-- Pitch Control -->
@@ -754,19 +748,19 @@
             <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
-          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-emerald-500">
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-rose-500">
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-emerald-500 hover:bg-emerald-600 text-zinc-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-sm font-bold shadow-md transition font-mono">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-zinc-950 text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-zinc-800 max-w-sm transition-all duration-300">
-    <div class="h-8 w-8 rounded-lg bg-white/10 text-emerald-450 flex items-center justify-center shrink-0">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-zinc-800/80 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 text-rose-455 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
@@ -777,6 +771,32 @@
 
   <!-- JavaScript Logic Block -->
   <script>
+    // Theme-responsive color mappings for each individual color collocation word to ensure optimal visibility in Light/Dark modes
+    const colorStyles = {
+      light_brown: { light: '#9a3412', dark: '#f59e0b' },
+      dark_brown: { light: '#451a03', dark: '#fbbf24' },
+      bright_red: { light: '#dc2626', dark: '#f87171' },
+      pale_green: { light: '#15803d', dark: '#a7f3d0' },
+      bold_vivid_colors: { light: 'linear-gradient(to right, #ec4899, #6366f1)', dark: 'linear-gradient(to right, #f472b6, #818cf8)', isGradient: true },
+      pastel_colors: { light: 'linear-gradient(to right, #8b5cf6, #ec4899)', dark: 'linear-gradient(to right, #a78bfa, #f472b6)', isGradient: true },
+      shades_of_color: { light: '#475569', dark: '#cbd5e1' },
+      ruby_red: { light: '#9f1239', dark: '#fda4af' },
+      cherry_red: { light: '#be123c', dark: '#f43f5e' },
+      fiery_orange: { light: '#ea580c', dark: '#ff9d43' },
+      burnt_orange: { light: '#9a3412', dark: '#fb923c' },
+      lemon_yellow: { light: '#a16207', dark: '#fef08a' },
+      golden_yellow: { light: '#ca8a04', dark: '#fde047' },
+      emerald_green: { light: '#047857', dark: '#6ee7b7' },
+      olive_green: { light: '#4d7c0f', dark: '#bef264' },
+      sky_blue: { light: '#0369a1', dark: '#7dd3fc' },
+      royal_blue: { light: '#1d4ed8', dark: '#93c5fd' },
+      navy_midnight_blue: { light: '#1e3a8a', dark: '#38bdf8' },
+      tinge_of_pink: { light: '#be185d', dark: '#f472b6' },
+      brownish_tinge: { light: '#78350f', dark: '#fcd34d' },
+      reddish_brown: { light: '#b91c1c', dark: '#fca5a5' },
+      yellowish_brown: { light: '#b45309', dark: '#fde047' }
+    };
+
     const state = {
       theme: 'dark',
       currentView: 'story',
@@ -787,61 +807,57 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'pitch_dark', phrase: 'pitch dark', definition: 'Absolutely dark; 100% devoid of light.', example: 'As we descended into the cave, it was pitch dark.', category: 'Total Darkness', mastered: false },
-        { id: 'pitch_black', phrase: 'pitch black', definition: 'Intensely black; resembling pitch or tar.', example: 'The blackout left the entire metropolitan street pitch black.', category: 'Total Darkness', mastered: false },
-        { id: 'complete_darkness', phrase: 'complete darkness', definition: 'A state where absolutely no illumination is present.', example: 'The researchers turned off the equipment, leaving the lab in complete darkness.', category: 'Total Darkness', mastered: false },
-        { id: 'total_darkness', phrase: 'total darkness', definition: 'Full absence of any solar or artificial light.', example: 'Deep-sea trenches operate in total darkness.', category: 'Total Darkness', mastered: false },
-        { id: 'utter_darkness', phrase: 'utter darkness', definition: 'Complete, absolute, and oppressive darkness (often literary).', example: 'We stepped out of the light lock into utter darkness.', category: 'Total Darkness', mastered: false },
-        { id: 'deepening_gloom', phrase: 'deepening gloom', definition: 'A progressive increase in darkness or sad atmospheric conditions.', example: 'For the time being, we stood silently in the deepening gloom.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'shadows_lengthened', phrase: 'shadows lengthened', definition: 'When shadows stretch longer as the sun sets over the horizon.', example: 'As evening approached, the shadows lengthened across the orchard fields.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'cast_shadow', phrase: 'cast a shadow', definition: 'To create a shadow silhouette when blocking an oncoming beam of light.', example: 'The security searchlights cast a shadow of the suspect against the brick wall.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'dimly_lit', phrase: 'dimly lit', definition: 'Provided with very little or highly soft light.', example: 'The entrance corridor was only dimly lit by a flickering candle.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'shadow_doubt', phrase: 'shadow of a doubt', definition: 'The smallest presence of uncertainty (usually used with "without" or "beyond").', example: 'The fingerprint matching proved his alignment beyond a shadow of a doubt.', category: 'Metaphorical', mastered: false },
-        { id: 'keep_dark', phrase: 'keep in the dark', definition: 'To deliberately withhold key secrets or schedules from a person.', example: 'The board decided to keep the employees in the dark concerning the mergers.', category: 'Metaphorical', mastered: false },
-        { id: 'mood_darkened', phrase: 'mood darkened', definition: 'A shift in emotional state from pleasant to suddenly gloomy, angry, or sad.', example: 'His mood darkened as he read the failure reports from the satellite team.', category: 'Metaphorical', mastered: false },
-        { id: 'eyes_adapt', phrase: 'eyes adapt', definition: 'The optical transition of pupils adjusting to low-light conditions.', example: 'It took about three minutes inside the cavern for our eyes to adapt.', category: 'Tactical Operations', mastered: false },
-        { id: 'faint_glow', phrase: 'faint glow', definition: 'A very weak, soft, and gentle background illumination.', example: 'We noticed a faint glow from bioluminescent moss on the cavern roof.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'blind_darkness', phrase: 'blind darkness', definition: 'A heavy darkness that completely prevents any visual navigation.', example: 'He wandered through the blind darkness of the basement trying to locate the fuse.', category: 'Total Darkness', mastered: false },
-        { id: 'growing_dark', phrase: 'growing dark', definition: 'The gradual transition of daytime turning to twilight and night.', example: 'With shadows lengthening, we noticed it was rapidly growing dark.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'shrouded_darkness', phrase: 'shrouded in darkness', definition: 'Hidden, covered, or made invisible by dark surroundings.', example: 'The ancient ruins had remained shrouded in darkness for centuries.', category: 'Total Darkness', mastered: false },
-        { id: 'plunged_darkness', phrase: 'plunged into darkness', definition: 'A sudden, rapid transition from light into absolute darkness (e.g. power failure).', example: 'The storm hit the main transformer, and the entire block was plunged into darkness.', category: 'Tactical Operations', mastered: false },
-        { id: 'flickering_shadows', phrase: 'flickering shadows', definition: 'Unsteady, shifting shadows created by a moving or flickering light source.', example: 'Our torches cast flickering shadows along the narrow cave walls.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'shadowy_figure', phrase: 'shadowy figure', definition: 'A vague, obscure silhouette of a person that is difficult to identify.', example: 'A shadowy figure darted out of the alleyway and disappeared into the night.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'deep_shadows', phrase: 'deep shadows', definition: 'Very dark areas of shadow that conceal details completely.', example: 'The thief slipped into the deep shadows of the cathedral pillars.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'dark_thoughts', phrase: 'dark thoughts', definition: 'Depressing, grim, hostile, or morbid mental processes.', example: 'Don\'t let fear or dark thoughts cloud your judgment during Spelunking.', category: 'Metaphorical', mastered: false },
-        { id: 'under_cover_darkness', phrase: 'under cover of darkness', definition: 'Performing actions hidden by night or lack of light to avoid detection.', example: 'The commandos breached the compound under cover of darkness.', category: 'Tactical Operations', mastered: false },
-        { id: 'faint_outline', phrase: 'faint outline', definition: 'A vague, barely visible silhouette or contour of an object in the dark.', example: 'We could barely distinguish the faint outline of the exit passage ahead.', category: 'Tactical Operations', mastered: false },
-        { id: 'gloom_of_night', phrase: 'gloom of night', definition: 'The oppressive, dark background of nighttime (often literary).', example: 'The couriers completed their delivery rounds through the cold gloom of night.', category: 'Shadows & Gloom', mastered: false },
-        { id: 'blackout', phrase: 'blackout', definition: 'A sudden, widespread failure of electrical power and lighting.', example: 'The regional blackout lasted for six hours, shutting down transit grids.', category: 'Tactical Operations', mastered: false },
-        { id: 'dark_alley', phrase: 'dark alley', definition: 'A narrow backstreet completely devoid of street lights or safety.', options: ["alley", "street", "road"], example: 'Avoid walking alone down any dimly lit dark alley at night.', category: 'Tactical Operations', mastered: false },
-        { id: 'thick_darkness', phrase: 'thick darkness', definition: 'An extremely heavy, dense, and oppressive lack of light.', example: 'We had to feel our way through the thick darkness of the abandoned tunnel.', category: 'Total Darkness', mastered: false },
-        { id: 'darken_door', phrase: 'darken the door', definition: 'To appear or enter a place (often used as a threat or idiom: "never darken my door again").', example: 'After the major betrayal, she warned him never to darken her door again.', category: 'Metaphorical', mastered: false },
-        { id: 'jet_black', phrase: 'jet black', definition: 'A deep, glossy, intense shade of absolute black (often describing hair/eyes).', example: 'She had striking jet black hair that contrasted beautifully with her pale skin.', category: 'Total Darkness', mastered: false }
+        { id: 'light_brown', phrase: 'light brown', definition: 'A pale, soft shade of brown hair or wood.', example: 'Someone can have light brown hair.', category: 'General Descriptions', mastered: false },
+        { id: 'dark_brown', phrase: 'dark brown', definition: 'A deep, rich shade of brown hair, soil, or wood.', example: 'They had striking dark brown hair.', category: 'General Descriptions', mastered: false },
+        { id: 'bright_red', phrase: 'bright red', definition: 'An intense, highly saturated shade of red.', example: 'She took a bite of the bright red apple, finding it sweet and crisp.', category: 'General Descriptions', mastered: false },
+        { id: 'pale_green', phrase: 'pale green', definition: 'A low-intensity, soft, light shade of green.', example: 'She chose a beautiful pale green dress for the garden wedding.', category: 'General Descriptions', mastered: false },
+        { id: 'bold_vivid_colors', phrase: 'bold/vivid colors', definition: 'Extremely intense, powerful, and vibrant hues that pop visually.', example: 'The modern fashion line features bold/vivid colors that capture immediate attention.', category: 'General Descriptions', mastered: false },
+        { id: 'pastel_colors', phrase: 'pastel colors', definition: 'Light, pale, and gentle shades, such as lavender, mint, or light pink.', example: 'Susan wore long, light pastel colors that complemented her tone.', category: 'General Descriptions', mastered: false },
+        { id: 'shades_of_color', phrase: 'shades of a color', definition: 'Variations, tones, or slight changes within a specific color family.', example: 'The decorator compared twelve different shades of a color to find the perfect beige.', category: 'General Descriptions', mastered: false },
+        { id: 'ruby_red', phrase: 'ruby red', definition: 'A deep, brilliant, and glowing shade of red resembling a ruby gem.', example: 'Her heels featured a gorgeous ruby red leather finish.', category: 'Specific Shades', mastered: false },
+        { id: 'cherry_red', phrase: 'cherry red', definition: 'A bright, lively, and warm shade of red resembling ripe cherries.', example: 'He drove a vintage sports car painted a stunning cherry red.', category: 'Specific Shades', mastered: false },
+        { id: 'fiery_orange', phrase: 'fiery orange', definition: 'An intense, blazing orange shade like fire or a warm sunset.', example: 'Cassandra is wearing a fiery orange blouse to the exhibition.', category: 'Specific Shades', mastered: false },
+        { id: 'burnt_orange', phrase: 'burnt orange', definition: 'A darker, warm, rustic shade of orange with a brownish tone.', example: 'We decorated our table with burnt orange napkins for Thanksgiving dinner.', category: 'Specific Shades', mastered: false },
+        { id: 'lemon_yellow', phrase: 'lemon yellow', definition: 'A bright, vibrant, and highly energetic light yellow shade.', example: 'Tanya wore a retro greenish-blue dress with lemon yellow details.', category: 'Specific Shades', mastered: false },
+        { id: 'golden_yellow', phrase: 'golden yellow', definition: 'A warm, rich yellow shade with golden, metallic, or amber hints.', example: 'She paired her dress with a golden yellow belt to catch the runway lights.', category: 'Specific Shades', mastered: false },
+        { id: 'emerald_green', phrase: 'emerald green', definition: 'A rich, bright, and deeply saturated shade of green.', example: 'Joanne walked out wearing an emerald green top.', category: 'Specific Shades', mastered: false },
+        { id: 'olive_green', phrase: 'olive green', definition: 'A muted, dark yellowish-green shade resembling green olives.', example: 'The designer paired the emerald top with olive green shorts.', category: 'Specific Shades', mastered: false },
+        { id: 'sky_blue', phrase: 'sky blue', definition: 'A light, bright, and cheerful shade of blue resembling a clear day.', example: 'Ashley coordinated her outfit with sky blue heels.', category: 'Specific Shades', mastered: false },
+        { id: 'royal_blue', phrase: 'royal blue', definition: 'A bright, deep, and majestic shade of blue.', example: 'She finished her look with a stunning royal blue skirt.', category: 'Specific Shades', mastered: false },
+        { id: 'navy_midnight_blue', phrase: 'navy blue / midnight blue', definition: 'Extremely dark shades of blue that resemble evening skies or uniforms.', example: 'The formal jacket came in midnight blue, while his tie was navy blue.', category: 'Specific Shades', mastered: false },
+        { id: 'tinge_of_pink', phrase: 'tinge of pink', definition: 'A small, subtle, and light portion of pink included in a different base color.', example: 'The spring flowers are yellow with a tinge of pink in the middle.', category: 'Tinges & Mixes', mastered: false },
+        { id: 'brownish_tinge', phrase: 'brownish tinge', definition: 'A slight, low-intensity hint of brown mixed into a base color.', example: 'My cat\'s soft fur is light gray with a slight brownish tinge.', category: 'Tinges & Mixes', mastered: false },
+        { id: 'reddish_brown', phrase: 'reddish brown', definition: 'A shade of brown combined with a strong portion or highlight of red.', example: 'Reddish brown clay is typical in this geographical stratum.', category: 'Tinges & Mixes', mastered: false },
+        { id: 'yellowish_brown', phrase: 'yellowish brown', definition: 'A shade of brown combined with a strong portion or highlight of yellow.', example: 'The desert sand had a distinct yellowish brown appearance under the sun.', category: 'Tinges & Mixes', mastered: false },
+        { id: 'colors_match', phrase: 'colors match', definition: 'When two or more colors look highly pleasing and harmonious together.', example: 'The tie and shirt colors match perfectly, making him look professional.', category: 'Matches & Aesthetics', mastered: false },
+        { id: 'colors_clash', phrase: 'colors clash', definition: 'When colors look terrible, unpleasant, or unharmonious together.', example: 'Those neon purple boots and lime green pants completely clash.', category: 'Matches & Aesthetics', mastered: false },
+        { id: 'skin_tone', phrase: 'skin tone', definition: 'The natural organic pigment color of a person\'s skin.', example: 'Choose clothing items that complement your natural warm skin tone.', category: 'Matches & Aesthetics', mastered: false },
+        { id: 'color_suits_you', phrase: 'that color suits you', definition: 'A common phrase praising a color that fits a person\'s aesthetic.', example: 'Wow, that navy suit looks incredible; that color suits you well!', category: 'Matches & Aesthetics', mastered: false },
+        { id: 'looks_good_on_you', phrase: 'that color looks good on you', definition: 'Another way to compliment someone on a color matching their skin tone.', example: 'You should buy that emerald dress; that color looks good on you.', category: 'Matches & Aesthetics', mastered: false },
+        { id: 'paint_house', phrase: 'paint a house', definition: 'Applying permanent protective colored paint to a building structure.', example: 'We hired contractor crews to paint a house in a light beige.', category: 'Changing Colors', mastered: false },
+        { id: 'paint_nails', phrase: 'paint your nails', definition: 'Applying colored cosmetic lacquer or polish to fingernails/toenails.', example: 'She likes to paint her nails a bright crimson for social events.', category: 'Changing Colors', mastered: false },
+        { id: 'dye_your_hair', phrase: 'dye your hair', definition: 'Using chemical dye to permanently change the color of head hair.', example: 'She decided to dye her hair blonde to celebrate the summer season.', category: 'Changing Colors', mastered: false },
+        { id: 'dye_shirt', phrase: 'dye a shirt', definition: 'Using liquid fabric dye to change the color of a garment.', example: 'We used natural indigo powder to dye a shirt blue in the lab.', category: 'Changing Colors', mastered: false }
       ],
-      // Custom 20-question scenario-based quiz grounded in Lesson 30: Darkness
       quiz: [
-        { id: 1, question: "Without any street lights on, the winding forest path was completely ________, making navigation impossible.", options: ["pitch dark", "dimly lit", "shadowy"], answer: "pitch_dark", explanation: "An absolute, extreme absence of any light source is collocated as 'pitch dark'." },
-        { id: 2, question: "The tactical squad decided to initiate their boarding sequence ________ to avoid triggering harbor radars.", options: ["under cover of darkness", "in utter darkness", "plunged into darkness"], answer: "under_cover_darkness", explanation: "Performing strategic covert actions hidden by night is 'under cover of darkness'." },
-        { id: 3, question: "The old generator suddenly blew a fuse, and our research bunker was instantly ________.", options: ["plunged into darkness", "shrouded in darkness", "growing dark"], answer: "plunged_darkness", explanation: "A rapid, sudden transition from full light into total darkness is 'plunged into darkness'." },
-        { id: 4, question: "We could barely make out the ________ of the rescue helicopter through the heavy midnight fog.", options: ["faint outline", "shadowy figure", "faint glow"], answer: "faint_outline", explanation: "A vague, barely visible silhouette of an object in the dark is a 'faint outline'." },
-        { id: 5, question: "The commandos spotted a ________ slipping quietly past the guard towers, but lost track of it in the trees.", options: ["shadowy figure", "thick darkness", "blazing row"], answer: "shadowy_figure", explanation: "An obscure, unrecognizable silhouette of a person is a 'shadowy figure'." },
-        { id: 6, question: "The fingerprint matches and security codes proved the intruder's guilt beyond a ________.", options: ["shadow of a doubt", "deepening gloom", "mood darkened"], answer: "shadow_doubt", explanation: "Unquestionable, absolute certainty is expressed with 'beyond a shadow of a doubt'." },
-        { id: 7, question: "The ancient tomb had remained ________ for over three millennia before spelunkers breached the seal.", options: ["shrouded in darkness", "dimly lit", "growing dark"], answer: "shrouded_darkness", explanation: "Covered, hidden, or made completely invisible by darkness is 'shrouded in darkness'." },
-        { id: 8, question: "Don't write gloomy entries in your research log; we must keep ________ from affecting our design metrics.", options: ["dark thoughts", "dim light", "shadowy figures"], answer: "dark_thoughts", explanation: "Morbid, depressing, or pessimistic thinking is collocated as 'dark thoughts'." },
-        { id: 9, question: "It took nearly five minutes inside the subterranean base for our ________.", options: ["eyes to adapt", "moods to darken", "shadows to lengthen"], answer: "eyes_adapt", explanation: "The biological adjustment of eyes to low-light levels is 'eyes adapt'." },
-        { id: 10, question: "The manager's ________ as he reviewed the disastrous telemetry feedback from the orbital rocket.", options: ["mood darkened", "face lit up", "eyes adapted"], answer: "mood_darkened", explanation: "An emotional shift towards sadness, disappointment, or anger is a 'mood darkened'." },
-        { id: 11, question: "We stood at the cliffside edge as the sun dipped, watching the ________ across the valley.", options: ["shadows lengthen", "faint outlines form", "moods darken"], answer: "shadows_lengthen", options: ["shadows lengthen", "moods darken", "eyes adapt"], answer: "shadows_lengthen", explanation: "The stretching of silhouettes as the sun goes down is described with 'shadows lengthen' (or shadows lengthened)." },
-        { id: 12, question: "She has striking ________ hair that reflects the starlight beautifully.", options: ["jet black", "pitch dark", "thick dark"], answer: "jet_black", explanation: "An intense, deep glossy shade of absolute black (used for hair or eyes) is 'jet black'." },
-        { id: 13, question: "The security team decided to ________ about the pending system vulnerabilities to prevent panic.", options: ["keep us in the dark", "cast a shadow", "lighten the mood"], answer: "keep_dark", explanation: "Deliberately withholding critical information is to 'keep someone in the dark'." },
-        { id: 14, question: "Our torches cast erratic, ________ against the damp limestone of the cavern halls.", options: ["flickering shadows", "faint outlines", "thick darkness"], answer: "flickering_shadows", explanation: "Shifting, unsteady silhouettes produced by a moving flame are 'flickering shadows'." },
-        { id: 15, question: "After he betrayed our research designs, I warned him never to ________ again.", options: ["darken my door", "cast a shadow", "keep me in the dark"], answer: "darken_door", explanation: "The idiomatic threat to never enter or appear in a place again is to never 'darken my door' (or darken the door)." },
-        { id: 16, question: "As the sun vanished beneath the ocean horizon, it was rapidly ________.", options: ["growing dark", "plunging into darkness", "eyes adapting"], answer: "growing_dark", explanation: "The gradual progression of dusk turning into night is 'growing dark' (or growing dark)." },
-        { id: 17, question: "The old castle hallway was only ________ by a few outdated gas lanterns.", options: ["dimly lit", "pitch black", "shrouded in darkness"], answer: "dimly_lit", explanation: "An area illuminated by very weak, soft light is 'dimly lit'." },
-        { id: 18, question: "We noticed a ________ of blue bioluminescence radiating from the deep pool.", options: ["faint glow", "faint outline", "flash of lightning"], answer: "faint_glow", explanation: "A soft, weak, and gentle background light is a 'faint glow'." },
-        { id: 19, question: "The towering redwood canopy above ________ over our scientific encampment.", options: ["cast a shadow", "darkened our mood", "kept us in the dark"], answer: "cast_shadow", explanation: "The correct verb to pair with creating a shadow is 'cast a shadow'." },
-        { id: 20, question: "A complete power failure hit the grid, resulting in a sudden ________ that paralyzed transit lanes.", options: ["blackout", "total darkness", "deepening gloom"], answer: "blackout", explanation: "Widespread, sudden loss of electrical lighting over a region is a 'blackout'." }
+        { id: 1, question: "Cassandra is wearing a ________ orange blouse to the fashion show.", options: ["fiery", "flaming"], answer: "fiery_orange", explanation: "The correct collocation from Lesson 30 is 'fiery orange'." },
+        { id: 2, question: "She paired the orange blouse with a ________ blue skirt.", options: ["king", "royal"], answer: "royal_blue", explanation: "We use 'royal blue' to describe a majestic, deep shade of bright blue, not 'king blue'." },
+        { id: 3, question: "The reporter commented, 'those certainly are very ________ colors!'", options: ["bold", "brave"], answer: "bold_vivid_colors", explanation: "Highly intense, striking colors are collocated as 'bold' (or bold/vivid colors), never 'brave colors'." },
+        { id: 4, question: "Susan stepped onto the catwalk wearing a long, ________ pink dress.", options: ["fair", "light"], answer: "light_brown", explanation: "To describe pale or gentle shades, we use 'light' (as in light pink), whereas 'fair' is typically used for hair/complexion in other contexts." },
+        { id: 5, question: "Susan finished her outfit with a pair of ________ heels.", options: ["navy", "ruby red"], answer: "navy_midnight_blue", explanation: "According to Susan's styling in the Lesson 30 commentary, she wears a light pink dress with navy heels." },
+        { id: 6, question: "The reporter noted: 'Those ________ colors look wonderful with her skin tone.'", options: ["pastel", "pasty"], answer: "pastel_colors", explanation: "Light, soft shades are 'pastel colors'. 'Pasty' means pale in an unhealthy way." },
+        { id: 7, question: "Her light pink dress looks absolutely marvelous against her ________.", options: ["skin tone", "skin type"], answer: "skin_tone", explanation: "The organic hue of a person's skin is their 'skin tone'. 'Skin type' relates to dermatology (e.g. oily, dry)." },
+        { id: 8, question: "Joanne is wearing an ________ green top on the runway.", options: ["emerald", "ember"], answer: "emerald_green", explanation: "The bright, brilliant gemstone shade is 'emerald green'. 'Ember' relates to fire." },
+        { id: 9, question: "She paired her emerald green top with ________ green shorts.", options: ["cherry", "olive"], answer: "olive_green", explanation: "The dark, warm olive-like green is 'olive green'. 'Cherry' is red." },
+        { id: 10, question: "The commentator says: 'in my opinion the two different ________ of green don't look so great together.'", options: ["shades", "tinges"], answer: "shades_of_color", explanation: "Variations of a color are described as 'shades' of a color. A 'tinge' is just a tiny hint of another color mixed into a base." },
+        { id: 11, question: "Because they don't look good together, they kind of ________.", options: ["clash", "dye"], answer: "colors_clash", explanation: "When colors look terrible or unharmonious together, they 'clash'. You 'dye' fabric." },
+        { id: 12, question: "Up next is Tanya, with a retro-style ________ blue dress.", options: ["greenish", "greenest"], answer: "reddish_brown", explanation: "A blended color uses the '-ish' suffix, such as 'greenish-blue' or 'reddish-brown'." },
+        { id: 13, question: "Tanya's greenish-blue dress is detailed with ________ yellow highlights.", options: ["lemon", "lime"], answer: "lemon_yellow", explanation: "A bright light yellow is 'lemon yellow'. 'Lime' is greenish." },
+        { id: 14, question: "It is an interesting look, although the colors might not ________ everybody.", options: ["match", "suit"], answer: "color_suits_you", explanation: "When clothing matches someone's personal look, we say it 'suits' them." },
+        { id: 15, question: "Finally we have Ashley, who's wearing a sexy ________ purple dress.", options: ["dark", "burnt"], answer: "dark_brown", explanation: "We use 'dark' for dark shades (dark purple, dark brown). 'Burnt' is collocated with orange." },
+        { id: 16, question: "She accented her dress with a ________ yellow belt, a matching purse, and sky blue heels.", options: ["golden", "silvery"], answer: "golden_yellow", explanation: "The bright rich yellow is 'golden yellow'." }
       ],
-      activeCardId: 'pitch_dark',
+      activeCardId: 'shades_of_color',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -854,44 +870,41 @@
       isSynthesizing: false
     };
 
-    // Advanced Echolocation Sound Synthesizer via Web Audio API
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Tactical echolocation 'sonar ping' click (quick high-pass sweep)
           const osc1 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(1800, audioCtx.currentTime);
-          osc1.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+          osc1.frequency.setValueAtTime(1400, audioCtx.currentTime);
+          osc1.frequency.exponentialRampToValueAtTime(1800, audioCtx.currentTime + 0.05);
 
-          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
 
           osc1.connect(gain);
           gain.connect(audioCtx.destination);
           
           osc1.start();
-          osc1.stop(audioCtx.currentTime + 0.08);
+          osc1.stop(audioCtx.currentTime + 0.05);
           
         } else if (type === 'correct') {
-          // Hollow, echoing cave chime chord (bioluminescent alert)
           const osc1 = audioCtx.createOscillator();
           const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
 
           osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
-          osc1.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime + 0.15); 
+          osc1.frequency.setValueAtTime(987.77, audioCtx.currentTime); // B5
+          osc1.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.15); // E6
 
           osc2.type = 'sine';
-          osc2.frequency.setValueAtTime(1100, audioCtx.currentTime); // C#6
-          osc2.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.15); 
+          osc2.frequency.setValueAtTime(1318.51, audioCtx.currentTime); // E6
+          osc2.frequency.exponentialRampToValueAtTime(1975.53, audioCtx.currentTime + 0.15); // B6
 
-          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.4);
 
           osc1.connect(gain);
@@ -904,43 +917,74 @@
           osc2.stop(audioCtx.currentTime + 0.45);
           
         } else if (type === 'incorrect') {
-          // Heavy, descending low sub-bass sweep (deep shadows rumble)
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(100, audioCtx.currentTime);
-          osc.frequency.linearRampToValueAtTime(30, audioCtx.currentTime + 0.3);
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+          osc.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.25);
 
-          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
 
           osc.connect(gain);
           gain.connect(audioCtx.destination);
 
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.35);
+          osc.stop(audioCtx.currentTime + 0.3);
           
         } else if (type === 'flip') {
-          // Whispery sound of moving in shadows
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.12);
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
           
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.1);
           
           osc.connect(gain);
           gain.connect(audioCtx.destination);
           
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.12);
+          osc.stop(audioCtx.currentTime + 0.1);
         }
       } catch (e) {
-        console.warn('Web Audio compilation context missed:', e);
+        console.warn('Web Audio synthesis compilation skipped:', e);
       }
+    }
+
+    // Dynamic coloring execution loop applying mode-specific styled classes/borders to all story items
+    function applyColorStyles() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const currentMode = isDark ? 'dark' : 'light';
+      
+      document.querySelectorAll('.colloc-ref').forEach(el => {
+        const id = el.getAttribute('data-id');
+        const colObj = colorStyles[id];
+        if (colObj) {
+          const val = colObj[currentMode];
+          
+          // Clear previous inline overrides safely
+          el.style.backgroundImage = '';
+          el.style.webkitBackgroundClip = '';
+          el.style.webkitTextFillColor = '';
+          el.style.color = '';
+          el.style.borderColor = '';
+          
+          el.className = `colloc-ref cursor-pointer font-bold border-b-2 border-dashed px-1 rounded transition hover:bg-slate-500/10`;
+          
+          if (colObj.isGradient) {
+            el.style.backgroundImage = val;
+            el.style.webkitBackgroundClip = 'text';
+            el.style.webkitTextFillColor = 'transparent';
+            el.style.borderColor = currentMode === 'dark' ? '#fda4af' : '#f43f5e';
+          } else {
+            el.style.color = val;
+            el.style.borderColor = val;
+          }
+        }
+      });
     }
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -953,10 +997,17 @@
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark/Starlight aesthetic for optical visualization depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-radar text-sm text-emerald-400"></i>';
+      const themeBtn = document.getElementById('theme-toggle');
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-yellow-400"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-slate-600"></i>';
+      }
       
+      applyColorStyles();
+
       document.addEventListener('keydown', (e) => {
         if (state.currentView === 'flashcards') {
           if (e.code === 'Space') {
@@ -971,10 +1022,27 @@
       });
     });
 
+    // Fully functioning Light / Dark Theme toggle as requested by user
     function toggleTheme() {
-      // Recalibrate radar sweep (retriggers aesthetic feedback metrics)
       playSynthSound('click');
-      showToast('Sensors Calibrated', 'Acoustic darkness-mapping filters synchronized.', 'fa-radar');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l30', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-yellow-400"></i>';
+        showToast('Theme Switched', 'Obsidian dark palette activated.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-slate-600"></i>';
+        showToast('Theme Switched', 'Crisp light layout activated.', 'fa-sun');
+      }
+      
+      // Instantly recalibrate dynamic colors across the ecosystem
+      applyColorStyles();
+      renderDictionary();
+      renderFlashcard();
+      displayGlossaryCard(state.activeCardId);
     }
 
     function switchView(viewName) {
@@ -989,7 +1057,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-zinc-900 hover:text-slate-900 dark:hover:text-slate-150";
         }
       });
       
@@ -1001,7 +1069,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-emerald-500/10 text-emerald-300 border border-emerald-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-rose-500/10 text-rose-600 dark:text-rose-350 border border-rose-500/20";
       }
       
       state.currentView = viewName;
@@ -1009,10 +1077,15 @@
         renderFlashcard();
       } else if (viewName === 'dictionary') {
         renderDictionary();
+      } else if (viewName === 'story') {
+        applyColorStyles();
       }
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l30')) {
+        state.theme = localStorage.getItem('colloc_theme_l30');
+      }
       if (localStorage.getItem('colloc_mastery_list_l30')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l30'));
@@ -1083,7 +1156,7 @@
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l30', JSON.stringify(state.voiceSettings));
-      showToast('Config Saved', 'Obsidian audio synthesis parameters configured.');
+      showToast('Config Saved', 'Chromatic audio synthesis parameters configured.');
     }
 
     function updateVoiceSlider(field, val) {
@@ -1173,7 +1246,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('pitch_dark');
+      displayGlossaryCard('shades_of_color');
     }
 
     function displayGlossaryCard(id) {
@@ -1183,16 +1256,41 @@
       
       state.activeCardId = id;
       
-      document.getElementById('glossary-phrase').innerText = term.phrase;
+      const phraseEl = document.getElementById('glossary-phrase');
+      phraseEl.innerText = term.phrase;
+      
+      // Dynamic theme coloring for glossary display
+      const isDark = document.documentElement.classList.contains('dark');
+      const currentMode = isDark ? 'dark' : 'light';
+      const colObj = colorStyles[id];
+      
+      phraseEl.style.backgroundImage = '';
+      phraseEl.style.webkitBackgroundClip = '';
+      phraseEl.style.webkitTextFillColor = '';
+      phraseEl.style.color = '';
+      
+      if (colObj) {
+        const val = colObj[currentMode];
+        if (colObj.isGradient) {
+          phraseEl.style.backgroundImage = val;
+          phraseEl.style.webkitBackgroundClip = 'text';
+          phraseEl.style.webkitTextFillColor = 'transparent';
+        } else {
+          phraseEl.style.color = val;
+        }
+      } else {
+        phraseEl.style.color = currentMode === 'dark' ? '#fb7185' : '#e11d48';
+      }
+
       document.getElementById('glossary-definition').innerText = term.definition;
       document.getElementById('glossary-example').innerText = term.example;
       document.getElementById('glossary-category').innerText = `Conceptual Group: ${term.category}`;
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-rose-500 dark:text-rose-400"></i>';
       } else {
-        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        star.innerHTML = '<i class="fa-regular fa-star text-slate-400"></i>';
       }
       
       triggerTTS(term.phrase);
@@ -1215,17 +1313,17 @@
       
       const star = document.getElementById('glossary-master-btn');
       if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400"></i>';
+        star.innerHTML = '<i class="fa-solid fa-star text-rose-500 dark:text-rose-455"></i>';
         showToast('Term Mastered', `Logged "${term.phrase}" into your mastered database!`);
       } else {
-        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        star.innerHTML = '<i class="fa-regular fa-star text-slate-400"></i>';
         showToast('Concern Re-opened', `Moved "${term.phrase}" back to study list.`);
       }
     }
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "Our exploration began late in the afternoon, just as the sun set and shadows lengthened across the valley. It was rapidly growing dark, forcing us to hasten our pace. To enter the forbidden cavern undetected, we had decided to move under cover of darkness. As we stepped inside, the mouth of the cave was only dimly lit by the fading twilight. Soon, the path sloped downwards, and we were suddenly plunged into darkness. It was absolutely pitch dark—or as some Spelunkers prefer to say, pitch black. This was complete darkness; a thick, heavy, utter darkness that felt almost physical. We switched on our headlamps, which cast erratic, flickering shadows against the limestone formations. I thought I saw a shadowy figure disappear into the deep shadows at the end of the corridor, but my companion claimed it was just my imagination. Don't let dark thoughts or fear cloud your judgment, he whispered. As we waited for our eyes to adapt, we spotted a faint outline of a passageway ahead. There was no shadow of a doubt that we had discovered the lost tomb. The walls were covered in ancient inscriptions shrouded in darkness for centuries. For the time being, we stood silently in the deepening gloom, enjoying our discovery.";
+      const narrativeText = "Today you're going to expand your vocabulary by learning various collocations about colors! You can describe a color as light or dark—for example, someone can have light brown or dark brown hair. If a color is very intense, you can describe it as bright—for example, a bright red apple. If the color is not very intense, you can describe it as pale—for example, a pale green dress. When describing colors in general, we talk about intense, bold/vivid colors, or light, delicate pastel colors. Designers utilize diverse objects to describe specific shades of a color. Our studio exhibits gems of ruby red and cherry red, paintings of a fiery orange sunset, and autumn leaves of burnt orange. We catalog vibrant lemon yellow and golden yellow, contrasting them with rich emerald green and organic olive green. For skies, we use a light shade like sky blue, transitioning to deep royal blue, or a dark navy blue or midnight blue. When you have something that is primarily one color, but with a little bit of another color included, we can use the word \"tinge\". You might describe white flowers with a tinge of pink, or a light gray fabric with a slight brownish tinge. Combining color bases with \"-ish\" describes blended shades, such as clay with a reddish brown hue or sand that appears yellowish brown. In wardrobe styling, some colors look good together—in this case, we say the colors match. Other colors look terrible together—in this case, we say the colors clash. Choosing shades that match a person's skin tone is vital—if a garment looks good, you can say that color suits you or that color looks good on you. Finally, a tip about changing the color of something. We use the verb \"paint\" in most cases—you paint a house and paint your nails. But we use the verb \"dye\" for hair and cloth/fabric—so you dye your hair blonde and dye a shirt blue!";
       triggerTTS(narrativeText);
     }
 
@@ -1233,7 +1331,32 @@
       const card = state.collocations[state.flashcardsIndex];
       if (!card) return;
       
-      document.getElementById('card-front-phrase').innerText = card.phrase;
+      const frontPhrase = document.getElementById('card-front-phrase');
+      frontPhrase.innerText = card.phrase;
+      
+      // Dynamic theme coloring for flashcard phrase front faces
+      const isDark = document.documentElement.classList.contains('dark');
+      const currentMode = isDark ? 'dark' : 'light';
+      const colObj = colorStyles[card.id];
+      
+      frontPhrase.style.backgroundImage = '';
+      frontPhrase.style.webkitBackgroundClip = '';
+      frontPhrase.style.webkitTextFillColor = '';
+      frontPhrase.style.color = '';
+      
+      if (colObj) {
+        const val = colObj[currentMode];
+        if (colObj.isGradient) {
+          frontPhrase.style.backgroundImage = val;
+          frontPhrase.style.webkitBackgroundClip = 'text';
+          frontPhrase.style.webkitTextFillColor = 'transparent';
+        } else {
+          frontPhrase.style.color = val;
+        }
+      } else {
+        frontPhrase.style.color = currentMode === 'dark' ? '#fb7185' : '#e11d48';
+      }
+
       document.getElementById('card-front-category').innerText = card.category;
       
       document.getElementById('card-back-definition').innerText = card.definition;
@@ -1267,7 +1390,7 @@
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Limit Reached', 'This is the first darkness index card.');
+        showToast('Limit Reached', 'This is the first chromatic index card.');
       }
     }
 
@@ -1277,7 +1400,7 @@
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Looping', 'Cycling back to the first optical record.');
+        showToast('Looping', 'Cycling back to the first chromatic record.');
         state.flashcardsIndex = 0;
         renderFlashcard();
       }
@@ -1298,7 +1421,7 @@
       card.mastered = checkbox.checked;
       saveMastery();
       if (card.mastered) {
-        showToast('Optical Logged', `"${card.phrase}" logged as decoded.`);
+        showToast('Chromatic Logged', `"${card.phrase}" logged as decoded.`);
       }
     }
 
@@ -1326,26 +1449,26 @@
         const collocId = matchingColloc ? matchingColloc.id : opt;
         
         btn.onclick = () => selectQuizAnswer(collocId);
-        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans";
         
         if (!answered) {
-          btn.className += "bg-[#111827] border-slate-800 hover:border-emerald-500 hover:bg-emerald-500/10";
+          btn.className += " bg-slate-50 border-slate-200 hover:border-rose-500 hover:bg-rose-50 dark:bg-zinc-800 dark:border-zinc-700 dark:hover:border-rose-500 dark:hover:bg-rose-500/10 text-slate-800 dark:text-slate-100";
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
           if (collocId === quest.answer) {
-            btn.className += "bg-emerald-950/20 border-emerald-800 text-emerald-400";
+            btn.className += " bg-emerald-50 border-emerald-400 text-emerald-800 dark:bg-emerald-950/20 dark:border-emerald-855 dark:text-emerald-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
           } else if (collocId === userAns) {
-            btn.className += "bg-rose-955/20 border-rose-900 text-rose-400";
+            btn.className += " bg-rose-50 border-rose-300 text-rose-800 dark:bg-rose-955/20 dark:border-rose-900 dark:text-rose-400";
             btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += "bg-slate-900 border-slate-800 text-slate-500";
+            btn.className += " bg-slate-100 border-slate-200 text-slate-400 dark:bg-zinc-900 dark:border-zinc-800 dark:text-slate-500";
           }
         }
         
         if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-750"></i>`;
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400 dark:text-slate-600"></i>`;
         }
         grid.appendChild(btn);
       });
@@ -1353,11 +1476,11 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-rose-500 text-white rounded-xl text-xs sm:text-sm font-bold transition font-mono";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-400 dark:bg-zinc-800 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
       }
     }
 
@@ -1369,10 +1492,10 @@
       
       if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Echolocation Success!', 'Accurate collocation applied to research brief.', 'fa-circle-check');
+        showToast('Spectrum Aligned!', 'Accurate collocation applied to design brief.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Optical Failure!', 'Inconclusive alignment with standard physics.', 'fa-triangle-exclamation');
+        showToast('Chromatic Drift!', 'Inconclusive alignment with standard aesthetics.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1414,10 +1537,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Spelunker Recruit";
-      if (percentage === 100) rank = "Grand Illuminator";
-      else if (percentage >= 90) rank = "Subterranean Analyst";
-      else if (percentage >= 70) rank = "Optical Specialist";
+      let rank = "Apprentice Stylist";
+      if (percentage === 100) rank = "Grand Chroma Master";
+      else if (percentage >= 90) rank = "Aesthetic Consultant";
+      else if (percentage >= 70) rank = "Chromatic Analyst";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1440,12 +1563,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['pitch dark', 'under cover of darkness', 'plunged into darkness', 'faint outline', 'shadow of a doubt', 'eyes adapt'];
+      const selectedWords = ['sky blue', 'colors match', 'paint a house', 'dye your hair', 'pastel colors', 'fiery orange'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-emerald-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
+        chip.className = "px-3 py-1 bg-slate-100 hover:bg-rose-50 dark:bg-zinc-800 dark:hover:bg-rose-500/10 text-slate-650 dark:text-slate-355 rounded-lg text-xs font-semibold transition border border-slate-200 dark:border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1457,7 +1580,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To escape detection, the commandos slipped into the compound ${word}...`;
+        textarea.value = `To achieve a modern look, we decided to paint a house in pastel colors...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1471,7 +1594,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Evaluate the darkness context: "${randomColloc}"`;
+        textarea.value = `Evaluate the chromatic context: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1483,10 +1606,10 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how a flickering shadows inside a dimly lit dungeon can cast a shadow and cloud someone\'s judgment.",
-        "Draft a summary showing how the secrets are kept in the dark, and how the mood darkened when brought to light.",
-        "Describe a blackout where the neighborhood was plunged into darkness, leaving everyone in blind darkness.",
-        "Examine why navigating under cover of darkness requires Spelunkers to wait for their eyes to adapt."
+        "Detail why it is crucial to ensure that the colors match when choosing a theme for a new brand logo.",
+        "Draft a summary explaining the difference between trying to paint a house and wanting to dye a shirt.",
+        "Describe a breathtaking twilight sunset using the collocation fiery orange.",
+        "Examine why specific shades of a color look better on someone depending on their unique skin tone."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1515,11 +1638,11 @@
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
       document.getElementById('diagnostic-analysis').innerText = "Analyzing conceptual frameworks... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard darkness descriptions...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Measuring spectral alignment...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Optical Physicist, Spelunking Expert, and English Scholar. Check if the user's sentence uses Lesson 30 darkness collocations (e.g., pitch dark, pitch black, complete darkness, total darkness, deepening gloom, shadows lengthened, cast a shadow, dimly lit, shadow of a doubt, keep in the dark, mood darkened, eyes adapt, faint glow, blind darkness, shrouded in darkness, plunged into darkness, flickering shadows, shadowy figure, deep shadows, dark thoughts, under cover of darkness, faint outline, blackout, jet black) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving shadow, night-vision, or meteorology alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are a world-class Graphic Designer, Interior Decorator, and English Scholar. Check if the user's sentence uses Lesson 30 color collocations (e.g., paint a house, paint your nails, dye your hair, dye a shirt, shades of a color, skin tone, colors match, colors clash, ruby red, cherry red, fiery orange, burnt orange, lemon yellow, golden yellow, emerald green, olive green, sky blue, royal blue, navy blue / midnight blue, tinge of pink, brownish tinge, reddish brown, yellowish brown, bold/vivid colors, pastel colors, pale green dress, bright red apple) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving color, dye, contrast, or matches), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1574,12 +1697,12 @@
           
           const badge = document.getElementById('diagnostic-badge');
           if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-450 border border-emerald-900/40";
-            badge.innerText = "Luminous Alignment";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100/50 dark:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40";
+            badge.innerText = "Chromatic Alignment";
             playSynthSound('correct');
           } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
-            badge.innerText = "Unnatural Mapping";
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100/40 dark:bg-rose-955/20 text-rose-800 dark:text-rose-400 border border-rose-300 dark:border-rose-900/40";
+            badge.innerText = "Imperfect / Unnatural";
             playSynthSound('incorrect');
           }
           
@@ -1613,7 +1736,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Darkness Mapping";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Chromatic Spectrum";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1628,7 +1751,7 @@
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
         document.getElementById('podcast-current-phrase').innerText = "Broadcast Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 30. All darkness collocations decoded!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 30. All color collocations decoded!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
@@ -1645,14 +1768,14 @@
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key darkness collocation. It is: ${currentWord.phrase}. Tom, how do Spelunkers apply this term?`;
+        const textToSpeak = `Let's analyze our next key color collocation. It is: ${currentWord.phrase}. Tom, how do designers apply this term?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-emerald-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="h-6 w-6 rounded bg-rose-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-emerald-400 font-mono">Sarah (Night Operations)</span>
+            <span class="text-[10px] font-bold text-rose-455 font-mono">Sarah (Creative Director)</span>
             <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1673,7 +1796,7 @@
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-emerald-300 font-mono">Tom (Cave Specialist)</span>
+            <span class="text-[10px] font-bold text-rose-300 font-mono">Tom (Art Consultant)</span>
             <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1768,32 +1891,49 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif">No matching optical records resolved.</td>
+            <td colspan="6" class="text-center py-8 text-slate-500 dark:text-slate-405 italic font-serif">No matching design records resolved.</td>
           </tr>
         `;
         return;
       }
       
+      const isDark = document.documentElement.classList.contains('dark');
+      const currentMode = isDark ? 'dark' : 'light';
+
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-zinc-800/40 transition border-b border-zinc-800";
+        row.className = "hover:bg-slate-100/50 dark:hover:bg-zinc-800/40 transition border-b border-slate-200 dark:border-zinc-800";
         
-        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
+        const starIcon = c.mastered ? 'fa-star text-amber-500' : 'fa-star text-slate-300 dark:text-slate-700';
         
+        // Dynamic theme-specific hex or gradient insertion into lexicon titles
+        const colObj = colorStyles[c.id];
+        let dynamicInline = '';
+        if (colObj) {
+          const val = colObj[currentMode];
+          if (colObj.isGradient) {
+            dynamicInline = `style="background-image: ${val}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"`;
+          } else {
+            dynamicInline = `style="color: ${val};"`;
+          }
+        } else {
+          dynamicInline = isDark ? `style="color: #fda4af;"` : `style="color: #be123c;"`;
+        }
+
         row.innerHTML = `
           <td class="py-4 px-4 text-center">
             <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95">
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-emerald-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold capitalize cursor-pointer hover:underline font-serif" ${dynamicInline} onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/20 font-mono">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-rose-500/10 text-rose-600 dark:text-rose-300 px-2 py-0.5 rounded-full border border-rose-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
           <td class="py-4 px-4 hidden lg:table-cell italic text-slate-500 font-semibold font-serif">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-zinc-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-zinc-800 flex items-center justify-center text-slate-400 hover:text-rose-500 dark:hover:text-white transition mx-auto bg-white dark:bg-zinc-900">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1827,10 +1967,10 @@
       tBody.innerText = body;
       tIcon.className = `fa-solid ${iconClass}`;
       
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-zinc-800 max-w-sm transition-all duration-300";
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-zinc-850 max-w-sm transition-all duration-300";
       
       setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-zinc-800 max-w-sm transition-all duration-300";
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-zinc-850 max-w-sm transition-all duration-300";
       }, 4000);
     }
 

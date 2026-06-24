@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 33: Deciding & Choosing Lab</title>
+  <title>CollocaStudy - Lesson 33: Taste & Sensation Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Decision, Pathfinding, and Boardroom Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2 family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Culinary, Flavor, and Sensory Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Crossroads theme -->
+  <!-- Configuring Tailwind theme options for the Gastronomic Culinary theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -27,17 +27,17 @@
           },
           colors: {
             brand: {
-              50: '#f0fdfa', 
-              100: '#ccfbf1',
-              200: '#99f6e4',
-              300: '#5eead4',
-              400: '#2dd4bf',
-              500: '#0ea5e9', /* Strategic Blue */
-              600: '#0284c7',
-              700: '#0369a1', 
-              800: '#075985',
-              900: '#040d1a', /* Deep Decision Void */
-              950: '#01040a'
+              50: '#fffbeb', /* Warm Peach Parchment */
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b', /* Rich Ginger Gold */
+              600: '#d97706',
+              700: '#b45309', 
+              800: '#78350f',
+              900: '#1c130c', /* Deep Cocoa Obsidian */
+              950: '#070402'
             }
           }
         }
@@ -46,7 +46,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching decision grid colors */
+    /* Premium Scrollbars matching warm culinary accent colors */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -55,11 +55,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #0ea5e9;
+      background: #f59e0b;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #075985;
+      background: #b45309;
     }
     
     /* Smooth interactive transitions */
@@ -86,7 +86,7 @@
       transform: rotateY(180deg);
     }
     
-    /* Animated Equalizer Waveform */
+    /* Animated Equalizer Waveform representing wafting flavor notes */
     @keyframes wave-bounce {
       0%, 100% { height: 8px; }
       50% { height: 42px; }
@@ -95,56 +95,56 @@
       animation: wave-bounce 1s ease-in-out infinite;
     }
     
-    /* Node branch pulse animation representing pathways */
-    @keyframes branch-pulse {
+    /* Subtle flavor warmth pulse animation */
+    @keyframes flavor-pulse {
       0%, 100% { opacity: 0.15; transform: scale(0.98); }
       50% { opacity: 0.35; transform: scale(1.02); }
     }
-    .path-drift-glow {
-      animation: branch-pulse 10s infinite ease-in-out;
+    .flavor-drift-glow {
+      animation: flavor-pulse 10s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-amber-50 text-stone-850 dark:bg-brand-950 dark:text-stone-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Interactive HTML5 Crossroads Canvas Background -->
-    <canvas id="crossroads-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-40"></canvas>
+    <!-- Interactive HTML5 Savory Vapor Canvas Background -->
+    <canvas id="flavor-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-40 dark:opacity-60"></canvas>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-amber-200/60 bg-white/80 dark:border-amber-900/40 dark:bg-stone-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-600 to-teal-850 text-white shadow-md shadow-sky-500/20">
-          <i class="fa-solid fa-route text-lg animate-pulse"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-amber-600 to-[#78350f] text-white shadow-md shadow-amber-500/20">
+          <i class="fa-solid fa-cookie-bite text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-sky-400 to-teal-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-sky-500/10 px-2 py-0.5 text-xs font-semibold text-sky-300 border border-sky-500/20">Lesson 33</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-amber-500 to-amber-300 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300 border border-amber-500/20">Lesson 33</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-circle-nodes text-sky-450"></i>
-        <h1 class="font-heading font-bold text-slate-200">Lesson 33: Deciding & Choosing</h1>
+        <i class="fa-solid fa-mug-hot text-amber-500 animate-bounce"></i>
+        <h1 class="font-heading font-bold text-stone-700 dark:text-stone-200">Lesson 33: Taste & Flavor</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-200 bg-white hover:bg-amber-50 text-stone-600 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300 dark:hover:bg-stone-850 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates path re-routing) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-300 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Recalibrate Node Paths">
-          <i class="fa-solid fa-shuffle text-sm text-sky-400"></i>
+        <!-- Adaptive Theme Switcher -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-200 bg-white hover:bg-amber-50 text-stone-600 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300 dark:hover:bg-stone-850 transition shadow-sm" id="theme-toggle" title="Toggle Light/Dark Calibration">
+          <i class="fa-solid fa-sun text-sm text-amber-500"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
-          <div class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-350" id="lesson-mastery-ratio">0/30 Mastered</span>
+        <div class="flex items-center gap-2 rounded-xl bg-amber-100/50 border border-amber-200 px-3 py-1.5 dark:bg-stone-900 dark:border-stone-800">
+          <div class="h-2 w-2 rounded-full bg-amber-500 animate-pulse"></div>
+          <span class="text-xs font-semibold text-stone-600 dark:text-stone-350" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -153,50 +153,49 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-955/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-amber-200/50 bg-white/70 dark:border-amber-900/20 dark:bg-brand-950/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-455 uppercase">Decisional Modules</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-amber-600 dark:text-amber-400 uppercase">Gustatory Modules</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-sky-500/10 text-sky-300 border border-sky-500/20">
-            <i class="fa-solid fa-scroll text-base"></i>
-            <span>Dossier & Glossary</span>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Interactive Dossier</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-amber-100/50 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
             <i class="fa-solid fa-clone text-base"></i>
-            <span>Divergent Flashcards</span>
+            <span>3D Sensory Cards</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
-            <i class="fa-solid fa-gavel text-base"></i>
-            <span>Graded Path Exam</span>
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-amber-100/50 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
+            <i class="fa-solid fa-utensils text-base"></i>
+            <span>Graded Taste Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-slate-900 hover:text-slate-150">
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-amber-100/50 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150">
             <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
             <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-amber-100/50 dark:hover:bg-zinc-900 hover:text-slate-150">
             <i class="fa-solid fa-radio text-base"></i>
             <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-350 hover:bg-zinc-900 hover:text-slate-150">
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-amber-100/50 dark:hover:bg-zinc-900 hover:text-slate-150">
             <i class="fa-solid fa-spell-check text-base"></i>
             <span>Decisional Lexicon</span>
           </button>
         </div>
         
-        <!-- User Epistemology Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
-          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-sky-500/10 rounded-full"></div>
+        <!-- User Sensory Standing Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-stone-100 to-amber-100/50 dark:from-stone-950 dark:to-stone-900 p-4 border border-amber-200/40 dark:border-stone-800 relative overflow-hidden">
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-compass text-sky-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Pathfinder Level</span>
+            <i class="fa-solid fa-pepper-hot text-amber-500"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-stone-500 dark:text-slate-400">Flavor standing</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-sky-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-450 mt-1 leading-relaxed">Resolve strategic crossroads and weigh options. Complete tasks to elevate to the Grand Pathmaker ranking!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-amber-500" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-stone-500 dark:text-slate-450 mt-1 leading-relaxed">Resolve culinary notes, sweet profiles, and acquired tastes. Complete tasks to elevate to the Master Gastronome ranking!</p>
         </div>
       </nav>
 
@@ -208,43 +207,52 @@
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
             <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-sky-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-network-wired text-slate-700/60 text-lg"></i>
-              </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+            <div class="xl:col-span-7 bg-white dark:bg-stone-900/90 rounded-3xl p-6 md:p-8 border border-amber-200/60 dark:border-stone-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-amber-100 dark:border-stone-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Startup Crossroads</h2>
-                  <p class="text-xs text-slate-400 mt-1">Explore precise decisions and complex options. Click highlighted collocations to pull up decision cards.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-stone-800 dark:text-slate-200">Interactive Curriculum: Taste</h2>
+                  <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">Explore definitions of flavor categories, spice strengths, and food descriptors. Click highlighted collocations to pull up cognitive files.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-sky-500/10 transition z-10">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-stone-950 rounded-xl text-sm font-bold shadow-md shadow-amber-500/10 transition shrink-0">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Broadcast Addressing</span>
+                  <span>Broadcast Lesson</span>
                 </button>
               </div>
               
               <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 font-sans tracking-wide space-y-6 relative z-10">
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-stone-600 dark:text-stone-300 font-sans tracking-wide space-y-6 relative z-10">
                 <p>
-                  As the founder of a promising clean-tech venture, I had to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="make_decision">make a decision</span> that would define our legacy. Our lead scientist presented a brilliant algorithm, but incorporating it required us to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="choose_between">choose between</span> two divergent routes: scale organically or seek venture capital. To <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="make_choice">make a choice</span> of this magnitude, I needed to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="consider_options">consider our options</span> carefully and thoroughly <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="weigh_pros_cons">weigh the pros and cons</span>.
+                  Let's begin this lesson by looking at the commonly confused words taste and flavor.
                 </p>
                 <p>
-                  It was an incredibly <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="tough_decision">tough decision</span>. Our investors urged me to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="make_up_your_mind">make up my mind</span>, but I preferred to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="keep_options_open">keep our options open</span> while the board evaluated potential partners. Our analyst compiled a <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="range_options">wide range of options</span>, and we managed to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="narrow_down_options">narrow down our options</span> to a select few. We decided to <span class="colloc-ref cursor-pointer font-bold text-sky-400 border-b-2 border-dashed border-sky-500 hover:bg-sky-500/10 px-1 rounded transition" data-id="draw_shortlist">draw up a shortlist</span> of high-profile impact funds.
+                  The word <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="taste_verb">taste is often used as a verb</span>, so you can say that a food <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_good">tastes good</span> or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_bad">tastes bad</span>. If you want to be a little more extreme in your description, you can say that a food <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_divine">tastes divine</span> or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_heavenly">tastes heavenly</span> (for an extremely good taste) or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_gross">tastes gross</span> or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_disgusting">tastes disgusting</span> (for an extremely bad taste).
                 </p>
                 <p>
-                  I was determined to make an <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="informed_decision">informed decision</span> rather than committing to a <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="snap_decision">snap decision</span>. However, when our primary competitor unexpectedly launched a clone, I faced a <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="forced_choice">forced choice</span>. We had <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="have_no_choice">no choice</span> but to act immediately. During a tense morning board meeting, I made a <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="split_second_decision">split-second decision</span> to reject their acquisition bid. We chose to <span class="colloc-ref cursor-pointer font-bold text-rose-455 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="run_risk">run the risk</span> of a hostile buyout and stand our ground.
+                  Another expression is "it <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_funny">tastes funny</span>" - that means it tastes unusual, with a negative connotation. For example - "This milk tastes funny - it might be past its expiration date." It's very common to say that something <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="tastes_like">tastes like</span> something else: "I had frog's legs once - they tasted like chicken."
                 </p>
                 <p>
-                  Many industry journals criticized our stubbornness, calling our stance an <span class="colloc-ref cursor-pointer font-bold text-rose-400 border-b-2 border-dashed border-rose-500 hover:bg-rose-500/10 px-1 rounded transition" data-id="arbitrary_decision">arbitrary decision</span>. But I had to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="defend_decision">defend my decision</span> in front of our stakeholders. I resolved to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="stick_to_decision">stick to my decision</span> because I believed in our team\'s mission. It was a <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="wise_decision">wise decision</span>. We built our framework entirely <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="by_choice">by choice</span>, and I knew that if we remained patient and learned to <span class="colloc-ref cursor-pointer font-bold text-emerald-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="choose_wisely">choose wisely</span>, we would scale successfully in the long run.
+                  The word <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="flavor_noun">flavor is typically used as a noun</span>. We can say something has a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="nutty_flavor">nutty</span>, <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="fruity_flavor">fruity</span>, <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="cheesy_flavor">cheesy</span>, <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="minty_flavor">minty</span>, or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="salty_flavor">salty flavor</span> to compare the flavor to another food (nuts, fruit, cheese, etc.). You can also use the word taste as a noun - for example: "This wine has a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="fruity_taste">fruity taste</span> / <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="fruity_flavor">fruity flavor</span>."
+                </p>
+                <p>
+                  Flavors or tastes can also be described by category, or by the sensation they cause in your mouth - a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="bitter_taste">bitter taste</span>, <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="sour_taste">sour taste</span>, or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="sweet_taste">sweet taste</span>. When you appreciate a taste slowly, we say you <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="savor_taste">savor the taste</span>. 
+                </p>
+                <p>
+                  If you have a strong, intense flavor that completely dominates, we describe it as a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="strong_flavor">strong flavor</span>. Conversely, a subtle, light touch is a <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="mild_flavor">mild flavor</span> or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-emerald-500 hover:bg-emerald-500/10 px-1 rounded transition" data-id="subtle_flavor">subtle flavor</span>. Both of these words have a positive connotation - "This cheese has a nice, mild flavor" or, "The subtle flavor of ginger adds a nice touch to this marinade."
+                </p>
+                <p>
+                  The expression <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="bland_taste">bland taste</span> or <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="bland_flavor">bland flavor</span> is a way to describe food with little flavor, with a negative connotation. For example - "These crackers have such a bland flavor that it feels like I'm snacking on cardboard."
+                </p>
+                <p>
+                  There are some foods that people usually don't enjoy the first time they try them... but with time, people learn to like the flavor. A food like this can be described as an <span class="colloc-ref cursor-pointer font-bold text-amber-600 dark:text-amber-400 border-b-2 border-dashed border-amber-500 hover:bg-amber-500/10 px-1 rounded transition" data-id="acquired_taste">acquired taste</span>.
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
             <div class="xl:col-span-5 flex flex-col gap-6">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+              <div class="bg-gradient-to-tr from-stone-900 to-stone-950 text-white rounded-3xl p-6 border border-stone-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-sky-400 animate-pulse" id="glossary-category">Choice Parameter</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-amber-400 animate-pulse" id="glossary-category">Savor Note</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
@@ -255,24 +263,24 @@
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-sky-300" id="glossary-phrase">make a decision</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-amber-300" id="glossary-phrase">tastes funny</h3>
                 
-                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">To choose a course of action after careful cognitive evaluation of options.</p>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" id="glossary-definition">Tasting unusual, weird, or slightly spoiled, with a distinct negative connotation.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Context Example</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"As the founder of a clean-tech venture, I had to make a decision."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Interactive Context Example</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100" id="glossary-example">"This milk tastes funny - it might be past its expiration date."</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-circle-question text-sky-400"></i>
-                  <span>Lexical Decisiveness</span>
+              <div class="bg-white dark:bg-stone-900/40 rounded-3xl p-6 border border-amber-200/50 dark:border-stone-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-stone-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-amber-500"></i>
+                  <span>Gustatory Clarification</span>
                 </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  English maps descriptions of choices to exact, fixed combinations. You **make up your mind** rather than 'arrange' it. You make a **snap decision** rather than a 'fast decision'. Avoid incorrect pairings to sound fully natural.
+                <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed font-sans">
+                  English separates taste and flavor clearly. **Taste** is commonly a verb (tastes divine, tastes gross), whereas **Flavor** acts as a noun (nutty flavor, subtle flavor). When a food requires learning to like, it's categorized as an **acquired taste**.
                 </p>
               </div>
             </div>
@@ -284,67 +292,67 @@
           <div class="max-w-xl mx-auto space-y-6">
             <div class="flex items-center justify-between">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight">Divergent Flashcards</h2>
-                <p class="text-xs text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-stone-800 dark:text-stone-200">Divergent Flashcards</h2>
+                <p class="text-xs text-stone-500 dark:text-stone-405">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold">
+              <div class="flex items-center gap-2 bg-[#020617] border border-stone-800 rounded-xl px-3 py-1 text-xs font-semibold">
                 <span id="flashcard-index">1</span>
-                <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span class="text-stone-500">/</span>
+                <span>22</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-sky-400 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            <div class="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-amber-500 h-full w-[4.5%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
             <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-stone-900 border border-amber-200/60 dark:border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-300 px-2.5 py-1 rounded-full" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-700 dark:text-amber-300 px-2.5 py-1 rounded-full border border-amber-500/20" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-amber-200 dark:border-stone-800 text-stone-500 dark:text-stone-400 hover:text-stone-850 dark:hover:text-stone-200 transition flex items-center justify-center">
                       <i class="fa-solid fa-volume-high text-xs"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Collocation</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-stone-400 uppercase tracking-widest font-bold font-mono">Collocation</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-stone-800 dark:text-white" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-400">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
+                  <div class="text-center text-xs text-stone-400">
+                    <span class="bg-stone-100 dark:bg-stone-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-sky-950 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-stone-950 to-amber-950 border border-stone-850 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-sky-450 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
-                    <span class="text-xs text-sky-450 font-semibold font-mono">Answer Profile</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-amber-400 px-2.5 py-1 rounded-full" id="card-back-category">Category</span>
+                    <span class="text-xs text-amber-400 font-semibold font-mono">Answer Profile</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-sky-450 uppercase tracking-widest font-black">Definition</span>
+                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black">Definition</span>
                       <p class="text-base font-semibold leading-relaxed" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
                     <div class="border-t border-white/10 pt-3">
-                      <span class="text-[10px] text-sky-450 uppercase tracking-widest font-black font-mono">Context Precedent</span>
-                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-black font-mono">Context Precedent</span>
+                      <p class="text-xs sm:text-sm italic text-stone-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
                   
                   <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                     <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
-                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-sky-500 focus:ring-sky-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-300">Mark as Decoded</span>
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-amber-500 focus:ring-amber-500 bg-transparent border-white/20 h-4 w-4">
+                      <span class="font-bold text-stone-300">Mark as Decoded</span>
                     </label>
-                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
+                    <span class="text-stone-400 text-[11px]"><i class="fa-solid fa-rotate mr-1"></i> Flip card</span>
                   </div>
                 </div>
               </div>
@@ -352,12 +360,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 font-semibold text-sm hover:bg-slate-800 transition">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-amber-200 bg-white dark:border-stone-800 dark:bg-stone-900 font-semibold text-sm hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-200 transition">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-950 font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -370,26 +378,26 @@
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white dark:bg-stone-900 rounded-3xl p-6 md:p-8 border border-amber-200/60 dark:border-stone-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-amber-100 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">Lesson 33 Graded Exam</h2>
-                  <p class="text-xs text-slate-400 mt-1">Select the correct decision-making collocation to complete the sentence.</p>
+                  <h2 class="font-heading text-xl font-black text-stone-800 dark:text-stone-200">Lesson 33 Graded Exam</h2>
+                  <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">Select the correct sensory collocation to complete the sentence.</p>
                 </div>
-                <div class="bg-sky-500/10 text-sky-300 border border-sky-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
-                  Scenario <span id="quiz-question-current">1</span> of 20
+                <div class="bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span> of 10
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-emerald-500 to-sky-500 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-amber-500 to-amber-700 h-full transition-all duration-300" style="width: 10%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-405 font-mono">Active Choice Brief</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white">"Loading question..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-450 font-mono">Active Taste Brief</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-stone-800 dark:text-white">"Loading question..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -398,20 +406,20 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-955/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1">
-                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-955/20 border border-emerald-150 dark:border-emerald-900/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-450 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Decision Counselor's Note</span>
+                  <span>Gastronomical Advisor's Note</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+              <div class="flex items-center justify-between border-t border-stone-200 dark:border-stone-800 pt-4">
                 <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:underline">
                   <i class="fa-solid fa-trash-can mr-1"></i> Restart Exam
                 </button>
-                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition">
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-100 dark:bg-stone-800 text-stone-400 dark:text-stone-500 rounded-xl text-xs sm:text-sm font-bold transition">
                   <span>Next Question</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -419,37 +427,37 @@
             </div>
             
             <!-- Final Score Review Screen -->
-            <div id="quiz-result-screen" class="hidden bg-[#090d16] rounded-3xl p-8 border border-slate-800 shadow-md space-y-8 text-center">
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-[#090d16] rounded-3xl p-8 border border-amber-200/60 dark:border-stone-800 shadow-md space-y-8 text-center">
               <div class="space-y-3">
-                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-sky-500/10 text-sky-400">
-                  <i class="fa-solid fa-compass text-3xl animate-bounce"></i>
+                <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
+                  <i class="fa-solid fa-pizza-slice text-3xl animate-bounce"></i>
                 </div>
-                <h2 class="font-heading text-2xl font-black">Pathfinder Clearance Granted!</h2>
-                <p class="text-sm text-slate-400">Analysis completed. Review your evaluation metrics.</p>
+                <h2 class="font-heading text-2xl font-black text-stone-800 dark:text-stone-200">Sensory Evaluation Complete!</h2>
+                <p class="text-sm text-stone-500 dark:text-stone-400">Analysis completed. Review your evaluation metrics.</p>
               </div>
               
               <!-- Metrics Grid -->
               <div class="grid grid-cols-3 gap-4">
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Decisions Resolved</span>
-                  <span class="text-2xl font-black text-emerald-400 font-mono" id="quiz-score-correct">18/20</span>
+                <div class="bg-stone-100 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-stone-400 font-mono">Tastes Resolved</span>
+                  <span class="text-2xl font-black text-emerald-500 font-mono" id="quiz-score-correct">9/10</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Accuracy Rate</span>
-                  <span class="text-2xl font-black text-sky-400 font-mono" id="quiz-score-percent">90%</span>
+                <div class="bg-stone-100 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-stone-400 font-mono">Accuracy Rate</span>
+                  <span class="text-2xl font-black text-amber-500 font-mono" id="quiz-score-percent">90%</span>
                 </div>
-                <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-                  <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Pathfinder Rank</span>
-                  <span class="text-xs sm:text-sm font-bold text-sky-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Decisive Architect</span>
+                <div class="bg-stone-100 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+                  <span class="block text-[10px] uppercase font-black tracking-wide text-stone-400 font-mono">Savor Ranking</span>
+                  <span class="text-xs sm:text-sm font-bold text-amber-500 mt-2 block truncate animate-pulse" id="quiz-score-rank">Taste Architect</span>
                 </div>
               </div>
               
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 font-semibold text-sm transition">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-950 font-semibold text-sm transition">
                   <i class="fa-solid fa-rotate-right"></i>
                   <span>Recalibrate Paths</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-semibold text-sm hover:bg-slate-800 transition">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-stone-200 dark:border-stone-800 font-semibold text-stone-700 dark:text-stone-300 text-sm hover:bg-stone-100 dark:hover:bg-stone-800 transition">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -461,18 +469,18 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-amber-200/60 dark:border-stone-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-amber-100 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight">AI Decisional Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-medium">Compose custom executive summaries, board proposals, or business analyses using Lesson 33 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-stone-800 dark:text-stone-200">AI Culinary Sandbox</h2>
+                  <p class="text-xs text-stone-500 dark:text-stone-400 font-medium">Compose custom recipe reviews, tasting critiques, or culinary descriptions using Lesson 33 collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-300 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-sky-450"></i> Get Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-amber-200 text-stone-600 dark:border-stone-700 dark:text-stone-300 hover:bg-amber-100/50 dark:hover:bg-stone-800 text-xs font-bold rounded-xl transition shadow-sm">
+                    <i class="fa-solid fa-lightbulb mr-1 text-amber-500"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-sky-500/10 text-sky-300 hover:bg-sky-500/20 text-xs font-bold rounded-xl transition border border-sky-500/25">
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-amber-500/10 text-amber-700 dark:bg-amber-500/25 dark:text-amber-300 hover:bg-amber-500/20 text-xs font-bold rounded-xl transition border border-amber-500/20">
                     <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
@@ -480,8 +488,8 @@
               
               <!-- Text Area -->
               <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-455 font-mono">Proposal Workspace</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-zinc-950 p-4 text-sm font-medium focus:border-sky-500 focus:bg-slate-900 outline-none transition text-slate-100" placeholder="Example: Since we had a wide range of options, we had to narrow down our options to draw up a shortlist of the best partners..."></textarea>
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-amber-600 dark:text-amber-450 font-mono">Tasting Workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-amber-200/60 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 p-4 text-sm font-medium focus:border-amber-500 dark:focus:border-amber-500 focus:bg-white dark:focus:bg-stone-900 outline-none transition text-stone-800 dark:text-stone-100" placeholder="Example: This local craft ale has a mild flavor at first, but with time it becomes a beautifully rich acquired taste..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
@@ -490,13 +498,13 @@
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
+              <div class="flex items-center justify-between border-t border-amber-100 dark:border-stone-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-stone-500 hover:text-rose-500 transition font-mono">
                   <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-500 hover:bg-sky-600 text-zinc-950 rounded-xl text-sm font-bold shadow-lg transition">
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-sm font-bold shadow-lg transition">
                   <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                  <span>Scan Decision Syntax</span>
+                  <span>Scan Taste Syntax</span>
                 </button>
               </div>
             </div>
@@ -504,9 +512,9 @@
             <!-- Diagnostic Output Screen -->
             <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
               <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Decisional Pattern Scan</h3>
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Aromatic Pattern Scan</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-955/20 text-emerald-400 border border-emerald-900/40">Radar Alignment</span>
                 </div>
               </div>
               
@@ -514,7 +522,7 @@
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
                   <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800">
-                    <span class="text-3xl font-black font-mono tracking-tight text-sky-400" id="diagnostic-score">92</span>
+                    <span class="text-3xl font-black font-mono tracking-tight text-amber-500" id="diagnostic-score">92</span>
                     <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
@@ -522,19 +530,19 @@
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-semibold">Analyzing choice structures...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-350 leading-relaxed">Analyzing flavor structures...</p>
                   </div>
                   
                   <div class="border-t border-slate-800 pt-3">
                     <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 font-mono block mb-0.5">Tactical Soundness Feedback</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-semibold">Measuring syntax authenticity...</p>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-350 leading-relaxed">Measuring culinary precision...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-slate-955 p-4 rounded-2xl border border-slate-800">
+              <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800">
                 <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono block mb-1">Recommended Proposal Polish</span>
                 <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-250 mt-1">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
@@ -551,46 +559,46 @@
         <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-stone-900 text-white rounded-3xl p-6 md:p-8 border border-stone-850 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
               <div class="flex items-center justify-between pb-4 border-b border-white/10">
                 <div class="flex items-center gap-3">
-                  <span class="flex h-3 w-3 rounded-full bg-sky-500 animate-pulse"></span>
+                  <span class="flex h-3 w-3 rounded-full bg-amber-500 animate-pulse"></span>
                   <div>
                     <h2 class="font-heading text-lg font-bold tracking-tight">CollocaPodcast: Episode 33</h2>
-                    <p class="text-[10px] text-slate-400 font-semibold font-mono">Choice Room: Strategic Pathways & Decision Making</p>
+                    <p class="text-[10px] text-stone-400 font-semibold font-mono">Tasting Studio: Sweet, Bitter, and Rich Flavors</p>
                   </div>
                 </div>
-                <div class="bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                <div class="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
                   Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
               <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5">
-                <div class="wave-bar bg-sky-450 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
-                <div class="wave-bar bg-sky-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
-                <div class="wave-bar bg-sky-650 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
-                <div class="wave-bar bg-teal-500 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
-                <div class="wave-bar bg-teal-650 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
-                <div class="wave-bar bg-sky-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+                <div class="wave-bar bg-amber-450 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-amber-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-amber-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-amber-700 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-amber-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-amber-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
               <div class="text-center space-y-3">
-                <span class="text-[10px] font-black uppercase tracking-wider text-sky-300 font-mono" id="podcast-status">Studio Ready</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "weigh the pros and cons"</h3>
-                <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing decision-making and selection collocations from Lesson 33.</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-amber-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "acquired taste"</h3>
+                <p class="text-xs text-slate-350 max-w-sm mx-auto leading-relaxed" id="podcast-current-definition">Press Play to activate automated experts discussing gustatory descriptions and taste collocations from Lesson 33.</p>
               </div>
               
               <!-- Dialogue Box -->
               <div class="bg-black/80 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto" id="podcast-chat-log">
                 <div class="flex gap-2.5 items-start">
-                  <div class="h-6 w-6 rounded bg-sky-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+                  <div class="h-6 w-6 rounded bg-amber-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
                   <div class="space-y-0.5">
-                    <span class="text-[10px] font-bold text-sky-400 font-mono">Sarah (Decision Strategist)</span>
-                    <p class="text-xs text-slate-300">"Welcome back to the studio. Today we analyze Lesson 33 Deciding & Choosing collocations. Let's begin the calibration sweep!"</p>
+                    <span class="text-[10px] font-bold text-amber-400 font-mono">Sarah (Sensory Strategist)</span>
+                    <p class="text-xs text-slate-300">"Welcome back to the studio. Today we analyze Lesson 33 Taste and Flavor collocations. Let's begin the calibration sweep!"</p>
                   </div>
                 </div>
               </div>
@@ -598,25 +606,25 @@
               <!-- Podcast Controls -->
               <div class="flex flex-col gap-4">
                 <div class="flex items-center justify-between gap-4">
-                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
+                  <button onclick="prevPodcastCard()" class="h-10 w-10 bg-white/10 text-stone-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Previous collocation">
                     <i class="fa-solid fa-backward-step"></i>
                   </button>
-                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-sky-500 to-sky-700 text-slate-950 hover:from-sky-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
+                  <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-amber-500 to-amber-700 text-stone-950 hover:from-amber-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                     <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                   </button>
-                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-slate-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
+                  <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white/10 text-stone-100 hover:bg-white/20 rounded-xl flex items-center justify-center transition" title="Next collocation">
                     <i class="fa-solid fa-forward-step"></i>
                   </button>
                 </div>
                 
                 <!-- Podcast Progress bar -->
                 <div class="space-y-1.5 font-mono">
-                  <div class="flex items-center justify-between text-[10px] text-sky-300">
-                    <span id="podcast-time-passed">Card 0/30</span>
+                  <div class="flex items-center justify-between text-[10px] text-amber-300">
+                    <span id="podcast-time-passed">Card 0/22</span>
                     <span id="podcast-time-percent">0% Scanned</span>
                   </div>
                   <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                    <div id="podcast-loading-meter" class="bg-sky-400 h-full transition-all duration-300" style="width: 0%"></div>
+                    <div id="podcast-loading-meter" class="bg-amber-400 h-full transition-all duration-300" style="width: 0%"></div>
                   </div>
                 </div>
               </div>
@@ -627,30 +635,30 @@
         
         <!-- ==================== VIEW 6: COLLOCATION DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white dark:bg-stone-900/90 rounded-3xl p-6 border border-amber-200/60 dark:border-stone-850 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-amber-100 dark:border-stone-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">Decisional Lexicon</h2>
-                <p class="text-xs text-slate-455">Search and filter active evaluation and selection collocations in the Lesson 33 database.</p>
+                <h2 class="font-heading text-xl font-extrabold text-stone-800 dark:text-stone-200">Decisional Lexicon</h2>
+                <p class="text-xs text-stone-500 dark:text-stone-400">Search and filter active evaluation and selection collocations in the Lesson 33 database.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-sky-500 transition w-full md:w-48" placeholder="Search files...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-amber-200 rounded-xl text-xs bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-white outline-none focus:border-amber-500 transition w-full md:w-48" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-300 outline-none font-bold font-mono">
-                  <option value="all">All Decision Types</option>
-                  <option value="Evaluating">Evaluating Options</option>
-                  <option value="Types of Decisions">Types of Decisions</option>
-                  <option value="Action & Commitment">Action & Commitments</option>
-                  <option value="Forced Choices">Forced Choices</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-amber-200 rounded-xl text-xs bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-slate-300 outline-none font-bold font-mono">
+                  <option value="all">All Taste Types</option>
+                  <option value="Verbs & Sensations">Verbs & Sensations</option>
+                  <option value="Flavor Profiles">Flavor Profiles</option>
+                  <option value="Taste Sensations">Taste Sensations</option>
+                  <option value="Flavor Strength">Flavor Strength</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-slate-300 outline-none font-bold font-mono">
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-amber-200 rounded-xl text-xs bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-slate-300 outline-none font-bold font-mono">
                   <option value="all">All Progress</option>
                   <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
@@ -662,7 +670,7 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-455 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-amber-100 dark:border-stone-800 text-[10px] text-amber-600 dark:text-amber-450 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
                     <th class="py-3 px-4 w-32">Arbitration Group</th>
@@ -671,7 +679,7 @@
                     <th class="py-3 px-4 w-16 text-center">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-sans">
+                <tbody id="dictionary-rows" class="divide-y divide-amber-100 dark:divide-stone-800 text-stone-600 dark:text-stone-300 font-semibold font-sans">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -684,28 +692,28 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+    <footer class="flex h-16 items-center justify-around border-t border-amber-200 bg-white md:hidden shrink-0 z-30 shadow-md dark:border-stone-800 dark:bg-stone-900">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-stone-550 hover:text-amber-500">
         <i class="fa-solid fa-scroll text-base"></i>
         <span class="text-[9px] font-bold">Story</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-stone-550 hover:text-amber-500">
         <i class="fa-solid fa-stamp text-base"></i>
         <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-stone-550 hover:text-amber-500">
         <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
-      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-stone-550 hover:text-amber-500">
         <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-stone-550 hover:text-amber-500">
         <i class="fa-solid fa-podcast text-base"></i>
         <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-sky-400">
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-stone-550 hover:text-amber-500">
         <i class="fa-solid fa-spell-check text-base"></i>
         <span class="text-[9px] font-bold">Lexicon</span>
       </button>
@@ -715,10 +723,10 @@
 
   <!-- Speech Settings Modal -->
   <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 max-w-sm w-full shadow-2xl space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-serif italic font-black text-lg text-white">Observer's Voice Config</h3>
-        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
+    <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 border border-amber-200/60 dark:border-stone-850 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="flex items-center justify-between border-b border-amber-100 dark:border-stone-800 pb-3">
+        <h3 class="font-serif italic font-black text-lg text-stone-800 dark:text-white">Observer's Voice Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-stone-400 hover:text-stone-800 dark:hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
@@ -726,45 +734,45 @@
       <!-- Selection of Voices -->
       <div class="space-y-4">
         <div class="space-y-1.5">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
-          <select id="voice-select" class="w-full border border-slate-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-amber-600 dark:text-amber-450 font-mono animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-amber-200 rounded-xl px-3 py-2 bg-stone-50 dark:bg-stone-950 text-xs font-semibold outline-none text-stone-800 dark:text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-amber-650 dark:text-amber-450 font-mono font-bold">
             <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
-          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-sky-500">
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-amber-500">
         </div>
         
         <!-- Pitch Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-amber-650 dark:text-amber-450 font-mono font-bold">
             <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
-          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-sky-500">
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-amber-500">
         </div>
       </div>
       
-      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-sky-500 hover:bg-sky-600 text-slate-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-amber-500 hover:bg-amber-600 text-stone-950 rounded-xl text-sm font-bold shadow-md transition font-mono">
         Apply Dispatch Rules
       </button>
     </div>
   </div>
 
   <!-- Custom Toast notification -->
-  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300">
-    <div class="h-8 w-8 rounded-lg bg-white/10 text-sky-400 flex items-center justify-center shrink-0">
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-800 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 text-amber-500 flex items-center justify-center shrink-0">
       <i class="fa-solid fa-circle-info" id="toast-icon"></i>
     </div>
     <div>
       <h5 class="text-xs font-black tracking-wide" id="toast-title">Success</h5>
-      <p class="text-[11px] text-slate-355 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
+      <p class="text-[11px] text-stone-355 mt-0.5" id="toast-body">Dossiers synchronized successfully.</p>
     </div>
   </div>
 
@@ -780,61 +788,48 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'make_decision', phrase: 'make a decision', definition: 'The process of choosing a final course of action or commitment.', example: 'As the founder of a clean-tech venture, I had to make a decision.', category: 'Action & Commitment', mastered: false },
-        { id: 'make_choice', phrase: 'make a choice', definition: 'To choose or select between multiple open possibilities.', example: 'To make a choice of this magnitude, I needed to gather extensive market data.', category: 'Action & Commitment', mastered: false },
-        { id: 'choose_between', phrase: 'choose between', definition: 'Selecting exactly one option from two or more alternatives.', example: 'Our team was forced to choose between organic scaling and venture capital.', category: 'Action & Commitment', mastered: false },
-        { id: 'consider_options', phrase: 'consider your options', definition: 'Carefully contemplating and analyzing all available possibilities.', example: 'A wise manager will always consider his options before restructuring.', category: 'Evaluating', mastered: false },
-        { id: 'weigh_pros_cons', phrase: 'weigh the pros and cons', definition: 'Analyzing and comparing the advantages and disadvantages of options.', example: 'We must weigh the pros and cons of the seed investment proposal.', category: 'Evaluating', mastered: false },
-        { id: 'tough_decision', phrase: 'tough decision', definition: 'An exceptionally difficult choice with complex outcomes or risks.', example: 'Choosing which products to discontinue was an incredibly tough decision.', category: 'Types of Decisions', mastered: false },
-        { id: 'difficult_choice', phrase: 'difficult choice', definition: 'A hard selection to make; synonymous with tough decision.', example: 'Leaving his hometown was a very difficult choice for Arthur.', category: 'Types of Decisions', mastered: false },
-        { id: 'make_up_your_mind', phrase: 'make up your mind', definition: 'Formulating a final, committed decision; choosing not to delay anymore.', example: 'Our investors urged me to make up my mind before the fiscal quarter closed.', category: 'Action & Commitment', mastered: false },
-        { id: 'keep_options_open', phrase: 'keep your options open', definition: 'Avoiding immediate commitments to remain adaptable to future offers.', example: 'We decided to keep our options open while other seed funds finalized their evaluations.', category: 'Evaluating', mastered: false },
-        { id: 'range_options', phrase: 'wide range of options', definition: 'A large, diverse selection of possibilities or proposals.', example: 'The broker presented a wide range of options for office leasing.', category: 'Evaluating', mastered: false },
-        { id: 'narrow_down_options', phrase: 'narrow down your options', definition: 'Reducing a large selection of possibilities to a few core candidates.', example: 'We managed to narrow down our options from twenty funds to three.', category: 'Evaluating', mastered: false },
-        { id: 'draw_shortlist', phrase: 'draw up a shortlist', definition: 'Drafting a small list of the absolute best candidates or choices.', example: 'Our analyst was instructed to draw up a shortlist of the top five firms.', category: 'Evaluating', mastered: false },
-        { id: 'informed_decision', phrase: 'informed decision', definition: 'A decision backed by thorough information, research, and analysis.', example: 'To make an informed decision, we requested audited tax balance sheets.', category: 'Types of Decisions', mastered: false },
-        { id: 'snap_decision', phrase: 'snap decision', definition: 'A rapid decision made on impulse without careful, long deliberation.', example: 'Never buy expensive property on a snap decision; analyze first.', category: 'Types of Decisions', mastered: false },
-        { id: 'forced_choice', phrase: 'forced choice', definition: 'Being forced to select because there are no other viable pathways.', example: 'With the supply lines fully severed, we faced a forced choice.', category: 'Forced Choices', mastered: false },
-        { id: 'have_no_choice', phrase: 'have no choice', definition: 'To be forced by outer constraints to act in a single specific way.', example: 'Our department had no choice but to downscale operations immediately.', category: 'Forced Choices', mastered: false },
-        { id: 'split_second_decision', phrase: 'split-second decision', definition: 'An extremely fast choice made in a fraction of a second during crises.', example: 'A split-second decision by the driver averted a major highway collision.', category: 'Types of Decisions', mastered: false },
-        { id: 'run_risk', phrase: 'run the risk', definition: 'Willingly taking a chance on a negative, dangerous, or volatile outcome.', example: 'If we reject the seed bid, we run the risk of running out of runway cash.', category: 'Forced Choices', mastered: false },
-        { id: 'arbitrary_decision', phrase: 'arbitrary decision', definition: 'A choice made without sensible reason, logic, or systematic analysis.', example: 'Capping employee vacation days at random was an arbitrary decision.', category: 'Types of Decisions', mastered: false },
-        { id: 'defend_decision', phrase: 'defend a decision', definition: 'Explaining and justifying your choice against external critics.', example: 'The CEO stood up to defend her decision to consolidate the research labs.', category: 'Action & Commitment', mastered: false },
-        { id: 'stick_to_decision', phrase: 'stick to your decision', definition: 'Refusing to waver or change your choice after committing.', example: 'Despite heavy media criticism, she decided to stick to her decision.', category: 'Action & Commitment', mastered: false },
-        { id: 'wise_decision', phrase: 'wise decision', definition: 'A highly sensible, intelligent choice producing positive results.', example: 'Upgrading our server firewalls ahead of time was a very wise decision.', category: 'Types of Decisions', mastered: false },
-        { id: 'by_choice', phrase: 'by choice', definition: 'Doing an action voluntarily and by preference, not under coercion.', example: 'I transitioned to a remote schedule entirely by choice.', category: 'Action & Commitment', mastered: false },
-        { id: 'choose_wisely', phrase: 'choose wisely', definition: 'Making a highly smart, careful selection from alternatives.', example: 'Study our collocations and choose wisely during your exams!', category: 'Action & Commitment', mastered: false },
-        { id: 'spontaneous_decision', phrase: 'spontaneous decision', definition: 'A decision made naturally and instantly, without extensive pre-planning.', example: 'We packed our bags and caught a flight to Rome on a spontaneous decision.', category: 'Types of Decisions', mastered: false },
-        { id: 'major_decision', phrase: 'major decision', definition: 'A massive choice carrying high-stakes and permanent consequences.', example: 'Selling the patent rights was a major decision for the small studio.', category: 'Types of Decisions', mastered: false },
-        { id: 'career_choice', phrase: 'career choice', definition: 'The selection of a professional path or industry field.', example: 'Studying international relations was a highly successful career choice.', category: 'Action & Commitment', mastered: false },
-        { id: 'trust_intuition', phrase: 'trust your intuition', definition: 'Following your internal gut feeling or instinct rather than just analytical figures.', example: 'When analytical data is contradictory, it is often wise to trust your intuition.', category: 'Evaluating', mastered: false },
-        { id: 'pick_and_choose', phrase: 'pick and choose', definition: 'Selecting highly carefully and selectively from a wide group.', example: 'With twenty projects bidding for our tech, we can pick and choose.', category: 'Evaluating', mastered: false },
-        { id: 'coerced_choice', phrase: 'coerced choice', definition: 'A selection made under threat, pressure, or forceful conditions.', example: 'The signed confession was dismissed in court as a coerced choice.', category: 'Forced Choices', mastered: false }
+        { id: 'taste_verb', phrase: 'tastes used as a verb', definition: 'Describing the action of registering flavor via the tongue (e.g. tastes good).', example: 'This cake tastes sweet.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_good', phrase: 'tastes good', definition: 'Having a pleasant and satisfying taste profile.', example: 'You can say that a fresh pastry tastes good.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_bad', phrase: 'tastes bad', definition: 'Having a highly unpleasant, unappealing taste.', example: 'The spoiled broth tastes bad.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_divine', phrase: 'tastes divine', definition: 'Possessing an exceptionally wonderful, delightful, or delicious taste.', example: 'The fresh berries from the farm taste divine.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_heavenly', phrase: 'tastes heavenly', definition: 'An extreme description of a delicious, exquisite flavor.', example: 'The chocolate mousse tastes heavenly.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_gross', phrase: 'tastes gross', definition: 'Having a thoroughly disgusting, revolting, or foul taste.', example: 'The burned rice tastes gross.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_disgusting', phrase: 'tastes disgusting', definition: 'An extreme way to describe an incredibly unpleasant taste.', example: 'The raw onion soup tastes disgusting.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_funny', phrase: 'tastes funny', definition: 'Tasting unusual or weird, with a strong negative implication of spoilage.', example: 'This milk tastes funny - it might be past its expiration date.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'tastes_like', phrase: 'tastes like', definition: 'Comparing the flavor profile of a food directly to another substance.', example: 'I had frog\'s legs once - they tasted like chicken.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'flavor_noun', phrase: 'flavor used as a noun', definition: 'The distinctive taste of a food or drink, often compared to another source.', example: 'The ice cream has a strong vanilla flavor.', category: 'Flavor Profiles', mastered: false },
+        { id: 'nutty_flavor', phrase: 'nutty flavor', definition: 'A flavor profile reminiscent of hazelnuts, walnuts, or roasted seeds.', example: 'This almond milk has a rich, nutty flavor.', category: 'Flavor Profiles', mastered: false },
+        { id: 'fruity_taste', phrase: 'fruity taste', definition: 'A taste profile dominated by sweet, fresh fruit elements.', example: 'The local wine has a delicate, fruity taste.', category: 'Taste Sensations', mastered: false },
+        { id: 'fruity_flavor', phrase: 'fruity flavor', definition: 'A flavor characteristics of berries, apples, or grapes.', example: 'This candy possesses a rich, fruity flavor.', category: 'Flavor Profiles', mastered: false },
+        { id: 'nutty_flavor', phrase: 'nutty flavor', definition: 'A flavor profile reminiscent of nuts or roasted seeds.', example: 'This brown butter sauce has a robust nutty flavor.', category: 'Flavor Profiles', mastered: false },
+        { id: 'cheesy_flavor', phrase: 'cheesy flavor', definition: 'A flavor note smelling or tasting of cheese.', example: 'These chips have a highly savory, cheesy flavor.', category: 'Flavor Profiles', mastered: false },
+        { id: 'minty_flavor', phrase: 'minty flavor', definition: 'A cool, bracing, or refreshing flavor characteristic of mint.', example: 'The toothpaste leaves a crisp, minty flavor in your mouth.', category: 'Flavor Profiles', mastered: false },
+        { id: 'salty_flavor', phrase: 'salty flavor', definition: 'A flavor profile with high salt concentrations.', example: 'The ocean breeze leaves a light, salty flavor on your lips.', category: 'Flavor Profiles', mastered: false },
+        { id: 'sour_taste', phrase: 'sour taste', definition: 'An acidic, tart, or biting taste profile (like citrus or vinegar).', example: 'A lemon has a highly sour taste.', category: 'Taste Sensations', mastered: false },
+        { id: 'sweet_taste', phrase: 'sweet taste', definition: 'A sugary, pleasant, and highly appealing taste sensation.', example: 'The ripe strawberries have an exceptionally sweet taste.', category: 'Taste Sensations', mastered: false },
+        { id: 'savor_taste', phrase: 'savor the taste', definition: 'Eating or drinking slowly to fully appreciate and prolong the enjoyment of a taste.', example: 'We took our time to savor the taste of the gourmet truffles.', category: 'Verbs & Sensations', mastered: false },
+        { id: 'strong_flavor', phrase: 'strong flavor', definition: 'A highly intense, prominent, or concentrated taste (e.g., garlic).', example: 'Raw garlic has a highly strong flavor.', category: 'Flavor Strength', mastered: false },
+        { id: 'rich_flavor', phrase: 'rich flavor', definition: 'A deep, complex, satisfyingly heavy or full-bodied taste (e.g., chocolate).', example: 'Dark cocoa has a wonderfully rich flavor.', category: 'Flavor Strength', mastered: false },
+        { id: 'mild_flavor', phrase: 'mild flavor', definition: 'A light, gentle, non-overpowering flavor with positive connotations.', example: 'This young gouda has a pleasant, mild flavor.', category: 'Flavor Strength', mastered: false },
+        { id: 'subtle_flavor', phrase: 'subtle flavor', definition: 'A delicate, faint, yet highly pleasing and smart flavor note.', example: 'The subtle flavor of ginger adds a nice touch to this marinade.', category: 'Flavor Strength', mastered: false },
+        { id: 'bland_taste', phrase: 'bland taste', definition: 'A taste profile containing almost no flavor, with negative connotations.', example: 'These plain rice cakes have a rather bland taste.', category: 'Flavor Strength', mastered: false },
+        { id: 'bland_flavor', phrase: 'bland flavor', definition: 'A dull, uninteresting flavor profile.', example: 'These crackers have such a bland flavor that it feels like I\'m snacking on cardboard.', category: 'Flavor Strength', mastered: false },
+        { id: 'acquired_taste', phrase: 'acquired taste', definition: 'A food or flavor that you learn to appreciate and enjoy only over a period of time.', example: 'Olives and dark roasted coffee are classic examples of an acquired taste.', category: 'Taste Sensations', mastered: false }
       ],
-      // Exactly 20 scenario multiple choice questions for Lesson 33: Deciding & Choosing
+      // Exactly 10 scenario multiple choice questions based on Lesson 33 Taste and Flavor
       quiz: [
-        { id: 1, question: "The corporate board met for twelve hours to ________ on whether to merge with the tech giant.", options: ["make a decision", "coerce a choice", "run the risk"], answer: "make_decision", explanation: "The process of committing to a final path is to 'make a decision'." },
-        { id: 2, question: "After reviewing twenty different candidates, we managed to ________ to the top three.", options: ["narrow down our options", "keep our options open", "run the risk"], answer: "narrow_down_options", explanation: "Reducing a large selection of possibilities is to 'narrow down your options'." },
-        { id: 3, question: "The senior recruiter asked the assistant to ________ of the best five software developers.", options: ["draw up a shortlist", "run the risk", "make up your mind"], answer: "draw_shortlist", explanation: "Drafting a small list of the best candidates is to 'draw up a shortlist'." },
-        { id: 4, question: "We don\'t have much time; you need to ________ and tell me which candidate to hire.", options: ["make up your mind", "keep your options open", "run the risk"], answer: "make_up_your_mind", explanation: "Reaching a final decision and ending delays is to 'make up your mind'." },
-        { id: 5, question: "The CEO was determined to make an ________ backed by robust audit spreadsheets, rather than a guess.", options: ["informed decision", "arbitrary decision", "snap decision"], answer: "informed_decision", explanation: "A choice backed by accurate, thorough information is an 'informed decision'." },
-        { id: 6, question: "Buying a luxury sportscar on a ________ without inspecting the engine is highly reckless.", options: ["snap decision", "wise decision", "coerced choice"], answer: "snap_decision", explanation: "A rapid, impulsive choice made without proper research is a 'snap decision'." },
-        { id: 7, question: "Since the primary shipping ports were closed, the cargo crew had ________ but to take the railway.", options: ["no choice", "range of options", "spontaneous decision"], answer: "have_no_choice", options: ["no choice", "wide selection", "coerced choice"], answer: "no choice", explanation: "Having no other options due to external constraints is to 'have no choice'." },
-        { id: 8, question: "A ________ by the goalkeeper during the final seconds preserved the team\'s victory.", options: ["split-second decision", "forced choice", "coerced choice"], answer: "split-second_decision", options: ["split-second decision", "spontaneous choice", "arbitrary decision"], answer: "split-second decision", explanation: "An extremely fast choice made in a fraction of a second is a 'split-second decision'." },
-        { id: 9, question: "If we reject the merger offer, we ________ of running out of cash by winter.", options: ["run the risk", "narrow down options", "make up our mind"], answer: "run_risk", explanation: "Taking a chance on a potentially negative or volatile outcome is to 'run the risk'." },
-        { id: 10, question: "The judge ruled that dismissing the employee at random was an ________.", options: ["arbitrary decision", "informed decision", "wise decision"], answer: "arbitrary_decision", explanation: "A choice made without logic, analysis, or standard reasoning is an 'arbitrary decision'." },
-        { id: 11, question: "The general manager had to ________ to relocate the assembly line despite heavy employee protests.", options: ["defend his decision", "breach the agreement", "run the risk"], answer: "defend_decision", options: ["defend his decision", "make a snap choice", "flatly contradict"], answer: "defend his decision", explanation: "Justifying and supporting your choice against external critics is to 'defend a decision'." },
-        { id: 12, question: "Even when sales dropped temporarily, she decided to ________ and keep the design team active.", options: ["stick to her decision", "narrow down her options", "make up her mind"], answer: "stick_to_decision", options: ["stick to her decision", "color her judgment", "harbor doubts"], answer: "stick to her decision", explanation: "Refusing to change your mind after making a final commitment is to 'stick to your decision'." },
-        { id: 13, question: "Upgrading our cybersecurity defense systems before the launch was a very ________.", options: ["wise decision", "arbitrary decision", "snap decision"], answer: "wise_decision", explanation: "An intelligent, sensible choice that produces positive results is a 'wise decision'." },
-        { id: 14, question: "He chose to work as a freelance developer entirely ________, rejecting several stable corporate offers.", options: ["by choice", "by mistake", "by force"], answer: "by_choice", explanation: "Doing an action voluntarily and by preference is to do it 'by choice'." },
-        { id: 15, question: "The wizard looked at the knight and warned him to ________, as the wrong chalice meant doom.", options: ["choose wisely", "make up his mind", "run the risk"], answer: "choose_wisely", explanation: "Making a highly smart, careful selection from alternatives is to 'choose wisely'." },
-        { id: 16, question: "We packed our gear and caught a flight to Madrid on a ________, without any pre-planning.", options: ["spontaneous decision", "major decision", "forced choice"], answer: "spontaneous_decision", explanation: "An unplanned choice made naturally on impulse is a 'spontaneous decision'." },
-        { id: 17, question: "Selling our primary software patent was a ________ that permanently altered our company\'s roadmap.", options: ["major decision", "spontaneous decision", "snap decision"], answer: "major_decision", explanation: "A high-stakes, high-consequence choice with permanent results is a 'major decision'." },
-        { id: 18, question: "Studying robotics engineering turned out to be an exceptional ________ for his career.", options: ["career choice", "forced choice", "coerced choice"], answer: "career_choice", explanation: "Selecting a professional or industry path is a 'career choice'." },
-        { id: 19, question: "When data metrics are conflicting and unclear, experienced leaders often ________.", options: ["trust their intuition", "make an arbitrary decision", "rely on blind faith"], answer: "trust_intuition", explanation: "Following your instinct or gut feeling rather than just figures is to 'trust your intuition'." },
-        { id: 20, question: "With twenty developers bidding for our hardware, we can ________ who we work with.", options: ["pick and choose", "run the risk", "make up our mind"], answer: "pick_and_choose", explanation: "Selecting very carefully and selectively from a large group is to 'pick and choose'." }
+        { id: 1, question: "This carton of milk ________ - I think it might be past its expiration date.", options: ["tastes funny", "tastes divine", "savors the taste"], answer: "tastes_funny", explanation: "'Tastes funny' is used when a food has an unusual, weird, or slightly spoiled flavor." },
+        { id: 2, question: "I tried grilled frog's legs once when visiting Paris, and they actually ________ chicken.", options: ["tasted gross", "tasted like", "bland flavor"], answer: "tastes_like", explanation: "'Tasted like' is the correct verb-preposition combo used to compare similar flavors." },
+        { id: 3, question: "The ________ of ginger adds a very nice, delicate touch to this sweet marinade.", options: ["subtle flavor", "bland taste", "disgusting flavor"], answer: "subtle_flavor", explanation: "'Subtle flavor' describes a delicate, faint, yet highly pleasing and intelligent flavor note." },
+        { id: 4, question: "These crackers have such a ________ that it feels like I'm snacking on dry cardboard.", options: ["bland flavor", "rich taste", "strong flavor"], answer: "bland_flavor", explanation: "'Bland flavor' describes food with little or no flavor, carrying a negative connotation." },
+        { id: 5, question: "The sauce has a highly ________ of garlic, which completely dominates the dish.", options: ["strong flavor", "bland taste", "funny taste"], answer: "strong_flavor", explanation: "'Strong flavor' refers to a highly intense, prominent, or concentrated level of taste." },
+        { id: 6, question: "Many people think black coffee is an ________ because it takes time to enjoy its bitterness.", options: ["acquired taste", "acquired flavor", "disgusting taste"], answer: "acquired_taste", explanation: "An 'acquired taste' is a food or drink you learn to like only after trying it several times." },
+        { id: 7, question: "This dark Belgian chocolate has a wonderfully ________ that stays on your tongue.", options: ["rich flavor", "bland taste", "gross taste"], answer: "rich_flavor", explanation: "'Rich flavor' describes deep, satisfying, full-bodied, or complex taste sensations." },
+        { id: 8, question: "When eating premium truffles, you should eat slowly to fully ________.", options: ["savor the taste", "taste funny", "shatter the belief"], answer: "savor_taste", explanation: "To 'savor the taste' means to eat or drink slowly to appreciate the flavor as much as possible." },
+        { id: 9, question: "The homemade lemon tart has a sharp ________ that balances the sweet crust perfectly.", options: ["sour taste", "mild flavor", "bland taste"], answer: "sour_taste", explanation: "Lemons, limes, and vinegars trigger a classic 'sour taste'." },
+        { id: 10, question: "That old soup tasted absolutely ________; we couldn't even swallow the first spoonful.", options: ["gross", "subtle", "mild"], answer: "tastes_gross", options: ["gross", "subtle", "mild"], answer: "gross", explanation: "'Gross' or 'disgusting' describes an extremely bad, unpalatable taste." }
       ],
-      activeCardId: 'make_decision',
+      activeCardId: 'taste_verb',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -853,7 +848,7 @@
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Sharp static popping click representing synaptic firing
+          // Sharp static popping click representing culinary focus
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
@@ -932,70 +927,86 @@
       }
     }
 
-    // HTML5 Canvas Crossroads Pathway Animation Background
-    function initCrossroadsCanvas() {
-      const canvas = document.getElementById('crossroads-canvas');
+    // HTML5 Canvas Savory Vapor Particle Animation
+    function initSavoryCanvas() {
+      const canvas = document.getElementById('flavor-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
       let width = (canvas.width = canvas.offsetWidth);
       let height = (canvas.height = canvas.offsetHeight);
       
-      const nodes = [];
-      const nodeCount = 45;
+      const particles = [];
+      const particleCount = 40;
       
-      class Node {
+      let mouseX = -1000;
+      let mouseY = -1000;
+      
+      class ScentParticle {
         constructor() {
-          this.x = Math.random() * width;
+          this.reset();
           this.y = Math.random() * height;
-          this.vx = (Math.random() - 0.5) * 0.6;
-          this.vy = (Math.random() - 0.5) * 0.6;
-          // Sky Blue for pathways, Teal for decisions
-          this.type = Math.random() > 0.5 ? 'path' : 'decision';
-          this.radius = Math.random() * 2.5 + 1.5;
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = height + Math.random() * 40;
+          this.vy = -(Math.random() * 0.6 + 0.2);
+          this.vx = (Math.random() - 0.5) * 0.4;
+          this.size = Math.random() * 22 + 12;
+          this.opacity = Math.random() * 0.25 + 0.05;
+          // Savory spice ginger/gold & cool chocolate tones
+          this.colorType = Math.random() > 0.5 ? 'ginger' : 'cocoa';
         }
         update() {
-          this.x += this.vx;
           this.y += this.vy;
-          if (this.x < 0 || this.x > width) this.vx *= -1;
-          if (this.y < 0 || this.y > height) this.vy *= -1;
+          this.x += this.vx;
+          
+          // Softly drift away from mouse cursor to represent wafting
+          const dist = Math.hypot(this.x - mouseX, this.y - mouseY);
+          if (dist < 130) {
+            const angle = Math.atan2(this.y - mouseY, this.x - mouseX);
+            this.x += Math.cos(angle) * 1.8;
+            this.y += Math.sin(angle) * 1.8;
+          }
+          
+          if (this.y < -30) {
+            this.reset();
+          }
         }
         draw() {
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = this.type === 'path' ? 'rgba(14, 165, 233, 0.6)' : 'rgba(20, 184, 166, 0.6)';
+          const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          // Ginger gold color (245, 158, 11) or warm cocoa (120, 53, 15)
+          const colStr = this.colorType === 'ginger' ? '245, 158, 11' : '180, 83, 9';
+          grad.addColorStop(0, `rgba(${colStr}, ${this.opacity})`);
+          grad.addColorStop(1, `rgba(${colStr}, 0)`);
+          ctx.fillStyle = grad;
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
           ctx.fill();
         }
       }
 
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push(new Node());
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new ScentParticle());
       }
+      
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      });
+      
+      canvas.addEventListener('mouseleave', () => {
+        mouseX = -1000;
+        mouseY = -1000;
+      });
       
       function animate() {
         ctx.clearRect(0, 0, width, height);
-        
-        // Render branching lines representing divergent choice pathways
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-            if (dist < 110) {
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
-              const opacity = (1 - dist / 110) * 0.12;
-              ctx.strokeStyle = nodes[i].type === 'path' ? `rgba(14, 165, 233, ${opacity})` : `rgba(20, 184, 166, ${opacity})`;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
-          }
-        }
-        
-        nodes.forEach(node => {
-          node.update();
-          node.draw();
+        particles.forEach(p => {
+          p.update();
+          p.draw();
         });
-        
         requestAnimationFrame(animate);
       }
       
@@ -1011,16 +1022,21 @@
       loadLocalStorage();
       initSpeechVoices();
       initStoryClicks();
-      initCrossroadsCanvas();
+      initSavoryCanvas();
       renderDictionary();
       renderFlashcard();
       renderQuizQuestion();
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Forces consistent Dark Obsidian aesthetic for decisional depth
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-shuffle text-sm text-sky-400"></i>';
+      // Default dark theme matching cocoa palette
+      if (state.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-moon text-sm text-amber-400"></i>';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500"></i>';
+      }
       
       document.addEventListener('keydown', (e) => {
         if (state.currentView === 'flashcards') {
@@ -1037,9 +1053,19 @@
     });
 
     function toggleTheme() {
-      // Re-route pathways (triggers aesthetic feedback metrics)
       playSynthSound('click');
-      showToast('Pathways Recalibrated', 'Acoustic path-routing filters synchronized.', 'fa-shuffle');
+      const isDark = document.documentElement.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l33', state.theme);
+      
+      const themeBtn = document.getElementById('theme-toggle');
+      if (isDark) {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-amber-400"></i>';
+        showToast('Cocoa Obsidian Active', 'Rich chocolate dark theme activated.', 'fa-moon');
+      } else {
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500"></i>';
+        showToast('Warm Parchment Active', 'Warm culinary light theme activated.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1054,7 +1080,7 @@
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-355 hover:bg-zinc-900 hover:text-slate-150";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-stone-500 dark:text-stone-350 hover:bg-amber-100/50 dark:hover:bg-stone-900 hover:text-stone-800 dark:hover:text-stone-150";
         }
       });
       
@@ -1066,7 +1092,7 @@
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20";
       }
       
       state.currentView = viewName;
@@ -1078,6 +1104,9 @@
     }
 
     function loadLocalStorage() {
+      if (localStorage.getItem('colloc_theme_l33')) {
+        state.theme = localStorage.getItem('colloc_theme_l33');
+      }
       if (localStorage.getItem('colloc_mastery_list_l33')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l33'));
@@ -1238,7 +1267,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('make_decision');
+      displayGlossaryCard('taste_verb');
     }
 
     function displayGlossaryCard(id) {
@@ -1290,7 +1319,7 @@
 
     function speakCurrentStory() {
       playSynthSound('click');
-      const narrativeText = "As the founder of a promising clean-tech venture, I had to make a decision that would define our legacy. Our lead scientist presented a brilliant algorithm, but incorporating it required us to choose between two divergent routes: scale organically or seek venture capital. To make a choice of this magnitude, I needed to consider our options carefully and thoroughly weigh the pros and cons. It was an incredibly tough decision. Our investors urged me to make up my mind, but I preferred to keep our options open while the board evaluated potential partners. Our analyst compiled a wide range of options, and we managed to narrow down our options to a select few. We decided to draw up a shortlist of high-profile impact funds. I was determined to make an informed decision rather than committing to a snap decision. However, when our primary competitor unexpectedly launched a clone, I faced a forced choice. We had no choice but to act immediately. During a tense morning board meeting, I made a split-second decision to reject their acquisition bid. We chose to run the risk of a hostile buyout and stand our ground. Many industry journals criticized our stubbornness, calling our stance an arbitrary decision. But I had to defend my decision in front of our stakeholders. I resolved to stick to my decision because I believed in our team's mission. It was a wise decision. We built our framework entirely by choice, and I knew that if we remained patient and learned to choose wisely, we would scale successfully in the long run.";
+      const narrativeText = "Let's begin this lesson by looking at the commonly confused words taste and flavor. The word taste is often used as a verb, so you can say that a food tastes good or tastes bad. If you want to be a little more extreme in your description, you can say that a food tastes divine or tastes heavenly or tastes gross or tastes disgusting. Another expression is it tastes funny - that means it tastes unusual, with a negative connotation. For example - This milk tastes funny - it might be past its expiration date. It's very common to say that something tastes like something else: I had frog's legs once - they tasted like chicken. The word flavor is typically used as a noun. We can say something has a nutty, fruity, cheesy, minty, or salty flavor to compare the flavor to another food. You can also use the word taste as a noun - for example: This wine has a fruity taste or fruity flavor. Flavors or tastes can also be described by category, or by the sensation they cause in your mouth - a bitter taste, sour taste, or sweet taste. When you enjoy the taste of something, and want to keep it in your mouth for a long time, we say you savor the taste. If a food has a lot of flavor, then it can be described as strong or rich - the strong flavor of garlic, the rich flavor of chocolate. When the level of flavor is low, it is a mild flavor or a subtle flavor. Both of these words have a positive connotation - This cheese has a nice, mild flavor or, The subtle flavor of ginger adds a nice touch to this marinade. The expression bland taste or bland flavor is a way to describe food with little flavor, with a negative connotation. For example - These crackers have such a bland flavor that it feels like I'm snacking on cardboard. There are some foods that people usually don't enjoy the first time they try them... but with time, people learn to like the flavor. A food like this can be described as an acquired taste.";
       triggerTTS(narrativeText);
     }
 
@@ -1394,7 +1423,7 @@
         btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-serif italic";
         
         if (!answered) {
-          btn.className += "bg-[#111827] border-slate-800 hover:border-sky-500 hover:bg-sky-500/10";
+          btn.className += "bg-[#111827] border-stone-850 hover:border-amber-500 hover:bg-amber-500/10";
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
@@ -1418,7 +1447,7 @@
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
@@ -1437,7 +1466,7 @@
         showToast('Consensus Aligned!', 'Accurate collocation applied to research brief.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Pathways Conflict!', 'Inconclusive alignment with standard decision logic.', 'fa-triangle-exclamation');
+        showToast('Pathways Conflict!', 'Inconclusive alignment with standard flavor logic.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1479,10 +1508,10 @@
       document.getElementById('quiz-score-correct').innerText = ratioStr;
       document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
       
-      let rank = "Skeptical Wanderer";
-      if (percentage === 100) rank = "Grand Pathmaker";
-      else if (percentage >= 90) rank = "Decisive Architect";
-      else if (percentage >= 70) rank = "Strategic Planner";
+      let rank = "Skeptical Diner";
+      if (percentage === 100) rank = "Grand Gastronome";
+      else if (percentage >= 90) rank = "Flavor Architect";
+      else if (percentage >= 70) rank = "Culinary Strategist";
       
       document.getElementById('quiz-score-rank').innerText = rank;
     }
@@ -1505,12 +1534,12 @@
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['weigh the pros and cons', 'keep your options open', 'snap decision', 'split-second decision', 'informed decision', 'stick to your decision'];
+      const selectedWords = ['savor the taste', 'subtle flavor', 'bland flavor', 'acquired taste', 'rich flavor', 'tastes funny'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-sky-500/10 text-slate-350 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
+        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-amber-500/10 text-slate-355 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1522,7 +1551,7 @@
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To make an informed decision, we decided to ${word} and avoid hasty snap decisions...`;
+        textarea.value = `To appreciate the delicate seasoning, we decided to ${word} and avoid gulping hastily...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1536,7 +1565,7 @@
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Evaluate the decisional context: "${randomColloc}"`;
+        textarea.value = `Evaluate the culinary context: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
@@ -1548,10 +1577,10 @@
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail how a person\'s snap decision led to an arbitrary decision that forced a coerced choice.",
-        "Draft a summary showing how weighing the pros and cons can help to make an informed decision.",
-        "Describe a high-stakes scenario requiring a split-second decision to run the risk of a project failure.",
-        "Examine why it is wise to keep your options open while drawing up a shortlist."
+        "Detail how a gourmet chef utilizes a subtle flavor to elevate a dish with rich flavor.",
+        "Draft a critique explaining why cardboard-like crackers have a bland taste compared to savory cheese.",
+        "Describe a clinical or historical account of why black olives represent an acquired taste.",
+        "Examine why it is wise to savor the taste of a dish instead of swallowing it on a snap decision."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
@@ -1575,16 +1604,16 @@
         return;
       }
       
-      showToast('AI Scanning', 'Streaming manuscript prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
+      showToast('AI Scanning', 'Streaming tasting prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
       diagnoseCard.classList.remove('hidden');
       document.getElementById('diagnostic-analysis').innerText = "Analyzing conceptual frameworks... Please hold.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard decisional structures...";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing with standard culinary structures...";
       document.getElementById('diagnostic-score').innerText = "--";
       document.getElementById('diagnostic-alternative-text').innerText = "...";
       
-      const systemPrompt = "You are a world-class Decision Strategist, Cognitive Analyst, and English Scholar. Check if the user's sentence uses Lesson 33 deciding, choosing, and evaluation collocations (e.g., make a decision, make up your mind, keep your options open, weigh the pros and cons, draw up a shortlist, snap decision, split-second decision, informed decision, arbitrary decision, defend a decision, stick to your decision, run the risk, have no choice, coerced choice, pick and choose) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving choice, risk, or preference alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
+      const systemPrompt = "You are an English Language Expert specializing in descriptive vocabulary and lexical collocations. Check if the user's sentence uses Lesson 33 taste and flavor collocations (e.g., tastes good, tastes bad, tastes divine, tastes heavenly, tastes gross, tastes disgusting, tastes funny, tastes like, nutty flavor, fruity taste, fruity flavor, savor the taste, strong flavor, rich flavor, mild flavor, subtle flavor, bland taste, bland flavor, acquired taste) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the taste/flavor accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (tips on sensory adjectives), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
         contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
@@ -1678,7 +1707,7 @@
       } else {
         state.podcastIsPlaying = true;
         document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Live Dispatch - Decisional Mapping";
+        document.getElementById('podcast-status').innerText = "Live Dispatch - Gustatory Mapping";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1693,7 +1722,7 @@
       const currentWord = state.collocations[state.podcastIndex];
       if (!currentWord) {
         document.getElementById('podcast-current-phrase').innerText = "Session Closed!";
-        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 33. All decisional collocations resolved!";
+        document.getElementById('podcast-current-definition').innerText = "Thank you for joining CollocaPodcast Lesson 33. All taste collocations resolved!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
@@ -1704,13 +1733,13 @@
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
       document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
-      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/30`;
+      document.getElementById('podcast-time-passed').innerText = `Card ${state.podcastIndex + 1}/22`;
       
       const chatLog = document.getElementById('podcast-chat-log');
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Let's analyze our next key choice term. It is: ${currentWord.phrase}. Tom, how do risk managers apply this structure?`;
+        const textToSpeak = `Let's analyze our next key sensory term. It is: ${currentWord.phrase}. Tom, how do culinary experts apply this structure?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
@@ -1718,7 +1747,7 @@
           <div class="h-6 w-6 rounded bg-sky-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
             <span class="text-[10px] font-bold text-sky-400 font-mono">Sarah (Decision Strategist)</span>
-            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
+            <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
@@ -1738,7 +1767,7 @@
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-sky-300 font-mono">Tom (Risk Analyst)</span>
+            <span class="text-[10px] font-bold text-sky-300 font-mono">Tom (Savor Specialist)</span>
             <p class="text-xs text-slate-355 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
@@ -1833,7 +1862,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif">No matching decisional records resolved.</td>
+            <td colspan="6" class="text-center py-8 text-slate-405 italic font-serif">No matching sensory records resolved.</td>
           </tr>
         `;
         return;
@@ -1841,9 +1870,9 @@
       
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-800";
+        row.className = "hover:bg-amber-100/30 dark:hover:bg-stone-800/40 transition border-b border-amber-100 dark:border-stone-800";
         
-        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
+        const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-300 dark:text-stone-700';
         
         row.innerHTML = `
           <td class="py-4 px-4 text-center">
@@ -1851,14 +1880,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-sky-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-stone-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-amber-500 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-300 px-2 py-0.5 rounded-full border border-sky-500/20 font-mono">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/20 font-mono">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-450 leading-relaxed font-semibold font-serif">${c.definition}</td>
+          <td class="py-4 px-4 text-slate-500 dark:text-slate-400 leading-relaxed font-semibold font-serif">${c.definition}</td>
           <td class="py-4 px-4 hidden lg:table-cell italic text-slate-500 font-semibold font-serif">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-amber-250 dark:border-stone-800 flex items-center justify-center text-slate-400 hover:text-stone-800 dark:hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1892,10 +1921,10 @@
       tBody.innerText = body;
       tIcon.className = `fa-solid ${iconClass}`;
       
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
       
       setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-800 max-w-sm transition-all duration-300";
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
       }, 4000);
     }
 
