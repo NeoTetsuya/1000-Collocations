@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 44: Deciding & Choosing Lab</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter, Plus Jakarta Sans, & Share Tech Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Verification, Scales, and Decision Tree Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Share Tech Mono', 'monospace']
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#0ea5e9', /* Primary Decision Blue */
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              deepDark: '#020617',
+              accent: '#f59e0b', /* Amber Choice/Risk Node */
+              emeraldAccent: '#10b981' /* Emerald Solution/Path Node */
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Scrollbars matching system styling */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0ea5e9;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #0369a1;
+    }
+    
+    /* View transition mechanics */
+    .view-container {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip mechanics */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Interactive Equalizer wave animation */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1.1s ease-in-out infinite;
+    }
+    
+    /* Grid system scanning background representing choices */
+    @keyframes grid-scan {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 40px; }
+    }
+    .matrix-scan {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to bottom, rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+                        linear-gradient(to right, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+      animation: grid-scan 10s linear infinite;
+    }
+
+    /* Decision engine glow */
+    @keyframes matrix-glow {
+      0%, 100% { opacity: 0.1; transform: scale(0.97); }
+      50% { opacity: 0.3; transform: scale(1.03); }
+    }
+    .matrix-drift-glow {
+      animation: matrix-glow 12s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-brand-deepDark dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Main Wrapper -->
+  <div class="flex h-full flex-col overflow-hidden relative">
+    
+    <!-- Dynamic Interactive HTML5 Canvas Backdrop (Decision Paths Tree) -->
+    <canvas id="decision-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-20" onclick="spawnWaveNode(event)"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/10 via-slate-950/10 to-brand-deepDark pointer-events-none z-0 matrix-drift-glow"></div>
+    <div class="absolute inset-0 matrix-scan pointer-events-none z-0"></div>
+
+    <!-- Top Nav Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-brand-900 text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-code-branch text-lg text-brand-300"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:to-brand-300 bg-clip-text text-transparent font-sans">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-600 dark:text-brand-300 border border-brand-500/20 font-mono">Lesson 44 Lab</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-scale-unbalanced text-brand-500 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-100">Lesson 44: Deciding & Choosing</h1>
+      </div>
+
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-880 transition shadow-sm cursor-pointer" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Custom Aesthetic Toggle -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm cursor-pointer" id="theme-toggle" title="Calibrate Choice Frequencies">
+          <i class="fa-solid fa-moon text-sm text-brand-500"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-900 px-3 py-1.5 border border-slate-200 dark:border-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-300" id="lesson-mastery-ratio">0/25 Verified</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden z-10">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">Choice Nodes</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Inquest Dossier</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Option Transceiver</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-shuffle text-base animate-pulse"></i>
+            <span>Decision Quest</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-laptop-code text-base"></i>
+            <span>Resolution Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-podcast text-base"></i>
+            <span>Equilibrium Station</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-database text-base"></i>
+            <span>The Concord Ledger</span>
+          </button>
+        </div>
+        
+        <!-- User Mission Credentials Standing Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 p-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-brain text-brand-600 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Judgment Index</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-450" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed font-medium">Weigh all possibilities, narrow down complex shortlist options, and trust your strategic intuition to claim ultimate cognitive authority!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6 animate-fade-in">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-200 dark:border-slate-800 bg-gradient-to-tr from-slate-100 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-scale-unbalanced text-slate-400 dark:text-slate-700/65 text-xl animate-pulse"></i>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Inquest Dossier</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Weigh structural options, evaluate risk thresholds, and select logical actions. Click collocations to scan metrics.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-955 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 cursor-pointer">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Acoustic Broadcaster</span>
+                </button>
+              </div>
+              
+              <!-- Story Text -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 tracking-wide space-y-6 relative z-10 animate-fade-in font-medium">
+                <p>
+                  How do you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_decision">make a decision</span>? Do you make lists of pros and cons, advantages and disadvantages? If so, you're <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="weighing_the_options">weighing the options</span> — considering each possibility carefully before choosing.
+                </p>
+                <p>
+                  Sometimes there are too many possibilities, and you may need to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="narrow_down">narrow down</span> your choices to a shortlist. When the time comes to decide, you can <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="make_choice">make a choice</span>, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="come_to_decision">come to a decision</span>, or <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="reach_decision">reach a decision</span>.
+                </p>
+                <p>
+                  If you have difficulty deciding, you might want to <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="sleep_on_it">sleep on it</span> — think about it overnight. In formal language, we also say <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="arrive_at_decision">arrive at a decision</span>. Once you've <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="made_up_mind">made up your mind</span>, you may have a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="firm_decision">firm decision</span> or an <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="irrevocable_decision">irrevocable decision</span>.
+                </p>
+                <p>
+                  If you're not sure, you may need to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="reconsider_decision">reconsider your decision</span>. Another useful expression is to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="determine_best_course_of_action">determine the best course of action</span>. If you really can't decide, you can ask someone else to make the decision for you, <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="leave_it_up_to_them">leaving it up to them</span>. People can also face a <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="difficult_decision">difficult decision</span>, and sometimes the best thing is to <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="go_with_gut">go with your gut</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-accent border-b-2 border-dashed border-brand-accent/80 hover:bg-brand-accent/10 px-1 rounded transition" data-id="trust_instincts">trust your instincts</span>. If you choose one option over another, you <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="opt_for">opt for</span> something. When a decision is particularly important, you describe it as a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="major_decision">major decision</span> or a <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="crucial_decision">crucial decision</span>.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6 font-medium">
+              <div class="bg-gradient-to-tr from-white to-slate-100 dark:from-slate-900 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-xl animate-fade-in" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 animate-pulse font-mono" id="glossary-category">Option Profiler</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition flex items-center justify-center text-sm cursor-pointer" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition flex items-center justify-center text-sm cursor-pointer" id="glossary-master-btn" title="Toggle Mastery Verification">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-600 dark:text-brand-400" id="glossary-phrase">make a decision</h3>
+                
+                <p class="text-slate-650 dark:text-slate-350 text-sm leading-relaxed mb-6 font-sans" id="glossary-definition">To choose a course of action after careful thought or consideration.</p>
+                
+                <div class="bg-slate-100 dark:bg-white/5 rounded-2xl p-4 border border-slate-200 dark:border-white/10 space-y-1.5 font-mono">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase font-sans">Precedent Scenario</span>
+                  <p class="text-xs md:text-sm font-semibold italic text-slate-800 dark:text-slate-100 font-sans" id="glossary-example">"It's difficult to make a decision when you don't have all the facts."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-scale-balanced text-brand-500 dark:text-brand-400"></i>
+                  <span>Linguistic Laws of Choice</span>
+                </h4>
+                <p class="text-xs text-slate-650 dark:text-slate-350 leading-relaxed font-semibold font-sans">
+                  Mindset verification depends on exact pairings. We say a person has <strong class="text-brand-600 dark:text-brand-400">second thoughts</strong> (never 'double thoughts'), and we <strong class="text-brand-accent">trust our instincts</strong> (never 'believe our instincts'). Keep your parameters exact to project absolute operational authority.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">The Balanced Choices</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold font-sans">Use arrow keys (Left/Right) to browse. Spacebar to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono text-slate-700 dark:text-slate-300">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-400 dark:text-slate-500">/</span>
+                <span>25</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-brand-500 h-full w-[4%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition flex items-center justify-center cursor-pointer">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-450 dark:text-slate-400 uppercase tracking-widest font-bold font-mono">Cognitive Vector</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-900 dark:text-white" id="card-front-phrase">Phrase</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-400"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-brand-955/40 border border-slate-300 dark:border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-slate-800 dark:text-white font-medium">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-250 dark:bg-brand-955 text-slate-650 dark:text-brand-400 px-2.5 py-1 rounded-full border border-slate-300 dark:border-brand-800" id="card-back-category">Category</span>
+                    <span class="text-xs text-slate-500 dark:text-brand-400 font-semibold font-mono">Resolution Point</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-brand-600 dark:text-brand-300 uppercase tracking-widest font-black font-mono">Definition</span>
+                      <p class="text-base font-semibold leading-relaxed text-slate-800 dark:text-slate-100 font-sans" id="card-back-definition">Definition of the collocation goes here.</p>
+                    </div>
+                    <div class="border-t border-slate-300 dark:border-white/15 pt-3">
+                      <span class="text-[10px] text-brand-600 dark:text-brand-300 uppercase tracking-widest font-black font-mono">Context Precedent</span>
+                      <p class="text-xs sm:text-sm italic text-slate-600 dark:text-slate-250 mt-0.5 font-sans" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-slate-300 dark:border-white/15 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-slate-300 dark:border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-600 dark:text-slate-300 font-mono">Choice Calibrated</span>
+                    </label>
+                    <span class="text-slate-500 dark:text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1 text-brand-400"></i> Flip token</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-955 font-bold text-sm shadow-lg transition cursor-pointer">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ (DECISION QUEST GAP FILL) ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            
+            <!-- Paragraph Completion Challenge Card -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">The College Decision Quest 🎓</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Click the dashed blanks below to load the selection bank and choose the exact collocations to complete this high-stakes narrative.</p>
+                </div>
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Gaps: <span id="quiz-gaps-filled">0</span>/12 Complete
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-brand-accent h-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+              
+              <!-- Flowing Narrative Text Area with gaps -->
+              <div class="p-5 md:p-6 bg-slate-50 dark:bg-brand-deepDark/50 rounded-2xl border border-slate-200 dark:border-slate-800/80 leading-loose text-base md:text-lg text-slate-700 dark:text-slate-300 font-medium">
+                Choosing which college to attend was tough. I was 
+                <button onclick="openGapSelector(0)" id="gap-btn-0" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 1]</button> 
+                12 different universities, and every person who I 
+                <button onclick="openGapSelector(1)" id="gap-btn-1" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 2]</button> 
+                for advice gave me a different suggestion. I 
+                <button onclick="openGapSelector(2)" id="gap-btn-2" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 3]</button> 
+                undecided until a week before the deadline, when my parents reminded me that if I didn't 
+                <button onclick="openGapSelector(3)" id="gap-btn-3" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 4]</button> 
+                my decision soon, I would 
+                <button onclick="openGapSelector(4)" id="gap-btn-4" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 5]</button> 
+                no choice but to wait another year before reapplying. 
+                My mother told me to 
+                <button onclick="openGapSelector(5)" id="gap-btn-5" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 6]</button> 
+                my intuition, and I decided to 
+                <button onclick="openGapSelector(6)" id="gap-btn-6" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 7]</button> 
+                her advice — but the college I most wanted to go to was also the most expensive, and I started 
+                <button onclick="openGapSelector(7)" id="gap-btn-7" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 8]</button> 
+                second thoughts. I 
+                <button onclick="openGapSelector(8)" id="gap-btn-8" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 9]</button> 
+                the issue in-depth with my dad, and he helped me 
+                <button onclick="openGapSelector(9)" id="gap-btn-9" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 10]</button> 
+                the possible outcomes of taking out student loans. In the end, I chose to go to a less expensive university that was also excellent — though I had to 
+                <button onclick="openGapSelector(10)" id="gap-btn-10" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 11]</button> 
+                my decision from my grandmother, who had wanted me to go to the "best" college in the country. The next choice I'll have to make is what area to major in — I really have no idea, so I'm going to 
+                <button onclick="openGapSelector(11)" id="gap-btn-11" class="mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono">[Blank 12]</button> 
+                my options open as long as possible!
+              </div>
+              
+              <!-- Interactive selection area when blank is clicked -->
+              <div id="gap-selector-card" class="hidden bg-slate-50 dark:bg-brand-deepDark/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4 animate-fade-in font-sans">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black uppercase tracking-wider text-brand-500 font-mono" id="active-gap-label">Select Option for Blank X</span>
+                  <button onclick="closeGapSelector()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white"><i class="fa-solid fa-circle-xmark"></i></button>
+                </div>
+                <div id="gap-options-container" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="resetDecidingQuest()" class="text-xs font-bold text-rose-500 hover:text-rose-455 cursor-pointer">
+                  <i class="fa-solid fa-rotate-left mr-1"></i>Reset Quest
+                </button>
+                <button id="quiz-submit-btn" onclick="submitDecidingQuest()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 hover:bg-brand-600 text-slate-955 rounded-xl text-xs sm:text-sm font-bold transition shadow-md font-mono cursor-pointer">
+                  Submit Resolution <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Perfect Complete Card -->
+            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-brand-950/20 dark:to-slate-950 text-slate-850 dark:text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-slate-200 dark:border-brand-900 animate-fade-in">
+              <span class="inline-flex p-4 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
+                <i class="fa-solid fa-trophy text-4xl animate-bounce"></i>
+              </span>
+              <div class="space-y-2">
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:via-brand-300 dark:to-brand-accent">Choice Harmony Restored! ⚖️</h2>
+                <p class="text-sm font-semibold text-brand-650 dark:text-brand-300">Intelligent choice accuracy: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
+              </div>
+              <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-sm mx-auto">
+                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Sound Judgment Rating</span>
+                <span class="text-base font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
+              </div>
+              <p class="text-xs text-slate-550 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+                Outstanding analysis of the college decision matrix. Your strategic evaluation of the possibilities, second thoughts, and gut instincts displays sound judgment!
+              </p>
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetDecidingQuest()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-955 font-bold text-xs transition shadow-lg cursor-pointer">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Recalibrate Quest</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300 cursor-pointer">
+                  <span>Back to Dossier</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Resolution Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">Write an executive alignment brief, an options assessment, or a path-finding log. Test choice logic against Lesson 44 parameters.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-880 text-xs font-bold rounded-xl transition cursor-pointer font-sans">
+                    <i class="fa-solid fa-lightbulb mr-1 text-brand-500"></i> Get Audit Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-600 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25 cursor-pointer font-sans">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 font-mono">Workspace Statement</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-deepDark p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-50 dark:focus:bg-slate-900 outline-none transition text-slate-900 dark:text-slate-100 font-sans leading-relaxed" placeholder="Example: Faced with a difficult decision, our strategy task force had to weigh the options carefully and sleep on it..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5 bg-transparent">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono cursor-pointer">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Manuscript
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-slate-950 rounded-xl text-sm font-bold shadow-lg transition cursor-pointer font-sans">
+                  <i class="fa-solid fa-fingerprint animate-pulse"></i>
+                  <span>Scan Resolution Path</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-6 animate-fade-in">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Resolution Diagnostics</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40 font-mono">Calibrated</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center font-medium">
+                <!-- Left: Gauge/Radial -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-slate-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-amber-500" id="diagnostic-score">--</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Wisdom%</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Decision Strategy Profile</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-650 dark:text-slate-355 leading-relaxed font-sans font-medium">Analyzing structural metrics...</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Collocation Accuracy Check</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-650 dark:text-slate-355 leading-relaxed font-sans font-medium">Scanning choosing & deciding metrics...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-brand-deepDark p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 block mb-1 font-mono">Recommended Path Redirection</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 mt-1 font-sans">"Awaiting audit diagnostics..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 transition shadow-sm font-mono cursor-pointer">
+                    <i class="fa-solid fa-copy"></i> Copy Alternative
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6 bg-transparent">
+            <div class="bg-white dark:bg-slate-900 text-slate-805 dark:text-white rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">Equilibrium Broadcast Station: Ep. 44</h2>
+                    <p class="text-[10px] text-slate-500 dark:text-slate-450 font-semibold font-mono">Evaluating risk profiles, gut instincts, and sound judgment</p>
+                  </div>
+                </div>
+                <div class="bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                  Live Stream
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-50 dark:bg-black/40 rounded-2xl p-4 border border-slate-200 dark:border-white/5 animate-pulse">
+                <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-brand-350 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-brand-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-brand-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3 font-medium">
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-600 dark:text-brand-300 font-mono" id="podcast-status">Decoder Standby</span>
+                <h3 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100" id="podcast-current-phrase">Why we analyze "sound judgment"</h3>
+                <p class="text-xs text-slate-600 dark:text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin speech synthesis between two forensic profiling linguists analyzing Lesson 44 integrity.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-100 dark:bg-black/85 rounded-2xl p-5 border border-slate-200 dark:border-white/10 space-y-4 max-h-48 overflow-y-auto text-[11px] font-mono text-slate-700 dark:text-brand-400 leading-relaxed font-semibold">
+                <div id="podcast-chat-log" class="space-y-4 font-mono">
+                  <p class="text-slate-400">// Activating Speech synthesis dialogues streams real-time conversational breakdowns of choice paths here.</p>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex items-center justify-between">
+                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-white transition cursor-pointer">
+                  <i class="fa-solid fa-backward-step"></i>
+                </button>
+                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-955 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition cursor-pointer" title="Start broadcast loop">
+                  <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                </button>
+                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-white rounded-xl flex items-center justify-center transition cursor-pointer">
+                  <i class="fa-solid fa-forward-step"></i>
+                </button>
+              </div>
+              
+              <!-- Podcast Progress bar -->
+              <div class="space-y-1.5 font-mono">
+                <div class="flex items-center justify-between text-[10px] text-brand-600 dark:text-brand-300 font-semibold">
+                  <span id="podcast-time-passed">Token 0/25</span>
+                  <span id="podcast-time-percent">0% Scanned</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
+                  <div id="podcast-loading-meter" class="bg-brand-400 h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">The Concord Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-sans font-medium">Deep-dive database containing exactly 25 Lesson 44 deciding, choosing, and evaluation collocations.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs font-mono">
+                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans font-semibold" placeholder="Audit registry...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-800 dark:text-white outline-none font-bold font-mono cursor-pointer">
+                  <option value="all">All Clusters</option>
+                  <option value="Weighing & Reconsidering">Weighing & Reconsidering</option>
+                  <option value="Commitment & Intuition">Commitment & Intuition</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-800 dark:text-white outline-none font-bold font-mono cursor-pointer">
+                  <option value="all">All Registry</option>
+                  <option value="mastered">Verified Only</option>
+                  <option value="unmastered">In Progress</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-400 dark:text-slate-505 uppercase tracking-widest font-black font-mono">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
+                    <th class="py-3 px-4 w-36">Registry Group</th>
+                    <th class="py-3 px-4">Standard Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Regulatory Precedent</th>
+                    <th class="py-3 px-4 w-16 text-center font-mono">Vocal</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-semibold font-medium font-sans">
+                  <!-- Javascript will render rows dynamically -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-scroll text-base"></i>
+        <span class="text-[9px] font-bold">Dossier</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-clone text-base"></i>
+        <span class="text-[9px] font-bold">Cards</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-shuffle text-base"></i>
+        <span class="text-[9px] font-bold">Quest</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-laptop-code text-base"></i>
+        <span class="text-[9px] font-bold">Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-tower-broadcast text-base"></i>
+        <span class="text-[9px] font-bold">Cast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400 cursor-pointer">
+        <i class="fa-solid fa-spell-check text-base"></i>
+        <span class="text-[9px] font-bold">Ledger</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-250 dark:border-slate-850">
+    <div class="bg-white dark:bg-[#111827] rounded-3xl p-6 border border-slate-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6 font-semibold">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-stone-800 pb-3">
+        <h3 class="font-sans font-black text-lg text-slate-800 dark:text-white">Observer's Auditory Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-slate-800 dark:hover:text-white transition cursor-pointer">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5 font-medium">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-405 dark:text-slate-400 font-mono animate-pulse">Speech Synthesis Controller</label>
+          <select id="voice-select" class="w-full border border-slate-300 dark:border-stone-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-950 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono cursor-pointer">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono font-bold">
+            <span>Voice Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500 cursor-pointer">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono font-bold">
+            <span>Acoustic Frequency Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500 cursor-pointer">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium cursor-pointer">
+        Apply Diagnostics Voice
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 text-brand-450 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide font-mono animate-pulse" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-300 mt-0.5 font-sans font-semibold" id="toast-body">Dossiers synchronized successfully.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic Block -->
+  <script>
+    const state = {
+      theme: 'dark',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'make_decision', phrase: 'make a decision', definition: 'To choose a course of action after careful thought or consideration.', example: 'It\'s difficult to make a decision when you don\'t have all the facts.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'weighing_the_options', phrase: 'weighing the options', definition: 'Considering each possibility carefully, assessing pros and cons before choosing.', example: 'We are currently weighing the options before signing the lease on a new office.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'narrow_down', phrase: 'narrow down', definition: 'To reduce the number of possibilities or choices to a smaller, more manageable list.', example: 'We need to narrow down the candidates to a shortlist of three for the final interview.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'make_choice', phrase: 'make a choice', definition: 'To select one possibility from a range of different alternatives.', example: 'When faced with several paths, you must eventually make a choice.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'come_to_decision', phrase: 'come to a decision', definition: 'To reach a final resolution or agreement after deliberation.', example: 'After hours of intense debate, the board finally came to a decision.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'reach_decision', phrase: 'reach a decision', definition: 'To conclude a period of consideration with a definitive, settled choice.', example: 'The jury has reached a decision after deliberating for three days.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'sleep_on_it', phrase: 'sleep on it', definition: 'To delay making a final decision until the next day to give it more thought overnight.', example: 'Don\'t rush into buying that car; sleep on it and see how you feel tomorrow.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'arrive_at_decision', phrase: 'arrive at a decision', definition: 'A formal way of describing the process of reaching a final choice.', example: 'The committee has arrived at a decision regarding the annual grant allocation.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'made_up_mind', phrase: 'made up your mind', definition: 'To have made a final, firm choice or decision about something.', example: 'Have you made up your mind about which job offer you are going to accept?', category: 'Commitment & Intuition', mastered: false },
+        { id: 'firm_decision', phrase: 'firm decision', definition: 'A solid, definite decision that is highly unlikely to change.', example: 'Once I make a firm decision, I rarely look back or regret it.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'irrevocable_decision', phrase: 'irrevocable decision', definition: 'A permanent decision that is impossible to change, reverse, or undo.', example: 'Signing the final merger contract was an irrevocable decision.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'reconsider_decision', phrase: 'reconsider your decision', definition: 'To think about a decision again, with the possibility of changing it.', example: 'We urge the board of directors to reconsider their decision to cut the research budget.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'determine_best_course_of_action', phrase: 'determine the best course of action', definition: 'To decide on the most appropriate, effective, and logical plan to follow.', example: 'Our legal team will analyze the contract to determine the best course of action.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'leave_it_up_to_them', phrase: 'leaving it up to them', definition: 'Allowing someone else to make the final choice or decision for you.', example: 'I don\'t mind which restaurant we go to; I\'m leaving it up to you.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'difficult_decision', phrase: 'difficult decision', definition: 'A choice that is hard to make because the options are complex or have serious consequences.', example: 'Deciding whether to relocate my family was a very difficult decision.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'go_with_gut', phrase: 'go with your gut', definition: 'To make a choice based on your deep, instinctive, and intuitive feelings rather than logic alone.', example: 'When you don\'t have time to analyze the statistics, sometimes you just have to go with your gut.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'trust_instincts', phrase: 'trust your instincts', definition: 'To have confidence in your natural, immediate intuition when choosing.', example: 'If a deal feels too good to be true, trust your instincts and walk away.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'opt_for', phrase: 'opt for', definition: 'To choose or select one specific option over other available alternatives.', example: 'Instead of flying, we decided to opt for a scenic train journey through the Alps.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'major_decision', phrase: 'major decision', definition: 'An exceptionally important, consequential, and high-stakes choice.', example: 'Buying a house is a major decision that requires serious financial planning.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'crucial_decision', phrase: 'crucial decision', definition: 'An extremely critical decision that will determine success or failure.', example: 'Choosing the right software architecture was a crucial decision for our startup.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'second_thoughts', phrase: 'second thoughts', definition: 'Doubts or feelings of regret about a choice or decision you have already made.', example: 'I accepted the job offer, but now I\'m having second thoughts about the commute.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'keep_options_open', phrase: 'keep your options open', definition: 'To delay making a final decision so that you remain free to choose from different paths later.', example: 'Don\'t sign a long-term contract yet; keep your options open as long as possible.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'no_choice', phrase: 'no choice', definition: 'Being in a situation where you have only one possible course of action.', example: 'With the deadline looming, I had no choice but to work through the night.', category: 'Commitment & Intuition', mastered: false },
+        { id: 'sound_judgment', phrase: 'sound judgment', definition: 'The intelligent, wise, and practical ability to make good decisions.', example: 'A successful CEO must demonstrate sound judgment under extreme pressure.', category: 'Weighing & Reconsidering', mastered: false },
+        { id: 'wise_decision', phrase: 'wise decision', definition: 'A smart, sensible, and beneficial decision based on good reasoning.', example: 'Investing in renewable energy early turned out to be a highly wise decision.', category: 'Weighing & Reconsidering', mastered: false }
+      ],
+      gapFill: {
+        answers: [
+          'considering',
+          'asked',
+          'remained',
+          'make',
+          'have',
+          'trust',
+          'take',
+          'having',
+          'discussed',
+          'weigh',
+          'defend',
+          'keep'
+        ],
+        options: ['considering', 'asked', 'remained', 'make', 'have', 'trust', 'take', 'having', 'discussed', 'weigh', 'defend', 'keep', 'arrive', 'leave', 'determine', 'opt', 'sleep', 'gut'],
+        userSelections: Array(12).fill(null)
+      },
+      activeCardId: 'make_decision',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      activeGapIndex: null,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    // Web Audio Synthesizer for high-fidelity interactive audio cues
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        if (type === 'click') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1400, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(750, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          // Ascending major chord representing logical consensus
+          const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+          gain.connect(audioCtx.destination);
+
+          notes.forEach((freq, index) => {
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.06);
+            osc.connect(gain);
+            osc.start(audioCtx.currentTime + index * 0.06);
+            osc.stop(audioCtx.currentTime + 0.6);
+          });
+        } else if (type === 'incorrect') {
+          // Flat low buzz representing contradiction/doubt
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.25);
+          const lowpass = audioCtx.createBiquadFilter();
+          lowpass.type = 'lowpass';
+          lowpass.frequency.setValueAtTime(160, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+          osc.connect(lowpass);
+          lowpass.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.25);
+        } else if (type === 'flip') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('Web Audio API not supported or suspended by browser settings:', e);
+      }
+    }
+
+    // HTML5 Canvas concentric choices & conclusion rings background
+    function initBackgroundCanvas() {
+      const canvas = document.getElementById('decision-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      let width = (canvas.width = canvas.offsetWidth);
+      let height = (canvas.height = canvas.offsetHeight);
+      
+      const waveSources = [];
+      
+      window.addEventListener('resize', () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      });
+
+      window.spawnWaveNode = function(event) {
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        // Spawn blue circles (decisions) or amber rings (risks) based on randomness
+        const isChoice = Math.random() > 0.45;
+        
+        waveSources.push({
+          x: x,
+          y: y,
+          radius: 0,
+          maxRadius: Math.random() * 80 + 50,
+          opacity: 0.85,
+          color: isChoice ? '14, 165, 233' : '245, 158, 11' // Sky Blue or Amber
+        });
+        playSynthSound('click');
+      };
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = waveSources.length - 1; i >= 0; i--) {
+          const w = waveSources[i];
+          w.radius += 1.5;
+          w.opacity -= 0.015;
+          
+          if (w.opacity <= 0) {
+            waveSources.splice(i, 1);
+            continue;
+          }
+          
+          ctx.beginPath();
+          ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          
+          ctx.beginPath();
+          ctx.arc(w.x, w.y, w.radius * 0.7, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity * 0.4})`;
+          ctx.stroke();
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      initBackgroundCanvas();
+      renderDictionary();
+      renderFlashcard();
+      resetDecidingQuest(); // Sets up gap slots
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      // Default initial theme setup (starts in dark mode)
+      applyTheme(state.theme);
+      
+      document.addEventListener('keyup', keyUpHandler);
+    });
+
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon text-sm text-brand-400"></i>';
+      } else {
+        html.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun text-sm text-amber-500"></i>';
+      }
+    }
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const nextTheme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = nextTheme;
+      localStorage.setItem('colloc_theme_l44', nextTheme);
+      applyTheme(nextTheme);
+      
+      if (nextTheme === 'dark') {
+        showToast('Obsidian Theme Active', 'Interface calibrated to midnight decision telemetry.', 'fa-moon');
+      } else {
+        showToast('Daylight Theme Active', 'Interface calibrated to high-sun choice parameters.', 'fa-sun');
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_mastery_list_l44')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l44'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Decisional storage load failure:', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l44')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l44'));
+        } catch(e) {}
+      }
+      if (localStorage.getItem('colloc_theme_l44')) {
+        state.theme = localStorage.getItem('colloc_theme_l44');
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l44', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Verified`;
+      
+      let quizFactor = 0;
+      const totalAnswers = state.gapFill.userSelections.filter(sel => sel !== null).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.gapFill.userSelections.forEach((sel, idx) => {
+          if (sel === state.gapFill.answers[idx]) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.gapFill.answers.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l44', JSON.stringify(state.voiceSettings));
+      showToast('Config Active', 'Speech synthesis voice options finalized.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    // Advanced TTS trigger resolving stutters
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('System Conflict', 'Speech synthesizers not available in this environment.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      // Clean spelling of slash-marks to avoid stuttering vocal loops
+      const sanitizedText = text.replace(/\//g, " or ").replace(/-/g, " ");
+      
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.currentTarget.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('make_decision');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Linguistic Group: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500 animate-pulse"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. Precedent scenario: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
+        showToast('Node Verified', `Added "${term.phrase}" into verified registry.`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Node Reset', `Returned "${term.phrase}" to pending queue.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const textToRead = document.getElementById('narrative-body').innerText;
+      triggerTTS(textToRead);
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('Lower Bound', 'This is the start of the choice briefing deck.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Loop Active', 'Re-routing transceiver stack back to index 1.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function keyUpHandler(e) {
+      if (state.currentView !== 'flashcards') return;
+      if (e.code === 'Space') {
+        flipFlashcard();
+      } else if (e.code === 'ArrowLeft') {
+        prevFlashcard();
+      } else if (e.code === 'ArrowRight') {
+        nextFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Calibration Confirmed', `"${card.phrase}" marked as verified.`);
+      }
+    }
+
+    // Dynamic interactive paragraph blank selectors
+    function openGapSelector(index) {
+      playSynthSound('click');
+      state.activeGapIndex = index;
+      
+      const card = document.getElementById('gap-selector-card');
+      const label = document.getElementById('active-gap-label');
+      const container = document.getElementById('gap-options-container');
+      
+      label.innerText = `Select word for Blank ${index + 1}`;
+      container.innerHTML = '';
+      
+      state.gapFill.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = "px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 rounded-xl hover:bg-brand-500 hover:text-slate-950 hover:border-brand-500 transition text-center truncate cursor-pointer";
+        btn.innerText = opt;
+        btn.onclick = () => selectGapAnswer(opt);
+        container.appendChild(btn);
+      });
+      
+      card.classList.remove('hidden');
+    }
+
+    function selectGapAnswer(option) {
+      const gapIdx = state.activeGapIndex;
+      if (gapIdx === null) return;
+      
+      state.gapFill.userSelections[gapIdx] = option;
+      playSynthSound('click');
+      
+      const btn = document.getElementById(`gap-btn-${gapIdx}`);
+      btn.innerText = option;
+      btn.className = "mx-1 px-3 py-0.5 rounded-lg border-2 border-brand-500 bg-brand-500/10 text-brand-600 dark:text-brand-300 font-bold transition font-mono";
+      
+      closeGapSelector();
+      
+      // Update filled count
+      const filledCount = state.gapFill.userSelections.filter(sel => sel !== null).length;
+      document.getElementById('quiz-gaps-filled').innerText = filledCount;
+      
+      const percent = (filledCount / state.gapFill.answers.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+      
+      calculateMasteryMetrics();
+    }
+
+    function closeGapSelector() {
+      document.getElementById('gap-selector-card').classList.add('hidden');
+      state.activeGapIndex = null;
+    }
+
+    function resetDecidingQuest() {
+      state.gapFill.userSelections = Array(12).fill(null);
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      document.getElementById('quiz-gaps-filled').innerText = '0';
+      document.getElementById('quiz-progress-bar').style.width = '0%';
+      closeGapSelector();
+      
+      for (let i = 0; i < 12; i++) {
+        const btn = document.getElementById(`gap-btn-${i}`);
+        if (btn) {
+          btn.innerText = `[Blank ${i + 1}]`;
+          btn.className = "mx-1 px-3 py-0.5 rounded-lg border-2 border-dashed border-brand-500 bg-brand-500/5 hover:bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold transition font-mono";
+        }
+      }
+      calculateMasteryMetrics();
+    }
+
+    function submitDecidingQuest() {
+      const totalGaps = state.gapFill.answers.length;
+      const filledGaps = state.gapFill.userSelections.filter(sel => sel !== null).length;
+      
+      if (filledGaps < totalGaps) {
+        showToast('Incomplete Quest', `Please fill out all 12 blanks before submitting for evaluation.`, 'fa-triangle-exclamation');
+        playSynthSound('incorrect');
+        return;
+      }
+      
+      let correct = 0;
+      state.gapFill.userSelections.forEach((sel, idx) => {
+        if (sel === state.gapFill.answers[idx]) {
+          correct++;
+        }
+      });
+      
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      const percent = Math.round((correct / totalGaps) * 100);
+      document.getElementById('quiz-score-correct').innerText = `${correct}/${totalGaps}`;
+      document.getElementById('quiz-score-percent').innerText = `${percent}%`;
+      
+      let rank = "Intuition Novice";
+      if (percent === 100) {
+        rank = "Strategic Grandmaster 🧠";
+        playSynthSound('correct');
+      } else if (percent >= 80) {
+        rank = "Sound Judgment Specialist";
+        playSynthSound('correct');
+      } else if (percent >= 60) {
+        rank = "Decisive Analyst";
+        playSynthSound('click');
+      } else {
+        rank = "Indecisive Observer";
+        playSynthSound('incorrect');
+      }
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['make a decision', 'weighing the options', 'narrow down', 'sleep on it', 'trust your instincts', 'major decision'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 hover:bg-brand-500/10 text-slate-700 dark:bg-slate-800 dark:hover:bg-brand-500/10 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-200 dark:border-slate-700 font-mono cursor-pointer";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `To determine the best course of action, we had to ${word} immediately...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Calibrated choice briefing: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Manuscript modified', `Injected "${randomColloc}" into workspace.`, 'fa-circle-plus');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Detail an operational brief where a lead executive faced with a difficult decision has to narrow down options to a shortlist.",
+        "Write a corporate debriefing on why analysts decided to reconsider their decision and determine the best course of action.",
+        "Discuss a workplace scenario where someone chose to go with their gut and make an irrevocable decision under pressure.",
+        "Draft a litigation statement where executives must defend their decision, which was particularly important as a crucial decision."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Dialogue Draft Prompt: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Document', 'Please draft your decisional manuscript before running a scan.', 'fa-circle-exclamation');
+        return;
+      }
+      
+      showToast('Cognitive Scan', 'Routing statements to Gemini diagnostic engine...', 'fa-fingerprint');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing semantic alignments and choice rationality... Please standby.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Running choice-matrix comparison parameters...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemPrompt = "You are an elite forensic linguist, corporate strategist, and English professor. Verify if the user's statement utilizes Lesson 44 Deciding & Choosing collocations (make a decision, weighing the options, narrow down, make a choice, come to a decision, reach a decision, sleep on it, arrive at a decision, made up your mind, firm decision, irrevocable decision, reconsider your decision, determine the best course of action, leaving it up to them, difficult decision, go with your gut, trust your instincts, opt for, major decision, crucial decision, second thoughts, keep your options open, no choice, sound judgment, wise decisions) correctly and naturally. Respond ONLY with a clean, unformatted raw JSON object containing these precise keys: \"score\" (0-100 indicating decision logic and collocation strength), \"analysis\" (brief 2-3 sentence overview of executive clarity), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific instruction on how choices or conclusions are phrased), and \"alternatives\" (array of 1-2 polished alternatives). Absolutely do not enclose your output in markdown formatting or code blocks.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Analyze this decisional analysis: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`Response returned state ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('Scan Halted', 'Forensic link failed to synchronize.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "Command deck offline. Re-verify link credentials and retry.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Decisions conform to flawless executive standards!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-955/20 text-brand-400 border border-brand-900/40";
+            badge.innerText = "Verified Compliance";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-450 border border-rose-900/40";
+            badge.innerText = "Logical Shift Flagged";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("Forensic compliance JSON error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Compliance reports returned an unparsable structure. Try streamlining your sentence patterns.";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('System Copied', 'Polished statement copied to diagnostic logs.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Broadcast Suspended";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "Transmission Active - Analyzing Veracity";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Debriefing Complete!";
+        document.getElementById('podcast-current-definition').innerText = "All Lesson 44 structural parameters evaluated and verified.";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g. "${currentWord.example}"`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Token ${state.podcastIndex + 1}/25`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Next, let's explore an essential decisional collocation. It is: ${currentWord.phrase}. Tom, why is this critical for our logical systems?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-brand-500 dark:text-brand-400 font-mono">Sarah (Enterprise Advisor)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.05, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} fundamentally refers to ${currentWord.definition}. In corporate choices, we often say: "${currentWord.example}"`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-cyan-500 dark:text-cyan-400 font-mono">Tom (Strategic Advisor)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.95, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const sanitizedText = text.replace(/\//g, " or ").replace(/-/g, " ");
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic font-medium">No records matched the registry criteria.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-100 dark:hover:bg-slate-800/40 transition border-b border-slate-200 dark:border-slate-800 font-sans";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500 dark:text-amber-450 animate-pulse' : 'fa-star text-slate-350 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95 cursor-pointer">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:text-brand-600 dark:hover:text-brand-300 font-sans" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-600 dark:text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/25 font-mono font-heading">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-300 leading-relaxed font-semibold font-sans">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 dark:text-slate-405 font-sans font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-stone-800 flex items-center justify-center text-slate-400 hover:text-slate-800 dark:hover:text-white transition mx-auto cursor-pointer">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      openGapSelector,
+      selectGapAnswer,
+      closeGapSelector,
+      resetDecidingQuest,
+      submitDecidingQuest,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

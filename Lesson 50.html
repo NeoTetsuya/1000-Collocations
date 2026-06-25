@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollocaStudy - Lesson 50: Everyday Verbs Lab</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter, Plus Jakarta Sans, & Share Tech Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Interaction and Status Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Share Tech Mono', 'monospace']
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c084fc',
+              400: '#a78bfa',
+              500: '#6366f1', /* Indigo Verb Root */
+              600: '#4f46e5',
+              700: '#4338ca',
+              accent: '#f59e0b', /* Radiant Gold Victory Highlight */
+              emeraldAccent: '#10b981', /* Flow Success Green */
+              neonPurple: '#d946ef', /* High-energy Magenta */
+              deepDark: '#0b0f19' /* Space Twilight Dark */
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Premium Celebratory interface scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4f46e5;
+      border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #f59e0b;
+    }
+    
+    /* View transition animations */
+    .view-container {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 3D Card Flip mechanics */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-preserve-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .card-front {
+      backface-visibility: hidden;
+    }
+    .flipped {
+      transform: rotateY(180deg);
+    }
+    
+    /* Interactive Equalizer wave animation representing verbal waves */
+    @keyframes wave-bounce {
+      0%, 100% { height: 8px; }
+      50% { height: 42px; }
+    }
+    .wave-bar {
+      animation: wave-bounce 1s ease-in-out infinite;
+    }
+    
+    /* Grid system scanning background representing final diagnostic matrix */
+    @keyframes grid-scan {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 40px; }
+    }
+    .matrix-scan {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to bottom, rgba(79, 70, 229, 0.03) 1px, transparent 1px),
+                        linear-gradient(to right, rgba(79, 70, 229, 0.03) 1px, transparent 1px);
+      animation: grid-scan 12s linear infinite;
+    }
+
+    /* Soft neon background drift */
+    @keyframes matrix-glow {
+      0%, 100% { opacity: 0.07; transform: scale(0.95); }
+      50% { opacity: 0.16; transform: scale(1.05); }
+    }
+    .matrix-drift-glow {
+      animation: matrix-glow 14s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-800 dark:bg-brand-deepDark dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <div class="flex h-full flex-col overflow-hidden relative">
+    
+    <!-- HTML5 Canvas Particle System Backdrop (Neuronal Connections) -->
+    <canvas id="finale-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-30" onclick="spawnVictoryParticle(event)"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-950/10 via-slate-950/15 to-brand-deepDark pointer-events-none z-0 matrix-drift-glow"></div>
+    <div class="absolute inset-0 matrix-scan pointer-events-none z-0"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="flex h-16 items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+      <div class="flex items-center gap-3">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-800 to-indigo-950 text-white shadow-md shadow-indigo-500/10">
+          <i class="fa-solid fa-graduation-cap text-lg text-brand-accent animate-pulse"></i>
+        </div>
+        <div>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-400 to-brand-accent bg-clip-text text-transparent font-sans">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-655 dark:text-indigo-400 border border-indigo-500/20 font-mono">Lesson 50 Finale</span>
+        </div>
+      </div>
+      
+      <!-- Center Display: Lesson Title -->
+      <div class="hidden md:flex items-center gap-2">
+        <i class="fa-solid fa-star-of-life text-brand-accent"></i>
+        <h1 class="font-heading font-bold text-slate-800 dark:text-slate-100">Everyday Verbs</h1>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <!-- Voice Settings Button -->
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-605 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-880 transition shadow-sm cursor-pointer" title="Speech Synthesis Config">
+          <i class="fa-solid fa-sliders text-sm"></i>
+        </button>
+        <!-- Light/Dark Theme Toggle -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 text-slate-605 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800 transition shadow-sm cursor-pointer" id="theme-toggle" title="Switch Theme Skin">
+          <i class="fa-solid fa-moon text-sm text-brand-accent"></i>
+        </button>
+        <!-- Lesson Progress Pill -->
+        <div class="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-900 px-3 py-1.5 border border-slate-200 dark:border-slate-800">
+          <div class="h-2 w-2 rounded-full bg-brand-accent animate-pulse"></div>
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-300" id="lesson-mastery-ratio">0/30 Verified</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- App Body (Sidebar + Content Panel) -->
+    <div class="flex h-full overflow-hidden z-10">
+      
+      <!-- Side Navigation Panel -->
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+        <div class="space-y-1.5">
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-505 uppercase">Verbal Core Matrices</p>
+          
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-indigo-300 border border-brand-500/20">
+            <i class="fa-solid fa-book-bookmark text-base"></i>
+            <span>The Verb Ledger</span>
+          </button>
+          
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Mnemonic Transceiver</span>
+          </button>
+          
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-square-check text-base"></i>
+            <span>Validation Terminal</span>
+          </button>
+          
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-keyboard text-base animate-pulse"></i>
+            <span>Verbal Sandbox</span>
+          </button>
+          
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-tower-broadcast text-base"></i>
+            <span>Finale Broadcast</span>
+          </button>
+          
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100">
+            <i class="fa-solid fa-database text-base"></i>
+            <span>Concord Ledger</span>
+          </button>
+        </div>
+        
+        <!-- Course Completion Status Box -->
+        <div class="rounded-2xl bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900 p-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+          <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
+          <div class="flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-crown text-brand-accent animate-bounce"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400">Total Course Rank</span>
+          </div>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-accent" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-550 dark:text-slate-400 mt-1 leading-relaxed font-semibold">Master everyday verbs (HAVE, TAKE, PAY, BREAK, CATCH, COME, GET) to lock in the ultimate English collocation credentials!</p>
+        </div>
+      </nav>
+
+      <!-- Main Scrollable Content Panel -->
+      <main class="flex-1 overflow-y-auto relative h-full">
+        
+        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Side: Interactive Story/Core Text -->
+            <div class="xl:col-span-7 bg-white dark:bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-200 dark:border-slate-800 bg-gradient-to-tr from-slate-100 to-indigo-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-key text-slate-404 dark:text-slate-700/65 text-xl animate-bounce"></i>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Verb Ledger</h2>
+                  <p class="text-xs text-slate-505 dark:text-slate-400 mt-1">Examine HAVE, TAKE, PAY, BREAK, CATCH, COME, and GET collocation classes. Click any term to pull definitions.</p>
+                </div>
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-655 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-md transition z-10 cursor-pointer">
+                  <i class="fa-solid fa-volume-high"></i>
+                  <span>Vocal Broadcaster</span>
+                </button>
+              </div>
+              
+              <!-- Story Text incorporating 30 collocations -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 tracking-wide space-y-6 relative z-10 animate-fade-in font-medium">
+                <p>
+                  To finish up our study of collocations, we are going to focus on expressions with everyday verbs. A lot of learners make mistakes here because these pairings vary significantly in other languages. Consider children: we say a mother will <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_a_baby">have a baby</span>, and couples hope to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_children">have children</span>. When going out, we want to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_a_blast">have a blast</span>, <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_fun">have fun</span>, or simply <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_a_good_time">have a good time</span>. We also use have for meals: to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_breakfast">have breakfast</span>, lunch, dinner, or a snack. In our career journeys, we must be ready to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_an_opportunity">have an opportunity</span> which allows us to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="have_an_advantage">have an advantage</span>.
+                </p>
+                <p>
+                  Next are expressions with 'take'. Every morning, it is standard to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_shower">take a shower</span> or <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_bath">take a bath</span>. At school, students will <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_class">take a class</span>, then <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_test">take a test</span> or exam. For travel, we <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_bus">take a bus</span>, train, or taxi. When exhausted, we <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_break">take a break</span> or <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_a_rest">take a rest</span> to pause our work. If a golden chance appears, we must <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_advantage_of">take advantage of</span> the moment, ensure we <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_care_of">take care of</span> details, and <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="take_action">take action</span> immediately.
+                </p>
+                <p>
+                  Crucially, some collocations with 'pay' have nothing to do with money. We must <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="pay_attention">pay attention</span> to lectures, <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="pay_tribute">pay tribute</span> to heroes, or <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="pay_someone_a_compliment">pay someone a compliment</span> to lift spirits. You can also <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="pay_someone_a_visit">pay someone a visit</span> informally, or <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="pay_your_respects">pay your respects</span> at a memorial.
+                </p>
+                <p>
+                  To change our behavior, we try to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="break_a_habit">break a habit</span>, and must never <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="break_a_promise">break a promise</span>. At social events, we <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="break_the_ice">break the ice</span> to warm up quiet groups. Those who <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="break_the_rules">break the rules</span> will face discipline. And when conveying difficult updates, we have to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="break_the_news">break the news</span> gently.
+                </p>
+                <p>
+                  In everyday incidents, we might <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="catch_a_cold">catch a cold</span> or catch the flu. If wood gets too close to heat, it will <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="catch_fire">catch fire</span>. During travels, we might <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="catch_a_glimpse_of">catch a glimpse of</span> wild animals, or try to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="catch_someones_eye">catch someone's eye</span> to connect. Finally, we might sprint to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="catch_the_bus">catch the bus</span> or subway to head home.
+                </p>
+                <p>
+                  Policies eventually <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="come_into_force">come into force</span> or come to an effect. All semesters must <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="come_to_an_end">come to an end</span>. Then we must <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="come_to_terms_with">come to terms with</span> our results, especially when our actions <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="come_under_scrutiny">come under scrutiny</span> or when we <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="come_close">come close</span> to full marks. Finally, we use 'get' for changes: to <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="get_married">get married</span>, <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="get_divorced">get divorced</span>, <span class="colloc-ref cursor-pointer font-bold text-indigo-600 dark:text-brand-300 border-b-2 border-dashed border-indigo-500 hover:bg-indigo-500/10 px-1 rounded transition" data-id="get_pregnant">get pregnant</span>, or get angry, tired, or excited.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Right Side: Interactive Glossary Definition Card -->
+            <div class="xl:col-span-5 flex flex-col gap-6 font-medium animate-fade-in">
+              <div class="bg-gradient-to-tr from-white to-slate-100 dark:from-slate-900 dark:to-slate-950 text-slate-805 dark:text-white rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-xl" id="glossary-display">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-brand-accent animate-pulse font-mono" id="glossary-category">Verbal Registry Portal</span>
+                  <div class="flex items-center gap-2">
+                    <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition flex items-center justify-center text-sm cursor-pointer" title="Pronounce Phrase">
+                      <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition flex items-center justify-center text-sm cursor-pointer" id="glossary-master-btn" title="Toggle Mastery Verification">
+                      <i class="fa-regular fa-star"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-indigo-650 dark:text-brand-accent" id="glossary-phrase">have a baby</h3>
+                
+                <p class="text-slate-650 dark:text-slate-350 text-sm leading-relaxed mb-6 font-sans font-medium" id="glossary-definition">To give birth to a child.</p>
+                
+                <div class="bg-slate-100 dark:bg-white/5 rounded-2xl p-4 border border-slate-200 dark:border-white/10 space-y-1.5 font-mono">
+                  <span class="text-[10px] font-bold tracking-widest text-slate-500 dark:text-slate-405 uppercase font-sans">Precedent Scenario</span>
+                  <p class="text-xs md:text-sm font-semibold italic text-slate-800 dark:text-slate-100 font-sans" id="glossary-example">"Regina is going to have a baby next month."</p>
+                </div>
+              </div>
+              
+              <!-- Quick Help Guide -->
+              <div class="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-800 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-info text-indigo-600 dark:text-brand-accent"></i>
+                  <span>Linguistic Laws of Verbs</span>
+                </h4>
+                <p class="text-xs text-slate-655 dark:text-slate-355 leading-relaxed font-semibold font-sans">
+                  The final lesson requires perfect command of verbal anchors. We say <strong class="text-indigo-600 dark:text-brand-accent">pay attention</strong> (not 'give attention') and <strong class="text-indigo-600 dark:text-brand-accent">take a break</strong> (not 'make a break'). Use these parameters with ultimate precision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
+        <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">The Mnemonic Transceiver</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold font-sans">Use keyboard arrow keys (Left/Right) to browse. Spacebar to flip.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono text-slate-700 dark:text-slate-300">
+                <span id="flashcard-index">1</span>
+                <span class="text-slate-405 dark:text-slate-500">/</span>
+                <span id="flashcard-total-count">30</span>
+              </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-indigo-500 dark:bg-brand-accent h-full w-[3.3%]" id="flashcard-progress-bar"></div>
+            </div>
+            
+            <!-- Flips Container -->
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+              <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
+                <!-- FRONT OF CARD -->
+                <div class="card-front absolute inset-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-600 dark:text-brand-300 px-2.5 py-1 rounded-full border border-indigo-500/20 font-mono" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 transition flex items-center justify-center cursor-pointer">
+                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="text-center">
+                    <span class="text-xs text-slate-450 dark:text-slate-400 uppercase tracking-widest font-bold font-mono">Verbal Vector</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-900 dark:text-white" id="card-front-phrase">Phrase</h3>
+                  </div>
+                  
+                  <div class="text-center text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    <span class="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800"><i class="fa-solid fa-arrows-rotate mr-1 text-indigo-500 dark:text-brand-accent"></i> Click to flip</span>
+                  </div>
+                </div>
+                
+                <!-- BACK OF CARD -->
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-950 dark:to-indigo-950/20 border border-slate-303 dark:border-indigo-900 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-slate-800 dark:text-white font-medium font-sans">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-250 dark:bg-indigo-955 text-slate-655 dark:text-indigo-400 px-2.5 py-1 rounded-full border border-slate-305 dark:border-indigo-900" id="card-back-category">Category</span>
+                    <span class="text-xs text-indigo-500 dark:text-brand-accent font-semibold font-mono">Finale Focus</span>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div>
+                      <span class="text-[10px] text-indigo-550 dark:text-brand-accent uppercase tracking-widest font-black font-mono">Definition</span>
+                      <p class="text-base font-semibold leading-relaxed text-slate-850 dark:text-slate-100" id="card-back-definition">Definition goes here.</p>
+                    </div>
+                    <div class="border-t border-slate-300 dark:border-white/15 pt-3">
+                      <span class="text-[10px] text-indigo-550 dark:text-brand-accent uppercase tracking-widest font-black font-mono">Context Precedent</span>
+                      <p class="text-xs sm:text-sm italic text-slate-655 dark:text-slate-250 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center justify-between border-t border-slate-300 dark:border-white/15 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                      <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-indigo-500 dark:text-indigo-500 focus:ring-indigo-500 bg-transparent border-slate-303 dark:border-white/20 h-4 w-4">
+                      <span class="font-bold text-slate-605 dark:text-slate-300 font-mono">Fact Verified</span>
+                    </label>
+                    <span class="text-slate-500 dark:text-slate-404 text-[11px] font-mono"><i class="fa-solid fa-rotate mr-1 text-indigo-550 dark:text-brand-accent"></i> Flip token</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Cards Controls -->
+            <div class="flex items-center justify-between gap-4">
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+              
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-indigo-655 hover:bg-indigo-700 text-white font-bold text-sm shadow-lg transition cursor-pointer">
+                <span>Next</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 3: QUIZ (VALIDATION BOARD) ==================== -->
+        <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6">
+            
+            <!-- Question Challenge Card -->
+            <div id="quiz-screen" class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">The Validation Terminal</h2>
+                  <p class="text-xs text-slate-505 dark:text-slate-404 mt-1">Select the correct verb form matching standard everyday collocations.</p>
+                </div>
+                <div class="bg-indigo-500/10 text-indigo-650 dark:text-brand-accent border border-indigo-500/25 dark:border-brand-accent/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                  Scenario <span id="quiz-question-current">1</span>/20 Complete
+                </div>
+              </div>
+              
+              <!-- Progress Indicator -->
+              <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-brand-accent h-full transition-all duration-300" style="width: 5%"></div>
+              </div>
+              
+              <!-- Active Question Scenario Content -->
+              <div class="space-y-4">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-404 dark:text-slate-550 font-mono">Everyday Verb Scenario Log</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-900 dark:text-white font-sans">"Loading everyday verbal scenario..."</p>
+              </div>
+              
+              <!-- Options Grid for Multiple Choice -->
+              <div id="quiz-options-grid" class="grid grid-cols-1 gap-3 pt-2">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Interactive Explanation Card -->
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-4 space-y-1 font-semibold animate-fade-in">
+                <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Linguistic Consensus Verification</span>
+                </div>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-sans font-medium">Verification logic summary.</p>
+              </div>
+              
+              <!-- Action Button Row -->
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-indigo-550 hover:text-indigo-500 cursor-pointer">
+                  <i class="fa-solid fa-rotate-left mr-1"></i>Reset Core Log
+                </button>
+                <button id="quiz-next-btn" onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-200 dark:bg-slate-800 text-slate-404 dark:text-slate-505 rounded-xl text-xs sm:text-sm font-bold transition font-mono cursor-not-allowed" disabled>
+                  Next Scenario <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Quiz Results Screen -->
+            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-indigo-950/20 dark:to-slate-950 text-slate-855 dark:text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-slate-200 dark:border-indigo-900 animate-fade-in font-sans font-semibold">
+              <span class="inline-flex p-4 bg-indigo-500/10 dark:bg-indigo-500/10 text-indigo-650 dark:text-indigo-404 rounded-full border border-indigo-500/20 dark:border-indigo-500/20 shadow-inner">
+                <i class="fa-solid fa-trophy text-4xl animate-bounce text-brand-accent"></i>
+              </span>
+              <div class="space-y-2">
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-brand-accent">Course Completed! 🎓🏆</h2>
+                <p class="text-sm font-semibold text-indigo-655 dark:text-indigo-300">Accuracy index: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
+              </div>
+              <div class="bg-slate-100 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-sm mx-auto">
+                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-455 font-mono">Colloquial Mastery Standing</span>
+                <span class="text-base font-bold text-brand-accent mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
+              </div>
+              <p class="text-xs text-slate-555 dark:text-slate-404 max-w-md mx-auto leading-relaxed font-medium">
+                Sincere congratulations. You have traversed all 50 structural labs of the CollocaStudy catalog. Your verified competency in everyday verb collocations demonstrates total fluency!
+              </p>
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-indigo-655 hover:bg-indigo-700 text-white font-bold text-xs transition shadow-lg cursor-pointer">
+                  <i class="fa-solid fa-rotate-right"></i>
+                  <span>Retake Final Exam</span>
+                </button>
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-200 dark:border-slate-800 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300 cursor-pointer">
+                  <span>Back to Ledger</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 4: ROUTINE PRACTICE SANDBOX ==================== -->
+        <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Verbal Practice Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-405 font-semibold font-sans">Draft a personal journal entry, a professional request, or an email. Test alignment with HAVE, TAKE, PAY, BREAK, CATCH, COME, and GET.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-880 text-xs font-bold rounded-xl transition cursor-pointer font-sans">
+                    <i class="fa-solid fa-lightbulb mr-1 text-indigo-550"></i> Get Study Prompt
+                  </button>
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-indigo-500/10 text-indigo-650 dark:text-indigo-300 hover:bg-indigo-500/20 text-xs font-bold rounded-xl transition border border-indigo-500/25 cursor-pointer font-sans font-medium">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Text Area -->
+              <div class="space-y-3 font-semibold">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-404 dark:text-slate-505 font-mono">Workspace Document Statement</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-deepDark p-4 text-sm font-medium focus:border-indigo-500 focus:bg-slate-50 dark:focus:bg-slate-900 outline-none transition text-slate-900 dark:text-slate-100 font-sans leading-relaxed" placeholder="Example: Next year, we hope to have an opportunity to pay someone a visit in the city while we take a class..."></textarea>
+              </div>
+              
+              <!-- Quick Chips Selection -->
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5 bg-transparent">
+                <!-- Rendered dynamically -->
+              </div>
+              
+              <!-- Action Button bar -->
+              <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-404 hover:text-indigo-550 transition font-mono cursor-pointer">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Sheet
+                </button>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-lg transition cursor-pointer font-sans">
+                  <i class="fa-solid fa-fingerprint animate-pulse"></i>
+                  <span>Scan Verbal Compliance</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Diagnostic Output Screen -->
+            <div id="sandbox-diagnostic-card" class="hidden bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-md space-y-6 animate-fade-in font-semibold">
+              <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Verbal Diagnostics</h3>
+                <div class="flex items-center gap-2">
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-emerald-404 border border-emerald-900/40 font-mono">Calibrated</span>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <!-- Left: Gauge/Radial -->
+                <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-200 dark:border-slate-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-indigo-500" id="diagnostic-score">--</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-404 font-mono">Score%</span>
+                  </div>
+                </div>
+                
+                <!-- Right: Explanatory Breakdown -->
+                <div class="md:col-span-9 space-y-4">
+                  <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-404 font-mono block mb-0.5">Colloquial Flow Assessment</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-655 dark:text-slate-355 leading-relaxed font-sans font-medium">Analyzing diagnostic verbal streams...</p>
+                  </div>
+                  
+                  <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-404 font-mono block mb-0.5">Verb Match Alignment</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-655 dark:text-slate-355 leading-relaxed font-sans font-medium">Scanning collocation configurations...</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Alternatives Accordion Box -->
+              <div class="bg-slate-50 dark:bg-brand-deepDark p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-455 block mb-1 font-mono">Recommended Redirection</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 mt-1 font-sans">"Awaiting diagnostics trigger..."</p>
+                <div class="flex justify-end mt-3">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-880 transition shadow-sm font-mono cursor-pointer">
+                    <i class="fa-solid fa-copy"></i> Copy Alignment
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="max-w-2xl mx-auto space-y-6 bg-transparent">
+            <div class="bg-white dark:bg-slate-900 text-slate-805 dark:text-white rounded-3xl p-6 md:p-8 border border-slate-200 dark:border-slate-800 shadow-xl space-y-8">
+              
+              <!-- Broadcast Header -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/10">
+                <div class="flex items-center gap-3 font-semibold">
+                  <span class="flex h-3 w-3 rounded-full bg-indigo-500 animate-pulse"></span>
+                  <div>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">Veritas Podcast Series: Lesson 50</h2>
+                    <p class="text-[10px] text-slate-550 dark:text-slate-450 font-mono">Dissecting semantic drift, common errors, and absolute verb mastery</p>
+                  </div>
+                </div>
+                <div class="bg-indigo-500/10 text-indigo-655 dark:text-brand-accent border border-indigo-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                  Live Stream
+                </div>
+              </div>
+              
+              <!-- Interactive visual equalizer -->
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-slate-50 dark:bg-black/40 rounded-2xl p-4 border border-slate-200 dark:border-white/5 animate-pulse">
+                <div class="wave-bar bg-indigo-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
+                <div class="wave-bar bg-indigo-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
+                <div class="wave-bar bg-purple-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
+                <div class="wave-bar bg-purple-400 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-indigo-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-brand-accent w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
+              </div>
+              
+              <!-- Currently Playing Widget -->
+              <div class="text-center space-y-3 font-medium">
+                <span class="text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-brand-accent font-mono" id="podcast-status">Decoder Standby</span>
+                <h3 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100" id="podcast-current-phrase">Everyday Verbs Synthesizer</h3>
+                <p class="text-xs text-slate-600 dark:text-indigo-250 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin vocal speech synthesis of our ultimate review between two corporate research linguists.</p>
+              </div>
+              
+              <!-- Dialogue Box -->
+              <div class="bg-slate-100 dark:bg-black/85 rounded-2xl p-5 border border-slate-200 dark:border-white/10 space-y-4 max-h-48 overflow-y-auto text-[11px] font-mono text-slate-700 dark:text-indigo-400 leading-relaxed font-semibold">
+                <div id="podcast-chat-log" class="space-y-4 font-mono">
+                  <p class="text-slate-400">// Activating dialogue stream presents real-time verbal parses here.</p>
+                </div>
+              </div>
+              
+              <!-- Podcast Controls -->
+              <div class="flex items-center justify-between">
+                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-white transition cursor-pointer">
+                  <i class="fa-solid fa-backward-step"></i>
+                </button>
+                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-indigo-500 to-indigo-700 dark:from-indigo-600 dark:to-indigo-800 text-white rounded-full flex items-center justify-center shadow-lg transition cursor-pointer" title="Start broadcast loop">
+                  <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
+                </button>
+                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-white rounded-xl flex items-center justify-center transition cursor-pointer">
+                  <i class="fa-solid fa-forward-step"></i>
+                </button>
+              </div>
+              
+              <!-- Podcast Progress bar -->
+              <div class="space-y-1.5 font-mono font-bold">
+                <div class="flex items-center justify-between text-[10px] text-indigo-650 dark:text-brand-accent">
+                  <span id="podcast-time-passed">Token 0/30</span>
+                  <span id="podcast-time-percent">0% Scanned</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
+                  <div id="podcast-loading-meter" class="bg-indigo-400 h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <!-- ==================== VIEW 6: DICTIONARY ==================== -->
+        <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
+          <div class="bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6 font-semibold">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <div>
+                <h2 class="font-heading text-xl font-extrabold text-slate-800 dark:text-slate-200">The Concord Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-sans font-medium">Deep-dive registry representing exactly 30 Lesson 50 everyday verbal collocation patterns.</p>
+              </div>
+              <!-- Controls Container -->
+              <div class="flex flex-wrap gap-2">
+                <!-- Search Box -->
+                <div class="relative max-w-xs font-mono">
+                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-405 dark:text-slate-505 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-slate-50 dark:bg-slate-955 text-slate-900 dark:text-white outline-none focus:border-indigo-500 dark:focus:border-brand-accent transition w-full md:w-48 font-sans font-semibold" placeholder="Audit database...">
+                </div>
+                <!-- Dropdown Categories -->
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-800 dark:text-white outline-none font-bold font-mono cursor-pointer">
+                  <option value="all">All Verb Roots</option>
+                  <option value="HAVE">HAVE</option>
+                  <option value="TAKE">TAKE</option>
+                  <option value="PAY">PAY</option>
+                  <option value="BREAK">BREAK</option>
+                  <option value="CATCH">CATCH</option>
+                  <option value="COME">COME</option>
+                  <option value="GET">GET</option>
+                </select>
+                <!-- Mastery Filter -->
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-800 dark:text-white outline-none font-bold font-mono cursor-pointer">
+                  <option value="all">All Registry</option>
+                  <option value="mastered">Verified Only</option>
+                  <option value="unmastered">In Progress</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-404 dark:text-slate-550 uppercase tracking-widest font-black font-mono">
+                    <th class="py-3 px-4 w-10">Status</th>
+                    <th class="py-3 px-4 w-48">Collocation Phrase</th>
+                    <th class="py-3 px-4 w-36">Registry Group</th>
+                    <th class="py-3 px-4">Standard Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Usage Precedent</th>
+                    <th class="py-3 px-4 w-16 text-center font-mono">Vocal</th>
+                  </tr>
+                </thead>
+                <tbody id="dictionary-rows" class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-705 dark:text-slate-300 font-sans">
+                  <!-- Javascript renders rows dynamically -->
+                </tbody>
+              </table>
+            </div>
+            
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Navigation Bar Footer -->
+    <footer class="flex h-16 items-center justify-around border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-indigo-550 dark:hover:text-brand-accent cursor-pointer">
+        <i class="fa-solid fa-book-bookmark text-base"></i>
+        <span class="text-[9px] font-bold">Ledger</span>
+      </button>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-indigo-550 dark:hover:text-brand-accent cursor-pointer">
+        <i class="fa-solid fa-clone text-base"></i>
+        <span class="text-[9px] font-bold">Cards</span>
+      </button>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-indigo-550 dark:hover:text-brand-accent cursor-pointer">
+        <i class="fa-solid fa-square-check text-base"></i>
+        <span class="text-[9px] font-bold">Board</span>
+      </button>
+      <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-indigo-550 dark:hover:text-brand-accent cursor-pointer">
+        <i class="fa-solid fa-keyboard text-base"></i>
+        <span class="text-[9px] font-bold">Sandbox</span>
+      </button>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-indigo-550 dark:hover:text-brand-accent cursor-pointer">
+        <i class="fa-solid fa-tower-broadcast text-base"></i>
+        <span class="text-[9px] font-bold">Cast</span>
+      </button>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-500 dark:text-slate-400 hover:text-indigo-550 dark:hover:text-brand-accent cursor-pointer">
+        <i class="fa-solid fa-database text-base"></i>
+        <span class="text-[9px] font-bold">Ledger</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- Speech Settings Modal -->
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-250 dark:border-slate-850">
+    <div class="bg-white dark:bg-[#111827] rounded-3xl p-6 border border-slate-200 dark:border-stone-800 max-w-sm w-full shadow-2xl space-y-6 font-semibold">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-stone-800 pb-3">
+        <h3 class="font-sans font-black text-lg text-slate-800 dark:text-white">Cognitive Auditory Config</h3>
+        <button onclick="closeVoiceSettings()" class="text-slate-404 hover:text-slate-800 dark:hover:text-white transition cursor-pointer">
+          <i class="fa-solid fa-circle-xmark text-lg"></i>
+        </button>
+      </div>
+      
+      <!-- Selection of Voices -->
+      <div class="space-y-4">
+        <div class="space-y-1.5 font-medium font-semibold">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-405 dark:text-slate-400 font-mono animate-pulse">Speech Synthesis Controller</label>
+          <select id="voice-select" class="w-full border border-slate-300 dark:border-stone-700 rounded-xl px-3 py-2 bg-slate-50 dark:bg-slate-955 text-xs font-semibold outline-none text-slate-800 dark:text-white font-mono cursor-pointer">
+            <!-- Rendered Dynamically -->
+          </select>
+        </div>
+        
+        <!-- Rate Control -->
+        <div class="space-y-1.5 font-semibold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono">
+            <span>Voice Velocity</span>
+            <span id="voice-rate-val">1.0x</span>
+          </div>
+          <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-indigo-500 cursor-pointer">
+        </div>
+        
+        <!-- Pitch Control -->
+        <div class="space-y-1.5 font-semibold">
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono">
+            <span>Acoustic Frequency Pitch</span>
+            <span id="voice-pitch-val">1.0</span>
+          </div>
+          <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-indigo-500 cursor-pointer">
+        </div>
+      </div>
+      
+      <button onclick="closeVoiceSettings()" class="w-full h-11 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-md transition font-mono font-sans cursor-pointer">
+        Apply Audio Settings
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Toast notification -->
+  <div id="app-toast" class="opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300">
+    <div class="h-8 w-8 rounded-lg bg-white/10 text-brand-450 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-black tracking-wide font-mono animate-pulse" id="toast-title">Success</h5>
+      <p class="text-[11px] text-slate-300 mt-0.5 font-sans font-semibold" id="toast-body">Verbal database initialized.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic Block -->
+  <script>
+    const state = {
+      theme: 'dark',
+      currentView: 'story',
+      voiceSettings: {
+        voiceName: '',
+        rate: 1.0,
+        pitch: 1.0,
+        volume: 1.0
+      },
+      collocations: [
+        { id: 'have_a_baby', phrase: 'have a baby', definition: 'To give birth to a child.', example: 'Regina is going to have a baby next month.', category: 'HAVE', mastered: false },
+        { id: 'have_children', phrase: 'have children', definition: 'To have biological or adopted offspring.', example: 'They plan to settle down and have children in a few years.', category: 'HAVE', mastered: false },
+        { id: 'have_a_blast', phrase: 'have a blast', definition: 'To have an outstanding, highly enjoyable time.', example: 'Our kids had a blast at the amusement park.', category: 'HAVE', mastered: false },
+        { id: 'have_fun', phrase: 'have fun', definition: 'To participate in enjoyable or lighthearted experiences.', example: 'We always have fun when we play board games together.', category: 'HAVE', mastered: false },
+        { id: 'have_a_good_time', phrase: 'have a good time', definition: 'To experience standard pleasure and satisfaction in an event.', example: 'I hope you have a good time at the party tonight.', category: 'HAVE', mastered: false },
+        { id: 'have_breakfast', phrase: 'have breakfast', definition: 'To consume the first meal of the day.', example: 'We are having breakfast right now; can I call you back?', category: 'HAVE', mastered: false },
+        { id: 'have_an_opportunity', phrase: 'have an opportunity', definition: 'To possess a favorable chance or opening.', example: 'She was lucky to have an opportunity to study abroad.', category: 'HAVE', mastered: false },
+        { id: 'have_an_advantage', phrase: 'have an advantage', definition: 'To have a superior or more favorable position than others.', example: 'Bi-lingual candidates have an advantage in the global market.', category: 'HAVE', mastered: false },
+        { id: 'take_a_shower', phrase: 'take a shower', definition: 'To wash oneself under sprayed water.', example: 'He took a quick shower after his daily workout.', category: 'TAKE', mastered: false },
+        { id: 'take_a_bath', phrase: 'take a bath', definition: 'To wash or soak oneself inside a tub of water.', example: 'I love to take a bath with lavender oils after a long week.', category: 'TAKE', mastered: false },
+        { id: 'take_a_class', phrase: 'take a class', definition: 'To register and participate in a course of education.', example: 'I am going to take a computer class next semester.', category: 'TAKE', mastered: false },
+        { id: 'take_a_test', phrase: 'take a test', definition: 'To take an examination evaluating your knowledge.', example: 'We have to take a test in history class tomorrow morning.', category: 'TAKE', mastered: false },
+        { id: 'take_a_bus', phrase: 'take a bus', definition: 'To board and ride a bus for transportation.', example: 'I think I will take a bus to get to the library today.', category: 'TAKE', mastered: false },
+        { id: 'take_a_break', phrase: 'take a break', definition: 'To pause from an active task to rest.', example: 'Let us take a break and grab some coffee.', category: 'TAKE', mastered: false },
+        { id: 'take_a_rest', phrase: 'take a rest', definition: 'To stop an activity to relax or recover energy.', example: 'You look exhausted, why do you not lie down and take a rest?', category: 'TAKE', mastered: false },
+        { id: 'take_advantage_of', phrase: 'take advantage of', definition: 'To make good use of an opportunity or situation.', example: 'You should take advantage of this high-interest bank offer.', category: 'TAKE', mastered: false },
+        { id: 'take_care_of', phrase: 'take care of', definition: 'To look after or be responsible for someone or something.', example: 'I am taking care of my sister\'s kids this weekend.', category: 'TAKE', mastered: false },
+        { id: 'take_action', phrase: 'take action', definition: 'To initiate deliberate physical efforts to solve a problem.', example: 'The government must take action against structural inflation.', category: 'TAKE', mastered: false },
+        { id: 'pay_attention', phrase: 'pay attention', definition: 'To listen, observe, or focus carefully on something.', example: 'You are not paying attention to what I am saying!', category: 'PAY', mastered: false },
+        { id: 'pay_tribute', phrase: 'pay tribute', definition: 'To give public honor or high recognition to someone.', example: 'The team wore black bands to pay tribute to their late coach.', category: 'PAY', mastered: false },
+        { id: 'pay_someone_a_compliment', phrase: 'pay someone a compliment', definition: 'To offer words of praise or admiration to a person.', example: 'He smiled happily when I paid him a compliment.', category: 'PAY', mastered: false },
+        { id: 'pay_someone_a_visit', phrase: 'pay someone a visit', definition: 'To visit someone in an informal or casual manner.', example: 'Let us pay Frank a visit next Tuesday.', category: 'PAY', mastered: false },
+        { id: 'pay_your_respects', phrase: 'pay your respects', definition: 'To express formal admiration or offer condolences, often to the deceased.', example: 'We went to the funeral home to pay our respects to the family.', category: 'PAY', mastered: false },
+        { id: 'break_a_habit', phrase: 'break a habit', definition: 'To stop doing a habitual, often negative behavior.', example: 'It is very hard to break the habit of procrastination.', category: 'BREAK', mastered: false },
+        { id: 'break_a_promise', phrase: 'break a promise', definition: 'To fail to execute what you previously committed to do.', example: 'If you break a promise, people will lose trust in you.', category: 'BREAK', mastered: false },
+        { id: 'break_the_ice', phrase: 'break the ice', definition: 'To initiate conversation and social interaction in a quiet group.', example: 'He told a light joke to break the ice at the conference.', category: 'BREAK', mastered: false },
+        { id: 'break_the_rules', phrase: 'break the rules', definition: 'To disobey structural rules, regulations, or codes.', example: 'She was disqualified for breaking the rules of the tournament.', category: 'BREAK', mastered: false },
+        { id: 'break_the_news', phrase: 'break the news', definition: 'To deliver important, often difficult or upsetting news to someone.', example: 'The doctor broke the news gently that another operation was needed.', category: 'BREAK', mastered: false },
+        { id: 'catch_a_cold', phrase: 'catch a cold', definition: 'To get sick with a common, minor respiratory virus.', example: 'Wash your hands regularly so you do not catch a cold.', category: 'CATCH', mastered: false },
+        { id: 'catch_fire', phrase: 'catch fire', definition: 'To begin burning physically.', example: 'The dry wood caught fire from a tiny stray spark.', category: 'CATCH', mastered: false },
+        { id: 'catch_a_glimpse_of', phrase: 'catch a glimpse of', definition: 'To see something briefly and partially.', example: 'I caught a glimpse of the wolf before it vanished into the woods.', category: 'CATCH', mastered: false },
+        { id: 'catch_someones_eye', phrase: 'catch someone\'s eye', definition: 'To make immediate eye contact or attract someone\'s visual interest.', example: 'The bright crimson poster caught my eye instantly.', category: 'CATCH', mastered: false },
+        { id: 'catch_the_bus', phrase: 'catch the bus', definition: 'To board a scheduled transit bus in time.', example: 'We must sprint if we want to catch the 6 AM bus.', category: 'CATCH', mastered: false },
+        { id: 'come_into_force', phrase: 'come into force', definition: 'To begin to have legal effect or execution.', example: 'The new tax policy will come into force next Monday.', category: 'COME', mastered: false },
+        { id: 'come_to_an_end', phrase: 'come to an end', definition: 'To finish or terminate.', example: 'The dramatic concert series finally came to an end.', category: 'COME', mastered: false },
+        { id: 'come_to_terms_with', phrase: 'come to terms with', definition: 'To learn to accept a difficult reality over time.', example: 'It took years for him to come to terms with his condition.', category: 'COME', mastered: false },
+        { id: 'come_under_scrutiny', phrase: 'come under scrutiny', definition: 'To be closely, critically examined by observers.', example: 'The executive\'s budget reports came under major scrutiny.', category: 'COME', mastered: false },
+        { id: 'come_close', phrase: 'come close', definition: 'To approximate a target quality or limit.', example: 'I am coming close to my cell limit for this month.', category: 'COME', mastered: false },
+        { id: 'get_married', phrase: 'get married', definition: 'To enter into legal, committed matrimony.', example: 'They are getting married in a rustic church next June.', category: 'GET', mastered: false },
+        { id: 'get_drunk', phrase: 'get drunk', definition: 'To become intoxicated from drinking alcohol.', example: 'He got drunk and made highly embarrassing comments.', category: 'GET', mastered: false },
+        { id: 'get_pregnant', phrase: 'get pregnant', definition: 'To become with child.', example: 'She got pregnant after years of trying to have a baby.', category: 'GET', mastered: false },
+        { id: 'get_excited', phrase: 'get excited', definition: 'To become enthusiastic or animated about something.', example: 'Our children get excited whenever we visit the beach.', category: 'GET', mastered: false }
+      ],
+      quiz: [
+        { id: 1, question: "Are you ___________ married in a church?", options: ["getting", "having", "taking"], answer: "getting", explanation: "To enter matrimony is to 'get married' (continuous 'getting married')." },
+        { id: 2, question: "Billy ___________ drunk and started making really stupid comments.", options: ["took", "got", "paid"], answer: "got", explanation: "To become intoxicated is to 'get drunk' (past tense 'got')." },
+        { id: 3, question: "He smiled when I ___________ him a compliment.", options: ["paid", "took", "had"], answer: "paid", explanation: "The standard collocation is to 'pay someone a compliment' (past tense 'paid')." },
+        { id: 4, question: "He ___________ a quick shower after his workout.", options: ["took", "made", "came"], answer: "took", explanation: "We use 'take a shower' (past tense 'took') to wash oneself." },
+        { id: 5, question: "I can't seem to ___________ the habit of procrastination.", options: ["break", "catch", "get"], answer: "break", explanation: "To stop a regular negative behavior is to 'break a habit'." },
+        { id: 6, question: "I ___________ a glimpse of the wolf before it disappeared into the forest.", options: ["caught", "had", "got"], answer: "caught", explanation: "To see something briefly is to 'catch a glimpse' (past tense 'caught')." },
+        { id: 7, question: "I'm ___________ close to my limit of cell phone minutes for the month.", options: ["coming", "going", "reaching"], answer: "coming", explanation: "To approximate a specific threshold is to 'come close' (continuous 'coming close')." },
+        { id: 8, question: "I'm going to ___________ a computer class.", options: ["take", "get", "have"], answer: "take", explanation: "To enroll and participate in a course is to 'take a class'." },
+        { id: 9, question: "I'm ___________ care of my sister's kids this weekend.", options: ["taking", "making", "paying"], answer: "taking", explanation: "To look after someone is to 'take care of' (continuous 'taking')." },
+        { id: 10, question: "It took years for his family to ___________ to terms with his sexual orientation.", options: ["come", "get", "bring"], answer: "come", explanation: "To learn to accept a difficult reality is to 'come to terms with'." },
+        { id: 11, question: "Let's ___________ the 6 AM train.", options: ["catch", "ride", "climb"], answer: "catch", explanation: "To catch public transit in time is to 'catch the train'." },
+        { id: 12, question: "Our kids ___________ a blast at the amusement park.", options: ["had", "got", "took"], answer: "had", explanation: "To have an exceptionally great time is to 'have a blast' (past tense 'had')." },
+        { id: 13, question: "Regina is going to ___________ a baby next month.", options: ["have", "get", "take"], answer: "have", explanation: "To give birth is to 'have a baby'." },
+        { id: 14, question: "She was disqualified for ___________ the rules of the competition.", options: ["breaking", "taking", "complying"], answer: "breaking", explanation: "To disobey legal or structured guidelines is to 'break the rules' (continuous 'breaking')." },
+        { id: 15, question: "The car engine ___________ fire after the accident.", options: ["caught", "took", "had"], answer: "caught", explanation: "To begin burning physically is to 'catch fire' (past tense 'caught')." },
+        { id: 16, question: "The doctor ___________ the news to me that I'd need another operation.", options: ["broke", "gave", "said"], answer: "broke", explanation: "To deliver important, difficult news is to 'break the news' (past tense 'broke')." },
+        { id: 17, question: "The new policy will ___________ into effect next Monday.", options: ["come", "get", "take"], answer: "come", explanation: "To begin to have legal effect is to 'come into force' or 'come into effect'." },
+        { id: 18, question: "We haven't seen Frank in a long time. Let's ___________ him a visit soon.", options: ["pay", "give", "make"], answer: "pay", explanation: "An informal way to say 'visit someone' is to 'pay someone a visit'." },
+        { id: 19, question: "We're ___________ dinner right now; can I call you back later?", options: ["having", "eating", "getting"], answer: "having", explanation: "We use have for eating meals (e.g., 'having dinner')." },
+        { id: 20, question: "You're not ___________ attention - look at me when I'm talking to you!", options: ["paying", "giving", "taking"], answer: "paying", explanation: "To focus or observe carefully is to 'pay attention' (continuous 'paying')." }
+      ],
+      activeCardId: 'have_a_baby',
+      flashcardsIndex: 0,
+      isCardFlipped: false,
+      quizIndex: 0,
+      quizAnswers: {},
+      quizCompleted: false,
+      podcastIsPlaying: false,
+      podcastIndex: -1,
+      podcastUtterance: null,
+      podcastHostTurn: 1,
+      isSynthesizing: false
+    };
+
+    // Web Audio Synthesizer for high-fidelity interactive feedback
+    function playSynthSound(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        if (type === 'click') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        } else if (type === 'correct') {
+          // Major celebratory chord for the finale
+          const notes = [261.63, 329.63, 392.00, 523.25, 659.25]; // C4, E4, G4, C5, E5
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
+          gain.connect(audioCtx.destination);
+
+          notes.forEach((freq, index) => {
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.05);
+            osc.connect(gain);
+            osc.start(audioCtx.currentTime + index * 0.05);
+            osc.stop(audioCtx.currentTime + 0.8);
+          });
+        } else if (type === 'incorrect') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(130, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.22);
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.22);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.22);
+        } else if (type === 'flip') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(280, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(620, audioCtx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.12);
+        }
+      } catch (e) {
+        console.warn('Web Audio API not supported/authorized:', e);
+      }
+    }
+
+    function initBackgroundCanvas() {
+      const canvas = document.getElementById('finale-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      let width = (canvas.width = canvas.offsetWidth);
+      let height = (canvas.height = canvas.offsetHeight);
+      
+      const victoryParticles = [];
+      
+      window.addEventListener('resize', () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      });
+
+      // Spawns celebratory neural explosion nodes on click
+      window.spawnVictoryParticle = function(event) {
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        for (let i = 0; i < 15; i++) {
+          const isGold = Math.random() > 0.45;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 3 + 1.5;
+          victoryParticles.push({
+            x: x,
+            y: y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            radius: Math.random() * 3 + 1.5,
+            opacity: 1.0,
+            decay: Math.random() * 0.02 + 0.015,
+            color: isGold ? '245, 158, 11' : '79, 70, 229' // Gold or Indigo
+          });
+        }
+        
+        playSynthSound('click');
+      };
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = victoryParticles.length - 1; i >= 0; i--) {
+          const p = victoryParticles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.opacity -= p.decay;
+          
+          if (p.opacity <= 0) {
+            victoryParticles.splice(i, 1);
+            continue;
+          }
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
+          ctx.fill();
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalStorage();
+      initSpeechVoices();
+      initStoryClicks();
+      initBackgroundCanvas();
+      renderDictionary();
+      renderFlashcard();
+      renderQuizQuestion();
+      renderSandboxChips();
+      calculateMasteryMetrics();
+      
+      applyTheme(state.theme);
+      
+      document.addEventListener('keyup', keyUpHandler);
+    });
+
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('theme-toggle');
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-eye text-sm text-brand-accent"></i>';
+      } else {
+        html.classList.remove('dark');
+        themeBtn.innerHTML = '<i class="fa-solid fa-eye-slash text-sm text-indigo-500"></i>';
+      }
+    }
+
+    function toggleTheme() {
+      playSynthSound('click');
+      const nextTheme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = nextTheme;
+      localStorage.setItem('colloc_theme_l50', nextTheme);
+      applyTheme(nextTheme);
+      
+      if (nextTheme === 'dark') {
+        showToast('Midnight Mode Active', 'Space twilight theme loaded.', 'fa-moon');
+      } else {
+        showToast('Bright Core Active', 'Clear daylight theme loaded.', 'fa-sun');
+      }
+    }
+
+    function switchView(viewName) {
+      playSynthSound('click');
+      stopSpeechSynthesis();
+      
+      const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
+      views.forEach(v => {
+        const element = document.getElementById(`view-${v}`);
+        element.classList.add('hidden', 'opacity-0');
+        element.classList.remove('block', 'opacity-100');
+        
+        const navBtn = document.getElementById(`nav-${v}`);
+        if (navBtn) {
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-655 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:text-slate-900 dark:hover:text-slate-100";
+        }
+      });
+      
+      const activeView = document.getElementById(`view-${viewName}`);
+      activeView.classList.remove('hidden');
+      setTimeout(() => {
+        activeView.classList.add('block', 'opacity-100');
+      }, 50);
+      
+      const activeNav = document.getElementById(`nav-${viewName}`);
+      if (activeNav) {
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-600 dark:text-indigo-300 border border-brand-500/20";
+      }
+      
+      state.currentView = viewName;
+      if (viewName === 'flashcards') {
+        renderFlashcard();
+      } else if (viewName === 'dictionary') {
+        renderDictionary();
+      }
+    }
+
+    function loadLocalStorage() {
+      if (localStorage.getItem('colloc_mastery_list_l50')) {
+        try {
+          const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l50'));
+          state.collocations.forEach(c => {
+            if (masteredArr.includes(c.id)) {
+              c.mastered = true;
+            }
+          });
+        } catch (err) {
+          console.error('Storage system failed to align:', err);
+        }
+      }
+      if (localStorage.getItem('colloc_voice_settings_l50')) {
+        try {
+          state.voiceSettings = JSON.parse(localStorage.getItem('colloc_voice_settings_l50'));
+        } catch(e) {}
+      }
+      if (localStorage.getItem('colloc_theme_l50')) {
+        state.theme = localStorage.getItem('colloc_theme_l50');
+      }
+    }
+
+    function saveMastery() {
+      const masteredIds = state.collocations.filter(c => c.mastered).map(c => c.id);
+      localStorage.setItem('colloc_mastery_list_l50', JSON.stringify(masteredIds));
+      calculateMasteryMetrics();
+    }
+
+    function calculateMasteryMetrics() {
+      const total = state.collocations.length;
+      const masteredCount = state.collocations.filter(c => c.mastered).length;
+      
+      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Verified`;
+      
+      let quizFactor = 0;
+      const totalAnswers = Object.keys(state.quizAnswers).length;
+      if (totalAnswers > 0) {
+        let correctCount = 0;
+        state.quiz.forEach(q => {
+          const userAns = state.quizAnswers[q.id];
+          if (userAns === q.answer) {
+            correctCount++;
+          }
+        });
+        quizFactor = (correctCount / state.quiz.length) * 50;
+      }
+      
+      const cardFactor = (masteredCount / total) * 50;
+      const score = Math.min(100, Math.round(cardFactor + quizFactor));
+      
+      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+    }
+
+    function openVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.remove('hidden');
+      
+      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
+      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
+      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
+      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+    }
+
+    function closeVoiceSettings() {
+      playSynthSound('click');
+      const modal = document.getElementById('voice-modal-overlay');
+      modal.classList.add('hidden');
+      
+      const select = document.getElementById('voice-select');
+      if (select) {
+        state.voiceSettings.voiceName = select.value;
+      }
+      localStorage.setItem('colloc_voice_settings_l50', JSON.stringify(state.voiceSettings));
+      showToast('Auditory Channels Synced', 'Speech parameters updated.');
+    }
+
+    function updateVoiceSlider(field, val) {
+      state.voiceSettings[field] = parseFloat(val);
+      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+    }
+
+    function initSpeechVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceDropdown;
+        populateVoiceDropdown();
+      }
+    }
+
+    function populateVoiceDropdown() {
+      if (!('speechSynthesis' in window)) return;
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      
+      const voices = window.speechSynthesis.getVoices();
+      select.innerHTML = '';
+      
+      if (!state.voiceSettings.voiceName) {
+        const preferredUKFemale = voices.find(v => v.name.includes("Google UK English Female")) ||
+                                  voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                                  voices.find(v => v.lang === "en-GB") ||
+                                  voices.find(v => v.lang.startsWith("en"));
+        if (preferredUKFemale) {
+          state.voiceSettings.voiceName = preferredUKFemale.name;
+        }
+      }
+      
+      voices.forEach((v) => {
+        const option = document.createElement('option');
+        option.value = v.name;
+        option.innerText = `${v.name} (${v.lang})`;
+        if (state.voiceSettings.voiceName === v.name) {
+          option.selected = true;
+        }
+        select.appendChild(option);
+      });
+    }
+
+    function triggerTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Auditory Link Offline', 'Voice synthesis is not supported on this platform.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      
+      const sanitizedText = text.replace(/\//g, " or ").replace(/-/g, " ");
+      const utterance = new SpeechSynthesisUtterance(sanitizedText);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = voices.find(v => v.name === state.voiceSettings.voiceName);
+      if (!selectedVoice) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.lang === "en-GB") ||
+                        voices.find(v => v.lang.startsWith("en"));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate;
+      utterance.pitch = state.voiceSettings.pitch;
+      utterance.volume = state.voiceSettings.volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeechSynthesis() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        state.isSynthesizing = false;
+        state.podcastIsPlaying = false;
+        const icon = document.getElementById('podcast-play-icon');
+        if (icon) {
+          icon.className = "fa-solid fa-play text-xl ml-0.5";
+        }
+      }
+    }
+
+    function initStoryClicks() {
+      const links = document.querySelectorAll('.colloc-ref');
+      links.forEach(l => {
+        l.addEventListener('click', (e) => {
+          const colId = e.currentTarget.getAttribute('data-id');
+          displayGlossaryCard(colId);
+        });
+      });
+      displayGlossaryCard('have_a_baby');
+    }
+
+    function displayGlossaryCard(id) {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === id);
+      if (!term) return;
+      
+      state.activeCardId = id;
+      
+      document.getElementById('glossary-phrase').innerText = term.phrase;
+      document.getElementById('glossary-definition').innerText = term.definition;
+      document.getElementById('glossary-example').innerText = term.example;
+      document.getElementById('glossary-category').innerText = `Verb Root: ${term.category}`;
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-500 animate-pulse"></i>';
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      }
+      
+      triggerTTS(term.phrase);
+    }
+
+    function speakGlossaryTerm() {
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (term) {
+        triggerTTS(`${term.phrase}. For example: ${term.example}`);
+      }
+    }
+
+    function toggleActiveMastery() {
+      playSynthSound('click');
+      const term = state.collocations.find(c => c.id === state.activeCardId);
+      if (!term) return;
+      
+      term.mastered = !term.mastered;
+      saveMastery();
+      
+      const star = document.getElementById('glossary-master-btn');
+      if (term.mastered) {
+        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
+        showToast('Collocation Verified', `Logged "${term.phrase}" into finalized records.`);
+      } else {
+        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        showToast('Collocation Removed', `Removed "${term.phrase}" from verified files.`);
+      }
+    }
+
+    function speakCurrentStory() {
+      playSynthSound('click');
+      const storySentences = [
+        "To finish up our study of collocations, we are going to focus on expressions with everyday verbs.",
+        "A lot of learners make mistakes with these verbs because the collocations are often different in their native languages.",
+        "Consider children: we say a mother will have a baby, and parents hope to have children.",
+        "When socializing, we want to have a good time, have a blast, or have fun.",
+        "We also use have for meals: to have breakfast, have lunch, or have dinner.",
+        "In our professional lives, we hope to have an opportunity to have an advantage.",
+        "With take, we take a shower, take a bath, take a class, and take a test.",
+        "We take a bus, take a train, take a break, take advantage of, and take action.",
+        "We also pay attention, pay tribute, pay someone a compliment, and pay our respects.",
+        "To change, we break a habit, break a promise, break the ice, break the rules, and break the news.",
+        "We catch a cold, catch fire, catch a glimpse of, catch someone's eye, and catch the bus.",
+        "Finally, laws come into force, events come to an end, we come to terms with reality, and we get married or get excited."
+      ];
+      triggerTTS(storySentences.join(" "));
+    }
+
+    function renderFlashcard() {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      document.getElementById('card-front-phrase').innerText = card.phrase;
+      document.getElementById('card-front-category').innerText = card.category;
+      
+      document.getElementById('card-back-definition').innerText = card.definition;
+      document.getElementById('card-back-example').innerText = card.example;
+      document.getElementById('card-back-category').innerText = card.category;
+      
+      document.getElementById('card-master-checkbox').checked = card.mastered;
+      
+      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
+      document.getElementById('flashcard-total-count').innerText = state.collocations.length;
+      
+      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      
+      state.isCardFlipped = false;
+      document.getElementById('flashcard-element').classList.remove('flipped');
+    }
+
+    function flipFlashcard() {
+      playSynthSound('flip');
+      state.isCardFlipped = !state.isCardFlipped;
+      const elem = document.getElementById('flashcard-element');
+      if (state.isCardFlipped) {
+        elem.classList.add('flipped');
+      } else {
+        elem.classList.remove('flipped');
+      }
+    }
+
+    function prevFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex > 0) {
+        state.flashcardsIndex--;
+        renderFlashcard();
+      } else {
+        showToast('First Terminal Element', 'This represents entry 1 of our everyday verb database.');
+      }
+    }
+
+    function nextFlashcard() {
+      playSynthSound('click');
+      if (state.flashcardsIndex < state.collocations.length - 1) {
+        state.flashcardsIndex++;
+        renderFlashcard();
+      } else {
+        showToast('Registry Loop', 'Looping everyday verbs database back to entry 1.');
+        state.flashcardsIndex = 0;
+        renderFlashcard();
+      }
+    }
+
+    function keyUpHandler(e) {
+      if (state.currentView !== 'flashcards') return;
+      if (e.code === 'Space') {
+        flipFlashcard();
+      } else if (e.code === 'ArrowLeft') {
+        prevFlashcard();
+      } else if (e.code === 'ArrowRight') {
+        nextFlashcard();
+      }
+    }
+
+    function speakFlashcardCurrent(event) {
+      if (event) event.stopPropagation();
+      const card = state.collocations[state.flashcardsIndex];
+      if (card) {
+        triggerTTS(card.phrase);
+      }
+    }
+
+    function toggleCardMasteryInFlashcard(checkbox) {
+      const card = state.collocations[state.flashcardsIndex];
+      if (!card) return;
+      
+      card.mastered = checkbox.checked;
+      saveMastery();
+      if (card.mastered) {
+        showToast('Mastery Verified', `"${card.phrase}" registered as completely mastered.`);
+      }
+    }
+
+    function renderQuizQuestion() {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
+      document.getElementById('quiz-question-text').innerText = `${state.quizIndex + 1}. ${quest.question}`;
+      
+      const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+      
+      document.getElementById('quiz-explanation-box').classList.add('hidden');
+      
+      const answered = state.quizAnswers[quest.id] !== undefined;
+      const grid = document.getElementById('quiz-options-grid');
+      grid.innerHTML = '';
+      
+      quest.options.forEach(opt => {
+        const btn = document.createElement('button');
+        
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-slate-800 dark:text-white cursor-pointer";
+        
+        if (!answered) {
+          btn.className += " bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-indigo-500 hover:bg-indigo-500/10";
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-404 dark:text-slate-700"></i>`;
+        } else {
+          btn.disabled = true;
+          const userAns = state.quizAnswers[quest.id];
+          const isCorrect = (opt === quest.answer);
+          const isSelected = (opt === userAns);
+
+          if (isCorrect) {
+            btn.className += " bg-emerald-100 dark:bg-emerald-950 border-emerald-500 text-emerald-800 dark:text-brand-100 font-bold shadow-md";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-square-check text-emerald-600 dark:text-emerald-404"></i>`;
+          } else if (isSelected) {
+            btn.className += " bg-rose-100 dark:bg-rose-955/70 border-rose-300 dark:border-rose-900 text-rose-800 dark:text-rose-450 font-bold";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-triangle-exclamation text-rose-500"></i>`;
+          } else {
+            btn.className += " bg-slate-100 dark:bg-slate-955 border-slate-200 dark:border-slate-800 text-slate-450";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-300 dark:text-slate-850"></i>`;
+          }
+        }
+        grid.appendChild(btn);
+      });
+      
+      const nextBtn = document.getElementById('quiz-next-btn');
+      if (answered) {
+        nextBtn.removeAttribute('disabled');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl text-xs sm:text-sm font-bold transition font-mono cursor-pointer";
+        displayQuizExplanation(quest.explanation);
+      } else {
+        nextBtn.setAttribute('disabled', 'true');
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-200 dark:bg-zinc-800 text-slate-404 dark:text-slate-505 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono";
+      }
+    }
+
+    function selectQuizAnswer(selectedOption) {
+      const quest = state.quiz[state.quizIndex];
+      if (!quest) return;
+      
+      state.quizAnswers[quest.id] = selectedOption;
+      
+      if (selectedOption === quest.answer) {
+        playSynthSound('correct');
+        showToast('Scenario Veracity Aligned', 'Everyday verb matches logical conventions.', 'fa-circle-check');
+      } else {
+        playSynthSound('incorrect');
+        showToast('Verb Vector Shift', 'Consider structural differences across languages.', 'fa-triangle-exclamation');
+      }
+      
+      calculateMasteryMetrics();
+      renderQuizQuestion();
+    }
+
+    function displayQuizExplanation(explanation) {
+      const box = document.getElementById('quiz-explanation-box');
+      const textEl = document.getElementById('quiz-explanation-text');
+      box.classList.remove('hidden');
+      textEl.innerText = explanation;
+    }
+
+    function handleQuizNext() {
+      playSynthSound('click');
+      if (state.quizIndex < state.quiz.length - 1) {
+        state.quizIndex++;
+        renderQuizQuestion();
+      } else {
+        completeQuizProcess();
+      }
+    }
+
+    function completeQuizProcess() {
+      state.quizCompleted = true;
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('quiz-result-screen').classList.remove('hidden');
+      
+      let correct = 0;
+      state.quiz.forEach(q => {
+        if (state.quizAnswers[q.id] === q.answer) {
+          correct++;
+        }
+      });
+      
+      const ratioStr = `${correct}/${state.quiz.length}`;
+      const percentage = Math.round((correct / state.quiz.length) * 100);
+      
+      document.getElementById('quiz-score-correct').innerText = ratioStr;
+      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
+      
+      let rank = "Everyday Verbs Apprentice";
+      if (percentage === 100) rank = "Cognitive Mastery Overlord 🏆🎓";
+      else if (percentage >= 85) rank = "Linguistic Director";
+      else if (percentage >= 70) rank = "Daily Observer";
+      
+      document.getElementById('quiz-score-rank').innerText = rank;
+    }
+
+    function resetCurrentQuiz() {
+      playSynthSound('click');
+      state.quizAnswers = {};
+      state.quizIndex = 0;
+      state.quizCompleted = false;
+      
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      document.getElementById('quiz-result-screen').classList.add('hidden');
+      
+      renderQuizQuestion();
+      calculateMasteryMetrics();
+    }
+
+    function renderSandboxChips() {
+      const container = document.getElementById('sandbox-quick-chips');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      const selectedWords = ['have a blast', 'take care of', 'pay attention', 'break the rules', 'catch fire', 'come into force'];
+      
+      selectedWords.forEach(word => {
+        const chip = document.createElement('button');
+        chip.onclick = () => insertCollocToSandbox(word);
+        chip.className = "px-3 py-1 bg-slate-100 hover:bg-indigo-500/10 dark:bg-slate-800 dark:hover:bg-indigo-550 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-200 dark:border-slate-700 font-mono cursor-pointer";
+        chip.innerText = `+ ${word}`;
+        container.appendChild(chip);
+      });
+    }
+
+    function insertCollocToSandbox(word) {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const currentText = textarea.value;
+      
+      if (currentText === '') {
+        textarea.value = `To have an opportunity, we had to ensure we pay attention and...`;
+      } else {
+        textarea.value += ` ${word} `;
+      }
+      textarea.focus();
+    }
+
+    function populateSandboxCollocations() {
+      playSynthSound('click');
+      const textarea = document.getElementById('sandbox-input');
+      const collocs = state.collocations;
+      const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
+      
+      if (textarea.value.trim() === '') {
+        textarea.value = `Workspace Entry: "${randomColloc}"`;
+      } else {
+        const spacer = textarea.value.endsWith(' ') ? '' : ' ';
+        textarea.value += `${spacer}${randomColloc}`;
+      }
+      textarea.focus();
+      showToast('Word Appended', `Injected "${randomColloc}" into document space.`, 'fa-circle-plus');
+    }
+
+    function generateSandboxPrompt() {
+      playSynthSound('click');
+      const prompts = [
+        "Detail a busy schedule where you take a class, catch the bus, and try to break a habit.",
+        "Write a letter telling how an executive took advantage of an opportunity to have an advantage.",
+        "Discuss a dynamic event where a dry pile of logs caught fire while people had a blast.",
+        "Draft a creative entry describing a new corporate policy that will come into force next Monday."
+      ];
+      const rand = prompts[Math.floor(Math.random() * prompts.length)];
+      const textarea = document.getElementById('sandbox-input');
+      textarea.value = `[Draft Prompt: ${rand}]\n\n`;
+      textarea.focus();
+    }
+
+    function clearSandbox() {
+      playSynthSound('click');
+      document.getElementById('sandbox-input').value = '';
+      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+    }
+
+    async function runSentenceDiagnostic() {
+      playSynthSound('click');
+      const apiKey = ""; 
+      const textValue = document.getElementById('sandbox-input').value.trim();
+      
+      if (!textValue) {
+        showToast('Empty Document Workspace', 'Please draft a statement before initiating a scan.', 'fa-circle-exclamation');
+        return;
+      }
+      
+      showToast('Linguistic Check Active', 'Routing statement to Gemini diagnostics engine...', 'fa-fingerprint');
+      
+      const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
+      diagnoseCard.classList.remove('hidden');
+      document.getElementById('diagnostic-analysis').innerText = "Analyzing verbal alignments and logical flows... Please standby.";
+      document.getElementById('diagnostic-collocation-feedback').innerText = "Comparing verb root parameters...";
+      document.getElementById('diagnostic-score').innerText = "--";
+      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      
+      const systemPrompt = "You are an elite professor of linguistics and chief prose auditor. Verify if the user's statement utilizes Lesson 50 Everyday Verbs collocations (have a baby, have children, have a blast, have fun, have a good time, have breakfast, have lunch, have dinner, have an opportunity, have an advantage, take a shower, take a bath, take a class, take a test, take an exam, take a bus, take a train, take a taxi, take a break, take a rest, take advantage of, take care of, take action, pay attention, pay tribute, pay someone a compliment, pay someone a visit, pay your respects, break a habit, break a promise, break the ice, break the rules, break the law, break the news, catch a cold, catch the flu, catch fire, catch sight of, catch a glimpse of, catch someone's eye, catch the bus, catch the train, catch the subway, come into force, come into effect, come to an end, come to terms with, come under attack, come under scrutiny, come close, get married, get divorced, get drunk, get pregnant, get angry, get scared, get excited, get tired) correctly and naturally. Respond ONLY with a clean, unformatted raw JSON object containing these precise keys: \"score\" (0-100 indicating collocation strength), \"analysis\" (brief 2-3 sentence overview), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific instructions on why certain verbs are chosen over others), and \"alternatives\" (array of 1-2 polished alternatives). Absolutely do not enclose your output in markdown formatting, backticks, or code blocks.";
+      
+      const payload = {
+        contents: [{ parts: [{ text: `Analyze this sentence: "${textValue}"` }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        generationConfig: { responseMimeType: "application/json" }
+      };
+      
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+      
+      let attempt = 0;
+      let delay = 1000;
+      let success = false;
+      let resultData = null;
+      
+      while (attempt < 5 && !success) {
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            resultData = await response.json();
+            success = true;
+          } else {
+            throw new Error(`Response returned status ${response.status}`);
+          }
+        } catch (err) {
+          attempt++;
+          if (attempt >= 5) {
+            showToast('Scan Halted', 'Communication link failed to synchronize.', 'fa-circle-xmark');
+            document.getElementById('diagnostic-analysis').innerText = "Command deck offline. Re-verify link credentials and retry.";
+            return;
+          }
+          await new Promise(res => setTimeout(res, delay));
+          delay *= 2;
+        }
+      }
+      
+      if (success && resultData) {
+        try {
+          const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsedResult = JSON.parse(textResponse);
+          
+          document.getElementById('diagnostic-score').innerText = parsedResult.score;
+          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
+          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          
+          const alternativeText = parsedResult.alternatives?.[0] || "Draft statement conforms to perfect everyday verb standards!";
+          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          
+          const badge = document.getElementById('diagnostic-badge');
+          if (parsedResult.isCollocationCorrect) {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-955/20 text-emerald-404 border border-emerald-900/40 font-mono";
+            badge.innerText = "Verified Compliance";
+            playSynthSound('correct');
+          } else {
+            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-450 border border-rose-900/40 font-mono";
+            badge.innerText = "Linguistic Discrepancy Found";
+            playSynthSound('incorrect');
+          }
+          
+        } catch (jsonErr) {
+          console.error("Forensic compliance JSON error: ", jsonErr);
+          document.getElementById('diagnostic-analysis').innerText = "Compliance reports returned an unparsable structure. Try streamlining your sentence patterns.";
+        }
+      }
+    }
+
+    function copyAlternativeSentence() {
+      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      if (text && text !== "...") {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast('Sentence Copied', 'Polished statement copied to clipboard logs.', 'fa-copy');
+      }
+    }
+
+    function togglePodcastPlay() {
+      playSynthSound('click');
+      if (state.podcastIsPlaying) {
+        stopSpeechSynthesis();
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        state.podcastIsPlaying = false;
+        document.getElementById('podcast-status').innerText = "Broadcast Suspended";
+      } else {
+        state.podcastIsPlaying = true;
+        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
+        document.getElementById('podcast-status').innerText = "Transmission Active - Analyzing Verbs";
+        
+        if (state.podcastIndex === -1) {
+          state.podcastIndex = 0;
+        }
+        playPodcastCycle();
+      }
+    }
+
+    function playPodcastCycle() {
+      if (!state.podcastIsPlaying) return;
+      
+      const currentWord = state.collocations[state.podcastIndex];
+      if (!currentWord) {
+        document.getElementById('podcast-current-phrase').innerText = "Ultimate Study Completed!";
+        document.getElementById('podcast-current-definition').innerText = "All 50 CollocaStudy lessons successfully evaluated and integrated into long-term memory.";
+        stopSpeechSynthesis();
+        state.podcastIndex = -1;
+        return;
+      }
+      
+      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
+      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g. "${currentWord.example}"`;
+      
+      const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
+      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
+      document.getElementById('podcast-time-passed').innerText = `Token ${state.podcastIndex + 1}/30`;
+      
+      const chatLog = document.getElementById('podcast-chat-log');
+      chatLog.innerHTML = '';
+      
+      if (state.podcastHostTurn === 1) {
+        const textToSpeak = `Next, let's look at a key everyday verb pattern. It is: ${currentWord.phrase}. Tom, why do learners often find this tricky?`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-indigo-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-indigo-550 dark:text-brand-accent font-mono">Sarah (Behavioral Linguist)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 1.05, 1.05, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 2;
+            playPodcastCycle();
+          }, 600);
+        });
+        
+      } else {
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} fundamentally refers to ${currentWord.definition}. In everyday speech, we would naturally say: "${currentWord.example}"`;
+        
+        const hostEl = document.createElement('div');
+        hostEl.className = "flex gap-2.5 items-start animate-fade-in";
+        hostEl.innerHTML = `
+          <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
+          <div class="space-y-0.5">
+            <span class="text-[10px] font-bold text-indigo-550 dark:text-brand-accent font-mono">Tom (Usage Strategist)</span>
+            <p class="text-xs text-slate-700 dark:text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+          </div>
+        `;
+        chatLog.appendChild(hostEl);
+        
+        speakHost(textToSpeak, 0.95, 0.9, () => {
+          setTimeout(() => {
+            state.podcastHostTurn = 1;
+            state.podcastIndex++;
+            playPodcastCycle();
+          }, 1200);
+        });
+      }
+    }
+
+    function speakHost(text, rateModifier, pitchModifier, onEndCallback) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+      
+      let selectedVoice = null;
+      if (state.podcastHostTurn === 1) {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Female")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Female") || v.name.includes("Hazel") || v.name.includes("Susan") || v.name.includes("Serena"))) ||
+                        voices.find(v => v.name === state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      } else {
+        selectedVoice = voices.find(v => v.name.includes("Google UK English Male")) ||
+                        voices.find(v => v.lang === "en-GB" && (v.name.includes("Male") || v.name.includes("George"))) ||
+                        voices.find(v => v.lang.startsWith('en') && v.name !== state.voiceSettings.voiceName) ||
+                        voices.find(v => v.lang.startsWith('en'));
+      }
+      
+      utterance.voice = selectedVoice;
+      utterance.rate = state.voiceSettings.rate * rateModifier;
+      utterance.pitch = state.voiceSettings.pitch * pitchModifier;
+      utterance.volume = state.voiceSettings.volume;
+      
+      utterance.onend = onEndCallback;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function prevPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex > 0) {
+        state.podcastIndex--;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function nextPodcastCard() {
+      playSynthSound('click');
+      if (state.podcastIndex < state.collocations.length - 1) {
+        state.podcastIndex++;
+        state.podcastHostTurn = 1;
+        stopSpeechSynthesis();
+        if (state.podcastIsPlaying) {
+          playPodcastCycle();
+        }
+      }
+    }
+
+    function renderDictionary() {
+      const tbody = document.getElementById('dictionary-rows');
+      if (!tbody) return;
+      
+      tbody.innerHTML = '';
+      
+      const searchVal = document.getElementById('dict-search-input').value.toLowerCase().trim();
+      const catVal = document.getElementById('dict-category-filter').value;
+      const masteryVal = document.getElementById('dict-mastery-filter').value;
+      
+      const filtered = state.collocations.filter(c => {
+        const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
+        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        
+        let matchesMastery = true;
+        if (masteryVal === 'mastered') {
+          matchesMastery = c.mastered;
+        } else if (masteryVal === 'unmastered') {
+          matchesMastery = !c.mastered;
+        }
+        
+        return matchesSearch && matchesCat && matchesMastery;
+      });
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic font-medium">No records matched active search patterns.</td>
+          </tr>
+        `;
+        return;
+      }
+      
+      filtered.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-100 dark:hover:bg-slate-850/40 transition border-b border-slate-200 dark:border-slate-800 font-sans font-semibold";
+        
+        const starIcon = c.mastered ? 'fa-star text-amber-500 animate-pulse' : 'fa-star text-slate-300 dark:text-slate-700';
+        
+        row.innerHTML = `
+          <td class="py-4 px-4 text-center">
+            <button onclick="toggleInPlaceMastery('${c.id}')" class="focus:outline-none text-sm transition transform active:scale-95 cursor-pointer">
+              <i class="fa-solid ${starIcon}"></i>
+            </button>
+          </td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:text-indigo-500 font-sans" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4">
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-655 dark:text-indigo-300 px-2 py-0.5 rounded-full border border-indigo-500/25 dark:border-indigo-550/25 font-mono font-heading">${c.category}</span>
+          </td>
+          <td class="py-4 px-4 text-slate-655 dark:text-slate-300 leading-relaxed font-medium font-sans">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-450 dark:text-slate-405 font-sans font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-center">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-slate-200 dark:border-stone-800 flex items-center justify-center text-slate-400 hover:text-slate-850 dark:hover:text-white transition mx-auto cursor-pointer">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function toggleInPlaceMastery(id) {
+      playSynthSound('click');
+      const item = state.collocations.find(c => c.id === id);
+      if (item) {
+        item.mastered = !item.mastered;
+        saveMastery();
+        renderDictionary();
+        calculateMasteryMetrics();
+      }
+    }
+
+    function filterDictionary() {
+      renderDictionary();
+    }
+
+    // Custom Toast notifications
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // Expose interaction functions to browser global scope
+    Object.assign(window, {
+      switchView,
+      toggleTheme,
+      openVoiceSettings,
+      closeVoiceSettings,
+      updateVoiceSlider,
+      speakCurrentStory,
+      speakGlossaryTerm,
+      toggleActiveMastery,
+      flipFlashcard,
+      prevFlashcard,
+      nextFlashcard,
+      speakFlashcardCurrent,
+      toggleCardMasteryInFlashcard,
+      selectQuizAnswer,
+      handleQuizNext,
+      resetCurrentQuiz,
+      generateSandboxPrompt,
+      populateSandboxCollocations,
+      clearSandbox,
+      runSentenceDiagnostic,
+      copyAlternativeSentence,
+      togglePodcastPlay,
+      prevPodcastCard,
+      nextPodcastCard,
+      filterDictionary,
+      toggleInPlaceMastery
+    });
+  </script>
+</body>
+</html>

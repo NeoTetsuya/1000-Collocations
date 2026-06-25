@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CollocaStudy - Lesson 38: Truth & Lies Lab</title>
+  <title>CollocaStudy - Lesson 38: Starting & Finishing Lab</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,10 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Verification, Shield, and Polygraph Icons -->
+  <!-- FontAwesome for Velocity, Starting, and Finishing Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
-  <!-- Configuring Tailwind theme options for the Veritas Spectrum theme -->
+  <!-- Configuring Tailwind theme options for the Starting & Finishing theme -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -27,18 +27,18 @@
           },
           colors: {
             brand: {
-              50: '#f0fdf4', 
-              100: '#dcfce7',
-              200: '#bbf7d0',
-              300: '#86efac',
-              400: '#4ade80',
-              500: '#10b981', /* Neon Emerald Truth Signal */
-              600: '#059669',
-              700: '#047857', 
-              800: '#065f46',
-              900: '#064e3b',
-              accent: '#34d399', /* Mint Highlights */
-              deception: '#f43f5e' /* Rose/Rosewood Alert representing Deception */
+              50: '#fff7ed', 
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316', /* Ignition Solar Orange - Starting */
+              600: '#ea580c',
+              700: '#c2410c', 
+              800: '#9a3412',
+              900: '#030100', /* Deep Carbon Black */
+              accent: '#38bdf8', /* Landing Blue - Finishing */
+              accentDark: '#0284c7'
             }
           }
         }
@@ -47,7 +47,7 @@
   </script>
   
   <style>
-    /* Premium Scrollbars matching custom styling */
+    /* Premium Velocity Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -56,11 +56,11 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #10b981;
+      background: #f97316;
       border-radius: 10px;
     }
     .dark ::-webkit-scrollbar-thumb {
-      background: #059669;
+      background: #ea580c;
     }
     
     /* Smooth interactive transitions */
@@ -68,7 +68,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    /* 3D Card Flip styling */
+    /* 3D Card Flip styling for Flashcards */
     .card-perspective {
       perspective: 1000px;
     }
@@ -87,7 +87,7 @@
       transform: rotateY(180deg);
     }
     
-    /* Animated Equalizer Waveform for Polygraph/Audio */
+    /* Animated Equalizer Waveform */
     @keyframes wave-bounce {
       0%, 100% { height: 8px; }
       50% { height: 42px; }
@@ -96,70 +96,57 @@
       animation: wave-bounce 1.2s ease-in-out infinite;
     }
     
-    /* Polygraph grid scan effect */
-    @keyframes grid-scan {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 40px; }
+    /* Cosmic / Ignition drift pulse */
+    @keyframes ignition-pulse {
+      0%, 100% { opacity: 0.15; transform: scale(0.97); }
+      50% { opacity: 0.4; transform: scale(1.03); }
     }
-    .polygraph-scan {
-      background-size: 40px 40px;
-      background-image: linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-                        linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-      animation: grid-scan 8s linear infinite;
-    }
-
-    /* Veritas drift pulse */
-    @keyframes veritas-pulse {
-      0%, 100% { opacity: 0.1; transform: scale(0.97); }
-      50% { opacity: 0.35; transform: scale(1.03); }
-    }
-    .veritas-drift-glow {
-      animation: veritas-pulse 12s infinite ease-in-out;
+    .ignition-drift-glow {
+      animation: ignition-pulse 10s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-200">
+<body class="h-full bg-slate-55 text-slate-800 dark:bg-[#030100] dark:text-slate-100 font-sans antialiased transition-colors duration-200">
 
   <!-- Main Wrapper -->
   <div class="flex h-full flex-col overflow-hidden relative">
     
-    <!-- Interactive HTML5 Veracity Node Canvas Background -->
-    <canvas id="vocal-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-25" onclick="spawnWaveNode(event)"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/20 via-slate-950/10 to-slate-950 pointer-events-none z-0 veritas-drift-glow"></div>
-    <div class="absolute inset-0 polygraph-scan pointer-events-none z-0"></div>
+    <!-- Interactive HTML5 Path Trajectory Canvas Background -->
+    <canvas id="ignition-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-30 dark:opacity-40" onclick="spawnWaveNode(event)"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-tr from-brand-900/10 via-slate-950/10 to-slate-955 pointer-events-none z-0 ignition-drift-glow"></div>
 
     <!-- Top Nav Header -->
-    <header class="flex h-16 items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
+    <header class="flex h-16 items-center justify-between border-b border-orange-100 dark:border-stone-850 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md px-6 shrink-0 z-30 shadow-md">
       <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-600 to-brand-900 text-white shadow-md shadow-brand-500/20">
-          <i class="fa-solid fa-user-shield text-lg text-brand-300"></i>
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-brand-500 to-[#1e1b4b] text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-flag-checkered text-lg animate-pulse"></i>
         </div>
         <div>
-          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">CollocaStudy</span>
-          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-300 border border-brand-500/20 font-mono">Truth & Lies Lab</span>
+          <span class="font-heading text-lg font-bold tracking-tight bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-400 dark:to-amber-300 bg-clip-text text-transparent">CollocaStudy</span>
+          <span class="ml-2 rounded-full bg-brand-500/10 px-2.5 py-0.5 text-xs font-semibold text-brand-600 dark:text-brand-300 border border-brand-500/20 font-mono">Launch Control</span>
         </div>
       </div>
       
       <!-- Center Display: Lesson Title -->
       <div class="hidden md:flex items-center gap-2">
-        <i class="fa-solid fa-circle-nodes text-brand-400"></i>
-        <h1 class="font-heading font-bold text-slate-100">Lesson 38: Integrity Dynamics</h1>
+        <i class="fa-solid fa-circle-play text-brand-500 dark:text-brand-400"></i>
+        <h1 class="font-heading font-bold text-slate-700 dark:text-slate-100">Lesson 38: Starting & Finishing</h1>
       </div>
 
       <!-- Right Action Items -->
       <div class="flex items-center gap-4">
         <!-- Voice Settings Button -->
-        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-350 hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
+        <button onclick="openVoiceSettings()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-orange-200 dark:border-stone-800 text-slate-600 dark:text-slate-350 hover:bg-orange-50 dark:hover:bg-slate-800 transition shadow-sm" title="Speech Synthesis Config">
           <i class="fa-solid fa-sliders text-sm"></i>
         </button>
-        <!-- Custom Aesthetic toggle (simulates polygraph sweep) -->
-        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 text-slate-355 hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Calibrate Polygraph Grid">
-          <i class="fa-solid fa-fingerprint text-sm text-brand-400"></i>
+        <!-- Custom Aesthetic toggle (operational theme switcher) -->
+        <button onclick="toggleTheme()" class="flex h-10 w-10 items-center justify-center rounded-xl border border-orange-200 dark:border-stone-800 text-slate-600 dark:text-slate-350 hover:bg-orange-50 dark:hover:bg-slate-800 transition shadow-sm" id="theme-toggle" title="Switch Theme View">
+          <i class="fa-solid fa-sun text-sm text-brand-400" id="theme-toggle-icon"></i>
         </button>
         <!-- Lesson Progress Pill -->
-        <div class="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 border border-slate-800">
+        <div class="flex items-center gap-2 rounded-xl bg-white dark:bg-stone-900 px-3 py-1.5 border border-orange-100 dark:border-stone-800 shadow-sm">
           <div class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></div>
-          <span class="text-xs font-semibold text-slate-300" id="lesson-mastery-ratio">0/30 Verified</span>
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-300" id="lesson-mastery-ratio">0/30 Mastered</span>
         </div>
       </div>
     </header>
@@ -168,132 +155,135 @@
     <div class="flex h-full overflow-hidden z-10">
       
       <!-- Side Navigation Panel -->
-      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 shrink-0">
+      <nav class="hidden md:flex w-64 flex-col justify-between border-r border-orange-100 dark:border-stone-850 bg-white/70 dark:bg-stone-955/60 backdrop-blur-md p-4 shrink-0">
         <div class="space-y-1.5">
-          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 uppercase">Veracity Nodes</p>
+          <p class="px-3 text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-550 uppercase font-mono">Temporal Operations</p>
           
-          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20">
-            <i class="fa-solid fa-passport text-base"></i>
-            <span>The Veritas Dossier</span>
+          <button id="nav-story" onclick="switchView('story')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20">
+            <i class="fa-solid fa-book-open text-base"></i>
+            <span>Dossier & Glossary</span>
           </button>
           
-          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-id-card-clip text-base"></i>
-            <span>Transceiver Deck</span>
+          <button id="nav-flashcards" onclick="switchView('flashcards')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-brand-700 dark:hover:text-slate-100">
+            <i class="fa-solid fa-clone text-base"></i>
+            <span>Transmitter Deck</span>
           </button>
           
-          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-user-check text-base"></i>
-            <span>Polygraph Exam</span>
+          <button id="nav-quiz" onclick="switchView('quiz')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-brand-700 dark:hover:text-slate-100">
+            <i class="fa-solid fa-gauge-high text-base"></i>
+            <span>Ignition Exam</span>
           </button>
           
-          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-shield-virus text-base animate-pulse"></i>
-            <span>Deception Sandbox</span>
+          <button id="nav-sandbox" onclick="switchView('sandbox')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-brand-700 dark:hover:text-slate-100">
+            <i class="fa-solid fa-wand-magic-sparkles text-base animate-pulse"></i>
+            <span>AI Practice Sandbox</span>
           </button>
           
-          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-tower-broadcast text-base"></i>
-            <span>Veritas Station</span>
+          <button id="nav-podcast" onclick="switchView('podcast')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-brand-700 dark:hover:text-slate-100">
+            <i class="fa-solid fa-radio text-base"></i>
+            <span>Podcast Station</span>
           </button>
           
-          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-850 hover:text-slate-100">
-            <i class="fa-solid fa-database text-base"></i>
-            <span>Cryptographic Ledger</span>
+          <button id="nav-dictionary" onclick="switchView('dictionary')" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-brand-700 dark:hover:text-slate-100">
+            <i class="fa-solid fa-spell-check text-base"></i>
+            <span>Genesis Ledger</span>
           </button>
         </div>
         
         <!-- User Mission Credentials Standing Box -->
-        <div class="rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 p-4 border border-slate-800 relative overflow-hidden">
+        <div class="rounded-2xl bg-gradient-to-tr from-orange-50 to-orange-100 dark:from-stone-950 dark:to-stone-900 p-4 border border-orange-100 dark:border-stone-850 relative overflow-hidden">
           <div class="absolute -right-8 -bottom-8 w-16 h-16 border border-brand-500/10 rounded-full"></div>
           <div class="flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-key text-brand-400"></i>
-            <span class="text-xs font-bold tracking-wide uppercase text-slate-400">Veracity standing</span>
+            <i class="fa-solid fa-shuttle-space text-brand-500 dark:text-brand-400"></i>
+            <span class="text-xs font-bold tracking-wide uppercase text-slate-500 dark:text-slate-400 font-mono">Launch Standing</span>
           </div>
-          <div class="text-2xl font-black font-heading tracking-tight text-brand-400" id="sidebar-confidence">0%</div>
-          <p class="text-[10px] text-slate-400 mt-1 leading-relaxed font-medium">Calibrate statements, isolate fabrications, and decode truth paradigms to verify absolute compliance!</p>
+          <div class="text-2xl font-black font-heading tracking-tight text-brand-600 dark:text-brand-400 font-mono" id="sidebar-confidence">0%</div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-450 mt-1 leading-relaxed font-medium">Calibrate start-up structures, apply final touches, and balance endings safely to secure optimal flight parameters!</p>
         </div>
       </nav>
 
       <!-- Main Scrollable Content Panel -->
       <main class="flex-1 overflow-y-auto relative h-full">
         
-        <!-- ==================== VIEW 1: STORY & GLOSSARY ==================== -->
+        <!-- ==================== VIEW 1: STUDY DOSSIER & GLOSSARY ==================== -->
         <section id="view-story" class="view-container opacity-100 block p-4 md:p-8 space-y-6">
           <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Side: Interactive Story -->
-            <div class="xl:col-span-7 bg-slate-900/90 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6 relative overflow-hidden">
-              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-slate-800 bg-gradient-to-tr from-slate-950 to-brand-950/20 rounded-bl-full flex items-center justify-center pointer-events-none">
-                <i class="fa-solid fa-fingerprint text-slate-700/65 text-xl animate-pulse"></i>
+            <!-- Left Side: Interactive Story (Verbatim lesson 38 text) -->
+            <div class="xl:col-span-7 bg-white/95 dark:bg-[#090502]/90 rounded-3xl p-6 md:p-8 border border-orange-100 dark:border-stone-800 shadow-sm space-y-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 border-b border-l border-orange-100 dark:border-stone-800 bg-gradient-to-tr from-orange-50 to-stone-955/20 rounded-bl-full flex items-center justify-center pointer-events-none">
+                <i class="fa-solid fa-hourglass-start text-brand-500/60 dark:text-slate-700/60 text-lg"></i>
               </div>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-800">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-orange-100 dark:border-stone-800">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-200">The Veritas Briefing</h2>
-                  <p class="text-xs text-slate-400 mt-1">Harness professional honesty, protect classified secrets, and identify stories. Click collocations to scan parameters.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight md:text-2xl text-slate-800 dark:text-slate-200">The Rules of Starting & Finishing</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Audit temporal mechanics, humble beginnings, and sudden endings. Click highlighted collocations to pull up glossary records.</p>
                 </div>
-                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-950 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10 font-semibold">
+                <button onclick="speakCurrentStory()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-500 hover:bg-brand-600 text-slate-955 rounded-xl text-sm font-bold shadow-md shadow-brand-500/10 transition z-10">
                   <i class="fa-solid fa-volume-high"></i>
-                  <span>Acoustic Broadcaster</span>
+                  <span>Broadcast Briefing</span>
                 </button>
               </div>
               
-              <!-- Story Text -->
-              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-300 tracking-wide space-y-6 relative z-10 animate-fade-in">
+              <!-- Story Text directly synchronized with Lesson 38 starting & finishing curriculum -->
+              <div id="narrative-body" class="text-base md:text-[17px] leading-relaxed text-slate-700 dark:text-slate-300 font-sans tracking-wide space-y-6 relative z-10 animate-fade-in">
                 <p>
-                  To be <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="perfectly_honest">perfectly honest</span>, navigating professional relationships requires exceptional discretion. It is easy to make an <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="honest_mistake">honest mistake</span> that leads to misunderstandings, but the core foundation is always your credibility. When faced with difficult situations, you should always strive to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_truth">tell the truth</span>. 
+                  Let's get started with a common question: is there a difference between the verbs "start" and "begin"? There's no difference in meaning. "I started studying English 3 years ago" is the same as "I began studying English 3 years ago," but "begin" is a little more formal than "start." The phrase <span class="colloc-ref cursor-pointer font-bold text-brand-600 dark:text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="lets_get_started">let's get started</span> is an informal way to announce the beginning of an activity.
                 </p>
                 <p>
-                  Some people tend to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="stretch_truth">stretch the truth</span> during high-stakes negotiations to sound more capable, but if you <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tell_lie">tell a lie</span>, you risk permanently ruining your reputation. Even a small <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="white_lie">white lie</span>, designed to protect someone's feelings, can easily snowball into a complicated <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="half_truth">half-truth</span> if discovered. 
+                  You can also say that something <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="got_off_to_a_good_start">got off to a good start</span> if it began well. Other collocations for a good start include an <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="encouraging_start">encouraging start</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="promising_start">promising start</span>; these expressions show that there is hope for good results in the future. For example, "The soccer team got off to a promising start, winning the first four games of the season."
                 </p>
                 <p>
-                  Worse yet, some individuals will completely <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="fabricate_story">fabricate a story</span> to cover up operational failures, presenting a <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="pure_fabrication">pure fabrication</span> or a complex <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="tissue_lies">tissue of lies</span> to their superiors. If you deal with an <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="inveterate_liar">inveterate liar</span>, you will eventually have to step in and <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="unmask_liar">unmask a liar</span> to protect the company.
+                  If it is not so certain that there will be good results in the future, then you can say a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="shaky_start">shaky start</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="unsteady_start">unsteady start</span>. "The business had a shaky start in the second quarter of 2013, with sales numbers fluctuating daily." If the beginning of something did not meet expectations, you can call it a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="disappointing_start">disappointing start</span>, and if it was really terrible, you can describe it as a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="disastrous_start">disastrous start</span>. "Kevin failed every single one of his first exams; his semester was off to a disastrous start."
                 </p>
                 <p>
-                  To build solid partnerships, you must find colleagues you can <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="trust_implicitly">trust implicitly</span>. Once you <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="betray_trust">betray trust</span>, it is incredibly difficult to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="restore_trust">restore trust</span> and <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="gain_trust">gain trust</span> back. It is vital to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="keep_secret">keep a secret</span> when sensitive intellectual property is discussed. If you <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="reveal_secret">reveal a secret</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="disclose_secret">disclose a secret</span> to competitors, it can lead to immediate legal action. 
+                  Sometimes things go so badly that you need to get out of the situation and have a completely <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="fresh_start">fresh start</span> or new beginning. When a successful person or company started without being famous or rich, then we say they had a <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="humble_beginnings">humble beginning</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="modest_beginnings">modest beginning</span>.
                 </p>
                 <p>
-                  Many have accidentally <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="let_cat_out_bag">let the cat out of the bag</span> during casual social chatter. Therefore, when you need to discuss high-pressure details, find a close colleague to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="confide_in_someone">confide in someone</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="take_into_confidence">take someone into your confidence</span>. When you <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="give_word">give your word</span> to complete a project, you must <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="keep_promise">keep a promise</span> at all costs; to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="break_promise">break a promise</span> will permanently damage your credit.
+                  Now let's talk about "finish" and "end." There is a difference between these two verbs. "Finish" usually implies completing something, whereas "end" is used for a more passive situation or state: <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="finished_homework">I finished my homework</span>. <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="ends_in_december">The semester ends in December</span>. We need to <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="finish_project">finish the project</span>. We <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="ended_partnership">ended our partnership with that company</span>.
                 </p>
                 <p>
-                  In some direct cultures, people value <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="brutal_honesty">brutal honesty</span> above all else, refusing to simply <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="take_word_for_it">take someone's word for it</span> without concrete proof. If disputes escalate, executives may have to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="swear_under_path">swear under oath</span> in court. While some leaders are an <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="open_book">open book</span> whose motives are clear, others force you to verify if they have had to <span class="colloc-ref cursor-pointer font-bold text-brand-450 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="concoct_alibi">concoct an alibi</span> to justify their delays.
+                  When you make the final changes to something before it is completed, we say you put the <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="finishing_touches">finishing touches</span> on it. Two expressions used to talk about ending something are <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="come_to_an_end">come to an end</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="draw_to_a_close">draw to a close</span>.
+                </p>
+                <p>
+                  You can also say <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="beginning_of_the_end">the beginning of the end</span> to describe something that will probably end soon. "The explosion at the factory was the beginning of the end for our company." In other words, the explosion began a process of the company failing and eventually shutting down. When something ends quickly, then it comes to an <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="abrupt_end">abrupt end</span> or <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="sudden_end">sudden end</span>. On the other hand, when an activity appears that it will continue forever, then we say there's <span class="colloc-ref cursor-pointer font-bold text-brand-400 border-b-2 border-dashed border-brand-500 hover:bg-brand-500/10 px-1 rounded transition" data-id="no_end_sight">no end in sight</span>.
                 </p>
               </div>
             </div>
             
             <!-- Right Side: Interactive Glossary Definition Card -->
-            <div class="xl:col-span-5 flex flex-col gap-6 font-medium">
-              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-xl" id="glossary-display">
+            <div class="xl:col-span-5 flex flex-col gap-6">
+              <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-orange-100/20 dark:border-stone-800 shadow-xl" id="glossary-display">
                 <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-bold uppercase tracking-wider text-brand-450 animate-pulse font-mono" id="glossary-category">Integrity Analysis</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-brand-400 animate-pulse font-mono" id="glossary-category">Chronology Station</span>
                   <div class="flex items-center gap-2">
                     <button onclick="speakGlossaryTerm()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" title="Pronounce Phrase">
                       <i class="fa-solid fa-volume-high"></i>
                     </button>
-                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery Verification">
+                    <button onclick="toggleActiveMastery()" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center justify-center text-sm" id="glossary-master-btn" title="Toggle Mastery">
                       <i class="fa-regular fa-star"></i>
                     </button>
                   </div>
                 </div>
                 
-                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300" id="glossary-phrase">perfectly honest</h3>
+                <h3 class="font-heading text-2xl font-black leading-tight tracking-tight mb-3 text-brand-300 capitalize" id="glossary-phrase">let's get started</h3>
                 
-                <p class="text-slate-350 text-sm leading-relaxed mb-6 font-sans" id="glossary-definition">Being completely truthful and transparent without any reservation or distortion.</p>
+                <p class="text-slate-200 text-sm leading-relaxed mb-6 font-sans font-medium" id="glossary-definition">An informal, collaborative way to announce the beginning of a specific activity or process.</p>
                 
                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 space-y-1.5 font-mono">
-                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Verifiable Precedent</span>
-                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"To be perfectly honest, navigating professional relationships requires exceptional discretion."</p>
+                  <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase font-sans">Context Precedent</span>
+                  <p class="text-xs md:text-sm font-medium italic text-slate-100 font-sans" id="glossary-example">"Let's get started with a common question: is there a difference between start and begin?"</p>
                 </div>
               </div>
               
               <!-- Quick Help Guide -->
-              <div class="bg-slate-900/40 rounded-3xl p-6 border border-slate-800 shadow-sm">
-                <h4 class="font-heading text-sm font-bold text-slate-200 mb-3 flex items-center gap-2">
-                  <i class="fa-solid fa-shield-halved text-brand-400"></i>
-                  <span>Forensic Mechanics of Truth</span>
+              <div class="bg-white dark:bg-stone-900/40 rounded-3xl p-6 border border-orange-100/40 dark:border-stone-850 shadow-sm">
+                <h4 class="font-heading text-sm font-bold text-slate-700 dark:text-slate-200 mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-question text-brand-500"></i>
+                  <span>Linguistic Chronometer</span>
                 </h4>
-                <p class="text-xs text-slate-300 leading-relaxed font-semibold">
-                  Credibility relies on using exact combinations. We say an <strong class="text-brand-300">honest mistake</strong> (never 'true mistake'), and we <strong class="text-brand-300">stretch the truth</strong> (never 'lengthen truth'). Mastering these semantic pairings isolates verbal deception and projects absolute authority.
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
+                  English separates structural durations carefully. We say a project <strong>gets off to a promising start</strong> or faces a <strong>shaky start</strong> depending on early performance. We apply the <strong>finishing touches</strong> before an endeavor <strong>draws to a close</strong>. Lock these native mappings in mind!
                 </p>
               </div>
             </div>
@@ -303,69 +293,69 @@
         <!-- ==================== VIEW 2: FLASHCARDS ==================== -->
         <section id="view-flashcards" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-xl mx-auto space-y-6">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between font-semibold">
               <div>
-                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Transceiver Deck</h2>
-                <p class="text-xs text-slate-400 font-semibold">Use arrow keys (Left/Right) to browse. Spacebar to flip.</p>
+                <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200">Genesis & Terminus Deck</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Use arrow keys (Left/Right) to navigate. Spacebar to flip.</p>
               </div>
-              <div class="flex items-center gap-2 bg-[#020617] border border-slate-800 rounded-xl px-3 py-1 text-xs font-semibold font-mono">
+              <div class="flex items-center gap-2 bg-white dark:bg-[#020617] border border-orange-100 dark:border-stone-800 rounded-xl px-3 py-1 text-xs">
                 <span id="flashcard-index">1</span>
                 <span class="text-slate-500">/</span>
-                <span>30</span>
+                <span id="flashcard-total">30</span>
               </div>
             </div>
             
             <!-- Progress Tracker -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div class="w-full bg-orange-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div class="bg-brand-500 h-full w-[3.3%]" id="flashcard-progress-bar"></div>
             </div>
             
             <!-- Flips Container -->
-            <div class="card-perspective h-80 sm:h-96 cursor-pointer" onclick="flipFlashcard()">
+            <div class="card-perspective h-80 sm:h-96 cursor-pointer animate-fade-in" onclick="flipFlashcard()">
               <div id="flashcard-element" class="card-preserve-3d h-full w-full relative">
                 <!-- FRONT OF CARD -->
-                <div class="card-front absolute inset-0 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
+                <div class="card-front absolute inset-0 bg-white dark:bg-[#090502]/95 border border-orange-100 dark:border-stone-800 rounded-3xl p-8 flex flex-col justify-between shadow-md">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
-                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-slate-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
-                      <i class="fa-solid fa-volume-high text-xs"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full border border-brand-500/20 font-mono" id="card-front-category">Category</span>
+                    <button onclick="speakFlashcardCurrent(event)" class="h-8 w-8 rounded-lg border border-orange-100 dark:border-stone-800 text-slate-400 hover:text-slate-200 transition flex items-center justify-center">
+                      <i class="fa-solid fa-volume-high text-xs text-brand-500"></i>
                     </button>
                   </div>
                   
                   <div class="text-center">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Veracity Token</span>
-                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-white" id="card-front-phrase">Phrase</h3>
+                    <span class="text-xs text-slate-400 uppercase tracking-widest font-bold font-mono">Collocation Phrase</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-black tracking-tight mt-1 text-slate-800 dark:text-white capitalize" id="card-front-phrase">Phrase</h3>
                   </div>
                   
-                  <div class="text-center text-xs text-slate-300">
-                    <span class="bg-slate-800 px-3 py-1 rounded-full"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-400"></i> Click to flip</span>
+                  <div class="text-center text-xs text-slate-400 font-semibold">
+                    <span class="bg-orange-50 dark:bg-stone-900 px-3 py-1 rounded-full border border-orange-150 dark:border-stone-800"><i class="fa-solid fa-arrows-rotate mr-1 text-brand-500 animate-spin-slow"></i> Click to flip</span>
                   </div>
                 </div>
                 
                 <!-- BACK OF CARD -->
-                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-950 to-brand-950/40 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
+                <div class="card-back absolute inset-0 bg-gradient-to-tr from-slate-955 to-brand-955/40 border border-brand-800 rounded-3xl p-8 flex flex-col justify-between shadow-xl text-white font-medium">
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-950 text-brand-400 px-2.5 py-1 rounded-full border border-brand-800" id="card-back-category">Category</span>
-                    <span class="text-xs text-brand-400 font-semibold font-mono">Integrity Decoupled</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider bg-white/10 text-brand-400 px-2.5 py-1 rounded-full font-mono" id="card-back-category">Category</span>
+                    <span class="text-xs text-brand-400 font-semibold font-mono">Temporal Node</span>
                   </div>
                   
                   <div class="space-y-4">
                     <div>
-                      <span class="text-[10px] text-brand-450 uppercase tracking-widest font-black font-mono">True Definition</span>
+                      <span class="text-[10px] text-brand-400 uppercase tracking-widest font-black font-mono">Core Definition</span>
                       <p class="text-base font-semibold leading-relaxed text-slate-100 font-sans" id="card-back-definition">Definition of the collocation goes here.</p>
                     </div>
-                    <div class="border-t border-white/15 pt-3">
-                      <span class="text-[10px] text-brand-450 uppercase tracking-widest font-black font-mono">Forensic Precedent</span>
-                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5 font-sans" id="card-back-example">"Example sentence with the phrase."</p>
+                    <div class="border-t border-white/10 pt-3">
+                      <span class="text-[10px] text-brand-400 uppercase tracking-widest font-black font-mono">Live Precedent</span>
+                      <p class="text-xs sm:text-sm italic text-slate-200 mt-0.5" id="card-back-example">"Example sentence with the phrase."</p>
                     </div>
                   </div>
                   
-                  <div class="flex items-center justify-between border-t border-white/15 pt-3 text-xs">
-                    <label class="flex items-center gap-2 cursor-pointer" onclick="event.stopPropagation()">
+                  <div class="flex items-center justify-between border-t border-white/10 pt-3 text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer font-mono" onclick="event.stopPropagation()">
                       <input type="checkbox" id="card-master-checkbox" onchange="toggleCardMasteryInFlashcard(this)" class="rounded text-brand-500 focus:ring-brand-500 bg-transparent border-white/20 h-4 w-4">
-                      <span class="font-bold text-slate-300 font-mono">Integrity Verified</span>
+                      <span class="font-bold text-slate-300">Mark as Decoded</span>
                     </label>
-                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1 text-brand-400"></i> Flip token</span>
+                    <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-rotate mr-1 text-brand-400"></i> Flip card</span>
                   </div>
                 </div>
               </div>
@@ -373,12 +363,12 @@
             
             <!-- Cards Controls -->
             <div class="flex items-center justify-between gap-4">
-              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 font-semibold text-sm hover:bg-slate-800 transition">
-                <i class="fa-solid fa-arrow-left"></i>
+              <button onclick="prevFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-orange-100 dark:border-stone-850 bg-white dark:bg-stone-900 text-slate-600 dark:text-slate-300 font-semibold text-sm hover:bg-orange-50 dark:hover:bg-slate-850 transition">
+                <i class="fa-solid fa-arrow-left text-brand-500"></i>
                 <span>Previous</span>
               </button>
               
-              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-950 font-bold text-sm shadow-lg transition">
+              <button onclick="nextFlashcard()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg transition">
                 <span>Next</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
@@ -386,31 +376,31 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 3: QUIZ ==================== -->
+        <!-- ==================== VIEW 3: SCENARIO EXAM ==================== -->
         <section id="view-quiz" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
             
             <!-- Active Quiz Screen -->
-            <div id="quiz-screen" class="bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-sm space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div id="quiz-screen" class="bg-white/95 dark:bg-[#090502]/95 rounded-3xl p-6 md:p-8 border border-orange-100 dark:border-stone-800 shadow-sm space-y-6">
+              <div class="flex items-center justify-between border-b border-orange-100 dark:border-stone-800 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-black text-slate-200">The Polygraph Examination</h2>
-                  <p class="text-xs text-slate-400 mt-1">Isolate fabrications and select the perfect truth-metric collocation to complete the statement.</p>
+                  <h2 class="font-heading text-xl font-black text-slate-800 dark:text-slate-200">Lesson 38 Graded Exam</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Select the correct starting or ending collocation to complete the sentence.</p>
                 </div>
-                <div class="bg-brand-500/10 text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
+                <div class="bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/25 px-3 py-1.5 rounded-xl text-xs font-bold font-mono">
                   Scenario <span id="quiz-question-current">1</span> of 20
                 </div>
               </div>
               
               <!-- Progress Indicator -->
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-400 h-full transition-all duration-300" style="width: 5%"></div>
+              <div class="w-full bg-orange-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="quiz-progress-bar" class="bg-gradient-to-r from-brand-500 to-amber-500 h-full transition-all duration-300" style="width: 5%"></div>
               </div>
               
               <!-- Question Text -->
               <div class="space-y-4">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 font-mono">Active Statements Analyzer</span>
-                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-white font-sans">"Loading scenario..."</p>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-404 dark:text-slate-500 font-mono">Active Timeline Scenario</span>
+                <p id="quiz-question-text" class="text-lg md:text-xl font-bold leading-relaxed text-slate-805 dark:text-white font-sans">"Loading question..."</p>
               </div>
               
               <!-- Question Options Grid -->
@@ -419,47 +409,48 @@
               </div>
               
               <!-- Explanations Box -->
-              <div id="quiz-explanation-box" class="hidden bg-emerald-950/20 border border-emerald-800/40 rounded-2xl p-4 space-y-1 font-semibold">
-                <div class="flex items-center gap-2 text-brand-400 font-bold text-sm">
+              <div id="quiz-explanation-box" class="hidden bg-emerald-50 dark:bg-emerald-955/20 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-4 space-y-1">
+                <div class="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-sm">
                   <i class="fa-solid fa-circle-check"></i>
-                  <span>Forensic Semantic Verification</span>
+                  <span>Chronological Validation Notes</span>
                 </div>
-                <p id="quiz-explanation-text" class="text-xs md:text-sm text-brand-300 leading-relaxed font-sans font-medium">Explanation comes here.</p>
+                <p id="quiz-explanation-text" class="text-xs md:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed font-semibold font-sans">Explanation comes here.</p>
               </div>
               
               <!-- Action Button Row -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-rose-500 hover:text-rose-400">
+              <div class="flex items-center justify-between border-t border-orange-100 dark:border-stone-850 pt-4">
+                <button onclick="resetCurrentQuiz()" class="text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline">
                   <i class="fa-solid fa-rotate-left mr-1"></i>Reset Exam
                 </button>
-                <button id="quiz-next-btn" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-800 text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition cursor-not-allowed font-mono">
-                  Next Scenario <i class="fa-solid fa-arrow-right"></i>
+                <button id="quiz-next-btn" disabled onclick="handleQuizNext()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-404 dark:text-slate-500 rounded-xl text-xs sm:text-sm font-bold transition font-mono">
+                  <span>Next Scenario</span>
+                  <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
 
             <!-- Perfect Complete Card -->
-            <div id="quiz-result-screen" class="hidden bg-gradient-to-br from-slate-900 via-brand-950/20 to-slate-950 text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-brand-900">
-              <span class="inline-flex p-4 bg-brand-500/10 text-brand-400 rounded-full border border-brand-500/20 shadow-inner">
-                <i class="fa-solid fa-medal text-4xl animate-bounce"></i>
+            <div id="quiz-result-screen" class="hidden bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-brand-950/20 dark:to-slate-950 text-slate-800 dark:text-white rounded-3xl p-8 text-center space-y-5 shadow-xl border border-orange-100 dark:border-brand-900">
+              <span class="inline-flex p-4 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-full border border-orange-100 dark:border-brand-500/20 shadow-inner">
+                <i class="fa-solid fa-trophy text-4xl animate-bounce text-brand-500"></i>
               </span>
               <div class="space-y-2">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-brand-300 to-indigo-400">Polygraph Calibrations Completed! 🛡️</h2>
-                <p class="text-sm font-semibold text-brand-300">Integrity index score: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-650 dark:from-brand-400 dark:via-brand-300 dark:to-indigo-400 font-sans">Timeline Clearance Concluded! ⚙️</h2>
+                <p class="text-sm font-semibold text-slate-600 dark:text-brand-300">Exam score finalized: <span id="quiz-score-correct">--</span> (<span id="quiz-score-percent">--</span>)</p>
               </div>
-              <div class="bg-slate-900/60 p-4 rounded-2xl border border-slate-800 max-w-sm mx-auto">
-                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-400 font-mono">Veracity Officer Rank</span>
-                <span class="text-base font-bold text-brand-400 mt-2 block truncate animate-pulse font-mono" id="quiz-score-rank">Calculating...</span>
+              <div class="bg-orange-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-orange-150 dark:border-stone-800 max-w-sm mx-auto">
+                <span class="block text-[10px] uppercase font-black tracking-wide text-slate-500 dark:text-slate-400 font-mono">Temporal Competency Rank</span>
+                <span class="text-base font-bold text-brand-600 dark:text-brand-400 mt-2 block truncate animate-pulse" id="quiz-score-rank">Calculating...</span>
               </div>
-              <p class="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
-                Superb mastery of truth-building, secret protection, and deceit-detection collocations. Your linguistic calibration maintains flawless organizational standing!
+              <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+                Outstanding command of starting, ending, and transitional milestones. You have successfully aligned chronological markers with real-world contexts!
               </p>
               <div class="flex items-center justify-center gap-4">
-                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-slate-950 font-bold text-xs transition shadow-lg">
+                <button onclick="resetCurrentQuiz()" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition shadow-lg">
                   <i class="fa-solid fa-rotate-right"></i>
-                  <span>Recalibrate Polygraph</span>
+                  <span>Recalibrate</span>
                 </button>
-                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-800 font-bold text-xs hover:bg-slate-800 transition text-slate-300">
+                <button onclick="switchView('story')" class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-orange-100 dark:border-stone-800 font-bold text-xs hover:bg-slate-100 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-300">
                   <span>Back to Dossier</span>
                 </button>
               </div>
@@ -471,84 +462,84 @@
         <!-- ==================== VIEW 4: AI PRACTICE SANDBOX ==================== -->
         <section id="view-sandbox" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-3xl mx-auto space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+            <div class="bg-white/95 dark:bg-[#090502]/95 rounded-3xl p-6 border border-orange-100 dark:border-stone-800 shadow-sm space-y-6">
               
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-4">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-orange-100 dark:border-stone-850 pb-4">
                 <div>
-                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-200">Deception Diagnostic Sandbox</h2>
-                  <p class="text-xs text-slate-400 font-semibold">Write an apology, an alibi, or an executive truth disclosure. Test statement reliability against Lesson 38 collocations.</p>
+                  <h2 class="font-heading text-xl font-extrabold tracking-tight text-slate-800 dark:text-slate-200 font-sans">AI Temporal Sandbox</h2>
+                  <p class="text-xs text-slate-500 dark:text-slate-404 font-medium">Compose custom corporate proposals, project launches, or personal milestones using Lesson 38 collocations.</p>
                 </div>
                 <div class="flex gap-2">
-                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-slate-700 text-slate-350 hover:bg-slate-800 text-xs font-bold rounded-xl transition">
-                    <i class="fa-solid fa-lightbulb mr-1 text-brand-450"></i> Get Audit Prompt
+                  <button onclick="generateSandboxPrompt()" class="px-3.5 py-1.5 border border-orange-100 dark:border-stone-700 text-slate-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition shadow-sm font-sans">
+                    <i class="fa-solid fa-lightbulb mr-1 text-brand-400"></i> Get Prompt
                   </button>
-                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25">
-                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Decrypt
+                  <button onclick="populateSandboxCollocations()" class="px-3.5 py-1.5 bg-brand-500/10 text-brand-700 dark:text-brand-300 hover:bg-brand-500/20 text-xs font-bold rounded-xl transition border border-brand-500/25 shadow-sm font-sans">
+                    <i class="fa-solid fa-plus-circle mr-1"></i> Quick Word
                   </button>
                 </div>
               </div>
               
               <!-- Text Area -->
-              <div class="space-y-3">
-                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono">Workspace Statement</label>
-                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-slate-800 bg-[#010208] p-4 text-sm font-medium focus:border-brand-500 focus:bg-slate-900 outline-none transition text-slate-100 font-sans leading-relaxed" placeholder="Example: To be perfectly honest, it was just an honest mistake when he decided to stretch the truth to win our trust implicitly..."></textarea>
+              <div class="space-y-3 font-sans">
+                <label for="sandbox-input" class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-505 font-mono">Chronology workspace</label>
+                <textarea id="sandbox-input" rows="4" class="w-full rounded-2xl border border-orange-100 dark:border-stone-800 bg-white dark:bg-[#020100] p-4 text-sm font-medium focus:border-brand-500 focus:bg-white dark:focus:bg-[#030100] outline-none transition text-slate-800 dark:text-slate-100 font-sans leading-relaxed" placeholder="Example: Although the project got off to a shaky start, we put the finishing touches on the prototype before the quarterly cycle drew to a close..."></textarea>
               </div>
               
               <!-- Quick Chips Selection -->
-              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5">
+              <div id="sandbox-quick-chips" class="flex flex-wrap gap-1.5 font-sans">
                 <!-- Rendered dynamically -->
               </div>
               
               <!-- Action Button bar -->
-              <div class="flex items-center justify-between border-t border-slate-800 pt-4">
-                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition font-mono">
-                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Manuscript
+              <div class="flex items-center justify-between border-t border-orange-100 dark:border-stone-855 pt-4 font-sans">
+                <button onclick="clearSandbox()" class="text-xs font-bold text-slate-450 hover:text-brand-600 transition font-mono">
+                  <i class="fa-solid fa-trash-can mr-1"></i> Wipe Board
                 </button>
-                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-[#010208] rounded-xl text-sm font-bold shadow-lg transition">
-                  <i class="fa-solid fa-fingerprint animate-pulse"></i>
-                  <span>Audit Statement Path</span>
+                <button onclick="runSentenceDiagnostic()" class="flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-[#020100] rounded-xl text-sm font-bold shadow-lg transition">
+                  <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
+                  <span>Scan Milestone Path</span>
                 </button>
               </div>
             </div>
             
             <!-- Diagnostic Output Screen -->
-            <div id="sandbox-diagnostic-card" class="hidden bg-slate-900 rounded-3xl p-6 md:p-8 border border-slate-800 shadow-md space-y-6">
-              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <h3 class="font-heading text-lg font-extrabold italic text-slate-200">Veracity Audit Analysis</h3>
+            <div id="sandbox-diagnostic-card" class="hidden bg-white/95 dark:bg-[#090502]/95 rounded-3xl p-6 md:p-8 border border-orange-100 dark:border-stone-800 shadow-md space-y-6">
+              <div class="flex items-center justify-between border-b border-orange-100 dark:border-stone-800 pb-4">
+                <h3 class="font-heading text-lg font-extrabold italic text-slate-800 dark:text-slate-200">Milestone Calibration Report</h3>
                 <div class="flex items-center gap-2">
-                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40 font-mono">Calibrated</span>
+                  <span id="diagnostic-badge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40">Calibrated</span>
                 </div>
               </div>
               
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center font-medium">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <!-- Left: Gauge/Radial -->
                 <div class="md:col-span-3 flex flex-col items-center justify-center space-y-1">
-                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-slate-800 animate-pulse">
-                    <span class="text-3xl font-black font-mono tracking-tight text-brand-400" id="diagnostic-score">--</span>
-                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Veracity%</span>
+                  <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-orange-100 dark:border-stone-800 animate-pulse">
+                    <span class="text-3xl font-black font-mono tracking-tight text-brand-500 dark:text-brand-400" id="diagnostic-score">--</span>
+                    <span class="absolute bottom-4 text-[10px] font-bold text-slate-400 font-mono">Score</span>
                   </div>
                 </div>
                 
                 <!-- Right: Explanatory Breakdown -->
                 <div class="md:col-span-9 space-y-4">
                   <div>
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Linguistic Authenticity Profile</span>
-                    <p id="diagnostic-analysis" class="text-sm text-slate-300 leading-relaxed font-sans">Analyzing structural metrics...</p>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-550 font-mono block mb-0.5">Syntactical Integrity Analysis</span>
+                    <p id="diagnostic-analysis" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold">Analyzing temporal structures...</p>
                   </div>
                   
-                  <div class="border-t border-slate-800 pt-3">
-                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 font-mono block mb-0.5">Collocation Compliance Report</span>
-                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-300 leading-relaxed font-sans">Scanning promise & secret structures...</p>
+                  <div class="border-t border-orange-100 dark:border-stone-800 pt-3">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-555 font-mono block mb-0.5">Acoustic Appropriateness Feedback</span>
+                    <p id="diagnostic-collocation-feedback" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-semibold font-sans">Measuring dialogue flow...</p>
                   </div>
                 </div>
               </div>
               
               <!-- Alternatives Accordion Box -->
-              <div class="bg-[#010208] p-4 rounded-2xl border border-slate-800">
-                <span class="text-[10px] font-black uppercase tracking-wider text-slate-450 block mb-1 font-mono">Recommended Statement Redirection</span>
-                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-200 mt-1 font-sans">"Awaiting audit diagnostics..."</p>
+              <div class="bg-orange-50/50 dark:bg-[#020100] p-4 rounded-2xl border border-orange-100 dark:border-stone-800">
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-555 dark:text-slate-400 block mb-1">Recommended Dialogue Polish</span>
+                <p id="diagnostic-alternative-text" class="text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 mt-1 font-sans">"Awaiting analysis..."</p>
                 <div class="flex justify-end mt-3">
-                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-850 transition shadow-sm font-mono">
+                  <button onclick="copyAlternativeSentence()" class="px-3 py-1 bg-white dark:bg-stone-900 border border-orange-100 dark:border-stone-800 rounded-lg text-xs font-bold text-brand-700 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-855 transition shadow-sm font-mono">
                     <i class="fa-solid fa-copy"></i> Copy Alternative
                   </button>
                 </div>
@@ -558,58 +549,58 @@
           </div>
         </section>
         
-        <!-- ==================== VIEW 5: PODCAST SIMULATION STATION ==================== -->
+        <!-- ==================== VIEW 5: PODCAST STATION ==================== -->
         <section id="view-podcast" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
           <div class="max-w-2xl mx-auto space-y-6">
-            <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 border border-slate-800 shadow-xl space-y-8">
+            <div class="bg-white dark:bg-[#090502] text-slate-800 dark:text-white rounded-3xl p-6 md:p-8 border border-orange-100 dark:border-stone-800 shadow-xl space-y-8">
               
               <!-- Broadcast Header -->
-              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div class="flex items-center justify-between pb-4 border-b border-orange-100 dark:border-white/10">
                 <div class="flex items-center gap-3">
                   <span class="flex h-3 w-3 rounded-full bg-brand-500 animate-pulse"></span>
                   <div>
-                    <h2 class="font-heading text-lg font-bold tracking-tight">Veritas Broadcast Station: Ep. 38</h2>
-                    <p class="text-[10px] text-slate-450 font-semibold">Integrity Metrics, Slander Safeguards, and Rebuilding Trust</p>
+                    <h2 class="font-heading text-lg font-bold tracking-tight">Tempo Broadcaster: Episode 38</h2>
+                    <p class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold font-mono">Genesis Node: Launches, Rushed Drafts, and Natural Endings</p>
                   </div>
                 </div>
-                <div class="bg-brand-500/10 text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
-                  Live Stream
+                <div class="bg-brand-500/10 text-brand-700 dark:text-brand-400 border border-brand-500/20 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest font-mono">
+                  Live Dispatch
                 </div>
               </div>
               
               <!-- Interactive visual equalizer -->
-              <div class="flex items-end justify-center gap-1.5 h-20 bg-black/40 rounded-2xl p-4 border border-white/5 animate-pulse">
+              <div class="flex items-end justify-center gap-1.5 h-20 bg-orange-50/50 dark:bg-black/40 rounded-2xl p-4 border border-orange-100 dark:border-white/5 animate-pulse">
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-8" style="animation-delay: 0.1s"></div>
                 <div class="wave-bar bg-brand-500 w-1 rounded-full h-12" style="animation-delay: 0.3s"></div>
                 <div class="wave-bar bg-brand-600 w-1 rounded-full h-16" style="animation-delay: 0.5s"></div>
-                <div class="wave-bar bg-amber-500 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
-                <div class="wave-bar bg-amber-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
+                <div class="wave-bar bg-brand-700 w-1 rounded-full h-10" style="animation-delay: 0.2s"></div>
+                <div class="wave-bar bg-brand-300 w-1 rounded-full h-14" style="animation-delay: 0.4s"></div>
                 <div class="wave-bar bg-brand-400 w-1 rounded-full h-6" style="animation-delay: 0.6s"></div>
               </div>
               
               <!-- Currently Playing Widget -->
-              <div class="text-center space-y-3 font-medium">
-                <span class="text-[10px] font-black uppercase tracking-wider text-brand-300 font-mono" id="podcast-status">Decoder Standby</span>
-                <h3 class="font-heading text-2xl font-black text-slate-100" id="podcast-current-phrase">Why we say "perfectly honest"</h3>
-                <p class="text-xs text-brand-200 max-w-sm mx-auto leading-relaxed font-sans" id="podcast-current-definition">Press Play to begin speech synthesis between two forensic profiling linguists analyzing Lesson 38 integrity.</p>
+              <div class="text-center space-y-3 font-semibold">
+                <span class="text-[10px] font-black uppercase tracking-wider text-brand-500 dark:text-brand-300 font-mono" id="podcast-status">Studio Ready</span>
+                <h3 class="font-heading text-2xl font-black text-slate-800 dark:text-slate-100 capitalize" id="podcast-current-phrase">Why we write "promising start"</h3>
+                <p class="text-xs text-slate-600 dark:text-brand-200 max-w-sm mx-auto leading-relaxed font-sans font-medium" id="podcast-current-definition">Press Play to activate automated speech synthesis dialogue between two linguists discussing Lesson 38 starting and ending collocations.</p>
               </div>
               
               <!-- Dialogue Box -->
-              <div class="bg-black/85 rounded-2xl p-5 border border-white/10 space-y-4 max-h-48 overflow-y-auto custom-scrollbar text-[11px] font-mono text-brand-400 leading-relaxed">
+              <div class="bg-orange-50/20 dark:bg-black/80 rounded-2xl p-5 border border-orange-100 dark:border-white/10 space-y-4 max-h-48 overflow-y-auto custom-scrollbar text-[11px] font-mono text-slate-700 dark:text-brand-350 leading-relaxed font-sans font-semibold">
                 <div id="podcast-chat-log" class="space-y-4">
-                  <p class="text-slate-500">// Activating Speech synthesis dialogues will stream real-time conversational breakdowns of truth and deception here.</p>
+                  <p class="text-slate-404 dark:text-slate-550">// Clicking Play starts automated speech synthesis dialogue between two linguists discussing collocations.</p>
                 </div>
               </div>
               
               <!-- Podcast Controls -->
               <div class="flex items-center justify-between">
-                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 text-white transition">
+                <button onclick="prevPodcastCard()" class="h-10 w-10 flex items-center justify-center rounded-xl bg-white dark:bg-stone-900 border border-orange-100 dark:border-stone-700 text-slate-600 dark:text-white hover:bg-orange-50 dark:hover:bg-slate-700 transition shadow-sm">
                   <i class="fa-solid fa-backward-step"></i>
                 </button>
-                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-950 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Start broadcast loop">
+                <button id="podcast-play-btn" onclick="togglePodcastPlay()" class="h-14 w-14 bg-gradient-to-tr from-brand-500 to-brand-700 text-slate-955 hover:from-brand-600 rounded-full flex items-center justify-center shadow-lg transition" title="Play dialogue loop">
                   <i class="fa-solid fa-play text-xl ml-0.5" id="podcast-play-icon"></i>
                 </button>
-                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-slate-800 hover:bg-slate-700 text-white rounded-xl flex items-center justify-center transition">
+                <button onclick="nextPodcastCard()" class="h-10 w-10 bg-white dark:bg-stone-900 border border-orange-100 dark:border-stone-700 text-slate-600 dark:text-white hover:bg-orange-50 dark:hover:bg-slate-700 transition shadow-sm">
                   <i class="fa-solid fa-forward-step"></i>
                 </button>
               </div>
@@ -620,7 +611,7 @@
                   <span id="podcast-time-passed">Token 0/30</span>
                   <span id="podcast-time-percent">0% Scanned</span>
                 </div>
-                <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                <div class="w-full bg-orange-100 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
                   <div id="podcast-loading-meter" class="bg-brand-400 h-full transition-all duration-300" style="width: 0%"></div>
                 </div>
               </div>
@@ -631,31 +622,31 @@
         
         <!-- ==================== VIEW 6: DICTIONARY ==================== -->
         <section id="view-dictionary" class="view-container opacity-0 hidden p-4 md:p-8 space-y-6">
-          <div class="bg-slate-900/90 rounded-3xl p-6 border border-slate-800 shadow-sm space-y-6">
+          <div class="bg-white/95 dark:bg-[#090502]/90 rounded-3xl p-6 border border-orange-100 dark:border-stone-800 shadow-sm space-y-6">
             
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-800 pb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-orange-100 dark:border-stone-800 pb-4">
               <div>
-                <h2 class="font-heading text-xl font-extrabold text-slate-200">The Cryptographic Ledger</h2>
-                <p class="text-xs text-slate-400">Deep-dive repository containing all Lesson 38 integrity phrases, fabrications, and promise structures.</p>
+                <h2 class="font-heading text-xl font-extrabold text-slate-805 dark:text-slate-202">Genesis & Terminus Dictionary Ledger</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Search and filter active beginnings, endings, drafts, and deadlines from the Lesson 38 database.</p>
               </div>
               <!-- Controls Container -->
               <div class="flex flex-wrap gap-2">
                 <!-- Search Box -->
                 <div class="relative max-w-xs font-mono">
-                  <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans font-semibold" placeholder="Audit registry...">
+                  <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-xs"></i>
+                  <input type="text" id="dict-search-input" oninput="filterDictionary()" class="pl-9 pr-4 py-1.5 border border-orange-100 dark:border-stone-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-800 dark:text-white outline-none focus:border-brand-500 transition w-full md:w-48 font-sans font-semibold" placeholder="Search files...">
                 </div>
                 <!-- Dropdown Categories -->
-                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-brand-350 outline-none font-bold font-mono text-white">
-                  <option value="all">All Sub-systems</option>
-                  <option value="Truth & Honesty">Truth & Honesty</option>
-                  <option value="Deception & Lies">Deception & Lies</option>
-                  <option value="Trust & Promises">Trust & Promises</option>
+                <select id="dict-category-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-orange-100 dark:border-stone-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-600 dark:text-slate-300 outline-none font-bold font-mono">
+                  <option value="all">All Phases</option>
+                  <option value="Beginnings">Beginnings & Launch</option>
+                  <option value="Endings">Endings & Touchdown</option>
+                  <option value="Transits & Drafts">Transits, Drafts & Duration</option>
                 </select>
                 <!-- Mastery Filter -->
-                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-slate-700 rounded-xl text-xs bg-slate-950 text-brand-350 outline-none font-bold font-mono text-white">
-                  <option value="all">All Registry</option>
-                  <option value="mastered">Verified</option>
+                <select id="dict-mastery-filter" onchange="filterDictionary()" class="px-2.5 py-1.5 border border-orange-100 dark:border-stone-700 rounded-xl text-xs bg-white dark:bg-slate-955 text-slate-600 dark:text-slate-300 outline-none font-bold font-mono">
+                  <option value="all">All Progress</option>
+                  <option value="mastered">Decoded Only</option>
                   <option value="unmastered">In Progress</option>
                 </select>
               </div>
@@ -665,16 +656,16 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm border-collapse">
                 <thead>
-                  <tr class="border-b border-slate-800 text-[10px] text-slate-400 uppercase tracking-widest font-black font-mono">
+                  <tr class="border-b border-orange-100 dark:border-stone-800 text-[10px] text-slate-404 dark:text-slate-555 uppercase tracking-widest font-black font-mono">
                     <th class="py-3 px-4 w-10">Status</th>
                     <th class="py-3 px-4 w-48">Collocation Phrase</th>
-                    <th class="py-3 px-4 w-36">Veracity Group</th>
-                    <th class="py-3 px-4">Standard Definition</th>
-                    <th class="py-3 px-4 hidden lg:table-cell">Regulatory Precedent</th>
-                    <th class="py-3 px-4 w-16 text-center font-mono">Frequency</th>
+                    <th class="py-3 px-4 w-32">Wave Group</th>
+                    <th class="py-3 px-4">Core Definition</th>
+                    <th class="py-3 px-4 hidden lg:table-cell">Precedent Context Example</th>
+                    <th class="py-3 px-4 w-16 text-center font-mono">Vocal</th>
                   </tr>
                 </thead>
-                <tbody id="dictionary-rows" class="divide-y divide-slate-800 text-slate-300 font-semibold font-medium">
+                <tbody id="dictionary-rows" class="divide-y divide-orange-50 dark:divide-stone-850 text-slate-700 dark:text-slate-300 font-semibold">
                   <!-- Javascript will render rows dynamically -->
                 </tbody>
               </table>
@@ -687,58 +678,58 @@
     </div>
 
     <!-- Mobile Navigation Bar Footer -->
-    <footer class="flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900 md:hidden shrink-0 z-30 shadow-md">
-      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-passport text-base"></i>
-        <span class="text-[9px] font-bold">Dossier</span>
+    <footer class="flex h-16 items-center justify-around border-t border-orange-100 dark:border-stone-800 bg-white dark:bg-stone-900 md:hidden shrink-0 z-30 shadow-md">
+      <button onclick="switchView('story')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-500">
+        <i class="fa-solid fa-scroll text-base"></i>
+        <span class="text-[9px] font-bold">Story</span>
       </button>
-      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-id-card-clip text-base"></i>
-        <span class="text-[9px] font-bold">Transceiver</span>
+      <button onclick="switchView('flashcards')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-500">
+        <i class="fa-solid fa-stamp text-base"></i>
+        <span class="text-[9px] font-bold">Flashcards</span>
       </button>
-      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-user-check text-base"></i>
+      <button onclick="switchView('quiz')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-500">
+        <i class="fa-solid fa-highlighter text-base"></i>
         <span class="text-[9px] font-bold">Exam</span>
       </button>
       <button onclick="switchView('sandbox')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-shield-virus text-base"></i>
+        <i class="fa-solid fa-vial text-base"></i>
         <span class="text-[9px] font-bold">Sandbox</span>
       </button>
-      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-tower-broadcast text-base"></i>
-        <span class="text-[9px] font-bold">Broadcast</span>
+      <button onclick="switchView('podcast')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-500">
+        <i class="fa-solid fa-podcast text-base"></i>
+        <span class="text-[9px] font-bold">Radio</span>
       </button>
-      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-400">
-        <i class="fa-solid fa-database text-base"></i>
-        <span class="text-[9px] font-bold">Ledger</span>
+      <button onclick="switchView('dictionary')" class="flex flex-col items-center justify-center gap-0.5 text-slate-400 hover:text-brand-500">
+        <i class="fa-solid fa-spell-check text-base"></i>
+        <span class="text-[9px] font-bold">Lexicon</span>
       </button>
     </footer>
 
   </div>
 
   <!-- Speech Settings Modal -->
-  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-850">
+  <div id="voice-modal-overlay" class="hidden fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300 border border-slate-800">
     <div class="bg-stone-900 rounded-3xl p-6 border border-stone-800 max-w-sm w-full shadow-2xl space-y-6">
       <div class="flex items-center justify-between border-b border-stone-800 pb-3">
-        <h3 class="font-sans font-black text-lg text-white">Observer's Auditory Config</h3>
+        <h3 class="font-sans font-black text-lg text-white">Observer's Voice Config</h3>
         <button onclick="closeVoiceSettings()" class="text-slate-400 hover:text-white transition">
           <i class="fa-solid fa-circle-xmark text-lg"></i>
         </button>
       </div>
       
       <!-- Selection of Voices -->
-      <div class="space-y-4 font-semibold">
+      <div class="space-y-4">
         <div class="space-y-1.5 font-medium">
-          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-450 font-mono animate-pulse">Speech Synthesis Controller</label>
-          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-950 text-xs font-semibold outline-none text-white font-mono">
+          <label for="voice-select" class="text-xs font-black uppercase tracking-wider text-slate-400 font-mono animate-pulse">Speech Synthesis Interface</label>
+          <select id="voice-select" class="w-full border border-stone-700 rounded-xl px-3 py-2 bg-slate-955 text-xs font-semibold outline-none text-white font-mono">
             <!-- Rendered Dynamically -->
           </select>
         </div>
         
         <!-- Rate Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-450 font-mono font-bold">
-            <span>Voice Velocity</span>
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+            <span>Speech Velocity</span>
             <span id="voice-rate-val">1.0x</span>
           </div>
           <input type="range" id="voice-rate-slider" min="0.5" max="2.0" step="0.1" value="1.0" oninput="updateVoiceSlider('rate', this.value)" class="w-full accent-brand-500">
@@ -746,8 +737,8 @@
         
         <!-- Pitch Control -->
         <div class="space-y-1.5">
-          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-455 font-mono font-bold">
-            <span>Acoustic Frequency Pitch</span>
+          <div class="flex justify-between text-xs font-black uppercase tracking-wider text-slate-400 font-mono font-bold">
+            <span>Acoustic Tone Pitch</span>
             <span id="voice-pitch-val">1.0</span>
           </div>
           <input type="range" id="voice-pitch-slider" min="0.5" max="1.5" step="0.1" value="1.0" oninput="updateVoiceSlider('pitch', this.value)" class="w-full accent-brand-500">
@@ -755,7 +746,7 @@
       </div>
       
       <button onclick="closeVoiceSettings()" class="w-full h-11 bg-brand-500 hover:bg-brand-600 text-stone-955 rounded-xl text-sm font-bold shadow-md transition font-mono font-sans font-medium">
-        Apply Diagnostics Voice
+        Apply Dispatch Rules
       </button>
     </div>
   </div>
@@ -783,61 +774,61 @@
         volume: 1.0
       },
       collocations: [
-        { id: 'perfectly_honest', phrase: 'perfectly honest', definition: 'Completely and utterly truthful, expressing opinions or facts without holdback.', example: 'To be perfectly honest, I don\'t think this marketing scheme is viable.', category: 'Truth & Honesty', mastered: false },
-        { id: 'honest_mistake', phrase: 'honest mistake', definition: 'An unintentional error made without bad intentions or attempts to deceive.', example: 'Please do not penalize her; it was an honest mistake in the entry ledger.', category: 'Truth & Honesty', mastered: false },
-        { id: 'tell_truth', phrase: 'tell the truth', definition: 'To speak honestly and state accurate facts rather than fabrications.', example: 'He had the courage to tell the truth even when it jeopardized his position.', category: 'Truth & Honesty', mastered: false },
-        { id: 'stretch_truth', phrase: 'stretch the truth', definition: 'To exaggerate facts slightly or present details in a way that is not entirely accurate.', example: 'Sales agents frequently stretch the truth to seal high-value contracts.', category: 'Truth & Honesty', mastered: false },
-        { id: 'tell_lie', phrase: 'tell a lie', definition: 'To deliver a statement that is deliberately false to deceive others.', example: 'He chose to tell a lie regarding his location to avoid an argument.', category: 'Deception & Lies', mastered: false },
-        { id: 'white_lie', phrase: 'white lie', definition: 'A small, minor, and completely harmless lie told primarily to protect someone\'s feelings.', example: 'I told her a white lie about her presentation to boost her morale.', category: 'Deception & Lies', mastered: false },
-        { id: 'half_truth', phrase: 'half-truth', definition: 'A statement that reveals only a portion of the truth, omitting vital details to mislead.', example: 'The witness offered a half-truth that confused the investigating committee.', category: 'Deception & Lies', mastered: false },
-        { id: 'fabricate_story', phrase: 'fabricate a story', definition: 'To completely invent an elaborate false explanation or narrative to mislead.', example: 'He had to fabricate a story about car engine trouble to explain his absence.', category: 'Deception & Lies', mastered: false },
-        { id: 'pure_fabrication', phrase: 'pure fabrication', definition: 'An explanation or story that is completely made up and false from start to finish.', example: 'His claims about launching the system independently were a pure fabrication.', category: 'Deception & Lies', mastered: false },
-        { id: 'tissue_lies', phrase: 'tissue of lies', definition: 'A highly complex, tangled series of false statements or complete fabrications.', example: 'The audit unmasked his operational report as a complete tissue of lies.', category: 'Deception & Lies', mastered: false },
-        { id: 'inveterate_liar', phrase: 'inveterate liar', definition: 'Someone who lies constantly, habitually, and almost compulsively as second nature.', example: 'We soon realized he was an inveterate liar who couldn\'t be trusted with bookkeeping.', category: 'Deception & Lies', mastered: false },
-        { id: 'unmask_liar', phrase: 'unmask a liar', definition: 'To expose someone\'s lies and reveal their deceptive behavior in public.', example: 'Our legal department managed to unmask a liar during the deposition process.', category: 'Deception & Lies', mastered: false },
-        { id: 'trust_implicitly', phrase: 'trust implicitly', definition: 'To trust someone completely, without any form of doubt, hesitation, or suspicion.', example: 'She is my strategic manager; I trust her implicitly with our fiscal accounts.', category: 'Trust & Promises', mastered: false },
-        { id: 'betray_trust', phrase: 'betray trust', definition: 'To break someone\'s confidence or rely on deception to work against their trust.', example: 'Sharing our blueprints with a competitor is the ultimate way to betray trust.', category: 'Trust & Promises', mastered: false },
-        { id: 'restore_trust', phrase: 'restore trust', definition: 'To rebuild and repair trust gradually after it has been damaged or broken.', example: 'The executive apologized profusely, hoping to restore trust with shareholders.', category: 'Trust & Promises', mastered: false },
-        { id: 'gain_trust', phrase: 'gain trust', definition: 'To earn someone\'s trust slowly through consistent, reliable behavior over time.', example: 'It took months of flawless deliveries to gain trust from our elite clients.', category: 'Trust & Promises', mastered: false },
-        { id: 'keep_secret', phrase: 'keep a secret', definition: 'To protect private or confidential information from being shared with others.', example: 'Can you keep a secret regarding our upcoming corporate acquisition plan?', category: 'Trust & Promises', mastered: false },
-        { id: 'reveal_secret', phrase: 'reveal a secret', definition: 'To tell others confidential or private details that were meant to remain hidden.', example: 'A former associate decided to reveal a secret about our operational systems.', category: 'Trust & Promises', mastered: false },
-        { id: 'disclose_secret', phrase: 'disclose a secret', definition: 'To formally or officially reveal confidential or secret information to the public.', example: 'Under regulatory pressure, they had to disclose a secret about their source code.', category: 'Trust & Promises', mastered: false },
-        { id: 'let_cat_out_bag', phrase: 'let the cat out of the bag', definition: 'To accidentally or prematurely reveal a secret or surprise.', example: 'Sarah accidentally let the cat out of the bag about Kevin\'s promotion.', category: 'Trust & Promises', mastered: false },
-        { id: 'confide_in_someone', phrase: 'confide in someone', definition: 'To share highly private, secret thoughts or problems with someone you trust completely.', example: 'When his performance dropped, he decided to confide in his direct manager.', category: 'Trust & Promises', mastered: false },
-        { id: 'take_into_confidence', phrase: 'take someone into your confidence', definition: 'To choose to trust someone enough to share a secret or private problem with them.', example: 'He decided to take me into his confidence and showed me the actual figures.', category: 'Trust & Promises', mastered: false },
-        { id: 'give_word', phrase: 'give your word', definition: 'To make a serious, formal promise or guarantee of truthfulness.', example: 'If you give your word to deliver the code by Thursday, we will hold you to it.', category: 'Trust & Promises', mastered: false },
-        { id: 'keep_promise', phrase: 'keep a promise', definition: 'To do exactly what you promised or guaranteed you would do.', example: 'Good leaders keep a promise, even if it proves financially challenging.', category: 'Trust & Promises', mastered: false },
-        { id: 'break_promise', phrase: 'break a promise', definition: 'To fail to do what you promised or guaranteed you would do.', example: 'Breaking a promise to a long-term client can quickly terminate a partnership.', category: 'Trust & Promises', mastered: false },
-        { id: 'brutal_honesty', phrase: 'brutal honesty', definition: 'Expression of truth in an direct, blunt, and potentially painful manner.', example: 'She offered brutal honesty when evaluating our flawed marketing strategy.', category: 'Truth & Honesty', mastered: false },
-        { id: 'take_word_for_it', phrase: 'take someone\'s word for it', definition: 'To believe what someone says completely without looking for proof or corroboration.', example: 'You shouldn\'t just take his word for it; run an independent compliance scan.', category: 'Truth & Honesty', mastered: false },
-        { id: 'swear_under_path', phrase: 'swear under oath', definition: 'To make a solemn, formal promise to tell the truth in a courtroom setting.', example: 'The developer had to swear under oath that he did not duplicate the patents.', category: 'Truth & Honesty', mastered: false },
-        { id: 'open_book', phrase: 'open book', definition: 'A person whose thoughts, opinions, or private life are completely transparent and easily read.', example: 'You always know what Rachel is thinking; she is a complete open book.', category: 'Truth & Honesty', mastered: false },
-        { id: 'concoct_alibi', phrase: 'concoct an alibi', definition: 'To invent a false explanation or story to prove one was elsewhere during an incident.', example: 'They tried to concoct an alibi, but server log files exposed their exact login coordinates.', category: 'Deception & Lies', mastered: false }
+        { id: 'lets_get_started', phrase: "let's get started", definition: 'An informal and popular way to announce the beginning of an activity or project.', example: "Let's get started on the layout configurations.", category: 'Beginnings', mastered: false },
+        { id: 'got_off_to_a_good_start', phrase: 'got off to a good start', definition: 'To begin an activity, process, or project successfully and smoothly.', example: 'Our research project got off to a good start with the draft approval.', category: 'Beginnings', mastered: false },
+        { id: 'encouraging_start', phrase: 'encouraging start', definition: 'A hopeful and positive beginning that indicates good potential for future outcomes.', example: 'The team had an encouraging start, with early metrics exceeding targets.', category: 'Beginnings', mastered: false },
+        { id: 'promising_start', phrase: 'promising start', definition: 'A highly positive beginning showing great hope for future success.', example: 'The soccer team got off to a promising start, winning the first four games.', category: 'Beginnings', mastered: false },
+        { id: 'shaky_start', phrase: 'shaky start', definition: 'An unstable, fluctuating, or highly uncertain beginning.', example: 'The business had a shaky start in the second quarter of 2013.', category: 'Beginnings', mastered: false },
+        { id: 'unsteady_start', phrase: 'unsteady start', definition: 'An unstable beginning that lacks steady development or reliable progress.', example: 'The engine got off to an unsteady start, coughing and vibrating.', category: 'Beginnings', mastered: false },
+        { id: 'disappointing_start', phrase: 'disappointing start', definition: 'A beginning that fails to meet expectations or goals.', example: 'It was a disappointing start to our long-awaited vacation.', category: 'Beginnings', mastered: false },
+        { id: 'disastrous_start', phrase: 'disastrous start', definition: 'A completely terrible, failed, or highly destructive beginning.', example: 'His semester was off to a disastrous start after failing his first exams.', category: 'Beginnings', mastered: false },
+        { id: 'fresh_start', phrase: 'fresh start', definition: 'A completely new beginning or opportunity, usually after a bad experience.', example: 'I like moving to a new city because you can make a fresh start.', category: 'Beginnings', mastered: false },
+        { id: 'humble_beginnings', phrase: 'humble beginning', definition: 'Starting a successful career, business, or process without fame, wealth, or power.', example: 'He spoke with pride about his humble beginning on the local team.', category: 'Beginnings', mastered: false },
+        { id: 'modest_beginnings', phrase: 'modest beginning', definition: 'A simple, unpretentious start with minimal resources or size.', example: 'The multinational tech company had a modest beginning in a garage.', category: 'Beginnings', mastered: false },
+        { id: 'finishing_touches', phrase: 'finishing touches', definition: 'Final, minor changes or adjustments made to complete something.', example: 'The artist is putting the finishing touches on her new sculpture.', category: 'Endings', mastered: false },
+        { id: 'come_to_an_end', phrase: 'come to an end', definition: 'Reaching a conclusion, stopping point, or finishing stage.', example: 'We are sad that our summer vacation is coming to an end.', category: 'Endings', mastered: false },
+        { id: 'draw_to_a_close', phrase: 'draw to a close', definition: 'Gradually ending, winding down, or completing over time.', example: 'As the concert drew to a close, the lead singer thanked the fans.', category: 'Endings', mastered: false },
+        { id: 'beginning_of_the_end', phrase: 'beginning of the end', definition: 'The start of a process of failure, decline, or final shutdown.', example: 'The explosion at the factory was the beginning of the end for our company.', category: 'Endings', mastered: false },
+        { id: 'abrupt_end', phrase: 'abrupt end', definition: 'Stopping very quickly, suddenly, and unexpectedly.', example: 'The meeting came to an abrupt end when the power failed.', category: 'Endings', mastered: false },
+        { id: 'sudden_end', phrase: 'sudden end', definition: 'An unpredicted, quick stopping point of an activity or state.', example: 'The back injury put a sudden end to his professional career.', category: 'Endings', mastered: false },
+        { id: 'no_end_sight', phrase: 'no end in sight', definition: 'Appearing as though an activity or situation will continue forever.', example: 'There seems to be no end in sight to the regional conflicts.', category: 'Endings', mastered: false },
+        { id: 'finished_homework', phrase: 'finished my homework', definition: 'Completing school or learning study assignments.', example: 'I finished my homework before going out to play.', category: 'Endings', mastered: false },
+        { id: 'finish_project', phrase: 'finish the project', definition: 'Bringing a professional campaign or design assignment to full completion.', example: 'We need to work extra hours to finish the project on time.', category: 'Endings', mastered: false },
+        { id: 'ended_partnership', phrase: 'ended our partnership', definition: 'Terminating a joint business venture or organizational alliance.', example: 'We ended our partnership with that distributor due to poor delivery rates.', category: 'Endings', mastered: false },
+        { id: 'ends_in_december', phrase: 'ends in December', definition: 'The final, terminal date of an academic division.', example: 'The school semester ends in late December for the winter break.', category: 'Endings', mastered: false },
+        { id: 'bring_to_an_end', phrase: 'bring to an end', definition: 'Willingly or actively causing a process or conflict to stop.', example: 'We managed to bring the hostile litigation to an end with a settlement.', category: 'Endings', mastered: false },
+        { id: 'successful_finish', phrase: 'successful finish', definition: 'Ending a contest or process with great performance or results.', example: 'The team secured a successful finish by completing the launch ahead of schedule.', category: 'Endings', mastered: false },
+        { id: 'unfortunate_end', phrase: 'unfortunate end', definition: 'A sad, regretful, or premature conclusion to an event or project.', example: 'The project met an unfortunate end when our funding source went bankrupt.', category: 'Endings', mastered: false },
+        { id: 'slow_start', phrase: 'slow start', definition: 'A low-velocity beginning of a race, campaign, or process.', example: 'The market had a slow start this morning but recovered by noon.', category: 'Beginnings', mastered: false },
+        { id: 'rough_start', phrase: 'rough start', definition: 'A difficult, problem-filled beginning that tests patience.', example: 'The launch had a rough start with server overloads, but we stabilized.', category: 'Beginnings', mastered: false },
+        { id: 'strong_finish', phrase: 'strong finish', definition: 'Ending a race or task with great energy, high speed, or excellent scores.', example: 'The sprint runner put on a strong finish to claim the silver medal.', category: 'Endings', mastered: false },
+        { id: 'perfect_finish', phrase: 'perfect finish', definition: 'Completing a process flawlessly with beautiful results.', example: 'The lacquered wood surface had a perfect finish after the final coating.', category: 'Endings', mastered: false },
+        { id: 'dead_end', phrase: 'dead end', definition: 'A path, road, or situation that leads to no future progress.', example: 'Our design calculations hit a dead end, forcing us to restart.', category: 'Endings', mastered: false }
       ],
-      // Exactly 20 high-fidelity scenarios representing page 77 questions and context
+      // Exactly 20 high-fidelity scenario multiple-choice questions matching lesson quiz + extensions
       quiz: [
-        { id: 1, question: "To be ________ honest, I don't think this strategy will survive the compliance audit.", options: ["perfectly", "totally", "brutally"], answer: "perfectly", explanation: "We use 'perfectly honest' to state a complete truth." },
-        { id: 2, question: "Please forgive me for sending the wrong code files - it was an ________ mistake.", options: ["honest", "innocent", "unintentional"], answer: "honest", explanation: "An error made without deceptive intent is an 'honest mistake'." },
-        { id: 3, question: "When the lead investigator began asking questions, the witness decided to finally ________.", options: ["tell the truth", "speak the truth", "present the truth"], answer: "tell_truth", explanation: "The standard English collocation is to 'tell the truth'." },
-        { id: 4, question: "If you always ________, people will soon realize your descriptions can never be trusted.", options: ["stretch the truth", "expand the truth", "grow the truth"], answer: "stretch_truth", explanation: "Exaggerating facts slightly is to 'stretch the truth'." },
-        { id: 5, question: "The corporate director chose to ________ to explain why the revenue had suddenly dropped.", options: ["tell a lie", "make a lie", "do a lie"], answer: "tell_lie", explanation: "We say 'tell a lie' (rather than 'make a lie')." },
-        { id: 6, question: "Telling a ________ lie to save your friend's feelings is sometimes considered polite.", options: ["white", "soft", "light"], answer: "white", explanation: "A minor, harmless lie is a 'white lie'." },
-        { id: 7, question: "The report is technically correct, but it is filled with ________ that omit key safety parameters.", options: ["half-truths", "split-truths", "semi-truths"], answer: "half-truths", explanation: "Omitting crucial details to mislead creates 'half-truths'." },
-        { id: 8, question: "The programmer decided to ________ about how the security system was breached.", options: ["fabricate a story", "make up a story", "build a story"], answer: "fabricate_story", explanation: "Inventing a false story to deceive is to 'fabricate a story'." },
-        { id: 9, question: "His testimony about why the database went offline was a ________ fabrication.", options: ["pure", "absolute", "complete"], answer: "pure", explanation: "An entirely fabricated explanation is a 'pure fabrication'." },
-        { id: 10, question: "His resume was exposed as a complicated ________ of lies regarding his credentials.", options: ["tissue", "fabric", "network"], answer: "tissue", explanation: "A complex web of false claims is a 'tissue of lies'." },
-        { id: 11, question: "She is an ________ liar; we checked her record and found she had lied to five other employers.", options: ["inveterate", "habitual", "established"], answer: "inveterate", explanation: "A constant, habitual liar is described as an 'inveterate liar'." },
-        { id: 12, question: "The internal audit managed to ________ who had been transferring client files.", options: ["unmask a liar", "expose a liar", "detect a liar"], answer: "unmask_liar", explanation: "Revealing a deceiver's true actions in public is to 'unmask a liar'." },
-        { id: 13, question: "I trust her ________; she has managed our accounting systems flawlessly for a decade.", options: ["implicitly", "deeply", "absolutely"], answer: "implicitly", explanation: "To trust without any doubt or reservation is to 'trust implicitly'." },
-        { id: 14, question: "Sharing the proprietary source code with our competitors would completely ________.", options: ["betray our trust", "break our trust", "hurt our trust"], answer: "betray_trust", explanation: "Breaking someone's reliance on your honesty is to 'betray trust'." },
-        { id: 15, question: "It will take months of absolute transparency and compliance to ________ with the audit team.", options: ["restore trust", "gain trust", "build trust"], answer: "restore_trust", explanation: "To rebuild trust after it has been damaged is to 'restore trust'." },
-        { id: 16, question: "Can you ________? I don't want anyone in the office knowing about my salary raise.", options: ["keep a secret", "save a secret", "hold a secret"], answer: "keep_secret", explanation: "To protect confidential details is to 'keep a secret'." },
-        { id: 17, question: "The whistleblower decided to ________ about our offshore tax status.", options: ["reveal a secret", "disclose a secret", "let a secret out"], answer: "reveal_secret", explanation: "Sharing private details is to 'reveal a secret'." },
-        { id: 18, question: "Try not to ________ about the surprise birthday party when you meet Rachel tonight.", options: ["let the cat out of the bag", "spill the beans", "leak the files"], answer: "let_cat_out_bag", explanation: "To accidentally reveal a secret is to 'let the cat out of the bag'." },
-        { id: 19, question: "He decided to ________ in his supervisor regarding his health concerns.", options: ["confide", "trust", "reveal"], answer: "confide", explanation: "To share private thoughts with someone you trust is to 'confide' in them." },
-        { id: 20, question: "If you ________ to deliver this build by Monday, we expect you to keep your promise.", options: ["give your word", "make your promise", "swear your oath"], answer: "give_word", explanation: "To make a solemn, serious promise is to 'give your word'." }
+        { id: 1, question: "As the concert ________ to a close, the lead singer thanked the fans for their support.", options: ["drew", "took", "went"], answer: "drew", explanation: "An event ending gradually is collocated as 'drawing to a close'." },
+        { id: 2, question: "I like moving to a new city because you can make a ________ start.", options: ["fresh", "pure", "nice"], answer: "fresh", explanation: "A completely new beginning in a new situation is to make a 'fresh start'." },
+        { id: 3, question: "It rained continuously for the first three days we were in Miami - a bit of a ________ start to our vacation.", options: ["deadly", "disappointing", "disbelieving"], answer: "disappointing", explanation: "An initial event that fails to meet expectations is a 'disappointing start'." },
+        { id: 4, question: "My son got a job working directly under a prominent businessman. It's a very ________ start to his career.", options: ["complimentary", "excellent", "promising"], answer: "promising", explanation: "A start that shows hope for great future success is a 'promising start'." },
+        { id: 5, question: "Our kids are sad that their summer vacation is ________ to an end.", options: ["being", "coming", "running"], answer: "coming", explanation: "An activity or period of time finishing is collocated as 'coming to an end'." },
+        { id: 6, question: "The artist put the ________ touches on her painting.", options: ["completing", "finishing", "finalizing"], answer: "finishing", explanation: "Making final, minor changes to complete an object is to 'put the finishing touches' on it." },
+        { id: 7, question: "The back injury put a ________ end to his tennis career.", options: ["direct", "rushed", "sudden"], answer: "sudden", explanation: "When an activity ends quickly and unexpectedly, it comes to a 'sudden end'." },
+        { id: 8, question: "The famous athlete talked about his ________ beginnings on his town's local basketball team.", options: ["humble", "lowly", "simple"], answer: "humble", explanation: "Starting a successful life from poverty or simple conditions is 'humble beginnings'." },
+        { id: 9, question: "The negotiations got off to a ________ start, as neither side was willing to even consider the other's proposal.", options: ["scary", "shaky", "steady"], answer: "shaky", explanation: "An uncertain, unstable beginning is a 'shaky start'." },
+        { id: 10, question: "There seems to be no end in ________ to the country's political conflicts.", options: ["sight", "view", "watch"], answer: "sight", explanation: "When an activity appears destined to continue forever, there is 'no end in sight'." },
+        { id: 11, question: "Let's ________ started with today's meeting; we have a lot of items on the agenda.", options: ["get", "make", "take"], answer: "get", explanation: "An informal way to announce the beginning of an activity is 'let's get started'." },
+        { id: 12, question: "The business had an ________ start, with customer volumes fluctuating daily.", options: ["unsteady", "unsafe", "unstable"], answer: "unsteady", explanation: "An uncertain, unstable start can be called an 'unsteady start'." },
+        { id: 13, question: "The multinational retail chain grew from a ________ beginning in a tiny grocery shop.", options: ["modest", "minor", "medium"], answer: "modest", explanation: "A simple, unpretentious start with minimal resources is a 'modest beginning'." },
+        { id: 14, question: "Kevin failed every single one of his first exams; his semester was off to a ________ start.", options: ["disastrous", "destructive", "damaged"], answer: "disastrous", explanation: "A completely terrible, failed start is described as a 'disastrous start'." },
+        { id: 15, question: "The construction project ________ off to a good start with all permit approvals secured ahead of schedule.", options: ["got", "took", "made"], answer: "got", explanation: "To begin well or successfully is to 'get off to a good start' (past tense: got)." },
+        { id: 16, question: "The sudden departure of the lead architect brought our development to an ________ end.", options: ["abrupt", "rapid", "hasty"], answer: "abrupt", explanation: "When something stops very quickly and unexpectedly, it comes to an 'abrupt end'." },
+        { id: 17, question: "The factory fire was the ________ of the end for the family business.", options: ["beginning", "start", "genesis"], answer: "beginning", explanation: "The start of a process of failure and shutdown is described as 'the beginning of the end'." },
+        { id: 18, question: "After school, I always ________ my homework before logging into the game server.", options: ["finished", "ended", "completed"], answer: "finished", explanation: "Completing specific assignments or tasks is collocated with the verb 'finish' (past tense: finished)." },
+        { id: 19, question: "We ________ our partnership with that supplier because of persistent quality failures.", options: ["ended", "finished", "closed"], answer: "ended", explanation: "To terminate a business relationship is to 'end our partnership' (past tense: ended)." },
+        { id: 20, question: "The new ecological policy got an ________ start with excellent community feedback.", options: ["encouraging", "energetic", "elegant"], answer: "encouraging", explanation: "A hopeful, positive beginning is described as an 'encouraging start'." }
       ],
-      activeCardId: 'perfectly_honest',
+      activeCardId: 'lets_get_started',
       flashcardsIndex: 0,
       isCardFlipped: false,
       quizIndex: 0,
@@ -850,21 +841,20 @@
       isSynthesizing: false
     };
 
-    // Advanced Sound Synthesizer via Web Audio API
+    // Web Audio Synthesizer
     function playSynthSound(type) {
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
         if (type === 'click') {
-          // Sharp acoustic click representing a calibration ping
           const osc1 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc1.type = 'sine';
           osc1.frequency.setValueAtTime(1400, audioCtx.currentTime);
-          osc1.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+          osc1.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.08);
 
-          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
           gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
 
           osc1.connect(gain);
@@ -874,77 +864,121 @@
           osc1.stop(audioCtx.currentTime + 0.08);
           
         } else if (type === 'correct') {
-          // Symmetrical ascending truth chime (Verified State)
-          const notes = [293.66, 349.23, 440.00, 587.33]; // D4, F4, A4, D5 (D Minor chord)
+          const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
           const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.7);
+          gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.6);
           gain.connect(audioCtx.destination);
 
           notes.forEach((freq, index) => {
             const osc = audioCtx.createOscillator();
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.06);
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.08);
             osc.connect(gain);
-            osc.start(audioCtx.currentTime + index * 0.06);
-            osc.stop(audioCtx.currentTime + 0.7);
+            osc.start(audioCtx.currentTime + index * 0.08);
+            osc.stop(audioCtx.currentTime + 0.6);
           });
           
         } else if (type === 'incorrect') {
-          // Low warning signal buzz (Deception State)
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           
           osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.3);
+          osc.frequency.setValueAtTime(130, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.25);
 
           const lowpass = audioCtx.createBiquadFilter();
           lowpass.type = 'lowpass';
           lowpass.frequency.setValueAtTime(180, audioCtx.currentTime);
 
-          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.005, audioCtx.currentTime + 0.25);
 
           osc.connect(lowpass);
           lowpass.connect(gain);
           gain.connect(audioCtx.destination);
 
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.3);
+          osc.stop(audioCtx.currentTime + 0.25);
           
         } else if (type === 'flip') {
-          // Mid sweep representing card rotation
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(250, audioCtx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.15);
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.12);
           
           gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+          gain.gain.exponentialRampToValueAtTime(0.002, audioCtx.currentTime + 0.12);
           
           osc.connect(gain);
           gain.connect(audioCtx.destination);
           
           osc.start();
-          osc.stop(audioCtx.currentTime + 0.15);
+          osc.stop(audioCtx.currentTime + 0.12);
         }
       } catch (e) {
-        console.warn('Web Audio API synth failure:', e);
+        console.warn('Web Audio synthesis context blocked:', e);
       }
     }
 
-    // HTML5 Canvas Calibration Node grid
+    // HTML5 Launch Trajectory Canvas Background
     function initBackgroundCanvas() {
-      const canvas = document.getElementById('vocal-canvas');
+      const canvas = document.getElementById('ignition-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
       let width = (canvas.width = canvas.offsetWidth);
       let height = (canvas.height = canvas.offsetHeight);
       
-      const waves = [];
+      const lines = [];
+      const nodeCount = 35;
+      
+      class PathLine {
+        constructor() {
+          this.startX = Math.random() * (width * 0.3);
+          this.startY = Math.random() * height;
+          this.endX = width * 0.7 + Math.random() * (width * 0.3);
+          this.endY = Math.random() * height;
+          this.progress = Math.random();
+          this.speed = Math.random() * 0.004 + 0.002;
+          this.particleSize = Math.random() * 3 + 2;
+          this.color = Math.random() > 0.5 ? 'rgba(249, 115, 22, ' : 'rgba(56, 189, 248, '; // Orange or Cyan
+        }
+        update() {
+          this.progress += this.speed;
+          if (this.progress >= 1.0) {
+            this.progress = 0;
+            this.startX = Math.random() * (width * 0.3);
+            this.startY = Math.random() * height;
+            this.endX = width * 0.7 + Math.random() * (width * 0.3);
+            this.endY = Math.random() * height;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.moveTo(this.startX, this.startY);
+          ctx.lineTo(this.endX, this.endY);
+          ctx.strokeStyle = this.color + '0.04)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          
+          const currentX = this.startX + (this.endX - this.startX) * this.progress;
+          const currentY = this.startY + (this.endY - this.startY) * this.progress;
+          
+          ctx.beginPath();
+          ctx.arc(currentX, currentY, this.particleSize, 0, Math.PI * 2);
+          ctx.fillStyle = this.color + '0.35)';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.color === 'rgba(249, 115, 22, ' ? '#f97316' : '#38bdf8';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      for (let i = 0; i < nodeCount; i++) {
+        lines.push(new PathLine());
+      }
       
       window.addEventListener('resize', () => {
         width = canvas.width = canvas.offsetWidth;
@@ -956,47 +990,52 @@
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
         
-        waves.push({
-          x: x,
-          y: y,
-          radius: 0,
-          maxRadius: Math.random() * 70 + 40,
-          opacity: 0.9,
-          color: Math.random() > 0.4 ? '16, 185, 129' : '244, 63, 94' // Emerald or Deception Rose
-        });
+        for (let i = 0; i < 5; i++) {
+          const l = new PathLine();
+          l.startX = x;
+          l.startY = y;
+          l.progress = 0;
+          l.speed = Math.random() * 0.01 + 0.005;
+          lines.push(l);
+          if (lines.length > 60) lines.shift();
+        }
         playSynthSound('click');
       };
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
         
-        for (let i = waves.length - 1; i >= 0; i--) {
-          const w = waves[i];
-          w.radius += 1.4;
-          w.opacity -= 0.015;
-          
-          if (w.opacity <= 0) {
-            waves.splice(i, 1);
-            continue;
-          }
-          
-          ctx.beginPath();
-          ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity})`;
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-          
-          ctx.beginPath();
-          ctx.arc(w.x, w.y, w.radius * 0.65, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(${w.color}, ${w.opacity * 0.35})`;
-          ctx.stroke();
-        }
+        lines.forEach(l => {
+          l.update();
+          l.draw();
+        });
         
         requestAnimationFrame(animate);
       }
       animate();
     }
 
+    // Custom Toast Notification System
+    function showToast(title, body, iconClass = 'fa-circle-info') {
+      const toast = document.getElementById('app-toast');
+      const tTitle = document.getElementById('toast-title');
+      const tBody = document.getElementById('toast-body');
+      const tIcon = document.getElementById('toast-icon');
+      
+      if (!toast || !tTitle || !tBody || !tIcon) return;
+      
+      tTitle.innerText = title;
+      tBody.innerText = body;
+      tIcon.className = `fa-solid ${iconClass}`;
+      
+      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      
+      setTimeout(() => {
+        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
+      }, 4000);
+    }
+
+    // DOM Initializer setup
     window.addEventListener('DOMContentLoaded', () => {
       loadLocalStorage();
       initSpeechVoices();
@@ -1008,16 +1047,25 @@
       renderSandboxChips();
       calculateMasteryMetrics();
       
-      // Enforce premium dark aesthetic by default
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').innerHTML = '<i class="fa-solid fa-fingerprint text-sm text-brand-400"></i>';
-      
       document.addEventListener('keyup', keyUpHandler);
     });
 
+    // operational Light / Dark mode switcher
     function toggleTheme() {
       playSynthSound('click');
-      showToast('System Refined', 'Truth grid frequencies recalibrated successfully.', 'fa-fingerprint');
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      state.theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('colloc_theme_l38', state.theme);
+      
+      const themeBtnIcon = document.getElementById('theme-toggle-icon');
+      if (isDark) {
+        if (themeBtnIcon) themeBtnIcon.className = 'fa-solid fa-sun text-sm text-brand-400';
+        showToast('Midnight Theme', 'Acoustic launch controls calibrated to dark mode view.', 'fa-moon');
+      } else {
+        if (themeBtnIcon) themeBtnIcon.className = 'fa-solid fa-moon text-sm text-brand-600';
+        showToast('Botanical Theme', 'Acoustic launch controls calibrated to light mode view.', 'fa-sun');
+      }
     }
 
     function switchView(viewName) {
@@ -1027,24 +1075,28 @@
       const views = ['story', 'flashcards', 'quiz', 'sandbox', 'podcast', 'dictionary'];
       views.forEach(v => {
         const element = document.getElementById(`view-${v}`);
-        element.classList.add('hidden', 'opacity-0');
-        element.classList.remove('block', 'opacity-100');
+        if (element) {
+          element.classList.add('hidden', 'opacity-0');
+          element.classList.remove('block', 'opacity-100');
+        }
         
         const navBtn = document.getElementById(`nav-${v}`);
         if (navBtn) {
-          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-300 hover:bg-slate-800 hover:text-slate-100";
+          navBtn.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-stone-900 hover:text-brand-700 dark:hover:text-slate-100";
         }
       });
       
       const activeView = document.getElementById(`view-${viewName}`);
-      activeView.classList.remove('hidden');
-      setTimeout(() => {
-        activeView.classList.add('block', 'opacity-100');
-      }, 50);
+      if (activeView) {
+        activeView.classList.remove('hidden');
+        setTimeout(() => {
+          activeView.classList.add('block', 'opacity-100');
+        }, 50);
+      }
       
       const activeNav = document.getElementById(`nav-${viewName}`);
       if (activeNav) {
-        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-300 border border-brand-500/20";
+        activeNav.className = "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition bg-brand-500/10 text-brand-700 dark:text-brand-300 border border-brand-500/20";
       }
       
       state.currentView = viewName;
@@ -1056,6 +1108,18 @@
     }
 
     function loadLocalStorage() {
+      const savedTheme = localStorage.getItem('colloc_theme_l38') || 'dark';
+      state.theme = savedTheme;
+      const html = document.documentElement;
+      const themeBtnIcon = document.getElementById('theme-toggle-icon');
+      if (savedTheme === 'dark') {
+        if (html) html.classList.add('dark');
+        if (themeBtnIcon) themeBtnIcon.className = 'fa-solid fa-sun text-sm text-brand-400';
+      } else {
+        if (html) html.classList.remove('dark');
+        if (themeBtnIcon) themeBtnIcon.className = 'fa-solid fa-moon text-sm text-brand-600';
+      }
+
       if (localStorage.getItem('colloc_mastery_list_l38')) {
         try {
           const masteredArr = JSON.parse(localStorage.getItem('colloc_mastery_list_l38'));
@@ -1065,7 +1129,7 @@
             }
           });
         } catch (err) {
-          console.error('Veracity storage parse issue:', err);
+          console.error('Mastery database reading error', err);
         }
       }
       if (localStorage.getItem('colloc_voice_settings_l38')) {
@@ -1085,7 +1149,8 @@
       const total = state.collocations.length;
       const masteredCount = state.collocations.filter(c => c.mastered).length;
       
-      document.getElementById('lesson-mastery-ratio').innerText = `${masteredCount}/${total} Verified`;
+      const ratioEl = document.getElementById('lesson-mastery-ratio');
+      if (ratioEl) ratioEl.innerText = `${masteredCount}/${total} Mastered`;
       
       let quizFactor = 0;
       const totalAnswers = Object.keys(state.quizAnswers).length;
@@ -1106,36 +1171,43 @@
       const cardFactor = (masteredCount / total) * 50;
       const score = Math.min(100, Math.round(cardFactor + quizFactor));
       
-      document.getElementById('sidebar-confidence').innerText = `${score}%`;
+      const confidenceEl = document.getElementById('sidebar-confidence');
+      if (confidenceEl) confidenceEl.innerText = `${score}%`;
     }
 
     function openVoiceSettings() {
       playSynthSound('click');
       const modal = document.getElementById('voice-modal-overlay');
-      modal.classList.remove('hidden');
+      if (modal) modal.classList.remove('hidden');
       
-      document.getElementById('voice-rate-slider').value = state.voiceSettings.rate;
-      document.getElementById('voice-rate-val').innerText = `${state.voiceSettings.rate}x`;
-      document.getElementById('voice-pitch-slider').value = state.voiceSettings.pitch;
-      document.getElementById('voice-pitch-val').innerText = state.voiceSettings.pitch;
+      const rateSlider = document.getElementById('voice-rate-slider');
+      const rateVal = document.getElementById('voice-rate-val');
+      const pitchSlider = document.getElementById('voice-pitch-slider');
+      const pitchVal = document.getElementById('voice-pitch-val');
+      
+      if (rateSlider) rateSlider.value = state.voiceSettings.rate;
+      if (rateVal) rateVal.innerText = `${state.voiceSettings.rate}x`;
+      if (pitchSlider) pitchSlider.value = state.voiceSettings.pitch;
+      if (pitchVal) pitchVal.innerText = state.voiceSettings.pitch;
     }
 
     function closeVoiceSettings() {
       playSynthSound('click');
       const modal = document.getElementById('voice-modal-overlay');
-      modal.classList.add('hidden');
+      if (modal) modal.classList.add('hidden');
       
       const select = document.getElementById('voice-select');
       if (select) {
         state.voiceSettings.voiceName = select.value;
       }
       localStorage.setItem('colloc_voice_settings_l38', JSON.stringify(state.voiceSettings));
-      showToast('Config Active', 'Speech synthesis channels updated.');
+      showToast('Config Saved', 'Launch telemetry voice parameters updated.');
     }
 
     function updateVoiceSlider(field, val) {
       state.voiceSettings[field] = parseFloat(val);
-      document.getElementById(`voice-${field}-val`).innerText = field === 'rate' ? `${val}x` : val;
+      const valEl = document.getElementById(`voice-${field}-val`);
+      if (valEl) valEl.innerText = field === 'rate' ? `${val}x` : val;
     }
 
     function initSpeechVoices() {
@@ -1220,7 +1292,7 @@
           displayGlossaryCard(colId);
         });
       });
-      displayGlossaryCard('perfectly_honest');
+      displayGlossaryCard('lets_get_started');
     }
 
     function displayGlossaryCard(id) {
@@ -1230,16 +1302,23 @@
       
       state.activeCardId = id;
       
-      document.getElementById('glossary-phrase').innerText = term.phrase;
-      document.getElementById('glossary-definition').innerText = term.definition;
-      document.getElementById('glossary-example').innerText = term.example;
-      document.getElementById('glossary-category').innerText = `Linguistic Vector: ${term.category}`;
+      const phraseEl = document.getElementById('glossary-phrase');
+      const defEl = document.getElementById('glossary-definition');
+      const exEl = document.getElementById('glossary-example');
+      const catEl = document.getElementById('glossary-category');
+      
+      if (phraseEl) phraseEl.innerText = term.phrase;
+      if (defEl) defEl.innerText = term.definition;
+      if (exEl) exEl.innerText = term.example;
+      if (catEl) catEl.innerText = `Linguistic Vector: ${term.category}`;
       
       const star = document.getElementById('glossary-master-btn');
-      if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
-      } else {
-        star.innerHTML = '<i class="fa-regular fa-star"></i>';
+      if (star) {
+        if (term.mastered) {
+          star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
+        } else {
+          star.innerHTML = '<i class="fa-regular fa-star"></i>';
+        }
       }
       
       triggerTTS(term.phrase);
@@ -1261,65 +1340,82 @@
       saveMastery();
       
       const star = document.getElementById('glossary-master-btn');
-      if (term.mastered) {
-        star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
-        showToast('Node Verified', `Added "${term.phrase}" into authenticated ledger.`);
-      } else {
-        star.innerHTML = '<i class="fa-regular fa-star"></i>';
-        showToast('Node Reset', `Returned "${term.phrase}" to pending queue.`);
+      if (star) {
+        if (term.mastered) {
+          star.innerHTML = '<i class="fa-solid fa-star text-amber-400 animate-pulse"></i>';
+          showToast('Node Decoded', `Aligned "${term.phrase}" into your mastered database!`);
+        } else {
+          star.innerHTML = '<i class="fa-regular fa-star"></i>';
+          showToast('Node Re-opened', `Moved "${term.phrase}" back to study list.`);
+        }
       }
     }
 
     function speakCurrentStory() {
       playSynthSound('click');
       const paragraphs = [
-        "To be perfectly honest, navigating professional relationships requires exceptional discretion.",
-        "It is easy to make an honest mistake that leads to misunderstandings, but the core foundation is always your credibility.",
-        "When faced with difficult situations, you should always strive to tell the truth.",
-        "Some people tend to stretch the truth during high-stakes negotiations to sound more capable.",
-        "But if you tell a lie, you risk permanently ruining your reputation.",
-        "Even a small white lie, designed to protect someone's feelings, can easily snowball into a complicated half-truth if discovered.",
-        "Worse yet, some individuals will completely fabricate a story to cover up operational failures, presenting a pure fabrication or a tissue of lies to their superiors.",
-        "If you deal with an inveterate liar, you will eventually have to step in and unmask a liar to protect the company.",
-        "To build solid partnerships, you must find colleagues you can trust implicitly.",
-        "Once you betray trust, it is incredibly difficult to restore trust and gain trust back.",
-        "It is vital to keep a secret when sensitive intellectual property is discussed.",
-        "If you reveal a secret or disclose a secret to competitors, it can lead to immediate legal action.",
-        "Many have accidentally let the cat out of the bag during casual social chatter.",
-        "Therefore, when you need to discuss high-pressure details, find a close colleague to confide in someone or take someone into your confidence.",
-        "When you give your word to complete a project, you must keep a promise at all costs; to break a promise will permanently damage your credit.",
-        "In some direct cultures, people value brutal honesty above all else, refusing to simply take someone's word for it without concrete proof.",
-        "If disputes escalate, executives may have to swear under oath in court.",
-        "While some leaders are an open book whose motives are clear, others force you to verify if they have had to concoct an alibi to justify their delays."
+        "Let's get started with a common question: is there a difference between the verbs start and begin? There's no difference in meaning.",
+        "I started studying English 3 years ago is the same as I began studying English 3 years ago, but begin is a little more formal than start.",
+        "The phrase let's get started is an informal way to announce the beginning of an activity.",
+        "You can also say that something got off to a good start if it began well. Other collocations for a good start include an encouraging start or promising start; these expressions show that there is hope for good results in the future.",
+        "For example, the soccer team got off to a promising start, winning the first four games of the season.",
+        "If it is not so certain that there will be good results in the future, then you can say a shaky start or unsteady start.",
+        "The business had a shaky start in the second quarter of 2013, with sales numbers fluctuating daily.",
+        "If the beginning of something did not meet expectations, you can call it a disappointing start, and if it was really terrible, you can describe it as a disastrous start.",
+        "Kevin failed every single one of his first exams; his semester was off to a disastrous start.",
+        "Sometimes things go so badly that you need to get out of the situation and have a completely fresh start or new beginning.",
+        "When a successful person or company started without being famous or rich, then we say they had a humble beginning or modest beginning.",
+        "Now let's talk about finish and end. There is a difference between these two verbs. Finish usually implies completing something, whereas end is used for a more passive situation or state.",
+        "I finished my homework. The semester ends in December. We need to finish the project. We ended our partnership with that company.",
+        "When you make the final changes to something before it is completed, we say you put the finishing touches on it.",
+        "Two expressions used to talk about ending something are come to an end or draw to a close.",
+        "You can also say the beginning of the end to describe something that will probably end soon.",
+        "The explosion at the factory was the beginning of the end for our company. In other words, the explosion began a process of the company failing and eventually shutting down.",
+        "When something ends quickly, then it comes to an abrupt end or sudden end. On the other hand, when an activity appears that it will continue forever, then we say there's no end in sight."
       ];
       triggerTTS(paragraphs.join(" "));
     }
 
+    // Render Flashcard
     function renderFlashcard() {
       const card = state.collocations[state.flashcardsIndex];
       if (!card) return;
       
-      document.getElementById('card-front-phrase').innerText = card.phrase;
-      document.getElementById('card-front-category').innerText = card.category;
+      const frontPhrase = document.getElementById('card-front-phrase');
+      const frontCat = document.getElementById('card-front-category');
+      const backDef = document.getElementById('card-back-definition');
+      const backEx = document.getElementById('card-back-example');
+      const backCat = document.getElementById('card-back-category');
+      const masterCheck = document.getElementById('card-master-checkbox');
+      const fcIndex = document.getElementById('flashcard-index');
+      const fcTotal = document.getElementById('flashcard-total');
+      const progressB = document.getElementById('flashcard-progress-bar');
       
-      document.getElementById('card-back-definition').innerText = card.definition;
-      document.getElementById('card-back-example').innerText = card.example;
-      document.getElementById('card-back-category').innerText = card.category;
+      if (frontPhrase) frontPhrase.innerText = card.phrase;
+      if (frontCat) frontCat.innerText = card.category;
+      if (backDef) backDef.innerText = card.definition;
+      if (backEx) backEx.innerText = card.example;
+      if (backCat) backCat.innerText = card.category;
+      if (masterCheck) masterCheck.checked = card.mastered;
+      if (fcIndex) fcIndex.innerText = state.flashcardsIndex + 1;
+      if (fcTotal) fcTotal.innerText = state.collocations.length;
       
-      document.getElementById('card-master-checkbox').checked = card.mastered;
-      
-      document.getElementById('flashcard-index').innerText = state.flashcardsIndex + 1;
-      const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
-      document.getElementById('flashcard-progress-bar').style.width = `${progressPercent}%`;
+      if (progressB) {
+        const progressPercent = ((state.flashcardsIndex + 1) / state.collocations.length) * 100;
+        progressB.style.width = `${progressPercent}%`;
+      }
       
       state.isCardFlipped = false;
-      document.getElementById('flashcard-element').classList.remove('flipped');
+      const fcElem = document.getElementById('flashcard-element');
+      if (fcElem) fcElem.classList.remove('flipped');
     }
 
+    // Flip Flashcard
     function flipFlashcard() {
       playSynthSound('flip');
       state.isCardFlipped = !state.isCardFlipped;
       const elem = document.getElementById('flashcard-element');
+      if (!elem) return;
       if (state.isCardFlipped) {
         elem.classList.add('flipped');
       } else {
@@ -1327,31 +1423,35 @@
       }
     }
 
+    // Previous Flashcard
     function prevFlashcard() {
       playSynthSound('click');
       if (state.flashcardsIndex > 0) {
         state.flashcardsIndex--;
         renderFlashcard();
       } else {
-        showToast('Lower Bound', 'This is the start of the card briefing stack.');
+        showToast('Limit Reached', 'This is the first briefing index card.');
       }
     }
 
+    // Next Flashcard
     function nextFlashcard() {
       playSynthSound('click');
       if (state.flashcardsIndex < state.collocations.length - 1) {
         state.flashcardsIndex++;
         renderFlashcard();
       } else {
-        showToast('Loop Active', 'Re-routing transceiver stack back to index 1.');
+        showToast('Looping', 'Cycling back to the first timeline record.');
         state.flashcardsIndex = 0;
         renderFlashcard();
       }
     }
 
+    // Keyboard bindings handler
     function keyUpHandler(e) {
       if (state.currentView !== 'flashcards') return;
       if (e.code === 'Space') {
+        e.preventDefault();
         flipFlashcard();
       } else if (e.code === 'ArrowLeft') {
         prevFlashcard();
@@ -1360,6 +1460,7 @@
       }
     }
 
+    // Speak Flashcard
     function speakFlashcardCurrent(event) {
       if (event) event.stopPropagation();
       const card = state.collocations[state.flashcardsIndex];
@@ -1368,6 +1469,7 @@
       }
     }
 
+    // Mark as Mastered
     function toggleCardMasteryInFlashcard(checkbox) {
       const card = state.collocations[state.flashcardsIndex];
       if (!card) return;
@@ -1375,16 +1477,17 @@
       card.mastered = checkbox.checked;
       saveMastery();
       if (card.mastered) {
-        showToast('Calibration Confirmed', `"${card.phrase}" marked as verified.`);
+        showToast('Milestone Decoded', `"${card.phrase}" logged as mastered.`);
       }
     }
 
+    // Render Quiz Question
     function renderQuizQuestion() {
       const quest = state.quiz[state.quizIndex];
       if (!quest) return;
       
       document.getElementById('quiz-question-current').innerText = state.quizIndex + 1;
-      document.getElementById('quiz-question-text').innerText = quest.question;
+      document.getElementById('quiz-question-text').innerText = `${state.quizIndex + 1}. ${quest.question}`;
       
       const progressPercent = ((state.quizIndex + 1) / state.quiz.length) * 100;
       document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
@@ -1398,45 +1501,35 @@
       quest.options.forEach(opt => {
         const btn = document.createElement('button');
         
-        // Match user values gracefully
-        const matchingColloc = state.collocations.find(c => c.phrase === opt || c.id === opt || c.phrase.includes(opt));
-        const collocId = matchingColloc ? matchingColloc.id : opt;
-        
-        btn.onclick = () => selectQuizAnswer(collocId);
-        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-white";
+        btn.onclick = () => selectQuizAnswer(opt);
+        btn.className = "flex items-center justify-between p-4 rounded-2xl border text-sm font-semibold transition text-left w-full font-sans text-slate-800 dark:text-white";
         
         if (!answered) {
-          btn.className += " bg-[#111827] border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.className += " bg-white dark:bg-[#111827] border-orange-100 dark:border-slate-800 hover:border-brand-500 hover:bg-brand-500/10";
+          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400 dark:text-slate-700"></i>`;
         } else {
           btn.disabled = true;
           const userAns = state.quizAnswers[quest.id];
-          const isCorrect = (collocId === quest.answer || opt === quest.answer) || 
-                            (state.collocations.find(c => c.id === quest.answer)?.phrase === opt) ||
-                            (state.collocations.find(c => c.id === collocId)?.phrase === quest.answer);
           
-          const isSelected = (collocId === userAns || opt === userAns);
-
-          if (isCorrect) {
-            btn.className += " bg-emerald-950/70 border-brand-500 text-brand-350 font-bold shadow-md shadow-brand-500/10";
-            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-square-check text-brand-400"></i>`;
-          } else if (isSelected) {
-            btn.className += " bg-rose-950/70 border-rose-900 text-rose-450 font-bold";
-            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-triangle-exclamation text-rose-500"></i>`;
+          if (opt === quest.answer) {
+            btn.className += " bg-emerald-100 dark:bg-emerald-950/70 border-brand-500 text-emerald-800 dark:text-emerald-450 font-bold shadow-md shadow-brand-500/10";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+          } else if (opt === userAns) {
+            btn.className += " bg-rose-100 dark:bg-rose-955/70 border-rose-900 text-rose-800 dark:text-rose-400 font-bold";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
           } else {
-            btn.className += " bg-slate-900 border-slate-800 text-slate-550";
+            btn.className += " bg-white dark:bg-slate-900 border-orange-100 dark:border-slate-800 text-slate-500";
+            btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-400 dark:text-slate-700"></i>`;
           }
         }
         
-        if (!answered) {
-          btn.innerHTML = `<span>${opt}</span><i class="fa-regular fa-circle text-slate-700"></i>`;
-        }
         grid.appendChild(btn);
       });
       
       const nextBtn = document.getElementById('quiz-next-btn');
       if (answered) {
         nextBtn.removeAttribute('disabled');
-        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-950 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
+        nextBtn.className = "flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-500 text-slate-955 rounded-xl text-xs sm:text-sm font-bold transition font-mono";
         displayQuizExplanation(quest.explanation);
       } else {
         nextBtn.setAttribute('disabled', 'true');
@@ -1450,16 +1543,12 @@
       
       state.quizAnswers[quest.id] = selectedOption;
       
-      const isCorrect = (selectedOption === quest.answer) || 
-                        (state.collocations.find(c => c.id === quest.answer)?.phrase === selectedOption) ||
-                        (state.collocations.find(c => c.id === selectedOption)?.phrase === quest.answer);
-      
-      if (isCorrect) {
+      if (selectedOption === quest.answer) {
         playSynthSound('correct');
-        showToast('Vector Aligned', 'Statements align flawlessly with fact criteria.', 'fa-circle-check');
+        showToast('Tactical Success!', 'Wavelength alignment verified.', 'fa-circle-check');
       } else {
         playSynthSound('incorrect');
-        showToast('Deception Flagged', 'Inconsistencies detected in scenario syntax.', 'fa-triangle-exclamation');
+        showToast('Friction Flagged!', 'Mismatched chronological parameters.', 'fa-triangle-exclamation');
       }
       
       calculateMasteryMetrics();
@@ -1469,8 +1558,10 @@
     function displayQuizExplanation(explanation) {
       const box = document.getElementById('quiz-explanation-box');
       const textEl = document.getElementById('quiz-explanation-text');
-      box.classList.remove('hidden');
-      textEl.innerText = explanation;
+      if (box && textEl) {
+        box.classList.remove('hidden');
+        textEl.innerText = explanation;
+      }
     }
 
     function handleQuizNext() {
@@ -1483,60 +1574,17 @@
       }
     }
 
-    function completeQuizProcess() {
-      state.quizCompleted = true;
-      document.getElementById('quiz-screen').classList.add('hidden');
-      document.getElementById('quiz-result-screen').classList.remove('hidden');
-      
-      let correct = 0;
-      state.quiz.forEach(q => {
-        const userAns = state.quizAnswers[q.id];
-        const isCorrect = (userAns === q.answer) || 
-                          (state.collocations.find(c => c.id === q.answer)?.phrase === userAns) ||
-                          (state.collocations.find(c => c.id === userAns)?.phrase === q.answer);
-        if (isCorrect) {
-          correct++;
-        }
-      });
-      
-      const ratioStr = `${correct}/${state.quiz.length}`;
-      const percentage = Math.round((correct / state.quiz.length) * 100);
-      
-      document.getElementById('quiz-score-correct').innerText = ratioStr;
-      document.getElementById('quiz-score-percent').innerText = `${percentage}%`;
-      
-      let rank = "Skeptic Novice";
-      if (percentage === 100) rank = "Master Polygrapher 🛡️";
-      else if (percentage >= 90) rank = "Auditor General";
-      else if (percentage >= 70) rank = "Veracity Officer";
-      
-      document.getElementById('quiz-score-rank').innerText = rank;
-    }
-
-    function resetCurrentQuiz() {
-      playSynthSound('click');
-      state.quizAnswers = {};
-      state.quizIndex = 0;
-      state.quizCompleted = false;
-      
-      document.getElementById('quiz-screen').classList.remove('hidden');
-      document.getElementById('quiz-result-screen').classList.add('hidden');
-      
-      renderQuizQuestion();
-      calculateMasteryMetrics();
-    }
-
     function renderSandboxChips() {
       const container = document.getElementById('sandbox-quick-chips');
       if (!container) return;
       
       container.innerHTML = '';
-      const selectedWords = ['perfectly honest', 'honest mistake', 'stretch the truth', 'fabricate a story', 'trust implicitly', 'let the cat out of the bag'];
+      const selectedWords = ["let's get started", 'promising start', 'shaky start', 'finishing touches', 'come to an end', 'no end in sight'];
       
       selectedWords.forEach(word => {
         const chip = document.createElement('button');
         chip.onclick = () => insertCollocToSandbox(word);
-        chip.className = "px-3 py-1 bg-slate-800 hover:bg-brand-500/10 text-slate-300 rounded-lg text-xs font-semibold transition border border-slate-700 font-mono";
+        chip.className = "px-3 py-1 bg-zinc-800 hover:bg-brand-500/10 text-slate-355 rounded-lg text-xs font-semibold transition border border-zinc-700 font-mono";
         chip.innerText = `+ ${word}`;
         container.appendChild(chip);
       });
@@ -1545,10 +1593,11 @@
     function insertCollocToSandbox(word) {
       playSynthSound('click');
       const textarea = document.getElementById('sandbox-input');
+      if (!textarea) return;
       const currentText = textarea.value;
       
       if (currentText === '') {
-        textarea.value = `To be perfectly honest, it was simply an ${word} during the launch phase...`;
+        textarea.value = `To finish the construction on time, let's ${word} immediately...`;
       } else {
         textarea.value += ` ${word} `;
       }
@@ -1558,62 +1607,75 @@
     function populateSandboxCollocations() {
       playSynthSound('click');
       const textarea = document.getElementById('sandbox-input');
+      if (!textarea) return;
       const collocs = state.collocations;
       const randomColloc = collocs[Math.floor(Math.random() * collocs.length)].phrase;
       
       if (textarea.value.trim() === '') {
-        textarea.value = `Calibrated statement briefing: "${randomColloc}"`;
+        textarea.value = `Review the velocity report: "${randomColloc}"`;
       } else {
         const spacer = textarea.value.endsWith(' ') ? '' : ' ';
         textarea.value += `${spacer}${randomColloc}`;
       }
       textarea.focus();
-      showToast('Manuscript modified', `Injected "${randomColloc}" into workspace.`, 'fa-circle-plus');
+      showToast('Draft updated', `Injected "${randomColloc}" into workspace.`, 'fa-circle-plus');
     }
 
     function generateSandboxPrompt() {
       playSynthSound('click');
       const prompts = [
-        "Detail an executive apology where an inveterate liar has to tell the truth after betraying trust.",
-        "Write a court testimony where a client must swear under oath that they made an honest mistake rather than concocted an alibi.",
-        "Discuss a workplace scenario where someone chose brutal honesty over telling a white lie, preventing a tissue of lies.",
-        "Draft a scenario where an administrator has to reveal a secret because someone accidentally let the cat out of the bag."
+        "Detail how a project that got off to a shaky start ended up achieving a successful finish.",
+        "Draft a summary showing how the project came to an end after we put the finishing touches on it.",
+        "Describe a road curve where traffic slowed to a crawl, bringing transit to a complete standstill.",
+        "Examine why having a disappointing start can lead to a disastrous start if not handled swiftly."
       ];
       const rand = prompts[Math.floor(Math.random() * prompts.length)];
       const textarea = document.getElementById('sandbox-input');
-      textarea.value = `[Dialogue Draft Prompt: ${rand}]\n\n`;
-      textarea.focus();
+      if (textarea) {
+        textarea.value = `[Draft Scenario: ${rand}]\n\n`;
+        textarea.focus();
+      }
     }
 
     function clearSandbox() {
       playSynthSound('click');
-      document.getElementById('sandbox-input').value = '';
-      document.getElementById('sandbox-diagnostic-card').classList.add('hidden');
+      const input = document.getElementById('sandbox-input');
+      if (input) input.value = '';
+      const diagCard = document.getElementById('sandbox-diagnostic-card');
+      if (diagCard) diagCard.classList.add('hidden');
     }
 
     async function runSentenceDiagnostic() {
       playSynthSound('click');
       const apiKey = ""; 
-      const textValue = document.getElementById('sandbox-input').value.trim();
+      const inputEl = document.getElementById('sandbox-input');
+      if (!inputEl) return;
+      const textValue = inputEl.value.trim();
       
       if (!textValue) {
-        showToast('Empty Document', 'Please draft your veracity manuscript before running a scan.', 'fa-circle-exclamation');
+        showToast('Empty Manuscript', 'Please write a brief before scanning.', 'fa-circle-exclamation');
         return;
       }
       
-      showToast('Forensic Scan', 'Routing statements to Gemini diagnostic engine...', 'fa-fingerprint');
+      showToast('AI Scanning', 'Streaming manuscript prose to the Gemini Literary Oracle...', 'fa-wand-magic-sparkles');
       
       const diagnoseCard = document.getElementById('sandbox-diagnostic-card');
-      diagnoseCard.classList.remove('hidden');
-      document.getElementById('diagnostic-analysis').innerText = "Analyzing semantic alignments and context metrics... Please standby.";
-      document.getElementById('diagnostic-collocation-feedback').innerText = "Running polygraph comparison parameters...";
-      document.getElementById('diagnostic-score').innerText = "--";
-      document.getElementById('diagnostic-alternative-text').innerText = "...";
+      if (diagnoseCard) diagnoseCard.classList.remove('hidden');
       
-      const systemPrompt = "You are an elite forensic linguist, communications consultant, and English professor. Verify if the user's statement utilizes Lesson 38 collocations (perfectly honest, honest mistake, tell the truth, stretch the truth, tell a lie, white lie, half-truth, fabricate a story, pure fabrication, tissue of lies, inveterate liar, unmask a liar, trust implicitly, betray trust, restore trust, gain trust, keep a secret, reveal a secret, disclose a secret, let the cat out of the bag, confide in someone, take someone into your confidence, give your word, keep a promise, break a promise, brutal honesty, take someone's word for it, swear under oath, open book, concoct an alibi) correctly and naturally. Respond ONLY with a clean, unformatted raw JSON object containing these precise keys: \"score\" (0-100 indicating authenticity and collocation strength), \"analysis\" (brief 2-3 sentence overview of dialogue integrity), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific instruction on how truth or deceit is phrased), and \"alternatives\" (array of 1-2 polished alternatives). Absolutely do not enclose your output in markdown formatting or code blocks.";
+      const diagAnalysis = document.getElementById('diagnostic-analysis');
+      const diagCollFeed = document.getElementById('diagnostic-collocation-feedback');
+      const diagScore = document.getElementById('diagnostic-score');
+      const diagAlternative = document.getElementById('diagnostic-alternative-text');
+      
+      if (diagAnalysis) diagAnalysis.innerText = "Analyzing temporal structures... Please hold.";
+      if (diagCollFeed) diagCollFeed.innerText = "Comparing with standard chronological patterns...";
+      if (diagScore) diagScore.innerText = "--";
+      if (diagAlternative) diagAlternative.innerText = "...";
+      
+      const systemPrompt = "You are a world-class Time Management Expert, Technical Editor, and English Scholar. Check if the user's sentence uses Lesson 38 starting and ending collocations (e.g., let's get started, got off to a good start, encouraging start, promising start, shaky start, unsteady start, disappointing start, disastrous start, fresh start, humble beginning, modest beginning, finishing touches, come to an end, draw to a close, beginning of the end, abrupt end, sudden end, no end in sight) correctly and naturally. Return a clean JSON response with keys: \"score\" (0-100), \"analysis\" (brief explanation of the conceptual accuracy), \"isCollocationCorrect\" (boolean), \"collocationFeedback\" (specific tips on improving temporal, beginning, or ending alignments), and \"alternatives\" (array of 1-2 polished examples). Do not use any markdown formatting or surrounding code blocks, just raw JSON.";
       
       const payload = {
-        contents: [{ parts: [{ text: `Analyze this integrity statement: "${textValue}"` }] }],
+        contents: [{ parts: [{ text: `Analyze this: "${textValue}"` }] }],
         systemInstruction: { parts: [{ text: systemPrompt }] },
         generationConfig: { responseMimeType: "application/json" }
       };
@@ -1637,13 +1699,13 @@
             resultData = await response.json();
             success = true;
           } else {
-            throw new Error(`Response returned state ${response.status}`);
+            throw new Error(`API returned status ${response.status}`);
           }
         } catch (err) {
           attempt++;
           if (attempt >= 5) {
-            showToast('Scan Halted', 'Forensic link failed to synchronize.', 'fa-circle-xmark');
-            document.getElementById('diagnostic-analysis').innerText = "Command deck offline. Re-verify link credentials and retry.";
+            showToast('API Disconnect', 'Unable to reach diagnostic engine. Try again later.', 'fa-circle-xmark');
+            if (diagAnalysis) diagAnalysis.innerText = "Manuscript scanner offline. Verify network connection and retry.";
             return;
           }
           await new Promise(res => setTimeout(res, delay));
@@ -1656,33 +1718,37 @@
           const textResponse = resultData.candidates?.[0]?.content?.parts?.[0]?.text;
           const parsedResult = JSON.parse(textResponse);
           
-          document.getElementById('diagnostic-score').innerText = parsedResult.score;
-          document.getElementById('diagnostic-analysis').innerText = parsedResult.analysis;
-          document.getElementById('diagnostic-collocation-feedback').innerText = parsedResult.collocationFeedback;
+          if (diagScore) diagScore.innerText = parsedResult.score;
+          if (diagAnalysis) diagAnalysis.innerText = parsedResult.analysis;
+          if (diagCollFeed) diagCollFeed.innerText = parsedResult.collocationFeedback;
           
-          const alternativeText = parsedResult.alternatives?.[0] || "Compliance matches flawless truth guidelines!";
-          document.getElementById('diagnostic-alternative-text').innerText = alternativeText;
+          const alternativeText = parsedResult.alternatives?.[0] || "Your structure is remarkably solid!";
+          if (diagAlternative) diagAlternative.innerText = alternativeText;
           
           const badge = document.getElementById('diagnostic-badge');
-          if (parsedResult.isCollocationCorrect) {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40";
-            badge.innerText = "Verified Integrity";
-            playSynthSound('correct');
-          } else {
-            badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
-            badge.innerText = "Acoustic Shift Flagged";
-            playSynthSound('incorrect');
+          if (badge) {
+            if (parsedResult.isCollocationCorrect) {
+              badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-950/20 text-brand-400 border border-brand-900/40";
+              badge.innerText = "Calibrated";
+              playSynthSound('correct');
+            } else {
+              badge.className = "px-2.5 py-1 rounded-full text-xs font-bold bg-rose-955/20 text-rose-400 border border-rose-900/40";
+              badge.innerText = "Dissonance Flagged";
+              playSynthSound('incorrect');
+            }
           }
           
         } catch (jsonErr) {
-          console.error("Forensic compliance JSON error: ", jsonErr);
-          document.getElementById('diagnostic-analysis').innerText = "Compliance reports returned an unparsable structure. Try streamlining your sentence patterns.";
+          console.error("JSON parse error: ", jsonErr);
+          if (diagAnalysis) diagAnalysis.innerText = "Scan returned an unexpected schema. Re-verify the composition text.";
         }
       }
     }
 
     function copyAlternativeSentence() {
-      const text = document.getElementById('diagnostic-alternative-text').innerText;
+      const alternativeTextEl = document.getElementById('diagnostic-alternative-text');
+      if (!alternativeTextEl) return;
+      const text = alternativeTextEl.innerText;
       if (text && text !== "...") {
         const el = document.createElement('textarea');
         el.value = text;
@@ -1690,21 +1756,24 @@
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-        showToast('System Copied', 'Polished statement copied to diagnostic logs.', 'fa-copy');
+        showToast('Copied', 'Polished alternative draft copied to clipboard.', 'fa-copy');
       }
     }
 
     function togglePodcastPlay() {
       playSynthSound('click');
+      const statusEl = document.getElementById('podcast-status');
+      const icon = document.getElementById('podcast-play-icon');
+      
       if (state.podcastIsPlaying) {
         stopSpeechSynthesis();
-        document.getElementById('podcast-play-icon').className = "fa-solid fa-play text-xl ml-0.5";
+        if (icon) icon.className = "fa-solid fa-play text-xl ml-0.5";
         state.podcastIsPlaying = false;
-        document.getElementById('podcast-status').innerText = "Broadcast Suspended";
+        if (statusEl) statusEl.innerText = "Podcast Suspended";
       } else {
         state.podcastIsPlaying = true;
-        document.getElementById('podcast-play-icon').className = "fa-solid fa-pause text-xl";
-        document.getElementById('podcast-status').innerText = "Transmission Active - Analyzing Veracity";
+        if (icon) icon.className = "fa-solid fa-pause text-xl";
+        if (statusEl) statusEl.innerText = "Live Dispatch - Chronology Tracking";
         
         if (state.podcastIndex === -1) {
           state.podcastIndex = 0;
@@ -1717,39 +1786,46 @@
       if (!state.podcastIsPlaying) return;
       
       const currentWord = state.collocations[state.podcastIndex];
+      const currentPhraseEl = document.getElementById('podcast-current-phrase');
+      const currentDefEl = document.getElementById('podcast-current-definition');
+      
       if (!currentWord) {
-        document.getElementById('podcast-current-phrase').innerText = "Debriefing Complete!";
-        document.getElementById('podcast-current-definition').innerText = "All Lesson 38 structural parameters evaluated and verified.";
+        if (currentPhraseEl) currentPhraseEl.innerText = "Session Closed!";
+        if (currentDefEl) currentDefEl.innerText = "Thank you for joining CollocaPodcast Lesson 38. All timeline collocations resolved!";
         stopSpeechSynthesis();
         state.podcastIndex = -1;
         return;
       }
       
-      document.getElementById('podcast-current-phrase').innerText = currentWord.phrase;
-      document.getElementById('podcast-current-definition').innerText = `${currentWord.definition} e.g. "${currentWord.example}"`;
+      if (currentPhraseEl) currentPhraseEl.innerText = currentWord.phrase;
+      if (currentDefEl) currentDefEl.innerText = `${currentWord.definition} e.g. "${currentWord.example}"`;
       
       const ratio = ((state.podcastIndex + 1) / state.collocations.length) * 100;
-      document.getElementById('podcast-loading-meter').style.width = `${ratio}%`;
-      document.getElementById('podcast-time-passed').innerText = `Token ${state.podcastIndex + 1}/30`;
+      const progressMeter = document.getElementById('podcast-loading-meter');
+      const timePassedEl = document.getElementById('podcast-time-passed');
+      
+      if (progressMeter) progressMeter.style.width = `${ratio}%`;
+      if (timePassedEl) timePassedEl.innerText = `Token ${state.podcastIndex + 1}/30`;
       
       const chatLog = document.getElementById('podcast-chat-log');
+      if (!chatLog) return;
       chatLog.innerHTML = '';
       
       if (state.podcastHostTurn === 1) {
-        const textToSpeak = `Next, let's explore an essential collocation. It is: ${currentWord.phrase}. Tom, how does this affect conversational trust?`;
+        const textToSpeak = `Let's analyze our next key starting and ending term. It is: ${currentWord.phrase}. Tom, how do launch directors map this structure out?`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
-          <div class="h-6 w-6 rounded bg-brand-600 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
+          <div class="h-6 w-6 rounded bg-brand-600 text-slate-955 font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H1</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Forensic Profiler)</span>
-            <p class="text-xs text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+            <span class="text-[10px] font-bold text-brand-400 font-mono">Sarah (Flight Director)</span>
+            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
         
-        speakHost(textToSpeak, 1.05, 1.05, () => {
+        speakHost(textToSpeak, 1.05, 1.0, () => {
           setTimeout(() => {
             state.podcastHostTurn = 2;
             playPodcastCycle();
@@ -1757,20 +1833,20 @@
         });
         
       } else {
-        const textToSpeak = `Well Sarah, ${currentWord.phrase} fundamentally means ${currentWord.definition}. In context, we often say: "${currentWord.example}"`;
+        const textToSpeak = `Well Sarah, ${currentWord.phrase} means ${currentWord.definition}. For instance, we note: "${currentWord.example}"`;
         
         const hostEl = document.createElement('div');
         hostEl.className = "flex gap-2.5 items-start animate-fade-in";
         hostEl.innerHTML = `
           <div class="h-6 w-6 rounded bg-slate-700 text-white font-bold text-[10px] flex items-center justify-center shrink-0 font-mono">H2</div>
           <div class="space-y-0.5">
-            <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Linguistic Auditor)</span>
-            <p class="text-xs text-slate-300 font-sans font-medium">"${textToSpeak}"</p>
+            <span class="text-[10px] font-bold text-brand-300 font-mono">Tom (Telemetry Analyst)</span>
+            <p class="text-xs text-slate-300 font-serif italic">"${textToSpeak}"</p>
           </div>
         `;
         chatLog.appendChild(hostEl);
         
-        speakHost(textToSpeak, 0.95, 0.9, () => {
+        speakHost(textToSpeak, 0.9, 0.9, () => {
           setTimeout(() => {
             state.podcastHostTurn = 1;
             state.podcastIndex++;
@@ -1844,7 +1920,10 @@
       
       const filtered = state.collocations.filter(c => {
         const matchesSearch = c.phrase.toLowerCase().includes(searchVal) || c.definition.toLowerCase().includes(searchVal);
-        const matchesCat = (catVal === 'all') || (c.category === catVal);
+        const matchesCat = (catVal === 'all') || 
+                           (catVal === 'Beginnings' && c.category === 'Beginnings') ||
+                           (catVal === 'Endings' && c.category === 'Endings') ||
+                           (catVal === 'Transits & Drafts' && (c.category === 'Transits & Drafts' || c.category === 'Slow Pacing' || c.category === 'Roads & Limits'));
         
         let matchesMastery = true;
         if (masteryVal === 'mastered') {
@@ -1859,7 +1938,7 @@
       if (filtered.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="6" class="text-center py-8 text-slate-400 italic font-medium">No verifications matched the ledger criteria.</td>
+            <td colspan="6" class="text-center py-8 text-slate-400 italic">No matching timeline records resolved.</td>
           </tr>
         `;
         return;
@@ -1867,7 +1946,7 @@
       
       filtered.forEach(c => {
         const row = document.createElement('tr');
-        row.className = "hover:bg-slate-800/40 transition border-b border-slate-850 font-sans";
+        row.className = "hover:bg-slate-800/40 transition border-b border-stone-850";
         
         const starIcon = c.mastered ? 'fa-star text-amber-400' : 'fa-star text-slate-700';
         
@@ -1877,14 +1956,14 @@
               <i class="fa-solid ${starIcon}"></i>
             </button>
           </td>
-          <td class="py-4 px-4 font-bold text-white capitalize cursor-pointer hover:underline hover:text-brand-400" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
+          <td class="py-4 px-4 font-bold text-slate-800 dark:text-white capitalize cursor-pointer hover:underline hover:text-brand-400 font-serif" onclick="triggerTTS('${c.phrase}')">${c.phrase}</td>
           <td class="py-4 px-4">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/25 font-mono font-heading">${c.category}</span>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded-full border border-brand-500/20 font-mono font-heading">${c.category}</span>
           </td>
-          <td class="py-4 px-4 text-slate-300 leading-relaxed font-semibold">${c.definition}</td>
-          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-400 font-semibold font-normal">"${c.example}"</td>
+          <td class="py-4 px-4 text-slate-600 dark:text-slate-400 leading-relaxed font-semibold font-sans">${c.definition}</td>
+          <td class="py-4 px-4 hidden lg:table-cell italic text-slate-505 dark:text-slate-445 font-semibold font-sans font-normal">"${c.example}"</td>
           <td class="py-4 px-4 text-center">
-            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-400 hover:text-white transition mx-auto">
+            <button onclick="triggerTTS('${c.phrase}')" class="h-8 w-8 rounded-lg border border-stone-800 flex items-center justify-center text-slate-404 hover:text-white transition mx-auto">
               <i class="fa-solid fa-volume-high text-xs"></i>
             </button>
           </td>
@@ -1907,53 +1986,6 @@
     function filterDictionary() {
       renderDictionary();
     }
-
-    function showToast(title, body, iconClass = 'fa-circle-info') {
-      const toast = document.getElementById('app-toast');
-      const tTitle = document.getElementById('toast-title');
-      const tBody = document.getElementById('toast-body');
-      const tIcon = document.getElementById('toast-icon');
-      
-      tTitle.innerText = title;
-      tBody.innerText = body;
-      tIcon.className = `fa-solid ${iconClass}`;
-      
-      toast.className = "opacity-100 translate-y-0 fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
-      
-      setTimeout(() => {
-        toast.className = "opacity-0 translate-y-4 pointer-events-none fixed bottom-6 right-6 z-50 bg-[#111827] text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-stone-850 max-w-sm transition-all duration-300";
-      }, 4000);
-    }
-
-    // Expose interaction functions to browser global scope
-    Object.assign(window, {
-      switchView,
-      toggleTheme,
-      openVoiceSettings,
-      closeVoiceSettings,
-      updateVoiceSlider,
-      speakCurrentStory,
-      speakGlossaryTerm,
-      toggleActiveMastery,
-      flipFlashcard,
-      prevFlashcard,
-      nextFlashcard,
-      speakFlashcardCurrent,
-      toggleCardMasteryInFlashcard,
-      selectQuizAnswer,
-      handleQuizNext,
-      resetCurrentQuiz,
-      generateSandboxPrompt,
-      populateSandboxCollocations,
-      clearSandbox,
-      runSentenceDiagnostic,
-      copyAlternativeSentence,
-      togglePodcastPlay,
-      prevPodcastCard,
-      nextPodcastCard,
-      filterDictionary,
-      toggleInPlaceMastery
-    });
   </script>
 </body>
 </html>
